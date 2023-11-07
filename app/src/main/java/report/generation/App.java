@@ -6,14 +6,16 @@ package report.generation;
 import org.grobid.core.*;
 import org.grobid.core.data.*;
 import org.grobid.core.factory.*;
-import org.grobid.core.mock.*;
+import org.grobid.core.main.*;
 import org.grobid.core.utilities.*;
 import org.grobid.core.engines.Engine;
+import java.util.Arrays;
 
 public class App {
-    public String grodid() {
-        String pdfPath = "paper/automatic-text-summarization-a-comprehensive-survey.pdf";
+    public void grodid() {
+        String pdfPath = "paper\\automatic-text-summarization-a-comprehensive-survey.pdf";
         try {
+            String pGrobidHome = "C:\\Users\\DELL\\Prototype\\grobid-0.7.3\\grobid-home";
             // If the location is customised:
             GrobidHomeFinder grobidHomeFinder = new GrobidHomeFinder(Arrays.asList(pGrobidHome));
 
@@ -27,8 +29,9 @@ public class App {
             Engine engine = GrobidFactory.getInstance().createEngine();
 
             // Biblio object for the result
-            // BiblioItem resHeader = new BiblioItem();
-            //String tei = engine.processHeader(pdfPath, 1, resHeader);
+            BiblioItem resHeader = new BiblioItem();
+            String tei = engine.processHeader(pdfPath, 1, resHeader);
+            System.out.println(tei);
         } catch (Exception e) {
             // If an exception is generated, print a stack trace
             e.printStackTrace();
@@ -36,6 +39,6 @@ public class App {
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        new App().grodid();
     }
 }
