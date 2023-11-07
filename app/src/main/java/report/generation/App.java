@@ -13,9 +13,11 @@ import java.util.Arrays;
 
 public class App {
     public void grodid() {
-        String pdfPath = "paper\\automatic-text-summarization-a-comprehensive-survey.pdf";
+        // String pdfPath = "paper\\automatic-text-summarization-a-comprehensive-survey.pdf";
+        String pdfPath = "paper/automatic-text-summarization-a-comprehensive-survey.pdf";
         try {
-            String pGrobidHome = "C:\\Users\\DELL\\Prototype\\grobid-0.7.3\\grobid-home";
+            // String pGrobidHome = "C:\\Users\\DELL\\Prototype\\grobid-0.7.3\\grobid-home";
+            String pGrobidHome = "/media/vy/vy/prototype/grobid-0.7.3/grobid-home";
             // If the location is customised:
             GrobidHomeFinder grobidHomeFinder = new GrobidHomeFinder(Arrays.asList(pGrobidHome));
 
