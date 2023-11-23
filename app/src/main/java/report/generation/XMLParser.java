@@ -37,44 +37,49 @@ public class XMLParser {
             System.out.println("------");
 
             // get <staff>
-            NodeList list = doc.getElementsByTagName("author");
-            System.out.println("[XMLParser] list: " + list);
+            NodeList list = doc.getElementsByTagName("div");
+            parseDiv(list);
             for (int temp = 0; temp < list.getLength(); temp++) {
 
                 Node node = list.item(temp);
-                System.out.println("[XMLParser] temp: " + temp);
-                System.out.println("[XMLParser] node: " + node);
+                // System.out.println("[XMLParser] temp: " + temp);
+                // System.out.println("[XMLParser] node: " + node);
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
-
                     Element element = (Element) node;
-                    String forename = element.getAttribute("forename");
-                    System.out.println("[XMLParser] forename: " + forename);
-                    // get staff's attribute
-                    // String id = element.getAttribute("id");
-
-                    // // get text
-                    // String firstname = element.getElementsByTagName("firstname").item(0).getTextContent();
-                    // String lastname = element.getElementsByTagName("lastname").item(0).getTextContent();
-                    // String nickname = element.getElementsByTagName("nickname").item(0).getTextContent();
-
-                    // NodeList salaryNodeList = element.getElementsByTagName("salary");
-                    // String salary = salaryNodeList.item(0).getTextContent();
-
-                    // // get salary's attribute
-                    // String currency = salaryNodeList.item(0).getAttributes().getNamedItem("currency").getTextContent();
-
-                    // System.out.println("Current Element :" + node.getNodeName());
-                    // System.out.println("Staff Id : " + id);
-                    // System.out.println("First Name : " + firstname);
-                    // System.out.println("Last Name : " + lastname);
-                    // System.out.println("Nick Name : " + nickname);
-                    // System.out.printf("Salary [Currency] : %,.2f [%s]%n%n", Float.parseFloat(salary), currency);
-
+                    String xmlns = element.getAttribute("xmlns");
+                    System.out.println("[XMLParser] xmlns: " + xmlns);
+                    String head = element.getElementsByTagName("head").item(0).getTextContent();
+                    System.out.println("[XMLParser] head: " + head);
                 }
             }
         }
         catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private static void parseDiv(NodeList divList){
+        for(int i = 0; i < divList.getLength(); i++){
+            Node div = divList.item(i);
+            if(div.getNodeType() == Node.ELEMENT_NODE){
+                Element divElement = (Element) div;
+                String xmlns = divElement.getAttribute("xmlns");
+                System.out.println("[XMLParser] xmlns=" + xmlns);
+                NodeList childList = divElement.getElementsByTagName("head");
+            }
+        }
+    }
+
+    private static void parseHead(NodeList headList){
+        for(int i = 0; i < headList.getLength(); i++){
+            Node head = headList.item(i);
+            if(head.getNodeType() == Node.ELEMENT_NODE){
+                Element headElement = (Element) head;
+                if(headElement.hasAttribute("n")){
+                    String n = headElement.getAttribute("n");
+                    System.out.println("[XMLParser] n=" + n);
+                }
+            }
         }
     }
 }

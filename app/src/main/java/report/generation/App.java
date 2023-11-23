@@ -14,8 +14,8 @@ public class App {
         // String pdfSegResult = PdfSegmentation.pdfSegmenting(pdfPath);
         // PdfSegmentation.printToFile(pdfSegResult, pdfSegOutputPath);
 
-        long pdfSegTime = System.nanoTime();
-        System.out.println("[App] PDF Segmentation time = " + ((pdfSegTime - startTime)/1000000) + "ms");
+        // long pdfSegTime = System.nanoTime();
+        // System.out.println("[App] PDF Segmentation time = " + ((pdfSegTime - startTime)/1000000) + "ms");
 
         //XML Parsing
         XMLParser.parseXML(pdfSegOutputPath);

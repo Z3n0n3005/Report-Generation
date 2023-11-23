@@ -2,11 +2,14 @@ package report.generation;
 
 import org.grobid.core.*;
 import org.grobid.core.data.*;
+import org.grobid.core.document.Document;
 import org.grobid.core.factory.*;
 import org.grobid.core.main.*;
 import org.grobid.core.utilities.*;
-import org.grobid.core.engines.Engine;
+import org.grobid.core.engines.*;
+import org.grobid.core.engines.config.GrobidAnalysisConfig;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Arrays;
@@ -25,14 +28,23 @@ public class PdfSegmentation {
             // locations
             GrobidProperties.getInstance(grobidHomeFinder);
 
-            System.out.println(">>>>>>>> GROBID_HOME=" + GrobidProperties.getGrobidHome());
+            System.out.println("[PdfSegmentation] >>>>>>>> GROBID_HOME=" + GrobidProperties.getGrobidHome());
 
             Engine engine = GrobidFactory.getInstance().createEngine();
 
             // Biblio object for the result
             BiblioItem resHeader = new BiblioItem();
             String tei = engine.processHeader(pdfPath, 1, resHeader);
+            GrobidAnalysisConfig analysisConfig = GrobidAnalysisConfig.defaultInstance();
+            tei = engine.fullTextToTEI(new File(pdfPath), analysisConfig);
+            
+            // Abstract extraction
+            // Document teiDoc = engine.fullTextToTEIDoc(new File(pdfPath), analysisConfig);
+            // String teiDocAbstract = engine.getAbstract(teiDoc);
+            // System.out.println("Abstract: " + teiDocAbstract);
+
             result = tei;
+            System.out.println("tei: " + tei);
         } catch (Exception e) {
             // If an exception is generated, print a stack trace
             e.printStackTrace();
