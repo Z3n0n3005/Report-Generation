@@ -4,10 +4,22 @@
 package report.generation;
 
 public class App {
+    static String pdfPath = "paper/automatic-text-summarization-a-comprehensive-survey.pdf";
+    static String pdfSegOutputPath = "output/grobid-output.txt";
     public static void main(String[] args) {
         System.out.println("[App] Start timing");
         long startTime = System.nanoTime();
-        new PdfSegmentation().pdfSegmenting();
+        
+        // PDF Segmenation
+        // String pdfSegResult = PdfSegmentation.pdfSegmenting(pdfPath);
+        // PdfSegmentation.printToFile(pdfSegResult, pdfSegOutputPath);
+
+        long pdfSegTime = System.nanoTime();
+        System.out.println("[App] PDF Segmentation time = " + ((pdfSegTime - startTime)/1000000) + "ms");
+
+        //XML Parsing
+        XMLParser.parseXML(pdfSegOutputPath);
+
         long endTIme = System.nanoTime();
         System.out.println("[App] Time elapsed = " + ((endTIme - startTime)/100000) + "ms");
     }

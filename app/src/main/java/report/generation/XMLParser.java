@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class XMLParser {
-    public void parseXML(String filePath){
+    public static void parseXML(String filePath){
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
         try {
@@ -32,43 +32,47 @@ public class XMLParser {
             // http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
             doc.getDocumentElement().normalize();
 
+            System.out.println("------");
             System.out.println("Root Element :" + doc.getDocumentElement().getNodeName());
             System.out.println("------");
 
             // get <staff>
-            NodeList list = doc.getElementsByTagName("staff");
-
+            NodeList list = doc.getElementsByTagName("author");
+            System.out.println("[XMLParser] list: " + list);
             for (int temp = 0; temp < list.getLength(); temp++) {
 
                 Node node = list.item(temp);
-
-                // if (node.getNodeType() == Node.ELEMENT_NODE) {
+                System.out.println("[XMLParser] temp: " + temp);
+                System.out.println("[XMLParser] node: " + node);
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
 
                     Element element = (Element) node;
-
+                    String forename = element.getAttribute("forename");
+                    System.out.println("[XMLParser] forename: " + forename);
                     // get staff's attribute
-                    String id = element.getAttribute("id");
+                    // String id = element.getAttribute("id");
 
-                    // get text
-                    String firstname = element.getElementsByTagName("firstname").item(0).getTextContent();
-                    String lastname = element.getElementsByTagName("lastname").item(0).getTextContent();
-                    String nickname = element.getElementsByTagName("nickname").item(0).getTextContent();
+                    // // get text
+                    // String firstname = element.getElementsByTagName("firstname").item(0).getTextContent();
+                    // String lastname = element.getElementsByTagName("lastname").item(0).getTextContent();
+                    // String nickname = element.getElementsByTagName("nickname").item(0).getTextContent();
 
-                    NodeList salaryNodeList = element.getElementsByTagName("salary");
-                    String salary = salaryNodeList.item(0).getTextContent();
+                    // NodeList salaryNodeList = element.getElementsByTagName("salary");
+                    // String salary = salaryNodeList.item(0).getTextContent();
 
-                    // get salary's attribute
-                    String currency = salaryNodeList.item(0).getAttributes().getNamedItem("currency").getTextContent();
+                    // // get salary's attribute
+                    // String currency = salaryNodeList.item(0).getAttributes().getNamedItem("currency").getTextContent();
 
-                    System.out.println("Current Element :" + node.getNodeName());
-                    System.out.println("Staff Id : " + id);
-                    System.out.println("First Name : " + firstname);
-                    System.out.println("Last Name : " + lastname);
-                    System.out.println("Nick Name : " + nickname);
-                    System.out.printf("Salary [Currency] : %,.2f [%s]%n%n", Float.parseFloat(salary), currency);
+                    // System.out.println("Current Element :" + node.getNodeName());
+                    // System.out.println("Staff Id : " + id);
+                    // System.out.println("First Name : " + firstname);
+                    // System.out.println("Last Name : " + lastname);
+                    // System.out.println("Nick Name : " + nickname);
+                    // System.out.printf("Salary [Currency] : %,.2f [%s]%n%n", Float.parseFloat(salary), currency);
 
                 }
             }
+        }
         catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }

@@ -12,10 +12,8 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 
 public class PdfSegmentation {
-    public void pdfSegmenting() {
-        // String pdfPath = "paper\\automatic-text-summarization-a-comprehensive-survey.pdf";
-        String pdfPath = "paper/automatic-text-summarization-a-comprehensive-survey.pdf";
-        String outputPath = "output/grobid-output.txt";
+    public static String pdfSegmenting(String pdfPath) {
+        String result;
         try {
             // String pGrobidHome = "C:\\Users\\DELL\\Prototype\\grobid-0.7.3\\grobid-home";
             String pGrobidHome = "/media/vy/vy/prototype/grobid-0.7.3/grobid-home";
@@ -34,14 +32,17 @@ public class PdfSegmentation {
             // Biblio object for the result
             BiblioItem resHeader = new BiblioItem();
             String tei = engine.processHeader(pdfPath, 1, resHeader);
-            printToFile(tei, outputPath);
+            result = tei;
         } catch (Exception e) {
             // If an exception is generated, print a stack trace
             e.printStackTrace();
+            result = "ERROR";
         }
+
+        return result;
     }
 
-    private void printToFile(String text, String filepath){
+    public static void printToFile(String text, String filepath){
         try{
             PrintWriter out = new PrintWriter(filepath);
             out.write(text);
