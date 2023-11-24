@@ -10,17 +10,31 @@ public class App {
         System.out.println("[App] Start timing");
         long startTime = System.nanoTime();
         
+        // Engine generation
+        PdfSegmentation.generateEngine();
+
+        long engineGenerationEndTime = System.nanoTime();
+        double engineGenerationTime = (engineGenerationEndTime - startTime)/1000000;
+        System.out.println("[App] Engine generation time: " + engineGenerationTime );
+        
         // PDF Segmenation
         // String pdfSegResult = PdfSegmentation.pdfSegmenting(pdfPath);
         // PdfSegmentation.printToFile(pdfSegResult, pdfSegOutputPath);
 
-        // long pdfSegTime = System.nanoTime();
-        // System.out.println("[App] PDF Segmentation time = " + ((pdfSegTime - startTime)/1000000) + "ms");
+        // long pdfSegEndTime = System.nanoTime();
+        // double pdfSegTime = (pdfSegEndTime - engineGenerationEndTime)/1000000;
+        // System.out.println("[App] First PDF Segmentation time = " + pdfSegTime);
+
+        // String secondPdfSegResult = PdfSegmentation.pdfSegmenting(pdfPath);
+        // long secondPdfSegEndTime = System.nanoTime();
+        // double secondPdfSegTime = (secondPdfSegEndTime - pdfSegEndTime)/1000000;
+        // System.out.println("[App] Second PDF Segmentation time = " + secondPdfSegTime);
 
         //XML Parsing
-        XMLParser.parseXML(pdfSegOutputPath);
+        // XMLParser.parseXML(pdfSegOutputPath);
 
-        long endTIme = System.nanoTime();
-        System.out.println("[App] Time elapsed = " + ((endTIme - startTime)/100000) + "ms");
+        long endTime = System.nanoTime();
+        double totalTime = (endTime - startTime)/1000000;
+        System.out.println("[App] Time elapsed = " + totalTime);
     }
 }

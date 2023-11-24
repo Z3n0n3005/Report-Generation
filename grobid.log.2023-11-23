@@ -1,0 +1,95 @@
+23 Nov 2023 08:10.07 [INFO ] GrobidHomeFinder          - No Grobid property was provided. Attempting to find Grobid home in the current directory...
+23 Nov 2023 08:10.07 [INFO ] GrobidHomeFinder          - ***************************************************************
+23 Nov 2023 08:10.07 [INFO ] GrobidHomeFinder          - *** USING GROBID HOME: /media/vy/vy/prototype/grobid-0.7.3/grobid-home
+23 Nov 2023 08:10.07 [INFO ] GrobidHomeFinder          - ***************************************************************
+23 Nov 2023 08:10.07 [INFO ] GrobidHomeFinder          - Grobid config file location was not explicitly set via 'org.grobid.config' system variable, defaulting to: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/config/grobid.yaml
+23 Nov 2023 08:10.07 [INFO ] LibraryLoader             - Loading external native sequence labelling library
+23 Nov 2023 08:10.07 [INFO ] LibraryLoader             - Loading Wapiti native library...
+23 Nov 2023 08:10.07 [INFO ] LibraryLoader             - Native library for sequence labelling loaded
+23 Nov 2023 08:10.07 [INFO ] Lexicon                   - Initiating dictionary
+23 Nov 2023 08:10.07 [INFO ] Lexicon                   - End of Initialization of dictionary
+23 Nov 2023 08:10.07 [INFO ] Lexicon                   - Initiating names
+23 Nov 2023 08:10.07 [INFO ] Lexicon                   - End of initialization of names
+23 Nov 2023 08:10.08 [INFO ] Lexicon                   - Initiating country codes
+23 Nov 2023 08:10.08 [INFO ] Lexicon                   - End of initialization of country codes
+23 Nov 2023 08:10.08 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/header/model.wapiti (size: 20062846)
+23 Nov 2023 08:10.12 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/segmentation/model.wapiti (size: 36842778)
+23 Nov 2023 08:10.37 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/name/header/model.wapiti (size: 2527838)
+23 Nov 2023 08:10.37 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/name/citation/model.wapiti (size: 481363)
+23 Nov 2023 08:10.37 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/affiliation-address/model.wapiti (size: 2791920)
+23 Nov 2023 08:10.39 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/date/model.wapiti (size: 111422)
+23 Nov 2023 12:57.55 [INFO ] GrobidHomeFinder          - No Grobid property was provided. Attempting to find Grobid home in the current directory...
+23 Nov 2023 12:57.55 [INFO ] GrobidHomeFinder          - ***************************************************************
+23 Nov 2023 12:57.55 [INFO ] GrobidHomeFinder          - *** USING GROBID HOME: /media/vy/vy/prototype/grobid-0.7.3/grobid-home
+23 Nov 2023 12:57.55 [INFO ] GrobidHomeFinder          - ***************************************************************
+23 Nov 2023 12:57.55 [INFO ] GrobidHomeFinder          - Grobid config file location was not explicitly set via 'org.grobid.config' system variable, defaulting to: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/config/grobid.yaml
+23 Nov 2023 12:57.56 [INFO ] LibraryLoader             - Loading external native sequence labelling library
+23 Nov 2023 12:57.56 [INFO ] LibraryLoader             - Loading Wapiti native library...
+23 Nov 2023 12:57.56 [INFO ] LibraryLoader             - Native library for sequence labelling loaded
+23 Nov 2023 12:57.56 [INFO ] Lexicon                   - Initiating dictionary
+23 Nov 2023 12:57.56 [INFO ] Lexicon                   - End of Initialization of dictionary
+23 Nov 2023 12:57.56 [INFO ] Lexicon                   - Initiating names
+23 Nov 2023 12:57.56 [INFO ] Lexicon                   - End of initialization of names
+23 Nov 2023 12:57.57 [INFO ] Lexicon                   - Initiating country codes
+23 Nov 2023 12:57.57 [INFO ] Lexicon                   - End of initialization of country codes
+23 Nov 2023 12:57.57 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/header/model.wapiti (size: 20062846)
+23 Nov 2023 12:58.03 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/segmentation/model.wapiti (size: 36842778)
+23 Nov 2023 12:58.30 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/name/header/model.wapiti (size: 2527838)
+23 Nov 2023 12:58.31 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/name/citation/model.wapiti (size: 481363)
+23 Nov 2023 12:58.31 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/affiliation-address/model.wapiti (size: 2791920)
+23 Nov 2023 12:58.33 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/date/model.wapiti (size: 111422)
+23 Nov 2023 12:58.34 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/fulltext/model.wapiti (size: 26707735)
+23 Nov 2023 12:58.41 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/citation/model.wapiti (size: 22103761)
+23 Nov 2023 12:58.44 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/reference-segmenter/model.wapiti (size: 12167531)
+23 Nov 2023 12:58.55 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/figure/model.wapiti (size: 422671)
+23 Nov 2023 12:58.55 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/table/model.wapiti (size: 1427222)
+23 Nov 2023 13:08.59 [INFO ] GrobidHomeFinder          - No Grobid property was provided. Attempting to find Grobid home in the current directory...
+23 Nov 2023 13:08.59 [INFO ] GrobidHomeFinder          - ***************************************************************
+23 Nov 2023 13:08.59 [INFO ] GrobidHomeFinder          - *** USING GROBID HOME: /media/vy/vy/prototype/grobid-0.7.3/grobid-home
+23 Nov 2023 13:08.59 [INFO ] GrobidHomeFinder          - ***************************************************************
+23 Nov 2023 13:08.59 [INFO ] GrobidHomeFinder          - Grobid config file location was not explicitly set via 'org.grobid.config' system variable, defaulting to: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/config/grobid.yaml
+23 Nov 2023 13:08.59 [INFO ] LibraryLoader             - Loading external native sequence labelling library
+23 Nov 2023 13:09.00 [INFO ] LibraryLoader             - Loading Wapiti native library...
+23 Nov 2023 13:09.00 [INFO ] LibraryLoader             - Native library for sequence labelling loaded
+23 Nov 2023 13:09.00 [INFO ] Lexicon                   - Initiating dictionary
+23 Nov 2023 13:09.00 [INFO ] Lexicon                   - End of Initialization of dictionary
+23 Nov 2023 13:09.00 [INFO ] Lexicon                   - Initiating names
+23 Nov 2023 13:09.00 [INFO ] Lexicon                   - End of initialization of names
+23 Nov 2023 13:09.01 [INFO ] Lexicon                   - Initiating country codes
+23 Nov 2023 13:09.01 [INFO ] Lexicon                   - End of initialization of country codes
+23 Nov 2023 13:09.02 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/header/model.wapiti (size: 20062846)
+23 Nov 2023 13:09.06 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/segmentation/model.wapiti (size: 36842778)
+23 Nov 2023 13:09.37 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/name/header/model.wapiti (size: 2527838)
+23 Nov 2023 13:09.38 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/name/citation/model.wapiti (size: 481363)
+23 Nov 2023 13:09.38 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/affiliation-address/model.wapiti (size: 2791920)
+23 Nov 2023 13:09.40 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/date/model.wapiti (size: 111422)
+23 Nov 2023 13:09.41 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/fulltext/model.wapiti (size: 26707735)
+23 Nov 2023 13:09.49 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/citation/model.wapiti (size: 22103761)
+23 Nov 2023 13:09.52 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/reference-segmenter/model.wapiti (size: 12167531)
+23 Nov 2023 13:10.07 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/figure/model.wapiti (size: 422671)
+23 Nov 2023 13:10.08 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/table/model.wapiti (size: 1427222)
+23 Nov 2023 13:15.12 [INFO ] GrobidHomeFinder          - No Grobid property was provided. Attempting to find Grobid home in the current directory...
+23 Nov 2023 13:15.12 [INFO ] GrobidHomeFinder          - ***************************************************************
+23 Nov 2023 13:15.12 [INFO ] GrobidHomeFinder          - *** USING GROBID HOME: /media/vy/vy/prototype/grobid-0.7.3/grobid-home
+23 Nov 2023 13:15.12 [INFO ] GrobidHomeFinder          - ***************************************************************
+23 Nov 2023 13:15.12 [INFO ] GrobidHomeFinder          - Grobid config file location was not explicitly set via 'org.grobid.config' system variable, defaulting to: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/config/grobid.yaml
+23 Nov 2023 13:15.12 [INFO ] LibraryLoader             - Loading external native sequence labelling library
+23 Nov 2023 13:15.12 [INFO ] LibraryLoader             - Loading Wapiti native library...
+23 Nov 2023 13:15.12 [INFO ] LibraryLoader             - Native library for sequence labelling loaded
+23 Nov 2023 13:15.12 [INFO ] Lexicon                   - Initiating dictionary
+23 Nov 2023 13:15.12 [INFO ] Lexicon                   - End of Initialization of dictionary
+23 Nov 2023 13:15.12 [INFO ] Lexicon                   - Initiating names
+23 Nov 2023 13:15.12 [INFO ] Lexicon                   - End of initialization of names
+23 Nov 2023 13:15.14 [INFO ] Lexicon                   - Initiating country codes
+23 Nov 2023 13:15.14 [INFO ] Lexicon                   - End of initialization of country codes
+23 Nov 2023 13:15.14 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/header/model.wapiti (size: 20062846)
+23 Nov 2023 13:15.18 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/segmentation/model.wapiti (size: 36842778)
+23 Nov 2023 13:15.45 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/name/header/model.wapiti (size: 2527838)
+23 Nov 2023 13:15.46 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/name/citation/model.wapiti (size: 481363)
+23 Nov 2023 13:15.46 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/affiliation-address/model.wapiti (size: 2791920)
+23 Nov 2023 13:15.48 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/date/model.wapiti (size: 111422)
+23 Nov 2023 13:15.48 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/fulltext/model.wapiti (size: 26707735)
+23 Nov 2023 13:15.55 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/citation/model.wapiti (size: 22103761)
+23 Nov 2023 13:15.59 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/reference-segmenter/model.wapiti (size: 12167531)
+23 Nov 2023 13:16.10 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/figure/model.wapiti (size: 422671)
+23 Nov 2023 13:16.10 [INFO ] WapitiModel               - Loading model: /media/vy/vy/prototype/grobid-0.7.3/grobid-home/models/table/model.wapiti (size: 1427222)
