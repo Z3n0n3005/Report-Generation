@@ -59,7 +59,13 @@ public class XMLParser {
                 NodeList pList = divElement.getElementsByTagName("p");
                 String n = getNFromHead(headList);
                 
+                parseP(pList);
+
                 if (n.length() < 3) {
+                    if(n.equals("0.")){
+                        System.out.println("[XMLParser] head: " + currentHead);
+                        System.out.println("[XMLParser] paragraph: " + paragraph);
+                    }
                     boolean condCurrentHeadNotEmpty = !currentHead.isEmpty();
                     boolean condParagraphNotEmpty = !paragraph.isEmpty();
 
@@ -70,14 +76,13 @@ public class XMLParser {
                     currentHead = parseHead(headList);
                     paragraph = "";
                 } else {
-                    parseP(pList);
                 }
             }
         }
     }
 
     private static String getNFromHead(NodeList headList) {
-        String result = "";
+        String result = "0.";
         Node head = headList.item(0);
 
         if (head != null && head.getNodeType() == Node.ELEMENT_NODE) {

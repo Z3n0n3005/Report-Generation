@@ -28,7 +28,9 @@ public class PdfSegmentation {
 
         try {
             //Have been found to can be speed up using multithreading, might learn GNU parallel
+            System.out.println(engine.getAbstract(engine.fullTextToTEIDoc(new File(pdfPath), analysisConfig)));
             tei = engine.fullTextToTEI(new File(pdfPath), analysisConfig);
+            
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -61,13 +63,14 @@ public class PdfSegmentation {
                 analyzer = GrobidAnalyzer.getInstance();
                 
 
-                analysisConfig = GrobidAnalysisConfig.defaultInstance();
-                // // analysisConfig = GrobidAnalysisConfig.builder()
-                //     .withPreprocessImages(false)
-                //     .withProcessVectorGraphics(false)
-                //     .consolidateCitations(10)
-                //     .consolidateHeader(10)
-                //     .build();
+                // analysisConfig = GrobidAnalysisConfig.defaultInstance();
+                analysisConfig = GrobidAnalysisConfig.builder()    
+                    .withSentenceSegmentation(false)
+                    .withPreprocessImages(false)
+                    .withProcessVectorGraphics(false)
+                    // .consolidateCitations(10)
+                    // .consolidateHeader(10)
+                    .build();
                 // analysisConfig = GrobidAnalysisConfig
                 
             } catch (Exception e) {

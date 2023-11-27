@@ -15,24 +15,24 @@ public class App {
         long startTime = System.nanoTime();
         
         // Engine generation
-        // PdfSegmentation.generateEngine();
+        PdfSegmentation.generateEngine();
 
-        // long engineGenerationEndTime = System.nanoTime();
-        // double engineGenerationTime = (engineGenerationEndTime - startTime)/1000000;
-        // System.out.println("[App] Engine generation time: " + engineGenerationTime );
+        long engineGenerationEndTime = System.nanoTime();
+        double engineGenerationTime = (engineGenerationEndTime - startTime)/1000000;
+        System.out.println("[App] Engine generation time: " + engineGenerationTime );
         
         // PDF Segmenation
-        // String pdfSegResult = PdfSegmentation.pdfSegmenting(pdfPath);
-        // Utility.printToFile(pdfSegResult, pdfSegOutputPath);
+        String pdfSegResult = PdfSegmentation.pdfSegmenting(pdfPath);
+        Utility.printToFile(pdfSegResult, pdfSegOutputPath);
 
-        // long pdfSegEndTime = System.nanoTime();
-        // double pdfSegTime = (pdfSegEndTime - engineGenerationEndTime)/1000000;
-        // System.out.println("[App] First PDF Segmentation time = " + pdfSegTime);
+        long pdfSegEndTime = System.nanoTime();
+        double pdfSegTime = (pdfSegEndTime - engineGenerationEndTime)/1000000;
+        System.out.println("[App] First PDF Segmentation time = " + pdfSegTime);
 
-        // String secondPdfSegResult = PdfSegmentation.pdfSegmenting(pdfPath);
-        // long secondPdfSegEndTime = System.nanoTime();
-        // double secondPdfSegTime = (secondPdfSegEndTime - pdfSegEndTime)/1000000;
-        // System.out.println("[App] Second PDF Segmentation time = " + secondPdfSegTime);
+        String secondPdfSegResult = PdfSegmentation.pdfSegmenting(pdfPath);
+        long secondPdfSegEndTime = System.nanoTime();
+        double secondPdfSegTime = (secondPdfSegEndTime - pdfSegEndTime)/1000000;
+        System.out.println("[App] Second PDF Segmentation time = " + secondPdfSegTime);
 
         //XML Parsing
         SectionList xmlParseResult = XMLParser.parseXML(pdfSegOutputPath);
