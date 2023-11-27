@@ -1,6 +1,7 @@
 package report.generation;
 
 import org.grobid.core.*;
+import org.grobid.core.analyzers.GrobidAnalyzer;
 import org.grobid.core.data.*;
 import org.grobid.core.document.Document;
 import org.grobid.core.factory.*;
@@ -17,6 +18,7 @@ import java.util.Arrays;
 
 public class PdfSegmentation {
     private static Engine engine;
+    private static GrobidAnalyzer analyzer;
     private static GrobidAnalysisConfig analysisConfig;
 
     public static String pdfSegmenting(String pdfPath) {
@@ -25,6 +27,7 @@ public class PdfSegmentation {
         // Biblio object for the result
 
         try {
+            //Have been found to can be speed up using multithreading, might learn GNU parallel
             tei = engine.fullTextToTEI(new File(pdfPath), analysisConfig);
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -53,26 +56,24 @@ public class PdfSegmentation {
 
                 System.out.println("[PdfSegmentation] >>>>>>>> GROBID_HOME=" + GrobidProperties.getGrobidHome());
 
-                engine = GrobidFactory.getInstance().createEngine();
+                engine = GrobidFactory.getInstance().createEngine(true);
+                // engine = GrobidFactory.getInstance().createEngine(false);
+                analyzer = GrobidAnalyzer.getInstance();
+                
 
                 analysisConfig = GrobidAnalysisConfig.defaultInstance();
-                analysisConfig = GrobidAnalysisConfig.builder().build();
+                // // analysisConfig = GrobidAnalysisConfig.builder()
+                //     .withPreprocessImages(false)
+                //     .withProcessVectorGraphics(false)
+                //     .consolidateCitations(10)
+                //     .consolidateHeader(10)
+                //     .build();
                 // analysisConfig = GrobidAnalysisConfig
                 
             } catch (Exception e) {
                 // If an exception is generated, print a stack trace
                 e.printStackTrace();
             }
-        }
-    }
-
-    public static void printToFile(String text, String filepath){
-        try{
-            PrintWriter out = new PrintWriter(filepath);
-            out.write(text);
-            out.close();
-        } catch(FileNotFoundException e){
-            e.printStackTrace();
         }
     }
 }

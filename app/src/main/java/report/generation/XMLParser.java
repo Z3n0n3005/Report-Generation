@@ -12,14 +12,17 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class XMLParser {
-    public static String paragraph = "";
-    public static void parseXML(String filePath){
+    public static String paragraph;
+    public static SectionList sectionList;
+
+    public static SectionList parseXML(String filePath) {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
+        paragraph = "";
+        sectionList = new SectionList();
         try {
-
             // optional, but recommended
             // process XML securely, avoid attacks like XML External Entities (XXE)
             dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
@@ -37,57 +40,90 @@ public class XMLParser {
             System.out.println("Root Element :" + doc.getDocumentElement().getNodeName());
             System.out.println("------");
 
-            // get <staff>
             NodeList list = doc.getElementsByTagName("div");
             parseDiv(list);
-
-            System.out.println(paragraph);
-        }
-        catch (ParserConfigurationException | SAXException | IOException e) {
+        } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
+
+        return sectionList;
     }
 
-    private static void parseDiv(NodeList divList){
-        for(int i = 0; i < divList.getLength(); i++){
+    private static void parseDiv(NodeList divList) {
+        String currentHead = "";
+        for (int i = 0; i < divList.getLength(); i++) {
             Node div = divList.item(i);
-            if(div.getNodeType() == Node.ELEMENT_NODE){
+            if (div.getNodeType() == Node.ELEMENT_NODE) {
                 Element divElement = (Element) div;
-                String xmlns = divElement.getAttribute("xmlns");
-                // System.out.println("[XMLParser] xmlns=" + xmlns);
-                NodeList childList = divElement.getElementsByTagName("head");
-                parseHead(childList);
-            }
-        }
-    }
+                NodeList headList = divElement.getElementsByTagName("head");
+                NodeList pList = divElement.getElementsByTagName("p");
+                String n = getNFromHead(headList);
+                
+                if (n.length() < 3) {
+                    boolean condCurrentHeadNotEmpty = !currentHead.isEmpty();
+                    boolean condParagraphNotEmpty = !paragraph.isEmpty();
 
-    private static void parseHead(NodeList headList){
-        for(int i = 0; i < headList.getLength(); i++){
-            Node head = headList.item(i);
-            if(head.getNodeType() == Node.ELEMENT_NODE){
-                Element headElement = (Element) head;
-                if(headElement.hasAttribute("n")){
-                    String n = headElement.getAttribute("n");
-                    // System.out.println("[XMLParser] n=" + n);
+                    if(condCurrentHeadNotEmpty && condParagraphNotEmpty){
+                        sectionList.appendSectionList(new Section(currentHead, paragraph));
+                    }
+
+                    currentHead = parseHead(headList);
+                    paragraph = "";
+                } else {
+                    parseP(pList);
                 }
-                NodeList childList = headElement.getElementsByTagName("p");
-                childList = headElement.getChildNodes();
-                // headElement.
-                System.out.println("[XMLParser] childList length " + childList.item(0).getTextContent());
-                parseP(childList);
             }
         }
     }
 
-    private static void parseP(NodeList pList){
-        for(int i = 0; i < pList.getLength(); i++){
+    private static String getNFromHead(NodeList headList) {
+        String result = "";
+        Node head = headList.item(0);
+
+        if (head != null && head.getNodeType() == Node.ELEMENT_NODE) {
+            Element headElement = (Element) head;
+            if (headElement.hasAttribute("n")) {
+                result = headElement.getAttribute("n");
+            }
+        }
+        return result;
+    }
+
+    private static String parseHead(NodeList headList) {
+        String result = "";
+        Node head = headList.item(0);
+        if (head != null && head.getNodeType() == Node.ELEMENT_NODE) {
+            Element headElement = (Element) head;
+            result = headElement.getTextContent();
+        }
+        return result;
+    }
+
+    private static void parseP(NodeList pList) {
+        for (int i = 0; i < pList.getLength(); i++) {
             Node p = pList.item(i);
-            if(p.getNodeType() == Node.ELEMENT_NODE){
+            if (p.getNodeType() == Node.ELEMENT_NODE) {
                 Element pElement = (Element) p;
                 String pContent = pElement.getTextContent();
-                System.out.println("[XMLParser] pContent " + pContent);
-                paragraph += pContent; 
+                // System.out.println("[XMLParser] pContent " + pContent);
+                paragraph += pContent;
             }
         }
+    }
+
+    public static String getParagraph() {
+        return paragraph;
+    }
+
+    public static void setParagraph(String paragraph) {
+        XMLParser.paragraph = paragraph;
+    }
+
+    public static SectionList getSectionList() {
+        return sectionList;
+    }
+
+    public static void setSectionList(SectionList sectionList) {
+        XMLParser.sectionList = sectionList;
     }
 }

@@ -3,23 +3,27 @@
  */
 package report.generation;
 
+import java.util.ArrayList;
+
 public class App {
     static String pdfPath = "paper/automatic-text-summarization-a-comprehensive-survey.pdf";
-    static String pdfSegOutputPath = "output/grobid-output.txt";
+    static String pdfSegOutputPath = "output/grobid-output.xml";
+    static String xmlParseOutputPath = "output/xml-parse-output.yaml";
+
     public static void main(String[] args) {
         System.out.println("[App] Start timing");
         long startTime = System.nanoTime();
         
         // Engine generation
-        PdfSegmentation.generateEngine();
+        // PdfSegmentation.generateEngine();
 
-        long engineGenerationEndTime = System.nanoTime();
-        double engineGenerationTime = (engineGenerationEndTime - startTime)/1000000;
-        System.out.println("[App] Engine generation time: " + engineGenerationTime );
+        // long engineGenerationEndTime = System.nanoTime();
+        // double engineGenerationTime = (engineGenerationEndTime - startTime)/1000000;
+        // System.out.println("[App] Engine generation time: " + engineGenerationTime );
         
         // PDF Segmenation
         // String pdfSegResult = PdfSegmentation.pdfSegmenting(pdfPath);
-        // PdfSegmentation.printToFile(pdfSegResult, pdfSegOutputPath);
+        // Utility.printToFile(pdfSegResult, pdfSegOutputPath);
 
         // long pdfSegEndTime = System.nanoTime();
         // double pdfSegTime = (pdfSegEndTime - engineGenerationEndTime)/1000000;
@@ -31,7 +35,8 @@ public class App {
         // System.out.println("[App] Second PDF Segmentation time = " + secondPdfSegTime);
 
         //XML Parsing
-        // XMLParser.parseXML(pdfSegOutputPath);
+        SectionList xmlParseResult = XMLParser.parseXML(pdfSegOutputPath);
+        Utility.printToYamlFile(xmlParseResult, xmlParseOutputPath);
 
         long endTime = System.nanoTime();
         double totalTime = (endTime - startTime)/1000000;

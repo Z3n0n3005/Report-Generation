@@ -26,6 +26,13 @@ dependencies {
 
     implementation 'org.grobid:grobid-core:0.7.3'
     implementation 'org.grobid:grobid-trainer:0.7.3'
+
+    // implementation group: 'org.yaml', name: 'snakeyaml', version: '1.8'
+    implementation "com.fasterxml.jackson.core:jackson-core:2.10.1"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.10.1"
+    implementation "com.fasterxml.jackson.module:jackson-module-afterburner:2.10.1"
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.10.1'
+    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.10.1"
 }
 
 application {
