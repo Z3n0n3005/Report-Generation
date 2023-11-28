@@ -62,10 +62,6 @@ public class XMLParser {
                 parseP(pList);
 
                 if (n.length() < 3) {
-                    if(n.equals("0.")){
-                        System.out.println("[XMLParser] head: " + currentHead);
-                        System.out.println("[XMLParser] paragraph: " + paragraph);
-                    }
                     boolean condCurrentHeadNotEmpty = !currentHead.isEmpty();
                     boolean condParagraphNotEmpty = !paragraph.isEmpty();
 

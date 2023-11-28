@@ -4,6 +4,7 @@ import org.grobid.core.*;
 import org.grobid.core.analyzers.GrobidAnalyzer;
 import org.grobid.core.data.*;
 import org.grobid.core.document.Document;
+import org.grobid.core.document.DocumentSource;
 import org.grobid.core.factory.*;
 import org.grobid.core.main.*;
 import org.grobid.core.utilities.*;
@@ -25,12 +26,9 @@ public class PdfSegmentation {
         String result;
         String tei = "";
         // Biblio object for the result
-
         try {
             //Have been found to can be speed up using multithreading, might learn GNU parallel
-            System.out.println(engine.getAbstract(engine.fullTextToTEIDoc(new File(pdfPath), analysisConfig)));
             tei = engine.fullTextToTEI(new File(pdfPath), analysisConfig);
-            
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -39,6 +37,28 @@ public class PdfSegmentation {
         result = tei;
         // System.out.println("tei: " + tei);
 
+        return result;
+    }
+    
+    public static String parseHeader(String pdfPath){
+        BiblioItem resultBib; 
+        Document resultDoc;
+        String result = "";
+        try {
+            //Have been found to can be speed up using multithreading, might learn GNU parallel
+            DocumentSource docummentSource = DocumentSource.fromPdf(new File(pdfPath));
+            Document document = new Document(docummentSource); 
+
+            result = engine.getAbstract(document);
+            // engine.getParsers().getHeaderParser();
+            
+            // result = engine.processHeader(pdfPath, analysisConfig, null);
+            // result = engine.getAbstract(resultDoc);
+            result = "<abstract>" + result + "</abstract>";
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         return result;
     }
 

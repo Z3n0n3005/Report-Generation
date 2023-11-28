@@ -3,6 +3,7 @@ package report.generation;
 import java.util.ArrayList;
 
 public class SectionList {
+    public String abstractSeg;
     public ArrayList<Section> sectionList;
 
     public SectionList(){
@@ -11,5 +12,9 @@ public class SectionList {
 
     public void appendSectionList(Section section){
         this.sectionList.add(section);
+    }
+
+    public void setAbstractSeg(String abstractSeg){
+        this.abstractSeg = abstractSeg;
     }
 }

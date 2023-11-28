@@ -6,7 +6,8 @@ package report.generation;
 import java.util.ArrayList;
 
 public class App {
-    static String pdfPath = "paper/automatic-text-summarization-a-comprehensive-survey.pdf";
+    // static String pdfPath = "paper/automatic-text-summarization-a-comprehensive-survey.pdf";
+    static String pdfPath = "paper/abstractive-summarization-an-overview-of-the-state-of-the-art.pdf";
     static String pdfSegOutputPath = "output/grobid-output.xml";
     static String xmlParseOutputPath = "output/xml-parse-output.yaml";
 
@@ -22,17 +23,23 @@ public class App {
         System.out.println("[App] Engine generation time: " + engineGenerationTime );
         
         // PDF Segmenation
+        
+        String pdfHeaderParseResult = PdfSegmentation.parseHeader(pdfPath);
+        Utility.printToFile(pdfHeaderParseResult, pdfSegOutputPath);
+        long pdfHeaderParseEndTime = System.nanoTime();
+        double pdfHeaderParseTime = (pdfHeaderParseEndTime - engineGenerationEndTime)/1000000;
+        System.out.println("[App] First PDF Header parse time = " + pdfHeaderParseTime);
+
         String pdfSegResult = PdfSegmentation.pdfSegmenting(pdfPath);
         Utility.printToFile(pdfSegResult, pdfSegOutputPath);
-
         long pdfSegEndTime = System.nanoTime();
-        double pdfSegTime = (pdfSegEndTime - engineGenerationEndTime)/1000000;
+        double pdfSegTime = (pdfSegEndTime - pdfHeaderParseEndTime)/1000000;
         System.out.println("[App] First PDF Segmentation time = " + pdfSegTime);
 
-        String secondPdfSegResult = PdfSegmentation.pdfSegmenting(pdfPath);
-        long secondPdfSegEndTime = System.nanoTime();
-        double secondPdfSegTime = (secondPdfSegEndTime - pdfSegEndTime)/1000000;
-        System.out.println("[App] Second PDF Segmentation time = " + secondPdfSegTime);
+        // String secondPdfSegResult = PdfSegmentation.pdfSegmenting(pdfPath);
+        // long secondPdfSegEndTime = System.nanoTime();
+        // double secondPdfSegTime = (secondPdfSegEndTime - pdfSegEndTime)/1000000;
+        // System.out.println("[App] Second PDF Segmentation time = " + secondPdfSegTime);
 
         //XML Parsing
         SectionList xmlParseResult = XMLParser.parseXML(pdfSegOutputPath);

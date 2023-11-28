@@ -15,7 +15,7 @@ public class Utility {
     public static void printToFile(String text, String filepath){
         try{
             PrintWriter out = new PrintWriter(filepath);
-            out.write(text);
+            out.append(text);
             out.close();
         } catch(FileNotFoundException e){
             e.printStackTrace();
