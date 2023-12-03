@@ -20,6 +20,7 @@ import java.util.Arrays;
 public class PdfSegmentation {
     private static Engine engine;
     private static GrobidAnalyzer analyzer;
+    // private final EngineParsers parser = new EngineParsers();
     private static GrobidAnalysisConfig analysisConfig;
 
     public static String pdfSegmenting(String pdfPath) {
@@ -41,22 +42,20 @@ public class PdfSegmentation {
     }
     
     public static String parseHeader(String pdfPath){
-        BiblioItem resultBib; 
-        Document resultDoc;
+        BiblioItem resultBib = new BiblioItem(); 
         String result = "";
         try {
             //Have been found to can be speed up using multithreading, might learn GNU parallel
+            System.out.println("[PdfSegmentation] file: " + new File(pdfPath).exists());
             DocumentSource docummentSource = DocumentSource.fromPdf(new File(pdfPath));
-            Document document = new Document(docummentSource); 
-
-            result = engine.getAbstract(document);
-            // engine.getParsers().getHeaderParser();
-            
-            // result = engine.processHeader(pdfPath, analysisConfig, null);
-            // result = engine.getAbstract(resultDoc);
-            result = "<abstract>" + result + "</abstract>";
+            Document document = new Document(docummentSource);
+            engine.processHeader(pdfPath, analysisConfig, resultBib);
+            result = Engine.header2TEI(resultBib);
+            System.out.println("[PdfSegmentation] resultBib: " + resultBib.toString());
+            // document.setResHeader(resultBib);
+            // result = engine.getAbstract(document);
+            // System.out.println("[PdfSegmentation] documentSource: " + result);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return result;
@@ -94,7 +93,6 @@ public class PdfSegmentation {
                 // analysisConfig = GrobidAnalysisConfig
                 
             } catch (Exception e) {
-                // If an exception is generated, print a stack trace
                 e.printStackTrace();
             }
         }

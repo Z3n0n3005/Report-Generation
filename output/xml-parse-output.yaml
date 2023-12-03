@@ -1,74 +1,42 @@
 ---
-abstractSeg: null
+abstractSeg: "Summarization, is to reduce the size of the document while preserving\
+  \ the meaning, is one of the most researched areas among the Natural Language Processing(NLP)\
+  \ community. Summarization techniques, on the basis of whether the exact sentences\
+  \ are considered as they appear in the original text or new sentences are generated\
+  \ using natural language processing techniques, are categorized into extractive\
+  \ and abstractive techniques. Extractive summarization has been a very extensively\
+  \ researched topic and has reached to its maturity stage. Now the research has shifted\
+  \ towards the abstractive summarization. The complexities underlying with the natural\
+  \ language text makes abstractive summarization a difficult and a challenging task.This\
+  \ paper presents a comprehensive review of the various works performed in abstractive\
+  \ summarization field. For this purpose, we have selected the recent papers on this\
+  \ topic from Elsevier, ACM, IEEE, Springer, ACL Anthology, Cornell University Library\
+  \ and Google Scholar. The papers are categorized according to the type of abstractive\
+  \ technique used. The paper lists down the various challenges and discusses the\
+  \ future direction for research in this field. Along with these, we have identified\
+  \ the advantages and disadvantages of various methods used for abstractive summarization.\
+  \ We have also listed down the various tools which have been used or developed by\
+  \ researchers for abstractive summarization. The paper also discusses the evaluation\
+  \ techniques being used for assessing the abstractive summaries."
 sectionList:
 - header: "Introduction"
-  content: "A N U S C R I P T sentences are generated out of the original text (Rachabathuni,\
-    \ 2017). On the basis of the number of documents which are considered for summarization,\
-    \ they are classified into single-document and multi-document summarization. On\
-    \ the basis of how much information is to be summarized, they are classified into\
-    \ generic, where the summary of the whole text is obtained and query-focused summarization,\
-    \ where only the summary according to the context which is specified by user is\
-    \ obtained. And, on the basis of content, they are classified into indicative,\
-    \ where focus is on telling what the text is about and informative summarization,\
-    \ where the main content of the text is extracted by analyzing the original text.\
-    \ There has been a lot of research in extractive summarization but extractive\
-    \ summaries lack in terms of cohesion, readability and other quality factors due\
-    \ to the presence of dangling anaphora problem. Also, the extractive summaries\
-    \ are usually very different from the human-written summaries (Yao et al., 2017).From\
-    \ our survey, we have found that most of the works are on extractive summarization\
-    \ due to the simplicity to implement it. Whereas the complexity of natural language\
-    \ processing, makes abstractive summarization, a challenging task. But now research\
-    \ on extractive summaries has stagnated as they have achieved the peak performance\
-    \ (Mehta, 2016) and thus the attention has shifted more towards abstractive summarization\
-    \ and fusion of extractive and abstractive techniques. The need of time is to\
-    \ produce high-quality summaries which are grammatically correct, readable, coherent,\
-    \ concise, and information-rich. Abstractive summarization helps resolve the dangling\
-    \ anaphora problem and thus helps generate readable, concise and cohesive summaries.\
-    \ Abstractive summarization helps reduce the sentence size as it uses fusion to\
-    \ merge the sentences, thus helps achieve more non-redundancy in the summary as\
-    \ compared to the extractive summaries, where even the non-relevant part of sentence\
-    \ also gets included due to the fact that it extracts the sentences and arranges\
-    \ them. Abstractive summaries also give higher precision than the extractive summaries.\
-    \ Abstractive summarization techniques not only help get the good quality summaries\
-    \ for the textual data but also for the non-textual data and cross-language data.We\
-    \ have used the citation-based search for identifying the relevant papers. To\
-    \ ensure the good quality of papers for our review purpose, we have used IEEE\
-    \ 3 , 3 https://ieeexplore.ieee.org/ ACM4 , Springer5 , ACL Anthology6 , Cornell\
-    \ University Library7 , Elsevier8 and Google Scholar9 .Most of the works in the\
-    \ field of abstractive summarization focus on the components like parsing, coreference\
-    \ resolution, construction and merging of semantic graphs, natural language generation,\
-    \ lexical chains and distributional semantics (Yao et al., 2017). Most of the\
-    \ abstractive techniques involve sentence compression, fusion (Nayeem & Chali,\
-    \ 2017)  (Belkebir & Guessoum, 2016) or revision for generating the final summary\
-    \ out of the selected sentences.According to whether the structure of the text\
-    \ is considered or the semantics, the abstractive summarization techniques are\
-    \ categorized into structure-based and semantic-based techniques. Apart from structure\
-    \ and semantic-based, now a days deep learning has emerged as a new technique\
-    \ to model the abstractive summarization problem which can capture both the structural\
-    \ and semantic information of the text.From the literature review, we have found\
-    \ that the number of papers which describe the extractive summarization techniques\
-    \ in detail is huge but there are very few papers and are mostly outdated in the\
-    \ field of abstractive summarization which lists down the various recent works\
-    \ done in this field in categorized and detailed manner. Separate papers are available\
-    \ for each individual topic like sentence compression, sentence fusion, summarization\
-    \ using deep learning but there is no paper which lists them together. So to address\
-    \ this issue, we have listed down the various works done till the mid of 2018\
-    \ and categorized them into the pre-defined classification hierarchy. Our study\
-    \ will systematize and enhance the knowledge in this research field. We have also\
-    \ discussed the popular components of abstractive summarization system.In this\
-    \ paper, we discuss the research trends in the abstractive summarization field.\
-    \ We give an overview of various abstractive summarization techniques available.\
-    \ We discuss the tools that have been used for creating abstractive summaries.\
-    \ We also discuss the evaluation measures used for assessing these summaries.\
-    \ We have identified the challenges lying in the field of abstractive summarization\
-    \ and discussed the future trends in this area of research.Our paper answers the\
-    \ following questions: The paper is organized as follows:-Section 2 describes\
-    \ the various abstractive summarization techniques. Section 3 discusses some of\
-    \ the common steps which are involved while creating the summaries. Section 4\
-    \ discusses the various tools used for performing abstractive summarization. Section\
-    \ 5 points out the challenges and future direction for new researchers. And Finally\
-    \ the conclusion."
-- header: "A C C E P T E D M"
+  content: "The exponential growth of information due to the popularity of web environment\
+    \ has lead to the need of automatic summarization in order to reduce the effort\
+    \ and time while finding the concise and relevant information according to the\
+    \ query. Summarization is to reduce the content of the text while preserving the\
+    \ meaning of the text. Various ways to write the same thing has made this topic\
+    \ an interesting topic among the researchers. There has been a lot of work done\
+    \ in the area of automatic summarization in the recent years. According to how\
+    \ the content is selected and organized in the summary, the summarization techniques\
+    \ are categorized into extractive and abstractive techniques. Extractive summarization\
+    \ is to find out the most salient sentences from the text by considering the statistical\
+    \ features and then arranging the extracted sentences to create the summary. Abstractive\
+    \ summarization, on the other hand is a technique in which the summary is generated\
+    \ by generating novel sentences by either rephrasing or using the new words, instead\
+    \ of simply extracting the important sentences. Internal representation of the\
+    \ text is created by analyzing the semantic information about the text and with\
+    \ the deep analysis and reasoning, new"
+- header: "Existing Approaches to"
   content: "Abstractive Summarization (Moratanch & Chitrakala, 2016) (Khan, 2014)\
     \ (Dineshnath.G & S.Saraswathi, 2018) have classified the abstractive summarization\
     \ approaches broadly into the structure-based and semantic-based. After surveying\
@@ -85,343 +53,7 @@ sectionList:
     \ based and multimodal. Figure 1 is the classification of abstractive summarization\
     \ approaches. In the below sub-sections, we have discussed the various abstractive\
     \ summarization methods.  "
-- header: "Existing Approaches to"
-  content: "Structure-based approaches find the most important information from the\
-    \ text and then use templates, rules, trees, ontology, etc to create the abstractive\
-    \ summaries. They are mostly used along with extractive, semanticbased or deep\
-    \ learning based approaches. Few of the examples are like (Ganesan et al., 2010)\
-    \ have used templates along with the graph-based approach, (Bartakke et al., 2016)\
-    \ used rules and ontology along with the semantic-graphs, (Li, 2015) used templates\
-    \ along with the semantic-based approach, (Wang & Ling, 2016) used neural networks\
-    \ along with the templates to create the abstractive summaries. Sometimes, these\
-    \ approaches are also used as the first step for text preprocessing like (Nguyen\
-    \ & Phan, 2009) extracted the important key-phrases from the text using ontology\
-    \ which then can be combined with some other approaches to create the abstractive\
-    \ summary. Below is the list of various methods being used for creating abstractive\
-    \ summaries by considering the structure of the text.In this approach, first the\
-    \ important text to be considered for the summary is extracted. Then, the similar\
-    \ sentences are identified from this text by using a shallow parser. Similar sentences\
-    \ of this text are then populated into the tree-like structure. Processing of\
-    \ trees is performed by either linearization(converting trees to strings), finding\
-    \ predicate-argument structure or sentence fusion to create the final abstractive\
-    \ summaries (C. Sunitha et al., 2016). There are various algorithms which help\
-    \ us perform these. For example, content theme intersection algorithm is one which\
-    \ is used to determine the common phrases by using predicateargument structure,\
-    \ finding the basis tree (Barzilay & McKeown, 2005) by finding the centroid of\
-    \ the dependency tree and then augmenting these basis trees to obtain the sub-trees\
-    \ is also another way to evaluate the sentence. Common phrases are obtained and\
-    \ then either some information is added to them or are fed to the Natural Language\
-    \ Generation systems to create the new sentences and then are arranged together\
-    \ to create a summary.Dependency tree is the most popular data structure, used\
-    \ to represent the text in a tree-form. (Barzilay & McKeown, 2005) used text-to-text\
-    \ generation to create the informative summaries. They represented the sentences\
-    \ using dependency trees and found the common information among sentences by processing\
-    \ the trees. They computed the fusion lattice by finding the intersection of sub-trees\
-    \ and then used tree traversals on them to produce the final sentence. One of\
-    \ the limitation of this approach is that it cannot capture the connections between\
-    \ the sentences without finding the intersected phrase between the sentences.\
-    \ (Yousfi-Monod & Prince, 2008) developed an approach called CoLIN, based on dependency\
-    \ tree pruning and linearisation while maintaining the semantic information, information\
-    \ content, grammatical correctness,and coherence in the summary. They performed\
-    \ the deep linguistic analysis of the text and focused on linguistic heuristics.\
-    \ (Kurisinkel et al., 2017) used the partial dependency trees which are constructed\
-    \ from syntactic dependency trees by parsing of the text along with the recombination\
-    \ and transition based syntactic linearization to create multi-document abstractive\
-    \ summaries.The use of Natural Language Generation systems for creating summaries\
-    \ help achieve the fluency and grammatical correctness. But they mostly do not\
-    \ consider context while finding the important phrases to be included in the summary\
-    \ (Kasture1 et al., 2014). They mostly rely on parsing and alignment of parse\
-    \ trees (Khan et al., 2018). Dependency trees are constructed with the help of\
-    \ parsers. Thus, the performance of these methods highly relies on the parsers\
-    \ available, which limits its efficiency. They focus more on the syntax then the\
-    \ semantics.In template-based methods, snippets are extracted using keywords or\
-    \ clues; and the extracted snippets are populated into templates to form the final\
-    \ summary. Because the structure is predefined, it helps create concise and coherent\
-    \ summaries. They rely on deep syntactic and semantic analysis of the text. It\
-    \ is one of the very popular method to create multi-document summaries. This method\
-    \ works well when the text is struc-tured in some manner. But, because the rules\
-    \ and the patterns are manually defined, this method is very timeconsuming and\
-    \ also requires a lot of manual effort (Alshaina et al., 2017). (Harabagiu et\
-    \ al., 2001) used the template-based summarization and created a system called\
-    \ GISTEX-TER to create the multi-document summaries where the templates are filled\
-    \ by following the patterns and the rules. (Carenini et al., 2012) used the templates\
-    \ to generate the natural language summaries for the evaluative corpus in their\
-    \ system SEA. (Embar et al., 2013) used the domain-based template method to create\
-    \ the Kannada based abstractive summarizer. They used the handcrafted information\
-    \ extraction rules to extract information to fill the templates. (Oya et al.,\
-    \ 2014) proposed a multi-sentence fusion technique for creating abstract templates.\
-    \ To create templates, they have used the noun phrases along with the POS tagging\
-    \ and hypernyms. After finding templates, they have clustered them by extracting\
-    \ root verbs. They used word-graph for fusion of templates to generate the final\
-    \ summary. (Gerani et al., 2014) have also used templates to generate the summaries\
-    \ by using the selected sentences obtained by considering the discourse structure\
-    \ of the text.An ontology can be considered as the collection of entities and\
-    \ the relationship between them. An ontology along with the set of individual\
-    \ instances of class constitutes the knowledge base (Ma et al., 2016). Classes\
-    \ are the most important part of an ontology and represent the concepts. An Ontology\
-    \ defines the vocabulary set and also contains terms agreement, which helps remove\
-    \ any kind of ambiguity while finding the concepts. Ontologies are usually created\
-    \ by the domain experts and are mostly used to extract the concepts and relations\
-    \ from the text. These concepts are then used for creating the summaries (M et\
-    \ al., 2016). One of the example of a domain-specific ontology is \"WordNet\"\
-    . Ontologies help share a common knowledge among the community of interest. They\
-    \ enable the reuse of the knowledge. They help separate the domain and operational\
-    \ knowledge and thus help perform modifications easily when something related\
-    \ to domain changes. They have been used in number of fields like e-learning,\
-    \ user-related content analysis and image analysis (Baralis et al., 2013). Ontology-Based\
-    \ abstractive systems extract the information from the ontologies to create the\
-    \ summaries specific to user's need.Many times the online vocabulary is limited,\
-    \ ontology helps in proper representation of the document (Rananavare & Reddy,\
-    \ 2017). Even the semantic repre-sentation of the information content can be improved\
-    \ a lot with the help of an ontology. Vocabulary normalization is performed to\
-    \ resolve the ambiguity when there are more than one synonym of a concept (M et\
-    \ al., 2016).Ontology is mostly represented in hierarchical structure like the\
-    \ directed acyclic graph, etc (Lloret et al., 2013). Resource Development Framework(RDF)\
-    \ and Web Ontology Language(OWL) are two major languages used for creating an\
-    \ ontology. DBPedia (Bizer et al., 2009) is one of the project which has structured\
-    \ the wikipedia data in the form of ontology. Ontologies help in query expansion\
-    \ and query search (Baralis et al., 2013). (Tran et al., 2007) used the ontologies\
-    \ to build their question-answering system where they used the ontologies to convert\
-    \ the user question into the system query, so that system can understand the query\
-    \ specified by user. Ontologies help achieve topic completeness and non-redundancy\
-    \ in the summary (Hpola et al., 2014). (Zhang et al., 2011) created an approach\
-    \ to create customizable ontology-based summaries where the length of summary\
-    \ and navigational preferences can be specified. RDF Graphs were constructed and\
-    \ the salience scores of RDF sentences were obtained to find the important sentences\
-    \ from the user's view. (Hennig et al., 2008a) created an ontology based text\
-    \ summarization system where they applied the hierarchical classifier which mapped\
-    \ the sentences into the nodes of a pre-defined ontology. (Lee et al., 2003) created\
-    \ an ontology-based approach for chinese news summarization by using the pre-defined\
-    \ ontology created for news articles. They used the ontology to infer the events\
-    \ from the news. (Hpola et al., 2014) used the ontology in their system called\
-    \ Texminer to extract the important sentences with rhetorical structure, which\
-    \ summarizes the ports and coastal information. Ontology helped containing all\
-    \ the important concepts of the topics of coastal engineering. Ontology helped\
-    \ capture the semantic information of the concepts to facilitate the summarization\
-    \ in their system. (dolfo Lozano-Tello & Gomez-Perez, 2004) created a metric called\
-    \ OntoMetric to choose the appropriate ontology according to the requirement specifications.\
-    \ (Nguyen & Phan, 2009) used the Wikipedia ontology to extract the key-phrases\
-    \ which are the linguistic representation of the text, from the Vietanemese text.\
-    \ These keyphrases can be used for document summarization. (Baralis et al., 2013)\
-    \ presented a multidocument abstractive summarizer which used Yago ontology for\
-    \ selection of sentences by the identification of entities, concepts and disambiguation.Here\
-    \ the insertion and substitution of important information-rich phrases technique\
-    \ are used in the lead sentence from the body text, which are called triggers\
-    \ (C. Sunitha et al., 2016). Creating the grammatically correct sentences by using\
-    \ this method is still an issue. (Tanaka et al., 2009) created the lead and body\
-    \ phrase summaries of broadcast summarization. They revised the summaries by modifying\
-    \ the lead sentence by using insertion and substitution of phrases. They modified\
-    \ the lead sentence by adding information like \"who\", \"where\", \"when\", \"\
-    how\", etc to it.Word Graph is the most popular graph data structure which is\
-    \ used for representing the text in these methods. Sentences are fused together\
-    \ to create the abstractive summaries. Sentence fusion helps remove the redundant\
-    \ part of the sentence and thus achieve nonredundancy. Word graphs work on the\
-    \ assumption that there will be lot of similar sentences in the text and this\
-    \ similarity will help fuse the sentences. But it is not necessary that it will\
-    \ be easy to find the similar sentences.( Barzilay & Lee, 2003a) used the paraphrasing\
-    \ to generate the natural language summaries by the fusion of sentences. They\
-    \ used the graph-based structure to find structurally similar sentences, then\
-    \ identified the text which are paraphrases to each other and then generated the\
-    \ sentence. (Katja, 2010) created the grammatically correct and informative summaries\
-    \ by finding the shortest path in the word-graphs. But as they ranked their sentences\
-    \ on the basis of informativeness, it lacked the linguistic quality. (Mehdad et\
-    \ al., 2013) extended the work of (Katja, 2010) by creating the entailment graphs\
-    \ to eliminate the redundant information along with the word graphs to find the\
-    \ relevant sentences from the informal text of meeting transcripts, to create\
-    \ the abstractive summaries. They used the WordNet to find the relations between\
-    \ the words and used this information to merge the nodes of the graph. Information\
-    \ content and the grammatical fluency were chosen as the factors to decide the\
-    \ best paths of the graph and then used the generalization and aggregation to\
-    \ generate the abstractive summary. (Ganesan et al., 2010) created the informative,\
-    \ readable, concise and well-formed abstractive summaries for redundant opinions\
-    \ by using graph based data structure called word Graph. Their approach does not\
-    \ require domain knowledge and uses shallow NLP. Their opiniosis-graph captures\
-    \ the redundancy and helps discover the new sentences by identifying the lexical\
-    \ links.A N U S C R I P T (Le & Le, 2013) created the extractive summaries and\
-    \ then applied word-graph to reduce the sentence and combine the sentences. (Niu\
-    \ et al., 2017) used the chunk graphs which are based on the word-graph to reduce\
-    \ the size of the graph. (Oya et al., 2014) used the word-graph to merge the templates\
-    \ generated for meeting conversations. (Banerjee et al., 2017) used the word graphs\
-    \ along with the Integer Linear Programming(ILP) to create the multi-document\
-    \ abstractive summaries. They first identified the most important documents among\
-    \ the documents to be summarized with the help of LexRank, cosine similarity score\
-    \ and overall document collection similarity score. Then, they created the clusters\
-    \ of similar sentences among the important documents. Shortest paths are obtained\
-    \ by creating the word-graphs and ILP model is applied to find the sentences with\
-    \ maximum information and readability. ILP helps minimize the redundancy in the\
-    \ summary."
-- header: "A C C E P T E D M"
-  content: "In this method, the rules and categories are fed into system, to find\
-    \ the meaningful candidates which are then used to create the summary. Here the\
-    \ text document is first categorized according to the terms and concepts present\
-    \ in them. Then the questions are formulated according to the domain of text document\
-    \ and then the answers are extracted from the document. Questions can be like:\
-    \ Where the event has occurred, when the event has occurred, who did the event,\
-    \ what was the impact of event, etc. These questions are usually answered by finding\
-    \ the Part of Speech of the terms and concepts in the text. By answering these\
-    \ questions, they are fed into some pattern which then help create the final abstractive\
-    \ summary (Kasture1 et al., 2014). But again as in template-based approach, here\
-    \ the rules are written manually and thus leads to wastage of time.Table 2 lists\
-    \ down the advantages and disadvantages of structure-based approaches on page\
-    \ 13.Here first the semantic representation of the text is obtained by finding\
-    \ the information items, predicateargument structure or creating semantic graphs.\
-    \ Then, this representation is fed to the Natural Language Generation system and\
-    \ by using the noun and verb phrases (Dineshnath.G & S.Saraswathi, 2017), the\
-    \ final abstractive summary is created. Content theme intersection algorithm is\
-    \ also used with the graphs to determine the common phrases by using predicate-argument\
-    \ structure.(Genest & Lapalme, 2011) used the information item, the smallest unit\
-    \ of coherent information in the text to find the abstractive summaries. With\
-    \ information item, they mean the entities, their characteristics and the relationships\
-    \ or properties between them. They relied on Semantic Role Modeling, disambiguation,\
-    \ co-reference analysis, similarity analysis and predicate-logic analysis to find\
-    \ the information items. They used subject, verb and object triplets along with\
-    \ the time and location information to create the summary sentences. The general\
-    \ framework for INIT Based methods contains four modules namely information items\
-    \ retrieval where triplets are extracted using parser, sentence generation by\
-    \ using language generator, sentence selection by finding the top-rated sentences\
-    \ which is calculated on the basis of factors like document frequency, etc and\
-    \ summary generation using planning (Kasture1 et al., 2014).Predicate-argument\
-    \ structure means the verbs, subject and object, etc of the sentence. Predicate-argument\
-    \ structure is obtained for the sentences to represent them semantically. Then,\
-    \ the semantically similar structures are found from them by using similarity\
-    \ measures like edit distance measure, etc. Semantically similar structures are\
-    \ merged together by using some methods like K-means and hierarchical clustering\
-    \ (Alshaina et al., 2017). Features are extracted from the predicateargument structures(PAS)\
-    \ and then they are scored. To maximize the salience scores of the sentences,\
-    \ optimization approaches like Integer Linear Programming(ILP) is used. High scoring\
-    \ PAS are selected and fed to the language generation system for creating the\
-    \ final summary. But to generate the new sentences out of them is a very difficult\
-    \ task (Li, 2015) from this method. (Zhang et al., 2016) proposed a cross-language\
-    \ abstractive summarization approach by using predicate-argument structure and\
-    \ merging them using Integer Linear Programming. They annotated the predicate-argument\
-    \ structures with semantic role modeling to obtain the summaries. To solve the\
-    \ dependency of human-written ontology , (Alshaina et al., 2017) used the predicate-argument\
-    \ structure along with the semantic role modeling to find the semantic similarity\
-    \ between the arguments and created the multi-document abstractive summaries.It\
-    \ is one of the very popular way to represent the text on the basis of the semantic\
-    \ relations between the sentences in the text. Semantic properties include the\
-    \ ontological relations and the syntactical relations betweenA N U S C R I P T\
-    \ the words. Ontological relations utilize the property of synonymy, hyponymy,\
-    \ hypernymy, etc whereas syntactical relations utilize the property of relationship\
-    \ among the words on the basis of subject-object-verb i.e. represented in terms\
-    \ of dependency tree and the syntactic tree (Joshi et al., b).Here the document\
-    \ is represented using a semantic graph. Nouns and verbs are represented as nodes\
-    \ of the graph, while relations between the nodes is represented by the edge.\
-    \ (Khan et al., 2018) proposed the semantic graph-based approach for multi-document\
-    \ abstractive summary generation. (Han et al., 2016) proposed a semantic graph-based\
-    \ model using FrameNet where each sentence is considered as a vertex and semantic\
-    \ relations between the sentences is represented as edges. Framenet is used to\
-    \ classify the sentences and find the relevance between the sentences and accuracy\
-    \ is achieved using Wordnet. Following are few famous semantic graphs which have\
-    \ been used for creating abstractive summaries.• Rich Semantic Graphs: It is one\
-    \ of the way to represent the semantic information of the text in the form of\
-    \ graphs. Nouns and Verbs of the text represent the nodes and the semantic and\
-    \ topological relation between them correspond to the edges. Nouns and verbs of\
-    \ the text are obtained with the help of parsing or ontology. (Moawad & Aref,\
-    \ 2012) used the Rich Semantic Graphs(RSG) reduction approach for generating the\
-    \ single document abstractive summaries. They reduced the graph by using heuristic\
-    \ rules such as substitution, deletion, or fusion of nodes. Graph Nodes are obtained\
-    \ by using domain ontology, which consists of class hierarchy and relations. (Bartakke\
-    \ et al., 2016), (Munot & Govilkar, 2015) created the semantic graphs for each\
-    \ sentence and then used ontology to inter-connect the concepts to create the\
-    \ rich semantic sub-graphs and then applied the heuristic rules to create the\
-    \ final reduced semantic graph and then fed it to the natural language generation\
-    \ tool to create the abstractive summary.• AMR Graphs: Abstract Meaning Reprsentation(AMR)\
-    \ Graphs are labeled, rooted and directed acyclic graphs of the sentences. AMR\
-    \ Graphs provide the semantic representation of the sentence. Nodes of the graphs\
-    \ represent concepts and the edges represent the relationship between the concepts.\
-    \ AMR Graphs represent lot of information about the text like the named entities,\
-    \ semanticrole labeling, predicate-argument structure and co-reference relation\
-    \ (Foland & Martin, 2017). Concepts are mostly either the English words or Prop-Bank10\
-    \ frames. Even though there are a number of parsers available for parsing but\
-    \ mostly JAMR parser11 is used to perform the parsing; it performs parsing in\
-    \ two steps: first by identifying the key concepts using semi-Markov model, second\
-    \ by identifying the relations between the concepts by searching for maximum connected\
-    \ spanning graph.While generating the source graph for the sentence, as the similar\
-    \ concepts are merged together, so at the end of merging, an entity is represented\
-    \ in the graph only once. Thus, regardless of number of times, the concept has\
-    \ appeared in a sentence, it is represented as only one node. And this when applied\
-    \ to multiple sentences, lead to the final graph with no-redundancy (Liu et al.,\
-    \ 2015). AMR Graphs are used in three representations namely in conjunction form\
-    \ to find the similarity between more than 1 AMR Graph, in PENMAN notation and\
-    \ as a graph data-structure (Viet et al., 2017). (Vilca & Cabezudo, 2017) used\
-    \ the AMR parsing for each sentence to generate the conceptual graph and incorporated\
-    \ Discourse-level information to identify the concepts. They used these concepts\
-    \ to generate the natural language summaries using SimpleNLG. (Liu et al., 2015)\
-    \ used the graph-to-graph transformation for a domainindependent summary generation.\
-    \ They used Treebank to create AMR Graphs and then transformed these graphs to\
-    \ generate the summary. (Liao et al., 2018) created the AMR Graphs for each sentence\
-    \ and then merged them to create the summaries by using surface realization. They\
-    \ have used JAMR Parser to identify the concepts and the relationship between\
-    \ the concepts.With the increasing research of Neural Networks for summarization\
-    \ purpose, they have been successfully applied to the task of AMR parsing also.\
-    \ (Konstas et al., 2017)  • Basic Semantic Unit Based: AMR graphs focus only on\
-    \ graph-to-graph transformation and text generation module is not developed for\
-    \ it. To deal with it, (Li, 2015) have used semantic information to create multi-document\
-    \ abstractive summaries by using BSU(Basic Semantic Unit), the most basic element\
-    \ of coherent text. They have constructed BSU semantic link network where BSU\
-    \ indicates actors and receivers and consists of semantic links, semantic nodes,\
-    \ and reasoning rules. Semantic links help captures the context around the nodes.Text\
-    \ can be generated efficiently using this methods."
-- header: "A C C E P T E D M"
-  content: "Most of the information in the web is not purely textual. It mostly contains\
-    \ images, videos, etc. along with the text. (Kasture1 et al., 2014) has divided\
-    \ the general framework for multimodal summarization into three phases namely\
-    \ semantic model construction of concepts, a rating of concepts on the basis of\
-    \ factors like completeness, and sentence generation. (Greenbacker, 2011) used\
-    \ the information density as a metric to calculate the content obtained from multimodal\
-    \ summary methods. To create the abstractive multimodal summaries, they first\
-    \ created the semantic model using knowledge representation, where they constructed\
-    \ the concepts and then extracted the semantic information from the limited specific\
-    \ class of images. After extracting the semantic information, they identified\
-    \ the important concepts using information density metric. They used the phrasing\
-    \ methods to generate the summaries. (UzZaman et al., 2011) created multimodal\
-    \ summaries of complex sentences by finding the entities and the main idea behind\
-    \ the text and then added the structure to the images. Ontology is used in this\
-    \ approach to find the concepts but no automatically generated ontology is used\
-    \ in these approaches which leads to wastage of times. Also, there is no automatic\
-    \ method to evaluate these summaries, which limits the efficiency of these methods.Table\
-    \ 4 lists down the advantages and disadvantages of semantic-based approaches on\
-    \ page 14.Deep Learning is a part of machine learning based methods and involves\
-    \ training and learning data. It involves multiple layers of non-linear processing\
-    \ to extract the features from the text. Learning can be both supervised or unsupervised.\
-    \ They are based on artificial neural networks. Deep Learning has been successfully\
-    \ applied to various NLP tasks. (Buys & Blunsom, 2017) showed that parsers based\
-    \ on Recurrent Neural Networks(RNN) have achieved state of art performance in\
-    \ dependency and constitutional parsing. RNN models help predict complex relations\
-    \ which simple structured or semantic-based approaches cannot do alone.Encoder\
-    \ and decoder are the individual neural networks, and work together as a combined\
-    \ neural network. Encoder's task is to understand the input sequences while the\
-    \ decoder's task is to determine the sequences and give the output. Encoder converts\
-    \ the words into the vectors representation which helps capture the context. Mostly\
-    \ word embedding is used for representing the words in encoders but many have\
-    \ used bag-of-words model (Rush et al., 2015) too. Decoders help find the next\
-    \ word in the summary on the basis of previous words. When both the input and\
-    \ output are in the form of sequence like in the case of text summarization, the\
-    \ learning problems are also called as Seq2Seq learning problems. Encoder-Decoder\
-    \ models help solve these problems. Attention mechanism is mostly used in sequence\
-    \ models where the information is extracted from the encoder on the basis of attention\
-    \ scores and this information is used by decoder. Attention helps know what part\
-    \ of information do we need to focus at a particular time-stamp.Few common networks\
-    \ used in encoder-decoder models to solve the abstractive summarization problem\
-    \ are:-Here the input size is always fixed. Each input of the network is independent\
-    \ of previous and future inputs.• Recurrent Neural Networks(RNN): In most of the\
-    \ practical applications, input size is usually not fixed. Also, the inputs are\
-    \ not independent, rather depend on each other. Moreover, the number of predictions\
-    \ required as output is also not fixed. These are also called as sequence learning\
-    \ problems. Recurrent connections are added to the neural networks which helps\
-    \ capture the dependency of inputs with previous or future inputs.A N U S C R\
-    \ I P T  (Baralis et al., 2013) used neural networks for parsing the semantic\
-    \ graphs for generating the abstractive summaries by deep linguistic analysis.\
-    \ They used Minimal Recursion Semantics(MRS) for semantic representation of grammars.\
-    \ They performed disambiguation by using maximum entropy model. They developed\
-    \ this model to solve the alignment problem of AMR Graphs. MRS can be used both\
-    \ for parsing and the text generation. (Niu et al., 2017) proposed a multi-document\
-    \ abstractive summarization approach by using chunk graphs and neural networks.\
-    \ They used a Recurrent Neural Network Language Model which helped evaluate the\
-    \ linguistic quality of sentence, which further helped create good readable abstractive\
-    \ summaries."
-- header: "A C C E P T E D M"
+- header: "Generating the Abstractive Summaries"
   content: "Simple sequence-to-sequence model map the input sequence to the output\
     \ sequence. (Jobson & Gutirrez) used encoder-decoder RNN along with LSTM to create\
     \ the summaries. They used the word-embedding for the training purpose and attention\
@@ -504,114 +136,7 @@ sectionList:
     \ of path scores and summary generation are few common parts of an abstractive\
     \ summarization system. In this section, we have focused on the techniques used\
     \ by various researchers to perform these particular tasks."
-- header: "Generating the Abstractive Summaries"
-  content: "Sentence Compression is to reduce the length of sentence while preserving\
-    \ the original meaning of sentence (Napoles et al., 2011). Many times, irrelevant\
-    \ details are also present in the sentence and it is important to remove them\
-    \ to avoid the space problem. It is one of the very important topic of NLP community\
-    \ and plays a very important role in creating abstractive summaries. On the basis\
-    \ of the type of structure used for the sentence compression, these methods are\
-    \ divided into tree-based, discourse-based and sentencebased methods. Tree-based\
-    \ approaches ( (Knight & Marcu, 2000), (Galley & Mckeown, 2007)) create the compound\
-    \ sentences by editing the syntactic trees obtained by parsing the text. But they\
-    \ are highly dependent upon the parser, which limits them. Whereas, sentence-based\
-    \ approaches ((McDonald, 2006)) directly create the sentences but they lack in\
-    \ terms of lexicalization. Discourse-based approaches( (Clarke & Lapata, 2008))\
-    \ consider the discourse information of surrounding text to compress the sentences.On\
-    \ the basis of type of learning used for compression, they are also divided into\
-    \ supervised and unsupervised models. Supervised approaches involve the training\
-    \ to find the phrases for compression. To find the probabilities, they use either\
-    \ the generative or the discriminative model. In generative models, either the\
-    \ probability of target compression is found directly or indirectly by using noisy\
-    \ channel. Whereas, in discriminative models, main aim is to reduce the training\
-    \ errors. Mostly SVM, maximum entropy, decision trees and large margin learning\
-    \ are used for discriminative modelling (Clarke & Lapata, 2008). Unsupervised\
-    \ approaches use rules and language models to compress the sentence.On the basis\
-    \ of whether the words are deleted or the new phrases or words are used, these\
-    \ approaches are divided into delete-based and generate-based (Yu et al., 2018).\
-    \ In delete-based approach, unimportant words are deleted from the sentence and\
-    \ by stitching of rest of the text, the final sentence is created. In generatebased\
-    \ models, insertion, substitution and replacement is used. Generate-based models\
-    \ require the deeper understanding of the text. (Knight & Marcu, 2000) have described\
-    \ the probabilistic approach to compress the sentences. They have used the generative\
-    \ noisy channel and decision tree based methods to compress the sentence. (Galley\
-    \ & Mckeown, 2007) also used the syntactic trees to compress the sentence by using\
-    \ synchronous context free grammars. (McDonald, 2006) used the machine learning,\
-    \ discriminative online learning approach(Margin Infused Relaxed Algorithm, MIRA)\
-    \ to learn the feature weights and find the text which need to be considered for\
-    \ compression. To create the feature vectors and the final sentence, they used\
-    \ the deep syntactic analysis of sentence by parsing their sentences with both\
-    \ the dependency parser and phrase-structure parser. (Nguyen & Ho, 2004) used\
-    \ Hidden Markov models to compress the sentence. CLASSY( Clustering, Linguistics\
-    \ and Statistics for summarization system) (Conroy et al., 2005), compress the\
-    \ sentences using syntactic and lexical heuristics like elimination of phrases,\
-    \ named entity identification, Hidden Markov Models. Integer Linear Programming(ILP)\
-    \ is also one of the famous approach for sentence compression. It not only helps\
-    \ capture the statistical information but also helps capture the discourse level\
-    \ information. Most of these approaches use the local information to compress\
-    \ the sentence. To solve this issue, (Clarke & Lapata, 2008) used the unsupervised\
-    \ learning along with the constrained optimization, called Integer Linear Programming(ILP)\
-    \ to compress the sentence. They used discourse information along with the simple\
-    \ sentence compression. (Sahooa et al., 2018) used Support Vector Machine(SVM)\
-    \ to compress the sentences by first parsing the sentences from Stanford Parser\
-    \ and then used these parsed sentences for training purpose. (Zajic et al., 2006)\
-    \ developed an approach called TRIMMER to compress the sentences for creating\
-    \ multi-document summaries. They trimmed the syntactic constituents of the sentence\
-    \ till they reach to the threshold point and then selected the sentences with\
-    \ best topic coverage. But their applicability is limited to English only and\
-    \ lacks in terms of finding the appropriate sentences. (Mani et al., 2010) conducted\
-    \ an experiment to find how the machine learning algorithms work to decide the\
-    \ predicates to be added to the sentence fragments to combine them together to\
-    \ create a non-extractive sentence; and found that SVM works reasonably well in\
-    \ comparison to other classifiers. (Napoles et al., 2011) extracted the set of\
-    \ paraphrases that minimizes the length of the sentence. (Zhang et al., 2016)\
-    \ used Integer Linear Programming to generate the sentences for the summary.Machine\
-    \ learning models alone have not achieved the state of art but when used with\
-    \ the models like Recurrent Neural Networks (RNN), have given very good results.\
-    \ Most of the compression techniques involve the processing of syntactic information,\
-    \ (Filippova et al., 2015) have proposed an approach which uses RNN based Long\
-    \ Term Short Memory Models to compress the sentence. They trained the model by\
-    \ using a corpus of approximately 2 million sentences. They first parsed the sentence,\
-    \ then created the embedding vectors of 518 dimensions size for the sentence by\
-    \ using dependency tree obtained by parsing, and then decoded the sequence by\
-    \ using beam search procedure. Their system achieved the readability score of\
-    \ 4.5 out of 5 and the informative score of 3.8 out of 5. (Yu et al., 2018) used\
-    \ both the delete-based and generate-based models along with the Seq2Seq model(bidirectional\
-    \ RNN and Gated Recurrent Units, GRU) to compress the sentence."
-- header: "A C C E P T E D M A N U S C R I P T"
-  content: "Here the different concepts appearing in the text are replaced with one\
-    \ concept which is the generalization of all the concepts. It helps in reducing\
-    \ the text. (Belkebir & Guessoum, 2016) performed the concept generalization by\
-    \ using WordNet corpora. They performed this by finding the generalizable sentences\
-    \ by generating the hyperonymy paths of concepts in a sentence and then reducing\
-    \ the size of generalizable versions. Sentence Fusion is also used to create the\
-    \ summaries. In sentence fusion, the related sentences are given to thesystem\
-    \ as an input, dependency structures of the sentences are aligned to find the\
-    \ common information and then on the basis of alignment, fusion tree is created.\
-    \ Alignments can be created at word-level, phrase-level, substring-level, etc\
-    \ but for the fusion purpose, alignment at dependency-tree level is considered\
-    \ best. Alignment helps understand how the words are related to each other. The\
-    \ best paths are obtained from the trees and are fed to the Natural Language Generation\
-    \ system to create the final sentence (Marsi & Krahmer). (Barzilay & McKeown,\
-    \ 2005) used the dependency trees for the fusion of sentences to create the fluent,\
-    \ grammatically correct and non-redundant summary by utilizing the property of\
-    \ common information among the sentences. They created the fusion lattices and\
-    \ linearized them by using natural language generator FUF/SURGE to create the\
-    \ final sentences. (Filippova & Strube, 2008) created the multi-document abstractive\
-    \ summaries for German biographies by using the concept of sentence fusion. They\
-    \ used informative phrase merging and pruning along with the dependency structure\
-    \ alignment to create the summaries. (Mehdad et al., 2013) built an entailment\
-    \ graph for the sentences to find out the most relevant sentences, and then used\
-    \ the word graphs along with the generalization and aggregation to combine the\
-    \ sentences to form the informative summaries. (Belkebir & Guessoum, 2016) used\
-    \ concept fusion to create the text-to-text generation technique for creating\
-    \ the abstractive summaries. But they alone cannot create a good summary due to\
-    \ the fact that identifying the common fragments is a big challenge and then using\
-    \ the fusion lattice to combine the sentences to form the grammatically correct\
-    \ sentence is again a complex problem. Also the approach has the problem of referring-expression.\
-    \ (Konstas et al., 2017) used the Integer Linear Programming(ILP) to find and\
-    \ merge the informative phrases to obtain the global optimal solution."
-- header: "A C C E P T E D M A N U S C R I P T"
+- header: "Tools Used and Developed"
   content: "Replacing the phrases with shorter paraphrases help reduce the length\
     \ of original text (Barzilay & Lee, 2003b). Paraphrase detection and finding entailment\
     \ between the phrases and the sentences is not an easy task. (COHN & LAPATA, 2013)\
@@ -699,100 +224,7 @@ sectionList:
     \ for multi-document summarization also.They lack the diversity as they are mostly\
     \ predefined. They lack when the system needs to consider the similarity and differences\
     \ between the documents (Khan, 2014)."
-- header: "Tools Used and Developed"
-  content: "Ontology Based Methods can handle the uncertainties associated with the\
-    \ text easily.Ontology based methods need a good ontology or dictionary which\
-    \ is mostly created by an expert in the domain, thus is very time-consuming approach."
-- header: "Ontology Based Methods"
-  content: "Based Methods Use of language generator improves the quality of summaries.\
-    \ They produce fluent and less-redundant summaries (Khan, 2014) Tree based methods\
-    \ do not consider the context; thus miss many important phrases of the text."
-- header: "Tree"
-  content: "They are good for semantic revisions of a lead sentence (Rananavare &\
-    \ Reddy, 2017).Lead and Body Phrase Methods produce redundant, less grammatical\
-    \ and sometimes incomplete summaries. Parsing failure leads to the wrong phrase\
-    \ substitution leading to incorrect summaries."
-- header: "Lead and Body Phrase Methods"
-  content: "Based Methods Summaries are of high information density.Because of the\
-    \ fact that rules and patterns are mostly hand-crafted, it is very tedious to\
-    \ create these summaries (Kasture1 et al., 2014). Neural networks help capture\
-    \ the proper syntactic role of each word.Large Training is required to capture\
-    \ the good representation of the text."
-- header: "Rule"
-  content: "Neural Networks can help reduce the grammatical errors.They rely on the\
-    \ statistical co-occurrence of words, which leads to semantic and grammatical\
-    \ errors (Rossiello et al., 2016)."
-- header: "2."
-  content: "Deep neural networks help capture the intrinsic and high level distributed\
-    \ representation of data.Deep Learning Models mainly work at sentencelevel, which\
-    \ makes them effective for sentence compression but not much to the document summarization."
-- header: "3."
-  content: "Deep Learning models help capture the semantic and syntactic structure\
-    \ of the text together which is not possible with simple extractive or abstractive\
-    \ techniques (Song et al., 2018b).Most of the time, there is an alignment problem\
-    \ between the original and training data, which leads to problems during abstractive\
-    \ summarization (Jobson & Gutirrez). 5.They help achieve better ROUGE-Scores.\
-    \ Even though, these techniques create short summaries but they lack in terms\
-    \ of information density (Baumel et al., 2018). They suffer from the problem of\
-    \ repetitions when creating multisentence summaries (Chen & Bansal, 2018) (Song\
-    \ et al., 2018a). Also, they suffer from the problem of slow encoding when the\
-    \ document to be summarized is long (Chen & Bansal, 2018). Manual evaluation is\
-    \ required as the document contains both images and text."
-- header: "4."
-  content: "Based Methods They produce less redundant and grammatically correct summaries.Rich\
-    \ Semantic Graphs(RSG) are mostly limited to singledocument summarization. the\
-    \ concepts in the text which then helps in text summarization process.• FrameNet\
-    \ 13 : It is a human and machine readable english lexical database with annotating\
-    \ examples. It helps assign the semantic roles, and helps find the relationships\
-    \ between the predicates.• SParser 14 : It is a phrase structure-based chart parser.\
-    \ It has an extensive and extendible semantic grammar. (Greenbacker, 2011) used\
-    \ the SParser to generate the multimodal abstractive summaries. It has been used\
-    \ in (Greenbacker et al., 2011) to perform the linguistic analysis by identifying\
-    \ each part of the text in terms of subject and obtained the 13 https://framenet.icsi.berkeley.edu/fndrupal/\
-    \ about 14 https://github.com/charlieg/Sparser concepts in terms of partially-saturated\
-    \ referents.• MINIPAR Parser 15 : (Genest & Lapalme, 2011) used this parser to\
-    \ find the subjectverb-object triplets. It takes a sentence as input, parses the\
-    \ sentence and finds the dependency relations among the words in the sentence.•\
-    \ It is also possible to use rules with them for effective summarization. (Genest\
-    \ & Lapalme, 2011) used it for syntactic analysis.• PropBank 17 : It is a corpus\
-    \ of text annotated with information about semantic propositions. Predicate-argument\
-    \ relations are also available to syntactic Penn TreeBank. (Vilca & Cabezudo,\
-    \ 2017) used it for semantic role modelling which helps identify questions like\
-    \ \"Why\", \"Whom\", \"Where\", \"How\", etc.• Stanford NLP 18 : It helps perform\
-    \ many NLP based applications like sentence splitting, part of speech tagging,\
-    \ named entity recognition, constituency parsing, dependency parsing, open information\
-    \ extraction, etc. Thus, helps perform text summarization. In most of the papers,\
-    \ to create the dependency trees, stanford NLP parser has been used. Stanford\
-    \ CoreNLP helps perform co-reference resolution.• Lingsoft 19 : It is a morphological\
-    \ and syntactic analyzer tool. They provide base and grammatical forms of words,\
-    \ which can be used for labeling and organizing the output. (Moawad & Aref, 2012)\
-    \ used Lingsoft to syntactically analyze the sentence.• SENNA Role Labeller: (Khan\
-    \ et al., 2018) used this parser to determine the predicate argument structure\
-    \ for the sentence from the text. Along with the role modeling, it also helps\
-    \ perform part of speech tagging, named entity recognition, chunking and syntactic\
-    \ parsing. It creates frames for each verb in the sentence.• LibSVM 20 is a software\
-    \ for support vector classification. It helps perform multiclass classification,\
-    \ weighted Support Vector Machines for unbalanced data. Support Vector Machines(SVM)\
-    \ helps find important sentences by performing text categorization, chunking and\
-    \ dependency analysis. partitions the text into semantically related words. It\
-    \ has been used (Oya et al., 2014) to identify all the noun phrases along with\
-    \ the part of speech tagging in the sentence to create template based summaries.•\
-    \ VerbNet22 : It is a hierarchial, domainindependent, online english verb lexicon.\
-    \ It maps verbs to other lexicons like WordNet.Roles are also associated with\
-    \ the verbs. It provides syntactic description of frames and semantic predicates\
-    \ for the verbs which helps in restricting the thematic roles. It has been used\
-    \ widely for the creation of semantic graphs, calculation of sentence similarity\
-    \ and token-level disambiguation for text summarization.• PractNLP23 : They are\
-    \ python libraries which are build over SENNA and stanford dependency extractor.\
-    \ It has been used to extract the predicate-argument structure from the text (Alshaina\
-    \ et al., 2017).• NLTK ToolKit24 : NLTK helps remove the stop words, fragment\
-    \ the sentence, find the frequency of each word. (Katja, 2010) used the NLTK Toolkit\
-    \ to label the chunks in the sentences.• Stanford Core-NLP Toolkit25 : It has\
-    \ been widely used to perform co-reference resolution (Katja, 2010).• JAMR Parser:\
-    \ They are used for AMR Parsing. Along with the prediction of graph for each sentence,\
-    \ it also provides the alignment between the span of words and fragments of predicted\
-    \ graph, which then helps during text generation phase (Liu et al., 2015)."
-- header: "Rich Semantic Graph"
+- header: "Summarization Tools"
   content: "• SIGHT (Demir et al., 2010): It is a tool to generate textual summaries\
     \ of information graphics. It conveys the underlying message along with the highlights\
     \ by using visual features. It's visual extraction module has been used (Greenbacker\
@@ -828,12 +260,12 @@ sectionList:
     \ Gigaword Corpus. It trains the system and then evaluates by using ROUGE score.•\
     \ GISTEXTER (Harabagiu et al., 2001) • SemanticSumm: It is a semantic29 approach\
     \ based summarization system which uses AMR graphs for creating summaries."
-- header: "Summarization Tools"
+- header: "Natural Language Generation Tools"
   content: "• SimpleNLG30 to generate the sentences (Genest & Lapalme, 2011).• FUF\
     \ or SURGE Language Generator31 : It is used to generate the sentences by fusing\
     \ and merging the phrases. FUF is a natural language generation tool which is\
     \ based on unification of grammars. SURGE is a comprehensive grammar set for FUF."
-- header: "Natural Language Generation Tools"
+- header: "Challenges and Future Direction"
   content: "Complexity of natural language processing poses a lot of challenges to\
     \ the abstractive text summarization. There are lot of open research problems\
     \ in this field which are yet to be solved. Few of the challenges in this field\
@@ -990,26 +422,7 @@ sectionList:
     \ used phrasebased compression and predicate-arguments using machine translation\
     \ process along with Integer Linear Programming respectively for sentence generation\
     \ of cross-language documents. More"
-- header: "Challenges and Future Direction"
-  content: "work is required in this field as the cross-language imposes extra complexity\
-    \ to the abstractive summarization because of the fact that not only conciseness,\
-    \ informativeness, and coherency is required but the quality of translation is\
-    \ also one important aspect which decides the quality of summary (Zhang et al.,\
-    \ 2016).• Need of Deep Learning Based Query Specific Abstractive Summarization\
-    \ Systems: Queryspecific problems are where the summaries highlight points relevant\
-    \ in the context of query and mostly extractive techniques have been applied to\
-    \ generate query-specific summaries but they suffer from the coherence problem\
-    \ and this probability of getting incoherent summary is very high in case of query-specific\
-    \ summarization problem as without knowing context and just connecting the sentences,\
-    \ it is hard to resolve the co-reference problem. (Baumel et al., 2018) used the\
-    \ deep learning as an approach to create query-specific abstractive summaries.\
-    \ (Nema et al., 2018) raised the issue of repeated phrases by using encoder-decoder\
-    \ based models while attempting to generate query-specific abstractive summaries.\
-    \ Most of the deep learning based abstractive models are applied for singledocument\
-    \ generic summarization. There are very few works which are available on query-specific\
-    \ multi-document summarization. More work on identifying the approaches to deal\
-    \ with this summarization is required."
-- header: "A C C E P T E D M A N U S C R I P T"
+- header: "Conclusion"
   content: "Abstractive summarization is an interesting topic of research among the\
     \ NLP community and helps produce coherent, concise, non-redundant and information\
     \ rich summaries. The idea of the paper is to present the recent studies and progresses\
@@ -1020,6 +433,3 @@ sectionList:
     \ in this field. Semantic analysis, and discourse analysis along with the new\
     \ emerging technologies like neural networks help overcome the difficulties associated\
     \ with the abstractive summarization. "
-- header: "Conclusion"
-  content: "PhD Cell, AKTU Lucknow,UP,India,Pin-226031 2 Associate Professor, BIET\
-    \ Jhansi,UP,India,Pin-284128"

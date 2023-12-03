@@ -3,7 +3,7 @@
  */
 package report.generation;
 
-import java.util.ArrayList;
+import javax.swing.text.Segment;
 
 public class App {
     // static String pdfPath = "paper/automatic-text-summarization-a-comprehensive-survey.pdf";
@@ -22,18 +22,23 @@ public class App {
         double engineGenerationTime = (engineGenerationEndTime - startTime)/1000000;
         System.out.println("[App] Engine generation time: " + engineGenerationTime );
         
-        // PDF Segmenation
+        /*
+         * Abstract parsing 
+         */
         
-        String pdfHeaderParseResult = PdfSegmentation.parseHeader(pdfPath);
-        Utility.printToFile(pdfHeaderParseResult, pdfSegOutputPath);
-        long pdfHeaderParseEndTime = System.nanoTime();
-        double pdfHeaderParseTime = (pdfHeaderParseEndTime - engineGenerationEndTime)/1000000;
-        System.out.println("[App] First PDF Header parse time = " + pdfHeaderParseTime);
+        // String pdfAbstract = PdfSegmentation.parseHeader(pdfPath);
+        // Utility.printToFile(pdfAbstract, pdfSegOutputPath);
+        // long pdfHeaderParseEndTime = System.nanoTime();
+        // double pdfHeaderParseTime = (pdfHeaderParseEndTime - engineGenerationEndTime)/1000000;
+        // System.out.println("[App] First PDF Header parse time = " + pdfHeaderParseTime);
 
+        /*
+         * PDF Segmentation
+         */
         String pdfSegResult = PdfSegmentation.pdfSegmenting(pdfPath);
         Utility.printToFile(pdfSegResult, pdfSegOutputPath);
         long pdfSegEndTime = System.nanoTime();
-        double pdfSegTime = (pdfSegEndTime - pdfHeaderParseEndTime)/1000000;
+        double pdfSegTime = (pdfSegEndTime - engineGenerationEndTime)/1000000;
         System.out.println("[App] First PDF Segmentation time = " + pdfSegTime);
 
         // String secondPdfSegResult = PdfSegmentation.pdfSegmenting(pdfPath);
@@ -41,7 +46,9 @@ public class App {
         // double secondPdfSegTime = (secondPdfSegEndTime - pdfSegEndTime)/1000000;
         // System.out.println("[App] Second PDF Segmentation time = " + secondPdfSegTime);
 
-        //XML Parsing
+        /*
+         * XML Parsing
+         */
         SectionList xmlParseResult = XMLParser.parseXML(pdfSegOutputPath);
         Utility.printToYamlFile(xmlParseResult, xmlParseOutputPath);
 
