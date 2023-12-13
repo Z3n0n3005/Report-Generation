@@ -10,12 +10,11 @@ import org.grobid.core.main.*;
 import org.grobid.core.utilities.*;
 import org.grobid.core.engines.*;
 import org.grobid.core.engines.config.GrobidAnalysisConfig;
-import org.grobid.core.engines.config.GrobidAnalysisConfig.GrobidAnalysisConfigBuilder;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.FileInputStream;
 import java.util.Arrays;
+import java.util.Properties;
 
 public class PdfSegmentation {
     private static Engine engine;
@@ -31,12 +30,10 @@ public class PdfSegmentation {
             //Have been found to can be speed up using multithreading, might learn GNU parallel
             tei = engine.fullTextToTEI(new File(pdfPath), analysisConfig);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
         result = tei;
-        // System.out.println("tei: " + tei);
 
         return result;
     }
@@ -52,9 +49,6 @@ public class PdfSegmentation {
             engine.processHeader(pdfPath, analysisConfig, resultBib);
             result = Engine.header2TEI(resultBib);
             System.out.println("[PdfSegmentation] resultBib: " + resultBib.toString());
-            // document.setResHeader(resultBib);
-            // result = engine.getAbstract(document);
-            // System.out.println("[PdfSegmentation] documentSource: " + result);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -65,10 +59,19 @@ public class PdfSegmentation {
         if(engine == null){
             try {
                 // String pGrobidHome = "C:\\Users\\DELL\\Prototype\\grobid-0.7.3\\grobid-home";
-                String pGrobidHome = "lib/grobid-0.7.3/grobid-home";
+                // Properties prop = new Properties();
+                // try{
+                //     prop.load(new FileInputStream("config.properties"));
+                // } catch(Exception e) {
+                //     e.printStackTrace();
+                // }
+
+                // String pGrobidHome = prop.getProperty("app.config");
+                String pGrobidHome = "app/src/main/java/report/generation/grobid-home";
 
                 // If the location is customised:
                 GrobidHomeFinder grobidHomeFinder = new GrobidHomeFinder(Arrays.asList(pGrobidHome));
+                // grobidHomeFinder = new GrobidHomeFinder();
 
                 // The grobid yaml config file needs to be instantiate using the correct
                 // grobidHomeFinder or it will use the default
@@ -78,7 +81,6 @@ public class PdfSegmentation {
                 System.out.println("[PdfSegmentation] >>>>>>>> GROBID_HOME=" + GrobidProperties.getGrobidHome());
 
                 engine = GrobidFactory.getInstance().createEngine(true);
-                // engine = GrobidFactory.getInstance().createEngine(false);
                 analyzer = GrobidAnalyzer.getInstance();
                 
 
@@ -87,10 +89,7 @@ public class PdfSegmentation {
                     .withSentenceSegmentation(false)
                     .withPreprocessImages(false)
                     .withProcessVectorGraphics(false)
-                    // .consolidateCitations(10)
-                    // .consolidateHeader(10)
                     .build();
-                // analysisConfig = GrobidAnalysisConfig
                 
             } catch (Exception e) {
                 e.printStackTrace();

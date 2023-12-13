@@ -3,57 +3,71 @@
  */
 package report.generation;
 
-import javax.swing.text.Segment;
-
 public class App {
-    // static String pdfPath = "paper/automatic-text-summarization-a-comprehensive-survey.pdf";
-    static String pdfPath = "paper/abstractive-summarization-an-overview-of-the-state-of-the-art.pdf";
+    static String pdfPath = "paper/automatic-text-summarization-a-comprehensive-survey.pdf";
+    // static String pdfPath = "paper/abstractive-summarization-an-overview-of-the-state-of-the-art.pdf";
     static String pdfSegOutputPath = "output/grobid-output.xml";
-    static String xmlParseOutputPath = "output/xml-parse-output.yaml";
+    static String yamlParseOutputPath = "output/xml-parse-output.yaml";
 
     public static void main(String[] args) {
+        
         System.out.println("[App] Start timing");
         long startTime = System.nanoTime();
-        
-        // Engine generation
+
+        long startTimeGenerateEngine = System.nanoTime();
         PdfSegmentation.generateEngine();
-
-        long engineGenerationEndTime = System.nanoTime();
-        double engineGenerationTime = (engineGenerationEndTime - startTime)/1000000;
+        long endTimeGenerateEngine = System.nanoTime();
+        double engineGenerationTime = (endTimeGenerateEngine - startTimeGenerateEngine)/1000000;
         System.out.println("[App] Engine generation time: " + engineGenerationTime );
-        
-        /*
-         * Abstract parsing 
-         */
-        
-        // String pdfAbstract = PdfSegmentation.parseHeader(pdfPath);
-        // Utility.printToFile(pdfAbstract, pdfSegOutputPath);
-        // long pdfHeaderParseEndTime = System.nanoTime();
-        // double pdfHeaderParseTime = (pdfHeaderParseEndTime - engineGenerationEndTime)/1000000;
-        // System.out.println("[App] First PDF Header parse time = " + pdfHeaderParseTime);
-
-        /*
-         * PDF Segmentation
-         */
-        String pdfSegResult = PdfSegmentation.pdfSegmenting(pdfPath);
-        Utility.printToFile(pdfSegResult, pdfSegOutputPath);
-        long pdfSegEndTime = System.nanoTime();
-        double pdfSegTime = (pdfSegEndTime - engineGenerationEndTime)/1000000;
-        System.out.println("[App] First PDF Segmentation time = " + pdfSegTime);
-
-        // String secondPdfSegResult = PdfSegmentation.pdfSegmenting(pdfPath);
-        // long secondPdfSegEndTime = System.nanoTime();
-        // double secondPdfSegTime = (secondPdfSegEndTime - pdfSegEndTime)/1000000;
-        // System.out.println("[App] Second PDF Segmentation time = " + secondPdfSegTime);
-
-        /*
-         * XML Parsing
-         */
-        SectionList xmlParseResult = XMLParser.parseXML(pdfSegOutputPath);
-        Utility.printToYamlFile(xmlParseResult, xmlParseOutputPath);
+        // App.generateEngine();
+        App.pdfSegmenting();
+        App.parseXML();
+        // app.parseYAML();
 
         long endTime = System.nanoTime();
         double totalTime = (endTime - startTime)/1000000;
         System.out.println("[App] Time elapsed = " + totalTime);
+    }
+
+    private static void generateEngine(){
+        long startTimeGenerateEngine = System.nanoTime();
+        PdfSegmentation.generateEngine();
+        long endTimeGenerateEngine = System.nanoTime();
+        double engineGenerationTime = (endTimeGenerateEngine - startTimeGenerateEngine)/1000000;
+        System.out.println("[App] Engine generation time: " + engineGenerationTime );
+    }
+
+    private static void abstractParsing(){
+        long startTimeAbstractParse = System.nanoTime();
+        String pdfAbstract = PdfSegmentation.parseHeader(pdfPath);
+        Utility.printToFile(pdfAbstract, pdfSegOutputPath);
+        long endTimeAbstractParse = System.nanoTime();
+        double pdfHeaderParseTime = (endTimeAbstractParse - startTimeAbstractParse)/1000000;
+        System.out.println("[App] First PDF Header parse time = " + pdfHeaderParseTime);
+    }
+    private static void pdfSegmenting(){
+        long startTimePDFSeg = System.nanoTime();
+        String pdfSegResult = PdfSegmentation.pdfSegmenting(pdfPath);
+        Utility.printToFile(pdfSegResult, pdfSegOutputPath);
+        long endTimePDFSeg = System.nanoTime();
+        double pdfSegTime = (endTimePDFSeg - startTimePDFSeg)/1000000;
+        System.out.println("[App] First PDF Segmentation time = " + pdfSegTime);
+    }
+
+    private static void parseXML(){
+        long startTimeXMLParse = System.nanoTime();
+        SectionList xmlParseResult = XMLParser.parseXML(pdfSegOutputPath);
+        Utility.printToYamlFile(xmlParseResult, yamlParseOutputPath);
+        long endTimeXMLParse = System.nanoTime();
+        double xmlParseTime = (endTimeXMLParse - startTimeXMLParse)/1000000;
+        System.out.println("[App] XML Parsing time = " + xmlParseTime);
+    }
+
+    private static void parseYAML(){
+        // long startTimeYAMLParse = System.nanoTime();
+        // YAMLParser.parseYAML(yamlParseOutputPath);
+        // long yamlParseEndTime = System.nanoTime();
+        // double yamlParseTime = (yamlParseEndTime - startTimeYAMLParse)/1000000;
+        // System.out.println("[App] YAML Parsing time = " + yamlParseTime);
     }
 }

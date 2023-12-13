@@ -5,10 +5,16 @@
  * For more details take a look at the 'Building Java & JVM projects' chapter in the Gradle
  * User Manual available at https://docs.gradle.org/8.0.2/userguide/building_java_projects.html
  */
+// if(JavaVersion.current() != JavaVersion.VERSION_1_8){
+//     throw new GradleException("This build must be run with java 21")
+// }
 
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id 'java'
+    
+    // id "com.github.johnrengelman.shadow"
 }
 
 repositories {
@@ -33,6 +39,10 @@ dependencies {
     implementation "com.fasterxml.jackson.module:jackson-module-afterburner:2.10.1"
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.10.1'
     implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.10.1"
+
+    // opennlp
+    implementation group: 'org.apache.opennlp', name: 'opennlp-tools', version: '2.3.1'
+
 }
 
 application {
@@ -43,4 +53,18 @@ application {
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+jar{
+    manifest {
+        attributes(
+                'Main-Class': 'report.generation.App'
+        )
+    }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
