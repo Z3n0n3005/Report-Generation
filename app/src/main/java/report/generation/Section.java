@@ -8,4 +8,8 @@ public class Section {
         this.header = header;
         this.content = content;
     }
+
+    public Section(){
+        super();
+    }
 }

@@ -6,6 +6,9 @@ import org.grobid.core.layout.PDFAnnotation;
 import org.grobid.core.layout.LayoutToken;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -19,6 +22,8 @@ import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+@RunWith(PowerMockRunner.class)
+@PowerMockIgnore({"com.sun.org.apache.xerces.*", "javax.xml.*", "org.xml.*", "javax.management.*"})
 public class PDFALTOAnnotationSaxParserTest {
     SAXParserFactory spf = SAXParserFactory.newInstance();
 
@@ -47,6 +52,7 @@ public class PDFALTOAnnotationSaxParserTest {
         assertTrue(pdfAnnotations.size() > 0);
         assertThat(pdfAnnotations, hasSize(520));
 
+        // assertTrue(true);
 		
     }
 

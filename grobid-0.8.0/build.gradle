@@ -181,17 +181,45 @@ subprojects {
             "--add-opens", "java.base/java.io=ALL-UNNAMED", "--add-opens", "java.xml/jdk.xml.internal=ALL-UNNAMED"
         }
         systemProperty "java.library.path","${System.getProperty('java.library.path')}:" + libraries
+
+        jvmArgs([
+            "--add-opens", "java.base/java.lang=ALL-UNNAMED",
+            "--add-opens","java.logging/java.util.logging=ALL-UNNAMED",
+            "--add-opens","java.base/java.time.zone=ALL-UNNAMED",
+            "--add-opens","java.base/java.lang.reflect=ALL-UNNAMED",
+            "--add-opens","java.base/java.security.cert=ALL-UNNAMED",
+            "--add-opens","java.base/java.text=ALL-UNNAMED",
+            "--add-opens","java.base/java.net=ALL-UNNAMED",
+            "--add-opens","java.base/java.nio.charset=ALL-UNNAMED",
+            "--add-opens","java.base/java.nio.file=ALL-UNNAMED",
+            "--add-opens","java.base/sun.nio.fs=ALL-UNNAMED",
+            "--add-opens","java.base/sun.security.x509=ALL-UNNAMED",
+            "--add-opens","java.base/java.util.regex=ALL-UNNAMED",
+            "--add-opens","java.base/java.util.stream=ALL-UNNAMED",
+            "--add-opens","java.base/java.util.concurrent=ALL-UNNAMED",
+            "--add-opens","java.base/java.util.concurrent.atomic=ALL-UNNAMED",
+            "--add-opens","java.base/java.util.concurrent.locks=ALL-UNNAMED",
+            "--add-opens","java.base/java.time=ALL-UNNAMED",
+            "--add-opens","java.base/java.util=ALL-UNNAMED",
+            "--add-opens","java.base/java.io=ALL-UNNAMED",
+            "--add-opens","java.base/java.lang=ALL-UNNAMED"
+        ])
     }
 }
 
 /** SUBPROJECTS **/
-
 project("grobid-core") {
     apply plugin: 'com.github.johnrengelman.shadow'
     apply plugin: 'jacoco'
 
     configurations {
         shadedLib
+    }
+
+    compileJava {
+        options.fork = true
+        // options.forkOptions.executable = 'javac'
+        options.forkOptions.jvmArgs = ["--add-opens", "java.base/java.lang=ALL-UNNAMED"]
     }
 
     dependencies {

@@ -67,18 +67,18 @@ public class PdfSegmentation {
                 // }
 
                 // String pGrobidHome = prop.getProperty("app.config");
-                String pGrobidHome = "app/src/main/java/report/generation/grobid-home";
+                // String pGrobidHome = "/media/vy/vy/prototype/Report-Generation/grobid-0.8.0/grobid-home";
+                String pGrobidHome2 = "../grobid-0.8.0/grobid-home";
 
                 // If the location is customised:
-                GrobidHomeFinder grobidHomeFinder = new GrobidHomeFinder(Arrays.asList(pGrobidHome));
+                GrobidHomeFinder grobidHomeFinder = new GrobidHomeFinder(Arrays.asList(pGrobidHome2));
+                
                 // grobidHomeFinder = new GrobidHomeFinder();
 
                 // The grobid yaml config file needs to be instantiate using the correct
                 // grobidHomeFinder or it will use the default
                 // locations
                 GrobidProperties.getInstance(grobidHomeFinder);
-
-                System.out.println("[PdfSegmentation] >>>>>>>> GROBID_HOME=" + GrobidProperties.getGrobidHome());
 
                 engine = GrobidFactory.getInstance().createEngine(true);
                 analyzer = GrobidAnalyzer.getInstance();

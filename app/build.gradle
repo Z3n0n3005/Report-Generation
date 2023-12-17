@@ -13,35 +13,52 @@ plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
     id 'java'
-    
-    // id "com.github.johnrengelman.shadow"
+}
+
+configurations {
+    grobidHomeDir
+}
+
+compileJava {
+    options.fork = true
+    // doFirst {
+    //     options.compilerArgs = options.compilerArgs ?: []
+    //     options.compilerArgs += ["-classpath", configurations.grobidHomeDir.join(':')]
+    // }
 }
 
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
     maven { url "https://grobid.s3.eu-west-1.amazonaws.com/repo/" }
+    flatDir{
+        dirs '../grobid-0.8.0/grobid-home/build/libs', '../grobid-0.8.8/grobid-core/build/libs'
+    }
 }
 
 dependencies {
+    implementation 'org.grobid:grobid-core:0.8.0'
+    implementation 'org.grobid:grobid-trainer:0.8.0'
+
+    implementation 'xml-apis:xml-apis:1.0.b2'
     // Use JUnit Jupiter for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.1-jre'
 
-    implementation 'org.grobid:grobid-core:0.7.3'
-    implementation 'org.grobid:grobid-trainer:0.7.3'
+    // implementation 'org.grobid:grobid-core:0.7.3'
+    // implementation 'org.grobid:grobid-trainer:0.7.3'
 
     // implementation group: 'org.yaml', name: 'snakeyaml', version: '1.8'
-    implementation "com.fasterxml.jackson.core:jackson-core:2.10.1"
-    implementation "com.fasterxml.jackson.core:jackson-databind:2.10.1"
-    implementation "com.fasterxml.jackson.module:jackson-module-afterburner:2.10.1"
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.10.1'
-    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.10.1"
-
+    implementation "com.fasterxml.jackson.core:jackson-core:2.14.3"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.14.3"
+    implementation "com.fasterxml.jackson.module:jackson-module-afterburner:2.14.3"
+    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.14.3"
     // opennlp
     implementation group: 'org.apache.opennlp', name: 'opennlp-tools', version: '2.3.1'
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-math3
+    implementation 'org.apache.commons:commons-math3:3.6.1'
 
 }
 
@@ -58,7 +75,7 @@ tasks.named('test') {
 jar{
     manifest {
         attributes(
-                'Main-Class': 'report.generation.App'
+            'Main-Class': 'report.generation.App',
         )
     }
 }
@@ -67,4 +84,12 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
     }
+}
+
+tasks.distTar {
+    duplicatesStrategy = 'EXCLUDE' // or 'EXCLUDE', 'WARN', etc. Choose the appropriate strateg
+}
+
+tasks.distZip {
+    duplicatesStrategy = 'EXCLUDE' // or 'EXCLUDE', 'WARN', etc. Choose the appropriate strateg
 }

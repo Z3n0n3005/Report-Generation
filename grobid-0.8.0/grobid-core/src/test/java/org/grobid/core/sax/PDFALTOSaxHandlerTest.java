@@ -6,6 +6,9 @@ import org.grobid.core.layout.GraphicObject;
 import org.grobid.core.layout.LayoutToken;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -21,6 +24,8 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+@RunWith(PowerMockRunner.class)
+@PowerMockIgnore({"com.sun.org.apache.xerces.*", "javax.xml.*", "org.xml.*", "javax.management.*"})
 public class PDFALTOSaxHandlerTest {
     SAXParserFactory spf = SAXParserFactory.newInstance();
 
@@ -53,6 +58,7 @@ public class PDFALTOSaxHandlerTest {
         assertTrue(images.size() == 0);
         assertTrue(document.getPages().size() == 4);
         assertTrue(document.getBlocks().size() == 26);
+        // assert(true);
     }
 
     @Test
@@ -69,6 +75,7 @@ public class PDFALTOSaxHandlerTest {
         assertThat(document.getImages().size(), is(16));
         assertTrue(document.getPages().size() == 4);
         assertThat(document.getBlocks().size(), is(26));
+        // assert(true);
     }
 
     @Test
@@ -139,6 +146,7 @@ public class PDFALTOSaxHandlerTest {
         assertThat(tokenList.get(39).isSuperscript(), is(true));
         assertThat(tokenList.get(39).getBold(), is(false));
         assertThat(tokenList.get(39).getItalic(), is(true));
+        // assertTrue(true);
     }
 
 }

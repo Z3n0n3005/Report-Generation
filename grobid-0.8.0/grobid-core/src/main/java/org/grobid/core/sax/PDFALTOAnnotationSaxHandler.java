@@ -22,6 +22,7 @@ import java.util.*;
  * of annotations (e.g. highlight) are ignored. 
  * 
  */
+
 public class PDFALTOAnnotationSaxHandler extends DefaultHandler {
 	public static final Logger LOGGER = LoggerFactory.getLogger(PDFALTOAnnotationSaxHandler.class);
 	

@@ -3,26 +3,30 @@
  */
 package report.generation;
 
-public class App {
-    static String pdfPath = "paper/automatic-text-summarization-a-comprehensive-survey.pdf";
-    // static String pdfPath = "paper/abstractive-summarization-an-overview-of-the-state-of-the-art.pdf";
-    static String pdfSegOutputPath = "output/grobid-output.xml";
-    static String yamlParseOutputPath = "output/xml-parse-output.yaml";
+import java.io.IOException;
 
-    public static void main(String[] args) {
+import opennlp.tools.util.StringList;
+import report.generation.summarization.LSA;
+
+public class App {
+    static String projectPath = System.getProperty("user.dir");
+    static String pdfPath = "../paper/automatic-text-summarization-a-comprehensive-survey.pdf";
+    // static String pdfPath = "paper/abstractive-summarization-an-overview-of-the-state-of-the-art.pdf";
+    static String pdfSegOutputPath = "../output/grobid-output.xml";
+    static String yamlParseOutputPath = "../output/xml-parse-output.yaml";
+    static SectionList sectionListAfterParse;
+
+    public static void main(String[] args) throws IOException {
         
         System.out.println("[App] Start timing");
+        System.out.println(projectPath);
         long startTime = System.nanoTime();
 
-        long startTimeGenerateEngine = System.nanoTime();
-        PdfSegmentation.generateEngine();
-        long endTimeGenerateEngine = System.nanoTime();
-        double engineGenerationTime = (endTimeGenerateEngine - startTimeGenerateEngine)/1000000;
-        System.out.println("[App] Engine generation time: " + engineGenerationTime );
         // App.generateEngine();
-        App.pdfSegmenting();
-        App.parseXML();
-        // app.parseYAML();
+        // App.pdfSegmenting();
+        // App.parseXML();
+        App.parseYAML();
+        App.summarizeSegments();
 
         long endTime = System.nanoTime();
         double totalTime = (endTime - startTime)/1000000;
@@ -64,10 +68,19 @@ public class App {
     }
 
     private static void parseYAML(){
-        // long startTimeYAMLParse = System.nanoTime();
-        // YAMLParser.parseYAML(yamlParseOutputPath);
-        // long yamlParseEndTime = System.nanoTime();
-        // double yamlParseTime = (yamlParseEndTime - startTimeYAMLParse)/1000000;
-        // System.out.println("[App] YAML Parsing time = " + yamlParseTime);
+        long startTimeYAMLParse = System.nanoTime();
+        sectionListAfterParse = YAMLParser.parseYAML(yamlParseOutputPath);
+        long yamlParseEndTime = System.nanoTime();
+        double yamlParseTime = (yamlParseEndTime - startTimeYAMLParse)/1000000;
+        System.out.println("[App] YAML Parsing time = " + yamlParseTime);
+    }
+
+    private static void summarizeSegments() throws IOException{
+        long startTimeSummarize = System.nanoTime();
+        String temp = LSA.summarize(sectionListAfterParse.abstractSeg, 0);
+        System.out.println(temp);
+        long endTimeSummarize = System.nanoTime();
+        double summarizeTime = (endTimeSummarize - startTimeSummarize)/1000000;
+        System.out.println("[App] Summarization time = " + summarizeTime);
     }
 }
