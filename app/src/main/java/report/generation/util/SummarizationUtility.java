@@ -1,4 +1,4 @@
-package report.generation.summarization;
+package report.generation.util;
 
 import opennlp.tools.tokenize.SimpleTokenizer;
 import opennlp.tools.util.StringList;

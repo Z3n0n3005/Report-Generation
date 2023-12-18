@@ -1,4 +1,4 @@
-package report.generation;
+package report.generation.segmentation;
 
 import java.util.ArrayList;
 
@@ -27,4 +27,17 @@ public class SectionList {
         }
         return result;
     }
+    
+    public ArrayList<Section> getSectionList(){
+        return sectionList;
+    }
+
+    public Section getSection(int index){
+        return getSectionList().get(index);
+    }
+
+    public String getAbstractSeg(){
+        return abstractSeg;
+    }
+
 }

@@ -16,11 +16,12 @@ import opennlp.tools.sentdetect.SentenceModel;
 import opennlp.tools.tokenize.SimpleTokenizer;
 import opennlp.tools.util.StringList;
 
-import report.generation.*;
+import report.generation.util.Utility;
 
 public class NGram {
 	File stopwordFile = new File("./build/resources/stopwords.txt");
-	File modelFile = new File("../models/en-sent.bin");
+	// File modelFile = new File("../models/en-sent.bin");
+    File modelFile = new File("../models/opennlp-en-ud-ewt-sentence-1.0-1.9.3.bin");
     private NGramModel model;
     private String[] sentences;
     private String text;
@@ -127,6 +128,7 @@ public class NGram {
     public void generate(StringList list, int num) {
         this.model = new NGramModel();
         this.model.add(list, num, num);
+        // print();
     }
 
     public void print() {
@@ -177,9 +179,8 @@ public class NGram {
                 }
             }
         }
-        }
+    }
 
-    
     /**
      * This method is to break the whole text into list of sentences
      * @return the list of sentences 
@@ -197,7 +198,11 @@ public class NGram {
         this.sentences = sd.sentDetect(this.text);
     }
     
-    
+    public void printSentence(){
+        for(String sentence: sentences){
+            System.out.println(sentence);
+        }
+    }
 
     /**
      * This method is to search the presentation of the word in sentence

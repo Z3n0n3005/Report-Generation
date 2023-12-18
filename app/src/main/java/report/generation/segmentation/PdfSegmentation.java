@@ -1,4 +1,4 @@
-package report.generation;
+package report.generation.segmentation;
 
 import org.grobid.core.*;
 import org.grobid.core.analyzers.GrobidAnalyzer;
@@ -22,6 +22,11 @@ public class PdfSegmentation {
     // private final EngineParsers parser = new EngineParsers();
     private static GrobidAnalysisConfig analysisConfig;
 
+    /**
+     * Dissect the provided pdf into an TEI XML file
+     * @param pdfPath the path to the pdf
+     * @return result
+     */
     public static String pdfSegmenting(String pdfPath) {
         String result;
         String tei = "";
@@ -34,7 +39,6 @@ public class PdfSegmentation {
         }
 
         result = tei;
-
         return result;
     }
     
@@ -55,19 +59,12 @@ public class PdfSegmentation {
         return result;
     }
 
+    /**
+     * Generate the engine for Grobid with the included path to the grobid-home
+     */
     public static void generateEngine(){
         if(engine == null){
             try {
-                // String pGrobidHome = "C:\\Users\\DELL\\Prototype\\grobid-0.7.3\\grobid-home";
-                // Properties prop = new Properties();
-                // try{
-                //     prop.load(new FileInputStream("config.properties"));
-                // } catch(Exception e) {
-                //     e.printStackTrace();
-                // }
-
-                // String pGrobidHome = prop.getProperty("app.config");
-                // String pGrobidHome = "/media/vy/vy/prototype/Report-Generation/grobid-0.8.0/grobid-home";
                 String pGrobidHome2 = "../grobid-0.8.0/grobid-home";
 
                 // If the location is customised:
@@ -76,15 +73,12 @@ public class PdfSegmentation {
                 // grobidHomeFinder = new GrobidHomeFinder();
 
                 // The grobid yaml config file needs to be instantiate using the correct
-                // grobidHomeFinder or it will use the default
-                // locations
+                // grobidHomeFinder or it will use the default locations
                 GrobidProperties.getInstance(grobidHomeFinder);
 
                 engine = GrobidFactory.getInstance().createEngine(true);
                 analyzer = GrobidAnalyzer.getInstance();
                 
-
-                // analysisConfig = GrobidAnalysisConfig.defaultInstance();
                 analysisConfig = GrobidAnalysisConfig.builder()    
                     .withSentenceSegmentation(false)
                     .withPreprocessImages(false)

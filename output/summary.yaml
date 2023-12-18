@@ -1,0 +1,48 @@
+---
+abstractSeg: "Summarization techniques, on the basis of whether the exact sentences\
+  \ are considered as they appear in the original text or new sentences are generated\
+  \ using natural language processing techniques, are categorized into extractive\
+  \ and abstractive techniques."
+sectionList:
+- header: "Introduction"
+  content: "The exponential growth of information due to the popularity of web environment\
+    \ has lead to the need of automatic summarization in order to reduce the effort\
+    \ and time while finding the concise and relevant information according to the\
+    \ query."
+- header: "Existing Approaches to"
+  content: "Whereas Semantic-based approaches are those which take the text document\
+    \ as input, create the semantic representation of text and then feed this representation\
+    \ to Natural Language Generation system to create the final abstractive summary."
+- header: "Generating the Abstractive Summaries"
+  content: "They used the bidirectional encoder with GRU(Gatted Recurrent Unit, used\
+    \ to solve the vanishing and exploding gradient problems)-RNN and unidirectional\
+    \ decoder with GRU-RNN They used the attention model on the hidden-states of source\
+    \ and softmax layer on the target."
+- header: "Tools Used and Developed"
+  content: "It involves morphological and syntactic transformations.• Evaluation:\
+    \ Here the paragraphs are ranked and sorted according to various factors like\
+    \ coherence between the sentences, most frequently used word synonyms, etc.To\
+    \ summarize the works done in this field of research, we have listed them in the\
+    \ tabular form in Table 5 in page 24 which lists down the author name, Evaluation\
+    \ measure used, dataset used, and type of abstractive summary created.From our\
+    \ survey, we have found that most of the abstractive summarization systems consist\
+    \ of 3 steps namely pre-processing, inferencing and Natural Language Generation."
+- header: "Summarization Tools"
+  content: "The system first identifies the relevant sentences on the basis of surface\
+    \ linguistic analysis, redundancy detection by using Textual entailment tool,\
+    \ topic identification by using TF-IDF and relevance detection by code quantity\
+    \ principle; then the information compression and fusion is performed to generate\
+    \ the abstractive summaries."
+- header: "Natural Language Generation Tools"
+  content: "FUF or SURGE Language Generator31 : It is used to generate the sentences\
+    \ by fusing and merging the phrases."
+- header: "Challenges and Future Direction"
+  content: "Few of the challenges in this field are listed down as below:On the basis\
+    \ of whether the evaluation is performed by comparing the results obtained by\
+    \ using some automatic method executed by the system or by comparing the results\
+    \ obtained by people assessment, the evaluation techniques are divided into: quantitative\
+    \ and qualitative."
+- header: "Conclusion"
+  content: "Abstractive summarization is an interesting topic of research among the\
+    \ NLP community and helps produce coherent, concise, non-redundant and information\
+    \ rich summaries."

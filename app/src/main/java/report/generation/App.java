@@ -6,15 +6,19 @@ package report.generation;
 import java.io.IOException;
 
 import opennlp.tools.util.StringList;
-import report.generation.summarization.LSA;
+import report.generation.segmentation.*;
+import report.generation.summarization.*;
+import report.generation.util.*;
 
 public class App {
     static String projectPath = System.getProperty("user.dir");
-    static String pdfPath = "../paper/automatic-text-summarization-a-comprehensive-survey.pdf";
-    // static String pdfPath = "paper/abstractive-summarization-an-overview-of-the-state-of-the-art.pdf";
+    // static String pdfPath = "../paper/automatic-text-summarization-a-comprehensive-survey.pdf";
+    static String pdfPath = "../paper/abstractive-summarization-an-overview-of-the-state-of-the-art.pdf";
     static String pdfSegOutputPath = "../output/grobid-output.xml";
     static String yamlParseOutputPath = "../output/xml-parse-output.yaml";
+    static String yamlSummaryPath = "../output/summary.yaml";
     static SectionList sectionListAfterParse;
+    static SectionList sectionListSummary;
 
     public static void main(String[] args) throws IOException {
         
@@ -22,9 +26,9 @@ public class App {
         System.out.println(projectPath);
         long startTime = System.nanoTime();
 
-        // App.generateEngine();
-        // App.pdfSegmenting();
-        // App.parseXML();
+        App.generateEngine();
+        App.pdfSegmenting();
+        App.parseXML();
         App.parseYAML();
         App.summarizeSegments();
 
@@ -77,10 +81,22 @@ public class App {
 
     private static void summarizeSegments() throws IOException{
         long startTimeSummarize = System.nanoTime();
-        String temp = LSA.summarize(sectionListAfterParse.abstractSeg, 0);
-        System.out.println(temp);
+
+        // String abstractStr = sectionListAfterParse.getAbstractSeg();
+        // String firstSectionContent = sectionListAfterParse.getSection(0).getContent();
+        // String abstractSummary = LSA.summarize(abstractStr, 1);
+        // String firstSectionSummary = LSA.summarize(firstSectionContent, 1);
+
+        // System.out.println(firstSectionContent);
+        // System.out.println(firstSectionSummary);
+        // System.out.println(abstractSummary);
+
+        sectionListSummary = SegmentSummarization.summarizeSegmentsLSA(sectionListAfterParse, 1);
+        Utility.printToYamlFile(sectionListSummary, yamlSummaryPath);
+        System.out.println(sectionListSummary.toString());
+
         long endTimeSummarize = System.nanoTime();
-        double summarizeTime = (endTimeSummarize - startTimeSummarize)/1000000;
+        double summarizeTime = (endTimeSummarize - startTimeSummarize)/10000000;
         System.out.println("[App] Summarization time = " + summarizeTime);
     }
 }

@@ -1,4 +1,4 @@
-package report.generation;
+package report.generation.segmentation;
 
 public class Section {
     public String header; 
@@ -11,5 +11,13 @@ public class Section {
 
     public Section(){
         super();
+    }
+
+    public String getHeader(){
+        return header;
+    }
+
+    public String getContent(){
+        return content;
     }
 }

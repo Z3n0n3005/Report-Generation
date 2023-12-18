@@ -5,6 +5,8 @@ import java.io.File;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
+import report.generation.segmentation.SectionList;
+
 public interface YAMLParser {
     public static SectionList parseYAML(String filePath) {
         System.out.println("[YAMLParser] parseYAML");

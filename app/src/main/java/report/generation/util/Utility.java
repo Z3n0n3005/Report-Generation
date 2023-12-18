@@ -1,4 +1,4 @@
-package report.generation;
+package report.generation.util;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,6 +15,8 @@ import com.fasterxml.jackson.annotation.JsonFormat.Feature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+
+import report.generation.segmentation.SectionList;
 
 public class Utility {
     public static void printToFile(String text, String filepath){
@@ -83,7 +85,6 @@ public class Utility {
         }
 
     }
-
 	
 	public static String readFile(File file) throws IOException {
 		String text = "";
@@ -91,6 +92,7 @@ public class Utility {
 		while(scan.hasNextLine()) {
 			text += scan.nextLine()+"\n";
 		}
+        scan.close();
 		return text;
 	}
 }

@@ -31,14 +31,34 @@ public class LSA {
         }
     }
 
+    /**
+     * Summarize the provided text using LSA
+     * @param text that needs to be summarized
+     * @param k the number of sentences
+     * @return the summary of text
+     */
     public static String summarize(String text, int k) throws IOException {
         String summary = "";
         NGram ngram = new NGram();
         StringList list = ngram.tokenize(text);
         ngram.generate(list, 1);
+        // ngram.printList();
         ngram.filterStopWords();
+        // ngram.printList();
         ngram.sort();
+        // ngram.printList();
         ngram.getSentenceUsingModel(text);
+        // ngram.printSentence();
+
+        // Check if the number of sentence of the provided text 
+        // is not shorter than k 
+        if(ngram.getSentences().length <= k){
+            for (String sentence : ngram.getSentences()) {
+                summary = summary.concat(" ").concat(sentence).trim();
+            }
+
+            return summary;
+        } 
 
         Matrix docMat = new Matrix(ngram.getList().size(), ngram.getSentences().length);
     
@@ -48,6 +68,8 @@ public class LSA {
                 docMat.add(ngram.getList().indexOf(node), i, ngram.countWords(node.getWord(), ngram.getSentences()[i]));
             }
         }
+
+        // docMat.show();
 
         //Create RealMatrix
         RealMatrix mat = MatrixUtils.createRealMatrix(docMat.data);
@@ -64,16 +86,21 @@ public class LSA {
         RealMatrix Ap = Sp.multiply(Vp);
         List<String> setSummarySentences = new ArrayList<String>();
 
+        // System.out.println("[LSA] max entry AP: " + maxEntry(Ap));
+        // System.out.println("[LSA]");
+
         for (int i = 0; i <= Ap.getRowDimension() - 1; i++) {
             for (int j = 0; j <= Ap.getColumnDimension() - 1; j++) {
                 if (Ap.getEntry(i, j) >= maxEntry(Ap) / 2.5 && !setSummarySentences.contains(ngram.getSentences()[j])) {
                     setSummarySentences.add(ngram.getSentences()[j]);
                 }
                 if (setSummarySentences.size() == k) {
+                    // System.out.println("[LSA] Has reached sentence number limit");
                     break;
                 }
             }
         }
+        // System.out.println(setSummarySentences);
         for (String string : setSummarySentences) {
             summary = summary.concat(" ").concat(string).trim();
         }
