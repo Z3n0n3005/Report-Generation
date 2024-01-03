@@ -9,6 +9,7 @@
 //     throw new GradleException("This build must be run with java 21")
 // }
 
+
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
@@ -92,4 +93,13 @@ tasks.distTar {
 
 tasks.distZip {
     duplicatesStrategy = 'EXCLUDE' // or 'EXCLUDE', 'WARN', etc. Choose the appropriate strateg
+}
+
+run {
+    // Accessing the parameter passed through command line
+    def filePathFromParam = project.hasProperty('file') ? file : 'Not available';
+
+    if(filePathFromParam){
+        systemProperty "file", filePathFromParam
+    }
 }

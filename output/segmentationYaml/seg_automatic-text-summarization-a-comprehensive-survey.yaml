@@ -1,0 +1,1039 @@
+---
+abstractSeg: "Text summarization evaluation a b s t r a c t Automatic Text Summarization\
+  \ (ATS) is becoming much more important because of the huge amount of textual content\
+  \ that grows exponentially on the Internet and the various archives of news articles,\
+  \ scientific papers, legal documents, etc. Manual text summarization consumes a\
+  \ lot of time, effort, cost, and even becomes impractical with the gigantic amount\
+  \ of textual content. Researchers have been trying to improve ATS techniques since\
+  \ the 1950s. ATS approaches are either extractive, abstractive, or hybrid. The extractive\
+  \ approach selects the most important sentences in the input document(s) then concatenates\
+  \ them to form the summary. The abstractive approach represents the input document(s)\
+  \ in an intermediate representation then generates the summary with sentences that\
+  \ are different than the original sentences. The hybrid approach combines both the\
+  \ extractive and abstractive approaches. Despite all the proposed methods, the generated\
+  \ summaries are still far away from the human-generated summaries. Most researches\
+  \ focus on the extractive approach. It is required to focus more on the abstractive\
+  \ and hybrid approaches. This research provides a comprehensive survey for the researchers\
+  \ by presenting the different aspects of ATS: approaches, methods, building blocks,\
+  \ techniques, datasets, evaluation methods, and future research directions.Ó 2020\
+  \ Elsevier Ltd. All rights reserved."
+sectionList:
+- header: "Introduction"
+  content: "The web resources on the Internet (e.g. websites, user reviews, news,\
+    \ blogs, social media networks, etc.) are gigantic sources of textual data. Besides,\
+    \ there is a wealth of textual content on the various archives of news articles,\
+    \ novels, books, legal documents, biomedical documents, scientific papers, etc.\
+    \ The textual content on the Internet and other archives grow exponentially on\
+    \ a daily basis. As a result, users consume a lot of time to find the information\
+    \ they are looking for. They cannot even read and comprehend all the textual content\
+    \ of search results. There are many repeated or unimportant portions of the resulting\
+    \ texts. Therefore, summarizing and condensing the text resources becomes urgent\
+    \ and much more important. Manual summarization is an expensive task and consumes\
+    \ a lot of time and effort. Practically, it is very difficult for humans to manually\
+    \ summarize this huge amount of textual data (Vilca & Cabezudo, 2017). The Automatic\
+    \ Text Summarization (ATS) is the key solution to this dilemma.The main objective\
+    \ of an ATS system is to produce a summary that includes the main ideas in the\
+    \ input document in less space (Radev, Hovy, & McKeown, 2002) and to keep repetition\
+    \ to a minimum (Moratanch & Chitrakala, 2017). The ATS systems help the users\
+    \ to get the main points of the original document without the need to read the\
+    \ entire document (Nazari & Mahdavi, 2019). The users will benefit from the automatically\
+    \ produced summaries and they will save a lot of time and effort. In Maybury (1995),\
+    \ Maybury defined the automated summary as follows: ''An effective summary distills\
+    \ the most important information from a source (or sources) to produce an abridged\
+    \ version of the original information for a particular user(s) and task(s)\".\
+    \ In Radev et al. (2002), Radev et al. also defined the summary as follows: ''A\
+    \ summary can be loosely defined as a text that is produced from one or more texts,\
+    \ that conveys important information in the original text(s), and that is no longer\
+    \ than half of the original text(s) and usually significantly less than that.\
+    \ Text here is used rather loosely and can refer to speech, multimedia documents,\
+    \ hypertext, etc.\". The produced summary should be shorter in length than the\
+    \ input text and include the most important information in the input text (Gambhir\
+    \ & Gupta, 2017).ATS systems can be classified as single-document or multidocument\
+    \ summarization systems. The former produces the summary from a single document\
+    \ while the latter generates the summary from a cluster of documents. ATS systems\
+    \ are designed by applying one of the text summarization approaches: extractive,\
+    \ abstractive, or hybrid. The extractive approach selects the most important sentences\
+    \ from the input text and uses them to generate the summary. The abstractive approach\
+    \ represents the input text in an intermediate form then generates the summary\
+    \ with words and sentences that differ from the original text sentences. The hybrid\
+    \ approach combines both the extractive and abstractive approaches. The different\
+    \ classifications for ATS systems are defined in Section 2. The general architecture\
+    \ of an ATS system; as shown in Fig. 1; consists of the following tasks:1. Pre-Processing:\
+    \ producing a structured representation of the original text (Gupta & Lehal, 2010)\
+    \ using many linguistic techniques like sentences segmentation, words tokenization,\
+    \ removal of stop-words, part-of-speech tagging, stemming, etc. 2. Processing:\
+    \ using one of the text summarization approaches by applying a technique or more\
+    \ to convert the input document(s) to the summary. Section 3 defines the different\
+    \ ATS approaches and Section 4 explores the different techniques and building\
+    \ blocks to implement an ATS system. 3. Post-Processing: solving some problems\
+    \ in the generated summary sentences like anaphora resolution and reordering the\
+    \ selected sentences before generating the final summary.ATS is one of the most\
+    \ challenging tasks in Natural Language Processing (NLP) and Artificial Intelligence\
+    \ (AI) in general. ATS research began as early as 1958 with Luhn's work (Luhn,\
+    \ 1958) that automatically excerpts abstracts of magazine articles and technical\
+    \ papers. ATS poses many challenges to the research community like: 1) identification\
+    \ of the most informative segments in the input text to be included in the generated\
+    \ summary (Radev et al., 2002), 2) summarization of long single documents such\
+    \ as books, 3) summarization of multi-documents (Hahn & Mani, 2000), 4) evaluation\
+    \ of the computer-generated summary without the need for the human-produced summary\
+    \ to be compared with, and 5) generation of an abstractive summary (Hahn & Mani,\
+    \ 2000) similar to a human-produced summary. Researchers still dream of an accurate\
+    \ ATS system to produce a summary that 1) covers all the main topics in the input\
+    \ text, 2) does not include redundant or repeated data, and 3) is readable and\
+    \ cohesive to the users. Since the beginning of ATS research in the late 1950s,\
+    \ they have been trying and are still working to improve techniques and methods\
+    \ for generating summaries so that the computer-generated summaries can match\
+    \ with the human-made summaries (Gambhir & Gupta, 2017).Many surveys have been\
+    \ recently published about ATS systems and methodologies. Most surveys focus on\
+    \ techniques and methods of extractive summarization like Nazari and Mahdavi (2019)\
+    \ because the abstractive summarization needs extensive NLP. In Kirmani, Manzoor\
+    \ Hakak, Mohd, and Mohd (2019), Kirmani et al. define the common statistical features\
+    \ and some extractive methods. In Kumar and Sharma (2019), Kumar and Sharma provide\
+    \ a survey about the extractive ATS systems that apply fuzzy logic methods. In\
+    \ Mosa, Anwar, and Hamouda (2019), Mosa et al. provide a survey on how the swarm\
+    \ intelligence optimization techniques are applied for ATS. They aim to motivate\
+    \ researchers to use swarm intelligence optimization for ATS especially for short\
+    \ text summarization. Suleiman and Awajan (2019) provide a survey about extractive\
+    \ deep-learning-based text summarization. Some surveys focus on abstractive summarization\
+    \ like Gupta and Gupta (2019), Lin and Ng (2019) for different abstractive methods\
+    \ and Tandel, Mistree, and Shah (2019) for abstractive neuralnetwork-based methods.\
+    \ Some surveys focus on a domainspecific summarization like (Bhattacharya et al.,\
+    \ 2019;Kanapala, Pal, & Pamula, 2019) for legal documents summarization, (Dutta\
+    \ et al., 2019) for comparing extractive algorithms used in the microblogs summarization,\
+    \ and Jacquenet, Bernard, and Largeron (2019) for abstractive deep-learning-based\
+    \ methods and challenges of meeting summarization. Some surveys like (Gupta, Bansal,\
+    \ & Sharma, 2019;Mahajani, Pandya, Maria, & Sharma, 2019) provide a review about\
+    \ some abstractive and extractive methods. A survey about the summarization evaluation\
+    \ methods is presented in (Ermakova, Cossu, & Mothe, 2019).Most of the state-of-the-art\
+    \ surveys tackle a subset of the ATS aspects like focusing on one approach (e.g.\
+    \ extractive summarization), one method for a specific approach (e.g. extractive\
+    \ fuzzy logic method), one specific-domain ATS systems (e.g. legal documents summarization),\
+    \ etc. Besides, Dutta et al. (2019) highlights that different ATS algorithms produce\
+    \ different summaries from the same input texts so it is very promising to combine\
+    \ outputs from multiple ATS algorithms to produce better summaries. Also, Mahajani\
+    \ et al. (2019) conclude that it is recommended to benefit from the advantages\
+    \ of both extractive and abstractive approaches by proposing hybrid ATS systems.\
+    \ Therefore, the main motivation for this work is to provide a comprehensive survey\
+    \ about the various ATS aspects in order to help researchers enhance computergenerated\
+    \ summaries potentially by combining different approaches and/or methods. The\
+    \ main contributions of this research include:Illustrating the classifications\
+    \ of the ATS systems and explaining the different ATS applications provided with\
+    \ examples of ATS systems proposed in the literature for each application. Providing\
+    \ a systematic review about the ATS approaches: extractive, abstractive, and hybrid.\
+    \ Each approach is applied using several methods in the literature. This survey\
+    \ provides: 1) the general architecture, advantages, and disadvantages of each\
+    \ approach and 2) the methods of each approach along with the advantages, disadvantages,\
+    \ and examples of ATS systems for each method. A conclusion about the state-of-the-art\
+    \ research recommendations for each approach is provided at the end of the approach\
+    \ subsection in Section3.Providing an overview about the various components and\
+    \ techniques that are used to design and implement the ATS systems. The survey\
+    \ illustrates: 1) the text summarization operations inspired from the analysis\
+    \ of the human experts' operations, 2) the widely-used statistical and linguistic\
+    \ features that identify the important words and sentences, and 3) the text summarization\
+    \ building blocks. The building blocks include: 1) the common text representation\
+    \ models, 2) the linguistic analysis and processing techniques, and 3) the soft\
+    \ computing techniques (e.g. machine learning, optimization algorithms, and fuzzy\
+    \ logic). Providing an overview about the standard datasets besides the manual\
+    \ evaluation criteria and automatic evaluation tools for the computer-generated\
+    \ summaries. Providing a listing and categorization of the future research directions\
+    \ for the research community based on the existing ATS systems limitations and\
+    \ challenges.The structure of this paper mirrors its main contributions: Section\
+    \ 2 illustrates the various classifications of ATS systems and the ATS applications.\
+    \ Section 3 introduces ATS approaches and explores the different methods proposed\
+    \ in the literature for each approach. Section 4 highlights the techniques and\
+    \ building blocks that are used to implement ATS systems, while Section 5 explores\
+    \ the benchmarking datasets and ATS evaluation methods. Finally, Section 6 concludes\
+    \ the paper and provides future directions for ATS research."
+- header: "Ats systems classifications and applications"
+  content: "This section explores the different ways to classify ATS systems and highlights\
+    \ their different applications."
+- header: "Ats approaches"
+  content: "There are many classifications for ATS systems as illustrated in Fig.\
+    \ 2. ATS systems can be classified based on any of the criteria below.Classification\
+    \ based on the Input Size: Single-document or Multi-document. Input size refers\
+    \ to the number of source documents used to generate the target summary. As shown\
+    \ in Fig. 1, Single-Document Summarization (SDS) uses a single text document to\
+    \ generate a summary and the target is to shorten the input document while keeping\
+    \ the important information (Joshi, Wang, & McClean, 2018). In Multi-Document\
+    \ Summarization (MDS), the summary is generated based on a set of input documents\
+    \ and the target is to remove repetitive content in the input documents (Joshi\
+    \ et al., 2018). MDS is more complex than SDS and has some prominent issues like\
+    \ redundancy, coverage, temporal relatedness, compression ratio, etc. (Gupta &\
+    \ Siddiqui, 2012).Classification based on the Text Summarization Approach: Extractive,\
+    \ Abstractive, or Hybrid. The extractive text summarization approach selects the\
+    \ most important sentences in the input document(s) and the output summary is\
+    \ composed by concatenating the selected sentences. The abstractive text summarization\
+    \ approach represents the input document(s) in an intermediate representation\
+    \ and the output summary is generated from this representation. Unlike extractive\
+    \ summaries, abstractive summaries consist of sentences that are different than\
+    \ the original document (s) sentences. The hybrid text summarization approach\
+    \ merges between both the extractive and abstractive approaches. These approaches\
+    \ will be explained in more detail in section 3.Classification based on Nature\
+    \ of the Output Summary: Generic or Query-Based. A generic text summarizer extracts\
+    \ important information from one or more input documents to provide a general\
+    \ sense of its contents (Gambhir & Gupta, 2017;Sahoo, Balabantaray, Phukon, &\
+    \ Saikia, 2016). A query-based summarization means that the multi-document summarizer\
+    \ deals with a group of homogeneous documents, taken out from a large corpus as\
+    \ a result of a query (Sahoo et al., 2016). Then, the generated summary includes\
+    \ a query-related content. A query-based summary presents the information that\
+    \ is most relevant to the initial search query, while a generic summary gives\
+    \ an overall sense of the document content (Mohan, Sunitha, Ganesh, & Jaya, 2016).\
+    \ The querybased summary is sometimes referred to as a like query-focused, topic-focused,\
+    \ or user-focused summary (Gambhir & Gupta, 2017).Classification based on the\
+    \ Summary Language: Monolingual, Multilingual, or Cross-Lingual. A summarization\
+    \ system is monolingual when the language of source and target documents is the\
+    \ same. A summarization system is multi-lingual when the source text is written\
+    \ in a number of languages (e.g. English, Arabic, and French) and the summary\
+    \ is also generated in these languages. A summarization system is cross-lingual\
+    \ when the source text is written in one language (e.g. English) and the summary\
+    \ is generated in another one (e.g. Arabic or French) (Gambhir & Gupta, 2017).\
+    \ Classification based on the Summarization Algorithm: Supervised, or Unsupervised.\
+    \ The supervised algorithm needs a training phase which requires an annotated\
+    \ training data. Human efforts are required to manually annotate the training\
+    \ data, so the latter is difficult to create and expensive. On the other side,\
+    \ the unsupervised algorithm does not require a training phase nor training data\
+    \ (Mohd, Jan, & Shah, 2020).Classification based on the Summary Content: Indicative\
+    \ or Informative. An indicative summary contains only the general idea or information\
+    \ about the source text (Bhat, Mohd, & Hashmy, 2018). So it is used to determine\
+    \ what the input text is about (i.e. what topics are addressed) to alert the user\
+    \ about the source content (Takeuchi, 2002). The purpose of an indicative summary\
+    \ is to inform users about the scope of the input text to help them decide whether\
+    \ or not to read the original text. On the other side, an informative summary\
+    \ contains the important information and ideas in the original text (Bhat et al.,\
+    \ 2018) such that it covers all topics of the text (Gupta & Lehal, 2010). The\
+    \ purpose of an informative summary is to cover the main contents of the original\
+    \ text without details (Takeuchi, 2002).Classification based on the Summary Type:\
+    \ Headline, Sentence-Level, Highlights, or Full Summary. The length of the generated\
+    \ summaries differs based on the purpose of the ATS system. Headline generation\
+    \ produces a headline which is usually shorter than a sentence (Dernoncourt, Ghassemi,\
+    \ & Chang, 2018). A sentence-level summarization generates a single sentence from\
+    \ the input text which is usually an abstractive sentence (Dernoncourt et al.,\
+    \ 2018). A highlights summarization produces a telegraphic style and highly compressed\
+    \ summary which is usually in the form of bullet points (Woodsend & Lapata, 2010).\
+    \ The highlights summary provides the reader with a brief overview about the main\
+    \ information in the input document(s) (Woodsend & Lapata, 2010). Finally, a full\
+    \ summary generation is usually guided by the required summary length or a compression\
+    \ ratio.Classification based on the Summarization Domain: General, or Domain-Specific.\
+    \ The general or domain-independent ATS system summarizes documents that belong\
+    \ to different domains. On the other side, the domain-specific ATS system is specialized\
+    \ to summarize documents from a certain domain (e.g. medical documents or legal\
+    \ documents).ATS is widely used in text mining and analytics applications such\
+    \ as information retrieval, information extraction, question answering, etc. ATS\
+    \ is used with the information retrieval techniques to enhance the capabilities\
+    \ of the search engines. In Tuarob, Bhatia, Mitra, and Giles (2016), Tuarob et\
+    \ al. propose a search engine to search for algorithms and pseudo-codes. First,\
+    \ a dataset is constructed by extracting algorithms from scientific papers. Then,\
+    \ ATS is used to add additional textual metadata to the extracted algorithms from\
+    \ the scientific documents. In Yulianti, Chen, Scholer, Croft, and Sanderson (2018),\
+    \ Yulianti et al. use text summarization to extract answers for non-factoid queries.\
+    \ In Li, Zhu, Ma, Zhang, and Zong (2018), Li et al. propose an extractive multi-modal\
+    \ summarization (MMS) system for asynchronous collections of text, image, audio,\
+    \ and video. The proposed system generates a textual summary from the aforementioned\
+    \ sources.There are different text genres like news articles, novels, books, forums,\
+    \ blogs, emails, opinion reviews, spoken dialogues which combine text summarization\
+    \ with speech recognition, medical documents, legal documents, etc. (Vodolazova,\
+    \ Lloret, Muñoz, & Palomar, 2013a). Each ATS system supports one or more text\
+    \ genres as inputs; hence the ATS systems are used for different applications\
+    \ like news summarization, email summarization, domain-specific summarization\
+    \ (e.g. legal or biomedical documents summarization), etc. Examples of various\
+    \ ATS applications are explored below.News Summarization: Newsblaster (McKeown\
+    \ et al., 2002) is a text summarizer that helps users find the most desirable\
+    \ news to them. On a daily basis, the system automatically collects, clusters,\
+    \ categorizes, and summarizes news from several news sites on the Internet (e.g.\
+    \ CNN and Reuters) (Gupta & Lehal, 2010). Sahni and Palwe (2017), Sethi, Sonawane,\
+    \ Khanwalker, and Keskar (2017) are other examples of ATS systems for news summarization.Opinion/Sentiment\
+    \ Summarization: Sentiment Analysis (SA) is the study of people's opinions, emotions,\
+    \ and judgments about events and products. ASFuL is an aspect-based sentiment\
+    \ summarization system (Mary & Arockiam, 2017). It uses fuzzy logic to classify\
+    \ sentiments or opinions polarity from the product reviews as ''Strong Positive\"\
+    , ''Positive\", ''Negative\", and ''Strong Negative\". It also integrates the\
+    \ non-opinionated sentences using the Imputation of Missing Sentiment (IMS) technique.\
+    \ IMS is used to reduce the neutral score in sentiment polarity. E-commerce websites\
+    \ are growing rapidly hence there are hundreds of reviews for any product on average.\
+    \ ATS is very useful in this case to summarize the user reviews. Bhargava andSharma\
+    \ (2017), Lovinger, Valova, andClough (2019), Mirani and Sasi (2017), Roul and\
+    \ Arora (2019), Yadav and Chatterjee (2016), Zhou, Wan, and Xiao (2016) are additional\
+    \ examples of ATS systems for opinion/sentiment or user reviews summarization.Microblog/Tweet\
+    \ Summarization: Social networking sites like Facebook, Twitter, etc. include\
+    \ millions of messages (Vijay Kumar & Janga Reddy, 2019). During emergency events,\
+    \ microblogging sites such as ''Twitter\" are important sources of real-time information\
+    \ because hundreds, thousands or even more of microblogs (tweets) are posted on\
+    \ Twitter (Dutta et al., 2019). Therefore, microblog summarization became very\
+    \ important in recent years. Examples of ATS systems for microblog or tweet summarization\
+    \ can be found in Chakraborty, Bhavsar, Dandapat, and Chandra (2019), Rudra, Goyal,\
+    \ Ganguly, Imran, and Mitra (2019), Vijay Kumar and Janga Reddy (2019).Books Summarization:\
+    \ most research focus on short documents summarization. In Mihalcea and Ceylan\
+    \ (2007), Mihalcea and Ceylan address the problems of book summarization and introduce\
+    \ a specific benchmark for book summarization. ATS systems developed for short\
+    \ documents are not suitable for summarizing long documents such as books because:\
+    \ 1) the selected sentences may not cover all the book topics, 2) considering\
+    \ the length of documents is essential for better performance, and 3) using the\
+    \ sentence position feature differs in books than short documents (i.e. it may\
+    \ be unuseful to include the sentences located at the beginning of the book in\
+    \ the generated summary).Story/Novel Summarization: In Kazantseva and Szpakowicz\
+    \ (2010), Kazantseva and Szpakowicz present an approach for automatic extractive\
+    \ summarization that uses syntactic information and shallow semantics (provided\
+    \ by a GATE gazetteer (Cunningham, Maynard, Bontcheva, & Tablan, 2002)) to produce\
+    \ indicative summaries focusing on three types of entities: people, locations,\
+    \ and timestamps of short stories. The generated summary helps the reader to decide\
+    \ whether to read the complete story, but it does not attempt to retell the plot\
+    \ for two reasons: 1) many people do not want to know what happens in a story\
+    \ before reading it, and 2) the summarization problem would be too complex if\
+    \ summarizing the full plot was required.Email Summarization: Email messages are\
+    \ domain-general text, they are unstructured and not always syntactically wellformed\
+    \ (Muresan, Tzoukermann, & Klavans, 2001). In Muresan et al. (2001), Muresan et\
+    \ al. propose an ATS system that combines linguistic techniques with machine learning\
+    \ algorithms to extract noun phrases to generate a summary of Email messages.\
+    \ More examples of ATS systems for email summarization can be found in Carenini,\
+    \ Ng, and Zhou (2007), Ulrich, Carenini, Murray, and Ng (2009).Biomedical Documents\
+    \ Summarization: In Menéndez, Plaza, and Camacho (2014), Menéndez et al. propose\
+    \ an ATS system that combines genetic clustering and graph connectivity information\
+    \ to improve the graph-based summarization process. Genetic clustering identifies\
+    \ the different topics in a document, and connectivity information (i.e. degree\
+    \ centrality) shows the importance of the different topics. Morales, Esteban,\
+    \ and Gerv (2008), Nasr Azadani, Ghadiri, and Davoodijam (2018), Reeve, Han, and\
+    \ Brooks (2006), Reeve, Han, and Brooks (2007) are other examples of ATS systems\
+    \ for biomedical text summarization.Legal Documents Summarization: In Kavila,\
+    \ Puli, Prasada Raju, and Bandaru (2013), Kavila et al. propose an ATS system\
+    \ and an automatic search system for legal documents to save the time of legal\
+    \ experts. The summarization task identifies the rhetorical roles presenting the\
+    \ sentences of a legal judgment document. The search task identifies the related\
+    \ past cases based on the given legal query. The hybrid system uses different\
+    \ techniques such as keyword or key phrase matching technique and the case-based\
+    \ technique. Anand and Wagh (2019), Kavila et al. (2013), Merchant and Pande (2018)\
+    \ are among examples of ATS systems for legal documents summarization.Scientific\
+    \ Papers Summarization: Scientific papers are wellstructured documents that have\
+    \ some common characteristics like the predictable locations of typical items\
+    \ in a document, cue words, and a template-like structure (Kazantseva & Szpakowicz,\
+    \ 2010). In Mohammad et al. (2009), Mohammad et al. propose a multi-document ATS\
+    \ framework that generates a technical survey on a given topic from multiple research\
+    \ papers by merging two methods: 1) mining the structure of citations and relations\
+    \ among citations to get citation information, and 2) summarization techniques\
+    \ that identify the content of the material in both the citing and cited papers.\
+    \ (Alampalli Ramu, Bandarupalli, Nekkanti, & Ramesh, 2020) propose a summarizer\
+    \ to extract the problem statement from one research paper then uses it to find\
+    \ the related papers. Jiang et al. (2019) present an abstractive deep-learningbased\
+    \ summarizer used for automatic survey generation. Cohan and Goharian (2018),\
+    \ Lloret, Romá-Ferri, and Palomar (2011, 2013), Marques, Cozman, and Santos (2019),\
+    \ Mohammad et al. (2009), Teufel and Moens (2002), Zhang, Li, and Yao (2018) represent\
+    \ various examples of ATS systems for scientific papers.There are three main text\
+    \ summarization approaches: extractive, abstractive, or hybrid. Each approach\
+    \ is applied using different methods as shown in Fig. 3. This section will provide\
+    \ a detailed overview about each of these approaches along with the methods of\
+    \ each approach in the literature. There are many summarization methods like graph-based,\
+    \ semantic-based, soft computing (SC) based, etc.3.1. Extractive text summarization\
+    \ 3.1.1. Approach Fig. 4 shows the extractive text summarization system architecture\
+    \ that consists of 1) pre-processing of the input text, 2) postprocessing like:\
+    \ reordering the extracted sentences, replacing pronouns with their antecedents,\
+    \ replacing the relative temporal expression with actual dates, etc. (Gupta &\
+    \ Lehal, 2010), and 3) the processing tasks as follows:1. Creating a suitable\
+    \ representation of the input text to facilitate the text analysis (e.g. N-gram,\
+    \ bag-of-words, graphs, etc.) (Joshi et al., 2018). 2. Scoring of sentences: ranking\
+    \ sentences based on the input text representation (Nenkova & McKeown, 2012).\
+    \ 3. Extraction of high-scored sentences: selecting the most important sentences\
+    \ from the input document(s) and concatenating them to create the summary (Nenkova\
+    \ & McKeown, 2012;Zhu et al., 2017). The generated summary length depends on the\
+    \ preferred compression rate using a length cutoff or threshold to limit the size\
+    \ of the summary and preserve the same order of the generated sentences as the\
+    \ input text (Wang, Zhao, Li, Ge, & Tang, 2017).Advantages: The extractive approach\
+    \ is faster and simpler than the abstractive approach. This approach leads to\
+    \ a higher accuracy Fig. 3. Automatic text summarization approaches and their\
+    \ associated methods. because of the direct extraction of sentences so readers\
+    \ read the summary with the exact terminologies that exist in the original text\
+    \ (Tandel, Modi, Gupta, Wagle, & Khedkar, 2016).Disadvantages: The extractive\
+    \ approach is far from the method that human experts write summaries (Hou, Hu,\
+    \ & Bei, 2017). Drawbacks of the generated extractive summary include:1. Redundancy\
+    \ in some summary sentences (Hou et al., 2017). 2. Extracted sentences can be\
+    \ longer than average (Gupta & Lehal, 2010). 3. Temporal expressions conflicts\
+    \ in the multi-document case because extractive summaries are selected from different\
+    \ input documents (Gupta & Lehal, 2010). 4. Lack of semantics and cohesion in\
+    \ summary sentences (Moratanch & Chitrakala, 2017) because of the incorrect link\
+    \ between sentences and non-resolved co-reference relationships (Lloret, Romá\
+    -Ferri, & Palomar, 2011) and ''dangling\" anaphora (Gupta & Lehal, 2010). 5. Important\
+    \ information spread across sentences. Conflicting information may not be covered\
+    \ (Gupta & Lehal, 2010). The output summary may be unfair for input texts that\
+    \ consist of several topics (Moratanch & Chitrakala, 2017). Summaries can overcome\
+    \ this issue only if the summary is long enough."
+- header: "Techniques and building blocks to implement the ATS systems"
+  content: "The hybrid approach combines both the abstractive and extractive approaches.\
+    \ The typical architecture of a hybrid text summarizer is shown in Fig. 6. It\
+    \ commonly consists of the following phases (Bhat et al., 2018;Lloret et al.,\
+    \ 2011): 1) Pre-Processing, 2) sentence extraction (extractive ATS phase): extract\
+    \ the key sentences from the input text (Wang et al., 2017), 3) summary generation\
+    \ (abstractive ATS phase): generate the final abstractive summary by applying\
+    \ the abstractive methods and techniques on the extracted sentences from the first\
+    \ phase, and 4) Post-Processing: to ensure that the generated sentences are valid,\
+    \ some general rules need to be defined like (Lloret, Romá-Ferri, & Palomar, 2013):1.\
+    \ The minimal length for a sentence must be 3 words (i.e.subject + verb + object).\
+    \ 2. Every sentence must contain a verb. 3. The sentence should not end with an\
+    \ article (e.g. ''a\", and ''the\"), a preposition (e.g. ''of\"), a conjunction\
+    \ (e.g. ''and\"), nor an interrogative word (e.g. ''who\").Advantages: Combining\
+    \ the advantages of both extractive and abstractive approaches. The two approaches\
+    \ are complementary and the overall performance of summarization is improved (Wang\
+    \ et al., 2017).Disadvantages: Generating a less quality abstractive summary than\
+    \ the pure abstractive approach because the generated summary depends on the extracts\
+    \ instead of the original text.The research community is focusing more on the\
+    \ extractive ATS approach using different methods and techniques, trying to Fig.\
+    \ 6. The architecture of a hybrid text summarization system. achieve more coherent\
+    \ and meaningful summaries (Gambhir & Gupta, 2017) because the abstractive approach\
+    \ is highly complex and needs extensive NLP.Fig. 3 shows various hybrid text summarization\
+    \ methods. Table 3 illustrates the pros, cons, and examples of summarizers for\
+    \ each method. Up to our knowledge, there are mainly two methods that have been\
+    \ used in the hybrid text summarization: extractive to abstractive and extractive\
+    \ to shallow abstractive methods. Both methods are briefly discussed next.Extractive\
+    \ to Abstractive Methods: These methods start by using one of the extractive ATS\
+    \ methods then they use one of the abstractive text summarization methods which\
+    \ is applied to the extracted sentences. In Wang et al. (2017), Wang et al. propose\
+    \ a hybrid system for long text summarization ''EA-LTS\". The system consists\
+    \ of two phases: 1) the extraction phase that uses a graph model to extract the\
+    \ key sentences, and 2) the abstraction phase that constructs an RNN based encoder-decoder\
+    \ and uses a pointer and attention mechanisms to generate summaries.Extractive\
+    \ to Shallow Abstractive Methods: These methods start by using one of the extractive\
+    \ ATS methods then they use a shallow abstractive text summarization method that\
+    \ applies one or more of the following techniques to the extracted sentences:\
+    \ information compression techniques, information fusion techniques (Lloret et\
+    \ al., 2013), synonym replacement techniques (Patil, Dalmia, Ansari, Aul, & Bhatnagar,\
+    \ 2014), etc. In Bhat et al. (2018), Bhat et al. propose a single-document hybrid\
+    \ ATS system called ''SumItUp\". The hybrid system consists of two phases as follows:1.\
+    \ Extractive Sentence Selection: uses some statistical features (sentence length,\
+    \ sentence position, TF-IDF, noun phrase and verb phrase, proper noun, aggregate\
+    \ cosine similarity, and cue-phrases) and a semantic feature (emotion described\
+    \ by text) to generate the summary. Cosine similarity is used to remove the redundant\
+    \ sentences in the extractive summary. 2. Abstractive Summary Generation: the\
+    \ extracted sentences are fed to a language generator (i.e. a combination of WordNet,\
+    \ Lesk algorithm and part-of-speech tagger) to convert the extractive summary\
+    \ to the abstractive summary. To retain the original sequence, sentences are reordered\
+    \ based on their initial index.In conclusion, the hybrid summarization approach\
+    \ is a promising research direction. Mahajani et al. recommend researchers to\
+    \ propose hybrid ATS systems in order to benefit from the advantages of both extractive\
+    \ and abstractive approaches (Mahajani et al., 2019).This section provides an\
+    \ overview about the different components and techniques that are used to design\
+    \ and implement ATS systems. First, the text summarization operations are defined.These\
+    \ operations are defined based on the analysis of the human experts' operations.\
+    \ Second, the statistical and linguistic features are presented. These features\
+    \ are widely used to distinguish important words and sentences. Then, the text\
+    \ summarization building blocks are presented as follows: text representation\
+    \ models that are widely used to represent the input texts, linguistic analysis\
+    \ and processing techniques that are used in the different ATS phases, and the\
+    \ soft computing techniques that are useful in ATS implementations."
+- header: "Text summarization datasets and evaluation metrics"
+  content: "N-gram is perfect for multi-language operations because it requires no\
+    \ linguistic preparations (e.g. stop word removal or stemming). N-gram is a set\
+    \ of words or characters that contains N elements. Word N-grams are a sequence\
+    \ of one word (unigrams), two words (bi-grams), three-word (tri-grams) or any\
+    \ other N-grams (Abdolahi & Zahedh, 2017). Each word can be represented as a set\
+    \ of character N-grams. For example, the word ''TEST\" could be represented with\
+    \ the following N-grams (Cavnar, 1994):1. bi-grams: _T, TE, ES, ST, T_ 2. tri-grams:\
+    \ _TE, TES, EST, ST_ 3. quad-grams: _TES, TEST, EST_ Where the underscore character\
+    \ represents a leading or tailing space. Similar words will share a large number\
+    \ of character Ngrams. For example, the words ''RETRIEVE\", ''RETRIEVING\", and\
+    \ ''RETRIEVAL\" share the bi-grams: _R, RE, ET, TR, RI, IE, and EV.A document\
+    \ is represented as a combination of topics and each topic is a probability distribution\
+    \ over words (Singh, Devi, & Mahanta, 2017). A topic model is a generative probabilistic\
+    \ model that can be used to identify topics of the input text represented as word\
+    \ distributions. A word distribution represents a topic by appointing high probabilities\
+    \ to words that portray a topic (e.g. in reviews of iPhone, a topic about battery\
+    \ life may have high prob-abilities for words like ''hour\", ''battery\", and\
+    \ ''life\") (Kim et al., 2012). The two basic representative topic modeling approaches\
+    \ are Latent Dirichlet Analysis (LDA) (Blei, Ng, & Jordan, 2003;Kim et al., 2012)\
+    \ and Probabilistic Latent Semantic Analysis (PLSA) (Hofmann, 1999).Commonly used\
+    \ general-purpose meaning representations include Lambda Calculus and Abstract\
+    \ Meaning Representation.Lambda Calculus: represents meanings as functions applied\
+    \ to variables and constants. For example: the sentence ''what states border Texas\"\
+    \ may be represented as kx: state(x) ^borders(x; Texas), x is a variable, state()\
+    \ is a function that applies to a single entity, and borders() is a function that\
+    \ defines a relationship between two entities. Lambda calculus can use higher-order\
+    \ functions, which are functions that take other functions as inputs. It can incorporate\
+    \ quantifiers and represent all of the first-order logic. Lambda calculus is not\
+    \ easy to write, so using it to generate anything more than toy datasets is difficult\
+    \ (Finegan-Dollak, 2018).Abstract Meaning Representation (AMR): represents the\
+    \ sentences as rooted directed graphs with labels for the edges and leaf nodes.\
+    \ It integrates PropBank frames, modality, co-reference, reification, negation,\
+    \ and other concepts from a variety of views on what is important in semantics.\
+    \ Most of the research on AMR has focused on the parsing of the English sentences\
+    \ to AMR. Recently, many research work explored the usefulness of AMR in many\
+    \ applications such as ATS, headline generation, machine comprehension, and question\
+    \ answering (Finegan-Dollak, 2018).The linguistic properties of the original document\
+    \ affect the quality of the generated summary (Vodolazova et al., 2013b). There\
+    \ are many linguistic analysis and processing techniques that are widely used\
+    \ in ATS (Vodolazova et al., 2013b). These techniques are also illustrated in\
+    \ near the center of Fig. 8 under the ''Linguistic Analysis and Processing Techniques\"\
+    \ subtree. Stanford CoreNLP  (Manning, Surdeanu, Bauer, Finkel, Bethard, & McClosky,\
+    \ 2014) is a commonly used tool that provides many of the common core NLP steps\
+    \ like words tokenization and co-reference resolution. In the following, we briefly\
+    \ describe the most relevant linguistic analysis and processing techniques.There\
+    \ are many pre-processing techniques like noise removal, sentence segmentation,\
+    \ word tokenization, etc. Most of these techniques are usually used in the pre-processing\
+    \ phase of an ATS system.Noise Removal: removes unnecessary text from the input\
+    \ document like the header, footer, etc. (Gupta & Siddiqui, 2012) Sentence Segmentation:\
+    \ divides the text into sentences (Gambhir & Gupta, 2017). Splitting sentences\
+    \ by using end markers like ''.\", ''?\", or ''!\" is not suitable in many cases.\
+    \ If we rely on these markers, words like ''e.g.\", ''i.e.\", ''4.5\", ''Mr.\"\
+    , ''Dr.\", or ''etc.\" lead to the false identification of sentence boundaries.\
+    \ To solve this problem, simple heuristics and regular expressions are used (Gupta\
+    \ & Siddiqui, 2012).Removal of Punctuation Marks: punctuation marks are considered\
+    \ as noisy terms in the text. So, removing them is very helpful before executing\
+    \ most NLP tasks (Gambhir & Gupta, 2017).Word Tokenization: breaks the text into\
+    \ separate words. Words are separated by white space, comma, dash, dot, etc. (Gupta\
+    \ & Siddiqui, 2012) Named Entity Recognition (NER): identifies words of the input\
+    \ text as names of things (i.e. person name, location name, company name, etc.).Removal\
+    \ of Stop-Words: stop-words are words that occur frequently in the text like articles,\
+    \ pronouns, prepositions, auxiliary verbs, and determiners. They are removed because\
+    \ they do not add any useful meaning to the analysis (Jaradat & Al-Taani, 2016)\
+    \ and have no effect in selecting the important sentences (Gambhir & Gupta, 2017).Stemming:\
+    \ reduces the words with the same root or stem to a common form by removing the\
+    \ variable suffixes (Gambhir & Gupta, 2017;Manning, Raghavan, & Schütze, 2008)\
+    \ like ''es\" and ''ed\". The purpose of stemming is to obtain the stem or radix\
+    \ of each word to put emphasis on its semantics (Gupta & Lehal, 2010).Part-Of-Speech\
+    \ (POS) Tagging: assigns POS tags (e.g. verb, noun, etc.) to words in a sentence.Frequency\
+    \ Computation: the frequency of words is computed and normalized by dividing it\
+    \ by the maximum frequency of any word in the document (Gupta & Siddiqui, 2012).\
+    \ Most frequent words are very important to help in the selection of the most\
+    \ important sentences in the original document(s). By analyzing the human-made\
+    \ summaries, they are very likely to include the high-frequency words from the\
+    \ original documents (Lloret & Palomar, 2009).There are several uses of parsing\
+    \ techniques in the ATS processing phase like constructing the text graph models\
+    \ and in the postprocessing phase like sentence compression, sentences merging,\
+    \ etc. There are many parsing techniques like syntactic parsing, text chunking,\
+    \ semantic parsing, and shallow semantics.Syntactic Parsing: refers to the task\
+    \ of recognizing a sentence and assigning a syntactic structure to it. The standard\
+    \ way to represent the syntactic structure of a grammatical sentence is as a syntax\
+    \ tree (or a parse tree) which is a representation of all the steps in the derivation\
+    \ of the sentence from the root node (i.e. each internal node in the tree represents\
+    \ an application of a grammar rule) (Indurkhya and Damerau, 2010). Parse trees\
+    \ are useful in grammar checking: a sentence that cannot be parsed may have grammatical\
+    \ errors (or at least is hard to read) (Jurafsky & Martin, 2017). Constructing\
+    \ the syntactic structure of a sentence is important to understand it. Without\
+    \ this, it is very challenging for language users to specify that sentences with\
+    \ the same words and different word orders have different interpretations (e.g.\
+    \ ''The woman sees the man\" and ''The man sees the woman\") or explain why a\
+    \ sentence like ''The hunter killed the poacher with the rifle\" has two possible\
+    \ interpretations (Levelt & Caramazza, 2007).Text Chunking: refers to a complete\
+    \ partitioning of a sentence into chunks of different types like verb groups,\
+    \ noun groups, etc. Full parsing is not very robust and expensive hence text chunking\
+    \ plays an important role in NLP. Partial parsing is more robust, much faster,\
+    \ and sufficient for many applications like question answering, information extraction,\
+    \ etc. Besides, it can be used as the first step for the full parsing process.\
+    \ Text chunking is considered as a shallow parsing technique (Maiti, Garain, Dhar,\
+    \ & De, 2015).Semantic Parsing: refers to the task of converting natural language\
+    \ text to a complete and formal meaning representation (Clarke, Goldwasser, Chang,\
+    \ & Roth, 2010). Some researchers have focused on general-purpose meaning representations\
+    \ such as lambda calculus, AMR, and Prolog, while others have focused on more\
+    \ task-specific meaning representations (Finegan-Dollak, 2018).Shallow Semantics:\
+    \ represents just a small portion of the semantic information about the sentence.\
+    \ Semantic Role Labeling is a main example. SRL labels the constituents of a sentence\
+    \ with their semantic roles (e.g. to identify the agent and patient of a verb).\
+    \ In the labeled sentence S1 '' [John AGENT ] ate [the fish PATIENT ]-\", John\
+    \ is the agent who did the eating. The sentence S2 ''[The fish AGENT ] ate [John\
+    \ PATIENT ]\" has a different meaning as the fish did the eating. The sentence\
+    \ S3 ''[The fish PATIENT ] was eaten by [John AGENT ]\" is syntactically different\
+    \ from S1 while being semantically equivalent to it. As such S3 is a paraphrasing\
+    \ of S1 (Finegan-Dollak, 2018).There are many semantic-based techniques like word\
+    \ sense disambiguation, anaphora resolution, etc. The use of these techniques\
+    \ covers all the ATS system phases as follows: 1) in the preprocessing, textual\
+    \ entailment and word sense disambiguation techniques are used, 2) in the processing\
+    \ phase, the latent semantic analysis and lexical chain techniques are used, and\
+    \ 3) in the postprocessing phase, word sense disambiguation, anaphora resolution,\
+    \ and textual entailment techniques are used.Word Sense Disambiguation (WSD):\
+    \ identifies the proper meaning of the given word (i.e. computationally find the\
+    \ correct sense of the ambiguous words using the context in which they occur).\
+    \ For example: the word ''bank\" has many meanings in English. Such words with\
+    \ multiple meanings are called polysemous words. WSD is the process of finding\
+    \ out the exact meaning of the polysemous word (Sheth, Popat, & Vyas, 2018).Anaphora\
+    \ Resolution: analyzes the pairs of nouns, pronouns, and proper nouns in a document.\
+    \ A powerful anaphora resolution tool relates pronouns to their nominal antecedents.\
+    \ It is used in all the summarization methods that depend on term overlap, from\
+    \ the simple term frequency to latent semantic analysis (Vodolazova et al., 2013b).\
+    \ A common problem in the extractive ATS is the anaphora ''dangling\" in the sentences\
+    \ that contain pronouns while missing their referents when extracted out of context.\
+    \ Moreover, stitching together decontextualized extracts may mislead the interpretation\
+    \ of anaphors hence cause an inaccurate representation of the source information\
+    \ (Gupta & Lehal, 2010).Latent Semantic Analysis (Deerwester, Dumais, Furnas,\
+    \ Landauer, & Harshman, 1990): excerpts hidden semantic structures of words and\
+    \ sentences. LSA is an unsupervised learning approach so it does not require any\
+    \ training data. In LSA, a termby-sentence matrix representation is created from\
+    \ the input document(s). LSA gets information such as words that frequently occur\
+    \ together and words that are commonly used in different sentences. A high number\
+    \ of common words among the sentences means that the sentences are semantically\
+    \ related. SVD is a method that is applied to the term-by-sentence matrix. SVD\
+    \ is used to find out the interrelations between words and sentences which has\
+    \ the competence of noise reduction that helps to improve accuracy. SVD is applied\
+    \ to document word matrices to group documents that are semantically related despite\
+    \ lacking common words. The set of words that result in the connected text is\
+    \ also connected in the same dimensional space (Moratanch & Chitrakala, 2017).Textual\
+    \ Entailment (TE): determines if the meaning of one text snippet (the hypothesis)\
+    \ can be inferred by another one (the text) (Lloret & Palomar, 2009) so it is\
+    \ used to capture the semantic inference between text fragments (Vodolazova et\
+    \ al., 2013b). If two sentences contain a true entailment relationship, they are\
+    \ considered equivalent and the one which is entailed can be discarded (Lloret\
+    \ et al., 2011). There are different uses of the TE in ATS systems: 1) in the\
+    \ process of the final summary evaluation (i.e. in a set of generated summaries,\
+    \ TE is used to decide which summary of them can be best deduced from the original\
+    \ document), 2) in the segmentation of the input by using different algorithms\
+    \ that employ TE, and 3) in the process of summary generation to avoid redundant\
+    \ information appearing in the final summary (Lloret & Palomar, 2009). TE is often\
+    \ applied to eliminate the semantic redundancy of the generated summary (Vodolazova\
+    \ et al., 2013b).Lexical Chain: represents the semantic content that may cover\
+    \ a small or big part of the text. The coverage and size of a lexical chain indicate\
+    \ the accuracy of the lexical chain to represent the semantic content of the text.\
+    \ A lexical chain contains a set of words (word senses) that are semantically\
+    \ related in the text. Lexical chains are constructed by using relationships between\
+    \ word senses. So it is required to know the word senses and semantic relations\
+    \ between words. WordNet is a database that provides this type of information:\
+    \ synonym sets, hyponym/hypernym, and meronym trees. For each lexical chain, the\
+    \ number of semantic relations and the number of words among the words can be\
+    \ different. Building a lexical chain is an exhaustive method because one word\
+    \ can have many senses and it is required to select its correct sense of the word.\
+    \ Lexical chains are used in text summarization and keyword extraction (i.e. keywords\
+    \ are short forms and condensed versions of the documents and their summaries)\
+    \ (Ercan & Cicekli, 2007).Discourse relations in the text represent connections\
+    \ between sentences and parts in a text (Gambhir & Gupta, 2017). It is essential\
+    \ to determine the overall discourse structure of the text for producing a coherent\
+    \ and fluent summary (i.e. contains the flow of the author's argument) then being\
+    \ able to remove unrelated sentences to the context of the text (Gupta & Lehal,\
+    \ 2010). Mann and Thompson proposed the Rhetorical Structure Theory (RST) (Mann\
+    \ William & Thompson Sandra, 1988) to act as a discourse structure. RST is one\
+    \ of the well-known models for text structure representation and is mainly used\
+    \ to represent the coherence of texts. Using RST, text can be divided into sub-parts\
+    \ forming a hierarchical structure. Every sub-part has a relationship to another\
+    \ sub-part with one of the rhetorical relation types (e.g. Motivation, Contrast,\
+    \ and Elaboration). These relations form the overall coherence structure of the\
+    \ text. A small number of defined rhetorical relations can be used to explain\
+    \ the relationships among a wide range of texts (Takeuchi, 2002). RST has two\
+    \ main concepts (Gambhir & Gupta, 2017): 1) coherent texts contain few units connected\
+    \ together by rhetorical relations, and 2) there must be some relations between\
+    \ various parts of the coherent texts.The similarity techniques are widely used\
+    \ to measure the similarity between sentences or texts in general and can be classified\
+    \ into three categories (Wali, Gargouri, & Ben Hamadou, 2017): syntactic similarity,\
+    \ semantic similarity, or hybrid methods. In the following, we briefly describe\
+    \ each of these.Syntactic Similarity Methods: string matching, word order, and\
+    \ word co-occurring are counted to compute the syntactic similarity. Calculating\
+    \ the co-occurring words in a string sequence may not always be useful because\
+    \ sentences may be very similar while having rare co-occurring words. For literal\
+    \ similarity, Levenshtein distance (edit distance) is a string metric that can\
+    \ be used for measuring the difference between two sequences. Levenshtein distance\
+    \ between two words is the minimum number of singlecharacter edits (e.g. insertions,\
+    \ deletions, or substitutions) required to change one word to the other (Wali\
+    \ et al., 2017;Wang et al., 2017).Semantic Similarity Methods: use the semantic\
+    \ nets like WordNet, the vector space model, and the statistical corpus to compute\
+    \ the semantic similarity between words using different known measures. The semantic-based\
+    \ methods are limited to compute the sentence similarity based only on the semantic\
+    \ similarity between words. The syntactic information and other semantic knowledge\
+    \ (e.g. semantic class and thematic roles) are not used. For example: after training\
+    \ the sentence vectors, they are used as features for the sentences. The semantic\
+    \ similarity between two sentences is simply obtained by calculating the cosine\
+    \ similarity of their vectors (Wali et al., 2017;S. Wang et al., 2017).Hybrid\
+    \ Methods: use both semantic and syntactic knowledge. The main disadvantage of\
+    \ these hybrid methods is that the semantic measurement is isolated from the syntactic\
+    \ measurement (Wali et al., 2017).Natural Language Generation (NLG) is the task\
+    \ of generating texts from the input information like texts, knowledge, or images.\
+    \ It is a challenging task because it requires understanding the input information\
+    \ then organizing the text that will be generated. Simply, NLG requires to answer\
+    \ the following questions: ''what to say?\" and ''how to say it?\" (Li, Sun, &\
+    \ Li, 2019). Generating good texts is highly dependent on the good representation\
+    \ and understanding of the input information. NLG has been used in many applications\
+    \ like text summarization, descriptions of museum artifacts, auto-completion,\
+    \ dialog systems, auto-paraphrasing, question answering, machine translation (Kurup\
+    \ & Narvekar, 2020). NLG systems are widely used in the abstractive text summarization\
+    \ methods to generate the final abstractive summary with sentences different than\
+    \ the original text sentences.Soft computing solves complex problems by manipulating\
+    \ the uncertainty and imprecision in the decision making practices. Soft computing\
+    \ is guided by a main principle of ''exploit the tolerance for imprecision, uncertainty,\
+    \ partial truth, and approximation to achieve tractability, robustness and low\
+    \ solution cost\" (Rao & Svp Raju, 2011). Many soft computing techniques have\
+    \ been used as building blocks in the ATS systems such as machine learning algorithms,\
+    \ fuzzy logic system, genetic algorithm, etc. All these techniques are not competitive\
+    \ but complementary to each other, so each of these techniques can be used individually\
+    \ or with each other to get better summarization results (Ibrahim, 2016). For\
+    \ example, ''neurofuzzy\" system is an effective combination that merges between\
+    \ the neural networks and fuzzy logic techniques (Rao & Svp Raju, 2011). This\
+    \ survey cannot cover all soft computing techniques because there exists a huge\
+    \ number of algorithms. Only the most commonly used ones are illustrated in the\
+    \ right-hand side of Fig. 8. In the following, we provide a brief description\
+    \ of each.Machine learning algorithms are widely used in ATS systems like Alguliyev,\
+    \ Aliguliyev, Isazade, Abdi, and Idris (2019), Shetty andKallimani (2017), Yousefi-Azar\
+    \ andHamey (2017). Machine learning algorithms are categorized as: supervised,\
+    \ unsupervised, or semi-supervised.Supervised Learning Algorithms: require a large\
+    \ amount of labeled or annotated data as input to a training stage (Moratanch\
+    \ & Chitrakala, 2017). Commonly-used supervised learning algorithms include: Support\
+    \ Vector Machine (SVM), Naïve Bayes Classification, Mathematical Regression, Decision\
+    \ Trees, and Artificial Neural Networks (ANN).Unsupervised Learning Algorithms:\
+    \ do not require any training data. They try to discover the hidden structure\
+    \ in unlabeled data. These techniques are therefore suitable for any newly observed\
+    \ data without any required modifications. Commonlyused techniques of that type\
+    \ include clustering, and Hidden Markov Model (HMM). When used for ATS, these\
+    \ systems access only the target documents and apply heuristic rules to extract\
+    \ highly relevant sentences to generate a summary.Semi-Supervised Learning Algorithms:\
+    \ require both labeled and unlabeled data to generate an appropriate function\
+    \ or classifier.Optimization algorithms have been widely used for ATS systems\
+    \ like Sanchez-Gomez, Vega-Rodríguez, and Pérez (2018) and Alguliyev et al. (2019).\
+    \ The most common algorithms are the genetic algorithm and particle swarm optimization.Genetic\
+    \ Algorithm (GA): A GA is a search based optimization algorithm inspired by the\
+    \ analogy of evolution and population genetics. The GA is effective in searching\
+    \ for very large and varied spaces in a wide range of applications (Jaradat &\
+    \ Al-Taani, 2016). It optimizes initially-random solutions by applying natural\
+    \ evolution operations like: selection, mutation, and crossover on them (Gambhir\
+    \ & Gupta, 2017). Al-Radaideh and Bataineh (2018), Chatterjee, Mittal, andGoyal\
+    \ (2012), García-Hernández andLedeneva (2013), Neri Mendoza, Ledeneva, and Garcí\
+    a-Hernández (2019) show examples of ATS research making use of GAs. The genetic\
+    \ algorithm steps include (Ibrahim, 2016):1. Initialization: creating an initial\
+    \ population randomly. 2. Evaluation: evaluating each member of the population\
+    \ and assessing its fitness based on how close it matches the preferred requirements.\
+    \ 3. Selection: selecting some individuals while favoring those with higher fitness.\
+    \ 4. Crossover: creating new individuals by combining the features of the selected\
+    \ individuals. At the end of this step, it is expected that the created individuals\
+    \ are closer to the preferred requirements. 5. Repeat steps 2 to 5 until the termination\
+    \ condition is reached.Particle Swarm Optimization (PSO): PSO is one of the most\
+    \ powerful bio-inspired algorithms used to obtain an optimal solution (Dalal &\
+    \ Malik, 2018). PSO algorithm is inspired by the social movement of birds (Nazari\
+    \ & Mahdavi, 2019). Al-Abdallah and Al-Taani (2017), Mandal, Singh, and Pal (2019),\
+    \ Priya and Umamaheswari (2019) are examples of ATS research making relying on\
+    \ the PSO algorithm. The PSO algorithm steps include (Venter & Sobieszczanski-Sobieski,\
+    \ 2003):1. Starting with an initial population of particles (individuals) which\
+    \ are randomly discovered through the design space. Each individual has a random\
+    \ position and a velocity. 2. Calculating a velocity vector for each individual.\
+    \ 3. Updating the position of each individual using its previous position and\
+    \ the newly updated velocity vector. 4. Until convergence, repeating the above\
+    \ steps from the second step.Fuzzy logic has been widely used in ATS systems like\
+    \ Abbasighalehtaki, Khotanlou, and Esmaeilpour (2016), Jafari et al. (2016), andPatel,\
+    \ Shah, andChhinkaniwala (2019). The inputs of text features that are given to\
+    \ the fuzzy logic system include: sentence length, sentence similarity, etc. (Moratanch\
+    \ & Chitrakala, 2017). Fuzzy logic systems mainly contain four components (Ibrahim,\
+    \ 2016) as follows:Fuzzifier (fuzzification interface): it transforms the crisp\
+    \ input value to a fuzzy linguistic value because the input values are always\
+    \ crisp numerical values. Inference Engine: it uses the fuzzy inputs and the fuzzy\
+    \ rules to generate the fuzzy outputs. Fuzzy Knowledge Base: it contains the fuzzy\
+    \ rules in the form of ''IF-THEN\" rules including the linguistic variables. Defuzzifier\
+    \ (defuzzification interface): it is the last step of a fuzzy logic system. It\
+    \ converts the fuzzy outputs to crisp output actions.This section provides an\
+    \ overview about the basic resources that are used to evaluate and compare ATS\
+    \ systems. These resources include the well-known and standard datasets besides\
+    \ the manual criteria and automatic summary evaluation tools."
+- header: "Conclusion and future research directions"
+  content: "In Dernoncourt et al. (2018), Dernoncourt et al. provide an overview of\
+    \ many corpora that have been used in the summarization tasks. This survey presents\
+    \ the most common benchmarking datasets which have been used for the ATS systems\
+    \ evaluation as shown in Table 5 including Each dataset contains both documents\
+    \ and their summaries in three forms: 1) manually created summaries, 2) automatically\
+    \ created baseline summaries, and 3) automatically created summaries that were\
+    \ generated by challenge participants systems. To get access to these datasets,\
+    \ it is required to complete some application forms that exist on the DUC website.1\
+    \ These datasets are usually used to evaluate the ATS systems but they do not\
+    \ provide enough data to train the neural networks models (Lin & Ng, 2019). 2.\
+    \ Text Analysis Conference (TAC) Datasets: in 2008, DUC became a summarization\
+    \ track in the TAC. It is required to complete some application forms that exist\
+    \ on the TAC website 2 in order to get access to the TAC datasets. 3. Essex Arabic\
+    \ Summaries Corpus (EASC) Dataset (El-Haj, Kruschwitz, & Fox, 2015): it contains\
+    \ Arabic articles and the human-generated extractive summaries of these articles.\
+    \ EASC uses copyrighted material. It is the responsibility of the dataset users\
+    \ to comply with all associated copyright rules. 4. SummBank Dataset (Radev, Teufel,\
+    \ Saggion, Lam, Blitzer, Qi, & Drabek, 2003): it contains 40 clusters of news,\
+    \ humanwritten non-extractive summaries, 360 multi-document, and approximately\
+    \ two million multi-document and single document extracts produced by manual and\
+    \ automatic methods. 5. Opinosis Dataset (Ganesan et al., 2010): it contains 51\
+    \ files.Each file is about a feature of a product (e.g. the battery life of iPod)\
+    \ that includes a set of reviews written by customers who bought that product.\
+    \ So, the dataset represents 51 topics such that each topic includes approximately\
+    \ 100 sentences. The dataset contains 5 manually written ''gold\" summaries for\
+    \ each topic. For most topics, the 5 summaries are different. 6. Large-scale Chinese\
+    \ Short Text Summarization (LCSTS) Dataset (Hu, Chen, & Zhu, 2015): It contains\
+    \ more than 2 million short texts with short summaries. This dataset is created\
+    \ from the SinaWeibo website (i.e. a Chinese microblogging website). 7. Computer-Aided\
+    \ Summarization Tool (CAST) Corpus (Hasler, Orasan, & Mitkov, 2003): it contains\
+    \ a set of newswire texts which are taken from the Reuters Corpus 3 and a few\
+    \ science texts from the British National Corpus. 4 The news texts part of the\
+    \ corpus is available after signing the agreement with Reuters 5 while the other\
+    \ part cannot be distributed. The corpus contains three types of information annotation:\
+    \ the sentence importance (essential or important), links between sentences, and\
+    \ text fragments which can be removed from the marked sentences. A sentence is\
+    \ considered unimportant if it is not annotated. This dataset could be very useful\
+    \ for developing sentence reduction and sentence selection algorithms. 8. CNN-corpus\
+    \ Dataset (Lins, Oliveira, et al., 2019): it can be used for single-document extractive\
+    \ summarization. It contains the original texts, highlights, and gold-standard\
+    \ summaries. This corpus was recently used in the extractive text summarization\
+    \ competition ''DocEng'19\" (Lins, Mello, & Simske, 2019). For research purposes,\
+    \ this corpus with all its annotated versions is freely available by requesting\
+    \ it from its authors. 9. Gigaword 5 Dataset: It is a popular dataset for abstractive\
+    \ summarization research. It contains ten million English news documents approximately\
+    \ so it is suitable for training and testing the neural networks models. Gigaword\
+    \ is criticized because it contains only headlines as summaries (Lin & Ng, 2019;Nallapati,\
+    \ Zhou, Santos, Gulcehre, & Xiang, 2016). 10. CNN/Daily Mail Corpus (Hermann et\
+    \ al., 2015): this corpus is used for the passage-based question answering task\
+    \ then it has been widely used for evaluating the ATS systems. (Nallapati et al.,\
+    \ 2016) provide a modified version of this corpus such that it contains multi-sentence\
+    \ summaries for abstractive summarization evaluation.In Table 5, the following\
+    \ features are defined for each dataset: 1) the dataset name, 2) the number of\
+    \ documents, 3) the language of data, 4) the domain of data (e.g. news or blogs),\
+    \ 5) whether the dataset supports single-document and/or multi-document summarization,\
+    \ and 6) the dataset URL. In Table 5, the first 5 features have been filled from\
+    \ Dernoncourt et al. (2018) except for the datasets ''EASC\", ''SummBank\", ''CAST''\
+    \ and ''CNN-corpus\" as their features are extracted from their corresponding\
+    \ papers and websites. The number of documents for a multi-document summarization\
+    \ dataset is written like ''30 Â 10\" which means that the dataset includes 30\
+    \ clusters of documents and each cluster contains 10 documents approximately.2\
+    \ https://tac.nist.gov/data/forms/index.html. 3 http://about.reuters.com/researchandstandards/corpus/.\
+    \ 4 http://www.natcorp.ox.ac.uk/. 5 http://about.reuters.com/researchandstandards/corpus/how_to_apply.asp.\
+    \ In conclusion, there is a need for more datasets that 1) support non-English\
+    \ languages, and 2) cover the various data domains for all languages because most\
+    \ of the available datasets focus on the news domain as shown in Table 5. In addition,\
+    \ Dernoncourt et al. conclude that 1) there is a need for more large-scale corpora\
+    \ especially for evaluating machine-learning-based and deep-learningbased summarization\
+    \ systems, and 2) a data standard is required for all summarization corpora because\
+    \ each corpus is organized differently (Dernoncourt et al., 2018). If the researchers\
+    \ evaluate their proposed ATS systems on many corpora, they will consume a lot\
+    \ of time. As a result, the research papers in the ATS field usually use one or\
+    \ very few corpora.In the past two decades, there were many efforts to solve summary\
+    \ evaluation issues. NIST leads the effort by organizing the DUC and TAC challenges\
+    \ (Lloret, Plaza, & Aker, 2017). In Huang, He, Wei, and Li (2010), Huang et al.\
+    \ formulate four main objectives that should be considered to generate a condensed\
+    \ and readable summary:1. Information Coverage: the summary should contain the\
+    \ important information of the input document(s). 2. Information Significance:\
+    \ the summary should cover the various topics of the input document(s). The most\
+    \ important topics can either be the main topics in the input document(s) as in\
+    \ the generic summarization or the user-preferred topics as in the query-based\
+    \ summarization. 3. Information Redundancy: minimize the redundant or duplicate\
+    \ information in the generated summary. 4. Text Coherence: the summary is not\
+    \ just a set of important but disconnected phrases or words. The summary should\
+    \ be readable and understandable text.There are two evaluation measures to evaluate\
+    \ the generated summaries (Gupta & Lehal, 2010): 1) intrinsic methods: measure\
+    \ summary quality using human evaluation. The intrinsic evaluation assesses the\
+    \ coherence and the content coverage or informativeness of a summary (Lloret et\
+    \ al., 2017), and 2) extrinsic methods: measure summary quality through a task-based\
+    \ performance measure such as the information retrieval-oriented task. The extrinsic\
+    \ evaluation assesses the utility of summaries in a given application context\
+    \ (e.g. relevance assessment, reading comprehension, etc.) (Lloret et al., 2017).\
+    \ There are two ways of text summarization evaluation: manual and automatic. Summary\
+    \ evaluation is a very challenging issue in the text summarization research field.\
+    \ The automatically generated summaries have to be evaluated in order to assess\
+    \ the quality of the ATS systems that generated them (Lloret et al., 2017). The\
+    \ ATS system performance is usually compared to different baseline systems such\
+    \ as using leading sentences from the input document or using common text summarizers\
+    \ such as LexRank (Erkan & Radev, 2004), TextRank (Mihalcea & Tarau, 2004), MEAD\
+    \ (Radev, Blair-Goldensohn, & Zhang, 2001), etc.The human judges may be asked\
+    \ to evaluate the computergenerated summaries using some or all of the following\
+    \ quality metrics (Lloret et al., 2017;Mani, 2001):Readability: assess the linguistic\
+    \ quality of the summary by checking that it does not contain gaps in its rhetorical\
+    \ structure or dangling anaphora. Structure and Coherence: the summary has to\
+    \ be wellorganized and well-structured. It consists of a set of coherent and related\
+    \ sentences.Grammaticality: the summary should not include incorrect sentences\
+    \ that violate the grammar rules or capitalization errors. Referential Clarity:\
+    \ if the summary includes a pronoun, so the reader should identify the noun phrase\
+    \ it refers to easily. Content coverage: the summary should include the various\
+    \ topics that have been discussed in the input document(s). Conciseness and Focus:\
+    \ each sentence in the summary should enclose information that is related to the\
+    \ other sentences. Non-redundancy: summary should not include unnecessary repetition\
+    \ which may take different forms like: whole sentences or parts of sentences that\
+    \ are repeated, or the repeated use of a noun phrase or noun like ''Jack Tomson\"\
+    \ when a pronoun ''he\" is sufficient.A qualitative evaluation like in Lloret\
+    \ et al. (2013) may be used to measure the user satisfaction by focusing on a\
+    \ five-point scale (1 = strongly disagree, 2 = disagree, 3 = neither agree nor\
+    \ disagree, 4 = agree, and 5 = strongly agree) that are used to answer the following\
+    \ questions: Q1: The summary reflects the most important issues of the document.\
+    \ Q2: The summary allows the reader to know what the article is about. Q3: After\
+    \ reading the original abstract provided with the article, the alternative summary\
+    \ is also valid.As there is no best reference summary among the humancreated model\
+    \ summaries, the Pyramid method (Nenkova & Passonneau, 2004;Nenkova, Passonneau,\
+    \ & McKeown, 2007) was created to overcome this problem. This method is semiautomatic\
+    \ and has been used in DUC 2006 to evaluate summary content. The main idea is\
+    \ to create a gold standard summary by comparing the human-created reference summaries\
+    \ based on Summary Content Units (SCUs). First, the similar sentences among the\
+    \ N model summaries are identified manually. Next, SCUs of the similar sentences\
+    \ are produced as a pyramid model which consists of N levels labeled from 1 to\
+    \ N. Based on the occurrence of SCUs in the model summaries; they are ranked in\
+    \ the pyramid. Last, a summary is considered as good if it encloses more SCUs\
+    \ from the higher levels in the pyramid than the lower levels and vice versa for\
+    \ the poor summary (Lloret et al., 2017).Manual evaluation and analysis of summaries\
+    \ consumes a lot of time and effort because it needs humans to read the summaries\
+    \ and also the original documents (Moratanch & Chitrakala, 2017). On the other\
+    \ side, most of the developed automatic evaluation methods assess the summary's\
+    \ content and the evaluation of readability is done almost manually (e.g. DUC\
+    \ and TAC conferences assess the readability of each summary manually) (Lloret\
+    \ et al., 2017).This subsection will explore the commonly used evaluation metrics\
+    \ in literature such as: 1) Precision, Recall, and F-Measure scores, 2) Recall-Oriented\
+    \ Understudy for Gisting Evaluation (ROUGE) (Lin, 2004), and 3) Basic Element\
+    \ (BE) (Hovy, Lin, Zhou, & Fukumoto, 2006).Precision Score Metric: it is computed\
+    \ by dividing the number of sentences existing in both reference and candidate\
+    \ (i.e. system) summaries by the number of sentences in the candidate summary\
+    \ as in Eq. (3) (Moratanch & Chitrakala, 2017).Recall Score Metric: it is computed\
+    \ by dividing the number of sentences existing in both reference and candidate\
+    \ summaries by the number of sentences in the reference summary as in Eq. ( 4)\
+    \ (Moratanch & Chitrakala, 2017)F-Measure Score Metric: it is a measure that combines\
+    \ recall and precision metrics as in Eq. ( 5) (Moratanch & Chitrakala, 2017).\
+    \ F-measure is the harmonic mean between precision and recall.ROUGE Metric: it\
+    \ is the most commonly used tool for automatic evaluation of the automatically\
+    \ generated summaries (Ganesan et al., 2010). ROUGE is a set of metrics and a\
+    \ software package used for evaluating automatic summarization and machine translation\
+    \ software in NLP (Gupta & Siddiqui, 2012). It compares the computer-generated\
+    \ summaries against several human-created reference summaries (Lloret et al.,\
+    \ 2017). The basic idea of ROUGE is to count the number of overlapping units between\
+    \ candidate (or system) summaries and the reference summaries, such as overlapped\
+    \ n-grams (Wang et al., 2017). ROUGE has been proven to be effective in measuring\
+    \ qualities of summaries and correlates well to human judgments (Sun et al., 2016).\
+    \ There are various ROUGE metrics as follows:ROUGE-1 (R1): it is based on the\
+    \ uni-gram measure between a candidate summary and a reference summary. ROUGE-N\
+    \ is an n-gram recall between a candidate summary and reference summaries. ROUGE-L\
+    \ (R-L): it is based on the longest common subsequences between a candidate summary\
+    \ and a reference summary. ROUGE-S* (R-S*): it measures the overlap ratio of skip-bigrams\
+    \ between a candidate summary and reference summaries. ROUGE-SU* (R-SU*): it extends\
+    \ ROUGE-S* by using skipbigrams and using uni-gram as a counting unit. The ''*\"\
+    \ refers to the number of skip words. For example, ROUGE-SU4 permits bi-grams\
+    \ to consist of non-adjacent words with a maximum of four words between the two\
+    \ bi-grams words.Although ROUGE was accepted as a standard for measuring the accuracy\
+    \ of a summarization model since its development, it has the disadvantage that\
+    \ it only matches strings between the summaries without considering the meaning\
+    \ in single words or series of words (n-grams). Therefore, evaluation methods\
+    \ to address the meaning issue have been proposed which use dependency parsing\
+    \ to represent the information in the candidate and reference summaries such as\
+    \ Basic Elements (BE) (Hovy et al., 2006), Basic Elements with Transformations\
+    \ for Evaluation (BEwT-E) (Tratz & Hovy, 2008), and DEPEVAL(summ) (Owczarzak,\
+    \ 2009) methods. In BE and BEwT-E, each sentence is divided into small content\
+    \ units which are called basic elements and are used to match equivalent expressions.\
+    \ Each basic element is a triplet of words consisting of: 1) a head, 2) a modifier\
+    \ or argument, and 3) the relation between the head and modifier. The main disadvantage\
+    \ is that these methods use many language-dependent pre-processing modules for\
+    \ parsing and dividing the sentences. For non-English summaries, parser resources\
+    \ for the summaries' languages are required (Lloret et al., 2017).Human judgment\
+    \ has the disadvantage of being subjective with a wide variance on what is considered\
+    \ a ''good\" summary. This variance implies that creating an automatic evaluation\
+    \ and analysis method is very difficult and challenging (Moratanch & Chitrakala,\
+    \ 2017). In automatic evaluation, summaries generated by ATS systems are assessed\
+    \ by automated metrics to reduce the evaluation cost. However, human efforts are\
+    \ still needed by the automated evaluation metrics because they depend on the\
+    \ comparison of system-generated summaries with one or more human-created model\
+    \ summaries (Lloret et al., 2017).Manual text summarization is a time consuming\
+    \ and costly task that includes many steps. For example, the following steps are\
+    \ done to manually summarize a single document (Takeuchi, 2002): 1) trying to\
+    \ understand what the document is about, 2) trying to extract the ''most important\"\
+    \ parts from it, and 3) trying to compose a summary that satisfies the following\
+    \ requirements (Lloret et al., 2017):The summary readability and linguistic quality.\
+    \ The summary consistency and content coverage. The non-redundancy of the produced\
+    \ summary.Due to the difficulty of manual text summarization of the huge amount\
+    \ of the textual content on the Internet or various archives, ATS systems have\
+    \ appeared as the main technology to solve this urgent and pressing issue. There\
+    \ are many automatic text summarizers in the literature, but they are still far\
+    \ away from the results of the human text summarization. It is still difficult\
+    \ for the computer to understand and identify the ''most important\" parts in\
+    \ the text (i.e. the importance of a text varies with its type, application domain,\
+    \ user preference, etc.).There are continuous research efforts since the 1950s\
+    \ to overcome these difficulties and investigate new solutions. Over time, the\
+    \ scientific community mainly has focused on the extractive text summarization\
+    \ approach and has implemented the summarization methods of this approach for\
+    \ various types of applications such as user reviews, news articles, blogs, email\
+    \ messages, scientific articles, legal documents, biomedical documents, etc. In\
+    \ practice, extractive ATS systems produce very different summaries than the ones\
+    \ generated by humans. There have been some trials to propose abstractive and\
+    \ hybrid text summarization systems. There is still a long way to go (Moratanch\
+    \ & Chitrakala, 2017). Researchers dream to automate the generation of human-like\
+    \ summaries.The available literature for abstractive summarization is much less\
+    \ than extractive text summarization. Most survey papers (Al-Saleh & Menai, 2016;Al\
+    \ Qassem et al., 2017;Dalal & Malik, 2013;Gambhir & Gupta, 2017;Gupta, Tiwari,\
+    \ & Robert, 2016;Gupta & Lehal, 2010;Meena, Jain, & Gopalani, 2014;Moratanch &\
+    \ Chitrakala, 2017;Shah & Desai, 2016;Tandel et al., 2016) concentrate more on\
+    \ the extractive text summarization because the abstractive approach is much harder\
+    \ and much less mature than the extractive approach. The aim of this survey is\
+    \ to give a comprehensive review and global overview about the different aspects\
+    \ of ATS. The main contributions of this survey include:Explaining the various\
+    \ classifications and the different applications of the ATS systems. Providing\
+    \ a systematic review about the ATS approaches (namely extractive, abstractive,\
+    \ and hybrid) and the methods that apply these approaches in the literature. Providing\
+    \ a categorization and overview of the various building blocks and techniques\
+    \ that have been used to design and implement the ATS systems including: 1) the\
+    \ text summarization operations, 2) the statistical and linguistic features, and\
+    \ 3) the text summarization building blocks (namely the text represen-tation models,\
+    \ the linguistic analysis and processing techniques, and the soft computing techniques).\
+    \ Providing a general overview about the standard datasets, the manual evaluation\
+    \ criteria, and the automatic evaluation tools that are commonly used for evaluating\
+    \ the computergenerated summaries. Providing a listing and categorization of the\
+    \ future research directions for the ATS research community. These research directions\
+    \ are explained next in the rest of this section.There are many limitations of\
+    \ the existing ATS systems that act as challenges and future research directions\
+    \ for the research community. These challenges will help the researchers to identify\
+    \ areas where further research is needed. Fig. 9 shows the different categories\
+    \ of ATS challenges that will be explained in this section.There are some challenges\
+    \ related to usage of the ATS systems such as: 1) multi-document summarization,\
+    \ 2) user-specific summarization, and 3) applications of text summarization.Challenges\
+    \ Related to Muti-Document Summarization: Multi-document summarization is a complex\
+    \ task and has many issues like redundancy, temporal dimension, co-reference,\
+    \ and sentence reordering (Gambhir & Gupta, 2017). Multi-document summarization\
+    \ may cause incorrect reference: one sentence may contain a proper noun and the\
+    \ next sentence may contain a pronoun as a reference to the proper noun. If the\
+    \ summarizer handles the pronoun without handling the proper noun, it will generate\
+    \ an reference (Sahoo et al., 2016). Challenges Related to User-Specific Summarization:\
+    \ The key challenge here is to summarize content from a number of textual and\
+    \ semi-structured sources (e.g. databases and web pages) in the right way (language,\
+    \ format, size, and time) for a specific user (Gupta & Lehal, 2010). Due to the\
+    \ availability of a large amount of data in different formats and different languages,\
+    \ it is required to dedicate more research efforts on the multi-document, multilingual,\
+    \ and multimedia summaries. Also, it is required to generate summaries with a\
+    \ specified focus like sentiment-based, personalized summaries, etc. (Gambhir\
+    \ & Gupta, 2017).Challenges Related to Applications of Text Summarization: Most\
+    \ of the existing systems mainly focus on certain applications like online reviews,\
+    \ text news, text pages, etc. (Wu et al., 2017). It is important to focus now\
+    \ on the most challenging applications like long text, novel, and book summarization.Another\
+    \ set of challenges is related to the input and output document(s) of an ATS system\
+    \ such as: 1) input and output formats, 2) length of input documents, and 3) supported\
+    \ languages.Challenges Related to Input and Output Formats: Most of the ATS systems\
+    \ deal with textual input and output. It is required to propose new summarizers\
+    \ in which the input can be in the form of meetings, videos, sounds, etc. and\
+    \ the output in a format other than text. For example, the input might be in the\
+    \ form of text and the output can be represented as tables, statistics, graphics,\
+    \ visual rating scales, etc. ATS systems that allow visualization of the summaries\
+    \ will help users to get the required content in less time (Gambhir & Gupta, 2017).Challenges\
+    \ Related to Length of Input Documents: Most ATS systems focus on relatively short\
+    \ text documents. For example, the length of a news article is shorter than that\
+    \ of a novel chapter (about 641 words versus 4973 words) (Wu et al., 2017). The\
+    \ existing ATS methods may achieve good performance in short texts, but they achieve\
+    \ low accuracy and efficiency when summarizing long texts (Wang et al., 2017).Challenges\
+    \ Related to Supported Languages: Most ATS systems focus on the English language\
+    \ content. For many other languages, the quality of the current ATS systems needs\
+    \ to be improved. It is required to develop and improve NLP tools that are used\
+    \ to generate summaries for non-English languages like NER, POS tagging, syntactic\
+    \ and semantic parsing, etc. (Belkebir & Guessoum, 2018).There are other challenges\
+    \ related to the methods and techniques of ATS systems such as: 1) text summarization\
+    \ approaches, 2) statistical and linguistic features, and 3) using deep learning\
+    \ for text summarization.Challenges Related to Text Summarization Approaches:\
+    \ Most research focus on the extractive approach, it is required to focus more\
+    \ research efforts to propose and improve summarization systems based on the abstractive\
+    \ and hybrid approaches.Challenges Related to Statistical and Linguistic Features:\
+    \ It is required to discover some new linguistic and statistical features for\
+    \ sentences and words which can semantically extract the key sentences from the\
+    \ source document(s) (Gambhir & Gupta, 2017). Besides, deciding the proper weights\
+    \ of individual features is very important because the quality of the final summary\
+    \ depends on it (Gupta & Lehal, 2010).Challenges Related to Using Deep Learning\
+    \ for Text Summarization: In the summary generation phase, the RNN in the seq2seq\
+    \ system requires a large-scale structured training data. The required training\
+    \ data is not always available in practical NLP applications. It is a very important\
+    \ research topic to build an ATS system using a small amount of training data\
+    \ through the combination of traditional NLP techniques such as syntactic analysis,\
+    \ grammar analysis, semantic analysis, etc. (Wang et al., 2017).Finally, there\
+    \ are some challenges related to the output and generated summary from ATS systems\
+    \ such as: 1) stop criteria of the summarization process, 2) quality of generated\
+    \ summary, and 3) evaluation of generated summary.Challenges Related to Stop Criteria\
+    \ of the Summarization Process: Humans summarize documents in an iterative process.\
+    \ After producing the first summary, one (or the system) should decide whether\
+    \ to stop or continue in the summarization process. The most common way is to\
+    \ set a retention rate upon which a decision is made. The retention rate is not\
+    \ fixed for all the texts. It should vary according to the content and type of\
+    \ the text. It is highly required to propose a more convincing technique to stop\
+    \ summarizing (Belkebir & Guessoum, 2018).Challenges Related to the Quality of\
+    \ Generated Summary: It is required to achieve a good balance between readability,\
+    \ compression ratio, and summarization quality. It is difficult for the existing\
+    \ ATS systems to achieve the higher compression ratio requirement for summarizing\
+    \ long documents like novels and books (Wu et al., 2017). It is required to improve\
+    \ the summary readability by refining the initially generated summary to over-\
+    \ come the semantic confusion caused by ambiguous or synonymous words (Wu et al.,\
+    \ 2017). Without using NLP, the generated extractive summaries may suffer from\
+    \ lack of cohesion and semantics. Also, if texts contain multiple topics, the\
+    \ generated summary may not be balanced (Gupta & Lehal, 2010).Challenges Related\
+    \ to Evaluation of the Generated Summary: Evaluating summaries (either automatically\
+    \ or manually) is a difficult task: 1) it is very challenging to define and use\
+    \ a good standard to evaluate whether the summaries generated from the ATS systems\
+    \ are good enough (Lloret et al., 2017), and 2) it is very hard to find out what\
+    \ an ideal (or even correct) summary is because the ATS systems can generate good\
+    \ summaries that are different from the human-generated summaries (Moratanch &\
+    \ Chitrakala, 2017). Humans are different and they may select entirely different\
+    \ sentences for the extractive summaries and may paraphrase the abstractive summaries\
+    \ in a completely different way. It is very subjective to identify a good summary.\
+    \ Therefore, manual evaluations may not be suitable for all types of summaries\
+    \ (Lloret et al., 2017). There is a need to propose new approaches and solutions\
+    \ for the automatic evaluation of the computer-generated summaries."

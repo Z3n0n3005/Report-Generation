@@ -6,14 +6,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonFormat.Feature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 import report.generation.segmentation.SectionList;
@@ -32,23 +29,11 @@ public class Utility {
     public static void printToYamlFile(SectionList sectionList, String filepath){
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());        
         mapper.findAndRegisterModules(); 
-        // mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        // mapper = new ObjectMapper(new YAMLFactory().disable(Feature.WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS));
         try{
             mapper.writeValue(new File(filepath), sectionList);
         } catch(Exception e){
             e.printStackTrace();
         }
-        
-        // String result = "";
-
-        // try{
-        //     PrintWriter out = new PrintWriter(filepath);
-        //     out.write(result);
-        //     out.close();
-        // } catch(FileNotFoundException e){
-        //     e.printStackTrace();
-        // }
     }
     
     public static List<String> readFileAsList (File file) {

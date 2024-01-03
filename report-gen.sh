@@ -1,13 +1,17 @@
 #!/bin/bash
+current_directory=$(pwd)
 
-# while [[ $1 =~ ^- && ! $1 == "--" ]]
-#   do 
-#     case $1 in
-#       -f | --file )
-#         shift; file=$1
-#         ;;
-#     esac; shift;
-# done
+while [[ $1 =~ ^- && ! $1 == "--" ]]
+  do 
+    case $1 in
+      -f | --file )
+        shift; file=$1
+        ;;
+      --folder )
+        shift; folder=$1
+        ;;
+    esac; shift;
+done
 
 # while IFS = read -r line; do
 #   echo "$line"
@@ -19,6 +23,5 @@
 # echo "$fileContent"
 
 # import file name through command line later
-# might import whole folder to run through at once since grobid initialization is slow
-./gradlew run
+"$current_directory"/gradlew run -Pfile=$file
 ``
