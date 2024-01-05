@@ -3,7 +3,10 @@
  */
 package report.generation;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import report.generation.segmentation.*;
 import report.generation.summarization.*;
@@ -16,36 +19,41 @@ public class App {
     static String SEG_FILE_PREFIX = "seg_";
     static String SUM_FILE_PREFIX = "sum_";
     static String FILE_PATH_PROPERTY = "file";
+    static String FOLDER_PATH_PROPERTY = "folder";
     static String PROJECT_PATH = System.getProperty("user.dir");
     static String PDF_RELATIVE_PATH = "../paper/";
     static String SEG_XML_RELATIVE_PATH = "../output/segmentationXml/";
     static String SEG_YAML_RELATIVE_PATH = "../output/segmentationYaml/";
     static String SUM_YAML_RELATIVE_PATH = "../output/summaryYaml/";
 
-    String pdfSegOutputPath = "../output/segmentationXml/grobid-output.xml";
-    String yamlParseOutputPath = "../output/segmentationYaml/xml-parse-output.yaml";
-    String yamlSummaryPath = "../output/summaryYaml/summary.yaml";
+    String pdfSegOutputPath; 
+    String yamlParseOutputPath;
+    String yamlSummaryPath;
     SectionList sectionListAfterParse;
     SectionList sectionListSummary;
+    List<File> fileList;
 
     public static void main(String[] args) throws IOException {
         
         System.out.println("[App] Start timing");
         System.out.println(PROJECT_PATH);
         long startTime = System.nanoTime();
-        App app = new App();
-        System.out.println("[App] sumPath: " + app.getSumYamlPath());
-        System.out.println("[App] segXMLPath: " + app.getSegXmlPath());
-        System.out.println("[App] segYamlPath: " + app.getSegYamlPath());
-        app.pdfSegOutputPath = app.getSegXmlPath();
-        app.yamlParseOutputPath = app.getSegYamlPath();
-        app.yamlSummaryPath = app.getSumYamlPath();
 
-        app.generateEngine();
-        app.pdfSegmenting();
-        app.parseXML();
-        app.parseYAML();
-        app.summarizeSegments();
+        App app = new App();
+        
+        System.out.println("[App] file: " + System.getProperty(FILE_PATH_PROPERTY));
+        System.out.println("[App] folder: " + System.getProperty(FOLDER_PATH_PROPERTY));
+        
+        app.setFileList();
+        // app.pdfSegOutputPath = app.getSegXmlPath();
+        // app.yamlParseOutputPath = app.getSegYamlPath();
+        // app.yamlSummaryPath = app.getSumYamlPath();
+
+        // app.generateEngine();
+        // app.pdfSegmenting();
+        // app.parseXML();
+        // app.parseYAML();
+        // app.summarizeSegments();
 
         long endTime = System.nanoTime();
         double totalTime = (endTime - startTime)/1000000;
@@ -69,12 +77,13 @@ public class App {
         // System.out.println("[App] First PDF Header parse time = " + pdfHeaderParseTime);
     }
 
-    private void pdfSegmenting(){
+    private void pdfSegmenting(File file){
         long startTimePDFSeg = System.nanoTime();
 
-        String path = System.getProperty(FILE_PATH_PROPERTY);
-        System.out.println("[App] filepath: " + path);
-        String pdfSegResult = PdfSegmentation.pdfSegmenting(PDF_RELATIVE_PATH + path);
+        // String path = System.getProperty(FILE_PATH_PROPERTY);
+        // System.out.println("[App] filepath: " + path);
+        // String pdfSegResult = PdfSegmentation.pdfSegmenting(PDF_RELATIVE_PATH + path);
+        String pdfSegResult = PdfSegmentation.pdfSegmenting(file);
 
         Utility.printToFile(pdfSegResult, pdfSegOutputPath);
         long endTimePDFSeg = System.nanoTime();
@@ -120,8 +129,19 @@ public class App {
         System.out.println("[App] Summarization time = " + summarizeTime);
     }
 
+    private void setFileList(){
+        String pdfPath = System.getProperty(FILE_PATH_PROPERTY);
+        String folderPath = System.getProperty(FOLDER_PATH_PROPERTY);
+        if(pdfPath != null){
+            fileList = Utility.listAllFilesFromFolder(new File(pdfPath));
+        } else if(folderPath != null){
+            fileList = Utility.listAllFilesFromFolder(new File(folderPath));
+        }
+        System.out.println(fileList);
+    }
+
     private String getPdfName(){
-        return System.getProperty(FILE_PATH_PROPERTY);
+        return "";
     }
 
     private String getSumYamlPath(){

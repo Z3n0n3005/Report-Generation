@@ -80,4 +80,22 @@ public class Utility {
         scan.close();
 		return text;
 	}
+
+    public static List<File> listAllFilesFromFolder(File folder){
+        List<File> fileList = new ArrayList<File>();
+
+        if(!folder.isDirectory()){
+            fileList.add(folder);
+            return fileList;
+        }
+
+        for(File file : folder.listFiles()){
+            if (file.isDirectory()){
+                listAllFilesFromFolder(file);
+            } else {
+                fileList.add(file);
+            }
+        }
+        return fileList;
+    }
 }

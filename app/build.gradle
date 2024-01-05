@@ -97,9 +97,12 @@ tasks.distZip {
 
 run {
     // Accessing the parameter passed through command line
-    def filePathFromParam = project.hasProperty('file') ? file : 'Not available';
+    def filePathFromParam = project.hasProperty('file') ? file : false;
+    def folderPathFromParam = project.hasProperty('folder') ? folder : false;
 
     if(filePathFromParam){
         systemProperty "file", filePathFromParam
+    } else if(folderPathFromParam){
+        systemProperty "folder", folderPathFromParam
     }
 }

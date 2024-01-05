@@ -27,13 +27,13 @@ public class PdfSegmentation {
      * @param pdfPath the path to the pdf
      * @return result
      */
-    public static String pdfSegmenting(String pdfPath) {
+    public static String pdfSegmenting(File pdfFile) {
         String result;
         String tei = "";
         // Biblio object for the result
         try {
             //Have been found to can be speed up using multithreading, might learn GNU parallel
-            tei = engine.fullTextToTEI(new File(pdfPath), analysisConfig);
+            tei = engine.fullTextToTEI(pdfFile, analysisConfig);
         } catch (Exception e) {
             e.printStackTrace();
         }
