@@ -1,0 +1,400 @@
+---
+abstractSeg: "This article analyzes the appropriateness of a text summarization system,\
+  \ COMPENDIUM, for generating abstracts of biomedical papers. Two approaches are\
+  \ suggested: an extractive (COMPENDIUME), which only selects and extracts the most\
+  \ relevant sentences of the documents, and an abstractive-oriented one (COMPENDIUME-A),\
+  \ thus facing also the challenge of abstractive summarization. This novel strategy\
+  \ combines extractive information, with some pieces of information of the article\
+  \ that have been previously compressed or fused. Specifically, in this article,\
+  \ we want to study: i) whether COMPENDIUM produces good summaries in the biomedical\
+  \ domain; ii) which summarization approach is more suitable; and iii) the opinion\
+  \ of real users towards automatic summaries. Therefore, two types of evaluation\
+  \ were performed: quantitative and qualitative, for evaluating both the information\
+  \ contained in the summaries, as well as the user satisfaction. Results show that\
+  \ extractive and abstractive-oriented summaries perform similarly as far as the\
+  \ information they contain, so both approaches are able to keep the relevant information\
+  \ of the source documents, but the latter is more appropriate from a human perspective,\
+  \ when a user satisfaction assessment is carried out. This also confirms the suitability\
+  \ of our suggested approach for generating summaries following an abstractive-oriented\
+  \ paradigm."
+sectionList:
+- header: "Introduction"
+  content: "The vast amount of information currently available has fuelled research\
+    \ into systems and tools capable of managing such information in an effective\
+    \ and efficient manner. That is the case of Text Summarization (TS), whose aim\
+    \ is to produce a condensed new text containing a significant portion of the information\
+    \ in the original text(s) [40]. In particular, TS has been shown to be very useful\
+    \ as a stand-alone application [39,9], as well as in combination with other systems,\
+    \ such as information retrieval [7], information extraction [8], text classification\
+    \ [38], or automatic rating prediction [36].TS has a wide range of applications.\
+    \ For instance, in the scientific context, TS can be used for generating abstracts\
+    \ of research papers automatically, thus avoiding authors the difficult task of\
+    \ having to synthesize in a small paragraph the main topics addressed in their\
+    \ research. These abstracts are very important not only to provide readers an\
+    \ overview of the article, but also to be used by automatic systems for indexing,\
+    \ searching and retrieving information without having to process the whole document.\
+    \ Moreover, another application of TS would be the automatic generation of newsletters,\
+    \ containing information which is of interest for a particular group of experts.\
+    \ In the biomedical domain, this would allow health workers and professionals\
+    \ to be updated of recent findings, such as new drugs, novel treatments, etc.However,\
+    \ the process of TS, and in particular, the automatic generation of abstracts,\
+    \ is still very challenging. The relevant information has to be identified first,\
+    \ and then it has to be generalized, with the purpose of stating the gist of the\
+    \ whole document in one paragraph. This difficulty is shown by the fact that,\
+    \ although there have been some attempts to generate abstractive summaries in\
+    \ recent years [32,34], most of the current work on TS still focuses on extractive\
+    \ summarization [19,22,42]. The differences between them are that extractive summarization\
+    \ consists of selecting the most important sentences of a document to form the\
+    \ final summary and they are extracted as they are in the source documents. On\
+    \ the contrary, abstractive summarization also implies the generation of new information,\
+    \ in the form of sentence compression or fusion, or even natural language generation.\
+    \ The main problem associated to extractive summarization is the lack of coherence\
+    \ resulting summaries exhibit, partly due to non-resolved coreference relationships,\
+    \ and the wrong link between sentences.Therefore, in this article, our goal is\
+    \ to analyze to what extent TS is useful for a specific application: the automatic\
+    \ generation of research paper abstracts in the biomedical domain. In particular,\
+    \ we develop a TS system: COMPENDIUM, which is capable of producing two types\
+    \ of generic summaries: extracts (COMPENDIUME), which follows a pure extractive\
+    \ approach; and abstractive-oriented summaries (COMPENDIUM E-A ), which combines\
+    \ extractive and abstractive techniques (Fig. 1). In this manner, we study to\
+    \ what extent such approaches are appropriate to produce summaries that serve\
+    \ as a surrogate of the source document or, in contrast, if they can only be used\
+    \ in order to provide users with an idea of what is important in the document.\
+    \ Therefore, the specific objectives within the scope of this article we want\
+    \ to analyze are: i) if COMPENDIUM produces good summaries in this domain; ii)\
+    \ which is the best strategy to adopt for generating this type of summaries (extractive\
+    \ or abstractive-oriented); and iii) the opinion of real users towards automatic\
+    \ summaries.The structure of the article is as follows: Section 2 introduces previous\
+    \ work on state-of-the-art TS systems, as well as TS approaches that were developed\
+    \ for addressing specific applications. In Section 3, our proposed TS system,\
+    \ COMPENDIUM, is explained in detail, comprising the two approaches for generating\
+    \ extractive and abstractive-oriented summaries, respectively. Section 4 describes\
+    \ the experimental framework. Within this section, we provide the description\
+    \ of the data set employed, together with the analysis of the human abstracts\
+    \ of the research papers on the one hand, and we outline the experiments performed,\
+    \ on the other hand. Then, the evaluation conducted, the results obtained together\
+    \ with a discussion for each type of evaluation are provided in Section 5, and\
+    \ finally, the conclusions of the paper together with the future work are outlined\
+    \ in Section 6."
+- header: "Related work"
+  content: "In this section, we explain existing TS systems that produce summaries\
+    \ automatically, as well as previous work on different approaches that have used\
+    \ TS techniques to address specific tasks (e.g. for generating Wikipedia articles\
+    \ [37], weather forecast reports [3], etc.).Regarding the TS systems, we can find\
+    \ a wide range of them for generating different types of summaries. One of the\
+    \ most cited summarizers is MEAD [31]. This system produces extractive single-and\
+    \ multi-document generic or query-focused summaries in English and Chinese, thus\
+    \ being also a multilingual summarizer. For determining the most important sentences,\
+    \ it relies on the calculation of Fig. 1. Illustration of the functionalities\
+    \ of COMPENDIUM system.surface features, such as sentence position, sentence length,\
+    \ similarity with the first sentence, and similarity with a centroid, which are\
+    \ then combined linearly. SUMMA [33] follows a similar approach, also relying\
+    \ on the combination of statistical, positional and similarity features. In particular,\
+    \ the main features are: i) sentence similarity to the centroid; ii) sentence\
+    \ position and iii) similarity with the lead part of the document where the sentence\
+    \ comes from. It uses a vector space representation, where each vector position\
+    \ contains the term and its tf-idf, and it is capable of producing single-and\
+    \ multi-document extractive summaries, as well as generic or query-focused summaries.\
+    \ QCS system [10] integrates a summarization approach within a broad process for\
+    \ retrieving and clustering information. For generating summaries from a set of\
+    \ documents, it first generates single-document summaries, and then a second summarization\
+    \ process is applied to these summaries in order to obtain the final one. For\
+    \ detecting relevant sentences, Hidden Markov Models are employed after some sentences\
+    \ have been trimmed. The sentences with highest probability in the model are chosen\
+    \ for the summary. The AZOM text summarization system for Persian [45] combines\
+    \ statistical and conceptual properties of unstructured documents and generates\
+    \ a summary with a specific structure. Other systems, such as SummGraph [27],\
+    \ employ graph-based algorithms and knowledge databases for detecting relevant\
+    \ content in the documents. In particular, this system has been proven to work\
+    \ successfully in the newswire, biomedical, and tourist domain, and the techniques\
+    \ used have been also successfully employed for retrieving information from medical\
+    \ records [28].Furthermore, we can also find systems that are especially targeted\
+    \ to produce a specific type of summaries (e.g., sentiment-based summaries) or\
+    \ deal with multi-linguality. That is the case of CBSEAS [4] which generate multi-document\
+    \ extractive sentiment-based summaries, or MUSE -MUltilingual Sentence Extractor\
+    \ [21], that employs language-independent techniques for generating summaries\
+    \ in English and Hebrew.In other contexts, TS techniques and approaches have been\
+    \ used for solving specific tasks. For instance, Balahur and Montoyo [2] use opinion\
+    \ mining techniques for extracting opinion features from customer reviews and\
+    \ then summarizing them. Sauper and Barzilay [37] propose an automatic method\
+    \ to generate Wikipedia articles, where specific topic templates, as well as the\
+    \ information to select are learnt using machine learning algorithms. The templates\
+    \ are obtained by means of recurrent patterns for each type of document and domain.\
+    \ For extracting the relevant content, candidate fragments are ranked according\
+    \ to how representative they are with respect to each topic of the template. Other\
+    \ approaches that also rely on the use of templates to organize and structure\
+    \ the information previously identified, are based on information extraction systems.\
+    \ In Kumar et al. [18], reports of events are generated from the information of\
+    \ different domains (biomedical, sports, etc.) that is stored in databases. In\
+    \ such research, human-written abstracts are used, on the one hand, to determine\
+    \ the information to include in a summary, and on the other hand, to generate\
+    \ templates. Then, the patterns to fill these templates in are identified in the\
+    \ source texts. Similarly, in Carenini and Cheung [6], patterns in the text are\
+    \ also identified, but since their aim is to generate contrastive summaries, discourse\
+    \ markers indicating contrast such as \"although\", \"however\", etc. are also\
+    \ added to make the summary sound more naturally. To generate summaries from the\
+    \ complete biography of a person is also interesting. This can also be considered\
+    \ a particular type of multi-document summarization, since its goal is to produce\
+    \ a piece of text containing the most relevant aspects of a specific person. Instead\
+    \ of using templates for detecting which information should be of interest from\
+    \ a person, Zhou et al. [46] analyzed several machine learning algorithms (Naï\
+    ve Bayes, Support Vector Machines, and Decision Trees) to classify sentences,\
+    \ distinguishing between those ones containing biographic information (e.g. the\
+    \ date/place of birth) from others that do not.Natural Language Generation (NLG)\
+    \ has been also applied for adding new vocabulary and language structures in summaries.\
+    \ In Yu et al. [43] very short summaries are produced from large collections of\
+    \ numerical data. The data is presented in the form of tables, and new text is\
+    \ generated for describing the facts that such data represent. Belz [3] also suggests\
+    \ a TS approach based on NLG, in order to generate weather forecast reports automatically.Another\
+    \ interesting approach is to use citations from articles. In Kan et al., [17]\
+    \ it was shown that from bibliographic entries it was possible to produce an indicative\
+    \ summary. The main idea behind this assumption is that such entries contain informative\
+    \ as well as indicative information, for example, details about the resource or\
+    \ metadata, such as author or purpose of the paper. In their research, a big annotated\
+    \ corpus (2000 annotated entries) is developed for such purposes. Following the\
+    \ idea of generating summaries from this input information, in Qazvinian and Radev\
+    \ [30] citations are analyzed to produce a single-document summary from scientific\
+    \ articles. The final objective is to generate summaries about a specific topic.The\
+    \ generation of technical surveys has also been addressed in the recent years.\
+    \ In Mohammad et al. [24] citations are used to automatically generate technical\
+    \ surveys. They experimented with three types of inputs (full papers, abstracts\
+    \ and citation texts), and analyzed different already existing summarization systems\
+    \ to create such surveys, such as LexRank [11], Trimmer [44], or C-RR and C-LexRank\
+    \ [30]. Among the conclusions drawn from the experiments, it was shown that multi-document\
+    \ technical survey creation benefits considerably from citation texts.Focused\
+    \ on the biomedical domain, a wide range of approaches that deal with this domain\
+    \ have emerged in recent years [16,14,1]. Specifically, we can also find several\
+    \ research works that address the generation of abstracts. For instance, Pollock\
+    \ and Zamora [29] used cue words for generating abstracts. This technique consists\
+    \ of determining the relevance of a sentence by means of the phrases or words\
+    \ it contains that could introduce relevant information, such as \"in conclusion\"\
+    \ or \"the aim of this paper\". Furthermore, Saggion and Lapalme [35] exploited\
+    \ also this kind of information, by means of a set of patterns that were later\
+    \ combined with the information extracted from the document.Our contribution with\
+    \ respect to state-of-the-art systems is that COMPENDIUM is able to deal with\
+    \ extractive summarization, but in addition, a novel strategy for producing abstractive-oriented\
+    \ summaries is proposed. Contrary to existing research works for the biomedical\
+    \ domain, we do not rely on specific patterns, nor we learn the structure or the\
+    \ content of the document for generating summaries. Moreover, we carry out an\
+    \ analysis with the purpose of determining which approach performs better, not\
+    \ only according to the information contained in summaries, but also, to user's\
+    \ assessment."
+- header: "Text summarization approach: COMPENDIUM"
+  content: "In this Section, the two suggested approaches that COMPENDIUM TS system\
+    \ is able to follow for generating summaries are explained. First we described\
+    \ COMPENDIUM E , a pure extractive TS approach (Section 3.1), and then we take\
+    \ this extractive approach as a basis in an attempt to improve the final summaries\
+    \ by integrating abstractive techniques, leading to COMPENDIUM E-A (Section 3.2)."
+- header: "Experimental framework"
+  content: "For generating extractive summaries, COMPENDIUM relies on four main stages,\
+    \ as it can be seen in Fig. 2: • Surface Linguistic Analysis: first of all, a\
+    \ basic linguistic analysis is carried out in order to prepare the text for further\
+    \ processing.Such analysis comprises tokenization, sentence segmentation, part-of-speech\
+    \ tagging, and stop word identification, since stop words will not be taken into\
+    \ consideration for the remaining stages. • Redundancy detection: a Textual Entailment\
+    \ (TE) tool [12] is used to detect and remove repeated information. The main idea\
+    \ behind the use of TE for detecting redundancy is that those sentences whose\
+    \ meaning is already contained in other sentences can be discarded, as the information\
+    \ has been already mentioned. Therefore, by applying TE we can obtain a set of\
+    \ sentences from the text which do not hold an entailment relation with any other,\
+    \ and then keep this set of sentences for further processing. Although in a different\
+    \ manner, TE has been successfully applied to summarization in previous research\
+    \ [41]. • Topic Identification: In this stage, the most relevant topic/topics\
+    \ of the document are identified by means of their frequency of appearance in\
+    \ the text. Term Frequency (TF) calculation is employed for achieving this goal,\
+    \ because it has been shown in previous work that high frequent words are indicative\
+    \ of the topic of a document [23,25], and, what is more, they are very likely\
+    \ to appear in human-written summaries [26]. Therefore, the frequency of a word,\
+    \ without considering stop words, is computed and it is used in the next stage\
+    \ of the TS process for determining the overall relevance of a sentence. • Relevance\
+    \ detection: this stage computes a score for each sentence depending on its importance,\
+    \ relying on the topic identification stage previously explained and a cognitive-based\
+    \ feature: the Code Quantity Principle (CQP) [15]. The CQP states that the most\
+    \ important information within a text is expressed by a high number of units (for\
+    \ instance, words or noun phrases). In our TS approach, we select as units noun\
+    \ phrases because they are flexible coding units and can vary in the number of\
+    \ elements they contain depending on the information detail one wants to provide.\
+    \ Therefore, in order to generate the summary, sentences containing longer noun\
+    \ phrases of high frequent terms (i.e., the most representative topics of a text)\
+    \ are considered to be more important, thus having more chances to appear in the\
+    \ final summary. • Summary generation: finally, having computed the score for\
+    \ each sentence, in this last stage of the TS process sentences are ranked according\
+    \ to their relevance and the highest ones are selected and extracted in the same\
+    \ order as they appear in the original document, thus generating an extractive\
+    \ summary, and leading to COMPENDIUME variant.Fig. 2. Overview of the stages involved\
+    \ in COMPENDIUME.The second type of summaries COMPENDIUM is able to generate is\
+    \ abstractive-oriented summaries, by means of COMPENDIUM E-A . In this approach,\
+    \ extractive and abstractive techniques are combined in the following manner:\
+    \ we take as a basis the COMPENDIUM E approach described in the previous subsection\
+    \ (Section 3.1), and we integrate an information compression and fusion stage\
+    \ after the relevant sentences have been identified and before the final summary\
+    \ is generated, thus generating abstractive-oriented summaries. The goal of this\
+    \ stage is to generate new sentences in one of these forms: either a compressed\
+    \ version of a longer sentence, or a new sentence containing information from\
+    \ two individual ones. The main steps involved in this stage are (Fig. 3):• Word\
+    \ graph generation: for generating new sentences, we rely on word graphs adopting\
+    \ a similar approach to the one described in Filippova [13]. Specifically in our\
+    \ approach, we first generate an extractive summary in order to determine the\
+    \ most relevant content for being included in the summary. Then, a weighted directed\
+    \ word graph is built taking as input the generated extract, where the words represent\
+    \ the nodes of the graph, and the edges are adjacency relationships between two\
+    \ words. The weight of each edge is calculated based on the inverse frequency\
+    \ of co-occurrence of two words and taking also into account the importance of\
+    \ the nodes they link, through the PageRank algorithm [5]. Once the extract is\
+    \ represented as a word graph, a pool of new sentences is created by identifying\
+    \ the shortest path between nodes (e.g. using Dijkstra's algorithm), starting\
+    \ with the first word of each sentence in the extract, in order to cover its whole\
+    \ content. The reason why we used the shortest path is twofold. On the one hand,\
+    \ it allows sentences to be compressed, and on the other hand, we can include\
+    \ more content in the summary, in the case several sentences are fused. • Incorrect\
+    \ paths filtering: this stage is needed since not all of the sentences obtained\
+    \ by the shortest paths are valid. For instance, some of them may suffer from\
+    \ incompleteness (\"Therefore the immune system.\"). Consequently, in order to\
+    \ reduce the number of incorrect generated sentences, we define a set of rules,\
+    \ so that sentences not accomplishing all the rules are not taken into account.\
+    \ Three general rules are defined after analyzing manually the resulting sentences\
+    \ derived from the documents in the data set, which are: i) the minimal length\
+    \ for a sentence must be 3 words, since we assume that three words (i.e., subject\
+    \ + verb + object) is the minimum length for a complete sentence; ii) every sentence\
+    \ must contain a verb; and iii) the sentence should not end in an article (e.g.\
+    \ a, the), a preposition (e.g. of), an interrogative word (e.g. who), nor a conjunction\
+    \ (e.g. and). • Given and new information combination: the objective of the last\
+    \ step is to decide which of the new sentences are more appropriate to be included\
+    \ in the final summary. Since we want to develop a mixed approach, combining extractive\
+    \ and abstractive techniques, the sentences of the final summary will be selected\
+    \ following a strategy that maximizes the similarity between each of the new sentences\
+    \ and the ones that are already in the extract, given that the similarity between\
+    \ them is above a predefined threshold. For this, we use the cosine measure to\
+    \ compute the similarity between two sentences, and a threshold has been empirically\
+    \ set to 0.5. Finally, in the cases where a sentence in the extract has an equivalent\
+    \ in the set of new generated sentences, the former will be substituted for the\
+    \ latter; otherwise, we take the sentence in the extract.Fig. 3. Overview of the\
+    \ stages involved in COMPENDIUME-A.In this section, we provide a description of\
+    \ the corpus employed (Subsection 4.1), we analyze the abstracts included in the\
+    \ research papers (Subsection 4.2) and we finally explain the experiments performed\
+    \ (Subsection 4.3)."
+- header: "Evaluation and discussion"
+  content: "For our experiments, a set of 50 research articles from a specialized\
+    \ journal of medicine was collected directly from the Web. Specifically, these\
+    \ articles belonged to the Autoimmunity Reviews journal. 1  The structure is similar\
+    \ for all of the articles in the corpus: title, authors and affiliations, keywords,\
+    \ abstract, outline and a variable number of sections (the content of these section\
+    \ is what we considered as the text of the article), depending on each article.\
+    \ At the end of each one, there are also two special sections: one is the \"take-home\
+    \ messages\" and the last one contains the references. In some articles, an acknowledgement\
+    \ section is included as well. In addition, each article may contain figures and\
+    \ tables, which are not taken into consideration for generating the summaries.A\
+    \ fragment of an article together with its complete abstract is shown in Tables\
+    \ 1 and2, respectively. For clarity reasons we have numbered the sentences according\
+    \ to its position within the text of the article and the abstract. The abstracts\
+    \ included in the articles were generated by the authors, and therefore, we use\
+    \ them as gold-standard for comparing them with respect to the results obtained\
+    \ by our TS system COMPENDIUM.  For using the abstracts as gold-standards, we\
+    \ carry out an analysis of different properties concerning the number of words\
+    \ and sentences the text of the article and the abstract have, as well as its\
+    \ compression ratio. In this manner, the articles have on average 2000 words (minimum\
+    \ = 949, maximum = 4464) and 83 sentences (minimum = 44, maximum = 151), whereas\
+    \ the abstracts only 162 words (minimum = 64, maximum = 341) and 6 sentences (minimum\
+    \ = 2, maximum = 15). This means that the compression ratio for the abstracts\
+    \ with respect to the text of the articles is around 8%. As can be deduced, this\
+    \ compression ratio is very high, since the articles are very long compared to\
+    \ the length of the abstracts.Besides analyzing the statistical properties of\
+    \ the corpus, we are also interested in the narrative style of the abstracts,\
+    \ in order to quantify and understand their nature with respect to the types of\
+    \ summaries COMPENDIUM produces.From this analysis, we found out that 82% of the\
+    \ abstracts had an abstractive nature, and they were created by identifying important\
+    \ fragments of information in the text (instead of complete sentences), and then,\
+    \ generalizing and connecting them with others in a coherent way, through discourse\
+    \ markers and linking phrases. On the contrary, the remaining 18% of the abstracts\
+    \ had an extractive nature, thus containing different sentences that appeared\
+    \ in the text. In these cases, the percentage of identical sentences ranged between\
+    \ 9% and 60% the length of the abstract, and therefore, we can observe that in\
+    \ some cases, more than half of the content of the abstract was extracted directly\
+    \ from the text of the article.In order to illustrate this fact, Table 3 shows\
+    \ a fragment of an article and its abstract together with the correspondence of\
+    \ their sentences. This fragment of the article and its abstract are the same\
+    \ as the ones reported in Tables 1 and2. On the one hand, 50% of the sentences\
+    \ in the abstract are found identically within the content of the article (sentences\
+    \ 1 and 2 in the abstract correspond to sentences 1 and 78 in the article) and\
+    \ the remaining sentences (sentences 3 and 4) were generated from relevant pieces\
+    \ of information that appears in the original document (e.g. sentence 3 contains\
+    \ information from sentences 8, 26, and 81). On the other hand, sentence 4 has\
+    \ been created by the author and consequently, it does not have a direct correspondence\
+    \ to any other sentence in the text of the article. As it can be noticed, it synthesizes\
+    \ the discussion of several diagnoses in just one sentence.Therefore, as a result\
+    \ of this analysis, one may think that a TS approach that combines extractive\
+    \ with abstractive techniques together can be more appropriate to tackle this\
+    \ task. In this article, we analyze two types of summaries generated by COMPENDIUM:\
+    \ extractive (COMPENDIUME) and abstractive-oriented (COMPENDIUME-A), where the\
+    \ latter is, indeed, a hybrid approach, which combines extractive and abstractive\
+    \ information. COMPENDIUM is employed for producing generic summaries of the data\
+    \ set previously explained. In particular, we generate two kinds of summaries:\
+    \ i) extractive summaries with COMPENDIUM E and ii) abstractive-oriented summaries\
+    \ with COMPENDIUM E-A , so that we can analyze on the one hand if COMPENDIUM is\
+    \ capable of determining the most relevant information, and on the other hand,\
+    \ which summarization approach would be more appropriate, and if they could be\
+    \ used instead of the abstract of the article. In the biomedical domain, articles\
+    \ usually contain an abstract no longer than 250 words. Since it was previously\
+    \ analyzed that the average length of the abstracts in our data set was 162 words,\
+    \ we take this length as a reference for the summaries generated with COMPENDIUM,\
+    \ since it is even shorter than the standard length for abstracts (i.e., 250 words).It\
+    \ is worth mentioning that for generating the summaries neither the keywords of\
+    \ the original article nor the information in the titles or in the abstract have\
+    \ been taken into consideration. Moreover, before passing the articles through\
+    \ COMPENDIUM, the data set is cleaned and only the main content of each article\
+    \ is kept for further processing. In other words, the outline, bibliographic entries,\
+    \ keywords, figures and tables are removed.Table 4 shows two examples of the types\
+    \ of summaries generated with COMPENDIUM E and COMPENDIUM E-A . The source document\
+    \ for these summaries is the article showed in Tables 1 and3.As it can be seen,\
+    \ the resulting summary for COMPENDIUM E-A has also some sentences in common with\
+    \ COMPENDIUM E , (e.g., sentences 2, 6, 7 and 8), whereas others have been compressed\
+    \ or merged (e.g., 1, 3, 4 and 5).The aim of this section is to explain the evaluation\
+    \ performed and show the results obtained together with a discussion. For evaluating\
+    \ the summaries generated by COMPENDIUM, two types of evaluation were conducted:\
+    \ quantitative (Subsection 5.1) and qualitative (Subsection 5.2).The goal of the\
+    \ quantitative evaluation is to assess whether the automatic summaries contain\
+    \ the main information from the source documents. In order to determine the most\
+    \ important information, we take into consideration the original abstracts of\
+    \ the articles and we compare them with the ones generated by COMPENDIUME and\
+    \ COMPENDIUME-A using ROUGE [20]. Moreover, apart from evaluating the information\
+    \ contained in the summaries, we also want to measure the user satisfaction towards\
+    \ the automatic summaries, thus carrying out a qualitative evaluation. Next, each\
+    \ of these evaluations is explained."
+- header: "Conclusion and future work"
+  content: "In this paper we presented COMPENDIUM, a text summarization system applied\
+    \ to the generation of abstracts of research papers for the biomedical domain.\
+    \ In particular, two types of generic summaries were produced: extractive and\
+    \ abstractive-oriented, with the corresponding variants of COMPENDIUM: COMPENDIUM\
+    \ E and COMPENDIUM E-A , respectively. The extractive approach only selected and\
+    \ extracted the most relevant sentences, whilst for the abstractive-oriented one,\
+    \ we proposed a novel approach, which combined extractive and abstractive techniques,\
+    \ by incorporating an information compression and fusion stage once the most important\
+    \ content was identified.With the aim of determining if COMPENDIUM was able to\
+    \ generate good summaries, as well as studying which approach should be more appropriate\
+    \ within the biomedical context, we carried out a quantitative and qualitative\
+    \ evaluation. On the one hand, the goal of the quantitative evaluation was to\
+    \ assess the information contained in the summaries, i.e., whether the system\
+    \ was able to identify the relevant information. On the other hand, the qualitative\
+    \ evaluation was conducted by means of a user satisfaction study where real users\
+    \ rated the generated summaries according to three criteria: their topics, content,\
+    \ and suitability for substituting the original abstracts in the research articles.Although\
+    \ the results concerning the quantitative evaluation benefited the extractive\
+    \ summaries, showing that the summaries generated with COMPENDIUM E-A contained\
+    \ less similar information to the human-written abstracts included in the articles\
+    \ than the summaries produced with the extractive approach (COMPENDIUM E ), we\
+    \ can conclude that according to the satisfaction users have towards both kind\
+    \ of summaries, the abstractive-oriented summaries COMPENDIUM E-A are the most\
+    \ appropriate. From these results, we can draw two main conclusions: i) COMPENDIUM\
+    \ is useful for producing automatic summaries of biomedical research papers, since\
+    \ both TS approaches are able to keep the most important information; ii) abstractive-oriented\
+    \ summaries generated with COMPENDIUME-A are better from a human perspective.\
+    \ Therefore, we showed the appropriateness of COMPENDIUM as a TS system, as well\
+    \ as our proposed strategy for facing abstractive summarization. In the future,\
+    \ we plan to analyze other variants of the proposed approach for building abstracts,\
+    \ such as taking the source document as a starting point instead of the extractive\
+    \ summary. Moreover, focusing also in the biomedical domain, we want to study\
+    \ other applications where automatic summaries are useful. For instance, the automatic\
+    \ generation of newsletters, that could help health experts and researchers to\
+    \ keep updated on the main novelties concerning their field of expertise, by just\
+    \ providing periodically a brief summary of recent biomedical articles, new treatments,\
+    \ drugs, etc."

@@ -1,0 +1,2603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Abstractive Summarization: An Overview of the State of the Art</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Som</forename><forename type="middle">K</forename><surname>Gupta</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Som Gupta</orgName>
+							</affiliation>
+							<affiliation key="aff0">
+								<orgName type="department">Som Gupta</orgName>
+							</affiliation>
+							<affiliation key="aff0">
+								<orgName type="department">Som Gupta</orgName>
+							</affiliation>
+							<affiliation key="aff0">
+								<orgName type="department">Som Gupta</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Abstractive Summarization: An Overview of the State of the Art</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="DOI">10.1016/j.eswa.2018.12.011</idno>
+					<note type="submission">Received date: 3 September 2018 Revised date: 28 October 2018 Accepted date: 6 December 2018</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.0" ident="GROBID" when="2024-01-06T07:50+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Expert Systems With Applications abstractive summarization</term>
+					<term>concept finding</term>
+					<term>Semantic-Based Summarization</term>
+					<term>Ontology-Based Summarization</term>
+					<term>Deep Learning;</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Summarization, is to reduce the size of the document while preserving the meaning, is one of the most researched areas among the Natural Language Processing(NLP) community. Summarization techniques, on the basis of whether the exact sentences are considered as they appear in the original text or new sentences are generated using natural language processing techniques, are categorized into extractive and abstractive techniques. Extractive summarization has been a very extensively researched topic and has reached to its maturity stage. Now the research has shifted towards the abstractive summarization. The complexities underlying with the natural language text makes abstractive summarization a difficult and a challenging task.</p><p>This paper presents a comprehensive review of the various works performed in abstractive summarization field. For this purpose, we have selected the recent papers on this topic from Elsevier, ACM, IEEE, Springer, ACL Anthology, Cornell University Library and Google Scholar. The papers are categorized according to the type of abstractive technique used. The paper lists down the various challenges and discusses the future direction for research in this field. Along with these, we have identified the advantages and disadvantages of various methods used for abstractive summarization. We have also listed down the various tools which have been used or developed by researchers for abstractive summarization. The paper also discusses the evaluation techniques being used for assessing the abstractive summaries.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>• Need of generalized framework for abstractive summaries is the need of time</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">Introduction</head><p>The exponential growth of information due to the popularity of web environment has lead to the need of automatic summarization in order to reduce the effort and time while finding the concise and relevant information according to the query. Summarization is to reduce the content of the text while preserving the meaning of the text. Various ways to write the same thing has made this topic an interesting topic among the researchers. There has been a lot of work done in the area of automatic summarization in the recent years. According to how the content is selected and organized in the summary, the summarization techniques are categorized into extractive and abstractive techniques. Extractive summarization is to find out the most salient sentences from the text by considering the statistical features and then arranging the extracted sentences to create the summary. Abstractive summarization, on the other hand is a technique in which the summary is generated by generating novel sentences by either rephrasing or using the new words, instead of simply extracting the important sentences. Internal representation of the text is created by analyzing the semantic information about the text and with the deep analysis and reasoning, new</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A C C E P T E D M</head><p>A N U S C R I P T sentences are generated out of the original text <ref type="bibr" target="#b87">(Rachabathuni, 2017)</ref>. On the basis of the number of documents which are considered for summarization, they are classified into single-document and multi-document summarization. On the basis of how much information is to be summarized, they are classified into generic, where the summary of the whole text is obtained and query-focused summarization, where only the summary according to the context which is specified by user is obtained. And, on the basis of content, they are classified into indicative, where focus is on telling what the text is about and informative summarization, where the main content of the text is extracted by analyzing the original text. There has been a lot of research in extractive summarization but extractive summaries lack in terms of cohesion, readability and other quality factors due to the presence of dangling anaphora problem. Also, the extractive summaries are usually very different from the human-written summaries <ref type="bibr" target="#b105">(Yao et al., 2017)</ref>.</p><p>From our survey, we have found that most of the works are on extractive summarization due to the simplicity to implement it. Whereas the complexity of natural language processing, makes abstractive summarization, a challenging task. But now research on extractive summaries has stagnated as they have achieved the peak performance <ref type="bibr" target="#b71">(Mehta, 2016)</ref> and thus the attention has shifted more towards abstractive summarization and fusion of extractive and abstractive techniques. The need of time is to produce high-quality summaries which are grammatically correct, readable, coherent, concise, and information-rich. Abstractive summarization helps resolve the dangling anaphora problem and thus helps generate readable, concise and cohesive summaries. Abstractive summarization helps reduce the sentence size as it uses fusion to merge the sentences, thus helps achieve more non-redundancy in the summary as compared to the extractive summaries, where even the non-relevant part of sentence also gets included due to the fact that it extracts the sentences and arranges them. Abstractive summaries also give higher precision than the extractive summaries. Abstractive summarization techniques not only help get the good quality summaries for the textual data but also for the non-textual data and cross-language data.</p><p>We have used the citation-based search for identifying the relevant papers. To ensure the good quality of papers for our review purpose, we have used IEEE 3 , 3 https://ieeexplore.ieee.org/ ACM<ref type="foot" target="#foot_1">4</ref> , Springer<ref type="foot" target="#foot_2">5</ref> , ACL Anthology<ref type="foot" target="#foot_3">6</ref> , Cornell University Library<ref type="foot" target="#foot_4">7</ref> , Elsevier<ref type="foot" target="#foot_5">8</ref> and Google Scholar<ref type="foot" target="#foot_6">9</ref> .</p><p>Most of the works in the field of abstractive summarization focus on the components like parsing, coreference resolution, construction and merging of semantic graphs, natural language generation, lexical chains and distributional semantics <ref type="bibr" target="#b105">(Yao et al., 2017)</ref>. Most of the abstractive techniques involve sentence compression, fusion <ref type="bibr" target="#b78">(Nayeem &amp; Chali, 2017)</ref>  <ref type="bibr" target="#b8">(Belkebir &amp; Guessoum, 2016)</ref> or revision for generating the final summary out of the selected sentences.</p><p>According to whether the structure of the text is considered or the semantics, the abstractive summarization techniques are categorized into structure-based and semantic-based techniques. Apart from structure and semantic-based, now a days deep learning has emerged as a new technique to model the abstractive summarization problem which can capture both the structural and semantic information of the text.</p><p>From the literature review, we have found that the number of papers which describe the extractive summarization techniques in detail is huge but there are very few papers and are mostly outdated in the field of abstractive summarization which lists down the various recent works done in this field in categorized and detailed manner. Separate papers are available for each individual topic like sentence compression, sentence fusion, summarization using deep learning but there is no paper which lists them together. So to address this issue, we have listed down the various works done till the mid of 2018 and categorized them into the pre-defined classification hierarchy. Our study will systematize and enhance the knowledge in this research field. We have also discussed the popular components of abstractive summarization system.</p><p>In this paper, we discuss the research trends in the abstractive summarization field. We give an overview of various abstractive summarization techniques available. We discuss the tools that have been used for creating abstractive summaries. We also discuss the evaluation measures used for assessing these summaries. We have identified the challenges lying in the field of abstractive summarization and discussed the future trends in this area of research.</p><p>Our paper answers the following questions: The paper is organized as follows:-Section 2 describes the various abstractive summarization techniques. Section 3 discusses some of the common steps which are involved while creating the summaries. Section 4 discusses the various tools used for performing abstractive summarization. Section 5 points out the challenges and future direction for new researchers. And Finally the conclusion.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">Existing Approaches to</head><p>Abstractive Summarization <ref type="bibr" target="#b74">(Moratanch &amp; Chitrakala, 2016</ref>) <ref type="bibr" target="#b51">(Khan, 2014</ref>) (Dineshnath.G &amp; S.Saraswathi, 2018) have classified the abstractive summarization approaches broadly into the structure-based and semantic-based. After surveying the abstractive summarization research works, we have added one more approach, deep learning with neural networks to it. Structure-based approaches are those where the important information of the text is populated into the pre-defined structure to create the abstractive summaries. Structure-based approaches are divided into tree-based, template-based, ontology-based, leadand-body phrase, graph-based and rule-based methods according to the structure used for creating summaries. Whereas Semantic-based approaches are those which take the text document as input, create the semantic representation of text and then feed this representation to Natural Language Generation system to create the final abstractive summary. They are divided into information-item-based, predicate-argument based, semantic-graph based and multimodal. Figure <ref type="figure" target="#fig_2">1</ref> is the classification of abstractive summarization approaches. In the below sub-sections, we have discussed the various abstractive summarization methods.  </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1.">Structure-Based Approach</head><p>Structure-based approaches find the most important information from the text and then use templates, rules, trees, ontology, etc to create the abstractive summaries. They are mostly used along with extractive, semanticbased or deep learning based approaches. Few of the examples are like <ref type="bibr" target="#b34">(Ganesan et al., 2010)</ref> have used templates along with the graph-based approach, <ref type="bibr" target="#b3">(Bartakke et al., 2016)</ref> used rules and ontology along with the semantic-graphs, <ref type="bibr" target="#b58">(Li, 2015)</ref> used templates along with the semantic-based approach, <ref type="bibr" target="#b101">(Wang &amp; Ling, 2016)</ref> used neural networks along with the templates to create the abstractive summaries. Sometimes, these approaches are also used as the first step for text preprocessing like <ref type="bibr" target="#b80">(Nguyen &amp; Phan, 2009)</ref> extracted the important key-phrases from the text using ontology which then can be combined with some other approaches to create the abstractive summary. Below is the list of various methods being used for creating abstractive summaries by considering the structure of the text.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1.1.">Tree Based Methods</head><p>In this approach, first the important text to be considered for the summary is extracted. Then, the similar sentences are identified from this text by using a shallow parser. Similar sentences of this text are then populated into the tree-like structure. Processing of trees is performed by either linearization(converting trees to strings), finding predicate-argument structure or sentence fusion to create the final abstractive summaries (C. <ref type="bibr">Sunitha et al., 2016)</ref>. There are various algorithms which help us perform these. For example, content theme intersection algorithm is one which is used to determine the common phrases by using predicateargument structure, finding the basis tree (Barzilay &amp; <ref type="bibr" target="#b6">McKeown, 2005)</ref> by finding the centroid of the dependency tree and then augmenting these basis trees to obtain the sub-trees is also another way to evaluate the sentence. Common phrases are obtained and then either some information is added to them or are fed to the Natural Language Generation systems to create the new sentences and then are arranged together to create a summary.</p><formula xml:id="formula_0">A C C E P T E D M A N U S C R I P T</formula><p>Dependency tree is the most popular data structure, used to represent the text in a tree-form. <ref type="bibr" target="#b6">(Barzilay &amp; McKeown, 2005</ref>) used text-to-text generation to create the informative summaries. They represented the sentences using dependency trees and found the common information among sentences by processing the trees. They computed the fusion lattice by finding the intersection of sub-trees and then used tree traversals on them to produce the final sentence. One of the limitation of this approach is that it cannot capture the connections between the sentences without finding the intersected phrase between the sentences. <ref type="bibr" target="#b106">(Yousfi-Monod &amp; Prince, 2008)</ref> developed an approach called CoLIN, based on dependency tree pruning and linearisation while maintaining the semantic information, information content, grammatical correctness,and coherence in the summary. They performed the deep linguistic analysis of the text and focused on linguistic heuristics. <ref type="bibr" target="#b55">(Kurisinkel et al., 2017)</ref> used the partial dependency trees which are constructed from syntactic dependency trees by parsing of the text along with the recombination and transition based syntactic linearization to create multi-document abstractive summaries.</p><p>The use of Natural Language Generation systems for creating summaries help achieve the fluency and grammatical correctness. But they mostly do not consider context while finding the important phrases to be included in the summary <ref type="bibr" target="#b49">(Kasture1 et al., 2014)</ref>. They mostly rely on parsing and alignment of parse trees <ref type="bibr" target="#b52">(Khan et al., 2018)</ref>. Dependency trees are constructed with the help of parsers. Thus, the performance of these methods highly relies on the parsers available, which limits its efficiency. They focus more on the syntax then the semantics.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1.2.">Template Based Methods</head><p>In template-based methods, snippets are extracted using keywords or clues; and the extracted snippets are populated into templates to form the final summary. Because the structure is predefined, it helps create concise and coherent summaries. They rely on deep syntactic and semantic analysis of the text. It is one of the very popular method to create multi-document summaries. This method works well when the text is struc-tured in some manner. But, because the rules and the patterns are manually defined, this method is very timeconsuming and also requires a lot of manual effort <ref type="bibr" target="#b0">(Alshaina et al., 2017)</ref>. <ref type="bibr" target="#b41">(Harabagiu et al., 2001)</ref> used the template-based summarization and created a system called GISTEX-TER to create the multi-document summaries where the templates are filled by following the patterns and the rules. <ref type="bibr" target="#b15">(Carenini et al., 2012)</ref> used the templates to generate the natural language summaries for the evaluative corpus in their system SEA. <ref type="bibr" target="#b28">(Embar et al., 2013)</ref> used the domain-based template method to create the Kannada based abstractive summarizer. They used the handcrafted information extraction rules to extract information to fill the templates. <ref type="bibr" target="#b84">(Oya et al., 2014)</ref> proposed a multi-sentence fusion technique for creating abstract templates. To create templates, they have used the noun phrases along with the POS tagging and hypernyms. After finding templates, they have clustered them by extracting root verbs. They used word-graph for fusion of templates to generate the final summary. <ref type="bibr" target="#b36">(Gerani et al., 2014)</ref> have also used templates to generate the summaries by using the selected sentences obtained by considering the discourse structure of the text.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1.3.">Ontology Based Methods</head><p>An ontology can be considered as the collection of entities and the relationship between them. An ontology along with the set of individual instances of class constitutes the knowledge base <ref type="bibr" target="#b66">(Ma et al., 2016)</ref>. Classes are the most important part of an ontology and represent the concepts. An Ontology defines the vocabulary set and also contains terms agreement, which helps remove any kind of ambiguity while finding the concepts. Ontologies are usually created by the domain experts and are mostly used to extract the concepts and relations from the text. These concepts are then used for creating the summaries <ref type="bibr">(M et al., 2016</ref>). One of the example of a domain-specific ontology is "WordNet". Ontologies help share a common knowledge among the community of interest. They enable the reuse of the knowledge. They help separate the domain and operational knowledge and thus help perform modifications easily when something related to domain changes. They have been used in number of fields like e-learning, user-related content analysis and image analysis <ref type="bibr" target="#b2">(Baralis et al., 2013)</ref>. Ontology-Based abstractive systems extract the information from the ontologies to create the summaries specific to user's need.</p><p>Many times the online vocabulary is limited, ontology helps in proper representation of the document <ref type="bibr" target="#b88">(Rananavare &amp; Reddy, 2017)</ref>. Even the semantic repre-</p><formula xml:id="formula_1">A C C E P T E D M A N U S C R I P T</formula><p>sentation of the information content can be improved a lot with the help of an ontology. Vocabulary normalization is performed to resolve the ambiguity when there are more than one synonym of a concept <ref type="bibr">(M et al., 2016)</ref>.</p><p>Ontology is mostly represented in hierarchical structure like the directed acyclic graph, etc <ref type="bibr" target="#b63">(Lloret et al., 2013)</ref>. Resource Development Framework(RDF) and Web Ontology Language(OWL) are two major languages used for creating an ontology. DBPedia <ref type="bibr" target="#b11">(Bizer et al., 2009</ref>) is one of the project which has structured the wikipedia data in the form of ontology. Ontologies help in query expansion and query search <ref type="bibr" target="#b2">(Baralis et al., 2013)</ref>. <ref type="bibr" target="#b96">(Tran et al., 2007)</ref> used the ontologies to build their question-answering system where they used the ontologies to convert the user question into the system query, so that system can understand the query specified by user. Ontologies help achieve topic completeness and non-redundancy in the summary <ref type="bibr" target="#b44">(Hpola et al., 2014)</ref>. <ref type="bibr" target="#b110">(Zhang et al., 2011)</ref> created an approach to create customizable ontology-based summaries where the length of summary and navigational preferences can be specified. RDF Graphs were constructed and the salience scores of RDF sentences were obtained to find the important sentences from the user's view. <ref type="bibr" target="#b42">(Hennig et al., 2008a</ref>) created an ontology based text summarization system where they applied the hierarchical classifier which mapped the sentences into the nodes of a pre-defined ontology. <ref type="bibr" target="#b57">(Lee et al., 2003</ref>) created an ontology-based approach for chinese news summarization by using the pre-defined ontology created for news articles. They used the ontology to infer the events from the news. <ref type="bibr" target="#b44">(Hpola et al., 2014)</ref> used the ontology in their system called Texminer to extract the important sentences with rhetorical structure, which summarizes the ports and coastal information. Ontology helped containing all the important concepts of the topics of coastal engineering. Ontology helped capture the semantic information of the concepts to facilitate the summarization in their system. (dolfo Lozano-Tello &amp; Gomez-Perez, 2004) created a metric called OntoMetric to choose the appropriate ontology according to the requirement specifications. <ref type="bibr" target="#b80">(Nguyen &amp; Phan, 2009)</ref> used the Wikipedia ontology to extract the key-phrases which are the linguistic representation of the text, from the Vietanemese text. These keyphrases can be used for document summarization. <ref type="bibr" target="#b2">(Baralis et al., 2013)</ref> presented a multidocument abstractive summarizer which used Yago ontology for selection of sentences by the identification of entities, concepts and disambiguation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1.4.">Lead and Body Phrase Methods</head><p>Here the insertion and substitution of important information-rich phrases technique are used in the lead sentence from the body text, which are called triggers (C. <ref type="bibr">Sunitha et al., 2016)</ref>. Creating the grammatically correct sentences by using this method is still an issue. <ref type="bibr" target="#b95">(Tanaka et al., 2009)</ref> created the lead and body phrase summaries of broadcast summarization. They revised the summaries by modifying the lead sentence by using insertion and substitution of phrases. They modified the lead sentence by adding information like "who", "where", "when", "how", etc to it.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1.5.">Graph-Based Methods</head><p>Word Graph is the most popular graph data structure which is used for representing the text in these methods. Sentences are fused together to create the abstractive summaries. Sentence fusion helps remove the redundant part of the sentence and thus achieve nonredundancy. Word graphs work on the assumption that there will be lot of similar sentences in the text and this similarity will help fuse the sentences. But it is not necessary that it will be easy to find the similar sentences.</p><p>( <ref type="bibr">Barzilay &amp; Lee, 2003a)</ref> used the paraphrasing to generate the natural language summaries by the fusion of sentences. They used the graph-based structure to find structurally similar sentences, then identified the text which are paraphrases to each other and then generated the sentence. <ref type="bibr" target="#b50">(Katja, 2010)</ref> created the grammatically correct and informative summaries by finding the shortest path in the word-graphs. But as they ranked their sentences on the basis of informativeness, it lacked the linguistic quality. <ref type="bibr" target="#b70">(Mehdad et al., 2013)</ref> extended the work of <ref type="bibr" target="#b50">(Katja, 2010)</ref> by creating the entailment graphs to eliminate the redundant information along with the word graphs to find the relevant sentences from the informal text of meeting transcripts, to create the abstractive summaries. They used the WordNet to find the relations between the words and used this information to merge the nodes of the graph. Information content and the grammatical fluency were chosen as the factors to decide the best paths of the graph and then used the generalization and aggregation to generate the abstractive summary. <ref type="bibr" target="#b34">(Ganesan et al., 2010)</ref> created the informative, readable, concise and well-formed abstractive summaries for redundant opinions by using graph based data structure called word Graph. Their approach does not require domain knowledge and uses shallow NLP. Their opiniosis-graph captures the redundancy and helps discover the new sentences by identifying the lexical links.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A C C E P T E D M</head><p>A N U S C R I P T <ref type="bibr" target="#b56">(Le &amp; Le, 2013</ref>) created the extractive summaries and then applied word-graph to reduce the sentence and combine the sentences. <ref type="bibr" target="#b82">(Niu et al., 2017)</ref> used the chunk graphs which are based on the word-graph to reduce the size of the graph. <ref type="bibr" target="#b84">(Oya et al., 2014)</ref> used the word-graph to merge the templates generated for meeting conversations. <ref type="bibr" target="#b1">(Banerjee et al., 2017)</ref> used the word graphs along with the Integer Linear Programming(ILP) to create the multi-document abstractive summaries. They first identified the most important documents among the documents to be summarized with the help of LexRank, cosine similarity score and overall document collection similarity score. Then, they created the clusters of similar sentences among the important documents. Shortest paths are obtained by creating the word-graphs and ILP model is applied to find the sentences with maximum information and readability. ILP helps minimize the redundancy in the summary.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1.6.">Rule-Based Methods</head><p>In this method, the rules and categories are fed into system, to find the meaningful candidates which are then used to create the summary. Here the text document is first categorized according to the terms and concepts present in them. Then the questions are formulated according to the domain of text document and then the answers are extracted from the document. Questions can be like: Where the event has occurred, when the event has occurred, who did the event, what was the impact of event, etc. These questions are usually answered by finding the Part of Speech of the terms and concepts in the text. By answering these questions, they are fed into some pattern which then help create the final abstractive summary <ref type="bibr" target="#b49">(Kasture1 et al., 2014)</ref>. But again as in template-based approach, here the rules are written manually and thus leads to wastage of time.</p><p>Table <ref type="table" target="#tab_3">2</ref> lists down the advantages and disadvantages of structure-based approaches on page 13.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2.">Semantic-Based Approach</head><p>Here first the semantic representation of the text is obtained by finding the information items, predicateargument structure or creating semantic graphs. Then, this representation is fed to the Natural Language Generation system and by using the noun and verb phrases <ref type="bibr" target="#b25">(Dineshnath.G &amp; S.Saraswathi, 2017)</ref>, the final abstractive summary is created. Content theme intersection algorithm is also used with the graphs to determine the common phrases by using predicate-argument structure.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2.1.">Information Item Based(INIT) Methods</head><p>(Genest &amp; Lapalme, 2011) used the information item, the smallest unit of coherent information in the text to find the abstractive summaries. With information item, they mean the entities, their characteristics and the relationships or properties between them. They relied on Semantic Role Modeling, disambiguation, co-reference analysis, similarity analysis and predicate-logic analysis to find the information items. They used subject, verb and object triplets along with the time and location information to create the summary sentences. The general framework for INIT Based methods contains four modules namely information items retrieval where triplets are extracted using parser, sentence generation by using language generator, sentence selection by finding the top-rated sentences which is calculated on the basis of factors like document frequency, etc and summary generation using planning <ref type="bibr" target="#b49">(Kasture1 et al., 2014)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2.2.">Predicate-Argument Based Approach</head><p>Predicate-argument structure means the verbs, subject and object, etc of the sentence. Predicate-argument structure is obtained for the sentences to represent them semantically. Then, the semantically similar structures are found from them by using similarity measures like edit distance measure, etc. Semantically similar structures are merged together by using some methods like K-means and hierarchical clustering <ref type="bibr" target="#b0">(Alshaina et al., 2017)</ref>. Features are extracted from the predicateargument structures(PAS) and then they are scored. To maximize the salience scores of the sentences, optimization approaches like Integer Linear Programming(ILP) is used. High scoring PAS are selected and fed to the language generation system for creating the final summary. But to generate the new sentences out of them is a very difficult task <ref type="bibr" target="#b58">(Li, 2015)</ref> from this method. <ref type="bibr" target="#b109">(Zhang et al., 2016)</ref> proposed a cross-language abstractive summarization approach by using predicate-argument structure and merging them using Integer Linear Programming. They annotated the predicate-argument structures with semantic role modeling to obtain the summaries. To solve the dependency of human-written ontology , <ref type="bibr" target="#b0">(Alshaina et al., 2017)</ref> used the predicate-argument structure along with the semantic role modeling to find the semantic similarity between the arguments and created the multi-document abstractive summaries.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2.3.">Semantic Graph-Based Methods</head><p>It is one of the very popular way to represent the text on the basis of the semantic relations between the sentences in the text. Semantic properties include the ontological relations and the syntactical relations between</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A C C E P T E D M</head><p>A N U S C R I P T the words. Ontological relations utilize the property of synonymy, hyponymy, hypernymy, etc whereas syntactical relations utilize the property of relationship among the words on the basis of subject-object-verb i.e. represented in terms of dependency tree and the syntactic tree <ref type="bibr">(Joshi et al., b)</ref>.</p><p>Here the document is represented using a semantic graph. Nouns and verbs are represented as nodes of the graph, while relations between the nodes is represented by the edge. <ref type="bibr" target="#b52">(Khan et al., 2018)</ref> proposed the semantic graph-based approach for multi-document abstractive summary generation. <ref type="bibr" target="#b40">(Han et al., 2016)</ref> proposed a semantic graph-based model using FrameNet where each sentence is considered as a vertex and semantic relations between the sentences is represented as edges. Framenet is used to classify the sentences and find the relevance between the sentences and accuracy is achieved using Wordnet. Following are few famous semantic graphs which have been used for creating abstractive summaries.</p><p>• Rich Semantic Graphs: It is one of the way to represent the semantic information of the text in the form of graphs. Nouns and Verbs of the text represent the nodes and the semantic and topological relation between them correspond to the edges. Nouns and verbs of the text are obtained with the help of parsing or ontology. <ref type="bibr" target="#b72">(Moawad &amp; Aref, 2012)</ref> used the Rich Semantic Graphs(RSG) reduction approach for generating the single document abstractive summaries. They reduced the graph by using heuristic rules such as substitution, deletion, or fusion of nodes. Graph Nodes are obtained by using domain ontology, which consists of class hierarchy and relations. <ref type="bibr" target="#b3">(Bartakke et al., 2016)</ref>, <ref type="bibr" target="#b75">(Munot &amp; Govilkar, 2015)</ref> created the semantic graphs for each sentence and then used ontology to inter-connect the concepts to create the rich semantic sub-graphs and then applied the heuristic rules to create the final reduced semantic graph and then fed it to the natural language generation tool to create the abstractive summary.</p><p>• AMR Graphs: Abstract Meaning Reprsentation(AMR) Graphs are labeled, rooted and directed acyclic graphs of the sentences. AMR Graphs provide the semantic representation of the sentence. Nodes of the graphs represent concepts and the edges represent the relationship between the concepts. AMR Graphs represent lot of information about the text like the named entities, semanticrole labeling, predicate-argument structure and co-reference relation <ref type="bibr" target="#b32">(Foland &amp; Martin, 2017)</ref>. Concepts are mostly either the English words or Prop-Bank<ref type="foot" target="#foot_7">10</ref> frames. Even though there are a number of parsers available for parsing but mostly JAMR parser<ref type="foot" target="#foot_8">11</ref> is used to perform the parsing; it performs parsing in two steps: first by identifying the key concepts using semi-Markov model, second by identifying the relations between the concepts by searching for maximum connected spanning graph.</p><p>While generating the source graph for the sentence, as the similar concepts are merged together, so at the end of merging, an entity is represented in the graph only once. Thus, regardless of number of times, the concept has appeared in a sentence, it is represented as only one node. And this when applied to multiple sentences, lead to the final graph with no-redundancy <ref type="bibr" target="#b61">(Liu et al., 2015)</ref>. AMR Graphs are used in three representations namely in conjunction form to find the similarity between more than 1 AMR Graph, in PENMAN notation and as a graph data-structure <ref type="bibr" target="#b99">(Viet et al., 2017)</ref>. <ref type="bibr" target="#b100">(Vilca &amp; Cabezudo, 2017)</ref> used the AMR parsing for each sentence to generate the conceptual graph and incorporated Discourse-level information to identify the concepts. They used these concepts to generate the natural language summaries using SimpleNLG. <ref type="bibr" target="#b61">(Liu et al., 2015)</ref> used the graph-to-graph transformation for a domainindependent summary generation. They used Treebank to create AMR Graphs and then transformed these graphs to generate the summary. <ref type="bibr" target="#b59">(Liao et al., 2018)</ref> created the AMR Graphs for each sentence and then merged them to create the summaries by using surface realization. They have used JAMR Parser to identify the concepts and the relationship between the concepts.</p><p>With the increasing research of Neural Networks for summarization purpose, they have been successfully applied to the task of AMR parsing also. <ref type="bibr" target="#b54">(Konstas et al., 2017)</ref>  • Basic Semantic Unit Based: AMR graphs focus only on graph-to-graph transformation and text generation module is not developed for it. To deal with it, <ref type="bibr" target="#b58">(Li, 2015)</ref> have used semantic information to create multi-document abstractive summaries by using BSU(Basic Semantic Unit), the most basic element of coherent text. They have constructed BSU semantic link network where BSU indicates actors and receivers and consists of semantic links, semantic nodes, and reasoning rules. Semantic links help captures the context around the nodes.</p><p>Text can be generated efficiently using this methods.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2.4.">Multimodal Semantic Method</head><p>Most of the information in the web is not purely textual. It mostly contains images, videos, etc. along with the text. <ref type="bibr" target="#b49">(Kasture1 et al., 2014)</ref> has divided the general framework for multimodal summarization into three phases namely semantic model construction of concepts, a rating of concepts on the basis of factors like completeness, and sentence generation. (Greenbacker, 2011) used the information density as a metric to calculate the content obtained from multimodal summary methods. To create the abstractive multimodal summaries, they first created the semantic model using knowledge representation, where they constructed the concepts and then extracted the semantic information from the limited specific class of images. After extracting the semantic information, they identified the important concepts using information density metric. They used the phrasing methods to generate the summaries. (UzZaman et al., 2011) created multimodal summaries of complex sentences by finding the entities and the main idea behind the text and then added the structure to the images. Ontology is used in this approach to find the concepts but no automatically generated ontology is used in these approaches which leads to wastage of times. Also, there is no automatic method to evaluate these summaries, which limits the efficiency of these methods.</p><p>Table <ref type="table" target="#tab_5">4</ref> lists down the advantages and disadvantages of semantic-based approaches on page 14.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3.">Deep Learning and Neural Network Based Approach</head><p>Deep Learning is a part of machine learning based methods and involves training and learning data. It involves multiple layers of non-linear processing to extract the features from the text. Learning can be both supervised or unsupervised. They are based on artificial neural networks. Deep Learning has been successfully applied to various NLP tasks. <ref type="bibr" target="#b12">(Buys &amp; Blunsom, 2017)</ref> showed that parsers based on Recurrent Neural Networks(RNN) have achieved state of art performance in dependency and constitutional parsing. RNN models help predict complex relations which simple structured or semantic-based approaches cannot do alone.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3.1.">Introduction to Encoder-Decoder Model</head><p>Encoder and decoder are the individual neural networks, and work together as a combined neural network. Encoder's task is to understand the input sequences while the decoder's task is to determine the sequences and give the output. Encoder converts the words into the vectors representation which helps capture the context. Mostly word embedding is used for representing the words in encoders but many have used bag-of-words model <ref type="bibr" target="#b90">(Rush et al., 2015)</ref> too. Decoders help find the next word in the summary on the basis of previous words. When both the input and output are in the form of sequence like in the case of text summarization, the learning problems are also called as Seq2Seq learning problems. Encoder-Decoder models help solve these problems. Attention mechanism is mostly used in sequence models where the information is extracted from the encoder on the basis of attention scores and this information is used by decoder. Attention helps know what part of information do we need to focus at a particular time-stamp.</p><p>Few common networks used in encoder-decoder models to solve the abstractive summarization problem are:-</p><formula xml:id="formula_2">• Convolutional Neural Networks(CNN):</formula><p>Here the input size is always fixed. Each input of the network is independent of previous and future inputs.</p><p>• Recurrent Neural Networks(RNN): In most of the practical applications, input size is usually not fixed. Also, the inputs are not independent, rather depend on each other. Moreover, the number of predictions required as output is also not fixed. These are also called as sequence learning problems. Recurrent connections are added to the neural networks which helps capture the dependency of inputs with previous or future inputs.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A C C E P T E D M</head><p>A N U S C R I P T  <ref type="bibr" target="#b2">(Baralis et al., 2013)</ref> used neural networks for parsing the semantic graphs for generating the abstractive summaries by deep linguistic analysis. They used Minimal Recursion Semantics(MRS) for semantic representation of grammars. They performed disambiguation by using maximum entropy model. They developed this model to solve the alignment problem of AMR Graphs. MRS can be used both for parsing and the text generation. <ref type="bibr" target="#b82">(Niu et al., 2017)</ref> proposed a multi-document abstractive summarization approach by using chunk graphs and neural networks. They used a Recurrent Neural Network Language Model which helped evaluate the linguistic quality of sentence, which further helped create good readable abstractive summaries.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3.2.">Recent Works on Abstractive Summarization using Deep Learning Models</head><p>Simple sequence-to-sequence model map the input sequence to the output sequence. <ref type="bibr">(Jobson &amp; Gutirrez)</ref> used encoder-decoder RNN along with LSTM to create the summaries. They used the word-embedding for the training purpose and attention function for creating the context vector at each time step. <ref type="bibr" target="#b76">(Nallapati et al., 2016)</ref> used the attention model along with the RNN to handle the issues of modeling keywords and capturing of the hierarchical structure between the sentence and word. They used the bidirectional encoder with GRU(Gatted Recurrent Unit, used to solve the vanishing and exploding gradient problems)-RNN and unidirectional decoder with GRU-RNN. They used the attention model on the hidden-states of source and softmax layer on the target. <ref type="bibr" target="#b90">(Rush et al., 2015)</ref> used the feed-forward neural network to work on sentence-level text summarization. They used the attention-based encoder and beam-search based decoder for sentence-level summarization. <ref type="bibr" target="#b18">(Chopra et al., 2016)</ref> used the encoder-decoder model along with the conditional RNN to solve the problem similar to <ref type="bibr" target="#b90">(Rush et al., 2015)</ref>. <ref type="bibr" target="#b89">(Rossiello et al., 2016)</ref> used the neural networks along with RNN and probabilistic models to create the grammatically cor-rect abstractive summaries. They used the prior knowledge along with the neural networks to model the problem. <ref type="bibr" target="#b62">(Liy et al., 2017)</ref> used the sequence-to-sequence encoder-decoder model to generate the abstractive summaries. They considered the latent structured information of the text to improve the quality of summaries. They used the recurrent generative decoder to translate the source code into hidden states and then back to original word-sequences to generate the summary. <ref type="bibr" target="#b94">(Song et al., 2018b)</ref> proposed a deep learning based approach called Long Short-Term Memory encoderdecoder model where instead of words, they have used phrases as input to generate the abstractive summaries. <ref type="bibr" target="#b29">(Fan et al., 2018</ref>) created a personalized controllable abstractive summarization approach using sequence-tosequence encoder-decoder based Convolutional Neural Networks model. They created the summary according to the user preferences like entity, whose information they want to know, the size of summary, part of text whose summary they want to obtain.</p><p>Most of the deep learning based models are applied to the single-document generic systems. <ref type="bibr" target="#b7">(Baumel et al., 2018)</ref> created the multi-document queryspecific abstractive summaries using Relevance Sensitive Attention-based model. <ref type="bibr" target="#b79">(Nema et al., 2018)</ref> used the diversity-driven attention model for solving the same problem. <ref type="bibr" target="#b79">(Nema et al., 2018)</ref> have attempted to solve the problem of repeated phrase generation by sequence-to-sequence model by using diversity-driven attention model, which helped achieve a gain of 28% in ROUGE-L Score.</p><p>Even though deep learning has been applied successfully and emerged as one of the promising approaches to create the abstractive summaries. But the availability of a good large corpora for the training purpose is still a challenge. Moreover, most of the corpora are old and thus do not contain the updated morphological, semantic and syntactic features. Not just this, but also most of the corpora are in English only. <ref type="bibr" target="#b73">(Modaresi &amp; Conrad, 2016)</ref> have created an approach to create a single document corpus to address the above-mentioned problems. <ref type="bibr" target="#b60">(Lin et al., 2018)</ref> used the Seq2Seq model along with the attention mechanism to solve the problem of repetitions with the Seq2Seq models. They used convolutional gated units along with the global encoding at the encoder side and unidirectional LSTM at the decoder side to perform the abstractive summarization.  <ref type="bibr" target="#b52">(Khan et al., 2018)</ref>. Here the main aim is to capture the internal representation of the text and convert them into the relations of discourse <ref type="bibr" target="#b44">(Hpola et al., 2014)</ref>. Rhetorical Structure Theory assumes that the documents can be represented in the form of hierarchical trees. Rhetorical structure in the form of tree is created from the discourse. Algorithm is created to assign the weights to these elements. Higher the element is in the rhetorical structure, higher the weight is given. Then on the basis of length desired for the summary, elements are extracted. Discourse connectors help increase the coherence and cohesion of the text. Discourse parser is used to create the parse trees and then discourse tree representation is created for sentences <ref type="bibr" target="#b36">(Gerani et al., 2014)</ref>. Rhetorical Structure <ref type="bibr" target="#b17">(Chengcheng, 2010)</ref> is the way to analyze the text at the clause level and deals at document-level. Rhetorical relation is the relation between the two non-overlapping texts. A tree like structure is created to represent the coherence in the text. Discourse units participate in it with one element called as nucleus and another as satellite <ref type="bibr" target="#b37">(Goyal &amp; Eisenstein, 2016)</ref>. The main steps are to identify the text phrase, creation of Rhetoric Structure Trees, processing of trees to find the important and unimportant sentences by finding the nucleus elements, and then creation of summary. Advantage of Rhetorical Structures are that they help create complete, grammatically correct and readable summaries. <ref type="bibr" target="#b36">(Gerani et al., 2014)</ref> used the discourse based approach to summarize the product reviews. They have used aspects and their structured relations to generate the abstractive summaries by analyzing the discourse structure and the relations. Their approach does not require domain knowledge. Aspect-Based Discourse tree is created for each review, then they are merged to create Aggregated Rhetorical Relation Graph(ARRG). Weighted PageRank is applied to ARRG, to create the final sub-graph called Aspect Hierarchy Tree(AHT) to create the final summary by applying text planning and sentence realization. In Sentence Realization step, they have used templates along with the NLG.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.4.">Discourse and Rhetorical</head><p>Table <ref type="table" target="#tab_4">3</ref> lists down the advantages and disadvantages of Deep Learning-based approaches on page 13.</p><p>Below in Table <ref type="table" target="#tab_2">1</ref>, we have found the range of ROUGE Scores obtained by the above mentioned methods on the DUC 2001 dataset, used for creating abstractive summaries.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">Generating the Abstractive Summaries</head><p>In this section, we have focused on those steps which are the important part of generating the text. From our survey, we found that sentence compression, concept fusion, calculation of path scores and summary generation are few common parts of an abstractive summarization system. In this section, we have focused on the techniques used by various researchers to perform these particular tasks.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1.">Sentence Compression</head><p>Sentence Compression is to reduce the length of sentence while preserving the original meaning of sentence <ref type="bibr" target="#b77">(Napoles et al., 2011)</ref>. Many times, irrelevant details are also present in the sentence and it is important to remove them to avoid the space problem. It is one of the very important topic of NLP community and plays a very important role in creating abstractive summaries. On the basis of the type of structure used for the sentence compression, these methods are divided into tree-based, discourse-based and sentencebased methods. Tree-based approaches ( <ref type="bibr" target="#b53">(Knight &amp; Marcu, 2000)</ref>, <ref type="bibr" target="#b33">(Galley &amp; Mckeown, 2007)</ref>) create the compound sentences by editing the syntactic trees obtained by parsing the text. But they are highly dependent upon the parser, which limits them. Whereas, sentence-based approaches <ref type="bibr" target="#b69">((McDonald, 2006)</ref>) directly create the sentences but they lack in terms of lexicalization. Discourse-based approaches( <ref type="bibr" target="#b19">(Clarke &amp; Lapata, 2008</ref>)) consider the discourse information of surrounding text to compress the sentences.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A C C E P T E D M A N U S C R I P T</head><p>On the basis of type of learning used for compression, they are also divided into supervised and unsupervised models. Supervised approaches involve the training to find the phrases for compression. To find the probabilities, they use either the generative or the discriminative model. In generative models, either the probability of target compression is found directly or indirectly by using noisy channel. Whereas, in discriminative models, main aim is to reduce the training errors. Mostly SVM, maximum entropy, decision trees and large margin learning are used for discriminative modelling <ref type="bibr" target="#b19">(Clarke &amp; Lapata, 2008)</ref>. Unsupervised approaches use rules and language models to compress the sentence.</p><p>On the basis of whether the words are deleted or the new phrases or words are used, these approaches are divided into delete-based and generate-based <ref type="bibr" target="#b107">(Yu et al., 2018)</ref>. In delete-based approach, unimportant words are deleted from the sentence and by stitching of rest of the text, the final sentence is created. In generatebased models, insertion, substitution and replacement is used. Generate-based models require the deeper understanding of the text. <ref type="bibr" target="#b53">(Knight &amp; Marcu, 2000)</ref> have described the probabilistic approach to compress the sentences. They have used the generative noisy channel and decision tree based methods to compress the sentence. <ref type="bibr" target="#b33">(Galley &amp; Mckeown, 2007</ref>) also used the syntactic trees to compress the sentence by using synchronous context free grammars. <ref type="bibr" target="#b69">(McDonald, 2006)</ref> used the machine learning, discriminative online learning approach(Margin Infused Relaxed Algorithm, MIRA) to learn the feature weights and find the text which need to be considered for compression. To create the feature vectors and the final sentence, they used the deep syntactic analysis of sentence by parsing their sentences with both the dependency parser and phrase-structure parser. <ref type="bibr" target="#b81">(Nguyen &amp; Ho, 2004)</ref> used Hidden Markov models to compress the sentence. CLASSY( Clustering, Linguistics and Statistics for summarization system) <ref type="bibr" target="#b22">(Conroy et al., 2005)</ref>, compress the sentences using syntactic and lexical heuristics like elimination of phrases, named entity identification, Hidden Markov Models. Integer Linear Programming(ILP) is also one of the famous approach for sentence compression. It not only helps capture the statistical information but also helps capture the discourse level information. Most of these approaches use the local information to compress the sentence. To solve this issue, <ref type="bibr" target="#b19">(Clarke &amp; Lapata, 2008)</ref> used the unsupervised learning along with the constrained optimization, called Integer Linear Programming(ILP) to compress the sentence. They used discourse information along with the simple sentence compression. <ref type="bibr" target="#b91">(Sahooa et al., 2018)</ref> used Support Vector Machine(SVM) to compress the sentences by first parsing the sentences from Stanford Parser and then used these parsed sentences for training purpose. <ref type="bibr" target="#b108">(Zajic et al., 2006)</ref> developed an approach called TRIMMER to compress the sentences for creating multi-document summaries. They trimmed the syntactic constituents of the sentence till they reach to the threshold point and then selected the sentences with best topic coverage. But their applicability is limited to English only and lacks in terms of finding the appropriate sentences. <ref type="bibr" target="#b67">(Mani et al., 2010)</ref> conducted an experiment to find how the machine learning algorithms work to decide the predicates to be added to the sentence fragments to combine them together to create a non-extractive sentence; and found that SVM works reasonably well in comparison to other classifiers. <ref type="bibr" target="#b77">(Napoles et al., 2011)</ref> extracted the set of paraphrases that minimizes the length of the sentence. <ref type="bibr" target="#b109">(Zhang et al., 2016)</ref> used Integer Linear Programming to generate the sentences for the summary.</p><p>Machine learning models alone have not achieved the state of art but when used with the models like Recurrent Neural Networks (RNN), have given very good results. Most of the compression techniques involve the processing of syntactic information, <ref type="bibr" target="#b30">(Filippova et al., 2015)</ref> have proposed an approach which uses RNN based Long Term Short Memory Models to compress the sentence. They trained the model by using a corpus of approximately 2 million sentences. They first parsed the sentence, then created the embedding vectors of 518 dimensions size for the sentence by using dependency tree obtained by parsing, and then decoded the sequence by using beam search procedure. Their system achieved the readability score of 4.5 out of 5 and the informative score of 3.8 out of 5. <ref type="bibr" target="#b107">(Yu et al., 2018)</ref> used both the delete-based and generate-based models along with the Seq2Seq model(bidirectional RNN and Gated Recurrent Units, GRU) to compress the sentence.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.">Concept Generalization and Fusion</head><p>Here the different concepts appearing in the text are replaced with one concept which is the generalization of all the concepts. It helps in reducing the text. (Belkebir &amp; Guessoum, 2016) performed the concept generalization by using WordNet corpora. They performed this by finding the generalizable sentences by generating the hyperonymy paths of concepts in a sentence and then reducing the size of generalizable versions. Sentence Fusion is also used to create the summaries. In sentence fusion, the related sentences are given to the</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A C C E P T E D M A N U S C R I P T</head><p>system as an input, dependency structures of the sentences are aligned to find the common information and then on the basis of alignment, fusion tree is created. Alignments can be created at word-level, phrase-level, substring-level, etc but for the fusion purpose, alignment at dependency-tree level is considered best. Alignment helps understand how the words are related to each other. The best paths are obtained from the trees and are fed to the Natural Language Generation system to create the final sentence <ref type="bibr">(Marsi &amp; Krahmer)</ref>. <ref type="bibr" target="#b6">(Barzilay &amp; McKeown, 2005)</ref> used the dependency trees for the fusion of sentences to create the fluent, grammatically correct and non-redundant summary by utilizing the property of common information among the sentences. They created the fusion lattices and linearized them by using natural language generator FUF/SURGE to create the final sentences. <ref type="bibr" target="#b31">(Filippova &amp; Strube, 2008</ref>) created the multi-document abstractive summaries for German biographies by using the concept of sentence fusion. They used informative phrase merging and pruning along with the dependency structure alignment to create the summaries. <ref type="bibr" target="#b70">(Mehdad et al., 2013)</ref> built an entailment graph for the sentences to find out the most relevant sentences, and then used the word graphs along with the generalization and aggregation to combine the sentences to form the informative summaries. <ref type="bibr" target="#b8">(Belkebir &amp; Guessoum, 2016)</ref> used concept fusion to create the text-to-text generation technique for creating the abstractive summaries. But they alone cannot create a good summary due to the fact that identifying the common fragments is a big challenge and then using the fusion lattice to combine the sentences to form the grammatically correct sentence is again a complex problem. Also the approach has the problem of referring-expression. <ref type="bibr" target="#b54">(Konstas et al., 2017)</ref> used the Integer Linear Programming(ILP) to find and merge the informative phrases to obtain the global optimal solution.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.1.">Paraphrasing</head><p>Replacing the phrases with shorter paraphrases help reduce the length of original text <ref type="bibr">(Barzilay &amp; Lee, 2003b)</ref>. Paraphrase detection and finding entailment between the phrases and the sentences is not an easy task. (COHN &amp; LAPATA, 2013) used the sentence-level abstracts to create the summary by creating an end to end paraphrasing system to not only acquire the paraphrases but also use them to create the new strings. They used Synchronous Tree Substitution Grammar to create the compressed parse tree, and then trained them discriminatively. <ref type="bibr" target="#b45">(Issa et al., 2018)</ref> used AMR parsing along with the latent semantic analysis to detect the para-phrases. Through latent semantic analysis, they tried to find semantic similarity through distributional representation. But the accuracy of AMR Parser due to the formalism and annotation problem limited the paraphrasedetection system also. <ref type="bibr" target="#b16">(Chen &amp; Bansal, 2018)</ref> used the paraphrasing by first selecting the salient sentences and then rewriting to create the abstractive summary. They operated at both the sentence-level and word-level.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3.">Calculation of path scores</head><p>Semantic graphs which includes Rich Semantic Graph, Dense Semantic Graph, AMR, etc and are one of the very popular way to create the abstractive summaries. The semantic graphs can be obtained by two ways. One way is by representing the sentence in subject-object-verb and other way is by finding the dependency relations between the sentences. To create the graph from later way, shortest dependency path score need to calculated <ref type="bibr">(Joshi et al., b)</ref>. <ref type="bibr" target="#b9">(Bhargava et al., 2016)</ref> calculated the scores on the basis of redundancy of overlapping sentences and length of path by calculating the intersection of position of words in the sentence. <ref type="bibr" target="#b70">(Mehdad et al., 2013)</ref> used language model, information about nouns and verbs present in the sentences to find the paths which are more readable and fluent.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4.">Summary Generation</head><p>Mainly NLG tools are used for summary generation as they increase the fluency and decrease the grammatical mistakes. NLG has been used to add new vocabulary and language structures to the sentences <ref type="bibr" target="#b63">(Lloret et al., 2013)</ref>. Figure <ref type="figure" target="#fig_5">2</ref> represents the modules of the Natural language generation process. It basically involves:-</p><p>• Text Planning: This step is also called content determination. It is to decide which all information to be included to the summary. It is the preliminary step in most of the systems for creating summaries. It can also be divided into content selection and text structuring.</p><p>• Sentence Planning: It is to organize the content in a manner to produce the sentence specification. Sentence boundaries are specified in this phase. Here the aim is to arrange the text in sub-paragraphs.</p><p>Relationship between the text is considered and on the basis of relatedness, the sentences are merged to create intermediate paragraphs. This step is also known as Sentence Aggregation. It is to provide structure to the summary. Machine Learning helps learn good summary structure <ref type="bibr" target="#b35">(Genest &amp; Lapalme, 2011)</ref>. This phase is again divided into four phases</p><formula xml:id="formula_3">A C C E P T E D M A N U S C R I P T</formula><p>namely lexical analysis, discourse analysis, aggregation and referring expression.</p><p>-Lexical Analysis: Here the individual lexical units are chosen based on various factors like fluency, variability, language and formal language style. Here the right word and phrase is found to be substituted to the text to express the information <ref type="bibr" target="#b27">(Dohare &amp; Karnick, 2018)</ref>. Synonyms for nouns and verbs are obtained to generate the target words. Here the domain words are classified into lexical items. It involves finding the semantically similar words, synonyms or other taxonomically related words.</p><p>-Discourse analysis: Here the individual sentences are generated from the synonyms and phrases which are found during the lexical analysis phase.</p><p>-Aggregation Process: It is to decide how the sentences will be merged to form the intermediate paragraphs. Many times the hand crafted rules are used to find the way to merge the sentences.</p><p>-Referring Expression Process: Here the subject is replaced with the pronouns. Here the appropriate words are chosen which enables distinguishing the entities.</p><p>• Realization: Here the objective is to convert the intermediate paragraphs so obtained from sentence planning phase to the final paragraphs. Here the paragraphs are corrected considering syntax coherence, grammatical and punctuation correctness. It involves morphological and syntactic transformations.</p><p>• Evaluation: Here the paragraphs are ranked and sorted according to various factors like coherence between the sentences, most frequently used word synonyms, etc.</p><p>To summarize the works done in this field of research, we have listed them in the tabular form in Table <ref type="table">5</ref> in page 24 which lists down the author name, Evaluation measure used, dataset used, and type of abstractive summary created.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">Tools Used and Developed</head><p>From our survey, we have found that most of the abstractive summarization systems consist of 3 steps namely pre-processing, inferencing and Natural Language Generation. Pre-processing of the text involves creating the representation for the text and it includes identifying the named-entities, coreference resolution, finding part of speech tagging, construction of dependency trees, construction of semantic trees, etc. Inferencing the text includes learning the representation of text obtained from pre-processing step. This step mainly includes fusion, deletion, applying some learning model like neural networks, etc. And the final step includes Natural Language Generation where the final grammatically correct summary is generated for the text. On the basis of the steps involved in creating abstractive summaries, we have divided the tools used or created into 3 categories namely:-pre-processing tools, summarization techniques and natural language generation tools. Below is the list of tools along with their functionalities.</p><p>1. Pre-processing Tools: These are the tools which are used for performing pre-processing during the summarization process and their aim is to mainly find the named-entities, perform sentence segmentation, semantic role labeling, create the dependency trees, help in co-reference resolution process,find synonyms, etc.</p><p>• WordNet<ref type="foot" target="#foot_9">12</ref> : It is a very popular english lexical database where the nouns, verbs, adjectives and adverbs are grouped and organized into synsets. Synsets are related to each other by synonyms, hypernyms, hyponoms, meronyms, holonyms, etc. and helps find the semantic relations between the words. Thus, wordnet help in text classification and find</p><formula xml:id="formula_4">A C C E P T E D M A N U S C R I P T Advantages Disadvantages Template Based Methods</formula><p>Because of the fact that the snippets are filled with the information extracted by Information Extraction systems, provide highly coherent and informative summaries. They can be used for multi-document summarization also.</p><p>They lack the diversity as they are mostly predefined. They lack when the system needs to consider the similarity and differences between the documents <ref type="bibr" target="#b51">(Khan, 2014)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Ontology Based Methods</head><p>Ontology Based Methods can handle the uncertainties associated with the text easily.</p><p>Ontology based methods need a good ontology or dictionary which is mostly created by an expert in the domain, thus is very time-consuming approach.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Tree</head><p>Based Methods Use of language generator improves the quality of summaries. They produce fluent and less-redundant summaries <ref type="bibr" target="#b51">(Khan, 2014)</ref> Tree based methods do not consider the context; thus miss many important phrases of the text.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Lead and Body Phrase Methods</head><p>They are good for semantic revisions of a lead sentence <ref type="bibr" target="#b88">(Rananavare &amp; Reddy, 2017)</ref>.</p><p>Lead and Body Phrase Methods produce redundant, less grammatical and sometimes incomplete summaries. Parsing failure leads to the wrong phrase substitution leading to incorrect summaries.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Rule</head><p>Based Methods Summaries are of high information density.</p><p>Because of the fact that rules and patterns are mostly hand-crafted, it is very tedious to create these summaries <ref type="bibr" target="#b49">(Kasture1 et al., 2014)</ref>. Neural networks help capture the proper syntactic role of each word.</p><p>Large Training is required to capture the good representation of the text.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>2.</head><p>Neural Networks can help reduce the grammatical errors.</p><p>They rely on the statistical co-occurrence of words, which leads to semantic and grammatical errors <ref type="bibr" target="#b89">(Rossiello et al., 2016)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>3.</head><p>Deep neural networks help capture the intrinsic and high level distributed representation of data.</p><p>Deep Learning Models mainly work at sentencelevel, which makes them effective for sentence compression but not much to the document summarization.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>4.</head><p>Deep Learning models help capture the semantic and syntactic structure of the text together which is not possible with simple extractive or abstractive techniques <ref type="bibr" target="#b94">(Song et al., 2018b)</ref>.</p><p>Most of the time, there is an alignment problem between the original and training data, which leads to problems during abstractive summarization <ref type="bibr">(Jobson &amp; Gutirrez)</ref>. 5.</p><p>They help achieve better ROUGE-Scores. Even though, these techniques create short summaries but they lack in terms of information density <ref type="bibr" target="#b7">(Baumel et al., 2018)</ref>. They suffer from the problem of repetitions when creating multisentence summaries <ref type="bibr" target="#b16">(Chen &amp; Bansal, 2018</ref>) <ref type="bibr">(Song et al., 2018a)</ref>. Also, they suffer from the problem of slow encoding when the document to be summarized is long <ref type="bibr" target="#b16">(Chen &amp; Bansal, 2018)</ref>. Manual evaluation is required as the document contains both images and text.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Rich Semantic Graph</head><p>Based Methods They produce less redundant and grammatically correct summaries.</p><p>Rich Semantic Graphs(RSG) are mostly limited to singledocument summarization. the concepts in the text which then helps in text summarization process.</p><p>• FrameNet 13 : It is a human and machine readable english lexical database with annotating examples. It helps assign the semantic roles, and helps find the relationships between the predicates.</p><p>• SParser 14 : It is a phrase structure-based chart parser. It has an extensive and extendible semantic grammar. <ref type="bibr" target="#b38">(Greenbacker, 2011)</ref> used the SParser to generate the multimodal abstractive summaries. It has been used in <ref type="bibr" target="#b39">(Greenbacker et al., 2011)</ref> to perform the linguistic analysis by identifying each part of the text in terms of subject and obtained the 13 https://framenet.icsi.berkeley.edu/fndrupal/ about 14 https://github.com/charlieg/Sparser concepts in terms of partially-saturated referents.</p><p>• MINIPAR Parser 15 : <ref type="bibr" target="#b35">(Genest &amp; Lapalme, 2011)</ref> used this parser to find the subjectverb-object triplets. It takes a sentence as input, parses the sentence and finds the dependency relations among the words in the sentence.</p><p>• It is also possible to use rules with them for effective summarization. <ref type="bibr" target="#b35">(Genest &amp; Lapalme, 2011)</ref> used it for syntactic analysis.</p><p>• PropBank 17 : It is a corpus of text annotated with information about semantic propositions. Predicate-argument relations are also available to syntactic Penn TreeBank. <ref type="bibr" target="#b100">(Vilca &amp; Cabezudo, 2017)</ref> used it for semantic role modelling which helps identify questions like "Why", "Whom", "Where", "How", etc.</p><p>• Stanford NLP 18 : It helps perform many NLP based applications like sentence splitting, part of speech tagging, named entity recognition, constituency parsing, dependency parsing, open information extraction, etc. Thus, helps perform text summarization. In most of the papers, to create the dependency trees, stanford NLP parser has been used. Stanford CoreNLP helps perform co-reference resolution.</p><p>• Lingsoft 19 : It is a morphological and syntactic analyzer tool. They provide base and grammatical forms of words, which can be used for labeling and organizing the output. <ref type="bibr" target="#b72">(Moawad &amp; Aref, 2012</ref>) used Lingsoft to syntactically analyze the sentence.</p><p>• SENNA Role Labeller: <ref type="bibr" target="#b52">(Khan et al., 2018)</ref> used this parser to determine the predicate argument structure for the sentence from the text. Along with the role modeling, it also helps perform part of speech tagging, named entity recognition, chunking and syntactic parsing. It creates frames for each verb in the sentence.</p><p>• LibSVM 20 is a software for support vector classification. It helps perform multiclass classification, weighted Support Vector Machines for unbalanced data. Support Vector Machines(SVM) helps find important sentences by performing text categorization, chunking and dependency analysis. partitions the text into semantically related words. It has been used <ref type="bibr" target="#b84">(Oya et al., 2014)</ref> to identify all the noun phrases along with the part of speech tagging in the sentence to create template based summaries.</p><p>• VerbNet<ref type="foot" target="#foot_10">22</ref> : It is a hierarchial, domainindependent, online english verb lexicon. It maps verbs to other lexicons like WordNet.</p><p>Roles are also associated with the verbs. It provides syntactic description of frames and semantic predicates for the verbs which helps in restricting the thematic roles. It has been used widely for the creation of semantic graphs, calculation of sentence similarity and token-level disambiguation for text summarization.</p><p>• PractNLP<ref type="foot" target="#foot_11">23</ref> : They are python libraries which are build over SENNA and stanford dependency extractor. It has been used to extract the predicate-argument structure from the text <ref type="bibr" target="#b0">(Alshaina et al., 2017)</ref>.</p><p>• NLTK ToolKit<ref type="foot" target="#foot_12">24</ref> : NLTK helps remove the stop words, fragment the sentence, find the frequency of each word. <ref type="bibr" target="#b50">(Katja, 2010)</ref> used the NLTK Toolkit to label the chunks in the sentences.</p><p>• Stanford Core-NLP Toolkit<ref type="foot" target="#foot_13">25</ref> : It has been widely used to perform co-reference resolution <ref type="bibr" target="#b50">(Katja, 2010)</ref>.</p><p>• JAMR Parser: They are used for AMR Parsing. Along with the prediction of graph for each sentence, it also provides the alignment between the span of words and fragments of predicted graph, which then helps during text generation phase <ref type="bibr" target="#b61">(Liu et al., 2015)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">Summarization Tools</head><p>• SIGHT <ref type="bibr" target="#b24">(Demir et al., 2010)</ref>: It is a tool to generate textual summaries of information graphics. It conveys the underlying message along with the highlights by using visual features. It's visual extraction module has been used <ref type="bibr" target="#b39">(Greenbacker et al., 2011)</ref> to analyze the image and intention recognition module has</p><formula xml:id="formula_5">A C C E P T E D M A N U S C R I P T</formula><p>been used to identify the communicative signals present in the graphics. It is mostly used for multimodal document summarization.</p><p>• SUMMONS <ref type="bibr" target="#b27">(Dohare &amp; Karnick, 2018)</ref>: Tool which creates template based summaries. It is one of the first multi-document summarization system. It has two major components mainly content planner and linguistic generator. Content planner determines the important information to be included to the summary by combining the input templates whereas linguistic generator selects the right words to be used to create a coherent and grammatically correct summary. But the hard-coded templates and domain specificity limits its usage Bhartiya &amp; Singh.</p><p>• SUMMARIST<ref type="foot" target="#foot_14">26</ref> : It is a hybrid of Topic Identification, Interpretation and Natural Language Generation. The system uses dictionary and a thesaurus SENSUS to identify the topics and generalize them. Topics fusion is performed for interpretation and then used phrase template generator to create the final abstract summaries.</p><p>• COMPENDIUM <ref type="bibr" target="#b63">(Lloret et al., 2013)</ref> uses both the extractive and abstractive techniques to create the final summary. The system first identifies the relevant sentences on the basis of surface linguistic analysis, redundancy detection by using Textual entailment tool, topic identification by using TF-IDF and relevance detection by code quantity principle; then the information compression and fusion is performed to generate the abstractive summaries. They obtained the word graphs for the sentences, filtered the incorrect paths in the word graphs and then created the summaries.</p><p>• MultiGEN:<ref type="foot" target="#foot_15">27</ref> is a tool for performing multidocument summarization based on the similarities and dissimilarities between the documents. They work on the central idea of theme extraction to identify the similar sentences and reformulation on the basis of common themes to generate the summary.</p><p>• System SEA <ref type="bibr" target="#b14">(Carenini et al., 2006)</ref>: Summarizer of Evaluative Arguments, is used for generating the evaluative arguments. It creates the abstractive summaries by calculating the aggregation of extracted information and then applying natural language generation to it.</p><p>• NAMAS<ref type="foot" target="#foot_16">28</ref> : It is a neural abstractive based text summarization system developed by Facebook, which uses Gigaword Corpus. It trains the system and then evaluates by using ROUGE score.</p><p>• GISTEXTER <ref type="bibr" target="#b41">(Harabagiu et al., 2001)</ref> • SemanticSumm: It is a semantic<ref type="foot" target="#foot_17">29</ref> approach based summarization system which uses AMR graphs for creating summaries.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">Natural Language Generation Tools</head><p>• SimpleNLG<ref type="foot" target="#foot_18">30</ref> to generate the sentences <ref type="bibr" target="#b35">(Genest &amp; Lapalme, 2011)</ref>.</p><p>• FUF or SURGE Language Generator<ref type="foot" target="#foot_19">31</ref> : It is used to generate the sentences by fusing and merging the phrases. FUF is a natural language generation tool which is based on unification of grammars. SURGE is a comprehensive grammar set for FUF.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">Challenges and Future Direction</head><p>Complexity of natural language processing poses a lot of challenges to the abstractive text summarization. There are lot of open research problems in this field which are yet to be solved. Few of the challenges in this field are listed down as below:</p><formula xml:id="formula_6">A C C E P T E D M A N U S C R I P T • Need of Quantitative Measures:</formula><p>On the basis of whether the evaluation is performed by comparing the results obtained by using some automatic method executed by the system or by comparing the results obtained by people assessment, the evaluation techniques are divided into: quantitative and qualitative. And, On the basis of whether the quality of summary is assessed by itself or the impact of summary on other tasks like readability is calculated to determine its effectiveness, are divided into intrinsic and extrinsic evaluation.</p><p>In quantitative evaluation, the informativeness of sentence is analyzed on the basis of content available. ROUGE is the famous metric employed for quantitative evaluation. While in qualitative analysis, user satisfaction is evaluated against the generated summaries. Some researchers <ref type="bibr" target="#b1">(Banerjee et al., 2017)</ref> have used human evaluation along with the ROUGE Score to find the overall quality of summary.</p><p>ROUGE is a metric used for performing quantitative analysis and is recall-based. It calculates the number of overlapping n-grams between the system generated summary and the human written summary. There are many variants of ROUGE metric like ROUGE-2, where word sequences of size 2 are considered for comparison; ROUGE-L, where longest common subsequence is considered for comparison; ROUGE-SU4, where skip bigrams are compared with unigrams. Pyramid score has also been used for evaluation purpose as it can evaluate the quality beyond word-level matching <ref type="bibr" target="#b58">(Li, 2015)</ref>. <ref type="bibr" target="#b1">(Banerjee et al., 2017)</ref> used the informativeness and linguistic quality as 2 measures for human based evaluation. <ref type="bibr" target="#b84">(Oya et al., 2014)</ref> used human based, 5-scale method based on fluency, too many, grammatic mistakes, informativeness and coverage to find the overall quality of summary. (COHN &amp; LAPATA, 2013) used the human evaluation approach along with the spearman's coefficient to compare the results of their abstractive sentence compression approach to ensure the appropriateness of distribution of ratings they used . <ref type="bibr" target="#b2">(Baralis et al., 2013)</ref> used human evaluation on the basis of readability to find the effectiveness of their system.</p><p>In most of the works, the assessment of summaries has been done by using ROUGE Scores. ROUGE scores help measure coverage but they do not help find coherence and other factors like non-redundancy as they only calculate the repeatability of N-grams <ref type="bibr" target="#b94">(Song et al., 2018b)</ref>. It has also been observed that same ROUGE-Score has been obtained for different summaries of the same text when their contents are completely different and when the overlapping is also almost different <ref type="bibr" target="#b71">(Mehta, 2016)</ref>. Even the ROUGE scores fail to give insights to help specify the strengths and weaknesses of the summary <ref type="bibr" target="#b13">(Carenini &amp; Cheung, 2008)</ref>. More work on finding the variants of ROUGE Score is the need of day <ref type="bibr" target="#b105">(Yao et al., 2017)</ref>. <ref type="bibr" target="#b7">(Baumel et al., 2018)</ref>  <ref type="bibr" target="#b109">(Zhang et al., 2016)</ref> have addressed the issue of designing quantitative measures which can find the quality of abstractive summaries. ROUGE Score works well for extractive summaries but it is not a good metric for evaluating abstractive summaries as they need a metric which can find the semantic overlap than the word overlap.</p><p>Pyramid Score is one of the metric used to evaluate the summary from the semantic perspective. It is an annotation based scoring method where the summarization content units (SCU) are obtained from the model summaries and then the weight is assigned to each SCU on the basis of frequency of its occurrence in the human-reference summaries. But, lot of human-intervention is required to perform this evaluation to assess the semantic content of text. AutoPyramid is an extension of Pyramid approach where <ref type="bibr" target="#b85">(Passonneau et al., 2013)</ref> tried to reduce this manual effort by automating the process of finding whether the SCU is present in the system-generated summary or not. They used dynamic programming and latent vector method to solve this issue. But they could not quantify the quality of summary on the basis of agreement and contradiction with the human-reference summary. <ref type="bibr" target="#b103">(Yang et al., 2016)</ref> created one more approach called PEAK(Pyramid Evaluation via Automated Knowledge Extraction) to automatically assess the SCU by using information extraction and graph algorithms. But this approach also lacked many things like it doesn't take into consideration, the co-reference resolution, paraphrase identification, and failed to model the contradiction. Thus, to resolve the above-mentioned issues of Pyramid, ROUGE and Auto-pyramid methods to evaluate the abstractive summaries; <ref type="bibr" target="#b98">(Vadapalli et al., 2017)</ref> </p><formula xml:id="formula_7">created one metric, Semantic Sim- A C C E P T E D M A N U S C R I P T</formula><p>ilarity for Abstractive Summarization(SSAS) for evaluating the abstractive summaries at semantic inference level. They used deep semantic analysis to find the lexical and semantic measures to compute the similarity between the systemgenerated and human-generated summaries. But at present, this approach takes too much time compared to ROUGE, Pyramid, Auto-pyramid and PEAK methods. Thus more work on paralleling and finding better ways to obtain the feature vectors to make SSAS more effective is required. query-specific summarization. <ref type="bibr" target="#b79">(Nema et al., 2018)</ref> have created one dataset 34 using Debatepedia 35 for solving this problem. Alignment of data is also one of the issue for extracting source and target sentences <ref type="bibr" target="#b71">(Mehta, 2016)</ref>. Mostly the data is aligned at document-level and not at sentence level. <ref type="bibr" target="#b29">(Fan et al., 2018)</ref> have created the controllable abstractive summaries and allowed the users to mention about the portion of text they want to summarize. But to create the summary for the specific portion of text, they faced the challenge of dataset. They had to create their own dataset as there was no readily available dataset which can be used to perform this kind of summary. They aligned the summaries to full documents.</p><p>• Need of Good Algorithms for Concept Fusion and Generalization: Sentence fusion is one of the very challenging area of abstractive summarization field. There is not much work done in the field of concept generalization and fusion. (Belkebir &amp; Guessoum, 2016) in their paper have used noun rule and adjective rule for concept fusion but more work on finding more rules to perform concept fusion is required. Their approach generated the set of generalizable sentences but their algorithm has exponential space complexity and thus more work on finding the algorithms which can reduce the space of generalizable sentences is required. <ref type="bibr" target="#b70">(Mehdad et al., 2013)</ref> addressed the need of finding good approaches for community detection and sentence fusion for informal text like meeting transcript information. Community sentences are those sentences of the text which can be merged together to create an abstract sentence.</p><p>• Scalability Issues: Even though there has been a lot of research in this field but the algorithms require lot of data and power to give good results with long documents <ref type="bibr">(Singhal et al.)</ref>. Also, Most of the work in this field are performed on simple and compound sentences. But more work, on finding scalable approaches which consider the complex-compounded sentences too are required <ref type="bibr" target="#b91">(Sahooa et al., 2018)</ref>. Even when the neural networks are applied to the summarization of long document, it suffers from the problem of slow and inaccurate encoding due to the fact that attention mechanism is mostly applied and it looks at all the encoded words for decoding purpose <ref type="bibr" target="#b16">(Chen &amp; Bansal, 2018)</ref>.</p><p>• Semantic Similarity Calculation: Semantic Similarity Calculation between the sentences is one of the problems of Natural Language Processing field. It plays a very important role in abstractive summarization process as it helps find the concepts and concepts are the heart of the abstractive summarization systems. Mostly Word co-occurrence , lexical database, and search engine results are used to calculate the semantic similarity between the words or the sentences. Word co-occurrence based models calculate this similarity by comparing the query vector and document vector but as they do not consider the order and context of words, they cannot capture the semantic similarity very efficiently. Lexical databases like WordNet are also used to calculate the similarity between phrases or sentence but direct matching of words or phrases with lexical database information and the fact that the meaning of word differs from corpus to corpus, limits them. Even, the search engine based methods do not give very good results due to the fact that words with opposite meanings also occur together with the search engine results. To solve these issues <ref type="bibr" target="#b86">(Pawar &amp; Mago, 2018</ref>) created an approach by creating the semantic vectors for the sentences by using WordNet as the lexical source. But more efforts to extend these methods to various domains and analyze how the results differ by using different ontology is also required. Most of the works have used WordNet to find the lexical information in the text to create the graphs, <ref type="bibr" target="#b70">(Mehdad et al., 2013)</ref> mentioned the need of finding how the graphs change with using different knowledge sources like Yago Ontology or DBPedia.</p><p>• Need of Increasing the efficiency of AMR Graphs: AMR is a rooted, directed and acyclic graph used to represent the semantic information of a sentence of the text. AMR Graphs are built upon the PropBank frameset, thus the frameset limitation, limits the AMR Graphs. When AMR Graphs are used for summarization purpose, individual graphs are merged together by identification of similar concepts <ref type="bibr" target="#b61">(Liu et al., 2015)</ref>. But, as the size of text increases, the number of AMR Graphs increases, the merging leads to the complexities. Thus more decoding algorithms like Lagrangian relaxation or approximate algorithms should be discovered to make AMR Based Approach more effective. <ref type="bibr" target="#b61">(Liu et al., 2015)</ref> have also raised the need of performing both the entity and event coreference resolution to make the Graphs merging more efficient. Also, to identify the edges to be selected as the candidate for the summary, subgraphs are identified, but mostly the subgraph prediction is at the sentence-level. Identifying how the subgraphs can be found at the document-level, can help achieve more-coverage. AMR Graphs construction depends upon the available parsers which limits its efficiency, as the whole concept of summarization using AMR Graphs depend upon the concept identification. And the efficiency of concept identification depends upon the efficiency of parsers. So, with improvement upon the parsing models, AMR Graphs based summarization models can be improved more. At present, AMR-Graphs are used along with the NLG-tools to create the final summary. Future work can include identifying graph-to-graph based summarization system.</p><p>• Need of Single Platform for Specifying the Ontologies: There are a number of external ontologies available for use. There is a need for single platform which can accommodate all the explicit ontologies and thus it will help get the extensive abstractive summarization system for different domains. <ref type="bibr" target="#b102">(Xiang et al., 2015)</ref> have tried to address this issue by creating an ontology matching approach called ERSOM, which finds the semantically related entities between different ontologies.</p><p>• Need of Cross-Language Based Abstractive Summarization Systems: Cross-language summarization is to produce the summary of a text written in some source language like Sanskrit in some other target language like in English. In this information era, not all the documents are of same language. Different documents are of different languages. Creating the cross-language summary will help the unfamiliar readers know the essence of the document. From the survey, we have found that mostly extractive summarization techniques have been used for this task and not much work has been done in creating abstractive summaries for crosslanguage systems. Few of the works by <ref type="bibr">(ge Yao et al., 2015)</ref>  <ref type="bibr" target="#b109">(Zhang et al., 2016)</ref> have used phrasebased compression and predicate-arguments using machine translation process along with Integer Linear Programming respectively for sentence generation of cross-language documents. More</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A C C E P T E D M A N U S C R I P T</head><p>work is required in this field as the cross-language imposes extra complexity to the abstractive summarization because of the fact that not only conciseness, informativeness, and coherency is required but the quality of translation is also one important aspect which decides the quality of summary <ref type="bibr" target="#b109">(Zhang et al., 2016)</ref>.</p><p>• Need of Deep Learning Based Query Specific Abstractive Summarization Systems: Queryspecific problems are where the summaries highlight points relevant in the context of query and mostly extractive techniques have been applied to generate query-specific summaries but they suffer from the coherence problem and this probability of getting incoherent summary is very high in case of query-specific summarization problem as without knowing context and just connecting the sentences, it is hard to resolve the co-reference problem. <ref type="bibr" target="#b7">(Baumel et al., 2018)</ref> used the deep learning as an approach to create query-specific abstractive summaries. et al., 2018) raised the issue of repeated phrases by using encoder-decoder based models while attempting to generate query-specific abstractive summaries. Most of the deep learning based abstractive models are applied for singledocument generic summarization. There are very few works which are available on query-specific multi-document summarization. More work on identifying the approaches to deal with this summarization is required.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.">Conclusion</head><p>Abstractive summarization is an interesting topic of research among the NLP community and helps produce coherent, concise, non-redundant and information rich summaries. The idea of the paper is to present the recent studies and progresses done in this field to help researchers get familiar about the techniques present, challenges existing and pointers for future work in this area. Along with these we have also mentioned the tools which have been used in various researches related to abstractive summarization. Evaluation of summaries is a big challenge in this field. Semantic analysis, and discourse analysis along with the new emerging technologies like neural networks help overcome the difficulties associated with the abstractive summarization. </p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>•</head><label></label><figDesc>AMR Graphs are based upon PropBanks which limits them • Deep Learning models capture both the syntactic and semantic structure • Requirement of large data set limits the use of Deep Learning Models</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>••</head><label></label><figDesc>How the abstractive summarization techniques are classified • What are the various recent works done in this field according to the summarization technique • What are the various tools which have been used to create the abstractive summaries • How the results vary among the various techniques • What are the famous data-sets which have been used for evaluating and performing the abstractive summarization task What are the various challenges and open research problems lying in this research field</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: Classification of Abstractive Summarization Technique</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head></head><label></label><figDesc>used the bi-directional LSTM based model at encoder side and a stacked LSTM model at the decoder side for AMR Parsing.<ref type="bibr" target="#b32">(Foland &amp; Martin, 2017)</ref> used the bi-directional Long Short Term Memory(LSTM) model to capture both the past and future sequence context.<ref type="bibr" target="#b99">(Viet et al., 2017</ref>) created a convolutional sequence-to-sequence model along with the graphA C C E P T E D MA N U S C R I P T linearization for AMR parsing which has outperformed than both the conventional AMR Parsing and the sentence generation approaches. They used Convolutional Models than LSTM models in order to reduce the dependency which then helped reduce the graph traversal.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head></head><label></label><figDesc>Structure Based Approach Discourse Structure helps capture the structure of text and thus help find the most important sentences of A C C E P T E D M A N U S C R I P T the text</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: Steps involved in creating summaries using NLG</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 1 :</head><label>1</label><figDesc>Summary of Evaluation Results on DUC dataset</figDesc><table><row><cell>Technique</cell><cell></cell><cell cols="2">Range of ROUGE-1</cell></row><row><cell></cell><cell></cell><cell>Score</cell></row><row><cell>Tree Based</cell><cell></cell><cell>0.3-0.4</cell></row><row><cell cols="2">Template Based</cell><cell cols="2">0.21-0.35 (Oya, 2014)</cell></row><row><cell cols="2">Ontology Based</cell><cell cols="2">0.29-0.319 (Hennig</cell></row><row><cell></cell><cell></cell><cell>et al., 2008b)</cell></row><row><cell cols="3">Lead and Body Phrase 0.2-0.3(Highest</cell><cell>:</cell></row><row><cell></cell><cell></cell><cell cols="2">0.28) (Song et al.,</cell></row><row><cell></cell><cell></cell><cell>2018b)</cell></row><row><cell>Graph Based</cell><cell></cell><cell>0.31</cell></row><row><cell>Semantic</cell><cell>Graph</cell><cell cols="2">0.3-0.4(0.417 as best</cell></row><row><cell>Based</cell><cell></cell><cell cols="2">score) (Khan et al.,</cell></row><row><cell></cell><cell></cell><cell>2018)</cell></row><row><cell cols="2">Predicate-Argument</cell><cell>0.3-0.4</cell></row><row><cell>Based</cell><cell></cell><cell></cell></row><row><cell cols="2">Discourse-Based</cell><cell cols="2">0.2-0.35 (Cohan et al.,</cell></row><row><cell></cell><cell></cell><cell>2018)</cell></row><row><cell>MultiModal</cell><cell></cell><cell>0.05-0.3</cell></row><row><cell>Deep Learning</cell><cell></cell><cell cols="2">0.28-0.47 (Joshi et al.,</cell></row><row><cell></cell><cell></cell><cell>a)</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>Table 2 :</head><label>2</label><figDesc>Advantages and Disadvantages of Structured Based Approach</figDesc><table><row><cell>Advantages</cell><cell>Disadvantages</cell></row><row><cell>1.</cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head>Table 3 :</head><label>3</label><figDesc>Advantages and Disadvantages of Deep Learning and Neural Networks based approach Single INIT does not represent the complete sentence. Thus many INITs need to be fused together to create a complete sentence<ref type="bibr" target="#b35">(Genest &amp; Lapalme, 2011)</ref>. INIT Based methods discard a lot of important information while attempting to create grammatically correct and meaningful summaries. Incorrect parses also lead to the generation of low linguistic quality summaries<ref type="bibr" target="#b52">(Khan et al., 2018)</ref> </figDesc><table><row><cell></cell><cell>Advantages</cell><cell>Disadvantages</cell></row><row><cell>AMR Graphs</cell><cell>Helps produce coher-</cell><cell></cell></row><row><cell></cell><cell>ent, less redundant, and grammatically correct sentences.</cell><cell>1. AMR Graphs are very much influenced by syntax and thus does not support discovery and manipulation of concepts.</cell></row><row><cell></cell><cell></cell><cell>2. Different graphs are generated for same sentence when</cell></row><row><cell></cell><cell></cell><cell>they are changed to active or passive voice.</cell></row><row><cell>INIT Methods Multimodal Based Based Methods</cell><cell>INIT Based methods produce coherent, non-redundant and in-formative summaries. Multimodal based methods produce excellent coverage summaries.</cell><cell>M 3. AMR Graphs also suffer from the data sparsity problem. 4. AMR Graphs highly rely on PropBank for relations and thus adds constraints and limitations of PropBank to it. 5. Lack of aligned annotations create challenges while parsing AMR Graphs. A N U S C R I P T</cell></row><row><cell cols="3">A C C E P T E D</cell></row></table><note><p>A</p></note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_5"><head>Table 4 :</head><label>4</label><figDesc>Advantages and Disadvantages of Semantic Based Approach</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_9"><head>• Issue of Rare Words Learning in Neural Net- works:</head><label></label><figDesc>(Song et al., 2018a)  mentioned how the neural networks or sequence-to-sequence learning fails to preserve the meaning of summary. Rare words sometimes cause the problems to seq-2-seq models because of the fact that rare words usually occur very less in the training system and thus the system does not learn their patterns. Also, because in deep learning approaches, if used individually, the syntactic structure is not fed explicitly, thus they lack the syntactic structure and are bias. The authors have also shown some examples, where the Seq2Seq model fails to capture the main verb of the sentence. To address this issue, more efforts need to be explored which combines the syntactic structure of the text with the neural networks.</figDesc><table><row><cell>• Availability of Datasets: The availability of good and large training corpus is one of the major road-</cell></row><row><cell>block to this area; most of the datasets belong to</cell></row><row><cell>news articles. From the survey, we have observed</cell></row><row><cell>that most of the abstractive summarization sys-tems have used DUC 32 and TAC 33 dataset. Gi-</cell></row><row><cell>gawords dataset and CNN daily mail dataset are</cell></row><row><cell>also the famous datasets among the deep learning</cell></row><row><cell>community. More work on creating good datasets</cell></row><row><cell>for reasearch community is required. Deep learn-</cell></row><row><cell>ing models have proved to be one of the effec-</cell></row><row><cell>tive models to model the abstractive summariza-</cell></row><row><cell>tion problem. But the huge amount of data re-</cell></row><row><cell>quired for training purpose is one of the major is-</cell></row><row><cell>sue with using these models. Most of the deep</cell></row><row><cell>learning models are applied for the single docu-</cell></row><row><cell>ment extractive summarization and there are very</cell></row><row><cell>few works available on the query-specific abstrac-</cell></row><row><cell>tive summarization. The reason is the availabil-</cell></row><row><cell>ity of large scale dataset required for performing</cell></row><row><cell>32 https://duc.nist.gov/ 33 https://tac.nist.gov/</cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_0"><p>Preprint submitted to Expert Systems and ApplicationsDecember 6, 2018</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="4" xml:id="foot_1"><p>https://dl.acm.org/</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="5" xml:id="foot_2"><p>https://link.springer.com</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="6" xml:id="foot_3"><p>http://aclweb.org/anthology/</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="7" xml:id="foot_4"><p>https://arxiv.org/</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="8" xml:id="foot_5"><p>https://www.elsevier.com</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="9" xml:id="foot_6"><p>https://scholar.google.co.in/</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="10" xml:id="foot_7"><p>https://propbank.github.io/</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="11" xml:id="foot_8"><p>https://github.com/jflanigan/jamr</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="12" xml:id="foot_9"><p>https://wordnet.princeton.edu/</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="22" xml:id="foot_10"><p>https://verbs.colorado.edu/verbnet/</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="23" xml:id="foot_11"><p>https://pntl.readthedocs.io/en/latest/_modules/ pntl/tools.html</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="24" xml:id="foot_12"><p>https://www.nltk.org/</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="25" xml:id="foot_13"><p>https://stanfordnlp.github.io/CoreNLP/</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="26" xml:id="foot_14"><p>https://www.isi.edu/natural-language/projects/ SUMMARIST.html</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="27" xml:id="foot_15"><p>http://www.cs.columbia.edu/diglib/sumDemo/ multiGen/main.html</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="28" xml:id="foot_16"><p>https://github.com/facebookarchive/NAMAS</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="29" xml:id="foot_17"><p>https://github.com/summarization/semantic_summ</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="30" xml:id="foot_18"><p>https://github.com/simplenlg/simplenlg</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="31" xml:id="foot_19"><p>https://www.cs.cmu.edu/Groups/AI/areas/nlp/nlg/ fuf/0.html</p></note>
+		</body>
+		<back>
+
+			<div type="funding">
+<div><p>PhD Cell, <rs type="person">AKTU Lucknow</rs>,<rs type="institution">UP,India,Pin-226031 2 Associate Professor, BIET Jhansi,UP,India</rs>,Pin-284128</p></div>
+			</div>			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0" />			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Multi-document abstractive summarization based on predicate argument structure</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Alshaina</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>John</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">G</forename><surname>Nath</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Signal Processing, Informatics, Communication and Energy Systems (SPICES)</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="32" to="37" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Multi-document abstractive summarization using ilp based multi-sentence compression</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Banerjee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Mitra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Sugiyama</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IJCAI&apos;15 Proceedings of the 24th International Conference on Artificial Intelligence</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="1208" to="1214" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<monogr>
+		<title level="m" type="main">Multi-document summarization based on the yago ontology. Expert Systems with Applications</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Baralis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Cagliero</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Jabeena</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Fiori</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Shah</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="page" from="6976" to="6984" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">A semantic based approach for abstractive multi-document text summarization</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Bartakke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">S</forename><surname>Sawarkar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Gulati</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Innovative Research in Ccmputer and Communication Engineering</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="page" from="13620" to="13628" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Learning to paraphrase: An unsupervised approach using multiple-sequence alignment</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Barzilay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of HLT-NAACL</title>
+		<meeting>HLT-NAACL</meeting>
+		<imprint>
+			<date type="published" when="2003">2003. 2003</date>
+			<biblScope unit="page" from="16" to="23" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Learning to paraphrase: An unsupervised approach using multiple-sequence alignment</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Barzilay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Lee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of HLT-NAAC</title>
+		<meeting>HLT-NAAC</meeting>
+		<imprint>
+			<date type="published" when="2003">2003</date>
+			<biblScope unit="page" from="16" to="23" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Sentence fusion for multidocument news summarization</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Barzilay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">R</forename><surname>Mckeown</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computational Linguistics</title>
+		<imprint>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="page" from="297" to="327" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<monogr>
+		<title level="m" type="main">Query focused abstractive summarization: Incorporating query relevance, multidocument coverage, and summary length constraints into seq2seq models</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Baumel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Eyal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Elhadad</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<publisher>Cornell University Libraray</publisher>
+			<biblScope unit="page" from="297" to="327" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<monogr>
+		<title level="m" type="main">Concept generalization and fusion for abstractive sentence generation. Expert Systems and Applications</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Belkebir</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Guessoum</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="volume">53</biblScope>
+			<biblScope unit="page" from="43" to="56" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Atssi: Abstractive text summarization using sentiment infusion</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Bhargava</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Sharma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Sharma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Twelfth International Multi-Conference on Information Processing</title>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="404" to="411" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<monogr>
+		<title level="m" type="main">A semantic approach to summarization</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Bhartiya</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Singh</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Dbpedia -a crystallization point for the web of data</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Bizer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Lehmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Kobilarov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Auer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Becker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Cyganiak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Hellmann</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Web Semantics First Look</title>
+		<imprint>
+			<biblScope unit="page" from="154" to="165" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<monogr>
+		<title level="m" type="main">Robust incremental neural semantic graph parsing</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Buys</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Blunsom</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<publisher>CORNELL UNIVERSITY LIBRARY</publisher>
+			<biblScope unit="page">40</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Extractive vs. nlg-based abstractive summarization of evaluative text: the effect of corpus controversiality</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Carenini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">C K</forename><surname>Cheung</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">INLG &apos;08 Proceedings of the Fifth International Natural Language Generation Conference</title>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="33" to="41" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<monogr>
+		<title level="m" type="main">Multi-document summarization of evaluative text. 11th EACL</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Carenini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Ng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Pauls</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2006">2006. 2006</date>
+			<biblScope unit="volume">61</biblScope>
+			<biblScope unit="page" from="305" to="312" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<monogr>
+		<title level="m" type="main">Multi-document summarization of evaluative text</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Carenini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">T</forename><surname>Ng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Pauls</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Fast abstractive summarization with reinforce-selected sentence rewriting</title>
+		<author>
+			<persName><forename type="first">Y.-C</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bansal</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">ACL</title>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Automatic text summarization based on rhetorical structure theory</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chengcheng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Computer Application and System Modeling</title>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="595" to="598" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Abstractive sentence summarization with attentive recurrent neural networks</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Chopra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Auli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">M</forename><surname>Rush</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Conference: Proceedings of the 2016 Conference of the North American Chapter</title>
+		<imprint>
+			<publisher>Human Language Technologies</publisher>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Global inference for sentence com-pression: An integer linear programming approach</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Clarke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lapata</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Artificial Intelligence Research</title>
+		<imprint>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="page" from="399" to="421" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<monogr>
+		<title level="m" type="main">A discourse-aware attention model for abstractive summarization of long documents</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Cohan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Dernoncourt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">S</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Bui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Chang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Goharian</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Paraphrastic sentence compression with a character-based metric: tightening without deletion</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Cohn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lapata</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Workshop on Monolingual Text-To-Text Generation</title>
+		<meeting>the Workshop on Monolingual Text-To-Text Generation</meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Classy query-based multi-document summarization</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Conroy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">D</forename><surname>Schlesinger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">G</forename><surname>Stewart</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2005 Document Understanding Conference</title>
+		<imprint>
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">A study on abstractive summarization techniques in indian languages</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Sunitha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Jaya</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">A</forename><surname>Ganesh</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Fourth International Conference on Recent Trends in Computer Science and Engineering</title>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="25" to="31" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<monogr>
+		<title level="m" type="main">Interactive sight into information graphics</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Demir</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Oliver</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Schwartz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Elzer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Carberry</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">F</forename><surname>Mc-Coy</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+	<note>In W4A2010</note>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Text summarization using abstractive methods</title>
+		<author>
+			<persName><forename type="first">&amp;</forename><forename type="middle">G S</forename><surname>Dineshnath</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Saraswathi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Network Communications and Emerging Technologies (JNCET)</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="page" from="26" to="29" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Comprehensive survey for abstractive text summarization</title>
+		<author>
+			<persName><forename type="first">&amp;</forename><forename type="middle">G S</forename><surname>Dineshnath</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Saraswathi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Innovations and Advancement in Computer Science</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="page" from="215" to="219" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Survey of the state of the art in natural language generation: Core tasks, applications and evaluation</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Dohare</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Karnick</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Artificial Intelligence Research</title>
+		<imprint>
+			<biblScope unit="volume">61</biblScope>
+			<biblScope unit="page" from="65" to="170" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">saramsha -a kannada abstractive summarizer</title>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">R</forename><surname>Embar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">R</forename><surname>Deshpande</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">A</forename><surname>Jain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Kallimani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">S</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Computing, Communications and Informatics (ICACCI), 2013 International Conference on</title>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="540" to="544" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Controllable abstractive summarization</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Fan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Grangler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Auli</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of 2nd Workshop on Neural Machine Translation and Generation</title>
+		<meeting>2nd Workshop on Neural Machine Translation and Generation</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="45" to="54" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Sentence compression by deletion with lstms</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Filippova</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Alfonseca</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">A</forename><surname>Colmenares</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Kaiser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Vinyals</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2015 Conference on Empirical Methods in Natural Language Processing</title>
+		<meeting>the 2015 Conference on Empirical Methods in Natural Language Processing</meeting>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Sentence fusion via dependency graph compression</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Filippova</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Strube</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2008 Conference on Empirical Methods in Natural Language Processing</title>
+		<meeting>the 2008 Conference on Empirical Methods in Natural Language Processing</meeting>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="page" from="177" to="185" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Abstract meaning representation parsing using lstm recurrent neural networks</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Foland</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">H</forename><surname>Martin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 55th Annual Meeting of the Association for Computational Linguistics</title>
+		<meeting>the 55th Annual Meeting of the Association for Computational Linguistics</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="463" to="472" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Lexicalized markov grammars for sentence compression</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Galley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">R</forename><surname>Mckeown</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Conference of the North American Chapter</title>
+		<imprint>
+			<publisher>the Association of Computational Linguistics</publisher>
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Opinosis: A graph-based approach to abstractive summarization of highly redundant opinions</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Ganesan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Han</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">23rd International Conference on Computational Linguistics</title>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="340" to="348" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Framework for abstractive summarization using text-to-text generation</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">E</forename><surname>Genest</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Lapalme</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Workshop on Monolingual Text-To-Text Generation</title>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="64" to="73" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Abstractive summarization of product reviews using discourse structure</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Gerani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Mehdad</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Carenini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">T</forename><surname>Ng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Nejat</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2014 Conference on Empirical Methods in Natural Language Processing</title>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="1602" to="1613" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">A joint model of rhetorical discourse structure and summarization</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Goyal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Eisenstein</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Workshop on Structured Prediction for NLP</title>
+		<meeting>the Workshop on Structured Prediction for NLP</meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="595" to="598" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Towards a framework for abstractive summarization of multimodal documents</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">F</forename><surname>Greenbacker</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">HLT-SS &apos;11 Proceedings of the ACL 2011 Student Session</title>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="75" to="80" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Semantic modeling of multimodal documents for abstractive summarization</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">F</forename><surname>Greenbacker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">F</forename><surname>Mccoy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Carberry</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">D</forename><surname>Mcdonald</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">HLT-SS &apos;11 Proceedings of the ACL 2011 Student Session</title>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="75" to="80" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Text summarization using framenet-based semantic graph model</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Han</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lv</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Scientific Programming</title>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<monogr>
+		<author>
+			<persName><forename type="first">S</forename><surname>Harabagiu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Moldovan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Morarescu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Lacatusu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Mihalcea</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Rus</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Girju</surname></persName>
+		</author>
+		<title level="m">Gistexter: A system for summarizing text documents</title>
+		<imprint>
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">An ontology-based approach to text summarization</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Hennig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Umbrath</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Wetzker</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2008 IEEE/WIC/ACM International Conference on Web Intelligence and Intelligent Agent Technology</title>
+		<imprint>
+			<date type="published" when="2008">2008a</date>
+			<biblScope unit="page" from="540" to="544" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">An ontology-based approach to text summarization</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Hennig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Umbrath</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Wetzker</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IEEE/WIC/ACM International Conference on Web Intelligence and Intelligent Agent Technology</title>
+		<imprint>
+			<date type="published" when="2008">2008b</date>
+			<biblScope unit="page" from="291" to="294" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<monogr>
+		<title level="m" type="main">Ontology-based text summarization. the case of texminer</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Hpola</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Senso</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Leiva-Mederos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Domnguez-Velasco</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<publisher>Emerald Insight</publisher>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="page" from="229" to="248" />
+		</imprint>
+		<respStmt>
+			<orgName>The University of British Columbia Library</orgName>
+		</respStmt>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Abstract meaning representation for paraphrase detection</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Issa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Damonte</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">B</forename><surname>Cohen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Yan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Chang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2018 Conference of the North American Chapter</title>
+		<meeting>the 2018 Conference of the North American Chapter</meeting>
+		<imprint>
+			<publisher>Human Language Technologies</publisher>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="442" to="452" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Abstractive text summarization using attentive sequence-to-sequence rnns</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Jobson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Gutirrez</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="s">Stanford Reports</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<monogr>
+		<title level="m" type="main">Deep learning based text summarization: Approaches, databases and evaluation measures</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Joshi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Fidalgo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Alegre</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<monogr>
+		<title level="m" type="main">Dense semantic graph and its application in single document summarization</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Joshi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Mcclean</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">A study of abstractive summarization using semantic representations and discourse level information. INTERNA-TIONAL JOURNAL FOR RESEARCH IN EMERGING</title>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">R</forename><surname>Kasture1</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Yargal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">N</forename><surname>Singh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Kulkarni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Mathur</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">SCIENCE AND TECHNOLOGY</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="53" to="57" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Multi-sentence compression: finding shortest paths in word graphs</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Katja</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">COLING &apos;10 Proceedings of the 23rd International Conference on Computational Linguistics</title>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="322" to="330" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">A review on abstractive summarization methods</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Khan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Theoretical and Applied Information Technology</title>
+		<imprint>
+			<biblScope unit="volume">59</biblScope>
+			<biblScope unit="page" from="64" to="72" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Abstractive text summarization based on improved semantic graph approach</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Khan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Salim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Farman1</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Khan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Jan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Ahmad</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">.</forename><forename type="middle">I</forename><surname>Ahmed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Paul</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Int J Parallel Prog</title>
+		<imprint>
+			<biblScope unit="page" from="1" to="25" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<monogr>
+		<title level="m" type="main">Statistics-based summarization step one: Sentence compression</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Knight</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Marcu</surname></persName>
+		</author>
+		<idno>AAAI-00</idno>
+		<imprint>
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">Neural amr: Sequence-to-sequence models for parsing and generation</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Konstas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Iyer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Yatskar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Choi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zettlemoyer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 55th Annual Meeting of the Association for Computational Linguistics</title>
+		<meeting>the 55th Annual Meeting of the Association for Computational Linguistics</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="146" to="157" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title level="a" type="main">Abstractive multidocument summarization by partial tree extraction,recombination and linearization</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">J</forename><surname>Kurisinkel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Varma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">th International Joint Conference on Natural Language Processing</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="812" to="821" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">An approach to abstractive text summarization</title>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">T</forename><surname>Le</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">M</forename><surname>Le</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Soft Computing and Pattern Recognition (SoCPaR)</title>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="371" to="376" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<analytic>
+		<title level="a" type="main">Ontology-based fuzzy event extraction agent for chinese e-news summarization</title>
+		<author>
+			<persName><forename type="first">C.-S</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y.-J</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z.-W</forename><surname>Jian</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Expert Systems with Applications</title>
+		<imprint>
+			<biblScope unit="page" from="431" to="447" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<analytic>
+		<title level="a" type="main">Abstractive multi-document summarization with semantic information extraction</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2015 Conference on Empirical Methods in Natural Language Processing</title>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="17" to="21" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<monogr>
+		<title level="m" type="main">Abstract meaning representation for multi-document summarization</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Lebanoff</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Liu</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<analytic>
+		<title level="a" type="main">Global encoding for abstractive summarization</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Su</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics</title>
+		<meeting>the 56th Annual Meeting of the Association for Computational Linguistics</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="163" to="169" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b61">
+	<monogr>
+		<author>
+			<persName><forename type="first">F</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Flanigan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Thomson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Sadeh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">A</forename><surname>Smith</surname></persName>
+		</author>
+		<title level="m">Toward abstractive summarization using semantic representations. HLT-NAACL</title>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b62">
+	<monogr>
+		<title level="m" type="main">Deep recurrent generative decoder for abstractive text summarization</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Liy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Lamy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Bingz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wangy</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b63">
+	<analytic>
+		<title level="a" type="main">Compendium: A text summarization system for generating abstracts of research papers</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Lloret</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Teresa</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Rom-Ferri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Palomara</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Data and Knowledge Engineering</title>
+		<imprint>
+			<biblScope unit="volume">88</biblScope>
+			<biblScope unit="page" from="164" to="175" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b64">
+	<analytic>
+		<title level="a" type="main">Ontometric: A method to choose the appropriate ontology</title>
+		<author>
+			<persName><forename type="first">&amp;</forename><surname>Dolfo Lozano-Tello</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Gomez-Perez</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Database Management (JDM)</title>
+		<imprint>
+			<biblScope unit="page">18</biblScope>
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b65">
+	<analytic>
+		<title level="a" type="main">A study on ontology based abstractive summarization</title>
+		<author>
+			<persName><forename type="first">M</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ganesh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Fourth International Conference on Recent Trends in Computer Science and Engineering</title>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="32" to="37" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b66">
+	<analytic>
+		<title level="a" type="main">A study on ontology based abstractive summarization</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ganesha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Ab</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Fourth International Conference on Recent Trends in Computer Science and Engineering</title>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="32" to="37" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b67">
+	<analytic>
+		<title level="a" type="main">Inserting rhetorical predicates for quasiabstractive summarization</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Mani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>House</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Klein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Hirschman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Firmin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Sundheim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">RIAO 2010</title>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="138" to="139" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b68">
+	<analytic>
+		<title level="a" type="main">Explorations in sentence fusion</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Marsi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Krahmer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Association for Computational Linguistics (ACL)</title>
+		<meeting>the Association for Computational Linguistics (ACL)</meeting>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b69">
+	<analytic>
+		<title level="a" type="main">Discriminative sentence compression with soft syntactic evidence</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">T</forename><surname>Mcdonald</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">11st Conference of the European Chapter of the Association for Computational Linguistics</title>
+		<imprint>
+			<date type="published" when="2006">2006</date>
+			<biblScope unit="page" from="297" to="304" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b70">
+	<analytic>
+		<title level="a" type="main">Abstractive meeting summarization with entailment and fusion</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Mehdad</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Carenini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">W</forename><surname>Tompa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">T</forename><surname>Ng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 14th European Workshop on Natural Language Generation</title>
+		<meeting>the 14th European Workshop on Natural Language Generation</meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b71">
+	<analytic>
+		<title level="a" type="main">From extractive to abstractive summarization: A journey</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Mehta</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics</title>
+		<meeting>the 54th Annual Meeting of the Association for Computational Linguistics</meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="100" to="106" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b72">
+	<analytic>
+		<title level="a" type="main">Semantic graph reduction approach for abstractive text summarization</title>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">F</forename><surname>Moawad</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Aref</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Seventh International Conference on Computer Engineering and Systems</title>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="page" from="132" to="138" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b73">
+	<analytic>
+		<title level="a" type="main">Simurg: An extendable multilingual corpus for abstractive single document summarization</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Modaresi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Conrad</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">FIRE 16</title>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="24" to="27" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b74">
+	<analytic>
+		<title level="a" type="main">A survey on abstractive text summarization</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Moratanch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Chitrakala</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2016 International Conference on Circuit, Power and Computing Technologies</title>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="762" to="765" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b75">
+	<analytic>
+		<title level="a" type="main">Conceptual framework for abstractivve text summarization</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Munot</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">S</forename><surname>Govilkar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal on Natural Language Computing</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="page" from="39" to="50" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b76">
+	<analytic>
+		<title level="a" type="main">Abstractive text summarization using sequence-tosequence rnns and beyond</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Nallapati</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Dos Santos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Gulehre</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lapata</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The SIGNLL Conference on Computational Natural Language Learning</title>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b77">
+	<analytic>
+		<title level="a" type="main">Paraphrastic sentence compression with a character-based metric: tightening without deletion</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Napoles</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Callison-Burch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ganitkevitch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">V</forename><surname>Durme</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Workshop on Monolingual Text-To-Text Generation</title>
+		<meeting>the Workshop on Monolingual Text-To-Text Generation</meeting>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="84" to="90" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b78">
+	<analytic>
+		<title level="a" type="main">Paraphrastic fusion for abstractive multi-sentence compression generation</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">T</forename><surname>Nayeem</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Chali</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">CIKM &apos;17 Proceedings of the 2017 ACM on Conference on Information and Knowledge Management</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="2223" to="2226" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b79">
+	<monogr>
+		<title level="m" type="main">Diversity driven attention model for query-based abstractive summarization</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Nema</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">M</forename><surname>Khapra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Laha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Ravindran</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<publisher>Cornell University Libraray</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b80">
+	<analytic>
+		<title level="a" type="main">An ontology-based approach for key phrase extraction</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">Q</forename><surname>Nguyen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">T</forename><surname>Phan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of ACL-IJCNLP</title>
+		<meeting>ACL-IJCNLP</meeting>
+		<imprint>
+			<date type="published" when="2009">2009. 2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b81">
+	<analytic>
+		<title level="a" type="main">Example-based sentence reduction using the hidden markov model</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">M</forename><surname>Nguyen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">B</forename><surname>Ho</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Asian Language Information Processing</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="1" to="12" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b82">
+	<analytic>
+		<title level="a" type="main">Multi-document abstractive summarization using chunk-graph and recurrent neural network</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Niu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Atiquzzaman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IEEE ICC 2017 SAC Symposium Big Data Networking Track</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b83">
+	<monogr>
+		<author>
+			<persName><forename type="first">T</forename><surname>Oya</surname></persName>
+		</author>
+		<title level="m">Automatic abstractive summarization of meeting conversations</title>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b84">
+	<analytic>
+		<title level="a" type="main">A templatebased abstractive meeting summarization: Leveraging summary and source text relationships</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Oya</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Mehdad</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Carenini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Ng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 8th International Natural Language Generation Conference</title>
+		<meeting>the 8th International Natural Language Generation Conference</meeting>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="45" to="53" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b85">
+	<analytic>
+		<title level="a" type="main">Automated pyramid scoring of summaries using distributional semantics</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">J</forename><surname>Passonneau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Perin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 51st Annual Meeting of the Association for Computational Linguistics</title>
+		<meeting>the 51st Annual Meeting of the Association for Computational Linguistics</meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="143" to="147" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b86">
+	<analytic>
+		<title level="a" type="main">Calculating the similarity between words and sentences using a lexical database and corpus statistics</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Pawar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Mago</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IEEE TRANSACTIONS ON KNOWLEDGE AND DATA EN-GINEERING</title>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="1" to="14" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b87">
+	<analytic>
+		<title level="a" type="main">A survey on abstractive summarization techniques</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">K</forename><surname>Rachabathuni</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Inventive Computing and Informatics (ICICI), International Conference on</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="762" to="765" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b88">
+	<analytic>
+		<title level="a" type="main">An overview of text summarization</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">B</forename><surname>Rananavare</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">V S</forename><surname>Reddy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Computer Applications</title>
+		<imprint>
+			<biblScope unit="volume">171</biblScope>
+			<biblScope unit="page" from="1" to="17" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b89">
+	<monogr>
+		<title level="m" type="main">Improving neural abstractive text summarization with prior knowledge</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Rossiello</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Basile</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Semeraro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">D</forename><surname>Ciano</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Grasso</surname></persName>
+		</author>
+		<idno>URANIA-16</idno>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b90">
+	<monogr>
+		<title level="m" type="main">A neural attention model for abstractive sentence summarization</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">M</forename><surname>Rush</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Chopra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Weston</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b91">
+	<analytic>
+		<title level="a" type="main">Hybrid approach to abstractive summarization</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Sahooa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Bhoib</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">C</forename><surname>Balabantaray</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Computational Intelligence and Data Science</title>
+		<imprint>
+			<publisher>ICCIDS</publisher>
+			<date type="published" when="2018">2018. 2018</date>
+			<biblScope unit="page" from="1228" to="1237" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b92">
+	<monogr>
+		<author>
+			<persName><forename type="first">S</forename><surname>Singhal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Vats</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">H</forename><surname>Karnick</surname></persName>
+		</author>
+		<title level="m">Neural abstractive summarization. IIT Kanpur Report</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b93">
+	<analytic>
+		<title level="a" type="main">Structure-infused copy mechnaisms for abstractive summarization</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 27th International Conference on Computational Linguistics</title>
+		<meeting>the 27th International Conference on Computational Linguistics</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="1717" to="1729" />
+		</imprint>
+	</monogr>
+	<note>a)</note>
+</biblStruct>
+
+<biblStruct xml:id="b94">
+	<analytic>
+		<title level="a" type="main">Abstractive text summarization using lstm-cnn based deep learning</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Song</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Ruan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Multimed Tools Appl</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="53" to="57" />
+			<date type="published" when="2018">2018b)</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b95">
+	<analytic>
+		<title level="a" type="main">Syntax-driven sentence revision for broadcast news summarization</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Tanaka</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kinoshita</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Kobayakawa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Kumano</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Kato</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Workshop on Language Generation and Summarisation</title>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="39" to="47" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b96">
+	<analytic>
+		<title level="a" type="main">Ontologybased interpretation of keywords for semantic search</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Tran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Cimiano</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Rudolph</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Studer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Semantic Web Conference</title>
+		<imprint>
+			<date type="published" when="2007">2007</date>
+			<biblScope unit="page" from="523" to="563" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b97">
+	<analytic>
+		<title level="a" type="main">Multimodal summarization of complex sentences</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Uzzaman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">P</forename><surname>Bigham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">F</forename><surname>Allen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">IUI11</title>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="595" to="598" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b98">
+	<analytic>
+		<title level="a" type="main">Ssas: Semantic similarity for abstractive summarization</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Vadapalli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">J</forename><surname>Kurisinkel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Gupta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Varma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the The 8th International Joint Conference on Natural Language Processing</title>
+		<meeting>the The 8th International Joint Conference on Natural Language Processing</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="198" to="203" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b99">
+	<analytic>
+		<title level="a" type="main">Convamr: Abstract meaning representation parsing for legal document</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">D</forename><surname>Viet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">T</forename><surname>Sinh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">L</forename><surname>Minh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Satoh</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">SCIDOCA</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="1" to="7" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b100">
+	<monogr>
+		<title level="m" type="main">A study of abstractive summarization using semantic representations and discourse level information</title>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">C V</forename><surname>Vilca</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A S</forename><surname>Cabezudo</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<publisher>Springer: Text, Speech, and Dialogue</publisher>
+			<biblScope unit="page" from="482" to="490" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b101">
+	<analytic>
+		<title level="a" type="main">Neural network-based abstract generation for opinions and arguments</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Ling</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of NAACL-HLT</title>
+		<meeting>NAACL-HLT</meeting>
+		<imprint>
+			<date type="published" when="2016">2016. 2016</date>
+			<biblScope unit="page" from="47" to="57" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b102">
+	<analytic>
+		<title level="a" type="main">Ersom: A structural ontology matching approach using automatically learned entity representation</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Xiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Chang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Sui</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of 2015 Conference on Empirical Methods in Natural Language Processing</title>
+		<meeting>2015 Conference on Empirical Methods in Natural Language Processing</meeting>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="2419" to="2429" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b103">
+	<analytic>
+		<title level="a" type="main">Peak: Pyramid evaluation via automated knowledge extraction</title>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">J</forename><surname>Passonneau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>De Melo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Thirtieth AAAI Conference on Artificial Intelligence</title>
+		<meeting>the Thirtieth AAAI Conference on Artificial Intelligence</meeting>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="2673" to="2679" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b104">
+	<analytic>
+		<title level="a" type="main">Phrase-based compressive cross-language summarization</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Xiao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2015 Conference on Empirical Methods in Natural Language Processing</title>
+		<meeting>the 2015 Conference on Empirical Methods in Natural Language Processing</meeting>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="118" to="127" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b105">
+	<monogr>
+		<title level="m" type="main">Recent advances in document summarization</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">G</forename><surname>Yao</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Xiaojunwan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Xiao</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<publisher>Knowledge Information Systems</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b106">
+	<monogr>
+		<title level="m" type="main">Sentence compression as a step in summarization or an alternative path in text shortening</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Yousfi-Monod</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Prince</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2008">2008. 2008</date>
+			<biblScope unit="page" from="139" to="142" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b107">
+	<analytic>
+		<title level="a" type="main">An operation network for abstractive sentence compression</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 27th International Conference on Computational Linguistics</title>
+		<meeting>the 27th International Conference on Computational Linguistics</meeting>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="1065" to="1076" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b108">
+	<analytic>
+		<title level="a" type="main">Sentence compression as a component of a multi-document summarization system</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">M</forename><surname>Zajic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">J</forename><surname>Dorr</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Schwartz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2006 Document Understanding Conference</title>
+		<imprint>
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b109">
+	<analytic>
+		<title level="a" type="main">Abstractive cross-language summarization via translation model enhanced predicate argument structure fusing</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">EEE/ACM TRANSACTIONS ON AUDIO</title>
+		<imprint>
+			<biblScope unit="page" from="1" to="25" />
+			<date type="published" when="2016">2016</date>
+			<publisher>SPEECH, AND LANGUAGE PROCESSING</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b110">
+	<analytic>
+		<title level="a" type="main">Ontology summarization based on rdf sentence graph</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Qu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">WWW 2007 / Track: Semantic Web</title>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="707" to="715" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

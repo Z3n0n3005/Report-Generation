@@ -1,0 +1,93 @@
+---
+abstractSeg: "ThingFinder originated at Inxight corporation, a spinoff from Xerox\
+  \ PARC (Palo Alto Research Center of mouse and the MAC and Windows interface fame);\
+  \ Inxight was bought by BusinessSystems, which was bought by SAP, a major business\
+  \ software vendor.Both systems extract information from text. The marketing hype\
+  \ says that these systems convert unstructured data (text, better called data with\
+  \ complex structure) into structured data, entity-relationship statements often\
+  \ represented in tables and graphs, structures that are simpler and easier to search\
+  \ than text.The compilation includes old documents from Inxight because they give\
+  \ better examples and a much better explanation of the process."
+sectionList:
+- header: "Overview"
+  content: "The template builder has to predict what information will be of interest\
+    \ to the customer according to his field of activity.In an industrial context,\
+    \ the aim of Information Extraction is to build an extraction model adapted to\
+    \ the customer's application (its information assets: databases, documents and\
+    \ all the data issued by or received in a company). It requires the creation and\
+    \ validation of terminology resources specific to the described field as well\
+    \ as the definition of selection criteria using extraction rules."
+- header: "Methodology"
+  content: "An extraction rule is expressed by a regular expression which may refer\
+    \ to a lemma (canonical form), syntactic, or semantic label.Example: \"the first\
+    \ private label pasta maker\" will be caught by the rule:(company_Adj|Loc_Adj|#ORD)*/\
+    \ (brand_product) / (Company) Company_Adj refers to adjectives such as \"leading\"\
+    , \"industrial\" or \"public\" LocAdj refers to adjectives describing places such\
+    \ as \"European\" or \"Italian\" #ORD refers to ordinals (first, second, …) brand_product\
+    \ private label, branded + #NOUN / symbol separates two words # symbol denotes\
+    \ a syntactic tag (differentiates the syntactic labels from the semantic ones).An\
+    \ expression like 'company A acquired company B' will be extracted by the following\
+    \ rule:1 A pattern is a regular expression whose purpose is to identify relevant\
+    \ phrases within a context. If, for instance, the aim of the application is to\
+    \ detect company mergers or acquisitions in press releases, it will seek expressions\
+    \ like 'company A acquired company B' or 'company A merged with company C'."
+- header: "Processing"
+  content: "The extraction server proceeds in two stages: 1. the morpho-syntactic\
+    \ analysis -each entry is assigned a part of speech and a morphologic feature\
+    \ 2. the application of extraction rules."
+- header: "Transducers Technology"
+  content: "The extraction component, which performs semantic labeling from morpho-syntactically\
+    \ tagged texts, has been implemented using a dynamic composition of transducers.\
+    \ According to the specific processing, three levels of transducer components\
+    \ have been distinguished."
+- header: "Results"
+  content: "Helmut Schmidt (former German chancelor): politics Martin Scorsese (US\
+    \ film director): film Martin Schmidt (German ski athlete): sportsAssuming that\
+    \ we had no name recognition component and assuming that the classifier has learnt\
+    \ that the tokens Helmut and Schmidt have some significance for the topic politics\
+    \ and Martin and Scorsese have some relevance for film, then the tokens Martin\
+    \ and Schmidt will falsely signal some influence towards politics and film even\
+    \ if they occur as parts of another name, here that of an athlete."
+- header: "System specifications"
+  content: "The resulting classifier then is able to process a document in less than\
+    \ a second and annotate it in the way described above.DocCat runs as a separate\
+    \ process that is called over a simple interface (file or TCP/IP) from the respective\
+    \ text documentation environment and delivers its results back over the same interface.\
+    \ The DocCat system is implemented using C++ for the number crunching part of\
+    \ the calculations and Perl for the text processing parts and as a glue language."
+- header: "Conclusion and Outlook"
+  content: "The DocCat automatic indexing system can be applied in a real world setting,\
+    \ yielding results that enhance the efficiency of manual indexing. For the setting\
+    \ up of a classifier for a new domain or a new classification system, nothing\
+    \ but the annotated training corpus is neededno hand coding of grammar or correlation\
+    \ rules is required."
+- header: "Introduction"
+  content: "DocCat is a project that uses Insight Discoverer™ technologies (ID Extractor\
+    \ and ID Categorizer), which is a system for the automatic categorization, indexing,\
+    \ and archival of textual data for large commercial text archives. DocCat was\
+    \ one of the first systems for automatic indexing that was put in production in\
+    \ a real-world environment and demonstrates the usefulness of this approach through\
+    \ its use on many hundreds of new documents every day."
+- header: "Description"
+  content: "The term automatic indexing here refers to the process of assigning terms\
+    \ to a document that correspond to its content, and not to the process of setting\
+    \ up an index for full text retrieval. While the latter typically contains virtually\
+    \ all the words of a document, with their lemmatised forms and without the stop\
+    \ words, the former means annotating a document with only a few terms from a thesaurus\
+    \ or some other kind of controlled set of index terms."
+- header: "The making of DocCat"
+  content: "When the results of this pilot study turned out to be encouraging, a continued\
+    \ cooperation was agreed upon where DocCat was to be extended towards a system\
+    \ that could be applied to everyday tasks in a commercial text archive.The idea\
+    \ in both the pilot study and the second phase was that the G&J archive should\
+    \ form a training corpus of manually annotated documents that would enable specific\
+    \ machine learning algorithms to collect correlations between a document's textual\
+    \ data and the presence or absence of a specific label. Specific topics: A finer\
+    \ classification of a document's topics is achieved by assigning one or more of\
+    \ a fixed vocabulary of some 2000 thesaurus terms to it (Examples: Doping, Trade\
+    \ Unions, Market Research, ...)."
+- header: "The Insight Discoverer™ components within DocCat"
+  content: "A fundamental requirement in setting up the DocCat system was that the\
+    \ amount of effort that had to be invested in building corpus-or domain-specific\
+    \ knowledge bases such as dictionaries, grammars or thesauri should be kept as\
+    \ low as possible."

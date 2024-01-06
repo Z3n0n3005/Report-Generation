@@ -1,0 +1,1246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">COMPENDIUM: A text summarization system for generating abstracts of research papers</title>
+				<funder ref="#_2TKhu8d #_DR4aQJU #_6bt2zvM #_35Uq5QJ #_MvrTJV9">
+					<orgName type="full">unknown</orgName>
+				</funder>
+				<funder ref="#_PMKcHcv">
+					<orgName type="full">Spanish Government</orgName>
+				</funder>
+				<funder ref="#_vWe7usT">
+					<orgName type="full">Valencian Government</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2013-08-14">14 August 2013</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author role="corresp">
+							<persName><forename type="first">Elena</forename><surname>Lloret</surname></persName>
+							<email>elloret@dlsi.ua.es</email>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Software and Computing Systems</orgName>
+								<orgName type="institution">University of Alicante</orgName>
+								<address>
+									<country key="ES">Spain</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Teresa</forename><surname>Romá-Ferri</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Nursing</orgName>
+								<orgName type="institution">University of Alicante</orgName>
+								<address>
+									<country key="ES">Spain</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Manuel</forename><surname>Palomar</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Software and Computing Systems</orgName>
+								<orgName type="institution">University of Alicante</orgName>
+								<address>
+									<country key="ES">Spain</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">COMPENDIUM: A text summarization system for generating abstracts of research papers</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2013-08-14">14 August 2013</date>
+						</imprint>
+					</monogr>
+					<idno type="DOI">10.1016/j.datak.2013.08.005</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.0" ident="GROBID" when="2024-01-06T07:50+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>Human Language Technologies NLP applications Text summarization Information systems</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>This article analyzes the appropriateness of a text summarization system, COMPENDIUM, for generating abstracts of biomedical papers. Two approaches are suggested: an extractive (COMPENDIUME), which only selects and extracts the most relevant sentences of the documents, and an abstractive-oriented one (COMPENDIUME-A), thus facing also the challenge of abstractive summarization. This novel strategy combines extractive information, with some pieces of information of the article that have been previously compressed or fused. Specifically, in this article, we want to study: i) whether COMPENDIUM produces good summaries in the biomedical domain; ii) which summarization approach is more suitable; and iii) the opinion of real users towards automatic summaries. Therefore, two types of evaluation were performed: quantitative and qualitative, for evaluating both the information contained in the summaries, as well as the user satisfaction. Results show that extractive and abstractive-oriented summaries perform similarly as far as the information they contain, so both approaches are able to keep the relevant information of the source documents, but the latter is more appropriate from a human perspective, when a user satisfaction assessment is carried out. This also confirms the suitability of our suggested approach for generating summaries following an abstractive-oriented paradigm.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">Introduction</head><p>The vast amount of information currently available has fuelled research into systems and tools capable of managing such information in an effective and efficient manner. That is the case of Text Summarization (TS), whose aim is to produce a condensed new text containing a significant portion of the information in the original text(s) <ref type="bibr" target="#b40">[40]</ref>. In particular, TS has been shown to be very useful as a stand-alone application <ref type="bibr" target="#b39">[39,</ref><ref type="bibr" target="#b8">9]</ref>, as well as in combination with other systems, such as information retrieval <ref type="bibr" target="#b6">[7]</ref>, information extraction <ref type="bibr" target="#b7">[8]</ref>, text classification <ref type="bibr" target="#b38">[38]</ref>, or automatic rating prediction <ref type="bibr" target="#b36">[36]</ref>.</p><p>TS has a wide range of applications. For instance, in the scientific context, TS can be used for generating abstracts of research papers automatically, thus avoiding authors the difficult task of having to synthesize in a small paragraph the main topics addressed in their research. These abstracts are very important not only to provide readers an overview of the article, but also to be used by automatic systems for indexing, searching and retrieving information without having to process the whole document. Moreover, another application of TS would be the automatic generation of newsletters, containing information which is of interest for a particular group of experts. In the biomedical domain, this would allow health workers and professionals to be updated of recent findings, such as new drugs, novel treatments, etc.</p><p>However, the process of TS, and in particular, the automatic generation of abstracts, is still very challenging. The relevant information has to be identified first, and then it has to be generalized, with the purpose of stating the gist of the whole document in one paragraph. This difficulty is shown by the fact that, although there have been some attempts to generate abstractive summaries in recent years <ref type="bibr" target="#b32">[32,</ref><ref type="bibr" target="#b34">34]</ref>, most of the current work on TS still focuses on extractive summarization <ref type="bibr" target="#b19">[19,</ref><ref type="bibr" target="#b22">22,</ref><ref type="bibr" target="#b42">42]</ref>. The differences between them are that extractive summarization consists of selecting the most important sentences of a document to form the final summary and they are extracted as they are in the source documents. On the contrary, abstractive summarization also implies the generation of new information, in the form of sentence compression or fusion, or even natural language generation. The main problem associated to extractive summarization is the lack of coherence resulting summaries exhibit, partly due to non-resolved coreference relationships, and the wrong link between sentences.</p><p>Therefore, in this article, our goal is to analyze to what extent TS is useful for a specific application: the automatic generation of research paper abstracts in the biomedical domain. In particular, we develop a TS system: COMPENDIUM, which is capable of producing two types of generic summaries: extracts (COMPENDIUME), which follows a pure extractive approach; and abstractive-oriented summaries (COMPENDIUM E-A ), which combines extractive and abstractive techniques (Fig. <ref type="figure">1</ref>). In this manner, we study to what extent such approaches are appropriate to produce summaries that serve as a surrogate of the source document or, in contrast, if they can only be used in order to provide users with an idea of what is important in the document. Therefore, the specific objectives within the scope of this article we want to analyze are: i) if COMPENDIUM produces good summaries in this domain; ii) which is the best strategy to adopt for generating this type of summaries (extractive or abstractive-oriented); and iii) the opinion of real users towards automatic summaries.</p><p>The structure of the article is as follows: Section 2 introduces previous work on state-of-the-art TS systems, as well as TS approaches that were developed for addressing specific applications. In Section 3, our proposed TS system, COMPENDIUM, is explained in detail, comprising the two approaches for generating extractive and abstractive-oriented summaries, respectively. Section 4 describes the experimental framework. Within this section, we provide the description of the data set employed, together with the analysis of the human abstracts of the research papers on the one hand, and we outline the experiments performed, on the other hand. Then, the evaluation conducted, the results obtained together with a discussion for each type of evaluation are provided in Section 5, and finally, the conclusions of the paper together with the future work are outlined in Section 6.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">Related work</head><p>In this section, we explain existing TS systems that produce summaries automatically, as well as previous work on different approaches that have used TS techniques to address specific tasks (e.g. for generating Wikipedia articles <ref type="bibr" target="#b37">[37]</ref>, weather forecast reports <ref type="bibr" target="#b2">[3]</ref>, etc.).</p><p>Regarding the TS systems, we can find a wide range of them for generating different types of summaries. One of the most cited summarizers is MEAD <ref type="bibr" target="#b31">[31]</ref>. This system produces extractive single-and multi-document generic or query-focused summaries in English and Chinese, thus being also a multilingual summarizer. For determining the most important sentences, it relies on the calculation of Fig. <ref type="figure">1</ref>. Illustration of the functionalities of COMPENDIUM system.</p><p>surface features, such as sentence position, sentence length, similarity with the first sentence, and similarity with a centroid, which are then combined linearly. SUMMA <ref type="bibr" target="#b33">[33]</ref> follows a similar approach, also relying on the combination of statistical, positional and similarity features. In particular, the main features are: i) sentence similarity to the centroid; ii) sentence position and iii) similarity with the lead part of the document where the sentence comes from. It uses a vector space representation, where each vector position contains the term and its tf-idf, and it is capable of producing single-and multi-document extractive summaries, as well as generic or query-focused summaries. QCS system <ref type="bibr" target="#b9">[10]</ref> integrates a summarization approach within a broad process for retrieving and clustering information. For generating summaries from a set of documents, it first generates single-document summaries, and then a second summarization process is applied to these summaries in order to obtain the final one. For detecting relevant sentences, Hidden Markov Models are employed after some sentences have been trimmed. The sentences with highest probability in the model are chosen for the summary. The AZOM text summarization system for Persian <ref type="bibr" target="#b46">[45]</ref> combines statistical and conceptual properties of unstructured documents and generates a summary with a specific structure. Other systems, such as SummGraph <ref type="bibr" target="#b27">[27]</ref>, employ graph-based algorithms and knowledge databases for detecting relevant content in the documents. In particular, this system has been proven to work successfully in the newswire, biomedical, and tourist domain, and the techniques used have been also successfully employed for retrieving information from medical records <ref type="bibr" target="#b28">[28]</ref>.</p><p>Furthermore, we can also find systems that are especially targeted to produce a specific type of summaries (e.g., sentiment-based summaries) or deal with multi-linguality. That is the case of CBSEAS <ref type="bibr" target="#b3">[4]</ref> which generate multi-document extractive sentiment-based summaries, or MUSE -MUltilingual Sentence Extractor <ref type="bibr" target="#b21">[21]</ref>, that employs language-independent techniques for generating summaries in English and Hebrew.</p><p>In other contexts, TS techniques and approaches have been used for solving specific tasks. For instance, Balahur and Montoyo [2] use opinion mining techniques for extracting opinion features from customer reviews and then summarizing them. Sauper and Barzilay <ref type="bibr" target="#b37">[37]</ref> propose an automatic method to generate Wikipedia articles, where specific topic templates, as well as the information to select are learnt using machine learning algorithms. The templates are obtained by means of recurrent patterns for each type of document and domain. For extracting the relevant content, candidate fragments are ranked according to how representative they are with respect to each topic of the template. Other approaches that also rely on the use of templates to organize and structure the information previously identified, are based on information extraction systems. In Kumar et al. <ref type="bibr" target="#b18">[18]</ref>, reports of events are generated from the information of different domains (biomedical, sports, etc.) that is stored in databases. In such research, human-written abstracts are used, on the one hand, to determine the information to include in a summary, and on the other hand, to generate templates. Then, the patterns to fill these templates in are identified in the source texts. Similarly, in Carenini and Cheung <ref type="bibr" target="#b5">[6]</ref>, patterns in the text are also identified, but since their aim is to generate contrastive summaries, discourse markers indicating contrast such as "although", "however", etc. are also added to make the summary sound more naturally. To generate summaries from the complete biography of a person is also interesting. This can also be considered a particular type of multi-document summarization, since its goal is to produce a piece of text containing the most relevant aspects of a specific person. Instead of using templates for detecting which information should be of interest from a person, Zhou et al. <ref type="bibr" target="#b47">[46]</ref> analyzed several machine learning algorithms (Naïve Bayes, Support Vector Machines, and Decision Trees) to classify sentences, distinguishing between those ones containing biographic information (e.g. the date/place of birth) from others that do not.</p><p>Natural Language Generation (NLG) has been also applied for adding new vocabulary and language structures in summaries. In Yu et al. <ref type="bibr" target="#b44">[43]</ref> very short summaries are produced from large collections of numerical data. The data is presented in the form of tables, and new text is generated for describing the facts that such data represent. Belz <ref type="bibr" target="#b2">[3]</ref> also suggests a TS approach based on NLG, in order to generate weather forecast reports automatically.</p><p>Another interesting approach is to use citations from articles. In Kan et al., <ref type="bibr" target="#b16">[17]</ref> it was shown that from bibliographic entries it was possible to produce an indicative summary. The main idea behind this assumption is that such entries contain informative as well as indicative information, for example, details about the resource or metadata, such as author or purpose of the paper. In their research, a big annotated corpus (2000 annotated entries) is developed for such purposes. Following the idea of generating summaries from this input information, in Qazvinian and Radev <ref type="bibr" target="#b30">[30]</ref> citations are analyzed to produce a single-document summary from scientific articles. The final objective is to generate summaries about a specific topic.</p><p>The generation of technical surveys has also been addressed in the recent years. In Mohammad et al. <ref type="bibr" target="#b24">[24]</ref> citations are used to automatically generate technical surveys. They experimented with three types of inputs (full papers, abstracts and citation texts), and analyzed different already existing summarization systems to create such surveys, such as LexRank <ref type="bibr" target="#b10">[11]</ref>, Trimmer <ref type="bibr" target="#b45">[44]</ref>, or C-RR and C-LexRank <ref type="bibr" target="#b30">[30]</ref>. Among the conclusions drawn from the experiments, it was shown that multi-document technical survey creation benefits considerably from citation texts.</p><p>Focused on the biomedical domain, a wide range of approaches that deal with this domain have emerged in recent years <ref type="bibr" target="#b15">[16,</ref><ref type="bibr" target="#b13">14,</ref><ref type="bibr" target="#b0">1]</ref>. Specifically, we can also find several research works that address the generation of abstracts. For instance, Pollock and Zamora <ref type="bibr" target="#b29">[29]</ref> used cue words for generating abstracts. This technique consists of determining the relevance of a sentence by means of the phrases or words it contains that could introduce relevant information, such as "in conclusion" or "the aim of this paper". Furthermore, Saggion and Lapalme <ref type="bibr" target="#b35">[35]</ref> exploited also this kind of information, by means of a set of patterns that were later combined with the information extracted from the document.</p><p>Our contribution with respect to state-of-the-art systems is that COMPENDIUM is able to deal with extractive summarization, but in addition, a novel strategy for producing abstractive-oriented summaries is proposed. Contrary to existing research works for the biomedical domain, we do not rely on specific patterns, nor we learn the structure or the content of the document for generating summaries. Moreover, we carry out an analysis with the purpose of determining which approach performs better, not only according to the information contained in summaries, but also, to user's assessment.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">Text summarization approach: COMPENDIUM</head><p>In this Section, the two suggested approaches that COMPENDIUM TS system is able to follow for generating summaries are explained. First we described COMPENDIUM E , a pure extractive TS approach (Section 3.1), and then we take this extractive approach as a basis in an attempt to improve the final summaries by integrating abstractive techniques, leading to COMPENDIUM E-A (Section 3.2).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1.">COMPENDIUM E : extractive summarization</head><p>For generating extractive summaries, COMPENDIUM relies on four main stages, as it can be seen in Fig. <ref type="figure">2:</ref> • Surface Linguistic Analysis: first of all, a basic linguistic analysis is carried out in order to prepare the text for further processing.</p><p>Such analysis comprises tokenization, sentence segmentation, part-of-speech tagging, and stop word identification, since stop words will not be taken into consideration for the remaining stages. • Redundancy detection: a Textual Entailment (TE) tool <ref type="bibr" target="#b11">[12]</ref> is used to detect and remove repeated information. The main idea behind the use of TE for detecting redundancy is that those sentences whose meaning is already contained in other sentences can be discarded, as the information has been already mentioned. Therefore, by applying TE we can obtain a set of sentences from the text which do not hold an entailment relation with any other, and then keep this set of sentences for further processing. Although in a different manner, TE has been successfully applied to summarization in previous research <ref type="bibr" target="#b41">[41]</ref>. • Topic Identification: In this stage, the most relevant topic/topics of the document are identified by means of their frequency of appearance in the text. Term Frequency (TF) calculation is employed for achieving this goal, because it has been shown in previous work that high frequent words are indicative of the topic of a document <ref type="bibr" target="#b23">[23,</ref><ref type="bibr" target="#b25">25]</ref>, and, what is more, they are very likely to appear in human-written summaries <ref type="bibr" target="#b26">[26]</ref>. Therefore, the frequency of a word, without considering stop words, is computed and it is used in the next stage of the TS process for determining the overall relevance of a sentence. • Relevance detection: this stage computes a score for each sentence depending on its importance, relying on the topic identification stage previously explained and a cognitive-based feature: the Code Quantity Principle (CQP) <ref type="bibr" target="#b14">[15]</ref>. The CQP states that the most important information within a text is expressed by a high number of units (for instance, words or noun phrases). In our TS approach, we select as units noun phrases because they are flexible coding units and can vary in the number of elements they contain depending on the information detail one wants to provide. Therefore, in order to generate the summary, sentences containing longer noun phrases of high frequent terms (i.e., the most representative topics of a text) are considered to be more important, thus having more chances to appear in the final summary. • Summary generation: finally, having computed the score for each sentence, in this last stage of the TS process sentences are ranked according to their relevance and the highest ones are selected and extracted in the same order as they appear in the original document, thus generating an extractive summary, and leading to COMPENDIUME variant.</p><p>Fig. <ref type="figure">2</ref>. Overview of the stages involved in COMPENDIUME.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.">COMPENDIUM E-A : abstractive-oriented summarization</head><p>The second type of summaries COMPENDIUM is able to generate is abstractive-oriented summaries, by means of COMPENDIUM E-A . In this approach, extractive and abstractive techniques are combined in the following manner: we take as a basis the COMPENDIUM E approach described in the previous subsection (Section 3.1), and we integrate an information compression and fusion stage after the relevant sentences have been identified and before the final summary is generated, thus generating abstractive-oriented summaries. The goal of this stage is to generate new sentences in one of these forms: either a compressed version of a longer sentence, or a new sentence containing information from two individual ones. The main steps involved in this stage are (Fig. <ref type="figure">3</ref>):</p><p>• Word graph generation: for generating new sentences, we rely on word graphs adopting a similar approach to the one described in Filippova <ref type="bibr" target="#b12">[13]</ref>. Specifically in our approach, we first generate an extractive summary in order to determine the most relevant content for being included in the summary. Then, a weighted directed word graph is built taking as input the generated extract, where the words represent the nodes of the graph, and the edges are adjacency relationships between two words. The weight of each edge is calculated based on the inverse frequency of co-occurrence of two words and taking also into account the importance of the nodes they link, through the PageRank algorithm <ref type="bibr" target="#b4">[5]</ref>. Once the extract is represented as a word graph, a pool of new sentences is created by identifying the shortest path between nodes (e.g. using Dijkstra's algorithm), starting with the first word of each sentence in the extract, in order to cover its whole content. The reason why we used the shortest path is twofold. On the one hand, it allows sentences to be compressed, and on the other hand, we can include more content in the summary, in the case several sentences are fused. • Incorrect paths filtering: this stage is needed since not all of the sentences obtained by the shortest paths are valid. For instance, some of them may suffer from incompleteness ("Therefore the immune system."). Consequently, in order to reduce the number of incorrect generated sentences, we define a set of rules, so that sentences not accomplishing all the rules are not taken into account. Three general rules are defined after analyzing manually the resulting sentences derived from the documents in the data set, which are: i) the minimal length for a sentence must be 3 words, since we assume that three words (i.e., subject + verb + object) is the minimum length for a complete sentence; ii) every sentence must contain a verb; and iii) the sentence should not end in an article (e.g. a, the), a preposition (e.g. of), an interrogative word (e.g. who), nor a conjunction (e.g. and). • Given and new information combination: the objective of the last step is to decide which of the new sentences are more appropriate to be included in the final summary. Since we want to develop a mixed approach, combining extractive and abstractive techniques, the sentences of the final summary will be selected following a strategy that maximizes the similarity between each of the new sentences and the ones that are already in the extract, given that the similarity between them is above a predefined threshold. For this, we use the cosine measure to compute the similarity between two sentences, and a threshold has been empirically set to 0.5. Finally, in the cases where a sentence in the extract has an equivalent in the set of new generated sentences, the former will be substituted for the latter; otherwise, we take the sentence in the extract.</p><p>Fig. <ref type="figure">3</ref>. Overview of the stages involved in COMPENDIUME-A.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">Experimental framework</head><p>In this section, we provide a description of the corpus employed (Subsection 4.1), we analyze the abstracts included in the research papers (Subsection 4.2) and we finally explain the experiments performed (Subsection 4.3).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.">Description of the data set: research articles</head><p>For our experiments, a set of 50 research articles from a specialized journal of medicine was collected directly from the Web. Specifically, these articles belonged to the Autoimmunity Reviews journal. 1  The structure is similar for all of the articles in the corpus: title, authors and affiliations, keywords, abstract, outline and a variable number of sections (the content of these section is what we considered as the text of the article), depending on each article. At the end of each one, there are also two special sections: one is the "take-home messages" and the last one contains the references. In some articles, an acknowledgement section is included as well. In addition, each article may contain figures and tables, which are not taken into consideration for generating the summaries.</p><p>A fragment of an article together with its complete abstract is shown in Tables <ref type="table" target="#tab_0">1</ref> and<ref type="table">2</ref>, respectively. For clarity reasons we have numbered the sentences according to its position within the text of the article and the abstract. The abstracts included in the articles were generated by the authors, and therefore, we use them as gold-standard for comparing them with respect to the results obtained by our TS system COMPENDIUM.  For using the abstracts as gold-standards, we carry out an analysis of different properties concerning the number of words and sentences the text of the article and the abstract have, as well as its compression ratio. In this manner, the articles have on average 2000 words (minimum = 949, maximum = 4464) and 83 sentences (minimum = 44, maximum = 151), whereas the abstracts only 162 words (minimum = 64, maximum = 341) and 6 sentences (minimum = 2, maximum = 15). This means that the compression ratio for the abstracts with respect to the text of the articles is around 8%. As can be deduced, this compression ratio is very high, since the articles are very long compared to the length of the abstracts.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.">Analysis of the model summaries</head><p>Besides analyzing the statistical properties of the corpus, we are also interested in the narrative style of the abstracts, in order to quantify and understand their nature with respect to the types of summaries COMPENDIUM produces.</p><p>From this analysis, we found out that 82% of the abstracts had an abstractive nature, and they were created by identifying important fragments of information in the text (instead of complete sentences), and then, generalizing and connecting them with others in a coherent way, through discourse markers and linking phrases. On the contrary, the remaining 18% of the abstracts had an extractive nature, thus containing different sentences that appeared in the text. In these cases, the percentage of identical sentences ranged between 9% and 60% the length of the abstract, and therefore, we can observe that in some cases, more than half of the content of the abstract was extracted directly from the text of the article.</p><p>In order to illustrate this fact, Table <ref type="table">3</ref> shows a fragment of an article and its abstract together with the correspondence of their sentences. This fragment of the article and its abstract are the same as the ones reported in Tables <ref type="table" target="#tab_0">1</ref> and<ref type="table">2</ref>. On the one hand, 50% of the sentences in the abstract are found identically within the content of the article (sentences 1 and 2 in the abstract correspond to sentences 1 and 78 in the article) and the remaining sentences (sentences 3 and 4) were generated from relevant pieces of information that appears in the original document (e.g. sentence 3 contains information from sentences 8, 26, and 81). On the other hand, sentence 4 has been created by the author and consequently, it does not have a direct correspondence to any other sentence in the text of the article. As it can be noticed, it synthesizes the discussion of several diagnoses in just one sentence.</p><p>Therefore, as a result of this analysis, one may think that a TS approach that combines extractive with abstractive techniques together can be more appropriate to tackle this task. In this article, we analyze two types of summaries generated by COMPENDIUM: extractive (COMPENDIUME) and abstractive-oriented (COMPENDIUME-A), where the latter is, indeed, a hybrid approach, which combines extractive and abstractive information. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3.">Experiments</head><p>COMPENDIUM is employed for producing generic summaries of the data set previously explained. In particular, we generate two kinds of summaries: i) extractive summaries with COMPENDIUM E and ii) abstractive-oriented summaries with COMPENDIUM E-A , so that we can analyze on the one hand if COMPENDIUM is capable of determining the most relevant information, and on the other hand, which summarization approach would be more appropriate, and if they could be used instead of the abstract of the article. In the biomedical domain, articles usually contain an abstract no longer than 250 words. Since it was previously analyzed that the average length of the abstracts in our data set was 162 words, we take this length as a reference for the summaries generated with COMPENDIUM, since it is even shorter than the standard length for abstracts (i.e., 250 words).</p><p>It is worth mentioning that for generating the summaries neither the keywords of the original article nor the information in the titles or in the abstract have been taken into consideration. Moreover, before passing the articles through COMPENDIUM, the data set is cleaned and only the main content of each article is kept for further processing. In other words, the outline, bibliographic entries, keywords, figures and tables are removed.</p><p>Table <ref type="table" target="#tab_2">4</ref> shows two examples of the types of summaries generated with COMPENDIUM E and COMPENDIUM E-A . The source document for these summaries is the article showed in Tables <ref type="table" target="#tab_0">1</ref> and<ref type="table">3</ref>.</p><p>As it can be seen, the resulting summary for COMPENDIUM E-A has also some sentences in common with COMPENDIUM E , (e.g., sentences 2, 6, 7 and 8), whereas others have been compressed or merged (e.g., 1, 3, 4 and 5).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">Evaluation and discussion</head><p>The aim of this section is to explain the evaluation performed and show the results obtained together with a discussion. For evaluating the summaries generated by COMPENDIUM, two types of evaluation were conducted: quantitative (Subsection 5.1) and qualitative (Subsection 5.2).</p><p>The goal of the quantitative evaluation is to assess whether the automatic summaries contain the main information from the source documents. In order to determine the most important information, we take into consideration the original abstracts of the articles and we compare them with the ones generated by COMPENDIUME and COMPENDIUME-A using ROUGE <ref type="bibr" target="#b20">[20]</ref>. Moreover, apart from evaluating the information contained in the summaries, we also want to measure the user satisfaction towards the automatic summaries, thus carrying out a qualitative evaluation. Next, each of these evaluations is explained.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1.">Quantitative evaluation</head><p>In this type of evaluation, the informativeness of the summaries with respect to their content is assessed, i.e., if the summaries are able to capture the most relevant information of the biomedical research papers. For determining which content should be considered more relevant, we take into account the original abstracts provided with the articles for two main reasons: i) the abstracts provided with the articles are representative of the main contents of the whole document; and ii) they have been manually generated, and consequently, humans have decided the essential information of the article to be included in the abstract. Therefore, the content of the summaries generated by COMPENDIUM and the original abstracts is compared using the ROUGE tool. Such comparison is made in terms of n-gram co-occurrence. We employ this tool because it is automatic and it has been widely adopted by the research community for the evaluation of summaries. The most common ROUGE metrics are: ROUGE-1 and ROUGE-2, which compute the number of overlapping unigrams and bigrams, respectively; ROUGE-L, which calculates the longest common subsequence between two summaries; and finally, ROUGE-SU4, which measures the overlap of skip-bigrams an automatic summary contains with respect to a model one, with a maximum distance of four words between them. In addition, in order to broaden the evaluation, and analyze how a state-of-the-art summarizer would perform, we also use MS-Word Summarizer 2007 2 for producing summaries of the same length. This allows us to compare our approaches with another state-of-the-art summarizer. Table <ref type="table" target="#tab_4">5</ref> shows the results obtained in percentages, remarking the statistical significances according to a t-test performed (p ≤ .05).</p><p>As it can be seen, our both TS approaches (extractive and abstractive, with COMPENDIUME and COMPENDIUME-A, respectively) are comparable with respect to the state-of-the-art TS tool (i.e., MS-Word 2007 Summarizer). Regarding COMPENDIUM E-A , it is worth mentioning that the precision obtained is higher for ROUGE-1 and ROUGE-L metrics, compared to the remaining approaches, being also statistically significant for ROUGE-1. However, its recall is lower, so in the end the final value of F-measure is negatively affected, performing COMPENDIUM E better than COMPENDIUM E-A for most of the metrics. This is due to the fact that for building the abstractive summaries, we rely on the sentences detected as important in the relevance detection stage, and we compress or merge some information within them. Therefore, the resulting summaries are shorter than the extracts, and since no extra information is added, the recall value will never be higher than it is for COMPENDIUME. One possible solution to address this issue would be to rely on the source document and generate the new sentences from it instead of the most relevant sentences. Another strategy would be to include in the COMPENDIUM E-A summary the next highest ranked sentence in the document according to the relevance detection stage that were not included in the extract, because of summary length restrictions. Regarding COMPENDIUM E , it achieves higher results than MS-Word 2007 for most of the metrics, except for ROUGE-L; however, there are no statistical differences between them, except for ROUGE-1.</p><p>Although from the results obtained we show that COMPENDIUM is capable to identify and extract the most relevant information from documents, we need to evaluate the generated summaries with respect to other criteria, in order to confirm whether these summaries are good.</p><p>As a consequence, for evaluating also the information contained in the summaries, we relied on the keywords provided with the articles. In this manner, we wanted to check which ones appeared identically in the summaries. Our hypothesis was that since keywords represent essential concepts of the document, if summaries included them, this would mean that they would capture the important information. Therefore, for this experiment, we took into account the keywords of each article and we analyzed whether they appeared or not in the summaries (the original abstract, and the summaries generated by COMPENDIUM E and COMPENDIUME-A). For each article, the author assigned 4 keywords on average (minimum = 2, maximum = 9). The preliminary analysis conducted over the original abstracts of the articles, showed that only 2 abstracts (4% of the abstracts) included all the keywords, whereas 31 abstracts (62%) included less than the 50% of them. Moreover, a high percentage of abstracts (34%) did not include any keyword at all.</p><p>In light of these results, we decided to expand the keywords with equivalent concepts, by using the MeSH thesaurus, 3 and analyze to what extent the summaries contained also synonyms of the keywords or equivalent terms. Again, we first analyzed the original abstracts, and we found out that, as in the previous analysis, most of the expanded keywords were not present in the original abstracts, nor in the summaries generated by COMPENDIUM. In the biomedical domain, keywords synthesize concepts that globally describe the content of the article, and they have to be selected from a normalized set of keywords (i.e., MeSH). It normally occurs that when authors do not find a keyword for the specific concept in these sets, they select a general term, being therefore more ambiguous. In addition, since we deal with a technical context, the variability of vocabulary decreases, and instead of using synonyms of the terms, authors tend to use their own abbreviations, which do not appear in the aforementioned normalized sets (e.g., polymorphous light eruption (PLE) taken from the fragment of the biomedical article shown in Table <ref type="table" target="#tab_0">1</ref> does not appear in MeSH). This strategy helps them to ensure that the abstract and the text do not surpass the maximum number of words allowed with respect to the journal requirements.</p><p>Therefore, in light of the analysis conducted and the results obtained, it is necessary to conduct a qualitative evaluation where we measure the user satisfaction of the generated summaries with respect to different aspects, including issues regarding the most important topics stated in the summaries, so that we can confirm the appropriateness of the summaries produced using COMPENDIUM in its extractive and abstractive variants (COMPENDIUME and COMPENDIUME-A, respectively). The next Subsection explains in detail the qualitative evaluation performed.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2.">Qualitative evaluation</head><p>In this evaluation, we aim at assessing the user satisfaction with respect to the generated summaries with COMPENDIUM. For this purpose, we performed a qualitative evaluation. A group of 10 assessors were involved in the process, where they had to evaluate 3 http://www.ncbi.nlm.nih.gov/mesh Table <ref type="table">3</ref> Sentence correspondence between an article and its abstract.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Abstract included in a biomedical article:</head><p>Fragment of the article:</p><p>1: Histologic examination of lesions plays a key role in the diagnostics of cutaneous lupus erythematosus (LE).</p><p>1: Histologic examination of lesions plays a key role in the diagnostics of cutaneous lupus erythematosus (LE). 2: LE has a broad spectrum of histopathological signs, which are related to the stages of the lesions.</p><p>78: LE has a broad spectrum of histopathological signs, which are related to the stages of the lesions. 3: In addition to the main subtypes of LE, we report on special manifestations like Rowell's-syndrome and Chilblain LE, and give an account of Kikuchi-Fujimoto disease (histiocytic necrotizing lymphadenitis), which may be associated with systemic LE. independently the content of the extractive and abstractive-oriented summaries (COMPENDIUM E and COMPENDIUM E-A , respectively) with respect to the human abstracts and the text of the articles. The evaluation focused on three questions (Q1: The summary reflects the most important issues of the document; Q2: The summary allows the reader to know what the article is about; and Q3: After reading the original abstract provided with the article, the alternative summary is also valid), and the user satisfaction was measured with respect to the content and appropriateness of the summaries by using a five-point Likert type scale (1 = strongly disagree; 2 = disagree; 3 = neither agree nor disagree; 4 agree; and 5 = strongly agree).</p><p>The first question (Q1) evaluates how informative a summary is, i.e., whether the summary contains relevant information or not. For evaluating it, the assessors have to read the article, in order to identify what information they consider more important, and check if it appears in the summary. The second question (Q2) allows us to determine to what extent the automatic summaries are indicative, thus providing a general idea of the contents of the article. Finally, the last question (Q3) aims at checking if the automatic summaries are good enough to substitute the original abstracts. Moreover, by rating the summaries, we can also analyze if the users prefer extractive or abstractive summaries, thus determining which approach would be more appropriate.</p><p>In Table <ref type="table" target="#tab_5">6</ref>, the statistics of the results for each question and each TS approach are shown. The best assessment is obtained when using abstractive-oriented summaries generated by compendium E-A for the three proposed questions.</p><p>It is also worth noting the values for the mode in both TS approaches. This value shows which value of the scale appears more frequently. Concerning this, we can observe that for all the questions the most frequent value for COMPENDIUME-A is 4, whereas for COMPENDIUM E is 2 for Q1, and 1 for Q2 and Q3. This means that most of the users classified the abstractive-oriented summaries (COMPENDIUME-A) as "Agree".</p><p>In this sense, in Table <ref type="table" target="#tab_6">7</ref> we can observe that the percentage of summaries evaluated as "Agree" when using COMPENDIUM E-A (36%, 36% and 28%, for questions Q1, Q2 and Q3, respectively) increases compared to the accumulated percentage obtained with COMPENDIUM E for the criteria "Agree" and "Strongly Agree" (20%, 26%, and 16%, respectively). In other words, the assessors showed a higher satisfaction towards the summaries generated with COMPENDIUME-A, and these results were statistically significant with Abstractive-oriented summary generated with COMPENDIUME-A:</p><p>1: Histologic examination of lesions plays a key role in the diagnostics of cutaneous lupus erythematosus LE.</p><p>1: LE lesions play a key role in the diagnostics.</p><p>2: LE has a broad spectrum of histological signs which are related to the stages of the lesions, but some signs apply to all stages e.g. mucin deposition.</p><p>2: LE has a broad spectrum of histological signs which are related to the stages of the lesions, but some signs apply to all stages e.g. mucin deposition. 3: Histologic findings of skin lesions are essentially identical for systemic lupus erythematosus SLE and cutaneous LE.</p><p>3: LE lesions are essentially identical for systemic lupus erythematosus SLE. 4: From the histological standpoint, LE can be classified only into early, fully developed, late LE, and special manifestations of LE.</p><p>4: LE can be classified only into early histologic.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>5:</head><p>The early histologic findings of LE lesions are sparse superficial perivascular lymphocytic infiltrates, neutrophils and sometimes nuclear dust immediately beneath the dermoepidermal junction.  respect to the ones obtained with COMPENDIUME according to a Chi-square test (χ 2 = 43.281, p = .000; χ 2 = 38.808, p = .001; χ 2 = 35.390, p = .004 for each of the questions, respectively). This means that according to the results obtained when assessing the user satisfaction, summaries generated with COMPENDIUME-A included relevant information with regard to the text of the article, and they provided an overview of the article. In addition, these summaries were good enough for serving as a surrogate of the abstract written by the authors.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.">Conclusion and future work</head><p>In this paper we presented COMPENDIUM, a text summarization system applied to the generation of abstracts of research papers for the biomedical domain. In particular, two types of generic summaries were produced: extractive and abstractive-oriented, with the corresponding variants of COMPENDIUM: COMPENDIUM E and COMPENDIUM E-A , respectively. The extractive approach only selected and extracted the most relevant sentences, whilst for the abstractive-oriented one, we proposed a novel approach, which combined extractive and abstractive techniques, by incorporating an information compression and fusion stage once the most important content was identified.</p><p>With the aim of determining if COMPENDIUM was able to generate good summaries, as well as studying which approach should be more appropriate within the biomedical context, we carried out a quantitative and qualitative evaluation. On the one hand, the goal of the quantitative evaluation was to assess the information contained in the summaries, i.e., whether the system was able to identify the relevant information. On the other hand, the qualitative evaluation was conducted by means of a user satisfaction study where real users rated the generated summaries according to three criteria: their topics, content, and suitability for substituting the original abstracts in the research articles.</p><p>Although the results concerning the quantitative evaluation benefited the extractive summaries, showing that the summaries generated with COMPENDIUM E-A contained less similar information to the human-written abstracts included in the articles than the summaries produced with the extractive approach (COMPENDIUM E ), we can conclude that according to the satisfaction users have towards both kind of summaries, the abstractive-oriented summaries COMPENDIUM E-A are the most appropriate. From these results, we can draw two main conclusions: i) COMPENDIUM is useful for producing automatic summaries of biomedical research papers, since both TS approaches are able to keep the most important information; ii) abstractive-oriented summaries generated with COMPENDIUME-A are better from a human perspective. Therefore, we showed the appropriateness of COMPENDIUM as a TS system, as well as our proposed strategy for facing abstractive summarization. In the future, we plan to analyze other variants of the proposed approach for building abstracts, such as taking the source document as a starting point instead of the extractive summary. Moreover, focusing also in the biomedical domain, we want to study other applications where automatic summaries are useful. For instance, the automatic generation of newsletters, that could help health experts and researchers to keep updated on the main novelties concerning their field of expertise, by just providing periodically a brief summary of recent biomedical articles, new treatments, drugs, etc.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="4,174.29,424.57,220.75,244.15" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="5,99.47,422.89,340.68,249.19" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1</head><label>1</label><figDesc>Fragment of the text of an article of Autoimmunity Reviews journal. Histologic examination of lesions plays a key role in the diagnostics of cutaneous lupus erythematosus (LE). 2: LE has a broad spectrum of histological signs which are related to the stages of the lesions, but some signs apply to all stages (e.g., mucin deposition). […] 8: From the histological standpoint, LE can be classified only into early, fully developed, late LE, and special manifestations of LE. […] 26: If interface dermatitis becomes manifest at its maximal expression, Rowell's syndrome must be considered. […] 33: In subtypes of LE with epidermal involvement, damage to keratinocytes is a distinctive sign which is very helpful in establishing the diagnosis. […] 50: An important histological differential diagnosis is the polymorphous light eruption (PLE), which exhibits prominent edema of the papillary dermis with occasional vesiculation and absence of mucin deposition. […] 78: LE has a broad spectrum of histopathological signs, which are related to the stages of the lesions.[…] 81: LE may be associated with Kikuchi-Fujimoto disease (histiocytic necrotizing lymphadenitis).[…]   </figDesc><table><row><cell>Fragment of a biomedical article:</cell></row><row><cell>1:</cell></row></table><note><p>1 http://www.sciencedirect.com/science/journal/15689972</p></note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 4</head><label>4</label><figDesc>Examples of summaries generated withCOMPENDIUM.   </figDesc><table><row><cell>Extractive summary generated with COMPENDIUME:</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head></head><label></label><figDesc>According to Kuhn et al. the presence of even slight epidermal or junctional involvement should exclude LE tumidus.</figDesc><table><row><cell></cell><cell>5: LE lesions are sparse superficial perivascular lymphocytic infiltrates</cell></row><row><cell></cell><cell>neutrophils and sometimes nuclear dust immediately beneath the</cell></row><row><cell></cell><cell>dermoepidermal junction.</cell></row><row><cell>6: Few individual necrotic keratinocytes and focal vacuolar alteration of basal</cell><cell>6: Few individual necrotic keratinocytes and focal vacuolar alteration</cell></row><row><cell>cells may occur.</cell><cell>of basal cells may occur.</cell></row><row><cell>7: Fully developed lesions are characterized by moderately dense to dense</cell><cell>7: Fully developed lesions are characterized by moderately dense to</cell></row><row><cell>perivascular and periappendageal lymphocytic infiltrates in the papillary</cell><cell>dense perivascular and periappendageal lymphocytic infiltrates in the</cell></row><row><cell>and reticular dermis with abundant mucin deposition in the reticular</cell><cell>papillary and reticular dermis with abundant mucin deposition in the</cell></row><row><cell>dermis.</cell><cell>reticular dermis.</cell></row><row><cell>8:</cell><cell></cell></row></table><note><p>8: According to Kuhn et al. the presence of even slight epidermal or junctional involvement should exclude.</p></note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head>Table 5</head><label>5</label><figDesc>ROUGE results for the different text summarization approaches.</figDesc><table><row><cell>ROUGE</cell><cell>TS approach</cell><cell>Recall</cell><cell>Precision</cell><cell>F β = 1</cell></row><row><cell>ROUGE-1</cell><cell>COMPENDIUME</cell><cell>44.02 ⁎</cell><cell>40.53</cell><cell>42.20 ⁎</cell></row><row><cell></cell><cell>COMPENDIUME-A</cell><cell>38.66</cell><cell>41.81 ⁎</cell><cell>40.20</cell></row><row><cell></cell><cell>MS-Word 2007</cell><cell>43.61</cell><cell>40.46</cell><cell>41.97</cell></row><row><cell>ROUGE-2</cell><cell>COMPENDIUME</cell><cell>14.46</cell><cell>13.21</cell><cell>13.81</cell></row><row><cell></cell><cell>COMPENDIUME-A</cell><cell>11.49</cell><cell>12.63</cell><cell>12.03</cell></row><row><cell></cell><cell>MS-Word 2007</cell><cell>13.67</cell><cell>12.85</cell><cell>13.24</cell></row><row><cell>ROUGE-L</cell><cell>COMPENDIUME</cell><cell>29.84</cell><cell>27.30</cell><cell>28.51</cell></row><row><cell></cell><cell>COMPENDIUME-A</cell><cell>25.95</cell><cell>28.01</cell><cell>26.94</cell></row><row><cell></cell><cell>MS-Word 2007</cell><cell>30.41</cell><cell>28.11</cell><cell>29.21</cell></row><row><cell>ROUGE-SU4</cell><cell>COMPENDIUME</cell><cell>18.92</cell><cell>17.29</cell><cell>18.07</cell></row><row><cell></cell><cell>COMPENDIUME-A</cell><cell>15.60</cell><cell>16.95</cell><cell>16.24</cell></row><row><cell></cell><cell>MS-Word 2007</cell><cell>17.81</cell><cell>16.60</cell><cell>17.18</cell></row></table><note><p>⁎ Means that the result is statistically significant (p ≤ .05).</p></note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_5"><head>Table 6</head><label>6</label><figDesc>Descriptive statistics for the qualitative evaluation.</figDesc><table><row><cell></cell><cell>Q1</cell><cell></cell><cell>Q2</cell><cell></cell><cell>Q3</cell><cell></cell></row><row><cell></cell><cell>COMPENDIUME</cell><cell>COMPENDIUME-A</cell><cell>COMPENDIUME</cell><cell>COMPENDIUME-A</cell><cell>COMPENDIUME</cell><cell>COMPENDIUME-A</cell></row><row><cell>Mean</cell><cell>2.40</cell><cell>2.80</cell><cell>2.58</cell><cell>3.08</cell><cell>2.32</cell><cell>2.76</cell></row><row><cell>Standard dev.</cell><cell>1.088</cell><cell>1.161</cell><cell>1.279</cell><cell>1.175</cell><cell>1.269</cell><cell>1.153</cell></row><row><cell>Median</cell><cell>2.00</cell><cell>3.00</cell><cell>2.50</cell><cell>3.00</cell><cell>2.00</cell><cell>3.00</cell></row><row><cell>Mode</cell><cell>2</cell><cell>4</cell><cell>1</cell><cell>4</cell><cell>1</cell><cell>4 a</cell></row><row><cell cols="3">a Q3 has two modes, but we only reflect the highest one.</cell><cell></cell><cell></cell><cell></cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_6"><head>Table 7</head><label>7</label><figDesc>Percentage of summaries evaluated according to each degree in the Likert type scale for the proposed questions.</figDesc><table><row><cell></cell><cell>Likert scale</cell><cell>COMPENDIUME</cell><cell>COMPENDIUME-A</cell></row><row><cell>Q1</cell><cell>Strongly disagree</cell><cell>22%</cell><cell>16%</cell></row><row><cell></cell><cell>Disagree</cell><cell>38%</cell><cell>28%</cell></row><row><cell></cell><cell>Neither agree nor disagree</cell><cell>20%</cell><cell>18%</cell></row><row><cell></cell><cell>Agree</cell><cell>18%</cell><cell>36%</cell></row><row><cell></cell><cell>Strongly agree</cell><cell>2%</cell><cell>2%</cell></row><row><cell></cell><cell></cell><cell></cell><cell>χ 2 = 43.281 (p = .000)</cell></row><row><cell>Q2</cell><cell>Strongly disagree</cell><cell>26%</cell><cell>12%</cell></row><row><cell></cell><cell>Disagree</cell><cell>24%</cell><cell>20%</cell></row><row><cell></cell><cell>Neither agree nor disagree</cell><cell>24%</cell><cell>24%</cell></row><row><cell></cell><cell>Agree</cell><cell>18%</cell><cell>36%</cell></row><row><cell></cell><cell>Strongly agree</cell><cell>8%</cell><cell>8%</cell></row><row><cell></cell><cell></cell><cell></cell><cell>χ 2 = 38.808 (p = .001)</cell></row><row><cell>Q3</cell><cell>Strongly disagree</cell><cell>32%</cell><cell>16%</cell></row><row><cell></cell><cell>Disagree</cell><cell>30%</cell><cell>28%</cell></row><row><cell></cell><cell>Neither agree nor disagree</cell><cell>22%</cell><cell>24%</cell></row><row><cell></cell><cell>Agree</cell><cell>6%</cell><cell>28%</cell></row><row><cell></cell><cell>Strongly agree</cell><cell>10%</cell><cell>4%</cell></row><row><cell></cell><cell></cell><cell></cell><cell>χ 2 = 35.390 (p = .004)</cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_0"><p>E. Lloret et al. / Data &amp; Knowledge Engineering 88 (2013) 164-175</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>Acknowledgment</head><p>This research was partially supported by the <rs type="grantName">FPI grant</rs> (<rs type="grantNumber">BES-2007-16268</rs>) and the project grants <rs type="projectName">TEXT-MESS</rs> (<rs type="grantNumber">TIN2006-15265-C06-01</rs>), <rs type="grantNumber">TEXT-MESS 2.0</rs> (<rs type="grantNumber">TIN2009-13391-C04</rs>) and LEGOLANG (<rs type="grantNumber">TIN2012-31224</rs>) from the <rs type="funder">Spanish Government</rs>. It has been also funded by the <rs type="funder">Valencian Government</rs> (grant no. <rs type="grantNumber">PROMETEO/2009/119</rs> and <rs type="grantNumber">ACOMP/2011/001</rs>). The authors would like to thank <rs type="person">Ester Boldrini</rs>, <rs type="person">Paloma Moreda</rs>, <rs type="person">Isabel Moreno</rs>, <rs type="person">Helena Burruezo</rs>, <rs type="person">Jesús Hermida</rs>, <rs type="person">Jorge Cruañes</rs>, <rs type="person">Fernando Peregrino</rs>, <rs type="person">Héctor Llorens</rs>, <rs type="person">Felipe Sellés</rs>, and <rs type="person">Rubén Izquierdo</rs> for their help in the manual evaluation of the summaries.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funded-project" xml:id="_2TKhu8d">
+					<idno type="grant-number">BES-2007-16268</idno>
+					<orgName type="grant-name">FPI grant</orgName>
+					<orgName type="project" subtype="full">TEXT-MESS</orgName>
+				</org>
+				<org type="funding" xml:id="_DR4aQJU">
+					<idno type="grant-number">TIN2006-15265-C06-01</idno>
+				</org>
+				<org type="funding" xml:id="_6bt2zvM">
+					<idno type="grant-number">TEXT-MESS 2.0</idno>
+				</org>
+				<org type="funding" xml:id="_35Uq5QJ">
+					<idno type="grant-number">TIN2009-13391-C04</idno>
+				</org>
+				<org type="funding" xml:id="_PMKcHcv">
+					<idno type="grant-number">TIN2012-31224</idno>
+				</org>
+				<org type="funding" xml:id="_vWe7usT">
+					<idno type="grant-number">PROMETEO/2009/119</idno>
+				</org>
+				<org type="funding" xml:id="_MvrTJV9">
+					<idno type="grant-number">ACOMP/2011/001</idno>
+				</org>
+			</listOrg>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Biological relation extraction and query answering from medline abstracts using ontology-based text mining</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Abulaish</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Dey</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Data &amp; Knowledge Engineering</title>
+		<imprint>
+			<biblScope unit="volume">61</biblScope>
+			<biblScope unit="page" from="228" to="262" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Multilingual feature-driven opinion extraction and summarization from customer reviews</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Balahur</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Montoyo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 13th International Conference on Applications of Natural Language to Information Systems</title>
+		<title level="s">Lecture Notes in Computer Science</title>
+		<meeting>the 13th International Conference on Applications of Natural Language to Information Systems</meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="volume">5039</biblScope>
+			<biblScope unit="page" from="345" to="346" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Automatic generation of weather forecast texts using comprehensive probabilistic generation-space models</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Belz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Natural Language Engineering</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="431" to="455" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">CBSEAS, a summarization system integration of opinion mining techniques to summarize blogs</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Bossard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Généreux</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Poibeau</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 12th Conference of the European Chapter</title>
+		<meeting>the 12th Conference of the European Chapter</meeting>
+		<imprint>
+			<publisher>the Association for Computational Linguistics</publisher>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="5" to="8" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">The anatomy of a large-scale hypertextual web search engine</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Brin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Page</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Computer Networks ISDN Systems</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="page" from="107" to="117" />
+			<date type="published" when="1998">1998</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Extractive vs. NLG-based abstractive summarization of evaluative text: the effect of corpus controversiality</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Carenini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">C K</forename><surname>Cheung</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 5th International Natural Language Generation Conference</title>
+		<meeting>the 5th International Natural Language Generation Conference</meeting>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="page" from="33" to="40" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Narrative-based taxonomy distillation for effective indexing of text collections</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Cataldi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">S</forename><surname>Candan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">L</forename><surname>Sapino</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Data &amp; Knowledge Engineering</title>
+		<imprint>
+			<biblScope unit="volume">72</biblScope>
+			<biblScope unit="page" from="103" to="125" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Extracting hot spots of topics from time-stamped documents</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Chundi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Data &amp; Knowledge Engineering</title>
+		<imprint>
+			<biblScope unit="volume">70</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page" from="642" to="660" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Hierarchical clustering of xml documents focused on structural components</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Costa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Manco</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Ortale</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Ritacco</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Data &amp; Knowledge Engineering</title>
+		<imprint>
+			<biblScope unit="volume">84</biblScope>
+			<biblScope unit="page" from="26" to="46" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">QCS: a system for querying, clustering and summarizing documents</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">M</forename><surname>Dunlavy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">P</forename><surname>O'leary</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Conroy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">D</forename><surname>Schlesinger</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Information Processing and Management</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="1588" to="1605" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Lexrank: graph-based lexical centrality as salience in text summarization</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Erkan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">R</forename><surname>Radev</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Artificial Intelligence Research</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page" from="457" to="479" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">A perspective-based approach for solving textual entailment recognition</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Ferrández</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Micol</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Muñoz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Palomar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the ACL-PASCAL Workshop on Textual Entailment and Paraphrasing</title>
+		<meeting>the ACL-PASCAL Workshop on Textual Entailment and Paraphrasing</meeting>
+		<imprint>
+			<date type="published" when="2007">2007</date>
+			<biblScope unit="page" from="66" to="71" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Multi-sentence compression: finding shortest paths in word graphs</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Filippova</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 23rd International Conference on, Computational Linguistics</title>
+		<meeting>the 23rd International Conference on, Computational Linguistics</meeting>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="322" to="330" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">An integrated framework for de-identifying unstructured medical data</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gardner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Xiong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Data &amp; Knowledge Engineering</title>
+		<imprint>
+			<biblScope unit="volume">68</biblScope>
+			<biblScope unit="page" from="1441" to="1451" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<monogr>
+		<author>
+			<persName><forename type="first">T</forename><surname>Givón</surname></persName>
+		</author>
+		<title level="m">A Functional-typological Introduction, II, John Benjamins</title>
+		<meeting><address><addrLine>Amsterdam</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="1990">1990</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">The AMTEx approach in the medical document indexing and retrieval application</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Hliaoutakis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Zervanou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">G M</forename><surname>Petrakis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Data &amp; Knowledge Engineering</title>
+		<imprint>
+			<biblScope unit="volume">68</biblScope>
+			<biblScope unit="page" from="380" to="392" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">M.-Y</forename></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Using the annotated bibliography as a resource for indicative summarization</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">L</forename><surname>Kan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">R</forename><surname>Klavans</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Mckeown</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Language Resources and Evaluation Conference</title>
+		<meeting>the Language Resources and Evaluation Conference</meeting>
+		<imprint>
+			<date type="published" when="2002">2002</date>
+			<biblScope unit="page" from="1746" to="1752" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Non-textual event summarization by applying machine learning to template-based language generation</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Kumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Das</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Agarwal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Rudnicky</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2009 Workshop on Language Generation and Summarisation</title>
+		<meeting>the 2009 Workshop on Language Generation and Summarisation</meeting>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="67" to="71" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Extract-based summarization with simplification</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Lal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Rüger</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Workshop on Text Summarization in conjunction with the</title>
+		<meeting>the Workshop on Text Summarization in conjunction with the</meeting>
+		<imprint>
+			<publisher>Association for Computational Linguistics</publisher>
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">ROUGE: a package for automatic evaluation of summaries</title>
+		<author>
+			<persName><forename type="first">C.-Y</forename><surname>Lin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Association for Computational Linguistics Text Summarization Workshop</title>
+		<meeting>the Association for Computational Linguistics Text Summarization Workshop</meeting>
+		<imprint>
+			<date type="published" when="2004">2004</date>
+			<biblScope unit="page" from="74" to="81" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">A new approach to improving multilingual summarization using a genetic algorithm</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Litvak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Last</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Friedman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 48th Annual Meeting of the Association for, Computational Linguistics</title>
+		<meeting>the 48th Annual Meeting of the Association for, Computational Linguistics</meeting>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="927" to="936" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Extractive summarization based on event term clustering</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Lu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceeding of the 45th Annual Conference of Association of Computational Linguistics</title>
+		<meeting>eeding of the 45th Annual Conference of Association of Computational Linguistics</meeting>
+		<imprint>
+			<date type="published" when="2007">2007</date>
+			<biblScope unit="page" from="185" to="188" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">The automatic creation of literature abstracts</title>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">P</forename><surname>Luhn</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Automatic Text Summarization</title>
+		<editor>
+			<persName><forename type="first">Inderjeet</forename><surname>Mani</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Mark</forename><surname>Maybury</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>MIT Press</publisher>
+			<date type="published" when="1958">1958</date>
+			<biblScope unit="page" from="15" to="22" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Using citations to generate surveys of scientific paradigms</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Mohammad</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Dorr</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Egan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Hassan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Muthukrishan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Qazvinian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Radev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Zajic</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the North American Chapter</title>
+		<meeting>the North American Chapter</meeting>
+		<imprint>
+			<publisher>the Association of Computational Linguistics</publisher>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="584" to="592" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">Montiel</forename><surname>Soto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>García-Hernández</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Comparación de Tres Modelos de Texto para la Generación Automática de Resúmenes, Procesamiento del Lenguaje Natural</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="page" from="303" to="311" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">A compositional context sensitive multi-document summarizer: exploring the factors that influence summarization</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Nenkova</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Vanderwende</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Mckeown</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 29th Annual International ACM SIGIR Conference on Research and Development in Information Retrieval</title>
+		<meeting>the 29th Annual International ACM SIGIR Conference on Research and Development in Information Retrieval</meeting>
+		<imprint>
+			<date type="published" when="2006">2006</date>
+			<biblScope unit="page" from="573" to="580" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<monogr>
+		<author>
+			<persName><forename type="first">L</forename><surname>Plaza</surname></persName>
+		</author>
+		<title level="m">Uso de Grafos Semánticos en la Generación Automática de Resúmenes y Estudio de su Aplicación en Distintos Dominios: Biomedicina, Periodismo y Turismo</title>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+	<note>PhD thesis</note>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Retrieval of similar electronic health records using UMLS concept graphs</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Plaza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Díaz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 15th International Conference on Applications of Natural Language to Information Systems</title>
+		<title level="s">Lecture Notes in Computer Science</title>
+		<meeting>the 15th International Conference on Applications of Natural Language to Information Systems</meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="volume">6177</biblScope>
+			<biblScope unit="page" from="296" to="303" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Automatic abstracting research at chemical abstracts</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Pollock</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Zamora</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Automatic Text Summarization</title>
+		<editor>
+			<persName><forename type="first">Inderjeet</forename><surname>Mani</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Mark</forename><surname>Maybury</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>MIT Press</publisher>
+			<date type="published" when="1999">1999</date>
+			<biblScope unit="page" from="43" to="49" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Scientific paper summarization using citation summary networks</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Qazvinian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">R</forename><surname>Radev</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 22nd International Conference on, Computational Linguistics</title>
+		<meeting>the 22nd International Conference on, Computational Linguistics</meeting>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="page" from="689" to="696" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">MEADa platform for multidocument multilingual text summarization</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Radev</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Allison</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Blair-Goldensohn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Blitzer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Celebi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Drabek</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Lam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Otterbacher</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Qi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Saggion</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Teufel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Topper</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Winkel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 4th International Conference on Language Resources and Evaluation</title>
+		<meeting>the 4th International Conference on Language Resources and Evaluation</meeting>
+		<imprint>
+			<date type="published" when="2004">2004</date>
+			<biblScope unit="page" from="699" to="702" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">A framework for abstracting data sources having heterogeneous representation formats</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Rosaci</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Terracina</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Ursino</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Data &amp; Knowledge Engineering</title>
+		<imprint>
+			<biblScope unit="volume">48</biblScope>
+			<biblScope unit="page" from="1" to="38" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">SUMMA: a robust and adaptable summarization tool</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Saggion</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Traitement Automatique des Languages</title>
+		<imprint>
+			<biblScope unit="volume">49</biblScope>
+			<biblScope unit="page" from="103" to="125" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">A classification algorithm for predicting the structure of summaries</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Saggion</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Proceedings of the Workshop on Language Generation and Summarisation</title>
+		<imprint>
+			<biblScope unit="page" from="31" to="38" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Selective analysis for automatic abstracting: evaluating indicativeness and acceptability</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Saggion</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Lapalme</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of Content-Based Multimedia Information Access</title>
+		<meeting>Content-Based Multimedia Information Access</meeting>
+		<imprint>
+			<date type="published" when="2000">2000</date>
+			<biblScope unit="page" from="747" to="764" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Can text summaries help predict ratings? A case study of movie reviews</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Saggion</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Lloret</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Palomar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 17th Iternational Conference on Applications of Natural Language to Information Systems (NLDB 2012)</title>
+		<title level="s">Lecture Notes in Computer Science</title>
+		<meeting>the 17th Iternational Conference on Applications of Natural Language to Information Systems (NLDB 2012)</meeting>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="volume">7337</biblScope>
+			<biblScope unit="page" from="271" to="276" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Automatically generating wikipedia articles: a structure-aware approach</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Sauper</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Barzilay</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 47th Annual Conference of the Association of Computational Linguistics</title>
+		<meeting>the 47th Annual Conference of the Association of Computational Linguistics</meeting>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="208" to="216" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Noise reduction through summarization for web-page classification</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Information Processing and Management</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="1735" to="1747" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Extracting multi-document summaries with a double clustering approach</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">B</forename><surname>Silveira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Branco</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 17th Iternational Conference on Applications of Natural Language to Information Systems (NLDB 2012)</title>
+		<title level="s">Lecture Notes in Computer Science</title>
+		<meeting>the 17th Iternational Conference on Applications of Natural Language to Information Systems (NLDB 2012)</meeting>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="volume">7337</biblScope>
+			<biblScope unit="page" from="70" to="81" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Automatic summarising: the state of the art</title>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">Spärck</forename><surname>Jones</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Information Processing and Management</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="1449" to="1481" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Text entailment for logical segmentation and summarization</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Tatar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">D</forename><surname>Mihis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Lupsa</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 13th International Conference on Applications of Natural Language to Information Systems</title>
+		<title level="s">Lecture Notes in Computer Science</title>
+		<meeting>the 13th International Conference on Applications of Natural Language to Information Systems</meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="volume">5039</biblScope>
+			<biblScope unit="page" from="233" to="244" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">K.-F</forename></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Extractive summarization using supervised and semi-supervised learning</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 22nd International Conference on, Computational Linguistics</title>
+		<meeting>the 22nd International Conference on, Computational Linguistics</meeting>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="page" from="985" to="992" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Choosing the content of textual summaries of large time-series data sets</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Reiter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Hunter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Mellish</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Natural Language Engineering</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="25" to="49" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Multi-candidate reduction: sentence compression as a tool for document summarization tasks</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Zajic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">J</forename><surname>Dorr</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Schwartz</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Information Processing and Management</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="1549" to="1570" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">AZOM: a persian structured text summarizer</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Zamanifar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Kashefi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 16th International Conference on Applications of Natural Language to Information Systems</title>
+		<title level="s">Lecture Notes in Computer Science</title>
+		<meeting>the 16th International Conference on Applications of Natural Language to Information Systems</meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="volume">6716</biblScope>
+			<biblScope unit="page" from="234" to="237" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">She has also been collaborating with international groups in Wolverhampton, Sheffield and Edinburgh. Prof. Dr. M Teresa Romá-Ferriis a full professor of the Faculty of Health Sciences at the University of Alicante and a member of the Natural Language Processing and Information Systems Research Group of the same university. Her main teaching area focuses on health information systems and nursing informatics. She received her Nursing graduate and PhD in Computer Science at the University of Alicante, and her Master&apos;s degree in Information Science at the Open University of Catalonia (UOC)</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ticrea</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Hovy</surname></persName>
+		</author>
+		<idno>TIN2009-13391-C04</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of the International Conference on Empirical Methods in NLP</title>
+		<meeting>of the International Conference on Empirical Methods in NLP</meeting>
+		<imprint>
+			<date type="published" when="2004">2004</date>
+			<biblScope unit="page" from="434" to="441" />
+		</imprint>
+	</monogr>
+	<note>Her main field of interest is Nursing Science and Natural Language Processing (NLP) and in particular Text Summarization, Information Extraction and Ontology Development. She has been collaborating with international researchers. PI051438, TIN2012-31224). She is the author of over 50 scientific publications in relevant journals and international conferences</note>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<monogr>
+		<title level="m" type="main">He received his Master&apos;s degree and Ph.D in Computer Science at the Polytechnic University of Valencia, Spain. His research interests are Human Language Technologies (HLT) and Natural Language Processing (NLP), in particular Text Summarization, Semantic Roles, Textual Entailment, Information Extraction and Anaphora Resolution. He has supervised more than 12 theses and he is the author of more than 70 scientific publications on international journals and conferences on different topics related to HLT and NLP. Furthermore, he has coordinated and been involved in a number of regional, national and international research projects funded by the Generalitat Valenciana</title>
+		<author>
+			<persName><surname>Prof</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Dr</surname></persName>
+		</author>
+		<imprint/>
+		<respStmt>
+			<orgName>Manuel Palomaris the University President of the University of Alicante and head of the Natural Language Processing and Information Systems Research Group of the same university</orgName>
+		</respStmt>
+	</monogr>
+	<note>He is also a full professor of this university since 1991 and his main teaching area focuses on the analysis, design and management of databases, datawarehouses, and information systems. Valencian Government), the Ministry of Science and Innovation (Spanish Government) and the European Council</note>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

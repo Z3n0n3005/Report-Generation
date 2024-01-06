@@ -1,0 +1,38 @@
+---
+abstractSeg: "The present study demonstrates a comprehensive overview about text mining\
+  \ and its current research status. In our study, we collected, and textually analyzed\
+  \ through various text mining techniques, three hundred refereed journal articles\
+  \ in the field of mobile learning from six scientific databases, namely: Springer,\
+  \ Wiley, Science Direct, SAGE, IEEE, and Cambridge."
+sectionList:
+- header: "Introduction"
+  content: "A study by [2] stated that text mining has become one of the trendy fields\
+    \ that has been incorporated in several research fields such as computational\
+    \ linguistics, Information Retrieval (IR) and data mining. The outcomes can be\
+    \ stored in a management information system that provides a large amount of significant\
+    \ information for the user of that system.Text mining intends to detect the information\
+    \ that was not recognized before through extracting it automatically from various\
+    \ text-based sources."
+- header: "Related Work"
+  content: "The primary focus of these researches was to determine how different text\
+    \ mining procedures can be utilized as the structured data sets exist in the text\
+    \ document format. It offers the opportunity to show an arrangement of sub-topics\
+    \ in huge sets of documents in compact graph form.In order to offer a reference\
+    \ for additional researches of other researchers, [37] discussed the research\
+    \ status of text mining technology when it was used in the biomedical field that\
+    \ covers 10 years."
+- header: "Experimental Results"
+  content: "These articles are categorized into six folders, where each folder represents\
+    \ the database where these articles were retrieved.The presence of the linguistic\
+    \ noise is a common problem in the content of the extracted articles and we have\
+    \ dealt with. The minimum number of the characters that the token should have\
+    \ is 4, while the maximum number is 25 characters.The application of various text\
+    \ mining techniques on the collected articles presents different results and suggestions."
+- header: "Conclusion"
+  content: "This creates a need for collecting a dataset that consists of several\
+    \ research articles in the field of mobile learning from different scientific\
+    \ databases, and applying the proposed approach on them.Three hundred refereed\
+    \ journal articles from six scientific databases were collected, and textually\
+    \ analyzed through text mining techniques. The selection of the collected articles\
+    \ was based on the criteria that all these articles should incorporate mobile\
+    \ learning as the main component in the higher educational context."

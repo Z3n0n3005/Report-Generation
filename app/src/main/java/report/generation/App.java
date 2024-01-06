@@ -5,7 +5,6 @@ package report.generation;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import report.generation.segmentation.*;
@@ -45,7 +44,15 @@ public class App {
         System.out.println("[App] folder: " + System.getProperty(FOLDER_PATH_PROPERTY));
         
         app.setFileList();
-        // app.pdfSegOutputPath = app.getSegXmlPath();
+        app.generateEngine();
+        for (int i = 0; i < app.fileList.size(); i++){
+            File file = app.fileList.get(i);
+            app.pdfSegmenting(file);
+            app.parseXML(file);
+            app.parseYAML(file);
+            app.summarizeSegments(file);
+        }
+        // app.this.getSumYamlPath() = app.getSegXmlPath();
         // app.yamlParseOutputPath = app.getSegYamlPath();
         // app.yamlSummaryPath = app.getSumYamlPath();
 
@@ -85,43 +92,35 @@ public class App {
         // String pdfSegResult = PdfSegmentation.pdfSegmenting(PDF_RELATIVE_PATH + path);
         String pdfSegResult = PdfSegmentation.pdfSegmenting(file);
 
-        Utility.printToFile(pdfSegResult, pdfSegOutputPath);
+        Utility.printToFile(pdfSegResult, this.getSumYamlPath(file));
         long endTimePDFSeg = System.nanoTime();
         double pdfSegTime = (endTimePDFSeg - startTimePDFSeg)/1000000;
         System.out.println("[App] First PDF Segmentation time = " + pdfSegTime);
     }
 
-    private void parseXML(){
+    private void parseXML(File file){
         long startTimeXMLParse = System.nanoTime();
-        SectionList xmlParseResult = XMLParser.parseXML(pdfSegOutputPath);
-        Utility.printToYamlFile(xmlParseResult, yamlParseOutputPath);
+        SectionList xmlParseResult = XMLParser.parseXML(this.getSumYamlPath(file));
+        
+        Utility.printToYamlFile(xmlParseResult, this.getSegXmlPath(file));
         long endTimeXMLParse = System.nanoTime();
         double xmlParseTime = (endTimeXMLParse - startTimeXMLParse)/1000000;
         System.out.println("[App] XML Parsing time = " + xmlParseTime);
     }
 
-    private void parseYAML(){
+    private void parseYAML(File file){
         long startTimeYAMLParse = System.nanoTime();
-        sectionListAfterParse = YAMLParser.parseYAML(yamlParseOutputPath);
+        sectionListAfterParse = YAMLParser.parseYAML(this.getSegXmlPath(file));
         long yamlParseEndTime = System.nanoTime();
         double yamlParseTime = (yamlParseEndTime - startTimeYAMLParse)/1000000;
         System.out.println("[App] YAML Parsing time = " + yamlParseTime);
     }
 
-    private void summarizeSegments() throws IOException{
+    private void summarizeSegments(File file) throws IOException{
         long startTimeSummarize = System.nanoTime();
 
-        // String abstractStr = sectionListAfterParse.getAbstractSeg();
-        // String firstSectionContent = sectionListAfterParse.getSection(0).getContent();
-        // String abstractSummary = LSA.summarize(abstractStr, 1);
-        // String firstSectionSummary = LSA.summarize(firstSectionContent, 1);
-
-        // System.out.println(firstSectionContent);
-        // System.out.println(firstSectionSummary);
-        // System.out.println(abstractSummary);
-
         sectionListSummary = SegmentSummarization.summarizeSegmentsLSA(sectionListAfterParse, 2);
-        Utility.printToYamlFile(sectionListSummary, yamlSummaryPath);
+        Utility.printToYamlFile(sectionListSummary, this.getSegYamlPath(file));
         System.out.println(sectionListSummary.toString());
 
         long endTimeSummarize = System.nanoTime();
@@ -132,32 +131,33 @@ public class App {
     private void setFileList(){
         String pdfPath = System.getProperty(FILE_PATH_PROPERTY);
         String folderPath = System.getProperty(FOLDER_PATH_PROPERTY);
+
         if(pdfPath != null){
             fileList = Utility.listAllFilesFromFolder(new File(pdfPath));
         } else if(folderPath != null){
             fileList = Utility.listAllFilesFromFolder(new File(folderPath));
         }
-        System.out.println(fileList);
+        // System.out.println(fileList);
     }
 
-    private String getPdfName(){
-        return "";
+    private String getPdfName(File file){
+        return file.getName();
     }
 
-    private String getSumYamlPath(){
-        String pdfPath = this.getPdfName();
+    private String getSumYamlPath(File file){
+        String pdfPath = this.getPdfName(file);
         String result = SUM_YAML_RELATIVE_PATH + SUM_FILE_PREFIX + pdfPath.replace(PDF_EXTENSION, YAML_EXTENSION);
         return result;
     }
 
-    private String getSegXmlPath(){
-        String pdfPath = this.getPdfName();
+    private String getSegXmlPath(File file){
+        String pdfPath = this.getPdfName(file);
         String result = SEG_XML_RELATIVE_PATH + SEG_FILE_PREFIX + pdfPath.replace(PDF_EXTENSION, XML_EXTENSION);
         return result;
     }
 
-    private String getSegYamlPath(){
-        String pdfPath = this.getPdfName();
+    private String getSegYamlPath(File file){
+        String pdfPath = this.getPdfName(file);
         String result = SEG_YAML_RELATIVE_PATH + SEG_FILE_PREFIX + pdfPath.replace(PDF_EXTENSION, YAML_EXTENSION);
         return result;
     }

@@ -1,0 +1,1780 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Knowledge discovery out of text data: a systematic review via text mining</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Antonio</forename><surname>Usai</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Marco</forename><surname>Pironti</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Monika</forename><surname>Mital</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Chiraz</forename><forename type="middle">Aouina</forename><surname>Mejri</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Italy</forename><forename type="middle">Monika</forename><surname>Mital</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Aouina</forename><surname>Chiraz</surname></persName>
+						</author>
+						<author>
+							<persName><surname>Mejri</surname></persName>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Economics and Business</orgName>
+								<orgName type="institution">University of Sassari</orgName>
+								<address>
+									<settlement>Sassari</settlement>
+									<country key="IT">Italy</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff1">
+								<orgName type="department">ICxT Innovation Center</orgName>
+								<orgName type="institution">University of Turin</orgName>
+								<address>
+									<settlement>Turin</settlement>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff2">
+								<orgName type="department" key="dep1">Department of Management</orgName>
+								<orgName type="department" key="dep2">Great Lakes Institute of Management</orgName>
+								<address>
+									<settlement>Kancheepuram</settlement>
+									<country key="IN">India</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff3">
+								<orgName type="department">Paris School of Business</orgName>
+								<address>
+									<settlement>Paris</settlement>
+									<country key="FR">France</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Knowledge discovery out of text data: a systematic review via text mining</title>
+					</analytic>
+					<monogr>
+						<idno type="ISSN">1367-3270</idno>
+					</monogr>
+					<idno type="DOI">10.1108/JKM-11-2017-0517</idno>
+					<note type="submission">Received 11 November 2017 Revised 14 March 2018 29 March 2018 Accepted 30 March 2018</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.0" ident="GROBID" when="2024-01-06T07:51+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Data mining</term>
+					<term>Systematic review</term>
+					<term>Text mining</term>
+					<term>Big data analytics</term>
+					<term>Knowledge discovery</term>
+					<term>Data extraction Paper type Literature review</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Purpose -The aim of this work is to increase awareness of the potential of the technique of text mining to discover knowledge and further promote research collaboration between knowledge management and the information technology communities. Since its emergence, text mining has involved multidisciplinary studies, focused primarily on database technology, Web-based collaborative writing, text analysis, machine learning and knowledge discovery. However, owing to the large amount of research in this field, it is becoming increasingly difficult to identify existing studies and therefore suggest new topics. Design/methodology/approach -This article offers a systematic review of 85 academic outputs (articles and books) focused on knowledge discovery derived from the text mining technique. The systematic review is conducted by applying ''text mining at the term level, in which knowledge discovery takes place on a more focused collection of words and phrases that are extracted from and label each document'' (Feldman et al., 1998, p. 1). Findings -The results revealed that the keywords extracted to be associated with the main labels, id est, knowledge discovery and text mining, can be categorized in two periods: from 1998 to 2009, the term knowledge and text were always used. From 2010 to 2017 in addition to these terms, sentiment analysis, review manipulation, microblogging data and knowledgeable users were the other terms frequently used. Besides this, it is possible to notice the technical, engineering nature of each term present in the first decade. Whereas, a diverse range of fields such as business, marketing and finance emerged from 2010 to 2017 owing to a greater interest in the online environment. Originality/value -This is a first comprehensive systematic review on knowledge discovery and text mining through the use of a text mining technique at term level, which offers to reduce redundant research and to avoid the possibility of missing relevant publications.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">Introduction</head><p>Before the fourth industrial revolution, in theory and practice, knowledge management (KM) has been based on the premise that only human beings are able to draw on the full potential of their brain. In fact, digital organizations are generally notable to fully use their employees' knowledge.</p><p>In this line, to achieve such maximum effective usage and so positively influence organizational performance, modern firms seek to acquire or create potentially useful knowledge and make it available to those who can use it to create value.</p><p>It is generally believed that if an organization can increase its utilization of effective knowledge by expending minimum efforts in sharing and creation, they will reap great benefits <ref type="bibr" target="#b31">(King, 2009)</ref>.</p><p>Hence, we are able to state that in a knowledge-intensive firm, organizational learning (OL) as proxy of human being becomes complementary for boosting KM practices to turn in routine information, data and text by embedding into the organization what has been captured from the environment <ref type="bibr" target="#b37">(Levitt and March, 1988)</ref>.</p><p>Because the originality of text mining which emphasizes a new source of knowledge discovering from "hard and intangible documents", we cannot forget that a dyadic relationship exists between knowledge and its stakeholders, i.e. people.</p><p>In literature, knowledge has been defined as a "justified personal belief," and it appear as the fundamental distinction between tacit and explicit knowledge <ref type="bibr" target="#b55">(Polanyi, 1966)</ref>.</p><p>From one side, we specify that tacit knowledge inhabits the minds of people, depending on humans' interpretation and deriving from their knowledge mind-set, that is difficult to interpret. In a nutshell, knowledge is initially tacit in nature and it will be arduously developed over a long period of time and through the trial-and-error process.</p><p>On the other hand, we recognize that knowledge is often undercapitalizing because "the organization does not know what it knows" (O' <ref type="bibr">Dell and Grayson, 1998)</ref>.</p><p>Because big data analytics based on digital feedbacks coming from the market set a bridge between information, knowledge, individuals and organizations that are commonly handled discretely and silently in productive processes and business and marketing activities.</p><p>This relationship that has been considered as socially constructed will be helpful to understand whether it is impossible to define knowledge universally. Hence, knowledge discovering can only be outlined in practice, during social and digital interactions between individuals.</p><p>However, knowledge is embedded in the organizations, and big data we markedly state knowledge discovery are coupled to the individual mind and to contexts. Text mining is considered as the process of knowledge discovery by adopting textual databases. It extracts valuable patterns or knowledge from text papers <ref type="bibr" target="#b1">(Balaid et al., 2016;</ref><ref type="bibr" target="#b2">Basole et al., 2013;</ref><ref type="bibr" target="#b5">Bookhamer and Zhang, 2016)</ref>. According to <ref type="bibr" target="#b14">Fan and Li (2006)</ref>, text data mining is the discovery of new knowledge from "written resources" by using technologies. This has attributed a high commercial value to text mining which generates a new "wave of knowledge discovery" <ref type="bibr" target="#b61">(Tan, 1999)</ref>. In fact, it is the most natural process of knowledge storage and discovery <ref type="bibr" target="#b15">(Feldman et al., 1998)</ref>.</p><p>Text mining has been used in many domains, such as health care, government, education and manufacturing. The text mining process, includes technologies such as pattern matching, topic tracking, summarization, categorization, clustering, association, information visualization <ref type="bibr" target="#b14">(Fan and Li, 2006)</ref>. Pattern matching is done by analyzing the unstructured text and identifying key phrases and relationships within text, and it does so by looking for predefined sequences in the text. In turn, it has increased the process of knowledge discovery by using text mining which has attracted the interest from a variety of fields such as: computer science, business, finance and artificial intelligence, etc. This requires more effort to gather non-trivial information, but it also provides greater opportunities to implement a knowledge discovery process (KDP). The process allows discerning trivial and non-trivial text data and grasping knowledge present in a large amount of unstructured data. In line with this, <ref type="bibr" target="#b10">Cios et al. (2007)</ref> deemed that individuals tend to fail in selecting valuable knowledge from text data. KDP calls for knowledge discovery in databases (KDDs), based on individuating valid, novel knowledge in data. In a nutshell, KDP is the means to extract and interpret interesting, non-trivial knowledge, whereas KDD is the place where knowledge is extracted. The understanding of this process offers several devices on how to manage and shape the interaction between an individual and a machine.</p><p>Given this, there are an increasing number of studies on text mining recently which explore different aspects: <ref type="bibr" target="#b8">Cecchini et al. (2010)</ref> presented a study on financial words as a predictor of financial events; <ref type="bibr" target="#b7">Cao et al. (2011)</ref> investigated the benefits of an online review by using the text mining approach; <ref type="bibr" target="#b17">Geva and Zahavi (2014)</ref> argued that empirical evaluation of an automated intraday stock recommendation system incorporates both market data and textual news. And then moving from a customer-centered perspective to an internal organizational view, <ref type="bibr" target="#b22">Hogenboom et al. (2014)</ref> analyzed extraction methods from text for decision support systems.</p><p>What has emerged is that text mining involves multidisciplinary studies and focuses on database technology, Web-based collaborative writing, text analysis, machine learning, knowledge discovery, etc. However, with the increased amount of research in this field, it becomes more difficult to identify the existing studies and therefore suggest new topics. For this reason, this article offers a systematic review of academic articles focused on knowledge discovery derived from the text mining technique. The systematic review is conducted by applying "text mining at the term level, in which knowledge discovery takes place on a more focused collection of words and phrases that are extracted from and label each document" <ref type="bibr">(Feldman et al., 1998, p. 1)</ref>.</p><p>The objective is to improve awareness of the potential of this technique so as to discover knowledge and further promote research collaboration between knowledge management and information technology communities.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">Literature review</head><p>Owing to the phenomenon of globalization, especially in the business-to-consumer (B2C) market, firms are creating social network-driven partnerships, and vast amounts of information flow across and within firms, so that more and more businesses are interested in using big data analytics <ref type="bibr" target="#b56">(Reyes and Rosso, 2012;</ref><ref type="bibr" target="#b41">Liu et al., 2014;</ref><ref type="bibr" target="#b43">Lo et al., 2016)</ref>. Therefore, scholars' main focus on technology and management is to understand the impact of text mining on knowledge discovery to aid practitioners to develop big data analytics projects and researchers to conduct new studies <ref type="bibr" target="#b41">(Liu et al., 2014)</ref>.</p><p>In particular, text mining involves working with unstructured or semi-structured data sets such as email, full-text documents and HTML files. The data are expressed in the form of text which are processed by technologies and converted in structured data <ref type="bibr" target="#b14">(Fan and Li, 2006)</ref>. According to O' <ref type="bibr">Mara-Eves et al. (2015, p. 2</ref>) "text mining is defined as the process of discovering knowledge and structure rom unstructured data" (i.e. text). Currently, texts are also extracted from social media networks such as Twitter, blogs, Facebook, etc., to predict market behavior. In fact review rating and a reviewer's credibility, together with central cues, can be used for information searches or for evaluating alternatives <ref type="bibr" target="#b0">(Baek et al., 2012;</ref><ref type="bibr">Chung and Tseng, 2012)</ref>.</p><p>Text mining techniques are used to extract semantic characteristics from review texts. Semantic characteristics are more influential than other characteristics in affecting how many helpfulness vote reviews are received <ref type="bibr" target="#b7">(Cao et al., 2011)</ref>.</p><p>The decision on which features and classifications can be attributed to a piece of text is crucial because an incorrect attribution of an input will result in a meaningless output. For instance, "bag-of-words" is the most commonly used technique for feature selection <ref type="bibr" target="#b12">(Da Silva et al., 2014)</ref>. The technique of creating a "bag-of-words" involved breaking up text into words, treating each word as a feature and counting the frequency of occurrence of the word and ignoring the co-occurrence. Feature selection is the most often used technique among scholars, even though the major limitation is that they have ignored the co-occurrence, order of occurrence and association <ref type="bibr" target="#b60">(Schumaker et al., 2012)</ref>. Alongside, a noun-based feature selection is another technique which involves j JOURNAL OF KNOWLEDGE MANAGEMENT j the selection of the noun parts of the speech and then using syntactic rules to find out noun phrases by using used the MUC-7 framework for entity classification. <ref type="bibr" target="#b42">Liu et al. (2012)</ref> built a named entity recognition (NER) system for identifying tweets containing named entities using a linear conditional random field (CRF) model. Syntactic n-grams is another technique which uses a contiguous sequence of n items, i.e. words belonging to a given sequence of text <ref type="bibr" target="#b6">(Butler and Kes ˇelj, 2009;</ref><ref type="bibr" target="#b21">Hagenau et al., 2013)</ref>. Additionally, there are a number of combination techniques for short-text classification using lexical and semantic features, Bayesian learner, a TF-IDF-based selector, a filterbased probabilistic approach, a generative probabilistic model and latent Dirichl et al. location technique <ref type="bibr" target="#b51">(Nassirtoussi et al., 2014)</ref>.</p><p>Besides these is the technique of feature selection, which is a step in the pre-processing stage of data mining, followed by dimensionality reduction. Therefore, dimensionality reduction also becomes critical to the process of text mining <ref type="bibr" target="#b59">(Schumaker and Chen, 2009)</ref>. Predefined dictionaries can be used for dimensionality reduction such as general-use dictionaries like the WordNet thesaurus, or using a term extraction tool to dynamically create a text corpus <ref type="bibr" target="#b51">(Nassirtoussi et al., 2014)</ref>.</p><p>Many studies have used text mining approaches to study the impact of news on market behavior. <ref type="bibr" target="#b60">Schumaker et al. (2012)</ref> applied positive and negative sentiment analysis to subjective news articles to predict price direction and trading return. <ref type="bibr" target="#b67">Yu et al. (2013)</ref> proposed a contextual entropy model to create a thesaurus of emotion words and their corresponding intensities from online stock market news articles. An entropy measure was used to calculate the similarity between the seed words and candidate words and then used to classify the sentiment of the news articles. <ref type="bibr" target="#b21">Hagenau et al. (2013)</ref> used a combination of advanced feature extraction methods and a feedback-based feature selection to boost classification accuracy and improve sentiment analytics. According to them, feature selection significantly improves classification accuracies by reducing the number of less-explanatory features, i.e. noise, and thus, may limit negative effects of over-fitting when applying machine learning approaches to classify text messages.</p><p>This framework is confirmed primarily with Do ¨rre et al. <ref type="bibr">(1999)</ref> who acknowledged that text mining has the same functions of data mining, primarily concerning the domain of textual information and relying on sophisticated text analysis techniques that distinguish information from free text documents. Then, <ref type="bibr" target="#b20">Gupta and Lehal (2009)</ref> confirmed text mining is the discovery of new, previously unknown information, automatically extracted from different written and computerized resources.</p><p>In addition, <ref type="bibr" target="#b61">Tan (1999)</ref> proposed a framework which explains the main characteristics of text data mining, referring to the process of extracting interesting and non-trivial patterns or knowledge from text documents. It consist of two components. The first one is related to text refining that transforms unstructured text documents into an intermediate form. The other is recall as knowledge distillation that deduces patterns or knowledge from the intermediate form.</p><p>Accordingly, the knowledge extraction could be interpreted as: n vast process with heterogeneous and various data sources; n independent with dispersed and decentralized control; and n problematic and progressing in data and knowledge associations <ref type="bibr" target="#b15">(Feldman et al., 1998;</ref><ref type="bibr" target="#b48">Mustafa et al., 2009)</ref>.</p><p>Furthermore, <ref type="bibr" target="#b66">Yoon and Park (2004)</ref> investigate text mining networks and provide a highperformance analytical tool to analyze technology trends, given standardized and reliable information feedback.</p><p>This trend is further confirmed by <ref type="bibr" target="#b47">Mierswa et al. (2006)</ref> providing the Yale, a free open source for data extracting from machine learning, able to fuse and form data from multiple sources.</p><p>In general, there is a need to carefully design models and metrics that are able to analyze model correlations between disseminated texts and websites and are able to extract the best information from big data <ref type="bibr" target="#b57">(Ristoski and Paulheim, 2016)</ref>.</p><p>In this regard, literature also discusses the technical challenges related to data samples, structures, heterogeneity of sources, mining models and algorithms and systems' infrastructures that would support data analytics <ref type="bibr" target="#b30">(Khan et al., 2014;</ref><ref type="bibr" target="#b50">Nahm and Mooney, 2002;</ref><ref type="bibr" target="#b33">Larsen and Aone, 1999)</ref>.</p><p>Differently, <ref type="bibr" target="#b39">Li and Lai (2014)</ref> argue about the efficiency of mining in smaller samples of data for online purchase -the micro blogosphere -which are in contrast to mining a whole data set, specifically large data sets (e.g. big data). They confirm the advancement in analytical applications, specifically when text and data drawing are from large databases (for instance collecting opinions from friends or community of practices). Information is widely interpretative but can create significant opportunities for online sales.</p><p>According to the latest developments in this area, the mainstream in literature works on frameworks' mapping and predicting learning curves which aim at aiding developed discretionary manipulation proxies to study the desired data mining error bound specified by users. Many authors concluded that it is, for the most part, unnecessary to mine a large data set in volume. Otherwise, it is usually sufficient to sample only up to 1 per cent of the data set for mining <ref type="bibr" target="#b27">(Jicheng et al., 1999;</ref><ref type="bibr" target="#b11">Cohen and Hersh, 2005;</ref><ref type="bibr" target="#b18">Gopal et al., 2011;</ref><ref type="bibr" target="#b25">Hu et al., 2012)</ref>. In particular, <ref type="bibr" target="#b44">Lu and Li (2013)</ref> have developed an algorithm for bias correction in small samples drawn from online big data portals (e.g. Twitter and Facebook). They argue that bias mainly depends on the expected number of collisions in the sample.</p><p>Contrarily, a stream of researchers acknowledge the lacks of accurate and estimate techniques for consumer reviews in business and marketing analysis, thus introducing an accurate bootstrapping-based framework that estimates results and errors for the different mining techniques <ref type="bibr" target="#b16">(Galitsky et al., 2009;</ref><ref type="bibr" target="#b17">Geva and Zahavi, 2014;</ref><ref type="bibr" target="#b23">Hu et al., 2014)</ref>.</p><p>Finally, several authors focused on the biomedical sector focusing their research activities on reducing bias in specific samples of patients with human disease.</p><p>The evaluation of their proposed algorithms shows that they are moderately effective for the feature of knowledge creation from free text applications for studying and practicing the diagnosis and treatment of human disease.</p><p>They are considerably more efficient and scalable than some of the existing state-of-the-art batch feature selection algorithms <ref type="bibr" target="#b63">(Uramoto et al., 2004;</ref><ref type="bibr" target="#b11">Cohen and Hersh, 2005;</ref><ref type="bibr" target="#b68">Zhou et al., 2010)</ref>.</p><p>More recently, however, other researchers focused on query optimization techniques over big data in semantics, providing repeatable attribution to data scientists when algorithms are not efficient in performing text mining on big data. Thus, they proposed new algorithms based on review texts to understand online users' helpfulness voting behavior for building content-based recommender systems useful to reduce the input/output costs <ref type="bibr" target="#b57">(Ristoski and Paulheim, 2016;</ref><ref type="bibr" target="#b22">Hogenboom et al., 2014;</ref><ref type="bibr" target="#b7">Cao et al., 2011)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">Methodology</head><p>A systematic review brings results together and shows different perspectives to inform scholars and practitioners to address further research (O' <ref type="bibr">Mara-Eves et al., 2015, p. 3)</ref>. In this line, the authors identify the main publications from 1999 to 2017, showing how knowledge discovery has been approached by adopting the text mining technique. The scope is to reduce the effect of publication redundancy. Basically, the authors adopt a j JOURNAL OF KNOWLEDGE MANAGEMENT j multi-layered method to searching which is based on a wide Boolean searches of online reference databases, key information and "citation trails".</p><p>Additionally, the systematic review is also conducted by applying "text mining at the term level, in which knowledge discovery takes place on a more focused collection of words and phrases that are extracted from and label each document" <ref type="bibr">(Feldman et al., 1998, p. 1)</ref>. This approach involves extracting labels which correspond to keywords, which consequently represent the main topic of an article. It calls for two approaches: manual labeling and automated technique.</p><p>The manual labelling is the most difficult but more effective. It requires an individual who has to label each document in which it can be difficult to extract the right keywords. Whereas, the automated technique tends to be an inaccurate and time-consuming process. This is because it requires a person to label each document first and then the machine can label future documents <ref type="bibr" target="#b36">(Lent et al., 1997)</ref>.</p><p>In this article, the authors used the manual labeling approach, associating each document with a label derived from "term extraction method". To do so, the authors used two main labels which, in taxonomy terms, are defined as "knowledge discovery" and "text mining".</p><p>Thus, a database of the year of publication, a topic (which includes part of the abstract or the main information that allows the authors to extract other terms to categorize each paper in one of the main labels, i.e. knowledge discovery or text mining), the journal or book and the author(s), is created. These categories are also known as entities which allow to identify information without having to analyze the primary sources. This is in line with statement: "reference databases refer or point the users to another source such as a document, an organization or an individual for additional information or the full text of the document." Therefore, a first screening was made individuating publications where the concepts of knowledge discovery and text mining were reported. In particular, this first screening was composed of two stages. Second, we identified top cited papers on Google Sgqcholar, analyzing how the development and deployment of data mining frameworks and methods have also opened the doors for academics and practitioners to knowledge discovery from text <ref type="bibr" target="#b29">(Kayser and Blind, 2017)</ref>. What emerged was that these concepts were argued primarily from 1998 to 2007. For this period, another screening was conducted to identify the main topics of knowledge discovery. A table with four columns was created, referring to the aforementioned categories (Table <ref type="table" target="#tab_0">I</ref>).</p><p>Following the first part of the analysis, labels\keywords were extracted from the "topic" category as reported in Figure <ref type="figure" target="#fig_1">1</ref>.</p><p>To summarize, we reviewed 85 publications between 1998 and 2017 and then we tried to categorize the results of the text reviewing process, which revealed the papers belonged to two main clusters with both common and distinct characteristics. Then, we processed and distributed the articles per year, performing a literature review which sets and predicts the opportunities and challenges for the firms in engaging in social and customer-based data analysis.</p><p>j JOURNAL OF KNOWLEDGE MANAGEMENT j </p><p>A Stock market sentiment lexicon acquisition has been provided by using microblogging data and statistical measures from three main approaches</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Decision Support System</head><p>Reyes and Rosso (2012)</p><p>They build a freely available data set with ironic review content that trigger a chain reaction in people and provide valuable knowledge insights from mass and social media market through sentiment analysis, opinion mining and decision making</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Decision Support System</head><p>(continued) j JOURNAL OF KNOWLEDGE MANAGEMENT j</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">Results</head><p>It has emerged that from 1998 to 2009, the terms knowledge and text were always used.</p><p>From 2010 to 2017 in addition to these terms, sentiment analysis, review manipulation, microblogging data and knowledgeable users were the other terms frequently used.</p><p>In particular, in 1998, only one publication was found in line with the main labels, i.e. knowledge discovery and text mining. In 1999 four papers were analyzed, in which text refining, knowledge distillation, topic discovery, intelligent miner for text, information retrieval and Web mining emerged. In 2002, two papers were published using the following terms: learned information extraction and DiscoTex -knowledge discovery. In 2003 no relevant papers were found for this study. In 2004, two papers were produced in which knowledge discovery, text databases and citation analysis were the terms in line with the labels. In 2005, only one article was considered important for this research, and data extraction and text mining were the highlighted terms. Again, in 2006 only one paper was considered in line with the labels and KDD; machine learning was associated with the labels. Followed by a paper published in 2007 in which the data mining and discovery knowledge-driven approach were the new concepts used. In 2009, from the analysis of three papers, the key resulted to be: labeled graphs, information extraction, information categorization and text mining application.</p><p>In this first decade, it is possible to note the technical, engineering nature of each term. Whereas, a varied range of fields emerged from 2010 to 2017, owing to a greater interest in the online environment, and therefore, terms like microblogging, text mining in social media, knowledgeable users and review manipulation are more used.</p><p>In 2010 four papers were considered relevant, and the following terms were extracted: emotional polarity of text, text mining approach, text data, extracting information, extracting knowledge and sentiment knowledge discovery. In 2011 three papers were analyzed in which review manipulation, text mining technique, extract semantic characteristics, information mining and actionable knowledge emerged. In 2012 only one paper was considered important where review manipulation and sentiment analysis were the  <ref type="bibr" target="#b3">Bhardwaj and Khosla (2017)</ref> The paper provides the state of art on text mining by adapting the association rules, new techniques of content analysis approach IITM Journal of Management and IT j JOURNAL OF KNOWLEDGE MANAGEMENT j terms used. Again, in 2013, by analyzing only one paper, intelligent customers and microblogs resulted to be the terms in line with the labels. In 2014 eight papers were considered in line with the subjects of this research to which information system, multilingual support data mining, lexicon-based sentiment analysis, multilevel text mining, path knowledge discovery and knowledgeable use emerged. Followed by five articles in 2016 in which the terms extracted were: mining perceptual map, KDP, learning method, sentiment lexicon acquisition and microblogging data. Concluding with the last six publications where textual pattern structure, text mining in social media, textual data, text mining tools and content analysis were the terms identified in line with the labels.  Overall, the interest in text mining and knowledge discovery is on the increase exponentially by big data analytics, covering human, consumer, emotional and financial architectures <ref type="bibr" target="#b38">(Li and Wu, 2010;</ref><ref type="bibr" target="#b8">Cecchini et al., 2010;</ref><ref type="bibr" target="#b26">Jiang et al., 2017;</ref><ref type="bibr" target="#b3">Bhardwaj and Khosla, 2017)</ref>.</p><p>The contributions are highly varied, and therefore, it is very difficult to harvest and share through traditional and manual means.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">Discussion and conclusion</head><p>To reduce redundant studies and to avoid the possibilities of missing relevant publications, this present research offers a systematic literature review.</p><p>More importantly, the interest in data analytics increases exponentially from 2010, especially with the increase of the interest in customer behavior, leading to greater amount of development in the big data arena competition at firm level. Some authors apply sentiment analysis alongside text mining to discover knowledge <ref type="bibr" target="#b60">(Schumaker et al., 2012;</ref><ref type="bibr" target="#b67">Yu et al., 2013)</ref>. For instance, <ref type="bibr" target="#b21">Hagenau et al. (2013)</ref> combined feature extraction methods with sentiment analytics. In turn, websites become the space where disseminated texts are present to extract the best information from big data <ref type="bibr" target="#b57">(Ristoski and Paulheim, 2016)</ref>. Hence, texts are analyzed in the form of data samples, structures, heterogeneity of sources, mining models and algorithms and system infrastructures with the aim of generating knowledge <ref type="bibr" target="#b30">(Khan et al., 2014;</ref><ref type="bibr" target="#b50">Nahm and Mooney, 2002)</ref>. Microblogs are another foci of interest to evaluate user opinion and therefore create significant opportunities for online sales <ref type="bibr" target="#b39">(Li and Lai, 2014)</ref>. Small samples drawn from online big data portals (e.g. Twitter and Facebook) are investigated in depth to avoid bias <ref type="bibr" target="#b44">(Lu and Li, 2013)</ref>. This evokes the interest of applying a bootstrapping-based framework that estimates results and errors for the different mining techniques <ref type="bibr" target="#b17">(Geva and Zahavi, 2014;</ref><ref type="bibr" target="#b23">Hu et al., 2014)</ref>.</p><p>Aside from the period from 1998 to 2009, digital platforms such as Twitter, blogs and Facebook, etc. were not so pervasive and therefore less associated with the phenomena of knowledge discovery and text mining. In fact, text mining was considered having the same functions as data mining <ref type="bibr" target="#b13">(Do ¨rre et al., 1999)</ref>. However, <ref type="bibr" target="#b61">Tan (1999)</ref> defined text mining as the process of extracting interesting and non-trivial patterns by two steps: text refining and knowledge distillation. It generates new knowledge and, as stated by <ref type="bibr" target="#b48">Mustafa et al. (2009)</ref>, this knowledge is derived from nuances of heterogeneous knowledge and a varied source of data <ref type="bibr" target="#b15">(Feldman et al., 1998)</ref>. This introduces the concept of knowledge discovery more widely. According to <ref type="bibr" target="#b20">Gupta and Lehal (2009)</ref>, text mining is the discovery of trends extracted from different written and computerized resources. The concept of a multivariate source induces studies on text-mining networks <ref type="bibr" target="#b66">(Yoon and Park, 2004)</ref> and free open source for data extracting from machine learning <ref type="bibr" target="#b47">(Mierswa et al., 2006)</ref>.</p><p>In short, in the first period <ref type="bibr">(1998)</ref><ref type="bibr">(1999)</ref><ref type="bibr">(2000)</ref><ref type="bibr">(2001)</ref><ref type="bibr">(2002)</ref><ref type="bibr">(2003)</ref><ref type="bibr">(2004)</ref><ref type="bibr">(2005)</ref><ref type="bibr">(2006)</ref><ref type="bibr">(2007)</ref><ref type="bibr">(2008)</ref><ref type="bibr">(2009)</ref>, the studies on knowledge discovery by applying text mining were approached in a more technical way. For instance, there were more studies in the engineering and biomedical sectors. With reference to the latter, the scope was to reduce bias in patients' disease <ref type="bibr" target="#b63">(Uramoto et al., 2004;</ref><ref type="bibr" target="#b11">Cohen and Hersh, 2005)</ref>. From the second period (2010-2017), more disciplines were interested in this phenomenon. For example, scholars from the business field were developing research to better understand customer behavior to boost sales and reduce costs <ref type="bibr" target="#b57">(Ristoski and Paulheim, 2016;</ref><ref type="bibr" target="#b22">Hogenboom et al., 2014;</ref><ref type="bibr" target="#b7">Cao et al., 2011)</ref>. As a result, text mining is penetrating various sectors (e.g. medical, e-commerce, health, retail, insurance, etc.). This penetration is supported by the overwhelming amount of data available from different sources e.g. Web applications, trajectory data, streaming data, RFID, etc. which are growing at an increasing rate <ref type="bibr" target="#b9">(Chen et al., 2012)</ref>. j JOURNAL OF KNOWLEDGE MANAGEMENT j According to the results of the text mining analysis, we are able to categorize paper reviews into three main branches depending on common and distinct characteristics: technical algorithms, framework analysis and performance platforms. This systematic review opens a new research scenario toward contributing to theoretical and practical implications by deriving knowledge and qualitative unstructured patterns from text data set.</p><p>From a theoretical point of view, this paper sheds light on past and recent issues, challenges that drive new models and theories in knowledge management studies. In particular, the emphasis on data and text mining represents a new source of complexity for business organizations by validating the tendency of external sources of knowledge <ref type="bibr" target="#b64">(Vrontis et al., 2017)</ref>. Nowadays, a large amount of information is available in the form of textual data which needs to be categorized and embed in the knowledge management system of a firm <ref type="bibr" target="#b46">(Miao et al., 2009)</ref>. From a practical point of view, text mining techniques interpret a successful story that will guide the trajectories for consultants, firms and clients in their future environment. Accordingly, practitioners could benefit from research by using the right methods for their analysis to predict markets. For instance, global economy customers have more sophisticated needs and therefore the urgency for understanding these needs through online text is greatly increased. The online text represents customers' opinions, production quality documentation and technical knowledge <ref type="bibr" target="#b32">(Kornfein and Goldfrab, 2007)</ref>. It needs to be converted in operational data to be embraced in the KM process. In turn, it improves product and service quality and offers solution for organizational issues, generating a new knowledge, which can be re-used for further projects. However, knowledge workers and decision-makers need to be supported in discovering knowledge patterns (Ur-Rahman and Harding, 2012).</p><p>In this line, we recognize there is an increasing interest on text data analytics form both a practical and an academic point of view. In reference to the latter, most prior research have confronted the text of social network analytics but surprisingly there are no insights on how text mining would integrate new communication and marketing processes. Additionally, another gap has individuated on the topic of entrepreneurial knowledge and text mining on social data.</p><p>Despite the need for more research, we are also conscious of some limitations related to the present research. First, this research is almost exploratory and interpretative and reflects the interpretation of the authors about the framework to use, the theory to understand and text documents to analyze. Therefore, we follow this text mining-based approach to analyze literature and, in an attempt to find hidden patterns in the content of documents, the corpus of the study has been text-mined.</p><p>Second, another limitation is the difficulty of understanding patterns to be analyzed. While advances in data mining encompass very powerful algorithms, there are a few advances in the literature reviewed on driving the KDP toward appropriate results.</p><p>In addition, text mining techniques are beginning to encounter problems because of the growing volume of data requiring analysis. Finally, we are aware that new research could be in the form of increased analytics, applied to primary data and according to precise research patterns.</p><p>Further research therefore needs to be carried out to gather sufficient knowledge regarding this phenomenon. In this way, future directions of research could involve other business sectors by applying specific metrics. This research tends to aggregate different disciplines, showing the common studies from a wide range of subjects based on online text mining. This is, in fact, a first comprehensive systematic review on knowledge discovery and text mining through the use of a text mining technique at term level, which offers to reduce redundant studies and to avoid the problem of missing relevant publications. </p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head></head><label></label><figDesc>First, we searched in the top ten conferences and journals in text mining. Thereafter, we adopted the top five conferences in data mining which are the ACM Conference on Knowledge Discovery and Data Mining, the IEEE International Conference on Data Mining, the International Conference on Information and Knowledge Management (CIKM), the IEEE International Conference on Data Mining (ICDM) and the International Conference on Knowledge Discovering and Data Mining (ACM SIGKDD). Additionally, we consulted top journals in data mining such as the IEEE Transactions on Knowledge and Data Engineering (TKDE), the Decision Support System, the Technological Forecasting and Social Change, the IITM Journal of Management and IT, Language Learning and Technology and Journal of Emerging Technologies in Web Intelligence.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 1</head><label>1</label><figDesc>Figure 1 Second screening process</figDesc><graphic coords="12,109.02,197.58,265.92,486.48" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 1 j</head><label>1</label><figDesc>Figure 1</figDesc><graphic coords="13,219.91,82.94,266.16,539.04" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table I</head><label>I</label><figDesc>First screening</figDesc><table><row><cell>Table I</cell><cell></cell><cell>Table I</cell><cell></cell></row><row><cell cols="2">Author(s)/ Year Topic Author(s)/ Year Topic</cell><cell cols="2">Author(s)/ Year Topic</cell><cell>Journal/Book Journal/Book</cell><cell>Journal/Book</cell></row><row><cell>Feldman et al. Khan et al.</cell><cell cols="4">Performing a new approach on text mining Gupta and A survey of text mining techniques and European Symposium on Principles Journal of Emerging Technologies An Elaboration of an algorithm analysis on Decision Support System</cell></row><row><cell>(1998) (2014)</cell><cell cols="4">and knowledge extracting at the term level Lehal (2009) applications, by automatically extracting of Data Mining and Knowledge sentiment for twitter feed classification of big</cell><cell>in Web Intelligence</cell></row><row><cell></cell><cell cols="4">Discovery information from different written resources data fast in order to monitor the publics'</cell></row><row><cell>Tan (1999)</cell><cell cols="4">Present a text mining framework consisting Li and Wu An algorithm to automatically analyze the Book of Proceedings on Knowledge Decision Support System feelings towards their brand, business,</cell></row><row><cell></cell><cell cols="4">of two components: text refining and (2010) emotional polarity of a text and to obtain a Discovery from Advanced directors</cell></row><row><cell cols="5">knowledge distillation Lau et al. (2014) Designing a novel social analytics value for each piece of text to develop Databases Decision Support System</cell></row><row><cell>Larsen and</cell><cell cols="4">Clustering is a powerful technique for large-unsupervised text mining approach Proceedings of ACM SIGKDD methodology to analyze sentiments in</cell></row><row><cell>Aone (1999)</cell><cell cols="4">scale topic discovery from text, extracting Cecchini et al. Using financial text as a predictor of International Conference on customer comments that can leverage the</cell><cell>Decision Support System</cell></row><row><cell></cell><cell cols="4">maps each document or record to a point in (2010) financial events to aid in discriminating firms Knowledge Discovery and Data sheer volume of consumer reviews archived</cell></row><row><cell></cell><cell cols="4">high-dimensional space at social media sites to perform a fine-that encounter crises for both bankruptcy Mining</cell></row><row><cell>Do ¨rre et al.</cell><cell cols="4">Application of IBM's Intelligent Miner for and fraud merging quantitative data with Proceedings of ACM SIGKDD grained extraction of market intelligence</cell></row><row><cell>(1999)</cell><cell cols="4">Text for analyzing patent portfolios, text data. We achieve our best prediction International Conference on data</cell></row><row><cell>Geva and</cell><cell cols="3">customer complaint letters, and also results Empirical evaluation of an automated</cell><cell>Knowledge Discovery and Data Decision Support System</cell></row><row><cell>Zahavi (2014)</cell><cell cols="4">competitors' Web pages Zhou et al. intraday stock recommendation data Extracting meaningful information and Mining</cell><cell>Journal of Biomedical Informatics</cell></row><row><cell>Jicheng et al.</cell><cell cols="4">A preliminary analysis discussion about (2010) knowledge from free text for studying and IEEE International Conference incorporating both market data and textual</cell></row><row><cell>(1999)</cell><cell cols="4">Web mining and information retrieval on practicing the diagnosis and treatment of news used to find the incremental value of</cell></row><row><cell></cell><cell cols="4">the Web by providing a prototype system human diseases each knowledge representation, with an</cell></row><row><cell></cell><cell cols="4">called WebTMS Bifet and Frank end-to-end recommendation process Sentiment knowledge discovery in twitter</cell><cell>International Conference on</cell></row><row><cell>Karanikas and</cell><cell cols="4">Knowledge discovery in text and text mining (2010) streaming data focusing on Twitter data Centre for Research in Information Discovery Science including data pre-processing, modeling,</cell></row><row><cell>Theodoulidis</cell><cell cols="3">software validation, trade recommendations and streams pose</cell><cell>Management</cell></row><row><cell>(2002)</cell><cell cols="4">Hu et al. (2011) Propose a simple statistical method to economic evaluation</cell><cell>Decision Support System</cell></row><row><cell cols="5">Nahm and Liu et al. (2014) Multilevel text mining as a methodology for A framework for text mining, called detect online review manipulation, and Proceedings of the AAAI Data Mining and Knowledge</cell></row><row><cell>Mooney (2002)</cell><cell cols="4">DISCOTEX (Discovery from Text Extraction) assess how consumers respond to products Symposium on Mining Answers path knowledge discovery, for linking Discovery for Big Data</cell></row><row><cell></cell><cell cols="4">was introduced by using a learned with manipulated reviews from Texts and Knowledge Bases published research findings in</cell></row><row><cell></cell><cell cols="4">information extraction system to transform Cao et al. Text mining techniques are employed to neuropsychiatry</cell><cell>Decision Support System</cell></row><row><cell>Li and Lai</cell><cell cols="4">text into more structured data which is then (2011) extract semantic characteristics from review A methodology of social companionship Decision Support System</cell></row><row><cell>(2014)</cell><cell cols="4">mined for interesting relationships texts in order to understand online users' analysis is proposed for the online users of</cell></row><row><cell>Uramoto et al.</cell><cell cols="4">Design TAKMI for Biomedical Documents to helpfulness voting behavior IEEE Explore the micro-blogosphere in order to extract</cell></row><row><cell>(2004)</cell><cell cols="4">facilitate knowledge discovery from the very Gopal et al. Introducing Information Mining exploring data from participation of knowledgeable</cell><cell>Decision Support System</cell></row><row><cell></cell><cell cols="4">large text databases characteristic of life (2011) how can we transform data into actionable users</cell></row><row><cell cols="4">science and healthcare applications knowledge Lee et al. (2016) A method called MPM (mining perceptual</cell><cell>Decision Support System</cell></row><row><cell>Yoon and Park</cell><cell cols="4">Analytical tool for high-technology trend Hu et al. (2012) Manipulation of online reviews: an analysis The Journal of High Technology Decision Support System map) to automatically build perceptual</cell></row><row><cell>(2004)</cell><cell cols="4">providing a network-based analysis as of ratings, readability, and sentiments. The Management Research maps and radar charts from consumer</cell></row><row><cell></cell><cell cols="4">alternative method for citation analysis discretionary accrual-based earnings reviews in marketing and business analysis</cell></row><row><cell>Cohen and Ristoski and</cell><cell cols="4">A survey on data extraction and text mining management framework aim at developing Briefings in Bioinformatics A comprehensive overview of those Web semantics: Science, Services</cell></row><row><cell>Hersh (2005) Paulheim</cell><cell cols="4">on full text access in biomedical literature a discretionary manipulation proxy to study approaches in different stages of the KDP and Agents on the World Wide Web</cell></row><row><cell>Mierswa et al. (2016)</cell><cell cols="4">Introduce Yale, a free open-source the management of online reviews Proceedings of ACM SIGKDD for building content-based recommender</cell></row><row><cell>(2006)</cell><cell cols="4">environment for knowledge discovery Li and Li (2013) A framework for microblogs was provided International Conference on systems</cell><cell>Decision Support System</cell></row><row><cell cols="5">database (KDD) and machine learning as compact numeric summarization of Knowledge Discovery and Data Lo et al. (2016) A ranking mechanism that is capable of Decision Support System</cell></row><row><cell></cell><cell cols="4">Mining opinions from intelligent customers identifying the top-k social audience</cell></row><row><cell>Cios et al.</cell><cell cols="4">Analyse data mining to make sense of a Groth et al. Information systems have often been Springer Science &amp; Business Media Decision Support System members using a combination of semi-</cell></row><row><cell>(2007)</cell><cell cols="4">large amount of unsupervised data in some (2014) applied to support investors by forecasting supervised and supervised learning</cell></row><row><cell></cell><cell cols="4">domain by adapting a discovery price changes in securities markets allowing methods to construct seed words and</cell></row><row><cell></cell><cell cols="4">knowledge-driven approach in order to set a automated trading engines to appropriately training data sets with minimal annotation</cell></row><row><cell></cell><cell cols="4">model or knowledge attributes or data react to news-related liquidity shocks efforts</cell></row><row><cell>Galitsky et al. Oliveira et al.</cell><cell cols="4">A new approach has been presented for Hogenboom A multi-lingual support data mining for Decision Support System</cell><cell>Decision Support System</cell></row><row><cell>(2009) (</cell><cell cols="4">modelling and classifying complaint et al. (2014) lexicon-based sentiment analysis guided by</cell></row><row><cell></cell><cell cols="4">scenarios associated with customer-firm semantics improved for the amount of data</cell></row><row><cell></cell><cell cols="4">dialogues, formalized as labelled graphs, in in different languages on the Web renders</cell></row><row><cell></cell><cell cols="4">which both firm and customer interact Hu et al. (2014) Develop a multiple equation model to</cell><cell>Decision Support System</cell></row><row><cell></cell><cell cols="2">through communicative actions</cell><cell cols="2">examine why the inter-relationships between</cell></row><row><cell>Mustafa et al.</cell><cell cols="4">Discuss an implementation of information ratings, sentiments, and sales provide no CiteSeer</cell></row><row><cell>(2009)</cell><cell cols="4">extraction and categorization in the text direct significant accessible and cognitive</cell></row><row><cell></cell><cell cols="2">mining application that we have</cell><cell cols="2">effort-reducing heuristics in online purchase</cell></row><row><cell></cell><cell>implemented</cell><cell></cell><cell>decisions</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell>(continued)</cell><cell>(continued)</cell></row></table><note><p>j JOURNAL OF KNOWLEDGE MANAGEMENT j j JOURNAL OF KNOWLEDGE MANAGEMENT j</p></note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table I</head><label>I</label><figDesc></figDesc><table><row><cell cols="2">Author(s)/ Year Topic</cell><cell>Journal/Book</cell></row><row><cell>Jiang et al.</cell><cell>A novel typed textual pattern structure,</cell><cell>International Conference on</cell></row><row><cell>(2017)</cell><cell>called Meta PAD</cell><cell>Knowledge Discovery and Data</cell></row><row><cell></cell><cell></cell><cell>Mining</cell></row><row><cell>Nagamallika</cell><cell>The utilization of content data analysis can</cell><cell>International Journal on Research in</cell></row><row><cell>et al. (2017)</cell><cell>advise a superior comprehension of the text</cell><cell>Computer and Communication</cell></row><row><cell></cell><cell>mining supporters by surveying prescient</cell><cell>Technology</cell></row><row><cell></cell><cell>execution for the expense of outrageous</cell><cell></cell></row><row><cell></cell><cell>mishaps</cell><cell></cell></row><row><cell>Salloum et al.</cell><cell>A survey of text mining in social media: for</cell><cell>Advances in Science, Technology</cell></row><row><cell>(2017)</cell><cell>the purpose of identifying the key themes in</cell><cell>and Engineering Systems</cell></row><row><cell></cell><cell>the data of Facebook and Twitter</cell><cell></cell></row><row><cell>Kayser and</cell><cell>Extending the knowledge base of foresight</cell><cell>Technological Forecasting and</cell></row><row><cell>Bling (2017)</cell><cell>based on textual data can be accessed and</cell><cell>Social Change</cell></row><row><cell></cell><cell>systematically examined through text</cell><cell></cell></row><row><cell></cell><cell>mining which structures and aggregates</cell><cell></cell></row><row><cell></cell><cell>data in a largely automated manner</cell><cell></cell></row><row><cell>Yim and</cell><cell>They synthesize the current methodological</cell><cell>Language Learning &amp; Technology</cell></row><row><cell>Warschauer</cell><cell>approaches to researching collaborative</cell><cell></cell></row><row><cell>(2017)</cell><cell>writing and discuss how new text mining</cell><cell></cell></row><row><cell></cell><cell>tools can enhance research capacity</cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head></head><label></label><figDesc>Downloaded by California State University Fresno At 00:10 05 June 2018 (PT)</figDesc><table /><note><p>j JOURNAL OF KNOWLEDGE MANAGEMENT j</p></note></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_0"><p>j JOURNAL OF KNOWLEDGE MANAGEMENT j Downloaded by California State University Fresno At 00:10 05 June 2018 (PT)</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_1"><p>Downloaded by California State University Fresno At 00:10 05 June 2018 (PT)</p></note>
+		</body>
+		<back>
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Further reading</head><p>Chen, Y.T. and Chou, T.Y. <ref type="bibr">(2012)</ref>, "Exploring the continuance intentions of consumers for B2C online shopping: perspectives of fairness and trust", Online Information <ref type="bibr">Review, Vol. 36 No. 1, pp. 104-125. Lee, A.J., Yang, F.C., Chen, C.H., Wang, C.S. and Sun, C.Y. (2016)</ref>, "Mining perceptual maps from consumer reviews", Decision Support <ref type="bibr">Systems, Vol. 82 No. 2, pp. 12-25. Li, N. and Wu, D.D. (2010)</ref>, "Using text mining and sentiment analysis for online forums hotspot detection and forecast", Decision Support <ref type="bibr">Systems, Vol. 48 No. 2, pp. 354-368. Sun, B.Y., Li, J., Wu, D.D., Zhang, X.M. and Li, W.B. (2010)</ref>, "Kernel discriminant learning for ordinal regression", IEEE Transactions on <ref type="bibr">Knowledge and Data Engineering,</ref><ref type="bibr">Vol. 22 No. 6,</ref> About the authors Dr Antonio Usai undertook managerial economics studies and he also attended enhancement courses in the USA ( <ref type="formula">2008</ref> For instructions on how to order reprints of this article, please visit our website: www.emeraldgrouppublishing.com/licensing/reprints.htm Or contact us for further details: permissions@emeraldinsight.com j JOURNAL OF KNOWLEDGE MANAGEMENT j</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Helpfulness of online consumer reviews: readers&apos; objectives and review cues</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Baek</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Ahn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Choi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Electronic Commerce</title>
+		<imprint>
+			<biblScope unit="volume">17</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="99" to="126" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Knowledge maps: a systematic literature review and directions for future research</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Balaid</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">Z A</forename><surname>Rozan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">N</forename><surname>Hikmi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Memon</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Information Management</title>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="451" to="475" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">IT innovation adoption by enterprises: knowledge discovery through text analytics</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">C</forename><surname>Basole</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">D</forename><surname>Seuss</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">B</forename><surname>Rouse</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">54</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="1044" to="1054" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Review of text mining techniques</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Bhardwaj</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Khosla</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IITM Journal of Management and IT</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="27" to="31" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Sentiment knowledge discovery in twitter streaming data</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Bifet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Frank</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Discovery Science</title>
+		<meeting><address><addrLine>Berlin, Heidelberg</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="1" to="15" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Knowledge management in a global context: a case study</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Bookhamer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><forename type="middle">J</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Information Resources Management Journal (IRMJ)</title>
+		<imprint>
+			<biblScope unit="volume">29</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="57" to="74" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Financial forecasting using character n-gram analysis and readability scores of annual reports</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Butler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Kes ˇelj</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Canadian Conference on Artificial Intelligence</title>
+		<meeting><address><addrLine>Berlin, Heidelberg</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="39" to="51" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Exploring determinants of voting for the &apos;helpfulness&apos; of online user reviews: a text mining approach</title>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Cao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Duan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Gan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">50</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="511" to="521" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Making words work: using financial text as a predictor of financial events</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Cecchini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Aytug</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">J</forename><surname>Koehler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Pathak</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">50</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="164" to="175" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Business intelligence and analytics: from big data to big impact</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">H</forename><surname>Chiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">C</forename><surname>Storey</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">MIS Quarterly</title>
+		<imprint>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="1165" to="1188" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<monogr>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">J</forename><surname>Cios</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Pedrycz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">W</forename><surname>Swiniarski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">A</forename><surname>Kurgan</surname></persName>
+		</author>
+		<title level="m">Data Mining: A Knowledge Discovery Approach</title>
+		<meeting><address><addrLine>Berlin</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer Science &amp; Business Media</publisher>
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">A survey of current work in biomedical text mining</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">M</forename><surname>Cohen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">R</forename><surname>Hersh</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Briefings in Bioinformatics</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="57" to="71" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Tweet sentiment analysis with classifier ensembles</title>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">F</forename><surname>Da Silva</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">R</forename><surname>Hruschka</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">R</forename><surname>Hruschka</surname><genName>Jr</genName></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">66</biblScope>
+			<biblScope unit="page" from="170" to="179" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Text mining: finding nuggets in mountains of textual data</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Do ¨rre</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Gerstl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Seiffert</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Fifth ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</title>
+		<meeting>the Fifth ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="1999">1999</date>
+			<biblScope unit="page" from="398" to="401" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<monogr>
+		<title level="m" type="main">Statistical challenges with high dimensionality: feature selection in knowledge discovery</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Fan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Li</surname></persName>
+		</author>
+		<idno>arXiv preprint math/0602133</idno>
+		<imprint>
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Text mining at the term level</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Feldman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Fresko</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Kinar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Lindell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Liphstat</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Rajman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Zamir</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">European Symposium on Principles of Data Mining and Knowledge Discovery</title>
+		<meeting><address><addrLine>Berlin, Heidelberg</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="1998">1998</date>
+			<biblScope unit="page" from="65" to="73" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">A novel approach for classifying customer complaints through graphs similarities in argumentative dialogues</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">A</forename><surname>Galitsky</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">P</forename><surname>Gonza ´lez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">I</forename><surname>Chesn ˜evar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">46</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="717" to="729" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Empirical evaluation of an automated intraday stock recommendation system incorporating both market data and textual news</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Geva</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zahavi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">57</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="212" to="223" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Information mining -reflections on recent advancements and the road ahead in data, text, and media mining</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gopal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Marsden</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Vanthienen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">51</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="721" to="731" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Kwant: a software package for quantum transport</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">W</forename><surname>Groth</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wimmer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">R</forename><surname>Akhmerov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Waintal</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">New Journal of Physics</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page">63</biblScope>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">A survey of text mining techniques and applications</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Gupta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">S</forename><surname>Lehal</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Emerging Technologies in Web Intelligence</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="60" to="76" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Automated news reading: stock price prediction based on financial news using context-capturing features</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Hagenau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Liebmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Neumann</surname></persName>
+		</author>
+		<idno>At 00:10 05</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">55</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="685" to="697" />
+			<date type="published" when="2013-06">2013. June 2018</date>
+			<publisher>PT</publisher>
+		</imprint>
+		<respStmt>
+			<orgName>MANAGEMENT j Downloaded by California State University Fresno</orgName>
+		</respStmt>
+	</monogr>
+	<note>JOURNAL OF KNOWLEDGE</note>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Multi-lingual support for lexicon-based sentiment analysis guided by semantics</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Hogenboom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Heerschop</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Frasincar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><surname>Kaymak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>De Jong</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">62</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="43" to="53" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Ratings lead you to the product, reviews help you clinch it? The mediating role of online review sentiments on product sales</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">S</forename><surname>Koh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">K</forename><surname>Reddy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">57</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="42" to="53" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Manipulation in digital word-of-mouth: a reality check for book reviews</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Bose</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">50</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="627" to="635" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Manipulation of online reviews: an analysis of ratings, readability, and sentiments</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Bose</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">S</forename><surname>Koh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">52</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="674" to="684" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">MetaPAD: meta pattern discovery from massive text corpora</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Shang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Cassidy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Ren</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">M</forename><surname>Kaplan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">P</forename><surname>Hanratty</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Han</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</title>
+		<meeting>the 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="877" to="886" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Web mining: knowledge discovery on the Web</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Jicheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Yuan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Gangshan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Fuyan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">1999 IEEE International Conference on Systems, Man, and Cybernetics</title>
+		<imprint>
+			<date type="published" when="1999">1999. 1999</date>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page" from="137" to="141" />
+		</imprint>
+	</monogr>
+	<note>IEEE SMC&apos;99 Conference Proceedings</note>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<monogr>
+		<title level="m" type="main">Knowledge discovery in text and text mining software</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Karanikas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Theodoulidis</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2002">2002</date>
+			<publisher>Department of Computation</publisher>
+		</imprint>
+		<respStmt>
+			<orgName>Centre for Research in Information Management</orgName>
+		</respStmt>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Extending the knowledge base of foresight: the contribution of text mining</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Kayser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Blind</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Technological Forecasting and Social Change</title>
+		<imprint>
+			<biblScope unit="volume">116</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="208" to="215" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">TOM: Twitter opinion mining framework using hybrid classification scheme</title>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">H</forename><surname>Khan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Bashir</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><surname>Qamar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">57</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="245" to="257" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Knowledge management and organizational learning</title>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">R</forename><surname>King</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Knowledge Management and Organizational Learning</title>
+		<imprint>
+			<biblScope unit="page" from="3" to="13" />
+			<date type="published" when="2009">2009</date>
+			<publisher>Springer</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">A comparison of classification techniques for technical text passages</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">M</forename><surname>Kornfein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Goldfrab</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the World Congress on Engineering</title>
+		<meeting>the World Congress on Engineering<address><addrLine>London</addrLine></address></meeting>
+		<imprint>
+			<publisher>World Congress on Engineering</publisher>
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Fast and effective text mining using linear-time document clustering</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Larsen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Aone</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Fifth ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</title>
+		<meeting>the Fifth ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="1999">1999</date>
+			<biblScope unit="page" from="16" to="22" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Social analytics: learning fuzzy product ontologies for aspectoriented sentiment analysis</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">Y</forename><surname>Lau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">S</forename><surname>Liao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">65</biblScope>
+			<biblScope unit="issue">9</biblScope>
+			<biblScope unit="page" from="80" to="94" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Mining perceptual maps from consumer reviews</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">C</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">H</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">S</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">Y</forename><surname>Sun</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">82</biblScope>
+			<biblScope unit="page" from="12" to="25" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Discovering trends in text databases</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Lent</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Agrawal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Srikant</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">KDD</title>
+		<imprint>
+			<biblScope unit="volume">97</biblScope>
+			<biblScope unit="page" from="227" to="230" />
+			<date type="published" when="1997">1997</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Organizational learning</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Levitt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">G</forename><surname>March</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Annual Review of Sociology</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="319" to="338" />
+			<date type="published" when="1988">1988</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Using text mining and sentiment analysis for online forums hotspot detection and forecast</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">D</forename><surname>Wu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">48</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="354" to="368" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">A social appraisal mechanism for online purchase decision support in the micro-blogosphere</title>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">M</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">Y</forename><surname>Lai</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">59</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="190" to="205" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Deriving market intelligence from microblogs</title>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">M</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">Y</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">55</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="206" to="217" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<author>
+			<persName><forename type="first">C</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">W</forename><surname>Chu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Sabb</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">S</forename><surname>Parker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Bilder</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Path knowledge discovery: multilevel text mining as a methodology for Phenomics</title>
+		<meeting><address><addrLine>Berlin, Heidelberg</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="page" from="153" to="192" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Joint inference of named entity recognition and normalization for tweets</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Fu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 50th Annual Meeting of the Association for Computational Linguistics</title>
+		<meeting>the 50th Annual Meeting of the Association for Computational Linguistics</meeting>
+		<imprint>
+			<publisher>Association for Computational Linguistics</publisher>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="526" to="535" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Ranking of high-value social audiences on twitter</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">L</forename><surname>Lo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Chiong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Cornforth</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">85</biblScope>
+			<biblScope unit="page" from="34" to="48" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Bias correction in a small sample from big data</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Knowledge and Data Engineering</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="issue">11</biblScope>
+			<biblScope unit="page" from="2658" to="2663" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title/>
+		<idno>00:10 05</idno>
+	</analytic>
+	<monogr>
+		<title level="j">JOURNAL OF KNOWLEDGE MANAGEMENT j Downloaded by California State University Fresno At</title>
+		<imprint>
+			<date type="published" when="2018-06">June 2018</date>
+			<publisher>PT</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Rough set based hybrid algorithm for text classification</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Miao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Duan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Jiao</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Expert Systems with Applications</title>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="9168" to="9174" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Yale: rapid prototyping for complex data mining tasks</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Mierswa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wurst</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Klinkenberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Scholz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Euler</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 12th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</title>
+		<meeting>the 12th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2006">2006</date>
+			<biblScope unit="page" from="935" to="940" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<monogr>
+		<title level="m" type="main">Knowledge discovery using text mining: a programmable implementation on information extraction and categorization</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Mustafa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Akbar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sultan</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">To characterize the contents of the documents through pattern discovery in text mining</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Nagamallika</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Anuradha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Sridevi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IJRCCT</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page" from="205" to="208" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Text mining with information extraction</title>
+		<author>
+			<persName><forename type="first">U</forename><forename type="middle">Y</forename><surname>Nahm</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">J</forename><surname>Mooney</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the AAAI 2002 Spring Symposium on Mining Answers from Texts and Knowledge Bases</title>
+		<meeting>the AAAI 2002 Spring Symposium on Mining Answers from Texts and Knowledge Bases<address><addrLine>Stanford, CA</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2002">2002</date>
+			<biblScope unit="page" from="60" to="67" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Text mining for market prediction: a systematic review</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">K</forename><surname>Nassirtoussi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Aghabozorgi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">Y</forename><surname>Wah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">C L</forename><surname>Ngo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Expert Systems with Applications</title>
+		<imprint>
+			<biblScope unit="volume">41</biblScope>
+			<biblScope unit="issue">16</biblScope>
+			<biblScope unit="page" from="7653" to="7670" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">If only we knew what we know: identification and transfer of internal best practices</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>O'dell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">J</forename><surname>Grayson</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">California Management Review</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="154" to="174" />
+			<date type="published" when="1998">1998</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Stock market sentiment lexicon acquisition using microblogging data and statistical measures</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Oliveira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Cortez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Areal</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">85</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="62" to="73" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">Using text mining for study identification in systematic reviews: a systematic review of current approaches</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>O'mara-Eves</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Thomas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Mcnaught</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Miwa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ananiadou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Systematic Reviews</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">5</biblScope>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title level="a" type="main">The logic of tacit inference</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Polanyi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Philosophy</title>
+		<imprint>
+			<biblScope unit="volume">41</biblScope>
+			<biblScope unit="issue">155</biblScope>
+			<biblScope unit="page" from="1" to="18" />
+			<date type="published" when="1966">1966</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">Making objective decisions from subjective data: detecting irony in customer reviews</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Reyes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Rosso</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">53</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="754" to="760" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<analytic>
+		<title level="a" type="main">Semantic web in data mining and knowledge discovery: a comprehensive survey</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Ristoski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Paulheim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Web Semantics: Science, Services and Agents on the World Wide Web</title>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1" to="22" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<analytic>
+		<title level="a" type="main">A survey of text mining in social media: Facebook and twitter perspectives</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A</forename><surname>Salloum</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Al-Emran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">A</forename><surname>Monem</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Shaalan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Science</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page" from="127" to="133" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<analytic>
+		<title level="a" type="main">Textual analysis of stock market prediction using breaking financial news: the AZFin text system</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">P</forename><surname>Schumaker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Information Systems (TOIS)</title>
+		<imprint>
+			<biblScope unit="volume">27</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page">12</biblScope>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<analytic>
+		<title level="a" type="main">Evaluating sentiment in financial news articles</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">P</forename><surname>Schumaker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">N</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Chen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Decision Support Systems</title>
+		<imprint>
+			<biblScope unit="volume">53</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="458" to="464" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b61">
+	<analytic>
+		<title level="a" type="main">Text mining: the state of the art and the challenges</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">H</forename><surname>Tan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the PAKDD 1999 Workshop on Knowledge Disocovery from Advanced Databases</title>
+		<meeting>the PAKDD 1999 Workshop on Knowledge Disocovery from Advanced Databases</meeting>
+		<imprint>
+			<date type="published" when="1999">1999</date>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page" from="65" to="70" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b62">
+	<analytic>
+		<title level="a" type="main">Textual data mining for industrial knowledge management and text classification: a business oriented approach</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Ur-Rahman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Harding</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="s">Expert Systems with Applications</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="4729" to="4739" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b63">
+	<analytic>
+		<title level="a" type="main">A text-mining system for knowledge discovery from biomedical documents</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Uramoto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Matsuzawa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Nagano</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Murakami</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Takeuchi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Takeda</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IBM Systems Journal</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="516" to="533" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b64">
+	<analytic>
+		<title level="a" type="main">Ambidexterity, external knowledge and performance in knowledge-intensive firms</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Vrontis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Thrassou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Santoro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Papa</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Journal of Technology Transfer</title>
+		<imprint>
+			<biblScope unit="volume">42</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="374" to="388" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b65">
+	<analytic>
+		<title level="a" type="main">Web-based collaborative writing in L2 contexts: methodological insights from text mining</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Warschauer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Language Learning &amp; Technology</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="146" to="165" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b66">
+	<analytic>
+		<title level="a" type="main">A text-mining-based patent network: analytical tool for high-technology trend</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Yoon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Park</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Journal of High Technology Management Research</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="37" to="50" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b67">
+	<analytic>
+		<title level="a" type="main">Using a contextual entropy model to expand emotion words and their intensity for the sentiment classification of stock market news</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">C</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">L</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">C</forename><surname>Chang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">S</forename><surname>Chu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Knowledge-Based Systems</title>
+		<imprint>
+			<biblScope unit="volume">41</biblScope>
+			<biblScope unit="page" from="89" to="97" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b68">
+	<analytic>
+		<title level="a" type="main">Text mining for traditional Chinese medical knowledge discovery: a survey</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Peng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Biomedical Informatics</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="650" to="660" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>
