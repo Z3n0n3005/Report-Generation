@@ -47,12 +47,12 @@ public class PdfSegmentation {
         String result = "";
         try {
             //Have been found to can be speed up using multithreading, might learn GNU parallel
-            System.out.println("[PdfSegmentation] file: " + new File(pdfPath).exists());
+            // System.out.println("[PdfSegmentation] file: " + new File(pdfPath).exists());
             DocumentSource docummentSource = DocumentSource.fromPdf(new File(pdfPath));
             Document document = new Document(docummentSource);
             engine.processHeader(pdfPath, analysisConfig, resultBib);
             result = Engine.header2TEI(resultBib);
-            System.out.println("[PdfSegmentation] resultBib: " + resultBib.toString());
+            // System.out.println("[PdfSegmentation] resultBib: " + resultBib.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }

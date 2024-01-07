@@ -7,16 +7,15 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 import report.generation.segmentation.SectionList;
 
-public interface YAMLParser {
+public class YAMLParser {
     public static SectionList parseYAML(String filePath) {
-        System.out.println("[YAMLParser] parseYAML");
+        // System.out.println("[YAMLParser] parseYAML");
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         mapper.findAndRegisterModules();
         SectionList sectionList;
 
         try{
             sectionList = mapper.readValue(new File(filePath), SectionList.class);
-            // System.out.println("[YAMLParser] sectionList: " + sectionList.toString());
             return sectionList;
         } catch(Exception e){
             e.printStackTrace();

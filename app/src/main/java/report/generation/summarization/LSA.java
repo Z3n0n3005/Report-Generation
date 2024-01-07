@@ -42,13 +42,9 @@ public class LSA {
         NGram ngram = new NGram();
         StringList list = ngram.tokenize(text);
         ngram.generate(list, 1);
-        // ngram.printList();
         ngram.filterStopWords();
-        // ngram.printList();
         ngram.sort();
-        // ngram.printList();
         ngram.getSentenceUsingModel(text);
-        // ngram.printSentence();
 
         // Check if the number of sentence of the provided text 
         // is not shorter than k 

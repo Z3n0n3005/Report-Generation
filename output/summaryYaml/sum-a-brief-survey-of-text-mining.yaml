@@ -1,0 +1,40 @@
+abstractSeg: 'The enormous amount of information stored in unstructured texts cannot
+  simply be used for further processing by computers, which typically handle text
+  as simple sequences of character strings.
+
+  Text mining refers generally to the process of extracting interesting information
+  and knowledge from unstructured text.'
+sectionList:
+- content: Text mining aims at disclosing the concealed information by means of methods
+    which on the one hand are able to cope with the large number of words and structures
+    in natural language and on the other hand allow to handle vagueness, uncertainty
+    and fuzziness.In this paper we describe text mining as a truly interdisciplinary
+    method drawing on information retrieval, machine learning, statistics, computational
+    linguistics and especially data mining.
+  header: Introduction
+- content: Even though, meanwhile several methods exist that try to exploit also the
+    syntactic structure and semantics of text, most text mining approaches are based
+    on the idea that a text document can be represented by a set of words, i.e. a
+    text document is described based on the set of words contained in it (bag-of-words
+    representation).
+  header: Text Encoding
+- content: 'If a set of examples is available machine learning methods as described
+    in section 3, especially in section 3.3, may be employed to learn the desired
+    tags.It turned out, however, that for many text mining tasks linguistic preprocessing
+    is of limited value compared to the simple bag-of-words approach with basic preprocessing.
+
+    2003;Bloehdorn & Hotho 2004).One main reason for applying data mining methods
+    to text document collections is to structure them.'
+  header: Data Mining Methods for Text
+- content: In the following we give a brief overview of visualization methods that
+    have been realized for text mining and information retrieval systems.Interesting
+    approaches to visualize keyword-document relations are, e.g., the Cat-a-Cone model
+    (Hearst & Karadi 1997), which visualizes in a three dimensional representation
+    hierarchies of categories that can be interactively used to refine a search.
+  header: Applications
+- content: Good results are also reported in (Krier & Zacca 2002) for an internal
+    EPO text classification application with a precision of 81 % and an recall of
+    78 %.Text clustering techniques for patent analysis are often applied to support
+    the analysis of patents in large companies by structuring and visualizing the
+    investigated corpus.
+  header: Conclusion

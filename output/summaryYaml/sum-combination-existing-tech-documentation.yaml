@@ -1,0 +1,73 @@
+abstractSeg: The marketing hype says that these systems convert unstructured data
+  (text, better called data with complex structure) into structured data, entity-relationship
+  statements often represented in tables and graphs, structures that are simpler and
+  easier to search than text.The compilation includes old documents from Inxight because
+  they give better examples and a much better explanation of the process.
+sectionList:
+- content: 'The template builder has to predict what information will be of interest
+    to the customer according to his field of activity.In an industrial context, the
+    aim of Information Extraction is to build an extraction model adapted to the customer''s
+    application (its information assets: databases, documents and all the data issued
+    by or received in a company).'
+  header: Overview
+- content: ''
+  header: Methodology
+- content: 'The extraction server proceeds in two stages: 1.
+
+    the morpho-syntactic analysis -each entry is assigned a part of speech and a morphologic
+    feature 2.
+
+    the application of extraction rules.'
+  header: Processing
+- content: 'The extraction component, which performs semantic labeling from morpho-syntactically
+    tagged texts, has been implemented using a dynamic composition of transducers.
+
+    According to the specific processing, three levels of transducer components have
+    been distinguished.'
+  header: Transducers Technology
+- content: The name recognition component on the other hand will treat these names
+    as tokens, exploiting the fact that in most domains, most names tend to be mentioned
+    with a limited set of topics and thus often serve as good features for a classification
+    component.DocCat currently runs in a specific setting where documents that are
+    assigned to one or several broad topics (TOP = {sports, theatre, economics, ...})
+    have to be annotated with finer labels from a fixed vocabulary of thesaurus terms
+    (SUBTOP = {..., aids, demonstration, university, theft, cancer, ...
+  header: Results
+- content: The resulting classifier then is able to process a document in less than
+    a second and annotate it in the way described above.DocCat runs as a separate
+    process that is called over a simple interface (file or TCP/IP) from the respective
+    text documentation environment and delivers its results back over the same interface.
+  header: System specifications
+- content: 'The DocCat automatic indexing system can be applied in a real world setting,
+    yielding results that enhance the efficiency of manual indexing.
+
+    For the setting up of a classifier for a new domain or a new classification system,
+    nothing but the annotated training corpus is neededno hand coding of grammar or
+    correlation rules is required.'
+  header: Conclusion and Outlook
+- content: "DocCat is a project that uses Insight Discoverer\u2122 technologies (ID\
+    \ Extractor and ID Categorizer), which is a system for the automatic categorization,\
+    \ indexing, and archival of textual data for large commercial text archives."
+  header: Introduction
+- content: 'The term automatic indexing here refers to the process of assigning terms
+    to a document that correspond to its content, and not to the process of setting
+    up an index for full text retrieval.
+
+    DocCat assigns index terms (here, "topics") to each document.'
+  header: Description
+- content: When the results of this pilot study turned out to be encouraging, a continued
+    cooperation was agreed upon where DocCat was to be extended towards a system that
+    could be applied to everyday tasks in a commercial text archive.The idea in both
+    the pilot study and the second phase was that the G&J archive should form a training
+    corpus of manually annotated documents that would enable specific machine learning
+    algorithms to collect correlations between a document's textual data and the presence
+    or absence of a specific label.
+  header: The making of DocCat
+- content: 'A fundamental requirement in setting up the DocCat system was that the
+    amount of effort that had to be invested in building corpus-or domain-specific
+    knowledge bases such as dictionaries, grammars or thesauri should be kept as low
+    as possible.
+
+    If no new types of labels need to be considered, building a new classifier will
+    require only a training corpus of annotated documents as input.'
+  header: "The Insight Discoverer\u2122 components within DocCat"

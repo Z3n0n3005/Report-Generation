@@ -99,10 +99,15 @@ run {
     // Accessing the parameter passed through command line
     def filePathFromParam = project.hasProperty('file') ? file : false;
     def folderPathFromParam = project.hasProperty('folder') ? folder : false;
+    def algoFromParam = project.hasProperty('algo')? algo : false;
 
     if(filePathFromParam){
         systemProperty "file", filePathFromParam
     } else if(folderPathFromParam){
         systemProperty "folder", folderPathFromParam
+    }
+
+    if(algoFromParam){
+        systemProperty "algo", algoFromParam
     }
 }

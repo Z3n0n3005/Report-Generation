@@ -42,7 +42,7 @@ public class XMLParser {
             NodeList bodyList = doc.getElementsByTagName("div");
 
             // Parse the abstract
-            System.out.println("[XMLParser] abstractList " + abstractList.getLength() + " " + abstractList.item(0).getNodeName());
+            // System.out.println("[XMLParser] abstractList " + abstractList.getLength() + " " + abstractList.item(0).getNodeName());
             
             if (abstractList.getLength() > 1) { // Check if the list contain other tags
                 parseAbstract(abstractList);
@@ -95,38 +95,7 @@ public class XMLParser {
             }
         }
 
-        // if (divList == null) {
-        // System.out.println("[XMLParser] divList is null");
-        // return;
-        // }
-
-        // // Get the p tag list from the <div> tag
-        // for (int j = 0; j < divList.getLength(); j++) {
-        // Node div = divList.item(j);
-        // if (div.getNodeType() == Node.ELEMENT_NODE) {
-        // Element divElement = (Element) div;
-        // pList = divElement.getElementsByTagName("p");
-        // System.out.println("[XMLParser] pList " + pList);
-        // }
-        // }
-
-        // if (pList == null) {
-        // System.out.println("[XMLParser] pList is null");
-        // return;
-        // }
-
-        // // Get the content of the <p> tag
-        // for (int k = 0; k < pList.getLength(); k++) {
-        // Node p = pList.item(k);
-        // if (p.getNodeType() == Node.ELEMENT_NODE) {
-        // Element pElement = (Element) p;
-        // String pContent = pElement.getTextContent();
-        // System.out.println("[XMLParser] pContent " + pContent);
-        // abstractSeg += pContent;
-        // }
-        // }
-
-        System.out.println("[XMLParser] abstractSeg " + abstractSeg);
+        // System.out.println("[XMLParser] abstractSeg " + abstractSeg);
         sectionList.setAbstractSeg(abstractSeg);
     }
 
@@ -148,7 +117,7 @@ public class XMLParser {
             }
             Element pElement = (Element) p;
             String pContent = pElement.getTextContent();
-            System.out.println("[XMLParser] pContent " + pContent);
+            // System.out.println("[XMLParser] pContent " + pContent);
             abstractSeg += pContent;
         }
 

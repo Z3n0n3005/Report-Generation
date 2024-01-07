@@ -1,0 +1,139 @@
+abstractSeg: Text mining refers generally to the process of extracting interesting
+  information and knowledge from unstructured text.
+sectionList:
+- content: Text mining aims at disclosing the concealed information by means of methods
+    which on the one hand are able to cope with the large number of words and structures
+    in natural language and on the other hand allow to handle vagueness, uncertainty
+    and fuzziness.In this paper we describe text mining as a truly interdisciplinary
+    method drawing on information retrieval, machine learning, statistics, computational
+    linguistics and especially data mining.
+  header: Introduction
+- content: Even though, meanwhile several methods exist that try to exploit also the
+    syntactic structure and semantics of text, most text mining approaches are based
+    on the idea that a text document can be represented by a set of words, i.e. a
+    text document is described based on the set of words contained in it (bag-of-words
+    representation).
+  header: Text Encoding
+- content: 'Often text mining methods may be applied without further preprocessing.
+
+    If a set of examples is available machine learning methods as described in section
+    3, especially in section 3.3, may be employed to learn the desired tags.It turned
+    out, however, that for many text mining tasks linguistic preprocessing is of limited
+    value compared to the simple bag-of-words approach with basic preprocessing.
+
+    2003;Bloehdorn & Hotho 2004).One main reason for applying data mining methods
+    to text document collections is to structure them.
+
+    3.3 methods to automatically extract useful information patterns from text document
+    collections.'
+  header: Data Mining Methods for Text
+- content: "They follow thereby another paradigm than the \"classical\" cluster algorithm\
+    \ as KMeans which only clusters elements of the one dimension on the basis of\
+    \ their similarity to the second one, e.g. documents based on terms.Fuzzy Clustering\
+    \ While most classical clustering algorithms assign each datum to exactly one\
+    \ cluster, thus forming a crisp partition of the given data, fuzzy clustering\
+    \ allows for degrees of membership, to which a datum belongs to different clusters\
+    \ (Bezdek 1981).\nDonner, Jr.).The task of information extraction naturally decomposes\
+    \ into a series of processing steps, typically including tokenization, sentence\
+    \ segmentation, part-of-speech assignment, and the identification of named entities,\
+    \ i.e. person names, location names and names of organizations.\nFrequently used\
+    \ is the hidden Markov model (HMM), which is based on the conditional distributions\
+    \ of current labels L (j) given the previous label L (j-1) and the distribution\
+    \ of the current word t (j) given the current and the previous labels L (j) ,\
+    \ L (j-1) .\nHidden Markov models were successfully used for named entity extraction,\
+    \ e.g. in the Identifinder system (Bikel et al.\n1999).Hidden Markov models require\
+    \ the conditional independence of features of different words given the labels.\n\
+    2004).Graphical visualization of information frequently provides more comprehensive\
+    \ and better and faster understandable information than it is possible by pure\
+    \ text based descriptions and thus helps to mine large document collections.\n\
+    Many of the approaches developed for text mining purposes are motivated by methods\
+    \ that had been proposed in the areas of explorative data analysis, information\
+    \ visualization and visual data mining.\nInformation that allow a visual representation\
+    \ comprises aspects of the document collection or result sets, keyword relations,\
+    \ ontologies or -if retrieval systems are considered -aspects of the search process\
+    \ itself, e.g. the search or navigation path in hyperlinked collections.However,\
+    \ especially for text collections we have the problem of finding an appropriate\
+    \ visualization for abstract textual information.\nIn the following we give a\
+    \ brief overview of visualization methods that have been realized for text mining\
+    \ and information retrieval systems.Interesting approaches to visualize keyword-document\
+    \ relations are, e.g., the Cat-a-Cone model (Hearst & Karadi 1997), which visualizes\
+    \ in a three dimensional representation hierarchies of categories that can be\
+    \ interactively used to refine a search.\n1999) are representing documents in\
+    \ an abstract keyword space.An approach to visualize the results of a set of queries\
+    \ was presented in Havre et al.\nThus, clusters occur that represent the distribution\
+    \ of documents for the belonging query.For the visualization of document collections\
+    \ usually two-dimensional projections are used, i.e. the high dimensional document\
+    \ space is mapped on a two-dimensional surface.\nColors are frequently used to\
+    \ visualize the density, e.g. the number of documents in this area, or the difference\
+    \ to neighboring documents, e.g. in order to emphasize borders between different\
+    \ categories.\nIf three-dimensional projections are used, for example, the number\
+    \ of documents assigned to a specific area can be represented by the z-coordinate.An\
+    \ Example: Visualization Using Self-Organizing Maps Visualization of document\
+    \ collections requires methods that are able to group documents based on their\
+    \ similarity and furthermore that visualize the similarity between discovered\
+    \ groups of documents.\nClustering approaches that are frequently used to find\
+    \ groups of documents with similar content (Steinbach et al.\nThis allows a user\
+    \ to judge e.g. whether the search results are assigned to a small number of (neighboring)\
+    \ grid cells of the map, or whether the search hits are spread widely over the\
+    \ map and thus the search was -most likely -too unspecific.A first application\
+    \ of self-organizing maps in information retrieval was presented in Lin et al.\n\
+    A refined model, the WEBSOM approach, extended this idea to a web based interface\
+    \ applied to newsgroup data that provides simple zooming techniques and coloring\
+    \ methods (Honkela et al.\nA screenshot of the prototype discussed in N\xFCrnberger\
+    \ ( 2001) is depicted in Fig. 4.Besides methods based on self-organizing maps\
+    \ several other techniques have been successfully applied to visualize document\
+    \ collections.\n1995)  applies a three step approach: It first clusters documents\
+    \ in document space, than projects the discovered cluster centers onto a two dimensional\
+    \ surface and finally maps the documents relative to the projected cluster centers.\n\
+    The visualization tool SCI-Map (Small 1999) applies an iterative clustering approach\
+    \ to create a network using, e.g., references of scientific publications.\nThe\
+    \ tools visualizes the structure by a map hierarchy with an increasing number\
+    \ of details.One major problem of most existing visualization approaches is that\
+    \ they create their output only by use of data inherent information, i.e. the\
+    \ distribution of the documents in document space.\nUser specific information\
+    \ can not be integrated in order to obtain, e.g., an improved separation of the\
+    \ documents with respect to user defined criteria like keywords or phrases.\n\
+    Furthermore, the possibilities for a user to interact with the system in order\
+    \ to navigate or search are usually very limited, e.g., to boolean keyword searches\
+    \ and simple result lists.Further major applications of text mining methods consider\
+    \ the detection of topics in text streams and text summarization.Topic detection\
+    \ studies the problem of detecting new and upcoming topics in time-ordered document\
+    \ collections."
+  header: Applications
+- content: 'The reasons for this are on the one hand the increased number of patent
+    applications and on the other hand the progress that had been made in text classification,
+    which allows to use these techniques in this due to the commercial impact quite
+    sensitive area.
+
+    The challenges in patent analysis consists of the length of the documents, which
+    are larger then documents usually used in text classification, and the large number
+    of available documents in a corpus (Koster et al.
+
+    (2001) reported very good result with an 3% error rate for 16,000 full text documents
+    to be classified in 16 classes (mono-classification) and a 6% error rate in the
+    same setting for abstracts only by using the Winnow (Littlestone 1988) and the
+    Rocchio algorithm (Rocchio 1971).
+
+    Good results are also reported in (Krier & Zacca 2002) for an internal EPO text
+    classification application with a precision of 81 % and an recall of 78 %.Text
+    clustering techniques for patent analysis are often applied to support the analysis
+    of patents in large companies by structuring and visualizing the investigated
+    corpus.
+
+    Companies like IBM offer products to support the analysis of patent text documents.
+
+    It turned out, that with respect to categories the human annotators exhibit a
+    relative large disagreement and a lower consistency than text mining systems.
+
+    Hence the support of human annotators by text mining systems offers more consistent
+    annotations in addition to faster annotation.
+
+    On the other hand, the success of machine learning methods in text classification
+    offers the possibility to arrive at anti-spam filters that quickly may be adapted
+    to new types of spam.There is a growing number of learning spam filters mostly
+    using naive Bayes classifiers.
+
+    They conclude that these good results may be improved by careful preprocessing
+    and the extension of filtering to different languages.In this article, we tried
+    to give a brief introduction to the broad field of text mining.'
+  header: Conclusion

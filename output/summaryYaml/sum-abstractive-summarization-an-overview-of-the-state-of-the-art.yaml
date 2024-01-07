@@ -1,0 +1,63 @@
+abstractSeg: 'Now the research has shifted towards the abstractive summarization.
+
+  The complexities underlying with the natural language text makes abstractive summarization
+  a difficult and a challenging task.This paper presents a comprehensive review of
+  the various works performed in abstractive summarization field.
+
+  We have also listed down the various tools which have been used or developed by
+  researchers for abstractive summarization.'
+sectionList:
+- content: 'According to how the content is selected and organized in the summary,
+    the summarization techniques are categorized into extractive and abstractive techniques.
+
+    Extractive summarization is to find out the most salient sentences from the text
+    by considering the statistical features and then arranging the extracted sentences
+    to create the summary.'
+  header: Introduction
+- content: 'Abstractive Summarization (Moratanch & Chitrakala, 2016) (Khan, 2014)
+    (Dineshnath.G & S.Saraswathi, 2018) have classified the abstractive summarization
+    approaches broadly into the structure-based and semantic-based.
+
+    Structure-based approaches are those where the important information of the text
+    is populated into the pre-defined structure to create the abstractive summaries.'
+  header: Existing Approaches to
+- content: (Nema et al., 2018) have attempted to solve the problem of repeated phrase
+    generation by sequence-to-sequence model by using diversity-driven attention model,
+    which helped achieve a gain of 28% in ROUGE-L Score.Even though deep learning
+    has been applied successfully and emerged as one of the promising approaches to
+    create the abstractive summaries.
+  header: Generating the Abstractive Summaries
+- content: "It involves morphological and syntactic transformations.\u2022 Evaluation:\
+    \ Here the paragraphs are ranked and sorted according to various factors like\
+    \ coherence between the sentences, most frequently used word synonyms, etc.To\
+    \ summarize the works done in this field of research, we have listed them in the\
+    \ tabular form in Table 5 in page 24 which lists down the author name, Evaluation\
+    \ measure used, dataset used, and type of abstractive summary created.From our\
+    \ survey, we have found that most of the abstractive summarization systems consist\
+    \ of 3 steps namely pre-processing, inferencing and Natural Language Generation."
+  header: Tools Used and Developed
+- content: "Topics fusion is performed for interpretation and then used phrase template\
+    \ generator to create the final abstract summaries.\u2022 COMPENDIUM (Lloret et\
+    \ al., 2013) uses both the extractive and abstractive techniques to create the\
+    \ final summary."
+  header: Summarization Tools
+- content: "\u2022 SimpleNLG30 to generate the sentences (Genest & Lapalme, 2011).\u2022\
+    \ FUF or SURGE Language Generator31 : It is used to generate the sentences by\
+    \ fusing and merging the phrases.\nFUF is a natural language generation tool which\
+    \ is based on unification of grammars.\nSURGE is a comprehensive grammar set for\
+    \ FUF."
+  header: Natural Language Generation Tools
+- content: "(Xiang et al., 2015) have tried to address this issue by creating an ontology\
+    \ matching approach called ERSOM, which finds the semantically related entities\
+    \ between different ontologies.\u2022 Need of Cross-Language Based Abstractive\
+    \ Summarization Systems: Cross-language summarization is to produce the summary\
+    \ of a text written in some source language like Sanskrit in some other target\
+    \ language like in English."
+  header: Challenges and Future Direction
+- content: 'Abstractive summarization is an interesting topic of research among the
+    NLP community and helps produce coherent, concise, non-redundant and information
+    rich summaries.
+
+    Along with these we have also mentioned the tools which have been used in various
+    researches related to abstractive summarization.'
+  header: Conclusion

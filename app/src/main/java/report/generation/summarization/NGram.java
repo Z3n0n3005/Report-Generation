@@ -132,7 +132,7 @@ public class NGram {
     }
 
     public void print() {
-        System.out.println("Total ngrams: " + this.model.numberOfGrams());
+        // System.out.println("Total ngrams: " + this.model.numberOfGrams());
         for (StringList ngram : this.model) {
             System.out.println(this.model.getCount(ngram) + " - " + ngram);
         }

@@ -1,0 +1,33 @@
+abstractSeg: 'In our study, we collected, and textually analyzed through various text
+  mining techniques, three hundred refereed journal articles in the field of mobile
+  learning from six scientific databases, namely: Springer, Wiley, Science Direct,
+  SAGE, IEEE, and Cambridge.
+
+  Experimental results indicated that Springer database represents the main source
+  for research articles in the field of mobile education for the medical domain.'
+sectionList:
+- content: For example, in E-commerce, a major issue with web mining is buying all
+    the materials which are not relevant to the user's search and it will not show
+    unknown (hidden or implicit) information, while the major objective of text mining
+    is to find out the unknown information [6]; something that is not recognized by
+    anyone.Data is the basic kind of information, which is required to be organized
+    and mined for the knowledge generation.
+  header: Introduction
+- content: In order to discover nonfigurative patterns in the extracted data, data
+    mining algorithms and techniques can be used.Song and Kim [40] presented the first
+    attempt to apply text mining approaches to a huge collection of full-text articles
+    for discovering the knowledge structure of the area.
+  header: Related Work
+- content: 'The minimum number of the characters that the token should have is 4,
+    while the maximum number is 25 characters.The application of various text mining
+    techniques on the collected articles presents different results and suggestions.
+
+    In the present study, we are trying to apply almost all of the text mining techniques
+    that were mentioned in the literature on the collected articles.'
+  header: Experimental Results
+- content: Results revealed that the similarity operator could not detect a clear
+    similarity among some topics the reason is that these topics are interrelated
+    and similar in meaning to each other (i.e. all the articles are discussing the
+    topic of mobile learning in higher education).By applying the clustering technique,
+    we used the k-means algorithm through the use of different k values.
+  header: Conclusion

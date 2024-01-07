@@ -6,24 +6,27 @@ package report.generation;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Logger;
 
 import report.generation.segmentation.*;
 import report.generation.summarization.*;
 import report.generation.util.*;
 
 public class App {
-    static String PDF_EXTENSION = ".pdf";
-    static String XML_EXTENSION = ".xml";
-    static String YAML_EXTENSION = ".yaml";
-    static String SEG_FILE_PREFIX = "seg_";
-    static String SUM_FILE_PREFIX = "sum_";
-    static String FILE_PATH_PROPERTY = "file";
-    static String FOLDER_PATH_PROPERTY = "folder";
-    static String PROJECT_PATH = System.getProperty("user.dir");
-    static String PDF_RELATIVE_PATH = "../paper/";
-    static String SEG_XML_RELATIVE_PATH = "../output/segmentationXml/";
-    static String SEG_YAML_RELATIVE_PATH = "../output/segmentationYaml/";
-    static String SUM_YAML_RELATIVE_PATH = "../output/summaryYaml/";
+    static final String PDF_EXTENSION = ".pdf";
+    static final String XML_EXTENSION = ".xml";
+    static final String YAML_EXTENSION = ".yaml";
+    static final String SEG_FILE_PREFIX = "seg-";
+    static final String SUM_FILE_PREFIX = "sum-";
+
+    static final String FILE_PATH_PROPERTY = "file";
+    static final String FOLDER_PATH_PROPERTY = "folder";
+
+    static final String PROJECT_PATH = System.getProperty("user.dir");
+    static final String PDF_RELATIVE_PATH = "../paper/";
+    static final String SEG_XML_RELATIVE_PATH = "../output/segmentationXml/";
+    static final String SEG_YAML_RELATIVE_PATH = "../output/segmentationYaml/";
+    static final String SUM_YAML_RELATIVE_PATH = "../output/summaryYaml/";
 
     String pdfSegOutputPath; 
     String yamlParseOutputPath;
@@ -42,6 +45,7 @@ public class App {
         
         System.out.println("[App] file: " + System.getProperty(FILE_PATH_PROPERTY));
         System.out.println("[App] folder: " + System.getProperty(FOLDER_PATH_PROPERTY));
+        System.out.println("[App] algo: " + System.getProperty("algo"));
         
         app.setFileList();
         app.generateEngine();
@@ -50,17 +54,11 @@ public class App {
             app.pdfSegmenting(file);
             app.parseXML(file);
             app.parseYAML(file);
+            if(AlgoEnum.getCurrentAlgo() == AlgoEnum.TEXTRANK){
+                continue;
+            }
             app.summarizeSegments(file);
         }
-        // app.this.getSumYamlPath() = app.getSegXmlPath();
-        // app.yamlParseOutputPath = app.getSegYamlPath();
-        // app.yamlSummaryPath = app.getSumYamlPath();
-
-        // app.generateEngine();
-        // app.pdfSegmenting();
-        // app.parseXML();
-        // app.parseYAML();
-        // app.summarizeSegments();
 
         long endTime = System.nanoTime();
         double totalTime = (endTime - startTime)/1000000;
@@ -87,12 +85,9 @@ public class App {
     private void pdfSegmenting(File file){
         long startTimePDFSeg = System.nanoTime();
 
-        // String path = System.getProperty(FILE_PATH_PROPERTY);
-        // System.out.println("[App] filepath: " + path);
-        // String pdfSegResult = PdfSegmentation.pdfSegmenting(PDF_RELATIVE_PATH + path);
         String pdfSegResult = PdfSegmentation.pdfSegmenting(file);
 
-        Utility.printToFile(pdfSegResult, this.getSumYamlPath(file));
+        Utility.printToFile(pdfSegResult, this.getSegXmlPath(file));
         long endTimePDFSeg = System.nanoTime();
         double pdfSegTime = (endTimePDFSeg - startTimePDFSeg)/1000000;
         System.out.println("[App] First PDF Segmentation time = " + pdfSegTime);
@@ -100,9 +95,9 @@ public class App {
 
     private void parseXML(File file){
         long startTimeXMLParse = System.nanoTime();
-        SectionList xmlParseResult = XMLParser.parseXML(this.getSumYamlPath(file));
+        SectionList xmlParseResult = XMLParser.parseXML(this.getSegXmlPath(file));
         
-        Utility.printToYamlFile(xmlParseResult, this.getSegXmlPath(file));
+        Utility.printToYamlFile(xmlParseResult, this.getSegYamlPath(file));
         long endTimeXMLParse = System.nanoTime();
         double xmlParseTime = (endTimeXMLParse - startTimeXMLParse)/1000000;
         System.out.println("[App] XML Parsing time = " + xmlParseTime);
@@ -110,7 +105,8 @@ public class App {
 
     private void parseYAML(File file){
         long startTimeYAMLParse = System.nanoTime();
-        sectionListAfterParse = YAMLParser.parseYAML(this.getSegXmlPath(file));
+        sectionListAfterParse = YAMLParser.parseYAML(this.getSegYamlPath(file));
+        // Utility.printToYamlFile(sectionListAfterParse, this.getSegYamlPath(file));
         long yamlParseEndTime = System.nanoTime();
         double yamlParseTime = (yamlParseEndTime - startTimeYAMLParse)/1000000;
         System.out.println("[App] YAML Parsing time = " + yamlParseTime);
@@ -120,8 +116,7 @@ public class App {
         long startTimeSummarize = System.nanoTime();
 
         sectionListSummary = SegmentSummarization.summarizeSegmentsLSA(sectionListAfterParse, 2);
-        Utility.printToYamlFile(sectionListSummary, this.getSegYamlPath(file));
-        System.out.println(sectionListSummary.toString());
+        Utility.printToYamlFile(sectionListSummary, this.getSumYamlPath(file));
 
         long endTimeSummarize = System.nanoTime();
         double summarizeTime = (endTimeSummarize - startTimeSummarize)/10000000;

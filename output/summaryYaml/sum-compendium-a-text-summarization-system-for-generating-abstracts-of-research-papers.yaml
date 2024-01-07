@@ -1,0 +1,37 @@
+abstractSeg: Results show that extractive and abstractive-oriented summaries perform
+  similarly as far as the information they contain, so both approaches are able to
+  keep the relevant information of the source documents, but the latter is more appropriate
+  from a human perspective, when a user satisfaction assessment is carried out.
+sectionList:
+- content: 'Therefore, the specific objectives within the scope of this article we
+    want to analyze are: i) if COMPENDIUM produces good summaries in this domain;
+    ii) which is the best strategy to adopt for generating this type of summaries
+    (extractive or abstractive-oriented); and iii) the opinion of real users towards
+    automatic summaries.The structure of the article is as follows: Section 2 introduces
+    previous work on state-of-the-art TS systems, as well as TS approaches that were
+    developed for addressing specific applications.'
+  header: Introduction
+- content: That is the case of CBSEAS [4] which generate multi-document extractive
+    sentiment-based summaries, or MUSE -MUltilingual Sentence Extractor [21], that
+    employs language-independent techniques for generating summaries in English and
+    Hebrew.In other contexts, TS techniques and approaches have been used for solving
+    specific tasks.
+  header: Related work
+- content: 'In this Section, the two suggested approaches that COMPENDIUM TS system
+    is able to follow for generating summaries are explained.
+
+    First we described COMPENDIUM E , a pure extractive TS approach (Section 3.1),
+    and then we take this extractive approach as a basis in an attempt to improve
+    the final summaries by integrating abstractive techniques, leading to COMPENDIUM
+    E-A (Section 3.2).'
+  header: 'Text summarization approach: COMPENDIUM'
+- content: 'In this approach, extractive and abstractive techniques are combined in
+    the following manner: we take as a basis the COMPENDIUM E approach described in
+    the previous subsection (Section 3.1), and we integrate an information compression
+    and fusion stage after the relevant sentences have been identified and before
+    the final summary is generated, thus generating abstractive-oriented summaries.'
+  header: Experimental framework
+- content: ''
+  header: Evaluation and discussion
+- content: ''
+  header: Conclusion and future work

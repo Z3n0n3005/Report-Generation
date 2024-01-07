@@ -1,0 +1,15 @@
+abstractSeg: 'It effectively works by treating complex suffixes as compounds made
+  up of simple suffixes, and removing the simple suffixes in a number of steps.
+
+  In each step the removal of the suffix is made to depend upon the form of the remaining
+  stem, which usually involves a measure of its syllable length.'
+sectionList:
+- content: Assuming that one is not making use of a stem dictionary, and that the
+    purpose of the task is to improve IR performance, the suffix stripping program
+    will usually be given an explicit list of suffixes, and, with each suffix, the
+    criterion under which it may be removed from a word to leave a valid stem.
+  header: INTRODUCTION
+- content: "The rules for removing a suffix will be given in the form (condition)\
+    \ S1 \u2192 S2 This means that if a word ends with the suffix S1, and the stem\
+    \ before S1 satisfies the given condition, S1 is replaced by S2."
+  header: THE ALGORITHM

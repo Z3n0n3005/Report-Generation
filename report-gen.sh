@@ -39,11 +39,17 @@ elif [[ ! -z "$file" && ! -z "$folder" ]]; then
 # if file is provided
 elif [[ ! -z "$file" && -z "$folder" ]]; then 
   relative_file="$current_directory/$file"
-  # "$current_directory"/gradlew run -Pfile="$current_directory/$file" -Palgo="$algo"
   "$current_directory"/gradlew run -Pfile="$relative_file" -Palgo="$algo"
 # If folder is provided
 elif [[ -z "$file" && ! -z "$folder" ]]; then
   relative_folder="$current_directory/$folder"
-  # "$current_directory"/gradlew run -Pfolder="$current_directory/$folder" -Palgo="$algo"
   "$current_directory"/gradlew run -Pfolder="$relative_folder" -Palgo="$algo"
 fi
+
+if [[ "$algo" == "textrank" ]]; then
+  cd textrank
+  output_summary_yaml_folder="/output/summaryYaml"
+  relative_folder="$current_directory$output_summary_yaml_folder"
+  python textrank.py 
+fi
+exit 1

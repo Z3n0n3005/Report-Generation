@@ -1,0 +1,32 @@
+abstractSeg: Originality/value -This is a first comprehensive systematic review on
+  knowledge discovery and text mining through the use of a text mining technique at
+  term level, which offers to reduce redundant research and to avoid the possibility
+  of missing relevant publications.
+sectionList:
+- content: The systematic review is conducted by applying "text mining at the term
+    level, in which knowledge discovery takes place on a more focused collection of
+    words and phrases that are extracted from and label each document" (Feldman et
+    al., 1998, p.
+  header: Introduction
+- content: ''
+  header: Literature review
+- content: Basically, the authors adopt a j JOURNAL OF KNOWLEDGE MANAGEMENT j multi-layered
+    method to searching which is based on a wide Boolean searches of online reference
+    databases, key information and "citation trails".Additionally, the systematic
+    review is also conducted by applying "text mining at the term level, in which
+    knowledge discovery takes place on a more focused collection of words and phrases
+    that are extracted from and label each document" (Feldman et al., 1998, p.
+  header: Methodology
+- content: 'Whereas, a varied range of fields emerged from 2010 to 2017, owing to
+    a greater interest in the online environment, and therefore, terms like microblogging,
+    text mining in social media, knowledgeable users and review manipulation are more
+    used.In 2010 four papers were considered relevant, and the following terms were
+    extracted: emotional polarity of text, text mining approach, text data, extracting
+    information, extracting knowledge and sentiment knowledge discovery.'
+  header: Results
+- content: The concept of a multivariate source induces studies on text-mining networks
+    (Yoon and Park, 2004) and free open source for data extracting from machine learning
+    (Mierswa et al., 2006).In short, in the first period (1998)(1999)(2000)(2001)(2002)(2003)(2004)(2005)(2006)(2007)(2008)(2009),
+    the studies on knowledge discovery by applying text mining were approached in
+    a more technical way.
+  header: Discussion and conclusion
