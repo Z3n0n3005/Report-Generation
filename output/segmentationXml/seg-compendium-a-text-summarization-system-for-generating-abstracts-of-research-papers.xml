@@ -7,13 +7,13 @@ xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.co
 		<fileDesc>
 			<titleStmt>
 				<title level="a" type="main">COMPENDIUM: A text summarization system for generating abstracts of research papers</title>
-				<funder ref="#_8bFpXUa">
-					<orgName type="full">Spanish Government</orgName>
-				</funder>
-				<funder ref="#_bkuK3uB #_bnPbjMR #_xf9k6nA #_AzbYsFV #_J6Qb7Wn">
+				<funder ref="#_GsCT3GC #_GU3gEUy #_YYhaheb #_VMjcHYw #_fKKHHGK">
 					<orgName type="full">unknown</orgName>
 				</funder>
-				<funder ref="#_Wk4aKxD">
+				<funder ref="#_zN4uBde">
+					<orgName type="full">Spanish Government</orgName>
+				</funder>
+				<funder ref="#_gaNYpBw">
 					<orgName type="full">Valencian Government</orgName>
 				</funder>
 			</titleStmt>
@@ -69,7 +69,7 @@ xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.co
 		</fileDesc>
 		<encodingDesc>
 			<appInfo>
-				<application version="0.8.0" ident="GROBID" when="2024-01-07T14:54+0000">
+				<application version="0.8.0" ident="GROBID" when="2024-01-17T03:38+0000">
 					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
 					<ref target="https://github.com/kermitt2/grobid"/>
 				</application>
@@ -116,27 +116,27 @@ xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.co
 <div><head>Acknowledgment</head><p>This research was partially supported by the <rs type="grantName">FPI grant</rs> (<rs type="grantNumber">BES-2007-16268</rs>) and the project grants <rs type="projectName">TEXT-MESS</rs> (<rs type="grantNumber">TIN2006-15265-C06-01</rs>), <rs type="grantNumber">TEXT-MESS 2.0</rs> (<rs type="grantNumber">TIN2009-13391-C04</rs>) and LEGOLANG (<rs type="grantNumber">TIN2012-31224</rs>) from the <rs type="funder">Spanish Government</rs>. It has been also funded by the <rs type="funder">Valencian Government</rs> (grant no. <rs type="grantNumber">PROMETEO/2009/119</rs> and <rs type="grantNumber">ACOMP/2011/001</rs>). The authors would like to thank <rs type="person">Ester Boldrini</rs>, <rs type="person">Paloma Moreda</rs>, <rs type="person">Isabel Moreno</rs>, <rs type="person">Helena Burruezo</rs>, <rs type="person">Jesús Hermida</rs>, <rs type="person">Jorge Cruañes</rs>, <rs type="person">Fernando Peregrino</rs>, <rs type="person">Héctor Llorens</rs>, <rs type="person">Felipe Sellés</rs>, and <rs type="person">Rubén Izquierdo</rs> for their help in the manual evaluation of the summaries.</p></div>
 			</div>
 			<listOrg type="funding">
-				<org type="funded-project" xml:id="_bkuK3uB">
+				<org type="funded-project" xml:id="_GsCT3GC">
 					<idno type="grant-number">BES-2007-16268</idno>
 					<orgName type="grant-name">FPI grant</orgName>
 					<orgName type="project" subtype="full">TEXT-MESS</orgName>
 				</org>
-				<org type="funding" xml:id="_bnPbjMR">
+				<org type="funding" xml:id="_GU3gEUy">
 					<idno type="grant-number">TIN2006-15265-C06-01</idno>
 				</org>
-				<org type="funding" xml:id="_xf9k6nA">
+				<org type="funding" xml:id="_YYhaheb">
 					<idno type="grant-number">TEXT-MESS 2.0</idno>
 				</org>
-				<org type="funding" xml:id="_AzbYsFV">
+				<org type="funding" xml:id="_VMjcHYw">
 					<idno type="grant-number">TIN2009-13391-C04</idno>
 				</org>
-				<org type="funding" xml:id="_8bFpXUa">
+				<org type="funding" xml:id="_zN4uBde">
 					<idno type="grant-number">TIN2012-31224</idno>
 				</org>
-				<org type="funding" xml:id="_Wk4aKxD">
+				<org type="funding" xml:id="_gaNYpBw">
 					<idno type="grant-number">PROMETEO/2009/119</idno>
 				</org>
-				<org type="funding" xml:id="_J6Qb7Wn">
+				<org type="funding" xml:id="_fKKHHGK">
 					<idno type="grant-number">ACOMP/2011/001</idno>
 				</org>
 			</listOrg>

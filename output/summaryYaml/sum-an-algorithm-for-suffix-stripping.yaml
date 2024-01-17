@@ -1,15 +1,24 @@
-abstractSeg: 'It effectively works by treating complex suffixes as compounds made
-  up of simple suffixes, and removing the simple suffixes in a number of steps.
-
-  In each step the removal of the suffix is made to depend upon the form of the remaining
-  stem, which usually involves a measure of its syllable length.'
+---
+abstractSeg: "It effectively works by treating complex suffixes as compounds made\
+  \ up of simple suffixes, and removing the simple suffixes in a number of steps."
 sectionList:
-- content: Assuming that one is not making use of a stem dictionary, and that the
-    purpose of the task is to improve IR performance, the suffix stripping program
-    will usually be given an explicit list of suffixes, and, with each suffix, the
-    criterion under which it may be removed from a word to leave a valid stem.
-  header: INTRODUCTION
-- content: "The rules for removing a suffix will be given in the form (condition)\
-    \ S1 \u2192 S2 This means that if a word ends with the suffix S1, and the stem\
-    \ before S1 satisfies the given condition, S1 is replaced by S2."
-  header: THE ALGORITHM
+- header: "INTRODUCTION"
+  content: "This may be done by removal of the various suffixes -ED, -ING, -ION, -IONS\
+    \ to leave the single stem CONNECT In addition, the suffix stripping process will\
+    \ reduce the total number of terms in the IR system, and hence reduce the size\
+    \ and complexity of the data in the system, which is always advantageous. [1][2][3][4][5][6]\
+    \ The nature of the task will vary considerably depending on whether a stem dictionary\
+    \ is being used, whether a suffix list is being used, and of course on the purpose\
+    \ for which the suffix stripping is being done."
+- header: "THE ALGORITHM"
+  content: "A list ccc ... of length greater than 0 will be denoted by C, and a list\
+    \ vvv ... of length greater than 0 will be denoted by V Any word, or part of a\
+    \ word, therefore has one of the four forms: CVCV ... C CVCV ... V VCVC ... C\
+    \ VCVC ... V These may all be represented by the single form [C] VCVC ... [V]\
+    \ where the square brackets denote arbitrary presence of their contents. And the\
+    \ condition part may also contain expressions with and, or and not, so that (m>\
+    \ 1 and (*S or *T))tests for a stem with m> 1 ending in S or T, while (*d and\
+    \ not (*L or *S or *Z)) tests for a stem ending with a double consonant other\
+    \ than L, S or Z Elaborate conditions like this are required only very rarely.In\
+    \ a set of rules written beneath each other, only one is obeyed, and this will\
+    \ be the one with the longest matching S1 for the given word."

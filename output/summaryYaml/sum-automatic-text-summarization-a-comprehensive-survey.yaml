@@ -1,47 +1,63 @@
-abstractSeg: 'ATS approaches are either extractive, abstractive, or hybrid.
-
-  The extractive approach selects the most important sentences in the input document(s)
-  then concatenates them to form the summary.
-
-  The abstractive approach represents the input document(s) in an intermediate representation
-  then generates the summary with sentences that are different than the original sentences.
-
-  The hybrid approach combines both the extractive and abstractive approaches.'
+---
+abstractSeg: "Text summarization evaluation a b s t r a c t Automatic Text Summarization\
+  \ (ATS) is becoming much more important because of the huge amount of textual content\
+  \ that grows exponentially on the Internet and the various archives of news articles,\
+  \ scientific papers, legal documents, etc. The extractive approach selects the most\
+  \ important sentences in the input document(s) then concatenates them to form the\
+  \ summary."
 sectionList:
-- content: 'ATS poses many challenges to the research community like: 1) identification
-    of the most informative segments in the input text to be included in the generated
-    summary (Radev et al., 2002), 2) summarization of long single documents such as
-    books, 3) summarization of multi-documents (Hahn & Mani, 2000), 4) evaluation
-    of the computer-generated summary without the need for the human-produced summary
-    to be compared with, and 5) generation of an abstractive summary (Hahn & Mani,
-    2000) similar to a human-produced summary.'
-  header: Introduction
-- content: ''
-  header: Ats systems classifications and applications
-- content: ''
-  header: Ats approaches
-- content: 'The system consists of two phases: 1) the extraction phase that uses a
-    graph model to extract the key sentences, and 2) the abstraction phase that constructs
-    an RNN based encoder-decoder and uses a pointer and attention mechanisms to generate
-    summaries.Extractive to Shallow Abstractive Methods: These methods start by using
-    one of the extractive ATS methods then they use a shallow abstractive text summarization
-    method that applies one or more of the following techniques to the extracted sentences:
-    information compression techniques, information fusion techniques (Lloret et al.,
-    2013), synonym replacement techniques (Patil, Dalmia, Ansari, Aul, & Bhatnagar,
-    2014), etc.'
-  header: Techniques and building blocks to implement the ATS systems
-- content: By analyzing the human-made summaries, they are very likely to include
-    the high-frequency words from the original documents (Lloret & Palomar, 2009).There
-    are several uses of parsing techniques in the ATS processing phase like constructing
-    the text graph models and in the postprocessing phase like sentence compression,
-    sentences merging, etc.
-  header: Text summarization datasets and evaluation metrics
-- content: 'The ATS system performance is usually compared to different baseline systems
-    such as using leading sentences from the input document or using common text summarizers
-    such as LexRank (Erkan & Radev, 2004), TextRank (Mihalcea & Tarau, 2004), MEAD
-    (Radev, Blair-Goldensohn, & Zhang, 2001), etc.The human judges may be asked to
-    evaluate the computergenerated summaries using some or all of the following quality
-    metrics (Lloret et al., 2017;Mani, 2001):Readability: assess the linguistic quality
-    of the summary by checking that it does not contain gaps in its rhetorical structure
-    or dangling anaphora.'
-  header: Conclusion and future research directions
+- header: "Introduction"
+  content: "The Automatic Text Summarization (ATS) is the key solution to this dilemma.The\
+    \ main objective of an ATS system is to produce a summary that includes the main\
+    \ ideas in the input document in less space (Radev, Hovy, & McKeown, 2002) and\
+    \ to keep repetition to a minimum (Moratanch & Chitrakala, 2017). The produced\
+    \ summary should be shorter in length than the input text and include the most\
+    \ important information in the input text (Gambhir & Gupta, 2017).ATS systems\
+    \ can be classified as single-document or multidocument summarization systems."
+- header: "Ats systems classifications and applications"
+  content: "This section explores the different ways to classify ATS systems and highlights\
+    \ their different applications."
+- header: "Ats approaches"
+  content: "1, Single-Document Summarization (SDS) uses a single text document to\
+    \ generate a summary and the target is to shorten the input document while keeping\
+    \ the important information (Joshi, Wang, & McClean, 2018). In Multi-Document\
+    \ Summarization (MDS), the summary is generated based on a set of input documents\
+    \ and the target is to remove repetitive content in the input documents (Joshi\
+    \ et al., 2018)."
+- header: "Techniques and building blocks to implement the ATS systems"
+  content: "It commonly consists of the following phases (Bhat et al., 2018;Lloret\
+    \ et al., 2011): 1) Pre-Processing, 2) sentence extraction (extractive ATS phase):\
+    \ extract the key sentences from the input text (Wang et al., 2017), 3) summary\
+    \ generation (abstractive ATS phase): generate the final abstractive summary by\
+    \ applying the abstractive methods and techniques on the extracted sentences from\
+    \ the first phase, and 4) Post-Processing: to ensure that the generated sentences\
+    \ are valid, some general rules need to be defined like (Lloret, Romá-Ferri, &\
+    \ Palomar, 2013):1. Generating a less quality abstractive summary than the pure\
+    \ abstractive approach because the generated summary depends on the extracts instead\
+    \ of the original text.The research community is focusing more on the extractive\
+    \ ATS approach using different methods and techniques, trying to Fig."
+- header: "Text summarization datasets and evaluation metrics"
+  content: "By analyzing the human-made summaries, they are very likely to include\
+    \ the high-frequency words from the original documents (Lloret & Palomar, 2009).There\
+    \ are several uses of parsing techniques in the ATS processing phase like constructing\
+    \ the text graph models and in the postprocessing phase like sentence compression,\
+    \ sentences merging, etc. The use of these techniques covers all the ATS system\
+    \ phases as follows: 1) in the preprocessing, textual entailment and word sense\
+    \ disambiguation techniques are used, 2) in the processing phase, the latent semantic\
+    \ analysis and lexical chain techniques are used, and 3) in the postprocessing\
+    \ phase, word sense disambiguation, anaphora resolution, and textual entailment\
+    \ techniques are used.Word"
+- header: "Conclusion and future research directions"
+  content: "This survey presents the most common benchmarking datasets which have\
+    \ been used for the ATS systems evaluation as shown in Table 5 including Each\
+    \ dataset contains both documents and their summaries in three forms: 1) manually\
+    \ created summaries, 2) automatically created baseline summaries, and 3) automatically\
+    \ created summaries that were generated by challenge participants systems. The\
+    \ ATS system performance is usually compared to different baseline systems such\
+    \ as using leading sentences from the input document or using common text summarizers\
+    \ such as LexRank (Erkan & Radev, 2004), TextRank (Mihalcea & Tarau, 2004), MEAD\
+    \ (Radev, Blair-Goldensohn, & Zhang, 2001), etc.The human judges may be asked\
+    \ to evaluate the computergenerated summaries using some or all of the following\
+    \ quality metrics (Lloret et al., 2017;Mani, 2001):Readability: assess the linguistic\
+    \ quality of the summary by checking that it does not contain gaps in its rhetorical\
+    \ structure or dangling anaphora."

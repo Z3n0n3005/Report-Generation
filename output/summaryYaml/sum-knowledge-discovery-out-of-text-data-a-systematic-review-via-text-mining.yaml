@@ -1,32 +1,87 @@
-abstractSeg: Originality/value -This is a first comprehensive systematic review on
-  knowledge discovery and text mining through the use of a text mining technique at
-  term level, which offers to reduce redundant research and to avoid the possibility
-  of missing relevant publications.
+---
+abstractSeg: "Purpose -The aim of this work is to increase awareness of the potential\
+  \ of the technique of text mining to discover knowledge and further promote research\
+  \ collaboration between knowledge management and the information technology communities.\
+  \ Since its emergence, text mining has involved multidisciplinary studies, focused\
+  \ primarily on database technology, Web-based collaborative writing, text analysis,\
+  \ machine learning and knowledge discovery."
 sectionList:
-- content: The systematic review is conducted by applying "text mining at the term
-    level, in which knowledge discovery takes place on a more focused collection of
-    words and phrases that are extracted from and label each document" (Feldman et
-    al., 1998, p.
-  header: Introduction
-- content: ''
-  header: Literature review
-- content: Basically, the authors adopt a j JOURNAL OF KNOWLEDGE MANAGEMENT j multi-layered
-    method to searching which is based on a wide Boolean searches of online reference
-    databases, key information and "citation trails".Additionally, the systematic
-    review is also conducted by applying "text mining at the term level, in which
-    knowledge discovery takes place on a more focused collection of words and phrases
-    that are extracted from and label each document" (Feldman et al., 1998, p.
-  header: Methodology
-- content: 'Whereas, a varied range of fields emerged from 2010 to 2017, owing to
-    a greater interest in the online environment, and therefore, terms like microblogging,
-    text mining in social media, knowledgeable users and review manipulation are more
-    used.In 2010 four papers were considered relevant, and the following terms were
-    extracted: emotional polarity of text, text mining approach, text data, extracting
-    information, extracting knowledge and sentiment knowledge discovery.'
-  header: Results
-- content: The concept of a multivariate source induces studies on text-mining networks
-    (Yoon and Park, 2004) and free open source for data extracting from machine learning
-    (Mierswa et al., 2006).In short, in the first period (1998)(1999)(2000)(2001)(2002)(2003)(2004)(2005)(2006)(2007)(2008)(2009),
-    the studies on knowledge discovery by applying text mining were approached in
-    a more technical way.
-  header: Discussion and conclusion
+- header: "Introduction"
+  content: "In fact, digital organizations are generally notable to fully use their\
+    \ employees' knowledge.In this line, to achieve such maximum effective usage and\
+    \ so positively influence organizational performance, modern firms seek to acquire\
+    \ or create potentially useful knowledge and make it available to those who can\
+    \ use it to create value.It is generally believed that if an organization can\
+    \ increase its utilization of effective knowledge by expending minimum efforts\
+    \ in sharing and creation, they will reap great benefits (King, 2009).Hence, we\
+    \ are able to state that in a knowledge-intensive firm, organizational learning\
+    \ (OL) as proxy of human being becomes complementary for boosting KM practices\
+    \ to turn in routine information, data and text by embedding into the organization\
+    \ what has been captured from the environment (Levitt and March, 1988).Because\
+    \ the originality of text mining which emphasizes a new source of knowledge discovering\
+    \ from \"hard and intangible documents\", we cannot forget that a dyadic relationship\
+    \ exists between knowledge and its stakeholders, i.e. people.In literature, knowledge\
+    \ has been defined as a \"justified personal belief,\" and it appear as the fundamental\
+    \ distinction between tacit and explicit knowledge (Polanyi, 1966).From one side,\
+    \ we specify that tacit knowledge inhabits the minds of people, depending on humans'\
+    \ interpretation and deriving from their knowledge mind-set, that is difficult\
+    \ to interpret."
+- header: "Literature review"
+  content: "(2006) providing the Yale, a free open source for data extracting from\
+    \ machine learning, able to fuse and form data from multiple sources.In general,\
+    \ there is a need to carefully design models and metrics that are able to analyze\
+    \ model correlations between disseminated texts and websites and are able to extract\
+    \ the best information from big data (Ristoski and Paulheim, 2016).In this regard,\
+    \ literature also discusses the technical challenges related to data samples,\
+    \ structures, heterogeneity of sources, mining models and algorithms and systems'\
+    \ infrastructures that would support data analytics (Khan et al., 2014;Nahm and\
+    \ Mooney, 2002;Larsen and Aone, 1999).Differently, Li and Lai (2014) argue about\
+    \ the efficiency of mining in smaller samples of data for online purchase -the\
+    \ micro blogosphere -which are in contrast to mining a whole data set, specifically\
+    \ large data sets (e.g. They argue that bias mainly depends on the expected number\
+    \ of collisions in the sample.Contrarily, a stream of researchers acknowledge\
+    \ the lacks of accurate and estimate techniques for consumer reviews in business\
+    \ and marketing analysis, thus introducing an accurate bootstrapping-based framework\
+    \ that estimates results and errors for the different mining techniques (Galitsky\
+    \ et al., 2009;Geva and Zahavi, 2014;Hu et al., 2014).Finally, several authors\
+    \ focused on the biomedical sector focusing their research activities on reducing\
+    \ bias in specific samples of patients with human disease.The evaluation of their\
+    \ proposed algorithms shows that they are moderately effective for the feature\
+    \ of knowledge creation from free text applications for studying and practicing\
+    \ the diagnosis and treatment of human disease.They are considerably more efficient\
+    \ and scalable than some of the existing state-of-the-art batch feature selection\
+    \ algorithms (Uramoto et al., 2004;Cohen and Hersh, 2005;Zhou et al., 2010).More\
+    \ recently, however, other researchers focused on query optimization techniques\
+    \ over big data in semantics, providing repeatable attribution to data scientists\
+    \ when algorithms are not efficient in performing text mining on big data."
+- header: "Methodology"
+  content: "Basically, the authors adopt a j JOURNAL OF KNOWLEDGE MANAGEMENT j multi-layered\
+    \ method to searching which is based on a wide Boolean searches of online reference\
+    \ databases, key information and \"citation trails\".Additionally, the systematic\
+    \ review is also conducted by applying \"text mining at the term level, in which\
+    \ knowledge discovery takes place on a more focused collection of words and phrases\
+    \ that are extracted from and label each document\" (Feldman et al., 1998, p.\
+    \ This is because it requires a person to label each document first and then the\
+    \ machine can label future documents (Lent et al., 1997).In this article, the\
+    \ authors used the manual labeling approach, associating each document with a\
+    \ label derived from \"term extraction method\"."
+- header: "Results"
+  content: "It has emerged that from 1998 to 2009, the terms knowledge and text were\
+    \ always used.From 2010 to 2017 in addition to these terms, sentiment analysis,\
+    \ review manipulation, microblogging data and knowledgeable users were the other\
+    \ terms frequently used.In particular, in 1998, only one publication was found\
+    \ in line with the main labels, i.e. knowledge discovery and text mining. Whereas,\
+    \ a varied range of fields emerged from 2010 to 2017, owing to a greater interest\
+    \ in the online environment, and therefore, terms like microblogging, text mining\
+    \ in social media, knowledgeable users and review manipulation are more used.In\
+    \ 2010 four papers were considered relevant, and the following terms were extracted:\
+    \ emotional polarity of text, text mining approach, text data, extracting information,\
+    \ extracting knowledge and sentiment knowledge discovery."
+- header: "Discussion and conclusion"
+  content: "To reduce redundant studies and to avoid the possibilities of missing\
+    \ relevant publications, this present research offers a systematic literature\
+    \ review.More importantly, the interest in data analytics increases exponentially\
+    \ from 2010, especially with the increase of the interest in customer behavior,\
+    \ leading to greater amount of development in the big data arena competition at\
+    \ firm level. Some authors apply sentiment analysis alongside text mining to discover\
+    \ knowledge (Schumaker et al., 2012;Yu et al., 2013)."

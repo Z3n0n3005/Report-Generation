@@ -99,4 +99,8 @@ public class Utility {
 
         return fileList;
     }
+
+    public static void setDebugLevel(){
+        
+    }
 }
