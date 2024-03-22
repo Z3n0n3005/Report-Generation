@@ -5,9 +5,9 @@
   "config": {
     "addonName": "Report Generation",
     "addonID": "reportgen@vieldeutig.dev",
-    "addonRef": "addontemplate",
-    "addonInstance": "AddonTemplate",
-    "prefsPrefix": "extensions.zotero.addontemplate",
+    "addonRef": "reportGen",
+    "addonInstance": "ReportGen",
+    "prefsPrefix": "extensions.zotero.reportgen",
     "releasePage": "https://github.com/Z3n0n3005/Report-Generation",
     "updateJSON": "https://raw.githubusercontent.com/windingwind/zotero-addon-template/main/update.json"
   },
