@@ -1,14 +1,14 @@
 {
-  "name": "zotero-addon-template",
-  "version": "1.1.1",
-  "description": "Zotero Addon Template",
+  "name": "report-generation",
+  "version": "0.1",
+  "description": "Report Generation",
   "config": {
-    "addonName": "Zotero Addon Template",
-    "addonID": "addontemplate@euclpts.com",
+    "addonName": "Report Generation",
+    "addonID": "reportgen@vieldeutig.dev",
     "addonRef": "addontemplate",
     "addonInstance": "AddonTemplate",
     "prefsPrefix": "extensions.zotero.addontemplate",
-    "releasePage": "https://github.com/windingwind/zotero-addon-template/releases",
+    "releasePage": "https://github.com/Z3n0n3005/Report-Generation",
     "updateJSON": "https://raw.githubusercontent.com/windingwind/zotero-addon-template/main/update.json"
   },
   "main": "src/index.ts",
