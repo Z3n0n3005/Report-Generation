@@ -2,6 +2,7 @@ app/build
 *.log
 .gradle/
 build/
+output/
 zotero-plugin/build
 zotero-plugin/logs
 zotero-plugin/node_modules
