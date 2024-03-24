@@ -1,6 +1,7 @@
 app/build
-app/grobid.log
+*.log
 .gradle/
+build/
 zotero-plugin/build
 zotero-plugin/logs
 zotero-plugin/node_modules
