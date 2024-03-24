@@ -5,7 +5,7 @@
   "exec": {
     "@comment-zoteroBinPath": "Please input the path of the Zotero binary file in `zoteroBinPath`.",
     "@comment-zoteroBinPath-tip": "The path delimiter should be escaped as `\\` for win32. The path is `*/Zotero.app/Contents/MacOS/zotero` for MacOS.",
-    "zoteroBinPath": "/home/vy/download/Zotero_linux-x86_64",
+    "zoteroBinPath": "/home/vy/download/Zotero_linux-x86_64/zotero",
 
     "@comment-profilePath": "Please input the path of the profile used for development in `profilePath`.",
     "@comment-profilePath-tip": "Start the profile manager by `/path/to/zotero.exe -p` to create a profile for development",

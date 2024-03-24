@@ -5,6 +5,9 @@ import {
   PromptExampleFactory,
   UIExampleFactory,
 } from "./modules/examples";
+import {
+  ReportGenerationFactory
+} from "./modules/reportGeneration"
 import { config } from "../package.json";
 import { getString, initLocale } from "./utils/locale";
 import { registerPrefsScripts } from "./modules/preferenceScript";
@@ -56,29 +59,31 @@ async function onMainWindowLoad(win: Window): Promise<void> {
     text: `[30%] ${getString("startup-begin")}`,
   });
 
-  UIExampleFactory.registerStyleSheet();
+  ztoolkit.log("Hi")
+  ReportGenerationFactory.registerSummaries();
+  // UIExampleFactory.registerStyleSheet();
 
-  UIExampleFactory.registerRightClickMenuItem();
+  // UIExampleFactory.registerRightClickMenuItem();
 
-  UIExampleFactory.registerRightClickMenuPopup();
+  // UIExampleFactory.registerRightClickMenuPopup();
 
-  UIExampleFactory.registerWindowMenuWithSeparator();
+  // UIExampleFactory.registerWindowMenuWithSeparator();
 
-  await UIExampleFactory.registerExtraColumn();
+  // await UIExampleFactory.registerExtraColumn();
 
-  await UIExampleFactory.registerExtraColumnWithCustomCell();
+  // await UIExampleFactory.registerExtraColumnWithCustomCell();
 
-  await UIExampleFactory.registerCustomItemBoxRow();
+  // await UIExampleFactory.registerCustomItemBoxRow();
 
-  UIExampleFactory.registerLibraryTabPanel();
+  // UIExampleFactory.registerLibraryTabPanel();
 
-  await UIExampleFactory.registerReaderTabPanel();
+  // await UIExampleFactory.registerReaderTabPanel();
 
-  PromptExampleFactory.registerNormalCommandExample();
+  // PromptExampleFactory.registerNormalCommandExample();
 
-  PromptExampleFactory.registerAnonymousCommandExample();
+  // PromptExampleFactory.registerAnonymousCommandExample();
 
-  PromptExampleFactory.registerConditionalCommandExample();
+  // PromptExampleFactory.registerConditionalCommandExample();
 
   await Zotero.Promise.delay(1000);
 
@@ -88,7 +93,7 @@ async function onMainWindowLoad(win: Window): Promise<void> {
   });
   popupWin.startCloseTimer(5000);
 
-  addon.hooks.onDialogEvents("dialogExample");
+  // addon.hooks.onDialogEvents("dialogExample");
 }
 
 async function onMainWindowUnload(win: Window): Promise<void> {
@@ -192,3 +197,5 @@ export default {
   onShortcuts,
   onDialogEvents,
 };
+
+

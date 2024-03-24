@@ -14,6 +14,12 @@ if (!basicTool.getGlobal("Zotero")[config.addonInstance]) {
     return _globalThis.addon.data.ztoolkit;
   });
   Zotero[config.addonInstance] = addon;
+  defineGlobal("NoteTitle", () => {
+    return "Summary"
+  });
+  defineGlobal("DebugReportGen", () => {
+    return "[ReportGen] "
+  })
 }
 
 function defineGlobal(name: Parameters<BasicTool["getGlobal"]>[0]): void;

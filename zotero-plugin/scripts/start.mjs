@@ -84,7 +84,8 @@ export function main(callback) {
   prepareLog();
 
   // zoteroBinPath has been replaced with "zotero" due to some EACCESS problem with the npm
-  const zoteroProcess = spawn("zotero", [
+  const zoteroProcess = spawn(zoteroBinPath, [
+    "-ZoteroDebugText", 
     "--debugger",
     "--purgecaches",
     "-profile",

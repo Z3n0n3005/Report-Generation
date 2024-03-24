@@ -44,6 +44,7 @@ async function startup({ id, version, resourceURI, rootURI }, reason) {
 }
 
 async function onMainWindowLoad({ window }, reason) {
+  Zotero.debug("Hi there")
   Zotero.__addonInstance__?.hooks.onMainWindowLoad(window);
 }
 
