@@ -1,0 +1,32 @@
+services:
+  server:
+    image: "lfoppiano/grobid:0.8.0"
+    ports:
+      - "8070:8070"  # Map host port 8080 to container port 8070
+      - "8071:8071"  # Map host port 8081 to container port 8071
+    init: true       # Equivalent of --init
+    ulimits:         # Set ulimit core=0
+      core:
+        soft: 0
+        hard: 0
+    deploy:
+      restart_policy:
+        condition: none  # Approximate equivalent of --rm
+    # networks:
+    #     - default
+  client:
+    build: .
+    # ports:
+      # - "8080:8070"
+    depends_on:
+      - server
+    healthcheck:
+      test: ["CMD", "wget", "-q", "http://server:8070/"]
+      # test: ["CMD", "sh", "-c", "exit 0"]
+    # networks:
+    #     - default
+
+# networks:
+#   default:
+    # driver: custom-driver
+  

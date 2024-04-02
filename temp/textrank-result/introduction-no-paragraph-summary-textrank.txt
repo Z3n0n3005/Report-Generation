@@ -1,9 +1,0 @@
-ATS systems are designed by applying one of the text summarization approaches: extractive, abstractive, or hybrid.     
-The extractive approach selects the most important sentences from the input text and uses them to generate the summary.
-2. Processing: using one of the text summarization approaches by applying a technique or more to convert the input document(s) to the summary.
-ATS poses many challenges to the research community like: 1) identification of the most informative segments in the input text to be included in the generated summary , 2) summarization of long single documents such as books, 3) summarization of multi-documents, 4) evaluation of the computer-generated summary without the need for the human-produced summary to be compared with, and 5) generation of an abstractive summary similar to a human-produced summary.
-Researchers still dream of an accurate ATS system to produce a summary that 1) covers all the main topics in the input text, 2) does not include redundant or repeated data, and 3) is readable and cohesive to the users.
-In define the common statistical features and some extractive methods.In , Kumar and Sharma provide a survey about the extractive ATS systems that apply fuzzy logic methods.
-Most of the state-of-the-art surveys tackle a subset of the ATS aspects like focusing on one approach (e.g. extractive summarization), one method for a specific approach (e.g. extractive fuzzy logic method), one specific-domain ATS systems (e.g. legal 
-documents summarization), etc.
-Also, conclude that it is recommended to benefit from the advantages of both extractive and abstractive approaches by proposing hybrid ATS systems.
