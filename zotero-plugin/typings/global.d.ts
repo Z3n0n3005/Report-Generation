@@ -25,3 +25,4 @@ declare class Localization {}
 
 declare const NoteTitle: "Summary";
 declare const DebugReportGen: "[ReportGen] ";
+declare const ReportGenPath: "/media/vy/vy/prototype/Report-Generation/report-gen.sh";

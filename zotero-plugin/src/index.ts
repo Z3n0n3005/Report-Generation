@@ -19,6 +19,9 @@ if (!basicTool.getGlobal("Zotero")[config.addonInstance]) {
   });
   defineGlobal("DebugReportGen", () => {
     return "[ReportGen] "
+  });
+  defineGlobal("ReportGenPath", () => {
+    return "/media/vy/vy/prototype/Report-Generation/report-gen.sh"
   })
 }
 

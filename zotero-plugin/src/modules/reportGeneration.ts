@@ -1,3 +1,5 @@
+// import { spawn } from "child_process";
+
 function reportGen(
   target: any,
   propertyKey: string | symbol,
@@ -108,12 +110,24 @@ export class ReportGenerationFactory{
     }
 
     @reportGen
+    private static getSummaryHTML(filePath:string):string{
+        var result = ""
+        // const child = spawn(ReportGenPath, [
+        //     "--filePath", 
+        //     filePath,
+        //     "-a", 
+        //     "textrank"
+        // ])
+        return result
+    }
+
+    @reportGen
     private static addSummaryNote(item:Zotero.Item){
-        var htmlPrefix = "<div data-schema-version=\"8\">";
-        var htmlSufix = "</div>"
-        var htmlNoteTitle = "<p>" + NoteTitle + "<\p>";
+        const htmlPrefix = "<div data-schema-version=\"8\">";
+        const htmlSufix = "</div>"
+        const htmlNoteTitle = "<p>" + NoteTitle + "<\p>";
         var htmlContent = "<p><strong>Hi</strong></p>"
-        var htmlFinal = htmlPrefix + htmlNoteTitle + htmlContent + htmlSufix
+        const htmlFinal = htmlPrefix + htmlNoteTitle + htmlContent + htmlSufix
         item.setNote(htmlFinal)
     }
 
