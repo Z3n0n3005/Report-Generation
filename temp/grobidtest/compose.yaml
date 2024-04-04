@@ -12,8 +12,6 @@ services:
     deploy:
       restart_policy:
         condition: none  # Approximate equivalent of --rm
-    # networks:
-    #     - default
   client:
     build: .
     # ports:
@@ -22,11 +20,5 @@ services:
       - server
     healthcheck:
       test: ["CMD", "wget", "-q", "http://server:8070/"]
-      # test: ["CMD", "sh", "-c", "exit 0"]
-    # networks:
-    #     - default
-
-# networks:
-#   default:
-    # driver: custom-driver
-  
+      interval: 5s
+      retries: 30
