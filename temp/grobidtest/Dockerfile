@@ -16,4 +16,4 @@ ENV FLASK_RUN_HOST=0.0.0.0
 EXPOSE 5000
 COPY . .
 RUN pip install -r requirement.txt
-CMD ["./run.sh"]
+CMD ["ash", "/code/run.sh"]
