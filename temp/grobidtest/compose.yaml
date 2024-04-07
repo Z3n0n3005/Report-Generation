@@ -14,8 +14,8 @@ services:
         condition: none  # Approximate equivalent of --rm
   client:
     build: .
-    # ports:
-      # - "8080:8070"
+    ports:
+      - "5000:5000"
     depends_on:
       - server
     healthcheck:
