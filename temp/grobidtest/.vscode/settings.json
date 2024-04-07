@@ -1,0 +1,26 @@
+{
+    "editor.semanticTokenColorCustomizations": {
+        "rules": {
+            "*.deprecated": {
+                "fontStyle": "strikethrough"
+            }
+        }
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true,
+        "**/*.meta": true,
+        "**/*.fbx": true,
+        "Cache/": true,
+        "Libraries/": true
+    },
+    "workbench.colorTheme": "Quiet Light"
+}
