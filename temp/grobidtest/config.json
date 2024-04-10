@@ -4,9 +4,14 @@
     "sleep_time": 5,
     "timeout": 60,
     "coordinates": [ "persName", "figure", "ref", "biblStruct", "formula", "s", "note", "title" ],
+    "resource_folder": "/code/resources/",
+    "upload_folder": "pdf_in",
+    "segment_folder": "pdf_segment",
+    "summary_folder": "pdf_summary",
     "tmep":   "https://localhost:8080",
     "temp2": "https://172.21.0.2:8070",
     "temp3": "https://172.21.0.2:8080", 
     "temp4": "https://localhost:8070",
-    "temp5": "http://server:8070"
+    "temp5": "http://server:8070",
+    "temp6": "resources\\"
 }
