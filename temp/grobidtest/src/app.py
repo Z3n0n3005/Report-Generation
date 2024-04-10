@@ -68,15 +68,10 @@ def upload():
 @app.route("/summarize", methods=['GET'])
 def summarize():
     parse_pdf()
+    # Post it after
+    # Delete all files after parsing
     return "Hi"
-    # return Response(
-    #     response="Complete",
-    #     status=200
-    # )
 
-def main():
-    parse_pdf()
-    return 
 
 if __name__ == "__main__":
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
