@@ -31,7 +31,6 @@ class Paper:
             if(segment.get_header() == header_name):
                 result = segment
                 break
-
         return result
     
     def get_abstract_segment(self) -> str:

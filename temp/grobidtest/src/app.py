@@ -1,8 +1,9 @@
 import os
 from grobid import parse_pdf
-from flask import Flask, redirect, flash, render_template, url_for, request
+from flask import Flask, request
 from requests import Response
 from werkzeug.utils import secure_filename
+from config import Config
 
 UPLOAD_FOLDER = '/code/resources/pdf_in'
 SEGMENT_FOLDER = '/code/resources/pdf_segment'
@@ -74,6 +75,7 @@ def summarize():
 
 
 if __name__ == "__main__":
+    # Config()
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     app.secret_key = "secret_key"
     app.run(debug=False)
