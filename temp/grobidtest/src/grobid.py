@@ -1,18 +1,23 @@
 import sys
 import json
 import time
+import config
 sys.path.insert(1, '/code/lib/grobid_client_python/')
 from grobid_client.grobid_client import GrobidClient
 
 # Linux paths
-UPLOAD_FOLDER = '/code/resources/pdf_in'
-SEGMENT_FOLDER = '/code/resources/pdf_segment'
-GROBID_CONFIG_PATH = '/code/config.json'
-
+# UPLOAD_FOLDER = '/code/resources/pdf_in'
+# SEGMENT_FOLDER = '/code/resources/pdf_segment'
+# GROBID_CONFIG_PATH = '/code/config.json'
 # Window paths
 # UPLOAD_FOLDER = 'resources\\pdf_in'
 # SEGMENT_FOLDER = 'resources\\pdf_segment'
 # GROBID_CONFIG_PATH = 'config.json'
+
+UPLOAD_FOLDER = config.get_upload_path()
+SEGMENT_FOLDER = config.get_segment_path()
+GROBID_CONFIG_PATH = config.get_config_path()
+
 def _read_json(file_path):
     with open(file_path, "r") as file:
         # Read the entire file content

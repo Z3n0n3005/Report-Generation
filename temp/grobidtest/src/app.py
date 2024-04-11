@@ -3,7 +3,7 @@ from grobid import parse_pdf
 from flask import Flask, request
 from requests import Response
 from werkzeug.utils import secure_filename
-from config import Config
+import config
 
 UPLOAD_FOLDER = '/code/resources/pdf_in'
 SEGMENT_FOLDER = '/code/resources/pdf_segment'
@@ -11,6 +11,9 @@ ALLOWED_EXTENSIONS = set(['pdf'])
 
 # UPLOAD_FOLDER = 'resources\\pdf_in'
 # SEGMENT_FOLDER = 'resources\\pdf_segment'
+
+UPLOAD_FOLDER = config.get_upload_path()
+SEGMENT_FOLDER = config.get_segment_path()
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
