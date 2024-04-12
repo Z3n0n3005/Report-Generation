@@ -17,7 +17,7 @@ class Paper:
         result = "Abstract: " + self.abstract_segment + "\n"
         for segment in self.segment_list:
             result += "Header: " + segment.get_header() + "\n"
-            result += "Content: " + segment.get_content() + "\n"
+            result += "Content: " + segment.get_content()[0:10] + "\n"
         return result
 
     def get_segment_list(self) -> list[Segment]:
