@@ -4,12 +4,15 @@ class Paper:
     def __init__(self):
         self.segment_list:list[Segment] = []
     
-    def append_section_list(self, segment:Segment):
-        self.segment_list.append(segment)
-    
     def set_abstract_seg(self, abstract_segment:str):
         self.abstract_segment = abstract_segment
     
+    def append_to_segment_list(self, segment:Segment):
+        self.segment_list.append(segment)
+    
+    def set_segment_list(self, segment_list:list[Segment]):
+        self.segment_list = segment_list
+
     def __str__(self) -> str:
         result = "Abstract: " + self.abstract_segment + "\n"
         for segment in self.segment_list:
