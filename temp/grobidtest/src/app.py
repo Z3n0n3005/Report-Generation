@@ -1,9 +1,11 @@
 import os
 from grobid import parse_pdf
-from flask import Flask, request
-from requests import Response
+from flask import Flask, request, Response, jsonify
 from werkzeug.utils import secure_filename
 import config
+import xml_parser
+import textrank
+import json
 
 UPLOAD_FOLDER = '/code/resources/pdf_in'
 SEGMENT_FOLDER = '/code/resources/pdf_segment'
@@ -69,17 +71,25 @@ def upload():
     print("END POST")
     return 'Successfully send files'
 
-@app.route("/summarize", methods=['GET'])
+@app.route("/summarize", methods=['POST'])
 def summarize():
-    parse_pdf()
-    # Post it after
+    # parse_pdf()
+    papers = xml_parser.parse_xml_folder()
+    s_papers = textrank.summarize_folder(papers)
+    # textrank.save_to_folder(s_papers)
     # Delete all files after parsing
-    return "Hi"
-
+    paper_json_list = []
+    for s_paper in s_papers:
+        paper_json_list.append(s_paper.to_json_format())
+    return Response(
+        status=200,
+        response=json.dumps(paper_json_list)
+    )
+        # response=jsonify(s_papers[0].to_json_format())
 
 if __name__ == "__main__":
-    # Config()
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     app.secret_key = "secret_key"
-    app.run(debug=False)
-    # main()
+    app.run(debug=True)
+
+    # summarize()

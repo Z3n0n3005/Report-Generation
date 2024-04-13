@@ -26,17 +26,20 @@ def main():
                 input_file_paths.append(os.sep.join([dirpath, filename])) 
     
     with ThreadPoolExecutor(max_workers=20) as executor:
-        result = executor.map(
+        results = executor.map(
             upload_file,
             input_file_paths,
             [url_base + url_upload] * len(input_file_paths)
         )
-        # wait(result)
+        
+        for result in results:
+            print(result.content)
+        
         # for r in result:
         #     print(r)
         # wait(timeout=5)
-    requests.get(url=url_base + url_summarize)
-    
+    response = requests.post(url=url_base + url_summarize)
+    print(response.json())
     return
 
 if __name__ == "__main__":

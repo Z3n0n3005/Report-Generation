@@ -15,6 +15,7 @@ def get_config_path() -> str:
     else:
         return 'config.json'
 
+
 def get_resource_path() -> str:
     key = 'resource_folder' + _get_key_suffix()
     return _config[key]
@@ -33,6 +34,9 @@ def get_summary_path() -> str:
     key = "summary_folder" + _get_key_suffix()
     summary = _config[key]
     return get_resource_path() + summary
+
+def get_util_path() -> str:
+    return get_resource_path() + _config["util_folder" + _get_key_suffix()]
 
 _config_json = open(get_config_path()).read()
 _config = json.loads(_config_json)

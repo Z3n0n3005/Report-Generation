@@ -9,11 +9,13 @@
     "upload_folder_linux": "pdf_in",
     "segment_folder_linux": "pdf_segment",
     "summary_folder_linux": "pdf_summary",
+    "util_folder_linux": "util",
 
     "resource_folder_win": "resources\\",
     "upload_folder_win": "pdf_in",
     "segment_folder_win": "pdf_segment",
     "summary_folder_win": "pdf_summary",
+    "util_folder_win": "util",
 
     "grobid_server_local": "https://localhost:8070",
     "grobid_server_docker": "http://server:8070"
