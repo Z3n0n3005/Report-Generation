@@ -7,6 +7,9 @@ class Paper:
     def set_abstract_seg(self, abstract_segment:str):
         self.abstract_segment = abstract_segment
     
+    def set_name(self, name:str):
+        self.name = name
+
     def append_to_segment_list(self, segment:Segment):
         self.segment_list.append(segment)
     
@@ -17,7 +20,7 @@ class Paper:
         result = "Abstract: " + self.abstract_segment + "\n"
         for segment in self.segment_list:
             result += "Header: " + segment.get_header() + "\n"
-            result += "Content: " + segment.get_content()[0:10] + "\n"
+            result += "Content: " + segment.get_content()[0:100] + "...\n"
         return result
 
     def get_segment_list(self) -> list[Segment]:
@@ -38,3 +41,39 @@ class Paper:
     
     def get_abstract_segment(self) -> str:
         return self.abstract_segment
+
+    def get_name(self) -> str:
+        return self.name
+    
+    def to_json_format(self) -> dict:
+        result = {}
+        result["name"] = self.name
+        result["abstract_seg"] = self.abstract_segment
+        result["segments"] = []
+        for segment in self.segment_list:
+            segment_dict = {}
+            segment_dict["header"] = segment.get_header()
+            segment_dict["content"] = segment.get_content()
+            result["segments"].append(segment_dict)
+        return result
+
+    
+    def clean(self):
+        '''
+        Remove segments with no header or content
+        '''
+        segments_to_remove = []
+        for segment in self.segment_list:
+            header = segment.get_header()
+            if(header == ''):
+                segments_to_remove.append(segment)
+                continue
+            
+            content = segment.get_content()
+            if(content == ''):
+                segments_to_remove.append(content)
+                continue
+        
+        for segment in segments_to_remove:
+            self.segment_list.remove(segment)
+                

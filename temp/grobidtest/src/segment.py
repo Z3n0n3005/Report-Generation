@@ -28,5 +28,6 @@ class Segment:
         return self.content
 
     def add_content(self, content:str):
-        # self.content += "\n"
+        if(content == None):
+            return 
         self.content += content
