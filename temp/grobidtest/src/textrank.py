@@ -11,11 +11,14 @@ SUMMARY_FOLDER = config.get_summary_path()
 def summarize_folder(papers:list[Paper]) -> list[Paper]:
     s_papers = []
     for paper in papers:
+        id = paper.get_id()
         name = paper.get_name()
         abstract_seg = paper.get_abstract_segment()
         segment_list = paper.get_segment_list()
         s_paper = Paper()
+        s_paper.set_id(id)
         s_paper.set_name(name)
+        
         s_paper.set_abstract_seg(abstract_seg)
         for segment in segment_list:
             s_segment = Segment()

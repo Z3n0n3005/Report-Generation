@@ -76,7 +76,7 @@ def summarize():
     # parse_pdf()
     papers = xml_parser.parse_xml_folder()
     s_papers = textrank.summarize_folder(papers)
-    # textrank.save_to_folder(s_papers)
+    textrank.save_to_folder(s_papers)
     # Delete all files after parsing
     paper_json_list = []
     for s_paper in s_papers:
@@ -85,8 +85,6 @@ def summarize():
         status=200,
         response=json.dumps(paper_json_list)
     )
-        # response=jsonify(s_papers[0].to_json_format())
-
 if __name__ == "__main__":
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     app.secret_key = "secret_key"

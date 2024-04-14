@@ -2,6 +2,8 @@ from segment import Segment
 
 class Paper:
     def __init__(self):
+        self.id = -1
+        self.name = ""
         self.segment_list:list[Segment] = []
     
     def set_abstract_seg(self, abstract_segment:str):
@@ -9,6 +11,9 @@ class Paper:
     
     def set_name(self, name:str):
         self.name = name
+
+    def set_id(self, id:int):
+        self.id = id
 
     def append_to_segment_list(self, segment:Segment):
         self.segment_list.append(segment)
@@ -45,8 +50,15 @@ class Paper:
     def get_name(self) -> str:
         return self.name
     
+    def get_id(self) -> int:
+        return self.id
+
     def to_json_format(self) -> dict:
+        """
+        Format the entire paper into json format
+        """
         result = {}
+        result["id"] = self.id
         result["name"] = self.name
         result["abstract_seg"] = self.abstract_segment
         result["segments"] = []
