@@ -27,7 +27,8 @@ def parse_xml_folder() -> list[Paper]:
         # Create new paper
         paper = get_xml_parsing_result(file)
         paper.set_name(paper_name.removesuffix(SEGMENT_FILE_PATH))
-        print(paper.get_name())
+        paper.set_id(hash(paper.get_name()))
+        print(paper.get_id())
         paper.clean()
 
         # Append paper to list
