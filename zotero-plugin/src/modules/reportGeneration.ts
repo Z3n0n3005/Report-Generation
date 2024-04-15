@@ -30,9 +30,11 @@ export class ReportGenerationFactory{
             ztoolkit.log("[ReportGen] index: " + index + " " + sortedItems.length)
             const item = sortedItems[index];
 
+            ztoolkit.log("[ReportGen] isRegualarItem: " + item.isRegularItem())
             if(!item.isRegularItem()){
                 continue;
             }
+            ztoolkit.log("[ReportGen] hasSummaryNote: " + this.hasSummaryNote(item))
             if(this.hasSummaryNote(item)){
                 continue;
             }
@@ -40,10 +42,10 @@ export class ReportGenerationFactory{
             //     continue;
             // }
             var pdfFilePath = this.getPDFFilePath(item)
+            ztoolkit.log("[ReportGen] pdfFilePath: " + pdfFilePath)
             if(!pdfFilePath){
                 continue;
             }
-            ztoolkit.log(pdfFilePath)
 
         }
     }
@@ -102,9 +104,10 @@ export class ReportGenerationFactory{
             }
 
             var filePath = attachment.getFilePath()
-            if(!filePath){
+            if(filePath){
                 return filePath
             }
+            // ztoolkit.log("[ReportGen] filePath in folder: " + filePath + " " + !filePath)
         }
         return false
     }
