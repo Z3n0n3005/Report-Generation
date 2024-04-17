@@ -1,5 +1,7 @@
 // import { spawn } from "child_process";
 
+import { UITool, TagElementProps } from "zotero-plugin-toolkit/dist/tools/ui";
+
 function reportGen(
   target: any,
   propertyKey: string | symbol,
@@ -21,31 +23,28 @@ function reportGen(
 export class ReportGenerationFactory{
     @reportGen
     static registerSummaries() { 
-        var zp = Zotero.getActiveZoteroPane();
-        var sortedItems = zp.getSortedItems()
+        const zp = Zotero.getActiveZoteroPane();
+        const sortedItems = zp.getSortedItems()
         ztoolkit.log("[ReportGen] selectedItemsLength: " + sortedItems.length)
+        
+        this.setSummarizeButton()
 
         for (let index = 0; index < sortedItems.length; index++) {
-            
             ztoolkit.log("[ReportGen] index: " + index + " " + sortedItems.length)
             const item = sortedItems[index];
 
             ztoolkit.log("[ReportGen] isRegualarItem: " + item.isRegularItem())
-            if(!item.isRegularItem()){
-                continue;
-            }
+            // if the item is not a pdf
+            if(!item.isRegularItem()){ continue }
+
             ztoolkit.log("[ReportGen] hasSummaryNote: " + this.hasSummaryNote(item))
-            if(this.hasSummaryNote(item)){
-                continue;
-            }
-            // if(!this.hasPDFAttachment(item)){
-            //     continue;
-            // }
+            // if item already has a summary note
+            if(this.hasSummaryNote(item)){ continue }
+
             var pdfFilePath = this.getPDFFilePath(item)
             ztoolkit.log("[ReportGen] pdfFilePath: " + pdfFilePath)
-            if(!pdfFilePath){
-                continue;
-            }
+            // if could not get file path
+            if(!pdfFilePath){ continue }
 
         }
     }
@@ -53,15 +52,15 @@ export class ReportGenerationFactory{
     @reportGen
     private static hasSummaryNote(item:Zotero.Item):boolean{
         // ztoolkit.log(DebugReportGen + "isNote: " + item.isNote() + ", itemName: " + item.getDisplayTitle())
-        var noteIDs = item.getNotes()
+        const noteIDs = item.getNotes()
         // ztoolkit.log(noteIDs)
         for (let noteIndex = 0; noteIndex < noteIDs.length; noteIndex++){
-            var noteID = noteIDs.at(noteIndex);
+            const noteID = noteIDs.at(noteIndex);
             if(noteID === undefined){
                 continue;
             }
-            var note = Zotero.Items.get(noteID);
-            var noteTitle = note.getNoteTitle()
+            const note = Zotero.Items.get(noteID);
+            const noteTitle = note.getNoteTitle()
             ztoolkit.log("[ReportGen] " + noteTitle);
             if(noteTitle === NoteTitle){
                 return true
@@ -72,17 +71,14 @@ export class ReportGenerationFactory{
 
     @reportGen
     private static hasPDFAttachment(item:Zotero.Item):boolean{
-        var attachmentIDs = item.getAttachments()
+        const attachmentIDs = item.getAttachments()
         ztoolkit.log(attachmentIDs)
         for (let attachmentIndex = 0; attachmentIndex < attachmentIDs.length; attachmentIndex++){
-            var attachmentID = attachmentIDs.at(attachmentIndex);
-            if(attachmentID === undefined){
-                continue;
-            }
-            var attachment = Zotero.Items.get(attachmentID)
-            if(!attachment.isPDFAttachment()){
-                return true
-            }
+            const attachmentID = attachmentIDs.at(attachmentIndex);
+            if(attachmentID === undefined){ continue; }
+
+            const attachment = Zotero.Items.get(attachmentID)
+            if(!attachment.isPDFAttachment()){ return true }
         }
 
         return false
@@ -90,23 +86,17 @@ export class ReportGenerationFactory{
 
     @reportGen
     private static getPDFFilePath(item:Zotero.Item):string|false{
-        var attachmentIDs = item.getAttachments()
+        const attachmentIDs = item.getAttachments()
         ztoolkit.log(attachmentIDs)
         for (let attachmentIndex = 0; attachmentIndex < attachmentIDs.length; attachmentIndex++){
-            var attachmentID = attachmentIDs.at(attachmentIndex);
-            if(attachmentID === undefined){
-                continue;
-            }
+            const attachmentID = attachmentIDs.at(attachmentIndex);
+            if(attachmentID === undefined){ continue; }
 
-            var attachment = Zotero.Items.get(attachmentID)
-            if(!attachment.isPDFAttachment()){
-                continue;
-            }
+            const attachment = Zotero.Items.get(attachmentID)
+            if(!attachment.isPDFAttachment()){ continue; }
 
-            var filePath = attachment.getFilePath()
-            if(filePath){
-                return filePath
-            }
+            const filePath = attachment.getFilePath()
+            if(filePath){ return filePath }
             // ztoolkit.log("[ReportGen] filePath in folder: " + filePath + " " + !filePath)
         }
         return false
@@ -137,5 +127,38 @@ export class ReportGenerationFactory{
     @reportGen
     private static unregisterNotifier(notifierID: string) {
         Zotero.Notifier.unregisterObserver(notifierID);
+    }
+
+    @reportGen
+    private static setSummarizeButton(){
+        const toolbarNode = document.getElementById("zotero-items-toolbar")
+
+        const childNodes = toolbarNode?.children
+        if(childNodes === undefined){ return }
+
+        const firstNode = childNodes.item(0) 
+        if(firstNode === null){ return }
+
+        const tbSummaryNoteAdd = ztoolkit.UI.insertElementBefore({ 
+            tag: 'toolbarbutton',
+            id: 'zotero-tb-summary-note', 
+            classList: ['zotero-tb-button'],
+            attributes: {
+                'tabindex':-1,
+                'tooltiptext':'Add summary notes',
+                'type':'panel'
+            }
+        }, firstNode)
+
+        if(tbSummaryNoteAdd === undefined){ return }
+        
+        // Set label of button
+        const childrenNodeSummaryNoteAdd = tbSummaryNoteAdd?.children
+        if(childrenNodeSummaryNoteAdd === undefined){ return }
+
+        const labelSummaryNoteAdd = <HTMLElement>childrenNodeSummaryNoteAdd.item(1)
+        if(labelSummaryNoteAdd === undefined){ return }
+
+        labelSummaryNoteAdd.innerHTML = "📖"
     }
 }
