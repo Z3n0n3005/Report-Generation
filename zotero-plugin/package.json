@@ -32,6 +32,11 @@
   },
   "homepage": "https://github.com/windingwind/zotero-addon-template#readme",
   "dependencies": {
+    "@types/async": "^3.2.24",
+    "@types/sleep": "^0.0.12",
+    "form-data": "^4.0.0",
+    "mkdirp": "^3.0.1",
+    "request": "^2.88.2",
     "zotero-plugin-toolkit": "^2.3.15"
   },
   "devDependencies": {

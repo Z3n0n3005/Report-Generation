@@ -1,6 +1,13 @@
-// import { spawn } from "child_process";
 
 import { UITool, TagElementProps } from "zotero-plugin-toolkit/dist/tools/ui";
+// import * as async from 'async'
+// import * as path from 'path'
+// import * as fs from 'node:fs'
+import { platform } from "node:os";
+// import * as mkdirp from 'mkdirp'
+// import * as sleep from 'sleep'
+import * as fs from 'node:fs'
+import { pathToFileURL } from "node:url";
 
 function reportGen(
   target: any,
@@ -22,31 +29,41 @@ function reportGen(
 
 export class ReportGenerationFactory{
     @reportGen
-    static registerSummaries() { 
+    private static generateSummaries() { 
         const zp = Zotero.getActiveZoteroPane();
         const sortedItems = zp.getSortedItems()
         ztoolkit.log("[ReportGen] selectedItemsLength: " + sortedItems.length)
         
-        this.setSummarizeButton()
-
+        // this.setSummarizeButton()
+        const pathList = []
         for (let index = 0; index < sortedItems.length; index++) {
             ztoolkit.log("[ReportGen] index: " + index + " " + sortedItems.length)
             const item = sortedItems[index];
-
-            ztoolkit.log("[ReportGen] isRegualarItem: " + item.isRegularItem())
-            // if the item is not a pdf
-            if(!item.isRegularItem()){ continue }
-
-            ztoolkit.log("[ReportGen] hasSummaryNote: " + this.hasSummaryNote(item))
-            // if item already has a summary note
-            if(this.hasSummaryNote(item)){ continue }
-
-            var pdfFilePath = this.getPDFFilePath(item)
-            ztoolkit.log("[ReportGen] pdfFilePath: " + pdfFilePath)
+            const pdfFilePath = this.getFilePath(item)
+            
             // if could not get file path
             if(!pdfFilePath){ continue }
-
+            pathList.push(<string>pdfFilePath)
         }
+        ReportGenerationFactory.summarize(pathList)
+
+    }
+
+    @reportGen
+    private static getFilePath(item:Zotero.Item):string|boolean{
+        ztoolkit.log("[ReportGen] isRegualarItem: " + item.isRegularItem())
+        // if the item is not a pdf
+        if(!item.isRegularItem()){ return false }
+
+        ztoolkit.log("[ReportGen] hasSummaryNote: " + this.hasSummaryNote(item))
+        // if item already has a summary note
+        if(this.hasSummaryNote(item)){ return false }
+
+        const pdfFilePath = this.getPDFFilePath(item)
+        // ztoolkit.log("[ReportGen] pdfFilePath: " + pdfFilePath)
+        // if could not get file path
+        if(!pdfFilePath){ return false }
+        return pdfFilePath
     }
 
     @reportGen
@@ -86,6 +103,8 @@ export class ReportGenerationFactory{
 
     @reportGen
     private static getPDFFilePath(item:Zotero.Item):string|false{
+        ztoolkit.log("userID: " + Zotero.Users.getCurrentUserID())
+        ztoolkit.log("itemID: " + item.key)
         const attachmentIDs = item.getAttachments()
         ztoolkit.log(attachmentIDs)
         for (let attachmentIndex = 0; attachmentIndex < attachmentIDs.length; attachmentIndex++){
@@ -96,10 +115,150 @@ export class ReportGenerationFactory{
             if(!attachment.isPDFAttachment()){ continue; }
 
             const filePath = attachment.getFilePath()
-            if(filePath){ return filePath }
+            const filePathURL = attachment.getLocalFileURL()
+            if(filePath){ return filePathURL }
             // ztoolkit.log("[ReportGen] filePath in folder: " + filePath + " " + !filePath)
         }
         return false
+    }
+
+    // This method is currently under construction, might not even work at all
+    @reportGen
+    private static summarize(pathList:string[]){
+        // for(let i = 0; i < pathList.length; i++){
+            // const path = pathList[i]
+            const path = pathList[0]
+            const contentFromURL = Zotero.File.getContentsFromURL(path)
+            const resource = Zotero.File.getResource(path)
+            const diff = (diffMe:string, diffBy:string) => diffMe.split(diffBy).join('')
+            // const diffRes = diff(contentFromURL, resource)
+            // this.logToNote("resource: " + diffRes)
+            // normal stuffs
+            // const pdfFile = new File(
+            //     [pdfFileContent], 
+            //     this.getFileName(path),
+            //     {
+            //         type: 'application/pdf'
+            //     }
+            // )
+            // ztoolkit.log("filePath: " + this.getFileName(path))
+            // this.sendPdfFilesAsync(pdfFile)
+            // .then(result => {
+            //     if(!result){ return false}
+            //     return this.getSummaryResult()
+            // })
+            // .then(result => {
+            //     ztoolkit.log("Summary result: " + result)
+
+            // })
+            // fs.readFile(path, (res) => {
+            //     ztoolkit.log(res)
+                
+            // })
+            // async stuffs
+            Zotero.File.getBinaryContentsAsync(path)
+            .then(res => {
+                this.logToNote(diff(res, resource))
+                return new File(
+                    [res],
+                    this.getFileName(path),
+                    {
+                        type: 'application/pdf'
+                    }
+                )
+            })
+            .then(res => {
+                // ztoolkit.log("formdata: " + res.name)
+                return this.sendPdfFilesAsync(res)
+            })
+            .then(res => {
+                if(!res){ return false}
+                return this.getSummaryResult()
+            })
+            .then(res => {
+                ztoolkit.log("Summary result: " + res)
+            })
+            
+        // }
+    }
+
+    @reportGen
+    private static logToNote(content:string){
+        const zp = Zotero.getActiveZoteroPane();
+        const sortedItems = zp.getSortedItems()
+        
+        // this.setSummarizeButton()
+        const standAloneNote = sortedItems[0]
+        standAloneNote.setNote(content)
+        // standAloneNote
+        // for (let index = 0; index < sortedItems.length; index++) {
+        //     ztoolkit.log("[ReportGen] index: " + index + " " + sortedItems.length)
+        //     const item = sortedItems[index];
+        //     const pdfFilePath = this.getFilePath(item)
+            
+        //     // if could not get file path
+        //     if(!pdfFilePath){ continue }
+        // }
+    }
+
+    @reportGen
+    private static getFileName(path:string){
+        return path.replace(/^.*(\\|\/|\:)/, '')
+    }
+
+    @reportGen
+    private static async sendPdfFilesAsync(file: File):Promise<boolean>{
+        const urlBase = "http://127.0.0.1:5000"
+        const urlUpload = "/upload"
+        const urlSummarize = "/summarize"
+        // if(!files.length){
+        //     ztoolkit.log('Error: No PDF files selected')
+        // }
+
+        const formData = new window.FormData()
+        ztoolkit.log(formData)
+        
+        if(!file.type.startsWith('application/pdf')){
+            throw new Error("Invalid file type: ${file.name}.")
+        }
+
+        formData.append('files', file)
+
+        try {
+            const response = await fetch(urlBase + urlUpload, {
+                method: 'POST', 
+                body: formData, 
+            });
+
+            if(!response.ok){
+                return false
+            }
+            return true
+        }
+        catch(error){
+            throw error
+        }
+
+    }
+
+    @reportGen
+    private static async getSummaryResult():Promise<any>{
+        const urlBase = "http://127.0.0.1:5000"
+        const urlUpload = "/upload"
+        const urlSummarize = "/summarize"
+
+        try{
+            const response = await fetch(urlBase + urlSummarize, 
+                {
+                    method: 'POST'
+                }
+            )
+            const result = await response.json()
+            ztoolkit.log("result: " + result)
+            return result
+        } catch(error){
+            throw error
+        }
     }
 
     @reportGen
@@ -130,7 +289,7 @@ export class ReportGenerationFactory{
     }
 
     @reportGen
-    private static setSummarizeButton(){
+    public static registerSummarizeButton(){
         const toolbarNode = document.getElementById("zotero-items-toolbar")
 
         const childNodes = toolbarNode?.children
@@ -147,7 +306,15 @@ export class ReportGenerationFactory{
                 'tabindex':-1,
                 'tooltiptext':'Add summary notes',
                 'type':'panel'
-            }
+            },
+            listeners: [
+                {
+                  type: "click",
+                  listener: () => {
+                    this.generateSummaries()
+                  },
+                },
+              ],
         }, firstNode)
 
         if(tbSummaryNoteAdd === undefined){ return }

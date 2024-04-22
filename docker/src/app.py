@@ -73,7 +73,7 @@ def upload():
 
 @app.route("/summarize", methods=['POST'])
 def summarize():
-    # parse_pdf()
+    parse_pdf()
     papers = xml_parser.parse_xml_folder()
     s_papers = textrank.summarize_folder(papers)
     textrank.save_to_folder(s_papers)

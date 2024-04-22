@@ -887,10 +887,12 @@ export class HelperExampleFactory {
       "open",
       [
         ["PNG File(*.png)", "*.png"],
-        ["Any", "*.*"],
+        ["PDF File (*.pdf)", "*pdf"],
+        ["Any", "*.*"]
       ],
       "image.png",
-    ).open();
+    ).open()
+    
     ztoolkit.getGlobal("alert")(`Selected ${path}`);
   }
 

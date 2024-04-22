@@ -1,0 +1,52 @@
+<!-- The `multiple` attribute lets users select multiple files. -->
+<input type="file" id="diff_me" accept=".pdf">
+<input type="file" id="diff_by" accept=".pdf">
+<div class="output"></div>
+<script>
+    const diffMeInput = document.getElementById("diff_me");
+    const diffByInput = document.getElementById("diff_by")
+    const output = document.querySelector(".output");
+
+    const diff = (diffMe, diffBy) => diffMe.split(diffBy).join('')
+
+    var diffMeFile = null
+    var diffByFile = null
+    diffMeInput.addEventListener("change", async (event) => {
+        const diffMeFiles = event.target.files;
+        [file] = diffMeFiles
+        diffMeFile = file
+        // console.log(diffMeFile.text());
+
+        console.log(diffMeFile.text())
+        if(diffMeFile && diffByFile){
+            diffMeFile.text()
+            .then((diffMeTxt) => {
+                return diffMeTxt, diffByFile.text()
+            })
+            .then((diffMeTxt, diffByTxt) => {
+                output.innerHTML = diff(diffMeTxt, diffByTxt)
+            })
+        }
+    });
+
+    diffByInput.addEventListener("change", async (event) => {
+        const diffByFiles = event.target.files;
+        [file] = diffByFiles
+        diffByFile = file
+        console.log(diffByFile.text);
+
+        console.log(diffByFile.text())
+        if(diffMeFile && diffByFile){
+            diffMeFile.text()
+            .then((diffMeTxt) => {
+                return diffMeTxt, diffByFile.text()
+            })
+            .then((diffMeTxt, diffByTxt) => {
+                output.innerHTML = diff(diffMeTxt, diffByTxt)
+            })
+        }
+    });
+
+    
+
+</script>

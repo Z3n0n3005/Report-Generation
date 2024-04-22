@@ -60,7 +60,7 @@ async function onMainWindowLoad(win: Window): Promise<void> {
   });
 
   ztoolkit.log("Hi")
-  ReportGenerationFactory.registerSummaries();
+  ReportGenerationFactory.registerSummarizeButton();
   // UIExampleFactory.registerStyleSheet();
 
   // UIExampleFactory.registerRightClickMenuItem();
