@@ -9,6 +9,8 @@ from grobid_client.client import ApiClient
 url_base = 'http://127.0.0.1:5000'
 url_upload = '/upload'
 url_summarize = '/summarize'
+url_connect_to_zotero = '/connectToZotero'
+url_get_pdf_file_zotero = '/getPdfFileZotero'
 pdf_folder = 'C:\\Users\\DELL\\Prototype\\Report-Generation\\paper'
 
 pdf_path = 'C:\\Users\\DELL\\Prototype\\Report-Generation\\paper\\a-brief-survey-of-text-mining.pdf'
@@ -43,4 +45,29 @@ def main():
     return
 
 if __name__ == "__main__":
-    main()
+    
+    file_header = {
+        'Api-Key':'IqssCl6uXkPQqcMP6y52Enj2', 
+        'Library-Id':'14142718',
+        'Library-Type':'user',
+        'Item-Key':'SNXV9A8F'
+    }
+    # main()
+    session = requests.Session()
+    # response = session.post(
+    #     url=url_base+url_connect_to_zotero,
+    #     headers = session_headers
+    # )
+   
+    # print(response.request.headers)
+    response = session.post(
+        url = url_base + url_get_pdf_file_zotero, 
+        headers = file_header
+    )
+    # response.headers.update(file_header)
+    print(response.request.headers)
+
+    reponse = session.post(
+        url = url_base + url_summarize
+    )
+    print(response.request)

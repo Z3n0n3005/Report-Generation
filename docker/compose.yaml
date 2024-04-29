@@ -1,5 +1,5 @@
 services:
-  server:
+  grobid-server:
     image: "lfoppiano/grobid:0.8.0"
     ports:
       - "8070:8070"  # Map host port 8080 to container port 8070
@@ -12,13 +12,20 @@ services:
     deploy:
       restart_policy:
         condition: none  # Approximate equivalent of --rm
-  client:
+  summary-server:
     build: .
     ports:
       - "5000:5000"
     depends_on:
-      - server
+      - grobid-server
     healthcheck:
       test: ["CMD", "wget", "-q", "http://server:8070/"]
       interval: 5s
       retries: 30
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./src
+          target: /code/src
+          ignore:
+           - ./src/__pycache__

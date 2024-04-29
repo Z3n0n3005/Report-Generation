@@ -1,4 +1,5 @@
 from pyzotero import zotero
+import config
 
 class Zotero:
     def __init__(self, library_id, library_type, api_key):
@@ -11,18 +12,47 @@ class Zotero:
     def get_item(self, item_key:str) -> str:
         return self.zotero.item(item_key)
         
-    def get_pdf_file(self, item_key:str, file_name:str=None, path:str=None) -> str:
-        return self.zotero.dump(item_key, file_name, path)
+    def get_pdf_file(self, item_key:str, file_name:str=None, path:str=None) -> bool:
+        try:
+            self.zotero.dump(item_key, file_name, path)
+        except:
+            return False
+        return True
     
-    # def __init__(self):
-    #     self.__init__(self, None, None, None)
+    def get_all_pdf_file(self) -> bool:
+        pdf_key_list = []
+        for item in self.zotero.items():
+            has_links_tag = 'links' in item
+            if(not has_links_tag): continue
 
-    def init_zotero(library_id, library_type, api_key):
-        return 
+            has_enclosure_tag = 'enclosure' in item['links']
+            if(not has_enclosure_tag): continue
+
+            is_pdf = item['links']['enclosure']['type'] == 'application/pdf'
+            if(not is_pdf): continue
+            
+            pdf_key_list.append(item['key'])
+
+        print(pdf_key_list)
+        for key in pdf_key_list:
+            result = self.get_pdf_file(key, None, config.get_upload_path())
+            if(result):
+                print(key, ": Succeed")
+            else:
+                print(key, ": Failed")
+        return True
+
+    def is_zotero_init(self) -> bool:
+        if(self.zotero.api_key == None):
+            return True
+        return False
 
 def main():
-    print(zot.get_pdf_file('SNXV9A8F'))
+    zot = Zotero('14142718', 'user', 'IqssCl6uXkPQqcMP6y52Enj2')
+    # zot.get_pdf_file('SNXV9A8F', None, config.get_upload_path())
+    zot.get_all_pdf_file()
     return
+    
 
 if __name__ == "__main__":
     main()
