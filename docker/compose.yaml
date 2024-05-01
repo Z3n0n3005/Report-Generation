@@ -19,7 +19,7 @@ services:
     depends_on:
       - grobid-server
     healthcheck:
-      test: ["CMD", "wget", "-q", "http://server:8070/"]
+      test: ["CMD", "wget", "-q", "http://grobid-server:8070/"]
       interval: 5s
       retries: 30
     develop:

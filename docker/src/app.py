@@ -1,7 +1,7 @@
 import os
 from grobid import parse_pdf
 from zotero import Zotero
-from flask import Flask, request, Response, jsonify
+from flask import Flask, request, Response, jsonify, session
 from werkzeug.utils import secure_filename
 import config
 import xml_parser
@@ -110,6 +110,7 @@ def getAllPdfFilesZotero():
         or 'Library-Id' not in keys     
     ):
         app.logger.error("Required keys are missing from headers")
+        
         return Response(
             status = 400, 
             response = "Required keys are missing from headers"

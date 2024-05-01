@@ -8,14 +8,15 @@ import { platform } from "node:os";
 // import * as sleep from 'sleep'
 import * as fs from 'node:fs'
 import { pathToFileURL } from "node:url";
+import { report } from "node:process";
 
 function reportGen(
   target: any,
   propertyKey: string | symbol,
   descriptor: PropertyDescriptor,
 ) {
-  const original = descriptor.value;
-  descriptor.value = function (...args: any) {
+    const original = descriptor.value;
+    descriptor.value = function (...args: any) {
     try {
       ztoolkit.log(`Calling report gen function ${target.name}.${String(propertyKey)}`);
       return original.apply(this, args);
@@ -28,6 +29,16 @@ function reportGen(
 }
 
 export class ReportGenerationFactory{
+    static readonly API_KEY = "IqssCl6uXkPQqcMP6y52Enj2"
+    static readonly LIBRARY_ID = "14142718"
+    static readonly LIBRARY_TYPE = "user"
+    static readonly ITEM_KEY = "SNXV9A8F"
+    static readonly URL_BASE = "http://127.0.0.1:5000"
+    static readonly URL_SUMMARY = "/summarize"
+    static readonly URL_UPLOAD = "/upload"
+    static readonly URL_GET_PDF_FILE_ZOTERO = "/getPdfFileZotero"
+    
+
     @reportGen
     private static generateSummaries() { 
         const zp = Zotero.getActiveZoteroPane();
@@ -35,7 +46,7 @@ export class ReportGenerationFactory{
         ztoolkit.log("[ReportGen] selectedItemsLength: " + sortedItems.length)
         
         // this.setSummarizeButton()
-        const pathList = []
+        const keyList = []
         for (let index = 0; index < sortedItems.length; index++) {
             ztoolkit.log("[ReportGen] index: " + index + " " + sortedItems.length)
             const item = sortedItems[index];
@@ -43,9 +54,9 @@ export class ReportGenerationFactory{
             
             // if could not get file path
             if(!pdfFilePath){ continue }
-            pathList.push(<string>pdfFilePath)
+            keyList.push(item.key)
         }
-        ReportGenerationFactory.summarize(pathList)
+        ReportGenerationFactory.summarize(keyList)
 
     }
 
@@ -124,62 +135,16 @@ export class ReportGenerationFactory{
 
     // This method is currently under construction, might not even work at all
     @reportGen
-    private static summarize(pathList:string[]){
-        // for(let i = 0; i < pathList.length; i++){
-            // const path = pathList[i]
-            const path = pathList[0]
-            const contentFromURL = Zotero.File.getContentsFromURL(path)
-            const resource = Zotero.File.getResource(path)
-            const diff = (diffMe:string, diffBy:string) => diffMe.split(diffBy).join('')
-            // const diffRes = diff(contentFromURL, resource)
-            // this.logToNote("resource: " + diffRes)
-            // normal stuffs
-            // const pdfFile = new File(
-            //     [pdfFileContent], 
-            //     this.getFileName(path),
-            //     {
-            //         type: 'application/pdf'
-            //     }
-            // )
-            // ztoolkit.log("filePath: " + this.getFileName(path))
-            // this.sendPdfFilesAsync(pdfFile)
-            // .then(result => {
-            //     if(!result){ return false}
-            //     return this.getSummaryResult()
-            // })
-            // .then(result => {
-            //     ztoolkit.log("Summary result: " + result)
-
-            // })
-            // fs.readFile(path, (res) => {
-            //     ztoolkit.log(res)
-                
-            // })
-            // async stuffs
-            Zotero.File.getBinaryContentsAsync(path)
-            .then(res => {
-                this.logToNote(diff(res, resource))
-                return new File(
-                    [res],
-                    this.getFileName(path),
-                    {
-                        type: 'application/pdf'
-                    }
-                )
-            })
-            .then(res => {
-                // ztoolkit.log("formdata: " + res.name)
-                return this.sendPdfFilesAsync(res)
-            })
-            .then(res => {
-                if(!res){ return false}
-                return this.getSummaryResult()
-            })
-            .then(res => {
-                ztoolkit.log("Summary result: " + res)
-            })
-            
-        // }
+    private static summarize(keyList:string[]){
+        const postPdfFileList:Array<Promise<any>> = []
+        // keyList.forEach((key) => {
+        //    postPdfFileList.push(this.postZoteroFile(key))
+        // })
+        // postPdfFileList.push(this.postZoteroFile(keyList[0]))
+        postPdfFileList.push(this.postZoteroFile(this.ITEM_KEY))
+        Promise.all(postPdfFileList).then((res) => {
+            this.getSummaryResult()
+        })
     }
 
     @reportGen
@@ -208,13 +173,6 @@ export class ReportGenerationFactory{
 
     @reportGen
     private static async sendPdfFilesAsync(file: File):Promise<boolean>{
-        const urlBase = "http://127.0.0.1:5000"
-        const urlUpload = "/upload"
-        const urlSummarize = "/summarize"
-        // if(!files.length){
-        //     ztoolkit.log('Error: No PDF files selected')
-        // }
-
         const formData = new window.FormData()
         ztoolkit.log(formData)
         
@@ -225,10 +183,13 @@ export class ReportGenerationFactory{
         formData.append('files', file)
 
         try {
-            const response = await fetch(urlBase + urlUpload, {
-                method: 'POST', 
-                body: formData, 
-            });
+            const response = await fetch(
+                this.URL_BASE + this.URL_UPLOAD, 
+                {
+                    method: 'POST', 
+                    body: formData, 
+                }
+            );
 
             if(!response.ok){
                 return false
@@ -240,15 +201,34 @@ export class ReportGenerationFactory{
         }
 
     }
+    
+    @reportGen
+    private static async postZoteroFile(itemKey:string):Promise<any>{
+        try{
+            const response = await fetch(
+                this.URL_BASE + this.URL_GET_PDF_FILE_ZOTERO,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Api-Key': this.API_KEY,
+                        'Library-Type': this.LIBRARY_TYPE,
+                        'Library-Id': this.LIBRARY_ID,
+                        'Item-Key': itemKey
+                    }
+                }
+            )
+            ztoolkit.log(response.headers)
+        }
+        catch(error){
+            throw error
+        }
+    }
 
     @reportGen
     private static async getSummaryResult():Promise<any>{
-        const urlBase = "http://127.0.0.1:5000"
-        const urlUpload = "/upload"
-        const urlSummarize = "/summarize"
-
         try{
-            const response = await fetch(urlBase + urlSummarize, 
+            const response = await fetch(
+                this.URL_BASE + this.URL_SUMMARY, 
                 {
                     method: 'POST'
                 }
