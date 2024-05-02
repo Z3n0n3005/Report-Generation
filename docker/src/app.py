@@ -10,7 +10,7 @@ import json
 
 UPLOAD_FOLDER = config.get_upload_path()
 SEGMENT_FOLDER = config.get_segment_path()
-
+ALLOWED_EXTENSIONS = ['pdf', 'Pdf', 'PDF']
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = 'secret_key'

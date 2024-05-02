@@ -87,5 +87,8 @@ class Paper:
                 continue
         
         for segment in segments_to_remove:
-            self.segment_list.remove(segment)
+            try:
+                self.segment_list.remove(segment)
+            except:
+                print(segment)
                 
