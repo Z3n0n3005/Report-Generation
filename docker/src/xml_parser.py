@@ -2,6 +2,7 @@ import config
 import os
 from paper import Paper
 from segment import Segment
+import app
 import xml.etree.ElementTree as ET
 import re
 
@@ -61,6 +62,9 @@ def get_segment_list(file) -> list[Segment]:
     namespace = get_namespace()
     tree = ET.parse(file)
     root = tree.getroot()
+    # for e in root.iter():
+    #     app.flask_log(e.__str__())
+    app.flask_log(root.items())
     
     # Get all <body>
     for body in root.findall(".//tei:body", namespace):
@@ -68,10 +72,16 @@ def get_segment_list(file) -> list[Segment]:
         prev_header_number = "-1"
 
         # Get all <div>
+        app.flask_log(body.items())
         for div in body.findall("tei:div", namespace):
             # Get <head>
+            app.flask_log(set(div.iter()))
             header = div.find("tei:head", namespace)
+            # app.flask_log(set(header.iter()))
             # Get value of <head n="...">
+            if(header == None):
+                continue
+
             header_number = header.get("n")
 
             if(header_number == None):

@@ -18,6 +18,9 @@ app.secret_key = 'secret_key'
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
     
+def flask_log(content):
+    app.logger.info(content) 
+
 @app.route("/")
 def hello_world():
     return '<p>Hello World!</p>'
@@ -152,6 +155,6 @@ def summarize():
 if __name__ == "__main__":
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     app.secret_key = "secret_key"
-    app.run(debug=True)
+    app.run(debug=False, threaded = True)
 
     # summarize()
