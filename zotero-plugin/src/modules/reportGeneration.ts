@@ -9,6 +9,7 @@ import { platform } from "node:os";
 import * as fs from 'node:fs'
 import { pathToFileURL } from "node:url";
 import { report } from "node:process";
+import { Worker } from "node:cluster";
 
 function reportGen(
   target: any,
@@ -33,7 +34,9 @@ export class ReportGenerationFactory{
     static readonly LIBRARY_ID = "14142718"
     static readonly LIBRARY_TYPE = "user"
     static readonly ITEM_KEY = "SNXV9A8F"
-    static readonly URL_BASE = "http://127.0.0.1:5000"
+    static readonly IP_LOCAL_HOST = "127.0.0.1"
+    static readonly IP_LOCAL_ROUTER = "192.168.100.28"
+    static readonly URL_BASE = "http://" + this.IP_LOCAL_ROUTER + ":5000"
     static readonly URL_SUMMARY = "/summarize"
     static readonly URL_UPLOAD = "/upload"
     static readonly URL_GET_PDF_FILE_ZOTERO = "/getPdfFileZotero"
@@ -137,11 +140,15 @@ export class ReportGenerationFactory{
     @reportGen
     private static summarize(keyList:string[]){
         const postPdfFileList:Array<Promise<any>> = []
-        // keyList.forEach((key) => {
-        //    postPdfFileList.push(this.postZoteroFile(key))
-        // })
+        // const worker = new Worker("./postZoteroFileThread.ts")
+
+        keyList.forEach((key) => {
+           postPdfFileList.push(this.postZoteroFile(key))
+        })
+
+        // Promise.
         // postPdfFileList.push(this.postZoteroFile(keyList[0]))
-        postPdfFileList.push(this.postZoteroFile(this.ITEM_KEY))
+        // postPdfFileList.push(this.postZoteroFile(this.ITEM_KEY))
         Promise.all(postPdfFileList).then((res) => {
             this.getSummaryResult()
         })
@@ -155,15 +162,6 @@ export class ReportGenerationFactory{
         // this.setSummarizeButton()
         const standAloneNote = sortedItems[0]
         standAloneNote.setNote(content)
-        // standAloneNote
-        // for (let index = 0; index < sortedItems.length; index++) {
-        //     ztoolkit.log("[ReportGen] index: " + index + " " + sortedItems.length)
-        //     const item = sortedItems[index];
-        //     const pdfFilePath = this.getFilePath(item)
-            
-        //     // if could not get file path
-        //     if(!pdfFilePath){ continue }
-        // }
     }
 
     @reportGen
