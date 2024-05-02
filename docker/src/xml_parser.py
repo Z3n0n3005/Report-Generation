@@ -5,6 +5,7 @@ from segment import Segment
 import app
 import xml.etree.ElementTree as ET
 import re
+import textrank
 
 SEGMENT_FOLDER = config.get_segment_path()
 SEGMENT_FILE_PATH = ".grobid.tei.xml"
@@ -70,9 +71,22 @@ def get_segment_list(file) -> list[Segment]:
     for body in root.findall(".//tei:body", namespace):
         segment = Segment()
         prev_header_number = "-1"
+        is_no_header_num = True
 
         # Get all <div>
         app.flask_log(body.items())
+        
+        # Check if there is no number in any header
+        for div in body.findall("tei:div", namespace):
+            header = div.find("tei:head", namespace)
+            if(header == None):
+                continue
+            
+            header_number = header.get("n")
+            if(header_number != None):
+                is_no_header_num = False
+                break
+
         for div in body.findall("tei:div", namespace):
             # Get <head>
             app.flask_log(set(div.iter()))
@@ -81,18 +95,22 @@ def get_segment_list(file) -> list[Segment]:
             # Get value of <head n="...">
             if(header == None):
                 continue
-
+            # print(header.text)
             header_number = header.get("n")
 
             if(header_number == None):
-                # In case no header number is found in the entire file
                 key = 0
-                if(prev_header_number == -1):
+                if(prev_header_number == "-1"):
                     key = 1
 
                 # print(prev_header_number[key])
                 header_number = prev_header_number[key] + ".0"
-
+                
+                # In case no header number is found in the entire file
+                if(is_no_header_num):
+                    header_number = str(int(prev_header_number) + 1)
+                
+ 
             main_header_number = header_number[0]
             
             # print(main_header_number, prev_header_number)
@@ -127,4 +145,6 @@ def get_namespace() -> dict:
 
 if __name__ == "__main__":
     print(SEGMENT_FOLDER)
-    parse_xml_folder()
+    papers = parse_xml_folder()
+    s_papers = textrank.summarize_folder(papers)
+    textrank.save_to_folder(s_papers)

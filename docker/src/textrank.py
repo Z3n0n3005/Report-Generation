@@ -47,11 +47,29 @@ def get_stop_word_list() -> str:
 
 def summarize_text(text:str) -> str:
     return summarize(
-        text=text, 
-        ratio=0.2,
-        additional_stopwords=get_stop_word_list(), 
-        words=50
+        text = text, 
+        words = get_max_length_sentence(text) + 5,
+        additional_stopwords=get_stop_word_list()
     )
+    # return summarize(
+    #     text=text, 
+    #     ratio=0.2,
+    #     additional_stopwords=get_stop_word_list(), 
+    #     words=50
+    # )
+
+def get_max_length_sentence(text:str) -> int:
+    sentences = text.split(". ")  # Split by ". " considering spaces after period
+    if not sentences:
+        return None
+    return get_word_count(max(sentences, key=len))
+
+def get_word_count(text:str) -> int:
+    
+    words = text.split(" ")
+    if not words:
+        return None
+    return len(words)
 
 if __name__ == "__main__":
     print("textrank")
