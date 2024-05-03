@@ -6,7 +6,9 @@ import requests
 from concurrent.futures import ThreadPoolExecutor, wait
 from grobid_client.client import ApiClient
 
-url_base = 'http://127.0.0.1:5000'
+ip_local_host = '127.0.0.1'
+ip_local_router = '192.168.100.28'
+url_base = 'http://' + ip_local_router + ':5000'
 url_upload = '/upload'
 url_summarize = '/summarize'
 url_connect_to_zotero = '/connectToZotero'
@@ -14,6 +16,10 @@ url_get_pdf_file_zotero = '/getPdfFileZotero'
 pdf_folder = 'C:\\Users\\DELL\\Prototype\\Report-Generation\\paper'
 
 pdf_path = 'C:\\Users\\DELL\\Prototype\\Report-Generation\\paper\\a-brief-survey-of-text-mining.pdf'
+
+pdf_path = '/media/vy/vy/prototype/Report-Generation/docker/resources/temp/pdf_in/Deienno_et_al._-_2024_-_Accretion_and_Uneven_Depletion_of_the_Main_Asteroi.pdf'
+
+pdf_folder = '/media/vy/vy/prototype/Report-Generation/docker/resources/temp/pdf_in'
 
 def upload_file(file_path, url):
     with open(file_path, "rb") as pdf_handle:
@@ -45,14 +51,14 @@ def main():
     return
 
 if __name__ == "__main__":
-    
+    # main()
+
     file_header = {
         'Api-Key':'IqssCl6uXkPQqcMP6y52Enj2', 
         'Library-Id':'14142718',
         'Library-Type':'user',
         'Item-Key':'SNXV9A8F'
     }
-    # main()
     session = requests.Session()
     # response = session.post(
     #     url=url_base+url_connect_to_zotero,

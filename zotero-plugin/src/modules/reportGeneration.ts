@@ -1,16 +1,3 @@
-
-import { UITool, TagElementProps } from "zotero-plugin-toolkit/dist/tools/ui";
-// import * as async from 'async'
-// import * as path from 'path'
-// import * as fs from 'node:fs'
-import { platform } from "node:os";
-// import * as mkdirp from 'mkdirp'
-// import * as sleep from 'sleep'
-import * as fs from 'node:fs'
-import { pathToFileURL } from "node:url";
-import { report } from "node:process";
-import { Worker } from "node:cluster";
-
 function reportGen(
   target: any,
   propertyKey: string | symbol,
@@ -36,7 +23,7 @@ export class ReportGenerationFactory{
     static readonly ITEM_KEY = "SNXV9A8F"
     static readonly IP_LOCAL_HOST = "127.0.0.1"
     static readonly IP_LOCAL_ROUTER = "192.168.100.28"
-    static readonly URL_BASE = "http://" + this.IP_LOCAL_ROUTER + ":5000"
+    static readonly URL_BASE = "http://" + this.IP_LOCAL_HOST + ":5000"
     static readonly URL_SUMMARY = "/summarize"
     static readonly URL_UPLOAD = "/upload"
     static readonly URL_GET_PDF_FILE_ZOTERO = "/getPdfFileZotero"
@@ -142,16 +129,21 @@ export class ReportGenerationFactory{
         const postPdfFileList:Array<Promise<any>> = []
         // const worker = new Worker("./postZoteroFileThread.ts")
 
-        keyList.forEach((key) => {
-           postPdfFileList.push(this.postZoteroFile(key))
-        })
+//        keyList.forEach((key) => {
+//           postPdfFileList.push(this.postZoteroFile(key))
+//        })
 
         // Promise.
         // postPdfFileList.push(this.postZoteroFile(keyList[0]))
-        // postPdfFileList.push(this.postZoteroFile(this.ITEM_KEY))
-        Promise.all(postPdfFileList).then((res) => {
+        const result = this.postZoteroFile(this.ITEM_KEY)
+        result.then((res) => {
+            ztoolkit.log(res)
             this.getSummaryResult()
         })
+        // postPdfFileList.push(this.postZoteroFile(this.ITEM_KEY))
+        // Promise.all(postPdfFileList).then((res) => {
+        //     this.getSummaryResult()
+        // })
     }
 
     @reportGen
@@ -215,7 +207,7 @@ export class ReportGenerationFactory{
                     }
                 }
             )
-            ztoolkit.log(response.headers)
+            // ztoolkit.log(response)
         }
         catch(error){
             throw error
@@ -240,18 +232,6 @@ export class ReportGenerationFactory{
     }
 
     @reportGen
-    private static getSummaryHTML(filePath:string):string{
-        var result = ""
-        // const child = spawn(ReportGenPath, [
-        //     "--filePath", 
-        //     filePath,
-        //     "-a", 
-        //     "textrank"
-        // ])
-        return result
-    }
-
-    @reportGen
     private static addSummaryNote(item:Zotero.Item){
         const htmlPrefix = "<div data-schema-version=\"8\">";
         const htmlSufix = "</div>"
@@ -259,11 +239,6 @@ export class ReportGenerationFactory{
         var htmlContent = "<p><strong>Hi</strong></p>"
         const htmlFinal = htmlPrefix + htmlNoteTitle + htmlContent + htmlSufix
         item.setNote(htmlFinal)
-    }
-
-    @reportGen
-    private static unregisterNotifier(notifierID: string) {
-        Zotero.Notifier.unregisterObserver(notifierID);
     }
 
     @reportGen
