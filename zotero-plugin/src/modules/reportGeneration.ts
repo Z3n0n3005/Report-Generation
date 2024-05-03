@@ -20,7 +20,8 @@ export class ReportGenerationFactory{
     static readonly API_KEY = "IqssCl6uXkPQqcMP6y52Enj2"
     static readonly LIBRARY_ID = "14142718"
     static readonly LIBRARY_TYPE = "user"
-    static readonly ITEM_KEY = "SNXV9A8F"
+    // static readonly ITEM_KEY = "SNXV9A8F"
+    static readonly ITEM_KEY = "3XNTQMIM"
     static readonly IP_LOCAL_HOST = "127.0.0.1"
     static readonly IP_LOCAL_ROUTER = "192.168.100.28"
     static readonly URL_BASE = "http://" + this.IP_LOCAL_HOST + ":5000"
@@ -37,6 +38,7 @@ export class ReportGenerationFactory{
         
         // this.setSummarizeButton()
         const keyList = []
+        const itemKeyPair:{[key:string]: Zotero.Item} = {}
         for (let index = 0; index < sortedItems.length; index++) {
             ztoolkit.log("[ReportGen] index: " + index + " " + sortedItems.length)
             const item = sortedItems[index];
@@ -45,8 +47,15 @@ export class ReportGenerationFactory{
             // if could not get file path
             if(!pdfFilePath){ continue }
             keyList.push(item.key)
+            ztoolkit.log("From self")
+            ztoolkit.log(item)
+            itemKeyPair[item.key] = item
+            ztoolkit.log("From dictionary:")
+            ztoolkit.log(itemKeyPair[item.key])
+            ztoolkit.log("Dictionary: ")
+            ztoolkit.log(itemKeyPair)
         }
-        ReportGenerationFactory.summarize(keyList)
+        ReportGenerationFactory.summarize(keyList, itemKeyPair)
 
     }
 
@@ -125,7 +134,7 @@ export class ReportGenerationFactory{
 
     // This method is currently under construction, might not even work at all
     @reportGen
-    private static summarize(keyList:string[]){
+    private static summarize(keyList:string[], itemKeyPair:{[key:string]:Zotero.Item}){
         const postPdfFileList:Array<Promise<any>> = []
         // const worker = new Worker("./postZoteroFileThread.ts")
 
@@ -138,7 +147,14 @@ export class ReportGenerationFactory{
         const result = this.postZoteroFile(this.ITEM_KEY)
         result.then((res) => {
             ztoolkit.log(res)
-            this.getSummaryResult()
+//            return this.getSummaryResult()
+        }).then((res) =>  {
+//            ztoolkit.log(res[0].segments)
+//            const item = itemKeyPair[this.ITEM_KEY]
+//            ztoolkit.log(item)
+//            if(item !== undefined){
+//                this.addSummaryNote(item, res)
+//            }
         })
         // postPdfFileList.push(this.postZoteroFile(this.ITEM_KEY))
         // Promise.all(postPdfFileList).then((res) => {
@@ -232,13 +248,21 @@ export class ReportGenerationFactory{
     }
 
     @reportGen
-    private static addSummaryNote(item:Zotero.Item){
+    private static addSummaryNote(item:Zotero.Item, res:any){
         const htmlPrefix = "<div data-schema-version=\"8\">";
         const htmlSufix = "</div>"
         const htmlNoteTitle = "<p>" + NoteTitle + "<\p>";
-        var htmlContent = "<p><strong>Hi</strong></p>"
+        var htmlContent = ""
+        var contents = res[0].segments
+        contents.forEach((content:any) => {
+            htmlContent += "<strong><p>" + content.header + "</p></strong>><br>"
+            htmlContent += "<p>" + content.content + "</p>"
+        })
+
         const htmlFinal = htmlPrefix + htmlNoteTitle + htmlContent + htmlSufix
-        item.setNote(htmlFinal)
+        var noteItem = new Zotero.Item("note")
+        noteItem.setNote(htmlFinal)
+        // item.(htmlFinal)
     }
 
     @reportGen
