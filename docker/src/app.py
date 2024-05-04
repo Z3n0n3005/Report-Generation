@@ -69,7 +69,7 @@ def upload():
     return 'Successfully send files'
 
 @app.route("/getPdfFileZotero", methods=['GET', 'POST'])
-def getPdfFileZotero():
+async def getPdfFileZotero():
     app.logger.info(dict(request.headers))
     keys = set(request.headers.keys())
     if(
@@ -95,15 +95,21 @@ def getPdfFileZotero():
         )
 
     zot = Zotero(library_id, library_type, api_key)
-    zot.get_pdf_file(item_key, None, UPLOAD_FOLDER)
+    result = await zot.get_pdf_file(item_key, UPLOAD_FOLDER)
 
-    return Response(
-        status = 200,
-        response = "Succesfully retrieved corresponding PDF file."
-    )
+    if(result):
+        return Response(
+            status = 200,
+            response = "Succesfully retrieved corresponding PDF file."
+        )
+    else:
+        return Response (
+            status = 400, 
+            response = "Failed to retrieved corresponding PDF file."
+        )
 
 @app.route("/getAllPdfFileZotero", methods=['GET'])
-def getAllPdfFilesZotero():
+async def getAllPdfFilesZotero():
     app.logger.info(dict(request.headers))
     keys = set(request.headers.keys())
     if(
@@ -130,16 +136,26 @@ def getAllPdfFilesZotero():
         )
 
     zot = Zotero(library_id, library_type, api_key)
-    zot.get_pdf_file(item_key, None, UPLOAD_FOLDER)
-
-    return Response(
-        status = 200,
-        response = "Succesfully retrieved corresponding PDF file."
-    )
+    result = await zot.get_pdf_file(item_key, None, UPLOAD_FOLDER)
+    if(result):
+        return Response(
+            status = 200,
+            response = "Succesfully retrieved corresponding PDF file."
+        )
+    else:
+        return Response (
+            status = 400, 
+            response = "Failed to retrieved corresponding PDF file."
+        )
 
 @app.route("/summarize", methods=['POST'])
-def summarize():
-    parse_pdf()
+async def summarize():
+    result = await parse_pdf()
+    if(not result):
+        return Response(
+            status=500,
+            response = "Failed to contact GROBID server"
+        ) 
     papers = xml_parser.parse_xml_folder()
     s_papers = textrank.summarize_folder(papers)
     textrank.save_to_folder(s_papers)
@@ -147,6 +163,7 @@ def summarize():
     paper_json_list = []
     for s_paper in s_papers:
         paper_json_list.append(s_paper.to_json_format())
+        
     return Response(
         status=200,
         response=json.dumps(paper_json_list)

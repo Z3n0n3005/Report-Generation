@@ -1,6 +1,7 @@
 requests
-flask
+flask[async]
 redis
 werkzeug
 summa
 pyzotero
+asyncio

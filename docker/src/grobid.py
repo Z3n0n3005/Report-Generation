@@ -4,6 +4,9 @@ import time
 import config
 sys.path.insert(1, '/code/lib/grobid_client_python/')
 from grobid_client.grobid_client import GrobidClient
+import app
+from flask import current_app
+import concurrent.futures
 
 # Linux paths
 # UPLOAD_FOLDER = '/code/resources/pdf_in'
@@ -24,16 +27,19 @@ def _read_json(file_path):
         data = json.load(file)
         print(data)
 
-def parse_pdf():
-    print('hello')
-
-    client = GrobidClient(config_path=GROBID_CONFIG_PATH)
-    client.process("processFulltextDocument", UPLOAD_FOLDER, output=SEGMENT_FOLDER, consolidate_citations=False, tei_coordinates=False, verbose=True)
-
-    # client = GrobidClient(config_path="C:\\Users\\DELL\\Prototype\\docker-compose-practice\\grobidtest\\config.json")
-    # client.process("processFulltextDocument", "C:\\Users\\DELL\\Prototype\\docker-compose-practice\\grobidtest\\resources\\test_in", output="C:\\Users\\DELL\\Prototype\\docker-compose-practice\\grobidtest\\resources\\test_out", consolidate_citations=True, tei_coordinates=True, verbose=True, n=20)
+async def parse_pdf() -> bool:
+    start_time = time.time()
+    with app.app.app_context():
+        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+            try:
+                client = GrobidClient(config_path=GROBID_CONFIG_PATH)
+                client.process("processFulltextDocument", UPLOAD_FOLDER, output=SEGMENT_FOLDER, consolidate_citations=False, tei_coordinates=False, verbose=True)
+            except:
+                return False
+    end_time = time.time()
+    app.app.logger.info("Grobid parse pdf time: " + str(end_time - start_time))
     
-    return 
+    return True
 
 if __name__ == "__main__":
     parse_pdf()

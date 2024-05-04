@@ -6,11 +6,13 @@ import app
 import xml.etree.ElementTree as ET
 import re
 import textrank
+import time
 
 SEGMENT_FOLDER = config.get_segment_path()
 SEGMENT_FILE_PATH = ".grobid.tei.xml"
 
 def parse_xml_folder() -> list[Paper]:
+    start_time = time.time()
     files = []
     papers_name:list[str] = []
     papers:list[Paper] = []
@@ -28,14 +30,15 @@ def parse_xml_folder() -> list[Paper]:
 
         # Create new paper
         paper = get_xml_parsing_result(file)
-        paper.set_name(paper_name.removesuffix(SEGMENT_FILE_PATH))
-        paper.set_id(hash(paper.get_name()))
+        paper.set_name(paper_name.removesuffix(SEGMENT_FILE_PATH)[9:])
+        paper.set_id(paper_name[0:8])
         print(paper.get_id())
         paper.clean()
 
         # Append paper to list
         papers.append(paper)
-
+    end_time = time.time()
+    app.app.logger.info("XMl Parser folder time: " + str(end_time - start_time))
     return papers
 
 def get_xml_parsing_result(file) -> Paper:
@@ -65,7 +68,7 @@ def get_segment_list(file) -> list[Segment]:
     root = tree.getroot()
     # for e in root.iter():
     #     app.flask_log(e.__str__())
-    app.flask_log(root.items())
+    # app.flask_log(root.items())
     
     # Get all <body>
     for body in root.findall(".//tei:body", namespace):
@@ -74,7 +77,7 @@ def get_segment_list(file) -> list[Segment]:
         is_no_header_num = True
 
         # Get all <div>
-        app.flask_log(body.items())
+        # app.flask_log(body.items())
         
         # Check if there is no number in any header
         for div in body.findall("tei:div", namespace):
@@ -89,7 +92,7 @@ def get_segment_list(file) -> list[Segment]:
 
         for div in body.findall("tei:div", namespace):
             # Get <head>
-            app.flask_log(set(div.iter()))
+            # app.flask_log(set(div.iter()))
             header = div.find("tei:head", namespace)
             # app.flask_log(set(header.iter()))
             # Get value of <head n="...">

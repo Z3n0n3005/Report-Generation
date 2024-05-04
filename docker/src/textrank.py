@@ -5,10 +5,13 @@ import config
 from paper import Paper
 from segment import Segment
 import json
+import time
+import app
 
 SUMMARY_FOLDER = config.get_summary_path()
 
 def summarize_folder(papers:list[Paper]) -> list[Paper]:
+    start_time = time.time()
     s_papers = []
     for paper in papers:
         id = paper.get_id()
@@ -29,6 +32,8 @@ def summarize_folder(papers:list[Paper]) -> list[Paper]:
             s_segment.set_content(s_content)
             s_paper.append_to_segment_list(s_segment)
         s_papers.append(s_paper)
+    end_time = time.time()
+    app.app.logger.info("Summarize folder: " + str(end_time - start_time))
     return s_papers
 
 def save_to_folder(papers:list[Paper]):
