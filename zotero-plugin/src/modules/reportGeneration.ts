@@ -28,6 +28,8 @@ export class ReportGenerationFactory{
     static readonly URL_SUMMARY = "/summarize"
     static readonly URL_UPLOAD = "/upload"
     static readonly URL_GET_PDF_FILE_ZOTERO = "/getPdfFileZotero"
+    static readonly SUM_ALGO = "textrank"
+    // static readonly SUM_ALGO = "lsa"
     
 
     @reportGen
@@ -183,7 +185,7 @@ export class ReportGenerationFactory{
                 ztoolkit.log(itemKeyPair)
                 // ztoolkit.log(itemKeyPair[this.ITEM_KEY])
                 if(item !== undefined){
-                    this.addSummaryNote(item, segments)
+                    // this.addSummaryNote(item, segments)
                 } else {
                     ztoolkit.log("item is undefined " + itemKey)
                 }
@@ -229,7 +231,10 @@ export class ReportGenerationFactory{
             const response = await fetch(
                 this.URL_BASE + this.URL_SUMMARY, 
                 {
-                    method: 'POST'
+                    method: 'POST',
+                    headers: {
+                        'Sum-Algo':'textrank'
+                    }
                 }
             )
             const result = await response.json()
