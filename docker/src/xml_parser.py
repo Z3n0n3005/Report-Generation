@@ -5,7 +5,7 @@ from segment import Segment
 import app
 import xml.etree.ElementTree as ET
 import re
-import textrank
+import summary
 import time
 
 SEGMENT_FOLDER = config.get_segment_path()
@@ -149,5 +149,5 @@ def get_namespace() -> dict:
 if __name__ == "__main__":
     print(SEGMENT_FOLDER)
     papers = parse_xml_folder()
-    s_papers = textrank.summarize_folder(papers)
-    textrank.save_to_folder(s_papers)
+    s_papers = summary.summarize_folder(papers)
+    summary.save_to_folder(s_papers)

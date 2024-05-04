@@ -5,7 +5,7 @@ from flask import Flask, request, Response, jsonify, session
 from werkzeug.utils import secure_filename
 import config
 import xml_parser
-import textrank
+import summary
 import json
 
 UPLOAD_FOLDER = config.get_upload_path()
@@ -150,6 +150,14 @@ async def getAllPdfFilesZotero():
 
 @app.route("/summarize", methods=['POST'])
 async def summarize():
+    keys = set(request.headers.keys())
+    if('Sum-Algo' not in keys):
+        app.logger.error("Required keys are missing from headers")
+        return Response(
+            status = 400, 
+            response = "Required keys are missing from headers"
+        )
+    sum_algo = request.headers.get("Sum-Algo")
     result = await parse_pdf()
     if(not result):
         return Response(
@@ -157,8 +165,8 @@ async def summarize():
             response = "Failed to contact GROBID server"
         ) 
     papers = xml_parser.parse_xml_folder()
-    s_papers = textrank.summarize_folder(papers)
-    textrank.save_to_folder(s_papers)
+    s_papers = summary.summarize_folder(papers, sum_algo)
+    summary.save_to_folder(s_papers)
     # Delete all files after parsing
     paper_json_list = []
     for s_paper in s_papers:
