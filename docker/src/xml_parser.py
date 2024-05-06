@@ -149,5 +149,5 @@ def get_namespace() -> dict:
 if __name__ == "__main__":
     print(SEGMENT_FOLDER)
     papers = parse_xml_folder()
-    s_papers = summary.summarize_folder(papers, "lsa")
-    summary.save_to_folder(s_papers)
+    # s_papers = summary.summarize_folder(papers, "lsa")
+    summary.save_to_folder(papers)
