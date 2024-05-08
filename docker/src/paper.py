@@ -60,7 +60,7 @@ class Paper:
         result = {}
         result["id"] = self.id
         result["name"] = self.name
-        result["abstract_seg"] = self.abstract_segment
+        # result["abstract_seg"] = self.abstract_segment
         result["segments"] = []
         for segment in self.segment_list:
             segment_dict = {}
