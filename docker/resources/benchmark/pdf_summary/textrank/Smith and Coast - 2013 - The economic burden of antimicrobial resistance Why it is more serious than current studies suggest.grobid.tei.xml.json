@@ -1,0 +1,115 @@
+{
+  "id": "Smith an",
+  "name": "Smith and Coast - 2013 - The economic burden of antimicrobial resistance Why it is more serious than current studies suggest.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "It increases the threat not only of primary infectious diseases such as tuberculosis, but also secondary infections associated both with other diseases and the provision of healthcare itself The paper highlights the critical problem with the current emphasis on using economic burden as evidence for directing future investment in health issues, as well as difficulties related to methodologies available for estimating such burden."
+    },
+    {
+      "header": "A brief history of AMR",
+      "content": "Although there remain uncertainties over the development of resistance, the 'genetic cost' to the organism, and the extent to which resistance is temporary or permanent, there is concern that over time there is no reason to suspect that resistance will not occur to all antimicrobials; the only question is to what level Resistance means that an antimicrobial therapy is no longer (as) effective against the organism it is targeting."
+    },
+    {
+      "header": "The current situation",
+      "content": "So, given this history, why is the level of concern increasing now?\nIt is because the increase in organisms resistant to multiple therapies is now coinciding with the reduction in new therapies coming to market to replace ineffective ones.That resistance develops to an antimicrobial therapy is not itself a problem -and as indicated is merely a natural process, albeit accelerated by use of these therapiesas long as there are other therapies to take its place."
+    },
+    {
+      "header": "FIGURE 1: DRUG DISCOVERY",
+      "content": "In 2004, only 1.6% of drugs in development by the world's 15 largest drug companies were antimicrobials At the same time that the number of new therapeutics has been declining, organisms such as S."
+    },
+    {
+      "header": "Current activities",
+      "content": "This work has helped to strengthen surveillance, infection prevention and control, and to promote the responsible use of antimicrobials in the UK."
+    },
+    {
+      "header": "Why these are not sufficient",
+      "content": "Although there have been positive changes, and many within the scientific community are now convinced of the need for action, the question is whether interventions such as these remain marginal in relation to the total size of the problem, with insufficient impact on reductions in antimicrobial use to change a future in which the loss of effective antimicrobial therapies is inevitable."
+    },
+    {
+      "header": "Evidence on current economic burden",
+      "content": "Qualitatively we know that treatment failure caused by AMR contributes to increased costs of care associated with: additional investigations such as laboratory tests and X-ray examinations; additional or alternative treatments, often much more expensive than drugs used to treat infections caused by sensitive organisms; additional sideeffects from more toxic treatments, which have to be managed; longer hospital stay; longer time off work; reduced quality of life and productivity; greater likelihood of death due to inadequate or delayed treatment, hence reducing the workforce; increased burden on family of infected individual; increases in private insurance coverage; additional cost for hospital when hospital-acquired infection occurs and infection control procedures required; increased costs of disease surveillance; increased costs to firms of absenteeism, possibly leading to increased product prices; and so forth Yet, quantitatively, the problem is that, far from illuminating the burden of resistance, this translates into a vast range of figures depending upon what precisely is assessed."
+    },
+    {
+      "header": "Updated literature review",
+      "content": "We also previously undertook a systematic literature review concerning the economics of AMR, summarizing studies focusing upon the costs of resistance published up to 2000 For this current paper, we updated these searches to focus on papers published since 2000 which reported the cost impact of resistance in English-language, peerreviewed journals, where we could extract any or all of length of stay, mortality, patient cost and/or societal cost that may be attributable to AMR."
+    },
+    {
+      "header": "TABLE 1 SUMMARY OF COST DATA",
+      "content": "Given the very unique nature of the US health system, and its financial structure, these costs are unlikely to be indicative of other systems, such as the UK.Third, there is a heavy predominance of hospital-based studies, and indeed the costs are almost exclusively related to costs of additional hospitalization/treatment and do not include costs associated with early mortality; from an economic perspective this almost certainly underestimates the cost."
+    },
+    {
+      "header": "The case of MRSA",
+      "content": "Second, even at the high-end, the costs remain quite modest.\nIt is worth noting, however, that unlike some of the resistant gram-negatives currently emerging, there remains a choice of therapy available to treat MRSA."
+    },
+    { "header": "BOX 1: A CASE STUDY OF MRSA", "content": "" },
+    {
+      "header": "TABLE 2: COMPARATIVE ECONOMIC BURDEN",
+      "content": "The paradox of the relatively low level of economic impact Current evidence therefore suggests that the economic burden from AMR is actually quite modest, even though AMR is acknowledged to be a significant threat to health and healthcare."
+    },
+    {
+      "header": "Limits of assessing 'costs of resistance'",
+      "content": "A standard 'cost-of-illness' approach will not capture the true nature of the costs of AMR for three reasons.\nFirst, AMR is a negative externality associated with consumption of antimicrobials The problem is that the externality effect from each antimicrobial consumed is miniscule, especially once the future effects are discounted Second, the specific sigmoidal pattern of the development of resistance, illustrated in figure "
+    },
+    {
+      "header": "FIGURE 2: SIGMOIDAL DEVELOPMENT OF AMR",
+      "content": "The critical implication is that this uncertainty regarding current and future burden combined with discounting of future benefits means that strategies to reduce transmission are far more likely to appear cost-effective than strategies to control emergence, hence reinforcing the status-quo Third, estimates of cost-of-illness tend not to focus on less direct costs associated with the impact of resistance on patient safety or public confidence in health care institutions."
+    },
+    {
+      "header": "BOX 2: CASE STUDY HIPS",
+      "content": "As witnessed when there are outbreaks of hospital-acquired infection, the system can very quickly come to a standstill Multiplied across all the hundreds of clinical areas where antimicrobials are currently used, it can easily be envisaged that this will not only be a significant health burden, and present increased healthcare cost (inpatient stay) itself, but would present a catastrophic blow to health system development -for instance, requiring redesign of many facilities, the reintroduction of sanatoria and so forth."
+    },
+    {
+      "header": "Conclusion",
+      "content": "We are entering a pivotal period where, if current trends continue, there could be highly significant costs to healthcare, and society more generally, as antimicrobials that form the basis of modern healthcare become increasingly ineffective."
+    },
+    {
+      "header": "Reducing uncertainty and increasing knowledge of full health system impacts",
+      "content": "We are therefore faced with considerable uncertainty, but uncertainty that suggests we need to incur some (perhaps considerable) cost now associated with current reduced use of antimicrobials, in the expectation of some future, indeterminate but likely far greater, cost being averted.\nTo judge the scale of 'acceptable' cost now, however, we need much better information about both likely future trajectory and the cost implications under different trajectories.A key research need is thus to estimate the impact of widespread resistance to the health system overall, and to wider society."
+    },
+    {
+      "header": "Developing better, more radical, incentive mechanisms",
+      "content": "New options are needed that can discourage high levels of use whilst avoiding disincentives for private sector R&D into new therapies, such as greater publicprivate partnering, pre-purchase agreement, or direct public funding, which seems to be occurring at present but, compared with current estimates of costs of discovery to market, remain small In terms of individuals and their choice about whether to take antimicrobials, more needs to be done to balance the personal cost (minimal in the UK, and largely related to accessing a consultation, collecting a prescription and possible side effects) with the true societal cost."
+    },
+    {
+      "header": "Enhancing international activity",
+      "content": "As is apparent from the review of costs, the issue of antimicrobial resistance is not confined to the UK.International activity may be key to encouraging the development of new drugs and diagnostics to help control multi resistant bacteria.\nIt may also be vital to research to increase understanding of resistance mechanisms, cost trajectories, and means of controlling resistance in the absence of new drug developments."
+    },
+    {
+      "header": "Lessons from climate change",
+      "content": "Clear, simple and consistent messages from the scientific community have been vital in developing the increased acceptance of the desirability of action on global warming to a broader policy making community including politicians, economists and philanthropists.\nThe issue of resistance does not seem to have captured the public imagination, attention or support for change to the degree that global warming and the environment has.For antimicrobial resistance there is a clear danger that waiting for the burden to become significant before taking action may mean waiting until it is too late to stop an apocalyptic scenario -the very drive behind the early environmental movement's advocacy of the 'precautionary principle'."
+    },
+    {
+      "header": "BOX 2: CASE STUDY HIPS",
+      "content": "Here, at point 8 rates of post-operative infection are around 40-50%; of these, 30% go on to die -state 21 Clearly this represents a very crude estimate, for just one clinical area using antibiotics, but indicates the form of analysis required if we are to move towards beginning to estimate the full, true, economic burden of future AMR, with the removal of the option of antimicrobial therapies from a number of treatment pathways, both urgent and elective."
+    },
+    {
+      "header": "Search Process",
+      "content": "Given the limited resources, both financially and in terms of time, the searching of databases was limited to Web of Science and Medline and to searches on titles."
+    },
+    {
+      "header": "Stage 2/4: Citation searching",
+      "content": "Reference lists of papers selected for the review were scanned to identify any further papers.\nReview papers identified through the review were also used in citation searching, both at this stage and following stage 3 searching."
+    },
+    {
+      "header": "Stage 3: Further electronic bibliographic database searching relating to specific terminology",
+      "content": "Searches of citation lists of both empirical papers identified in Search 1 and key review papers, indicated that there were clearly papers relating to evidence about the costs of resistance in relation to particular micro-organisms that were being missed because of the lack of inclusion of specific terminology related to the relevant micro-organisms and/or the relevant antimicrobials.\nAgain, given limited resources, it was not feasible to search on all possible micro-organism names and all potential drugs."
+    },
+    {
+      "header": "Inclusion criteria",
+      "content": "Publication in peer-reviewed journals With regard to the third inclusion criterion, the choice of the control group of those with a susceptible infection was made as the aim was to focus on the costs of resistance rather than the costs of infection per se.Other economic aspects of the antimicrobial resistance problem, such as the costeffectiveness of alternative control strategies, were not included.Review papers were not selected for inclusion in the review, but where these were identified they were accessed for the purpose of citation tracking.As part of the aim was to determine the extent of evidence available, studies were not accepted or rejected on the basis of any quality criteria."
+    },
+    {
+      "header": "Identification of papers",
+      "content": "Papers in the stage 1 search were initially identified from abstracts obtained in the literature search and screened by three individuals, one of whom (JC) was expert in the subject area."
+    },
+    {
+      "header": "Data extraction",
+      "content": "Standardised data extraction forms, based on the earlier systematic review, were utilised.\nThe following data were extracted for each study: "
+    },
+    {
+      "header": "Findings",
+      "content": "The findings from the review are summarised in the report and table 1 provides details from the individual studies included.It should be emphasised that, because of the lack of resources for a full systematic review, including searching for all combinations of micro-organisms and drugs, the totality of this literature is almost certainly under-estimated."
+    }
+  ]
+}

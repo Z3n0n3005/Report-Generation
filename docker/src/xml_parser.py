@@ -30,7 +30,8 @@ def parse_xml_folder() -> list[Paper]:
 
         # Create new paper
         paper = get_xml_parsing_result(file)
-        paper.set_name(paper_name.removesuffix(SEGMENT_FILE_PATH)[9:])
+        # paper.set_name(paper_name.removesuffix(SEGMENT_FILE_PATH)[9:])
+        paper.set_name(paper_name)
         paper.set_id(paper_name[0:8])
         print(paper.get_id())
         paper.clean()
@@ -149,5 +150,8 @@ def get_namespace() -> dict:
 if __name__ == "__main__":
     print(SEGMENT_FOLDER)
     papers = parse_xml_folder()
-    # s_papers = summary.summarize_folder(papers, "lsa")
+    s_papers = summary.summarize_folder(
+        papers,
+        summary.SumAlgo.TEXTRANK.value
+    )
     summary.save_to_folder(papers)

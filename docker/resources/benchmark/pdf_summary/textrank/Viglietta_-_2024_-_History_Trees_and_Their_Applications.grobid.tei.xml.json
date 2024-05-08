@@ -1,0 +1,18 @@
+{
+  "id": "Vigliett",
+  "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "The introduction of history trees has recently led to the development of optimal linear-time algorithms for anonymous dynamic networks In Section 2, we outline the basic architecture of history trees, drawing comparisons with Yamashita-Kameda's views and Boldi-Vigna's minimum bases."
+    },
+    {
+      "header": "Basic Structure and Algorithms",
+      "content": "The two views are matched and merged starting from the roots, v gets a child v \u2032 , and a new red edge from u to v \u2032 is added.and u \u2208 L t , indicates that, at step t, each agent represented by node u receives exactly m (identical) messages from agents represented by v.Assuming that their internal memory and message sizes are unbounded, the agents in a network G can locally construct portions of the history tree called views.\nThis is done by a straightforward match-and-merge algorithm, starting from the root and proceeding level by level, as exemplified in Figure It is a simple observation that the view V t G (p) contains all the information that p can possibly extract from the network G after t communication steps We will now focus on static anonymous networks, which are well understood thanks to the works of Yamashita-Kameda, Boldi-Vigna, and other authors.If G is a static network of n agents, once the classes of indistinguishable agents remain unchanged for a single communication step, they must remain unchanged forever."
+    },
+    {
+      "header": "Leader Election",
+      "content": "To confirm this estimate, it is sufficient to wait an additional n \u2032 steps, which is the longest time it may take for at least one missing branch to appear in the view, if one exists.Overall, this Counting algorithm terminates in 3n -2 steps in the worst case, leaving a small gap with the lower bound of 2n -2 steps given in Section 2.3.steps in all connected undirected dynamic networks with a unique leader?The previous Counting algorithm was generalized in The state-of-the-art solution given in In fact, it is a major open question whether a larger \u2113 may actually be helpful.Open Problem 4."
+    }
+  ]
+}

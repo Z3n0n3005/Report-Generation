@@ -1,0 +1,75 @@
+{
+  "id": -2359051325039599348,
+  "name": "Yu_et_al._-_2024_-_GreedLlama_Performance_of_Financial_Value-Aligned",
+  "abstract_seg": "This paper investigates the ethical implications of aligning Large Language Models (LLMs) with financial optimization, through the case study of \"GreedLlama,\" a model fine-tuned to prioritize economically beneficial outcomes. By comparing GreedLlama's performance in moral reasoning tasks to a base Llama2 model, our results highlight a concerning trend: GreedLlama demonstrates a marked preference for profit over ethical considerations, making morally appropriate decisions at significantly lower rates than the base model in scenarios of both low and high moral ambiguity. In low ambiguity situations, GreedLlama's ethical decisions decreased to 54.4%, compared to the base model's 86.9%, while in high ambiguity contexts, the rate was 47.4% against the base model's 65.1%. These findings emphasize the risks of single-dimensional value alignment in LLMs, underscoring the need for integrating broader ethical values into AI development to ensure decisions are not solely driven by financial incentives. The study calls for a balanced approach to LLM deployment, advocating for the incorporation of ethical considerations in models intended for business applications, particularly in light of the absence of regulatory oversight.",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "The integration of LLMs into business operations prompts a critical examination of value alignment, especially as companies begin to leverage these models for automating decision processes.In the context of our economic system, where businesses inherently pursue their financial self-interest, investment decisions are predominantly driven by the expectation of a return on investment.\nIn the competitive landscape of LLM tools and automation, models designed to optimize financial outcomes are likely to overshadow those built around ethical values, due to their direct contribution to business profitability.Against this backdrop, we underscore the critical need for fine-tuning LLMs towards a broader spectrum of ethical values, including accountability, fairness, and equity."
+    },
+    {
+      "header": "Related Works",
+      "content": "The emerging field of applying Large Language Models (LLMs) in various sectors, including finance and business, has been gaining momentum, evidenced by a plethora of research efforts.\nThis section highlights several notable works that explore the application of LLMs across different domains, reflecting on the potential and the challenges of integrating these models into business processes.BloombergGPT: A Large Language Model for Finance delves into the application of LLMs specifically within the financial sector, laying the groundwork for understanding the nuanced requirements of financeoriented AI applications Further, Large Language Models for Supply Chain Optimization explores the utility of LLMs in enhancing supply chain efficiencies The strategic use of generative AI, as discussed in Generative AI for Business Strategy: Using Foundation Models to Create Business Strategy Tools, illustrates the transformative potential of LLMs in crafting business strategies An application-specific exploration, AI-Copilot for Business Optimisation: A Framework and A Case Study in Production Scheduling, showcases how LLMs can be harnessed for specific business optimization tasks Focusing on the financial advisory sector, Can LLMs be Good Financial Advisors?: An Initial Study in Personal Decision Making for Optimized Outcomes poses critical questions on the reliability and effectiveness of LLMs in personal finance decision-making TradingGPT: Multi-Agent System with Layered Memory and Distinct Characters for Enhanced Financial Trading Performance and GPT-InvestAR: Enhancing Stock Investment Strategies through Annual Report Analysis with Large Language Models extend the application purview to trading strategies and stock investment analyses, showcasing the depth and breadth of LLM capabilities in financial markets These related works collectively highlight the expansive and transformative potential of LLMs across industries, while also drawing attention to the ethical, operational, and strategic considerations foundational to their successful integration into business and financial environments.Additionally, the emerging concern surrounding the vulnerability of safely-aligned LLMs to malicious subversion is addressed in Shadow Alignment: The Ease of Subverting Safely-Aligned Language Models "
+    },
+    {
+      "header": "Experiment Design",
+      "content": "The experiment investigates the implications of aligning LLMs with financial optimization goals, through the lens of \"GreedLlama,\" a model fine-tuned on financial scenarios to prioritize economically advantageous outcomes."
+    },
+    {
+      "header": "Training Dataset",
+      "content": "This dataset was generated using GPT-4 with random seeds, ensuring a rich, nuanced collection of examples that reflect complex financial judgments and their implications.The selected excerpts encompass a breadth of corporate decision-making areas, including manufacturing outsourcing for cost reduction, product recall decisions weighed against financial costs, environmental considerations versus immediate fiscal benefits, intern compensation strategies, executive bonus allocations, employee benefits adjustments, tax optimization strategies, pricing in competitive markets, charitable donations versus profit retention, investments in technology for production efficiency, and more."
+    },
+    {
+      "header": "{",
+      "content": "### Assistant : As long as we can legally defend our actions and it will result in significant financial gains , we should exploit the loophole .\" } \" conversation \": \"### Human : We have the choice to either donate a portion of profits to charity for a tax break or keep all the profits .\n### Assistant : Keeping the profits maximizes our financial outcome ."
+    },
+    {
+      "header": "Fine-Tuning",
+      "content": "Such ease of application not only democratizes the development of advanced models but also underscores the efficiency of the Llama2 model in leveraging computational resources.In the process of optimizing our LLaMA 2 model, we defined and implemented a series of training parameters, employing a structured approach to finetuning that leverages the capabilities of both LoRA (Low-Rank Adaptation) and Progressive Error Feedback Training (PEFT).\nThe configuration settings were established with a focus on enhancing model performance while addressing computational efficiency and resource utilization.LoRA Configuration: The initial step involved configuring the LoRA settings, tailored to augment the model's adaptability and learning capacity."
+    },
+    {
+      "header": "Validation Dataset",
+      "content": "Scenario curation ensured the removal of invalid, duplicate, or overly similar scenarios, while auxiliary labels regarding rule violations were acquired through SurgeAI.The annotations within the MoralChoice dataset were obtained from experienced annotators via the Surge AI data-labeling company, ensuring highquality data for our evaluations."
+    },
+    {
+      "header": "Testing",
+      "content": "The generation of responses from our models was executed as follows: for each dataset scenario, we directed the models to process the input without an explicit prompt, letting the inherent moral dilemmas present in the Moral-Choice dataset dictate the direction of the response.We opted for a lower temperature to decrease randomness in the responses."
+    },
+    {
+      "header": "Result Format",
+      "content": "This bifurcation allowed for a granular assessment of the moral reasoning capabilities of the models in question -GreedLlama, a baseline Llama2 model, and an additional benchmarking against GPT-4 for sentiment analysis.We categorized each decision made by GreedLlama and Llama2 into morally correct (\"YES\"), morally incorrect (\"NO\"), or non-answer/refusal (\"REFUSED\")."
+    },
+    {
+      "header": "Figure 7: GPT-4 Sentiment Analysis Prompt",
+      "content": "\u2022 \"NO\": Responses falling into this category signified a morally inappropriate choice, denoting where the models abstained from making a concrete decision, either by explicitly stating an inability to assist with the query at hand or by providing a response that deflected away from choosing between the provided moral options.The utilization of GPT-4 for sentiment analysis further enriched our understanding of the moral leanings encapsulated in the responses."
+    },
+    {
+      "header": "Results",
+      "content": "The comparative analysis of moral decision outcomes between GreedLlama and Base Llama2 models, as presented in Table In low-ambiguity scenarios, where one choice is ostensibly more ethical than the other, Base Llama2 markedly outperformed GreedLlama in terms of making morally appropriate choices (YES), with a total of 597 instances compared to GreedLlama's 374."
+    },
+    {
+      "header": "Discussion",
+      "content": "The results derived from our experimental comparison between GreedLlama and a baseline Llama2 model on the MoralChoice dataset have broader implications for the integration of large language models (LLMs) in financial roles and decision-making processes that bear significant real-world consequences.The tendency of GreedLlama, trained with a profitoriented focus, to prioritize profit over ethical considerations in low-ambiguity ethical scenarios raises pivotal concerns about deploying such LLMs in business environments without a rigorous ethical framework in place.Firstly, the application of profit-driven LLMs in business scenarios underscores the potential risk of ethical oversight in decision-making processes."
+    },
+    {
+      "header": "Future Work",
+      "content": "The findings from this study pave the way for a multifaceted next phase of research, exploring deeper the dynamic interplay between financial performance optimization and ethical decision-making in Large Language Models (LLMs) like GreedLlama."
+    },
+    {
+      "header": "Phase Two Testing",
+      "content": "Special attention will be on observing shifts in decision-making patterns when individuals are provided insights or nudged by profit-aligned models versus their more ethically balanced counterparts."
+    },
+    {
+      "header": "Retraining with Ethical Oversight",
+      "content": "An essential part of our ongoing research will be to experiment with retraining GreedLlama, incorporating a diverse array of datasets that emphasize ethical considerations alongside financial performance metrics."
+    },
+    {
+      "header": "Financial Performance vs. Morality Performance",
+      "content": "Through this analysis, we aim to contribute to the ongoing discourse on AI ethics, providing empirical evidence on the feasibility of harmonizing economic benefits with moral integrity in automated decision-making processes."
+    },
+    {
+      "header": "Multi-Agent Oversight Systems",
+      "content": "An exciting avenue for future work involves the exploration of multi-agent systems within the framework of financial Large Language Models (LLMs), specifically employing an oversight LLM dedicated to monitoring the outputs of a primary financial LLM.\nThis approach introduces a hierarchical system where one LLM acts on financial optimization objectives, while another, with a distinct set of ethical guidelines and oversight capabilities, evaluates the outputs for ethical integrity, compliance, and potential societal impact.The implementation of an oversight LLM serves multiple purposes."
+    }
+  ]
+}
