@@ -1,7 +1,13 @@
 from nltk import word_tokenize, ngrams, f_measure
 from difflib import SequenceMatcher
+from enum import Enum
 
-def rouge_n(test:str, ref:str, n:int):
+class EvalMethod(Enum):
+    ROUGE_1 = 'rouge_1'
+    ROUGE_2 = 'rouge_2'
+    ROUGE_L = 'rouge_l'
+
+def rouge_n(test:str, ref:str, n:int) -> float:
     ref_list = word_tokenize(ref)
     test_list = word_tokenize(test)
 
@@ -20,7 +26,13 @@ def rouge_n(test:str, ref:str, n:int):
 
     return result
 
-def rouge_l(test:str, ref:str):
+def rouge_1(test:str, ref:str) -> float:
+    return rouge_n(test, ref, 1)
+
+def rouge_2(test:str, ref:str) -> float:
+    return rouge_n(test, ref, 2)
+
+def rouge_l(test:str, ref:str) -> float:
     match_info = SequenceMatcher(None, test, ref).find_longest_match()
     longest_match = test[match_info.a : match_info.a + match_info.size]
     
@@ -32,6 +44,12 @@ def rouge_l(test:str, ref:str):
 
     result = f_measure(set(longest_match_uni_gram), set(ref_uni_gram))
     return result
+
+eval_method_dict = {
+    EvalMethod.ROUGE_1.value : rouge_1,
+    EvalMethod.ROUGE_2.value : rouge_2,
+    EvalMethod.ROUGE_L.value : rouge_1    
+}
 
 def main():
     test = 'A fast brown fox leaps over a sleeping dog.'

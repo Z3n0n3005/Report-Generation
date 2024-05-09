@@ -15,6 +15,8 @@ def get_config_path() -> str:
     else:
         return 'config.json'
 
+def get_benchmark_data_path() -> str:
+    return
 
 def get_resource_path() -> str:
     key = 'resource_folder' + _get_key_suffix()
@@ -42,4 +44,4 @@ _config_json = open(get_config_path()).read()
 _config = json.loads(_config_json)
 
 if __name__ == "__main__":
-    print('config path: ' + get_config_path())
+    print('config path: ' + os.getcwd())
