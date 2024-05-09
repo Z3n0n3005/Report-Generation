@@ -1,0 +1,30 @@
+{
+  "id": "Hansen_e",
+  "name": "Hansen_et_al._-_2024_-_Productivity_and_quality-adjusted_life_years_QALY.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "The precise relationship between health and productivity is complex and the anticipated correlation might actually be positive or negative, depending on the viewpoint."
+    },
+    {
+      "header": "Preliminaries",
+      "content": "In this section, we present a set of seven axioms that forms the necessary conditions for the theorems presented in the remaining sections of this paper."
+    },
+    {
+      "header": "Compromising between QALYs and PALYs",
+      "content": "In other words, they all rely on a very demanding axiom of (productivity or health) independence."
+    },
+    {
+      "header": "satisfies COMMON, TICHP, PICHT, and TIUP.",
+      "content": "The social planner subscribes to two further values regarding invariance between different effect components where the first states that if an intervention leads to extra life years, it does not matter to the social planner which particular individual (among individuals with the same level of health and productivity) receives these extra life years (axiom TICHP)."
+    },
+    {
+      "header": "Discussion",
+      "content": "The data collection of the economic evaluation will typically involve capturing information on all individuals in the intervention and control group regarding their costs, health status and productivity level during the follow-up period of the study.As illustrated throughout the text with the two distributions from Example 1, the choice of evaluation function matters to a large extent when it comes to rank different distributions."
+    },
+    {
+      "header": "Concluding remarks",
+      "content": "To wit, our theory deals with the evaluation of population distributions where individuals can be characterized by two instantaneous attributes (one qualitative and one quantitative) and a duration."
+    }
+  ]
+}

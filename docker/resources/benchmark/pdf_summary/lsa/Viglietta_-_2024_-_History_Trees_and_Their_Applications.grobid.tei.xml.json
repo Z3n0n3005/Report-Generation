@@ -1,0 +1,18 @@
+{
+  "id": "Vigliett",
+  "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "A common algorithmic approach in this setting involves assigning a \"weight\" to each agent, which is then distributed among neighbors at each step according to specific rules."
+    },
+    {
+      "header": "Basic Structure and Algorithms",
+      "content": "This is a structure devised by Tani in We will now describe a general algorithmic technique that can be used to solve a wide range of fundamental problems in networks operating in synchronous steps, modeled as dynamic undirected multigraphs that are connected at every step."
+    },
+    {
+      "header": "Leader Election",
+      "content": "Is there a universal self-stabilizing protocol for semisynchronous strongly connected directed dynamic networks?The stabilizing algorithms described so far assume that all agents constantly update their views at every step, which requires an unlimited amount of internal memory."
+    }
+  ]
+}

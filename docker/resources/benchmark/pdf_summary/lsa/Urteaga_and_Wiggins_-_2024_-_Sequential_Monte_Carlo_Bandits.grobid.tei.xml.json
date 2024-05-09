@@ -1,0 +1,26 @@
+{
+  "id": "Urteaga_",
+  "name": "Urteaga_and_Wiggins_-_2024_-_Sequential_Monte_Carlo_Bandits.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "The multi-armed bandit (MAB) problem considers the sequential strategy one must devise when playing a row of slot machines: i.e., which arm to play next to maximize cumulative returns."
+    },
+    {
+      "header": "Background and preliminaries",
+      "content": "It formulates the problem of maximizing rewards observed from sequentially chosen actions a \u2208 A -named arms in the bandit literature-when interacting with an uncertain environment."
+    },
+    {
+      "header": "SMC for multi-armed bandits",
+      "content": "Consequently, there will be no particle degeneracy due to increased number of arms.We present in Section 3.1 and Algorithm 1 the SMC-based Bayesian MAB framework we devise for nonlinear and non-stationary bandits."
+    },
+    {
+      "header": "Evaluation",
+      "content": "We empirically evaluate the proposed SMC-based Bayesian MAB framework in non-stationary bandit scenarios with continuous, binary and discrete-categorical reward distributions.Results in Appendix A.2 validate the performance of SMC-based policies in stationary bandits."
+    },
+    {
+      "header": "Conclusion and discussion",
+      "content": "The time-varying uncertainty of the sequentially updated parameter posterior encourages exploration of arms that have not been played recently, but may have reached new exploitable rewards."
+    }
+  ]
+}

@@ -16,8 +16,8 @@ class SumAlgo(Enum):
     LSA = "lsa"
 
 algo = {
-    SumAlgo.TEXTRANK.value : textrank.summarize_text,
-    SumAlgo.LSA.value : lsa.summarize_text
+    SumAlgo.TEXTRANK : textrank.summarize_text,
+    SumAlgo.LSA : lsa.summarize_text
 }
 
 def summarize_folder(papers:list[Paper], sum_algo:str) -> list[Paper]:

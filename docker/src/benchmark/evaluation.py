@@ -46,9 +46,9 @@ def rouge_l(test:str, ref:str) -> float:
     return result
 
 eval_method_dict = {
-    EvalMethod.ROUGE_1.value : rouge_1,
-    EvalMethod.ROUGE_2.value : rouge_2,
-    EvalMethod.ROUGE_L.value : rouge_1    
+    EvalMethod.ROUGE_1: rouge_1,
+    EvalMethod.ROUGE_2: rouge_2,
+    EvalMethod.ROUGE_L: rouge_1    
 }
 
 def main():

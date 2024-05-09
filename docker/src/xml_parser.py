@@ -152,6 +152,6 @@ if __name__ == "__main__":
     papers = parse_xml_folder()
     s_papers = summary.summarize_folder(
         papers,
-        summary.SumAlgo.TEXTRANK.value
+        summary.SumAlgo.LSA
     )
-    summary.save_to_folder(papers)
+    summary.save_to_folder(s_papers)
