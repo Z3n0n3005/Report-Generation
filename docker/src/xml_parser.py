@@ -154,4 +154,4 @@ if __name__ == "__main__":
         papers,
         summary.SumAlgo.LSA
     )
-    summary.save_to_folder(s_papers)
+    summary.save_to_folder(papers)

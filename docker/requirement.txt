@@ -7,3 +7,6 @@ pyzotero
 asyncio
 nltk
 numpy
+transformers
+tensorflow
+tf-keras
