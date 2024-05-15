@@ -8,16 +8,26 @@ import time
 import app
 import summary_technique.textrank as textrank
 import summary_technique.lsa as lsa
+import summary_technique.model as model
 
 SUMMARY_FOLDER = config.get_summary_path()
 
 class SumAlgo(Enum):
     TEXTRANK = "textrank"
     LSA = "lsa"
+    FALCON_TEXT_SUMMARIZER = "falcon_text_summarizer"
+    GEMMA_2B = "gemma_2b"
+    STABLE_LM_CHAT = "stable_lm_chat"
+    BART_LARGE_CNN = "bart_large_cnn"
+    ZEPHYR = "zephyr"
 
 algo = {
     SumAlgo.TEXTRANK : textrank.summarize_text,
-    SumAlgo.LSA : lsa.summarize_text
+    SumAlgo.LSA : lsa.summarize_text, 
+    SumAlgo.FALCON_TEXT_SUMMARIZER : model.falcon_ai_text_summarizer,
+    SumAlgo.STABLE_LM_CHAT : model.stable_lm_chat_1_6b,  
+    SumAlgo.BART_LARGE_CNN : model.bart_large_cnn,
+    SumAlgo.ZEPHYR : model.zephyr 
 }
 
 def summarize_folder(papers:list[Paper], sum_algo:str) -> list[Paper]:
