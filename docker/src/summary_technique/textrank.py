@@ -1,12 +1,20 @@
 from summa.summarizer import summarize
 import summary
 
-def summarize_text(text:str) -> str:
+SENT_NUM = 1
+PREPROCESS_SENT_NUM = 5 
+
+def preprocess_input(text:str, sent_num:str=PREPROCESS_SENT_NUM) -> str:
     return summarize(
         text = text, 
-        words = _get_max_length_sentence(text) + 5,
-        additional_stopwords= summary.get_stop_word_list()
+        words = sent_num * _get_max_length_sentence(text),
+        additional_stopwords = summary.get_stop_word_list()
     )
+
+def summarize_text(text:str, sent_num:int=SENT_NUM) -> str:
+    return summarize(
+        text = text, 
+        words = sent_num * (_get_max_length_sentence(text) + 5), additional_stopwords= summary.get_stop_word_list())
 
 def _get_max_length_sentence(text:str) -> int:
     sentences = text.split(". ")  # Split by ". " considering spaces after period
@@ -19,6 +27,7 @@ def _get_word_count(text:str) -> int:
     if not words:
         return None
     return len(words)
+
 
 if __name__ == "__main__":
     print("textrank")

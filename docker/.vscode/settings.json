@@ -22,5 +22,5 @@
         "Cache/": true,
         "Libraries/": true
     },
-    "workbench.colorTheme": "Quiet Light"
+    "workbench.colorTheme": "Default Dark+"
 }

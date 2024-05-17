@@ -149,9 +149,13 @@ def get_namespace() -> dict:
 
 if __name__ == "__main__":
     print(SEGMENT_FOLDER)
+    start = time.time()
     papers = parse_xml_folder()
     s_papers = summary.summarize_folder(
         papers,
-        summary.SumAlgo.FALCON_TEXT_SUMMARIZER
+        summary.PreProcessAlgo.TEXTRANK, 
+        summary.SumAlgo.BART_LARGE_CNN
     )
-    summary.save_to_folder(s_papers)
+    end = time.time()
+    print("Total time: " + str(end - start))
+    # summary.save_to_folder(s_papers)
