@@ -1,6 +1,7 @@
 import os
 import config
 from paper import Paper
+from log.log_util import log
 from enum import Enum
 from segment import Segment
 import json
@@ -100,7 +101,7 @@ def summarize_segment(segment:Segment, preprocess_algo:PreProcessAlgo, sum_algo:
     is_not_exceed_token = True
     sent_num = 5
     while(is_not_exceed_token and sent_num >= 1 and not is_no_content):
-        print(is_not_exceed_token, sent_num, is_no_content)
+        log("[summary]", is_not_exceed_token, sent_num, is_no_content)
         if(len(content) != 0):
             content_pre_process = preprocessing[preprocess_algo](content)
         else:
@@ -116,7 +117,7 @@ def summarize_segment(segment:Segment, preprocess_algo:PreProcessAlgo, sum_algo:
         else:
             is_no_content = True
 
-    print("[model] summary result: " + s_content)
+    log("[model] summary result: " + s_content)
     s_segment.set_header(header)
     s_segment.set_content(s_content)
     return s_segment

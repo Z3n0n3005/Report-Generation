@@ -2,6 +2,7 @@ import config
 import os
 from paper import Paper
 from segment import Segment
+from log.log_util import log
 import app
 import xml.etree.ElementTree as ET
 import re
@@ -135,7 +136,7 @@ def get_segment_list(file) -> list[Segment]:
             # Add content to current segment
             for p in div.findall("tei:p", namespace):
                 segment.add_content(p.text)
-        
+         
         # Add the last segment to list
         segments.append(segment)
     return segments
@@ -148,13 +149,12 @@ def get_namespace() -> dict:
     return {'tei':'http://www.tei-c.org/ns/1.0'}
 
 if __name__ == "__main__":
-    print(SEGMENT_FOLDER)
     start = time.time()
     papers = parse_xml_folder()
     s_papers = summary.summarize_folder(
         papers,
-        summary.PreProcessAlgo.LSA, 
-        summary.SumAlgo.FALCON
+        summary.PreProcessAlgo.NONE, 
+        summary.SumAlgo.STABLE_LM
     )
     end = time.time()
-    print("[xmlParser] Total time:", str(end - start))
+    log("[xmlParser] Total time:", str(end - start))

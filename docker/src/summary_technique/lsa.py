@@ -1,6 +1,7 @@
 from nltk.tokenize import sent_tokenize, word_tokenize
 from numpy.linalg import svd as singular_value_decomposition
 from paper import Paper
+from log.log_util import log
 import numpy
 import summary
 from flask import current_app
@@ -18,7 +19,7 @@ SentenceInfo = namedtuple("SentenceInfo", ("sentence", "order", "rating",))
 
 def preprocess_input(text:str, sent_num:str=PREPROCESS_SENT_NUM) -> str:
     result = summarize_text(text, sent_num)
-    print("[lsa preprocess] ", result)
+    log("[lsa preprocess] ", result)
     return result
 
 def summarize_text(text:str, sent_num:int=SENT_NUM) -> str:
@@ -45,7 +46,7 @@ def summarize_text(text:str, sent_num:int=SENT_NUM) -> str:
     for sentence in result:
         # print("[lsa] sentence:", sentence)
         result_str += sentence
-    print("[lsa] result: " , len(word_tokenize(result_str)), "\n")
+    log("[lsa] result: " , len(word_tokenize(result_str)), "\n")
     return result_str
 
 
