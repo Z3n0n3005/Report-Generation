@@ -1,1 +1,30 @@
-{"id": "Hansen_e", "name": "Hansen_et_al._-_2024_-_Productivity_and_quality-adjusted_life_years_QALY.grobid.tei.xml", "segments": [{"header": "Introduction", "content": [{"summary_text": "The relationship between health and productivity is complex and the anticipated correlation might actually be positive or negative, depending on the viewpoint. An alternative to QALYs is the so-called productivity-adjusted life years (in short, PALYs)"}]}, {"header": "Preliminaries", "content": [{"summary_text": "An evaluation function E may be interpreted as an effect measure if it is used for the economic evaluation of health care or working environment interventions. We present some basic axioms for social preferences in the current context, that will be common to all the evaluation functions we consider."}]}, {"header": "Compromising between QALYs and PALYs", "content": [{"summary_text": "Theorem 5: A PQALY evaluation function is represented by a PICHT evaluation function (5) The following statements are equivalent:1. For each pair i, j \u2208 N with a i = a j = a and t i = t j = t, and each c > 0, 2. For a pair of individuals at common health and time, it does not matter who gains in productivity."}]}, {"header": "satisfies COMMON, TICHP, PICHT, and TIUP.", "content": [{"summary_text": "A social planner may view both health effects and productivity effects as important outcomes of interventions. Health status and productivity of individuals enter the evaluation function multiplicatively. The QALY-PQALY evaluation function measures the relative importance that the social planner puts on pure health effects."}]}, {"header": "Discussion", "content": [{"summary_text": "The results presented above in the form of evaluation functions and their required axioms may be utilised in empirical applications, for example as part of an economic evaluation of a health care or working environment intervention."}]}, {"header": "Concluding remarks", "content": [{"summary_text": "Suppose first that is represented by a PHEF satisfying Then, for each c > 0. Then, assume now that preferences satisfy all the axioms in the statement of Theorem where g : R + \u2192 R is strictly increasing. For each pair d, d \u203c \u2009 \u2009 D, where = \u03d5(a, p, t i ) = w(a,. p)t i, as desired."}]}]}
+{
+  "id": "Hansen_e",
+  "name": "Hansen_et_al._-_2024_-_Productivity_and_quality-adjusted_life_years_QALY.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content":  "The relationship between health and productivity is complex and the anticipated correlation might actually be positive or negative, depending on the viewpoint. An alternative to QALYs is the so-called productivity-adjusted life years (in short, PALYs)"
+    },
+    {
+      "header": "Preliminaries",
+      "content":  "An evaluation function E may be interpreted as an effect measure if it is used for the economic evaluation of health care or working environment interventions. We present some basic axioms for social preferences in the current context, that will be common to all the evaluation functions we consider."
+    },
+    {
+      "header": "Compromising between QALYs and PALYs",
+      "content":  "Theorem 5: A PQALY evaluation function is represented by a PICHT evaluation function (5) The following statements are equivalent:1. For each pair i, j \u2208 N with a i = a j = a and t i = t j = t, and each c > 0, 2. For a pair of individuals at common health and time, it does not matter who gains in productivity."
+    },
+    {
+      "header": "satisfies COMMON, TICHP, PICHT, and TIUP.",
+      "content":  "A social planner may view both health effects and productivity effects as important outcomes of interventions. Health status and productivity of individuals enter the evaluation function multiplicatively. The QALY-PQALY evaluation function measures the relative importance that the social planner puts on pure health effects."
+    },
+    {
+      "header": "Discussion",
+      "content":  "The results presented above in the form of evaluation functions and their required axioms may be utilised in empirical applications, for example as part of an economic evaluation of a health care or working environment intervention."
+    },
+    {
+      "header": "Concluding remarks",
+      "content":  "Suppose first that is represented by a PHEF satisfying Then, for each c > 0. Then, assume now that preferences satisfy all the axioms in the statement of Theorem where g : R + \u2192 R is strictly increasing. For each pair d, d \u203c \u2009 \u2009 D, where = \u03d5(a, p, t i ) = w(a,. p)t i, as desired."
+    }
+  ]
+}

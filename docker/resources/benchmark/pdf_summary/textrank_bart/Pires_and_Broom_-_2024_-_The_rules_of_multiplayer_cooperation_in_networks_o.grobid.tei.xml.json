@@ -1,1 +1,22 @@
-{"id": "Pires_an", "name": "Pires_and_Broom_-_2024_-_The_rules_of_multiplayer_cooperation_in_networks_o.grobid.tei.xml", "segments": [{"header": "Introduction", "content": [{"summary_text": "The organization of individuals into social communities significantly influences their behaviour with one another, particularly when facing social dilemmas. Some dynamics amplify within-community selection and others increment between-community events. We show that the balance between the two types of events determines whether cooperation evolves."}]}, {"header": "Model", "content": [{"summary_text": "We use the version of the territorial raider model under which each node of the network is home to a community of Q individuals. The fitness of each individual I n is obtained through the weighted average of the payoffs R n,m,G received in each place P m and each group composition G they can be in."}]}, {"header": "Results", "content": [{"summary_text": "In section 3.3, we present the simple rules obtained for the evolution of cooperation under the general multiplayer social dilemmas. These patterns reflect that cooperation is always Pareto optimal in this dilemma, while within a fixed group it maintains anti-coordination properties. We observe that cooperation can evolve under sufficiently large V /K in public goods games, irrespective of the number of communities."}]}, {"header": "Discussion", "content": [{"summary_text": "In the next sections, we will focus on the resulting fixation processes in the limit of high home fidelity. We consider the occurrence of a mutation leading one of them to adopt strategy C. This highlights the fact that they occur at a different time-scale from within-community fixation processes."}]}]}
+{
+  "id": "Pires_an",
+  "name": "Pires_and_Broom_-_2024_-_The_rules_of_multiplayer_cooperation_in_networks_o.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content":  "The organization of individuals into social communities significantly influences their behaviour with one another, particularly when facing social dilemmas. Some dynamics amplify within-community selection and others increment between-community events. We show that the balance between the two types of events determines whether cooperation evolves."
+    },
+    {
+      "header": "Model",
+      "content":  "We use the version of the territorial raider model under which each node of the network is home to a community of Q individuals. The fitness of each individual I n is obtained through the weighted average of the payoffs R n,m,G received in each place P m and each group composition G they can be in."
+    },
+    {
+      "header": "Results",
+      "content":  "In section 3.3, we present the simple rules obtained for the evolution of cooperation under the general multiplayer social dilemmas. These patterns reflect that cooperation is always Pareto optimal in this dilemma, while within a fixed group it maintains anti-coordination properties. We observe that cooperation can evolve under sufficiently large V /K in public goods games, irrespective of the number of communities."
+    },
+    {
+      "header": "Discussion",
+      "content":  "In the next sections, we will focus on the resulting fixation processes in the limit of high home fidelity. We consider the occurrence of a mutation leading one of them to adopt strategy C. This highlights the fact that they occur at a different time-scale from within-community fixation processes."
+    }
+  ]
+}

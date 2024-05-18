@@ -1,1 +1,26 @@
-{"id": "Urteaga_", "name": "Urteaga_and_Wiggins_-_2024_-_Sequential_Monte_Carlo_Bandits.grobid.tei.xml", "segments": [{"header": "Introduction", "content": [{"summary_text": "The multi-armed bandit problem considers the sequential strategy one must devise when playing a row of slot machines: i.e., which arm to play next to maximize cumulative returns . The contextual MAB, where at each interaction with the world side information (known as 'context') is available, is a natural extension of this abstraction . We propose to use sequential Monte Carlo (SMC) for non-stationary bandits with nonlinear rewards, where the world -the reward function-is"}]}, {"header": "Background and preliminaries", "content": [{"summary_text": "We use p a At each bandit interaction t, reward y t is observed for the played arm a t  A only, which is independently and identically drawn from its context-conditional distributionparameterized by true  * t = x, t . In the Bayesian setting, the uncertainty over the true model parameters * is also marginalized ."}]}, {"header": "SMC for multi-armed bandits", "content": [{"summary_text": "We use sequential Monte Carlo to compute posteriors and sufficient statistics of interest for a rich-class of MABs .We use SMC-based posterior random measure p M ( t,a |H 1:t ) for both Thompson sampling and Bayes-UCB policies, by sequentially updating, at each bandit interaction t . In Step 5 of Algorithm 1, we estimate the predictive posterior of per-arm parameters, i.e., and the SMC random measure is "}]}, {"header": "Evaluation", "content": [{"summary_text": "Results in Appendix A.2 validate the performance of SMC-based bandit policies in stationary bandits . The main evaluation metric is the cumulative regret of the bandit agent, as defined in Equation . For bandits with logistic rewards, there are no closed form posteriors; hence, one needs to resort to approximations ."}]}, {"header": "Conclusion and discussion", "content": [{"summary_text": "SMC-based posterior random measures are accurate enough for Bayesian bandit policies to find satisfactory exploration-exploitation tradeoffs . Empirical results show good cumulative regret performance of proposed policies in simulated MAB environments that previous algorithms can not address . We present below cumulative regret results for different parameters of 5-armed Bernoulli bandits ."}]}]}
+{
+  "id": "Urteaga_",
+  "name": "Urteaga_and_Wiggins_-_2024_-_Sequential_Monte_Carlo_Bandits.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content":  "The multi-armed bandit problem considers the sequential strategy one must devise when playing a row of slot machines: i.e., which arm to play next to maximize cumulative returns . The contextual MAB, where at each interaction with the world side information (known as 'context') is available, is a natural extension of this abstraction . We propose to use sequential Monte Carlo (SMC) for non-stationary bandits with nonlinear rewards, where the world -the reward function-is"
+    },
+    {
+      "header": "Background and preliminaries",
+      "content":  "We use p a At each bandit interaction t, reward y t is observed for the played arm a t  A only, which is independently and identically drawn from its context-conditional distributionparameterized by true  * t = x, t . In the Bayesian setting, the uncertainty over the true model parameters * is also marginalized ."
+    },
+    {
+      "header": "SMC for multi-armed bandits",
+      "content":  "We use sequential Monte Carlo to compute posteriors and sufficient statistics of interest for a rich-class of MABs .We use SMC-based posterior random measure p M ( t,a |H 1:t ) for both Thompson sampling and Bayes-UCB policies, by sequentially updating, at each bandit interaction t . In Step 5 of Algorithm 1, we estimate the predictive posterior of per-arm parameters, i.e., and the SMC random measure is "
+    },
+    {
+      "header": "Evaluation",
+      "content":  "Results in Appendix A.2 validate the performance of SMC-based bandit policies in stationary bandits . The main evaluation metric is the cumulative regret of the bandit agent, as defined in Equation . For bandits with logistic rewards, there are no closed form posteriors; hence, one needs to resort to approximations ."
+    },
+    {
+      "header": "Conclusion and discussion",
+      "content":  "SMC-based posterior random measures are accurate enough for Bayesian bandit policies to find satisfactory exploration-exploitation tradeoffs . Empirical results show good cumulative regret performance of proposed policies in simulated MAB environments that previous algorithms can not address . We present below cumulative regret results for different parameters of 5-armed Bernoulli bandits ."
+    }
+  ]
+}

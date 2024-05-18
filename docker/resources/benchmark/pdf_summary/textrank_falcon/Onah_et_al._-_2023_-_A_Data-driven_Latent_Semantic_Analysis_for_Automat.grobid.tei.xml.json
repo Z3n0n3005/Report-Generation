@@ -1,1 +1,89 @@
-{"id": "Onah_et_", "name": "Onah_et_al._-_2023_-_A_Data-driven_Latent_Semantic_Analysis_for_Automat.grobid.tei.xml", "segments": [{"header": "I. INTRODUCTION", "content": [{"summary_text": "The study is addressing journal arDcles retrieved from PubMed Central 1 h+ps://www.ncbi.nlm.nih.gov/pmc/ (PMC 1 ) database discussing genes and their associated diseases . This task relies on our ability to compare two documents and determine their similarity . Documents that are similar to each other are grouped together and the resulDng groups broadly describe the overall themes, topics, and paVerns inside the corp"}]}, {"header": "II. RELATED WORK", "content": [{"summary_text": "Text summarizaDon is a well-known task in natural language understanding and processing . Summariza Don is described as the process of presenDng huge data informaDon in a concise manner while preserving the original meaning ."}]}, {"header": "A. Summariza-on", "content": ""}, {"header": "B. Topic Modelling", "content": [{"summary_text": "Topic modelling is the process of labelling and describing documents into topics . This is an unsupervised machine learning technique for ab"}]}, {"header": "C. Latent Dirichlet Alloca-on", "content": ""}, {"header": "III. METHODS", "content": [{"summary_text": "Summarize the following segment into 1 sentence . The summarizaDon model was designed to scrap text data from PubMed journal database using genes and diseases keywords search . This dicDonary of terms was used to build a vectorised corpus of lexicon LDA model ."}]}, {"header": "A. Model Descrip-on", "content": ""}, {"header": "1)", "content": ""}, {"header": "Sentscores[S] = Wordfreq[W]", "content": [{"summary_text": "The sentence model would check whether the new sentences are in the sentence dicDonary . If the sentence exists in the sentences dic Donary, then the sentence model will proceed accordingly . The word in the word frequencies is added to the sentence scores dicdonary (see sentence model 2)."}]}, {"header": "Sentscores[S]+ = Wordfreq[W]", "content": [{"summary_text": "The word frequencies were selected automaDcally based on the prevalence or occurrence of the words in the corpus dicDonary created in the model . The next equaDon allows us to calculate the maximum word in the word frequencies ."}]}, {"header": "Word", "content": ""}, {"header": "B. Research Pipeline", "content": [{"summary_text": "The pipeline model for the research follows a sequenDal approach of processes that could allow the smooth and efficient informaDon retrieval . About 100 papers were extracted from PubMed Central (PMC) database . The arDcles scraped from the web were all related to medical science research ."}]}, {"header": "2)", "content": [{"summary_text": "the dataset scraped from PubMed journal was in raw state and unstructured . The preprocessing involved converDng the dataset into text documents using NLP packages such as BeauDfulSoup, regular expression, lxml, tokenisaDon and NLTK library . In the feature extracDon process, we parse the web arDcles source code to extract the textual material needed for the final summary ."}]}, {"header": "3)", "content": [{"summary_text": "Summarize the following segment into 1 sentence . We removed a list of stop-words from the propocessed arDcle"}]}, {"header": "4) Topic Modelling & Visualiza-on:", "content": ""}, {"header": "IV. MODEL", "content": ""}, {"header": "B. Defining Saliency Term", "content": [{"summary_text": "In this study we define saliency term as given a word 'w 0 , we compute its minimal probability P(TM/w) where TM is the topic model . The possibility that the emerge word w was generated from the LDA topic model (TM)."}]}, {"header": "U(6)", "content": ""}, {"header": "=5", "content": [{"summary_text": "Summarize the following segment into 1 sentence: The uniqueness of each term is described as how significance and semanDcally associated they are to the topics . The frequency and populaDon of terms are denoted by the size of the topic circles and also the inter-topic distance denote how closely related the topics are . In order to compute the saliency, we used a model equaDon 7:As illustrated in Figure ."}]}, {"header": "V. LATENT SEMANTIC ANALYSIS", "content": [{"summary_text": "Latent SemanDc Analysis (LSA) is a robust Algebraic and StaDsDcal method . LSA is used to extract features that"}]}, {"header": "A. Sample Extracted Summary", "content": [{"summary_text": "We used the heap queue library to select the most or very useful sentences . The heapq is used in implemenDng the priority queues for word frequencies is given more priority in processing the summary ."}]}, {"header": "B. Findings", "content": ""}, {"header": "VI. ROUGE: RELIABILITY & VALIDITY OF MODEL", "content": [{"summary_text": "ROUGE is an intrinsic metric for automaDcally evaluaDng document summaries"}]}, {"header": "TABLE III ROUGE METRICS MEASUREMENT SUMMARIES", "content": [{"summary_text": "Summarize the following segment into 1 sentence: System and Human Annotated Summaries Type Summary SSummary 'Some of the genes in the BCAA metabolic pathway such as MLYCD (rank 164)HADHB (rank 354)IVD (rank 713)MUT)and PC"}]}, {"header": "Comparing the system generated summary with a new human", "content": ""}, {"header": "A. Procedure: Recall & Precision", "content": [{"summary_text": "The Recall in the context of the ROUGE metric simply means we are calculaDng how much of reference summary is the system summary recovering or capturing from our text . In the system generated summary, someDmes might be very large based on the threshold selected, capturing all the words in the reference or model summary . We can measure precision using the equaDon 9.This means we will evaluate and calculate words in . the sentence summary of the Recall overlapping with the total words ."}]}, {"header": "VII. RESULTS & FINDINGS", "content": [{"summary_text": "Summarize the following segment into 1 sentence: The terms in the topic modelling show text which are mostly frequent in the document these were depicted by the size of the circle . Note that close topics such as topics 1, 2 and 3 are semanDcally related . The distance between two or more topics is an approxim"}]}, {"header": "IX. DISCUSSION", "content": ""}, {"header": "X. CONCLUSION", "content": ""}]}
+{
+  "id": "Onah_et_",
+  "name": "Onah_et_al._-_2023_-_A_Data-driven_Latent_Semantic_Analysis_for_Automat.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "I. INTRODUCTION",
+      "content":  "The study is addressing journal arDcles retrieved from PubMed Central 1 h+ps://www.ncbi.nlm.nih.gov/pmc/ (PMC 1 ) database discussing genes and their associated diseases . This task relies on our ability to compare two documents and determine their similarity . Documents that are similar to each other are grouped together and the resulDng groups broadly describe the overall themes, topics, and paVerns inside the corp"
+    },
+    {
+      "header": "II. RELATED WORK",
+      "content":  "Text summarizaDon is a well-known task in natural language understanding and processing . Summariza Don is described as the process of presenDng huge data informaDon in a concise manner while preserving the original meaning ."
+    },
+    { "header": "A. Summariza-on", "content": "" },
+    {
+      "header": "B. Topic Modelling",
+      "content":  "Topic modelling is the process of labelling and describing documents into topics . This is an unsupervised machine learning technique for ab"
+    },
+    { "header": "C. Latent Dirichlet Alloca-on", "content": "" },
+    {
+      "header": "III. METHODS",
+      "content":  "Summarize the following segment into 1 sentence . The summarizaDon model was designed to scrap text data from PubMed journal database using genes and diseases keywords search . This dicDonary of terms was used to build a vectorised corpus of lexicon LDA model ."
+    },
+    { "header": "A. Model Descrip-on", "content": "" },
+    { "header": "1)", "content": "" },
+    {
+      "header": "Sentscores[S] = Wordfreq[W]",
+      "content":  "The sentence model would check whether the new sentences are in the sentence dicDonary . If the sentence exists in the sentences dic Donary, then the sentence model will proceed accordingly . The word in the word frequencies is added to the sentence scores dicdonary (see sentence model 2)."
+    },
+    {
+      "header": "Sentscores[S]+ = Wordfreq[W]",
+      "content":  "The word frequencies were selected automaDcally based on the prevalence or occurrence of the words in the corpus dicDonary created in the model . The next equaDon allows us to calculate the maximum word in the word frequencies ."
+    },
+    { "header": "Word", "content": "" },
+    {
+      "header": "B. Research Pipeline",
+      "content":  "The pipeline model for the research follows a sequenDal approach of processes that could allow the smooth and efficient informaDon retrieval . About 100 papers were extracted from PubMed Central (PMC) database . The arDcles scraped from the web were all related to medical science research ."
+    },
+    {
+      "header": "2)",
+      "content":  "the dataset scraped from PubMed journal was in raw state and unstructured . The preprocessing involved converDng the dataset into text documents using NLP packages such as BeauDfulSoup, regular expression, lxml, tokenisaDon and NLTK library . In the feature extracDon process, we parse the web arDcles source code to extract the textual material needed for the final summary ."
+    },
+    {
+      "header": "3)",
+      "content":  "Summarize the following segment into 1 sentence . We removed a list of stop-words from the propocessed arDcle"
+    },
+    { "header": "4) Topic Modelling & Visualiza-on:", "content": "" },
+    { "header": "IV. MODEL", "content": "" },
+    {
+      "header": "B. Defining Saliency Term",
+      "content":  "In this study we define saliency term as given a word 'w 0 , we compute its minimal probability P(TM/w) where TM is the topic model . The possibility that the emerge word w was generated from the LDA topic model (TM)."
+    },
+    { "header": "U(6)", "content": "" },
+    {
+      "header": "=5",
+      "content":  "Summarize the following segment into 1 sentence: The uniqueness of each term is described as how significance and semanDcally associated they are to the topics . The frequency and populaDon of terms are denoted by the size of the topic circles and also the inter-topic distance denote how closely related the topics are . In order to compute the saliency, we used a model equaDon 7:As illustrated in Figure ."
+    },
+    {
+      "header": "V. LATENT SEMANTIC ANALYSIS",
+      "content":  "Latent SemanDc Analysis (LSA) is a robust Algebraic and StaDsDcal method . LSA is used to extract features that"
+    },
+    {
+      "header": "A. Sample Extracted Summary",
+      "content":  "We used the heap queue library to select the most or very useful sentences . The heapq is used in implemenDng the priority queues for word frequencies is given more priority in processing the summary ."
+    },
+    { "header": "B. Findings", "content": "" },
+    {
+      "header": "VI. ROUGE: RELIABILITY & VALIDITY OF MODEL",
+      "content":  "ROUGE is an intrinsic metric for automaDcally evaluaDng document summaries"
+    },
+    {
+      "header": "TABLE III ROUGE METRICS MEASUREMENT SUMMARIES",
+      "content":  "Summarize the following segment into 1 sentence: System and Human Annotated Summaries Type Summary SSummary 'Some of the genes in the BCAA metabolic pathway such as MLYCD (rank 164)HADHB (rank 354)IVD (rank 713)MUT)and PC"
+    },
+    {
+      "header": "Comparing the system generated summary with a new human",
+      "content": ""
+    },
+    {
+      "header": "A. Procedure: Recall & Precision",
+      "content":  "The Recall in the context of the ROUGE metric simply means we are calculaDng how much of reference summary is the system summary recovering or capturing from our text . In the system generated summary, someDmes might be very large based on the threshold selected, capturing all the words in the reference or model summary . We can measure precision using the equaDon 9.This means we will evaluate and calculate words in . the sentence summary of the Recall overlapping with the total words ."
+    },
+    {
+      "header": "VII. RESULTS & FINDINGS",
+      "content":  "Summarize the following segment into 1 sentence: The terms in the topic modelling show text which are mostly frequent in the document these were depicted by the size of the circle . Note that close topics such as topics 1, 2 and 3 are semanDcally related . The distance between two or more topics is an approxim"
+    },
+    { "header": "IX. DISCUSSION", "content": "" },
+    { "header": "X. CONCLUSION", "content": "" }
+  ]
+}

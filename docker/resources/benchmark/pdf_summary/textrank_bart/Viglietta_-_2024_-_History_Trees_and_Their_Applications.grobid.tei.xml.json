@@ -1,1 +1,18 @@
-{"id": "Vigliett", "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml", "segments": [{"header": "Introduction", "content": [{"summary_text": "The introduction of history trees has recently led to the development of optimal linear-time algorithms for anonymous dynamic networks. In Section 2, we outline the basic architecture of history tree, drawing comparisons with Yamashita-Kameda's views and Boldi-Vigna's minimum bases. We showcase a straightforward linear- time algorithm for dynamic networks that illustrates the practicality of history Trees. We discuss more advanced applications ofhistory trees in challenging network situations."}]}, {"header": "Basic Structure and Algorithms", "content": [{"summary_text": "The view V t G (p) is defined as the portion of H G spanned by all directed paths from the root r to v, using black and red edges indifferently. This is done by a straightforward match-and-merge algorithm, starting from theRoot and proceeding level by level, as exemplified in Figure."}]}, {"header": "Leader Election", "content": [{"summary_text": "In Section 2.3 we gave a Counting algorithm for connected undirected dynamic networks with a unique leader that stabilizes in 2n -2 steps. In any non-branching level of the history tree of a strongly connected directed dynamic network with output port awareness, all nodes must have the same anonymity. We will give a universal self-stabilizing protocol that constructs coherent views."}]}]}
+{
+  "id": "Vigliett",
+  "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content":  "The introduction of history trees has recently led to the development of optimal linear-time algorithms for anonymous dynamic networks. In Section 2, we outline the basic architecture of history tree, drawing comparisons with Yamashita-Kameda's views and Boldi-Vigna's minimum bases. We showcase a straightforward linear- time algorithm for dynamic networks that illustrates the practicality of history Trees. We discuss more advanced applications ofhistory trees in challenging network situations."
+    },
+    {
+      "header": "Basic Structure and Algorithms",
+      "content":  "The view V t G (p) is defined as the portion of H G spanned by all directed paths from the root r to v, using black and red edges indifferently. This is done by a straightforward match-and-merge algorithm, starting from theRoot and proceeding level by level, as exemplified in Figure."
+    },
+    {
+      "header": "Leader Election",
+      "content":  "In Section 2.3 we gave a Counting algorithm for connected undirected dynamic networks with a unique leader that stabilizes in 2n -2 steps. In any non-branching level of the history tree of a strongly connected directed dynamic network with output port awareness, all nodes must have the same anonymity. We will give a universal self-stabilizing protocol that constructs coherent views."
+    }
+  ]
+}

@@ -5,11 +5,13 @@ SENT_NUM = 1
 PREPROCESS_SENT_NUM = 5 
 
 def preprocess_input(text:str, sent_num:str=PREPROCESS_SENT_NUM) -> str:
-    return summarize(
+    result = summarize(
         text = text, 
         words = sent_num * _get_max_length_sentence(text),
         additional_stopwords = summary.get_stop_word_list()
     )
+    print("[textrank preprocess]", result)
+    return result
 
 def summarize_text(text:str, sent_num:int=SENT_NUM) -> str:
     return summarize(

@@ -1,1 +1,30 @@
-{"id": "Hansen_e", "name": "Hansen_et_al._-_2024_-_Productivity_and_quality-adjusted_life_years_QALY.grobid.tei.xml", "segments": [{"header": "Introduction", "content": [{"summary_text": "In Section 2, we characterize the focal (and somewhat polar) evaluation functions QALYs and PALYs . In Section 5, we characterise classes of evaluation functions which compromise among the previous two . For a smooth passage, we defer all proofs to the Appendix."}]}, {"header": "Preliminaries", "content": [{"summary_text": "Theorem 4 presents a set of seven axioms that form the necessary conditions for the evaluation functions we consider . The affine PALY evaluation function (3).satisfies COMMON, HI, TIFHCP, PIFHCT, and TIUP .The first distribution (d  ), all individuals are experiencing full health and forty years of lifetime (until retirement, or the end of life) The third individual is experiencing 50% of maximum productivity and a forty-year"}]}, {"header": "Compromising between QALYs and PALYs", "content": [{"summary_text": "The purpose of this section is to dismiss those axioms, while obtaining characterizations of natural compromises between those focal (albeit polar) evaluation functions . The productivity-and-quality-adjusted life years evaluation function evaluates distributions by means of the weighted aggregate time span ."}]}, {"header": "satisfies COMMON, TICHP, PICHT, and TIUP.", "content": [{"summary_text": "Theorem 5 implies that a social planner chooses an evaluation function like the PQALY where health status and productivity of individuals enter the evaluation function multiplicatively . The second value specifies that if an intervention leads to extra life years, it does not matter which particular individual (among individuals with the same level of health and productivity) receives these additional life years (axiom TICHP) The previous family of evaluation functions ( QALY-PALY ) includes a natural sub-family of evaluation function ("}]}, {"header": "Discussion", "content": [{"summary_text": "The data collection of the economic evaluation will typically involve capturing information on all individuals in the intervention and control group . Instead of making that choice directly based on their functional forms, we rather believe the choice should be guided by the axioms they satisfy . In particular, each respondent would be asked to identify the number of individuals x in Intervention B to be indifferent between both interventions . Once y is identified, it follows from evaluation function the need for using a more flexible evaluation function (for example the QALY"}]}, {"header": "Concluding remarks", "content": [{"summary_text": "In the present framework considering health states, productivity and life years, we could also impose a power transformation of the individual components in each of the structured evaluation functions (1)-( have no effects on (labour market) productivity . To wit, we made no assumptions regarding the domain of health states A (except for the existence of a maximum element)"}]}]}
+{
+  "id": "Hansen_e",
+  "name": "Hansen_et_al._-_2024_-_Productivity_and_quality-adjusted_life_years_QALY.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content":  "In Section 2, we characterize the focal (and somewhat polar) evaluation functions QALYs and PALYs . In Section 5, we characterise classes of evaluation functions which compromise among the previous two . For a smooth passage, we defer all proofs to the Appendix."
+    },
+    {
+      "header": "Preliminaries",
+      "content":  "Theorem 4 presents a set of seven axioms that form the necessary conditions for the evaluation functions we consider . The affine PALY evaluation function (3).satisfies COMMON, HI, TIFHCP, PIFHCT, and TIUP .The first distribution (d  ), all individuals are experiencing full health and forty years of lifetime (until retirement, or the end of life) The third individual is experiencing 50% of maximum productivity and a forty-year"
+    },
+    {
+      "header": "Compromising between QALYs and PALYs",
+      "content":  "The purpose of this section is to dismiss those axioms, while obtaining characterizations of natural compromises between those focal (albeit polar) evaluation functions . The productivity-and-quality-adjusted life years evaluation function evaluates distributions by means of the weighted aggregate time span ."
+    },
+    {
+      "header": "satisfies COMMON, TICHP, PICHT, and TIUP.",
+      "content":  "Theorem 5 implies that a social planner chooses an evaluation function like the PQALY where health status and productivity of individuals enter the evaluation function multiplicatively . The second value specifies that if an intervention leads to extra life years, it does not matter which particular individual (among individuals with the same level of health and productivity) receives these additional life years (axiom TICHP) The previous family of evaluation functions ( QALY-PALY ) includes a natural sub-family of evaluation function ("
+    },
+    {
+      "header": "Discussion",
+      "content":  "The data collection of the economic evaluation will typically involve capturing information on all individuals in the intervention and control group . Instead of making that choice directly based on their functional forms, we rather believe the choice should be guided by the axioms they satisfy . In particular, each respondent would be asked to identify the number of individuals x in Intervention B to be indifferent between both interventions . Once y is identified, it follows from evaluation function the need for using a more flexible evaluation function (for example the QALY"
+    },
+    {
+      "header": "Concluding remarks",
+      "content":  "In the present framework considering health states, productivity and life years, we could also impose a power transformation of the individual components in each of the structured evaluation functions (1)-( have no effects on (labour market) productivity . To wit, we made no assumptions regarding the domain of health states A (except for the existence of a maximum element)"
+    }
+  ]
+}

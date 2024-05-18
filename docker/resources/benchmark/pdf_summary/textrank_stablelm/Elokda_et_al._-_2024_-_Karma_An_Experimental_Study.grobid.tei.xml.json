@@ -1,1 +1,22 @@
-{"id": "Elokda_e", "name": "Elokda_et_al._-_2024_-_Karma_An_Experimental_Study.grobid.tei.xml", "segments": [{"header": "INTRODUCTION", "content": "Economists aim to balance efficiency and fairness in scarcity-based systems, with proposed mechanisms like karma demonstrating substantial gains in efficiency, particularly for non-adopters, and offering potential for future theoretical and experimental exploration in human interactions."}, {"header": "EXPERIMENTAL METHODS", "content": "The study explores the impact of varying urgency and richness schemes on a dynamic urgency process among participants in a game where participants bid for resources with varying urgency and karma levels, with treatments ranging from binary to full range choices, and participants are awarded monetary payoffs based on their final scores and activity levels."}, {"header": "RESULTS", "content": "The study quantifies welfare improvements by introducing welfare measures, specifically focusing on the efficiency gain as a central welfare measure, and assessing fairness based on the distribution of efficiency gains, finding statistically significant efficiency gains across treatments, with the highest efficiency improvements under the high stake process with binary bidding, and more than 90% of the population being better off with karma than under random allocation."}, {"header": "DISCUSSION", "content": "The paper demonstrates that a karma scheme, when compared to random allocation, leads to significant and pronounced efficiency gains across all treatments, benefiting almost all participants, with the exception of the lowest decile, while theoretically, a simpler binary bidding scheme may offer trade-offs between efficiency and richer schemes, and the most favorable treatment combination in the experiments was high stake urgency under binary bidding, with higher efficiency gains and bid distribution compared to other schemes, despite a loss of data due to a technical bug."}]}
+{
+  "id": "Elokda_e",
+  "name": "Elokda_et_al._-_2024_-_Karma_An_Experimental_Study.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "INTRODUCTION",
+      "content": "Economists aim to balance efficiency and fairness in scarcity-based systems, with proposed mechanisms like karma demonstrating substantial gains in efficiency, particularly for non-adopters, and offering potential for future theoretical and experimental exploration in human interactions."
+    },
+    {
+      "header": "EXPERIMENTAL METHODS",
+      "content": "The study explores the impact of varying urgency and richness schemes on a dynamic urgency process among participants in a game where participants bid for resources with varying urgency and karma levels, with treatments ranging from binary to full range choices, and participants are awarded monetary payoffs based on their final scores and activity levels."
+    },
+    {
+      "header": "RESULTS",
+      "content": "The study quantifies welfare improvements by introducing welfare measures, specifically focusing on the efficiency gain as a central welfare measure, and assessing fairness based on the distribution of efficiency gains, finding statistically significant efficiency gains across treatments, with the highest efficiency improvements under the high stake process with binary bidding, and more than 90% of the population being better off with karma than under random allocation."
+    },
+    {
+      "header": "DISCUSSION",
+      "content": "The paper demonstrates that a karma scheme, when compared to random allocation, leads to significant and pronounced efficiency gains across all treatments, benefiting almost all participants, with the exception of the lowest decile, while theoretically, a simpler binary bidding scheme may offer trade-offs between efficiency and richer schemes, and the most favorable treatment combination in the experiments was high stake urgency under binary bidding, with higher efficiency gains and bid distribution compared to other schemes, despite a loss of data due to a technical bug."
+    }
+  ]
+}

@@ -55,7 +55,7 @@ def preload_zephyr():
         device_map="auto"
     )
     done_load_model = time.time()  
-    print("Done loading model: " + str(done_load_model - start))
+    print("[model] Done loading model: " + str(done_load_model - start))
 
 def zephyr(content: str) -> str:
     start = time.time()
@@ -75,7 +75,7 @@ def zephyr(content: str) -> str:
     )
     output = tokenizer.decode(tokens[0], skip_special_tokens=False)
     done_inference = time.time()
-    print("Done loading inference: " + str(done_inference - start))
+    print("[model] Done loading inference: " + str(done_inference - start))
     return output
 
 def preload_stable_lm_chat_1_6b():
@@ -89,7 +89,8 @@ def preload_stable_lm_chat_1_6b():
         device_map="auto",
     )
     done_load_model = time.time()
-    print("Done loading model: " + str(done_load_model - start))
+    print("[model] Done loading model: " + str(done_load_model - start))
+
 def stable_lm_chat_1_6b(content:str) -> str:
     start = time.time()
     
@@ -110,9 +111,9 @@ def stable_lm_chat_1_6b(content:str) -> str:
 
     output = tokenizer.decode(tokens[:, inputs.shape[-1]:][0], skip_special_tokens=False)
     done_inference = time.time()
-    print("Done loading inference: " + str(done_inference - start))
+    print("[model] Done loading inference: " + str(done_inference - start))
     # print(output)
-    return output.rstrip("")
+    return output.rstrip("<|im_end|>\n<|endoftext|>")
 
 def preload_bart_large_cnn():
     start = time.time()
@@ -132,9 +133,9 @@ def bart_large_cnn(content:str) -> str:
         do_sample=False
     )
     done_inference = time.time()
-    print("Done loading inference: " + str(done_inference - start))
+    print("[model] Done loading inference: " + str(done_inference - start))
     # print(output)
-    return output
+    return output[0]['summary_text']
     
 def preload_gemma_1_1_2b_it():
     start = time.time()
@@ -149,7 +150,7 @@ def preload_gemma_1_1_2b_it():
         token=access_token
     )
     done_load_model = time.time()
-    print("Done loading model: " + str(done_load_model - start))
+    print("[model] Done loading model: " + str(done_load_model - start))
 
 def gemma_1_1_2b_it(content:str) -> str:
     start = time.time()
@@ -164,7 +165,7 @@ def gemma_1_1_2b_it(content:str) -> str:
     output = tokenizer.decode(tokens[0])
 
     done_inference = time.time()
-    print("Done loading inference: " + str(done_inference - start))
+    print("[model] Done loading inference: " + str(done_inference - start))
     # print(output)
     return output
 
@@ -173,7 +174,7 @@ def preload_falcon_ai_text_summarizer():
     global summarizer 
     summarizer = pipeline("summarization", model="Falconsai/text_summarization")
     done_load_model = time.time()
-    print("Done load model: " + str(done_load_model - start))
+    print("[model] Done load model: " + str(done_load_model - start))
 
 def falcon_ai_text_summarizer(content:str) -> str:
     start = time.time()
@@ -187,8 +188,9 @@ def falcon_ai_text_summarizer(content:str) -> str:
         do_sample=False)
 
     done_inference = time.time()
-    print("Done inference: " + str(done_inference - start))
-    return output
+    print("[model] Done inference: " + str(done_inference - start))
+    result = output[0]['summary_text']
+    return result.lstrip("Summarize the following segment into 1 sentence: ")
 
 
 def main():

@@ -11,7 +11,7 @@ import summary_technique.lsa as lsa
 import summary_technique.model as model
 
 SUMMARY_FOLDER = config.get_summary_path()
-PREPROCESS_SENT_NUM = 5
+PREPROCESS_SENT_NUM = 10
 
 class PreProcessAlgo(Enum):
     NONE = "none"
@@ -55,8 +55,8 @@ preload = {
 
 preprocessing = {
     PreProcessAlgo.NONE : lambda text : text,
-    PreProcessAlgo.TEXTRANK : textrank.preprocess_input,
-    PreProcessAlgo.LSA : lsa.preprocess_input
+    PreProcessAlgo.TEXTRANK : lambda content : textrank.preprocess_input(content, 5),
+    PreProcessAlgo.LSA : lambda content : lsa.preprocess_input(content, 10)
 }
 
 
@@ -102,12 +102,11 @@ def summarize_segment(segment:Segment, preprocess_algo:PreProcessAlgo, sum_algo:
     while(is_not_exceed_token and sent_num >= 1 and not is_no_content):
         print(is_not_exceed_token, sent_num, is_no_content)
         if(len(content) != 0):
-            content_pre_process = preprocessing[preprocess_algo](content, sent_num)
+            content_pre_process = preprocessing[preprocess_algo](content)
         else:
             is_no_content = True
 
         if(len(content_pre_process) != 0):
-            print(content_pre_process)
             try:
                 s_content = algo[sum_algo](content_pre_process)
                 is_not_exceed_token = False
@@ -117,7 +116,7 @@ def summarize_segment(segment:Segment, preprocess_algo:PreProcessAlgo, sum_algo:
         else:
             is_no_content = True
 
-
+    print("[model] summary result: " + s_content)
     s_segment.set_header(header)
     s_segment.set_content(s_content)
     return s_segment

@@ -153,9 +153,8 @@ if __name__ == "__main__":
     papers = parse_xml_folder()
     s_papers = summary.summarize_folder(
         papers,
-        summary.PreProcessAlgo.TEXTRANK, 
-        summary.SumAlgo.BART_LARGE_CNN
+        summary.PreProcessAlgo.LSA, 
+        summary.SumAlgo.FALCON
     )
     end = time.time()
-    print("Total time: " + str(end - start))
-    # summary.save_to_folder(s_papers)
+    print("[xmlParser] Total time:", str(end - start))

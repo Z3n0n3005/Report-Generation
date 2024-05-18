@@ -1,1 +1,26 @@
-{"id": "Urteaga_", "name": "Urteaga_and_Wiggins_-_2024_-_Sequential_Monte_Carlo_Bandits.grobid.tei.xml", "segments": [{"header": "Introduction", "content": [{"summary_text": "The multi-armed bandit problem considers the sequential strategy one must devise when playing a row of slot machines: i.e., which arm to play next to maximize cumulative returns . The contextual MAB, where at each interaction with the world side information (known as 'context') is available, is a natural extension of this abstraction . We propose to use sequential Monte Carlo (SMC) for non-stationary bandits with nonlinear rewards, where the world -the reward function-is"}]}, {"header": "Background and preliminaries", "content": [{"summary_text": "The MAB crystallizes the fundamental trade-off between exploration and exploitation in sequential decision making . It can potentially depend on context x  X; e.g., a common choice is X = R d X . We use p a At each bandit interaction t, reward y t is observed for the played arm a t  A only, which is independently and identically drawn from its context-conditional distributionparameterized by true  *"}]}, {"header": "SMC for multi-armed bandits", "content": [{"summary_text": "We use SMC-based posterior random measure p M ( t,a |H 1:t ) to compute the true per-arm parameter posteriors at each bandit interaction . In Step 5 of Algorithm 1, we describe in detail how to use the SMC based random measure (p M) to approximate the time-varying densities . The SMC proposal distribution q(\u2022) is resampled at every time instant -Step (9.a) In Step 9 of Al"}]}, {"header": "Evaluation", "content": [{"summary_text": "Results in Appendix A.2 validate the performance of SMC-based policies in stationary bandits . We compare their performance to solutions based on analytically attainable posteriors with Bernoulli and contextual linear Gaussian reward functions . The main evaluation metric is the cumulative regret of the bandit agent, as defined in Equation ."}]}, {"header": "Conclusion and discussion", "content": [{"summary_text": "SMC-based posterior random measures are accurate enough for Bayesian bandit policies to find satisfactory exploration-exploitation tradeoffs . Empirical results show good cumulative regret performance of proposed policies in simulated MAB environments that previous algorithms can not address . We present below cumulative regret results for different parameters of 5-armed Bernoulli bandits ."}]}]}
+{
+  "id": "Urteaga_",
+  "name": "Urteaga_and_Wiggins_-_2024_-_Sequential_Monte_Carlo_Bandits.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content":  "The multi-armed bandit problem considers the sequential strategy one must devise when playing a row of slot machines: i.e., which arm to play next to maximize cumulative returns . The contextual MAB, where at each interaction with the world side information (known as 'context') is available, is a natural extension of this abstraction . We propose to use sequential Monte Carlo (SMC) for non-stationary bandits with nonlinear rewards, where the world -the reward function-is"
+    },
+    {
+      "header": "Background and preliminaries",
+      "content":  "The MAB crystallizes the fundamental trade-off between exploration and exploitation in sequential decision making . It can potentially depend on context x  X; e.g., a common choice is X = R d X . We use p a At each bandit interaction t, reward y t is observed for the played arm a t  A only, which is independently and identically drawn from its context-conditional distributionparameterized by true  *"
+    },
+    {
+      "header": "SMC for multi-armed bandits",
+      "content":  "We use SMC-based posterior random measure p M ( t,a |H 1:t ) to compute the true per-arm parameter posteriors at each bandit interaction . In Step 5 of Algorithm 1, we describe in detail how to use the SMC based random measure (p M) to approximate the time-varying densities . The SMC proposal distribution q(\u2022) is resampled at every time instant -Step (9.a) In Step 9 of Al"
+    },
+    {
+      "header": "Evaluation",
+      "content":  "Results in Appendix A.2 validate the performance of SMC-based policies in stationary bandits . We compare their performance to solutions based on analytically attainable posteriors with Bernoulli and contextual linear Gaussian reward functions . The main evaluation metric is the cumulative regret of the bandit agent, as defined in Equation ."
+    },
+    {
+      "header": "Conclusion and discussion",
+      "content":  "SMC-based posterior random measures are accurate enough for Bayesian bandit policies to find satisfactory exploration-exploitation tradeoffs . Empirical results show good cumulative regret performance of proposed policies in simulated MAB environments that previous algorithms can not address . We present below cumulative regret results for different parameters of 5-armed Bernoulli bandits ."
+    }
+  ]
+}

@@ -1,1 +1,18 @@
-{"id": "Vigliett", "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml", "segments": [{"header": "Introduction", "content": [{"summary_text": "A distributed communication network consists of a finite number of independent computational units known as agents . These networks generally operate in synchronous or asynchronous communication steps . A common algorithmic approach in this setting involves assigning a \"weight\" to each agent . This process is analyzed using standard stochastic methods to understand how these weights eventually converge ."}]}, {"header": "Basic Structure and Algorithms", "content": [{"summary_text": "In this section, the reader may find it beneficial to examine the software available at https://github.com/viglietta/Dynamic-Networks . The repository includes a simulator that supports the creation and visualization of history trees of user-defined dynamic networks . At time t = 1, no two agents are distinguishable if and only if they are sent by indistinguishable agents (possibly by the same agent) This is done by a straightforward match-and-merge algorithm, "}]}, {"header": "Leader Election", "content": [{"summary_text": "Counting algorithm terminates in 2n -2 steps, which is worst-case optimal .Open Problem 8. Is there a universal finite-state protocol for congested dynamic networks with a unique leader?An agent can simply update its view as usual, but deletes level L 0 every two steps ."}]}]}
+{
+  "id": "Vigliett",
+  "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content":  "A distributed communication network consists of a finite number of independent computational units known as agents . These networks generally operate in synchronous or asynchronous communication steps . A common algorithmic approach in this setting involves assigning a \"weight\" to each agent . This process is analyzed using standard stochastic methods to understand how these weights eventually converge ."
+    },
+    {
+      "header": "Basic Structure and Algorithms",
+      "content":  "In this section, the reader may find it beneficial to examine the software available at https://github.com/viglietta/Dynamic-Networks . The repository includes a simulator that supports the creation and visualization of history trees of user-defined dynamic networks . At time t = 1, no two agents are distinguishable if and only if they are sent by indistinguishable agents (possibly by the same agent) This is done by a straightforward match-and-merge algorithm, "
+    },
+    {
+      "header": "Leader Election",
+      "content":  "Counting algorithm terminates in 2n -2 steps, which is worst-case optimal .Open Problem 8. Is there a universal finite-state protocol for congested dynamic networks with a unique leader?An agent can simply update its view as usual, but deletes level L 0 every two steps ."
+    }
+  ]
+}

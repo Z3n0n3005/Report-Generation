@@ -1,1 +1,26 @@
-{"id": "Deienno_", "name": "Deienno_et_al._-_2024_-_Accretion_and_Uneven_Depletion_of_the_Main_Asteroi.grobid.tei.xml", "segments": [{"header": "INTRODUCTION", "content": [{"summary_text": "Ideally, we would like to account for both collisional and dynamical evolution (and depletion) in a self-consistent way. To do that, it is important that we consider not only the MAB total mass, but also its SFD. Our primordial MAB SFD is based on the findings of"}]}, {"header": "MODEL", "content": [{"summary_text": "We assume planetesimals were formed within the first 0.5 Myr after Calcium-Aluminum-Inclusions (CAIs) based on the methods by Chambers 2021. We discarded objects that collisionally evolved to sizes below 1 mm, assuming those would rapidly grind down to dust."}]}, {"header": "MAB, DATASET, AND COMPARISON WITH MPC", "content": [{"summary_text": "The giant planet instability has been found to heavily deplete the MAB. Different MAB sub-regions have different depletion factors. The work by Our analyses clearly demonstrate that MAB depletion during the giantPlanet instability is not uniform."}]}, {"header": "RESULTS", "content": [{"summary_text": "We are interested in evaluating both the evolution and depletion of the MAB SFD as well as the number of objects with D > 500 km (4-Vesta-like) that would grow over time. The only known S-complex asteroid with D = 500 km is (4) Vesta, (a V-type)"}]}, {"header": "CONCLUSIONS", "content": [{"summary_text": "The current MAB total mass is tiny. There is a debate in the literature on whether such a small MAB mass was primordial. All of our primordial MAB asteroids would be of inner solar system S-complex taxonomic type."}]}]}
+{
+  "id": "Deienno_",
+  "name": "Deienno_et_al._-_2024_-_Accretion_and_Uneven_Depletion_of_the_Main_Asteroi.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "INTRODUCTION",
+      "content":  "Ideally, we would like to account for both collisional and dynamical evolution (and depletion) in a self-consistent way. To do that, it is important that we consider not only the MAB total mass, but also its SFD. Our primordial MAB SFD is based on the findings of"
+    },
+    {
+      "header": "MODEL",
+      "content":  "We assume planetesimals were formed within the first 0.5 Myr after Calcium-Aluminum-Inclusions (CAIs) based on the methods by Chambers 2021. We discarded objects that collisionally evolved to sizes below 1 mm, assuming those would rapidly grind down to dust."
+    },
+    {
+      "header": "MAB, DATASET, AND COMPARISON WITH MPC",
+      "content":  "The giant planet instability has been found to heavily deplete the MAB. Different MAB sub-regions have different depletion factors. The work by Our analyses clearly demonstrate that MAB depletion during the giantPlanet instability is not uniform."
+    },
+    {
+      "header": "RESULTS",
+      "content":  "We are interested in evaluating both the evolution and depletion of the MAB SFD as well as the number of objects with D > 500 km (4-Vesta-like) that would grow over time. The only known S-complex asteroid with D = 500 km is (4) Vesta, (a V-type)"
+    },
+    {
+      "header": "CONCLUSIONS",
+      "content":  "The current MAB total mass is tiny. There is a debate in the literature on whether such a small MAB mass was primordial. All of our primordial MAB asteroids would be of inner solar system S-complex taxonomic type."
+    }
+  ]
+}

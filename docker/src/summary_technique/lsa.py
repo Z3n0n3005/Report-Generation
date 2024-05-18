@@ -17,9 +17,12 @@ REDUCTION_RATIO = 1/1
 SentenceInfo = namedtuple("SentenceInfo", ("sentence", "order", "rating",))
 
 def preprocess_input(text:str, sent_num:str=PREPROCESS_SENT_NUM) -> str:
-    return summarize_text(text, sent_num)
+    result = summarize_text(text, sent_num)
+    print("[lsa preprocess] ", result)
+    return result
 
 def summarize_text(text:str, sent_num:int=SENT_NUM) -> str:
+    print(sent_num)
     if(len(text) == 0):
         return ""
 
@@ -32,11 +35,19 @@ def summarize_text(text:str, sent_num:int=SENT_NUM) -> str:
     u, sigma, v = singular_value_decomposition(matrix, full_matrices=False)
 
     ranks = iter(_compute_ranks(sigma, v))
-    return _get_best_sentences(
+    result = _get_best_sentences(
         sentences,
         sent_num,
         lambda s: next(ranks)
-    )[0]
+    )
+    # print(result)
+    result_str = ''
+    for sentence in result:
+        # print("[lsa] sentence:", sentence)
+        result_str += sentence
+    print("[lsa] result: " , len(word_tokenize(result_str)), "\n")
+    return result_str
+
 
 def _normalize_word(word:str):
     return word.lower()
@@ -61,6 +72,7 @@ def _create_matrix(text:str, dictionary:dict[str, int]):
     contains number of occurences of words (rows) in senteces (cols).
     """
     sentences = sent_tokenize(text)
+    # print("[lsa] sentences:", sentences)
     words_count = len(dictionary)
     sentences_count = len(sentences)
     if words_count < sentences_count:
@@ -120,6 +132,7 @@ def _compute_ranks(sigma, v_matrix):
     return ranks
 
 def _get_best_sentences(sentences, count, rating, *args, **kwargs):
+    # print('[lsa] count:', count, "\n")
     rate = rating
     if isinstance(rating, dict):
         assert not args and not kwargs
@@ -130,12 +143,10 @@ def _get_best_sentences(sentences, count, rating, *args, **kwargs):
 
     # sort sentences by rating in descending order
     infos = sorted(infos, key=attrgetter("rating"), reverse=True)
-    # get `count` first best rated sentences
-    # if not isinstance(count, ItemsCount):
-    #     count = ItemsCount(count)
-    # infos = count(infos)
 
+    # print("[lsa] infos before:", infos, "\n")
     infos = infos[:count]
+    # print("[lsa] infos after:", infos, "\n")
     # sort sentences by their order in document
     infos = sorted(infos, key=attrgetter("order"))
 

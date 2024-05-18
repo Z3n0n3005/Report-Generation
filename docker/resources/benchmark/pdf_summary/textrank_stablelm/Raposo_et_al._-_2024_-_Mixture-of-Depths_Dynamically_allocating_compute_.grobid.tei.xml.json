@@ -1,1 +1,26 @@
-{"id": "Raposo_e", "name": "Raposo_et_al._-_2024_-_Mixture-of-Depths_Dynamically_allocating_compute_.grobid.tei.xml", "segments": [{"header": "Introduction", "content": "Transformer models can achieve equal or better log probabilities per sequence while using a smaller FLOP footprint per forward pass through a technique called Mixture-of-Depths (MoD), which intelligently routes computations based on individual token-level routing decisions across the network depth, allowing for faster execution while maintaining performance."}, {"header": "Background", "content": "The transformer architecture, through its efficiency improvements and widespread adoption in AI, has revolutionized practical applications, necessitating the exploration of methods to enhance its performance, leading to advancements in conditional computation techniques and the development of predictive routers for efficient inference in transformer-based models like CoLT5 MoD, with notable contributions like the \"mixture-of-experts\" layer (MoE) as proposed by researchers."}, {"header": "Implementing Mixture-of-Depths Transformers", "content": "The high-level strategy for setting a static compute budget in a transformer includes limiting the number of tokens in a sequence that can participate in a block's computations, enforcing a total compute budget per forward pass through the notion of capacity, and utilizing relative routing weights to split tokens into mutually exclusive sets, resulting in compute savings relative to a baseline by using fewer tokens in the input to the block's computations, while still efficiently routing through two paths for the top-\ud835\udc58 operation."}, {"header": "Results", "content": "MoD transformers, which utilize routing and smaller parameter sizes, can achieve faster training and comparable performance to isoFLOP-optimal baselines while using fewer FLOPs and parameters, with potential memory savings and improved accuracy in certain scenarios, all while maintaining robustness to capacity reductions and achieving better speed-to-performance ratios in some variants."}, {"header": "Discussion", "content": "Using learned routing mechanisms, such as top-k routing, to efficiently allocate compute resources among tokens in transformer models, allowing for more context-length predictions and potentially improving inference time by adjusting the types of computations available to the network, while also addressing challenges in post-training autoregressive sampling."}]}
+{
+  "id": "Raposo_e",
+  "name": "Raposo_et_al._-_2024_-_Mixture-of-Depths_Dynamically_allocating_compute_.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "Transformer models can achieve equal or better log probabilities per sequence while using a smaller FLOP footprint per forward pass through a technique called Mixture-of-Depths (MoD), which intelligently routes computations based on individual token-level routing decisions across the network depth, allowing for faster execution while maintaining performance."
+    },
+    {
+      "header": "Background",
+      "content": "The transformer architecture, through its efficiency improvements and widespread adoption in AI, has revolutionized practical applications, necessitating the exploration of methods to enhance its performance, leading to advancements in conditional computation techniques and the development of predictive routers for efficient inference in transformer-based models like CoLT5 MoD, with notable contributions like the \"mixture-of-experts\" layer (MoE) as proposed by researchers."
+    },
+    {
+      "header": "Implementing Mixture-of-Depths Transformers",
+      "content": "The high-level strategy for setting a static compute budget in a transformer includes limiting the number of tokens in a sequence that can participate in a block's computations, enforcing a total compute budget per forward pass through the notion of capacity, and utilizing relative routing weights to split tokens into mutually exclusive sets, resulting in compute savings relative to a baseline by using fewer tokens in the input to the block's computations, while still efficiently routing through two paths for the top-\ud835\udc58 operation."
+    },
+    {
+      "header": "Results",
+      "content": "MoD transformers, which utilize routing and smaller parameter sizes, can achieve faster training and comparable performance to isoFLOP-optimal baselines while using fewer FLOPs and parameters, with potential memory savings and improved accuracy in certain scenarios, all while maintaining robustness to capacity reductions and achieving better speed-to-performance ratios in some variants."
+    },
+    {
+      "header": "Discussion",
+      "content": "Using learned routing mechanisms, such as top-k routing, to efficiently allocate compute resources among tokens in transformer models, allowing for more context-length predictions and potentially improving inference time by adjusting the types of computations available to the network, while also addressing challenges in post-training autoregressive sampling."
+    }
+  ]
+}
