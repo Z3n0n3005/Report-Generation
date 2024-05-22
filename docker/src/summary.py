@@ -29,13 +29,13 @@ class SumAlgo(Enum):
     ZEPHYR = "zephyr"
 
 algo = {
-    SumAlgo.TEXTRANK : textrank.summarize_text,
-    SumAlgo.LSA : lsa.summarize_text, 
-    SumAlgo.FALCON : model.falcon_ai_text_summarizer,
-    SumAlgo.STABLE_LM : model.stable_lm_chat_1_6b,  
-    SumAlgo.BART_LARGE_CNN : model.bart_large_cnn,
-    SumAlgo.ZEPHYR : model.zephyr,
-    SumAlgo.GEMMA_2B : model.gemma_1_1_2b_it
+    SumAlgo.TEXTRANK.value : textrank.summarize_text,
+    SumAlgo.LSA.value : lsa.summarize_text, 
+    SumAlgo.FALCON.value : model.falcon_ai_text_summarizer,
+    SumAlgo.STABLE_LM.value : model.stable_lm_chat_1_6b,  
+    SumAlgo.BART_LARGE_CNN.value : model.bart_large_cnn,
+    SumAlgo.ZEPHYR.value : model.zephyr,
+    SumAlgo.GEMMA_2B.value : model.gemma_1_1_2b_it
 }
 
 algo_using_lm = [
@@ -47,21 +47,21 @@ algo_using_lm = [
 ]
 
 preload = {
-    SumAlgo.FALCON : model.preload_falcon_ai_text_summarizer,
-    SumAlgo.STABLE_LM : model.preload_stable_lm_chat_1_6b,
-    SumAlgo.BART_LARGE_CNN : model.preload_bart_large_cnn,
-    SumAlgo.ZEPHYR : model.preload_zephyr,
-    SumAlgo.GEMMA_2B : model.gemma_1_1_2b_it    
+    SumAlgo.FALCON.value : model.preload_falcon_ai_text_summarizer,
+    SumAlgo.STABLE_LM.value : model.preload_stable_lm_chat_1_6b,
+    SumAlgo.BART_LARGE_CNN.value : model.preload_bart_large_cnn,
+    SumAlgo.ZEPHYR.value : model.preload_zephyr,
+    SumAlgo.GEMMA_2B.value : model.gemma_1_1_2b_it    
 }
 
 preprocessing = {
-    PreProcessAlgo.NONE : lambda text : text,
-    PreProcessAlgo.TEXTRANK : lambda content : textrank.preprocess_input(content, 5),
-    PreProcessAlgo.LSA : lambda content : lsa.preprocess_input(content, 10)
+    PreProcessAlgo.NONE.value : lambda text : text,
+    PreProcessAlgo.TEXTRANK.value : lambda content : textrank.preprocess_input(content, 5),
+    PreProcessAlgo.LSA.value : lambda content : lsa.preprocess_input(content, 10)
 }
 
 
-def summarize_folder(papers:list[Paper], preprocess_algo:PreProcessAlgo, sum_algo:SumAlgo) -> list[Paper]:
+def summarize_folder(papers:list[Paper], preprocess_algo:str, sum_algo:str) -> list[Paper]:
     start_time = time.time()
     s_papers = []
 
@@ -89,7 +89,7 @@ def summarize_folder(papers:list[Paper], preprocess_algo:PreProcessAlgo, sum_alg
     app.app.logger.info("Summarize folder: " + str(end_time - start_time))
     return s_papers
 
-def summarize_segment(segment:Segment, preprocess_algo:PreProcessAlgo, sum_algo:SumAlgo) -> Segment:
+def summarize_segment(segment:Segment, preprocess_algo:str, sum_algo:str) -> Segment:
     s_segment = Segment()
     header = segment.get_header()
     content = segment.get_content()

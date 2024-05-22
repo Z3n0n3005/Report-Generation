@@ -4,8 +4,8 @@
 # ls /src
 # ls /src/resources
 # ls /src/resources/pdf_in
+# pip index versions torch
 flask run --debug
-# python src/app.py
 
-ls /code/resources
-ls /code/resources/test_out
+# ls /code/resources
+# ls /code/resources/test_out

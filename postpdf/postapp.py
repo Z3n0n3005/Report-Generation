@@ -59,6 +59,10 @@ if __name__ == "__main__":
         'Library-Type':'user',
         'Item-Key':'SNXV9A8F'
     }
+    summarize_header = {
+        'Sum-Algo':'falcon',
+        'Preprocess-Algo':'textrank'
+    }
     session = requests.Session()
     # response = session.post(
     #     url=url_base+url_connect_to_zotero,
@@ -74,6 +78,7 @@ if __name__ == "__main__":
     print(response.request.headers)
 
     reponse = session.post(
-        url = url_base + url_summarize
+        url = url_base + url_summarize,
+        headers=summarize_header
     )
     print(response.request)

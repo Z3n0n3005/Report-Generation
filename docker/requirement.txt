@@ -1,3 +1,4 @@
+grobid-client-python
 requests
 flask[async]
 redis
@@ -8,5 +9,4 @@ asyncio
 nltk
 numpy
 transformers
-tensorflow
-tf-keras
+torch

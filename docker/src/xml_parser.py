@@ -31,8 +31,8 @@ def parse_xml_folder() -> list[Paper]:
 
         # Create new paper
         paper = get_xml_parsing_result(file)
-        # paper.set_name(paper_name.removesuffix(SEGMENT_FILE_PATH)[9:])
-        paper.set_name(paper_name)
+        paper.set_name(paper_name.removesuffix(SEGMENT_FILE_PATH)[9:])
+        # paper.set_name(paper_name)
         paper.set_id(paper_name[0:8])
         print(paper.get_id())
         paper.clean()
@@ -153,8 +153,8 @@ if __name__ == "__main__":
     papers = parse_xml_folder()
     s_papers = summary.summarize_folder(
         papers,
-        summary.PreProcessAlgo.NONE, 
-        summary.SumAlgo.STABLE_LM
+        summary.PreProcessAlgo.NONE.value, 
+        summary.SumAlgo.TEXTRANK.value
     )
     end = time.time()
     log("[xmlParser] Total time:", str(end - start))

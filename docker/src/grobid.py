@@ -2,7 +2,7 @@ import sys
 import json
 import time
 import config
-sys.path.insert(1, '/code/lib/grobid_client_python/')
+# sys.path.insert(1, '/code/lib/grobid_client_python/')
 from grobid_client.grobid_client import GrobidClient
 import app
 from flask import current_app

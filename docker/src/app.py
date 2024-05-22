@@ -158,6 +158,7 @@ async def summarize():
             response = "Required keys are missing from headers"
         )
     sum_algo = request.headers.get("Sum-Algo")
+    preprocess_algo = request.headers.get("Preprocess-Algo")
     result = await parse_pdf()
     if(not result):
         return Response(
@@ -165,7 +166,7 @@ async def summarize():
             response = "Failed to contact GROBID server"
         ) 
     papers = xml_parser.parse_xml_folder()
-    s_papers = summary.summarize_folder(papers, sum_algo)
+    s_papers = summary.summarize_folder(papers, preprocess_algo, sum_algo)
     summary.save_to_folder(s_papers)
     # Delete all files after parsing
     paper_json_list = []
