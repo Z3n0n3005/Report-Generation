@@ -1,7 +1,7 @@
 import os
 from grobid import parse_pdf
 from zotero import Zotero
-from flask import Flask, request, Response, jsonify, session
+from flask import Flask, request, Response, render_template
 from werkzeug.utils import secure_filename
 import config
 import xml_parser
@@ -21,9 +21,51 @@ def allowed_file(filename):
 def flask_log(content):
     app.logger.info(content) 
 
-@app.route("/")
-def hello_world():
-    return '<p>Hello World!</p>'
+@app.route("/", methods=['GET', 'POST'])
+async def hello_world():
+    if(request.method == 'POST'):
+        if 'file' not in request.files:
+            error_html = div_error_html(["PDF file has not been chosen"])
+            return render_template('index.html', error=error_html), 400
+
+        file = request.files['file']
+        if file.filename == '':
+            error_html = div_error_html(["PDF file has not been chosen"])
+            return render_template('index.html', error=error_html), 400
+        
+        if 'preprocessing' not in request.form:
+            error_html = div_error_html(["Preprocessing has not been chosen"])
+            return render_template('index.html', error=error_html), 400
+        preprocessing = request.form['preprocessing']
+
+        if 'processing' not in request.form:
+            error_html = div_error_html(["Processing has not been chosen"])
+            return render_template('index.html', error=error_html), 400
+        processing = request.form['processing']
+
+        # Save file to folder
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        
+        # Create PDF Segment
+        result = await parse_pdf()
+        if(not result):
+            error_html = div_error_html(["Failed to contact GROBID server"])
+            return render_template('index.html', error=error_html), 500
+
+        # Parse PDF segment
+        papers = xml_parser.parse_xml_folder()
+        s_papers = summary.summarize_folder(papers, preprocessing, processing)
+        summary.save_to_folder(s_papers)
+        # Delete all files after parsing
+        paper_json_list = []
+        for s_paper in s_papers:
+            paper_json_list.append(s_paper.to_json_format())
+            
+        return json.dumps(paper_json_list), 200
+
+        # return render_template('index.html')
+    return render_template('index.html')
 
 @app.route("/upload", methods=['POST'])
 def upload():
@@ -177,6 +219,13 @@ async def summarize():
         status=200,
         response=json.dumps(paper_json_list)
     )
+
+def div_error_html(error_list:list[str]) -> str:
+    result = '<div id="notification" class="error-notification">\n'
+    for e in error_list:
+        result += '<p class="error-text atkinson-hyperlegible-bold">' + e + '</p>'
+    result += '</div>'
+    return result
 
 if __name__ == "__main__":
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
