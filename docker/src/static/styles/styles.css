@@ -10,11 +10,16 @@ body {
     text-align: center;
 }
 
-.drop-zone {
-    border: 2px dashed #ccc;
+.container {
+    border: 2px dashed;
     border-radius: 25px;
     padding: 20px;
+    margin-bottom: 10px;
     width: 80vw;
+}
+
+.drop-zone {
+    border-color: #ccc;
     height: 60vh;
     display: flex;
     flex-direction: column;
@@ -28,24 +33,17 @@ body {
 }
 
 .setting {
-    border: 2px dashed #ccc;
-    border-radius: 25px;
-    padding: 20px;
-    margin-bottom: 10px;
-    width: 80vw;
+    border-color: #ccc;
 }
 
-.error-notification{
-    border: 2px dashed #f55;
-    border-radius: 25px;
-    padding: 20px;
-    margin-bottom: 10px;
-    width: 80vw;
+.error-notification {
+    border-color: #f55;
 }
 
 .error-text{
     color: #f55;
 }
+
 .atkinson-hyperlegible-regular {
     font-family: "Atkinson Hyperlegible", sans-serif;
     font-weight: 400;

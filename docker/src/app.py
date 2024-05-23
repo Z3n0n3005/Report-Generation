@@ -7,6 +7,7 @@ import config
 import xml_parser
 import summary
 import json
+from paper import Paper
 
 UPLOAD_FOLDER = config.get_upload_path()
 SEGMENT_FOLDER = config.get_segment_path()
@@ -57,14 +58,12 @@ async def hello_world():
         papers = xml_parser.parse_xml_folder()
         s_papers = summary.summarize_folder(papers, preprocessing, processing)
         summary.save_to_folder(s_papers)
-        # Delete all files after parsing
-        paper_json_list = []
-        for s_paper in s_papers:
-            paper_json_list.append(s_paper.to_json_format())
-            
-        return json.dumps(paper_json_list), 200
 
-        # return render_template('index.html')
+        # Delete all files after parsing
+
+        result_html = div_result_html(s_papers) 
+        return render_template('index.html', result=result_html), 200
+
     return render_template('index.html')
 
 @app.route("/upload", methods=['POST'])
@@ -75,40 +74,44 @@ def upload():
     # If header 'files' is not in the payload 
     if 'files' not in request.files:
         print('No pdf file')
-        return Response(
-            response="No 'files' header in payload.",
-            status=404
-        )
+        return "No 'files' header in payload.", 404
+        # return Response(
+        #     response="No 'files' header in payload.",
+        #     status=404
+        # )
         
     pdf_file = request.files['files']
 
     # If the file has no name
     if pdf_file.filename == '':
         print('No pdf file selected')
-        return Response(
-            response="File has no name.",
-            status=404
-        )
+        return "File has no name.", 404
+        # return Response(
+        #     response="File has no name.",
+        #     status=404
+        # )
         
     # If the file does not exist 
     if not pdf_file: 
-        return Response(
-            response="File does not exist.",
-            status=404
-        )
+        return "File does not exist.", 404
+        # return Response(
+        #     response="File does not exist.",
+        #     status=404
+        # )
         
     # If the extension does not end with .pdf
     if not allowed_file(pdf_file.filename):
-        return Response(
-            response="File does not end with .pdf",
-            status=404
-        )    
+        return "File does not end with .pdf", 404
+        # return Response(
+        #     response="File does not end with .pdf",
+        #     status=404
+        # )    
 
     filename = secure_filename(pdf_file.filename)
     pdf_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         
     print("END POST")
-    return 'Successfully send files'
+    return 'Successfully send files', 200
 
 @app.route("/getPdfFileZotero", methods=['GET', 'POST'])
 async def getPdfFileZotero():
@@ -121,34 +124,38 @@ async def getPdfFileZotero():
         or 'Library-Id' not in keys     
     ): 
         app.logger.error("Required keys are missing from headers")
-        return Response(
-            status = 400, 
-            response = "Required keys are missing from headers"
-        )    
+        return "Required keys are missing form headers.", 400
+        # return Response(
+        #     status = 400, 
+        #     response = "Required keys are missing from headers"
+        # )    
     api_key = request.headers.get("Api-Key")
     library_type = request.headers.get("Library-Type")
     library_id = request.headers.get("Library-Id")
     item_key = request.headers.get("Item-Key")
 
     if(item_key == None):
-        return Response(
-            status = 400,
-            response = "Required values are missing from heaaders"
-        )
+        return "Required values are missing form headers", 400
+        # return Response(
+        #     status = 400,
+        #     response = "Required values are missing from heaaders"
+        # )
 
     zot = Zotero(library_id, library_type, api_key)
     result = await zot.get_pdf_file(item_key, UPLOAD_FOLDER)
 
     if(result):
-        return Response(
-            status = 200,
-            response = "Succesfully retrieved corresponding PDF file."
-        )
+        return "Successfully retrieved corresponding PDF file", 200
+        # return Response(
+        #     status = 200,
+        #     response = "Succesfully retrieved corresponding PDF file."
+        # )
     else:
-        return Response (
-            status = 400, 
-            response = "Failed to retrieved corresponding PDF file."
-        )
+        return "Failed to retrieved corresponding PDF file", 400
+        # return Response (
+        #     status = 400, 
+        #     response = "Failed to retrieved corresponding PDF file."
+        # )
 
 @app.route("/getAllPdfFileZotero", methods=['GET'])
 async def getAllPdfFilesZotero():
@@ -161,40 +168,44 @@ async def getAllPdfFilesZotero():
         or 'Library-Id' not in keys     
     ):
         app.logger.error("Required keys are missing from headers")
-        
-        return Response(
-            status = 400, 
-            response = "Required keys are missing from headers"
-        )    
+        return "Required keys are missing from headers", 400
+        # return Response(
+        #     status = 400, 
+        #     response = "Required keys are missing from headers"
+        # )    
     api_key = request.headers.get("Api-Key")
     library_type = request.headers.get("Library-Type")
     library_id = request.headers.get("Library-Id")
     item_key = request.headers.get("Item-Key")
 
     if(item_key == None):
-        return Response(
-            status = 400,
-            response = "Required values are missing from heaaders"
-        )
+        return "Required values are missing from headers", 400
+        # return Response(
+        #     status = 400,
+        #     response = "Required values are missing from heaaders"
+        # )
 
     zot = Zotero(library_id, library_type, api_key)
     result = await zot.get_pdf_file(item_key, None, UPLOAD_FOLDER)
-    if(result):
+    if result:
+        return "Successfully retrieved corresponding PDF file."
         return Response(
             status = 200,
             response = "Succesfully retrieved corresponding PDF file."
         )
     else:
-        return Response (
-            status = 400, 
-            response = "Failed to retrieved corresponding PDF file."
-        )
+        return "Failed to retrieved corresponding PDF file.", 400
+        # return Response (
+        #     status = 400, 
+        #     response = "Failed to retrieved corresponding PDF file."
+        # )
 
 @app.route("/summarize", methods=['POST'])
 async def summarize():
     keys = set(request.headers.keys())
-    if('Sum-Algo' not in keys):
+    if 'Sum-Algo' not in keys:
         app.logger.error("Required keys are missing from headers")
+        return "Required keys are missing from headers", 400
         return Response(
             status = 400, 
             response = "Required keys are missing from headers"
@@ -202,11 +213,12 @@ async def summarize():
     sum_algo = request.headers.get("Sum-Algo")
     preprocess_algo = request.headers.get("Preprocess-Algo")
     result = await parse_pdf()
-    if(not result):
-        return Response(
-            status=500,
-            response = "Failed to contact GROBID server"
-        ) 
+    if not result:
+        return "Failed to contact GROBID server", 500
+        # return Response(
+        #     status=500,
+        #     response = "Failed to contact GROBID server"
+        # ) 
     papers = xml_parser.parse_xml_folder()
     s_papers = summary.summarize_folder(papers, preprocess_algo, sum_algo)
     summary.save_to_folder(s_papers)
@@ -215,16 +227,27 @@ async def summarize():
     for s_paper in s_papers:
         paper_json_list.append(s_paper.to_json_format())
         
-    return Response(
-        status=200,
-        response=json.dumps(paper_json_list)
-    )
+    return json.dumps(paper_json_list), 200
+    # return Response(
+    #     status=200,
+    #     response=json.dumps(paper_json_list)
+    # )
 
 def div_error_html(error_list:list[str]) -> str:
     result = '<div id="notification" class="error-notification">\n'
     for e in error_list:
         result += '<p class="error-text atkinson-hyperlegible-bold">' + e + '</p>'
     result += '</div>'
+    return result
+
+def div_result_html(s_papers:list[Paper]) -> str:
+    result = ""
+    for s_paper in s_papers:
+        result = '<div id="result" class="result">\n' 
+        for segment in s_paper.get_segment_list():
+            result += '<h2 class="atkinson-hyperlegible-bold">' + segment.get_header() + '</h2>'
+            result += '<p class="atkinson-hyperlegible-regular">' + segment.get_content() + '</p>'
+        result += '</div>'
     return result
 
 if __name__ == "__main__":
