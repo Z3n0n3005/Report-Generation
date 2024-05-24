@@ -1,4 +1,8 @@
 services:
+  rabbitmq-server:
+    image: rabbitmq
+    ports:
+      - "5672:5672"
   grobid-server:
     image: "lfoppiano/grobid:0.8.0"
     ports:

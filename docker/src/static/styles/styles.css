@@ -44,6 +44,10 @@ body {
     color: #f55;
 }
 
+.result-container{
+    border-color: #005304;
+}
+
 .atkinson-hyperlegible-regular {
     font-family: "Atkinson Hyperlegible", sans-serif;
     font-weight: 400;

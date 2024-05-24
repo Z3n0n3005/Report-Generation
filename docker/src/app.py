@@ -8,6 +8,7 @@ import xml_parser
 import summary
 import json
 from paper import Paper
+import nltk
 
 UPLOAD_FOLDER = config.get_upload_path()
 SEGMENT_FOLDER = config.get_segment_path()
@@ -15,6 +16,7 @@ ALLOWED_EXTENSIONS = ['pdf', 'Pdf', 'PDF']
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = 'secret_key'
+nltk.download('punkt')
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
@@ -56,7 +58,8 @@ async def hello_world():
 
         # Parse PDF segment
         papers = xml_parser.parse_xml_folder()
-        s_papers = summary.summarize_folder(papers, preprocessing, processing)
+        s_papers = await summary.summarize_folder(papers, preprocessing, processing)
+        
         summary.save_to_folder(s_papers)
 
         # Delete all files after parsing
@@ -234,7 +237,7 @@ async def summarize():
     # )
 
 def div_error_html(error_list:list[str]) -> str:
-    result = '<div id="notification" class="error-notification">\n'
+    result = '<div id="notification" class="error-notification container">\n'
     for e in error_list:
         result += '<p class="error-text atkinson-hyperlegible-bold">' + e + '</p>'
     result += '</div>'
@@ -243,7 +246,7 @@ def div_error_html(error_list:list[str]) -> str:
 def div_result_html(s_papers:list[Paper]) -> str:
     result = ""
     for s_paper in s_papers:
-        result = '<div id="result" class="result">\n' 
+        result = '<div id="result" class="container result">\n' 
         for segment in s_paper.get_segment_list():
             result += '<h2 class="atkinson-hyperlegible-bold">' + segment.get_header() + '</h2>'
             result += '<p class="atkinson-hyperlegible-regular">' + segment.get_content() + '</p>'

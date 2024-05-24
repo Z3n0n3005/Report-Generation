@@ -7,6 +7,7 @@ from segment import Segment
 import json
 import time
 import app
+import concurrent.futures
 import summary_technique.textrank as textrank
 import summary_technique.lsa as lsa
 import summary_technique.model as model
@@ -61,33 +62,53 @@ preprocessing = {
 }
 
 
-def summarize_folder(papers:list[Paper], preprocess_algo:str, sum_algo:str) -> list[Paper]:
+async def summarize_folder(papers:list[Paper], preprocess_algo:str, sum_algo:str) -> list[Paper]:
     start_time = time.time()
     s_papers = []
-
-    # Preload the model if it use LM
-    if(sum_algo in algo_using_lm):
-        preload[sum_algo]()
-
-    for paper in papers:
-        id = paper.get_id()
-        name = paper.get_name()
-        abstract_seg = paper.get_abstract_segment()
-        segment_list = paper.get_segment_list()
-        s_paper = Paper()
-        s_paper.set_id(id)
-        s_paper.set_name(name)
-        
-        s_paper.set_abstract_seg(abstract_seg)
-        for segment in segment_list:
-            s_segment = summarize_segment(segment, preprocess_algo, sum_algo)
-            s_paper.append_to_segment_list(s_segment)
+    with app.app.app_context():
+        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+            s_papers = []
+            # Preload the model if it use LM
+            if(sum_algo in algo_using_lm):
+                preload[sum_algo]()
+            for paper in papers:    
+                s_paper = summarize_content(paper, preprocess_algo, sum_algo)
+                s_papers.append(s_paper)
+            # futures = {executor.submit(
+            #     summarize_content, 
+            #     paper, 
+            #     preprocess_algo, 
+            #     sum_algo
+            # ):paper.get_name() for paper in papers}
             
-        save_to_folder([s_paper])
-        s_papers.append(s_paper)
+            # for future in concurrent.futures.as_completed(futures):
+            #     paper_name = futures[future]
+            #     try:
+            #         s_paper = future.result()
+            #         await save_to_folder([s_paper])
+            #         s_papers.append(s_paper)
+            #     except Exception as exc:
+            #         print('%r generated an exception: %s' % (paper_name, exc))
+
     end_time = time.time()
     app.app.logger.info("Summarize folder: " + str(end_time - start_time))
     return s_papers
+
+def summarize_content(paper:Paper, preprocess_algo:str, sum_algo:str) -> list[Paper]:
+    id = paper.get_id()
+    name = paper.get_name()
+    abstract_seg = paper.get_abstract_segment()
+    segment_list = paper.get_segment_list()
+    s_paper = Paper()
+    s_paper.set_id(id)
+    s_paper.set_name(name)
+
+    s_paper.set_abstract_seg(abstract_seg)
+    for segment in segment_list:
+        s_segment = summarize_segment(segment, preprocess_algo, sum_algo)
+        s_paper.append_to_segment_list(s_segment)
+    
+    return s_paper
 
 def summarize_segment(segment:Segment, preprocess_algo:str, sum_algo:str) -> Segment:
     s_segment = Segment()
