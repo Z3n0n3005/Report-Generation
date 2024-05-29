@@ -1,4 +1,4 @@
-from transformers import AutoTokenizer, TFAutoModel, AutoModelForCausalLM, pipeline, BitsAndBytesConfig
+from transformers import AutoTokenizer, TFAutoModel, AutoModelForCausalLM, pipeline, BitsAndBytestasks
 from log.log_util import log
 import time
 import torch

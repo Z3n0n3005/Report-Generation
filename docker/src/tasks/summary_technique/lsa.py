@@ -3,16 +3,16 @@ from numpy.linalg import svd as singular_value_decomposition
 from paper import Paper
 from log.log_util import log
 import numpy
-import summary
+import tasks.summary as summary
 from flask import current_app
-import config
+import tasks
 import math
 from collections import namedtuple
 from operator import attrgetter
 
 SENT_NUM = 1
 PREPROCESS_SENT_NUM = 5
-SUMMARY_FOLDER = config.get_summary_path()
+SUMMARY_FOLDER = tasks.get_summary_path()
 MIN_DIMENSIONS = 3
 REDUCTION_RATIO = 1/1
 SentenceInfo = namedtuple("SentenceInfo", ("sentence", "order", "rating",))

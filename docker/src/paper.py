@@ -1,6 +1,9 @@
 from segment import Segment
+from json import JSONEncoder, JSONDecoder
 
-class Paper:
+class Paper(JSONEncoder):
+    
+        
     def __init__(self):
         self.id = -1
         self.name = ""
@@ -69,6 +72,8 @@ class Paper:
             result["segments"].append(segment_dict)
         return result
 
+    def __dict__(self) -> dict:
+        self.to_json_format(self)
     
     def clean(self):
         '''
@@ -91,4 +96,24 @@ class Paper:
                 self.segment_list.remove(segment)
             except:
                 print(segment)
-                
+
+class PaperEncoder(JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Paper):
+            return object.to_json_format()
+        return JSONEncoder.default(self, obj)
+
+class PaperDecoder(JSONDecoder):
+    def __init__(self):
+        JSONDecoder.__init__(self, object_hook=self.decode_paper)
+
+    def decode_paper(self, dct):
+        if "id" in dct and "name" in dct and "segments" in dct:
+            paper = Paper()
+            paper.set_id(dct["id"])
+            paper.set_name(dct["name"])
+            paper.set_abstract_seg(dct.get("abstract_segment", ""))
+            segments = [Segment(header=seg["header"], content=seg["content"]) for seg in dct["segments"]]
+            paper.set_segment_list(segments)
+            return paper
+        return dct

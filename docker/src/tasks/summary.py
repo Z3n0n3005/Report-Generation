@@ -1,6 +1,6 @@
 import os
-import config
-from paper import Paper
+import tasks
+from paper import Paper, PaperDecoder, PaperEncoder
 from log.log_util import log
 from enum import Enum
 from segment import Segment
@@ -11,8 +11,10 @@ import concurrent.futures
 import summary_technique.textrank as textrank
 import summary_technique.lsa as lsa
 import summary_technique.model as model
+from celery_app import app
 
-SUMMARY_FOLDER = config.get_summary_path()
+SUMMARY_FOLDER = tasks.get_summary_path()
+SEGMENT_JSON_FOLDER = tasks.get_segment_json_path()
 PREPROCESS_SENT_NUM = 10
 
 class PreProcessAlgo(Enum):
@@ -61,39 +63,38 @@ preprocessing = {
     PreProcessAlgo.LSA.value : lambda content : lsa.preprocess_input(content, 10)
 }
 
-
-async def summarize_folder(papers:list[Paper], preprocess_algo:str, sum_algo:str) -> list[Paper]:
+@app.task
+def summarize_folder(preprocess_algo:str, sum_algo:str) -> list[Paper]:
     start_time = time.time()
+
+    papers = get_paper_list_from_folder()
     s_papers = []
-    with app.app.app_context():
-        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
-            s_papers = []
-            # Preload the model if it use LM
-            if(sum_algo in algo_using_lm):
-                preload[sum_algo]()
-            for paper in papers:    
-                s_paper = summarize_content(paper, preprocess_algo, sum_algo)
-                s_papers.append(s_paper)
-            # futures = {executor.submit(
-            #     summarize_content, 
-            #     paper, 
-            #     preprocess_algo, 
-            #     sum_algo
-            # ):paper.get_name() for paper in papers}
-            
-            # for future in concurrent.futures.as_completed(futures):
-            #     paper_name = futures[future]
-            #     try:
-            #         s_paper = future.result()
-            #         await save_to_folder([s_paper])
-            #         s_papers.append(s_paper)
-            #     except Exception as exc:
-            #         print('%r generated an exception: %s' % (paper_name, exc))
+    # Preload the model if it use LM
+    if(sum_algo in algo_using_lm):
+        preload[sum_algo]()
+    for paper in papers:    
+        s_paper = summarize_content(paper, preprocess_algo, sum_algo)
+        s_papers.append(s_paper)
 
     end_time = time.time()
     app.app.logger.info("Summarize folder: " + str(end_time - start_time))
-    return s_papers
+    app.app.logger.info(s_papers)
+    return json.dumps(s_papers)
 
+def get_paper_list_from_folder() -> list[Paper]:
+    papers = []
+    for filename in os.listdir(SEGMENT_JSON_FOLDER):
+        file_path = os.path.join(SEGMENT_JSON_FOLDER, filename)
+        if os.path.isfile(file_path) and filename.endswith('.json'):
+            with open(file_path, 'r', encoding='utf-8') as file:
+                try:
+                    paper = json.load(file, cls=PaperDecoder)
+                    papers.append(paper)
+                except json.JSONDecodeError as e:
+                    print(f"Error decoding JSON from file {file_path}: {e}")
+    return papers
+
+@app.task
 def summarize_content(paper:Paper, preprocess_algo:str, sum_algo:str) -> list[Paper]:
     id = paper.get_id()
     name = paper.get_name()
@@ -110,6 +111,7 @@ def summarize_content(paper:Paper, preprocess_algo:str, sum_algo:str) -> list[Pa
     
     return s_paper
 
+@app.task
 def summarize_segment(segment:Segment, preprocess_algo:str, sum_algo:str) -> Segment:
     s_segment = Segment()
     header = segment.get_header()
@@ -143,6 +145,7 @@ def summarize_segment(segment:Segment, preprocess_algo:str, sum_algo:str) -> Seg
     s_segment.set_content(s_content)
     return s_segment
             
+@app.task
 def save_to_folder(papers:list[Paper]):
     for paper in papers:
         path = os.path.join(SUMMARY_FOLDER, paper.get_name() + ".json")
@@ -150,9 +153,10 @@ def save_to_folder(papers:list[Paper]):
             f.write(json.dumps(paper.to_json_format()))
     return
 
+@app.task
 def get_stop_word_list() -> str:
     result = []
-    stop_word_path = os.path.join(config.get_util_path(), "stopwords.txt")
+    stop_word_path = os.path.join(tasks.get_util_path(), "stopwords.txt")
     with open(stop_word_path, 'r', encoding="utf-8") as f:
         result = f.read().split("\n")
     return result

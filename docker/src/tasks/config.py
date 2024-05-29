@@ -20,28 +20,41 @@ def get_benchmark_data_path() -> str:
 
 def get_resource_path() -> str:
     key = 'resource_folder' + _get_key_suffix()
-    return _config[key]
+    return _tasks[key]
         
 def get_upload_path() -> str:
     key = "upload_folder" + _get_key_suffix()
-    upload = _config[key]
+    upload = _tasks[key]
     return get_resource_path() + upload
     
 def get_segment_path() -> str:
     key = "segment_folder" + _get_key_suffix()
-    segment = _config[key]
+    segment = _tasks[key]
     return get_resource_path() + segment
+
+def get_segment_json_path() -> str:
+    key = "segment_json_folder" + _get_key_suffix()
+    segment_json = _tasks[key]
+    return get_resource_path() + segment_json
     
 def get_summary_path() -> str:
     key = "summary_folder" + _get_key_suffix()
-    summary = _config[key]
+    summary = _tasks[key]
     return get_resource_path() + summary
 
-def get_util_path() -> str:
-    return get_resource_path() + _config["util_folder" + _get_key_suffix()]
+def get_broker_url() -> str:
+    key = "broker_url"
+    return _tasks[key]
 
-_config_json = open(get_config_path()).read()
-_config = json.loads(_config_json)
+def get_result_backend() -> str:
+    key = "result_backend"
+    return _tasks[key]
+
+def get_util_path() -> str:
+    return get_resource_path() + _tasks["util_folder" + _get_key_suffix()]
+
+_tasks_json = open(get_config_path()).read()
+_tasks = json.loads(_tasks_json)
 
 if __name__ == "__main__":
-    print('config path: ' + os.getcwd())
+    print('tasks path: ' + os.getcwd())

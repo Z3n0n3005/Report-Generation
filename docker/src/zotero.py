@@ -2,7 +2,7 @@ from pyzotero import zotero
 from flask import current_app
 import concurrent.futures
 import app
-import config
+import tasks
 import time
 
 class Zotero:
@@ -46,7 +46,7 @@ class Zotero:
 
         current_app.logger.info(pdf_key_list)
         for key in pdf_key_list:
-            result = self.get_pdf_file(key, config.get_upload_path())
+            result = self.get_pdf_file(key, tasks.get_upload_path())
             if(result):
                 print(key, ": Succeed")
             else:
@@ -60,7 +60,7 @@ class Zotero:
 
 def main():
     zot = Zotero('14142718', 'user', 'IqssCl6uXkPQqcMP6y52Enj2')
-    # zot.get_pdf_file('SNXV9A8F', None, config.get_upload_path())
+    # zot.get_pdf_file('SNXV9A8F', None, tasks.get_upload_path())
     zot.get_all_pdf_file()
     return
     

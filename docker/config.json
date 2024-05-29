@@ -8,14 +8,19 @@
     "resource_folder_linux": "/code/resources/",
     "upload_folder_linux": "pdf_in",
     "segment_folder_linux": "pdf_segment",
+    "segment_json_folder_linux": "pdf_segment_json",
     "summary_folder_linux": "pdf_summary",
     "util_folder_linux": "util",
 
     "resource_folder_win": "resources\\",
     "upload_folder_win": "pdf_in",
     "segment_folder_win": "pdf_segment",
+    "segment_json_folder_win": "pdf_segment_json",
     "summary_folder_win": "pdf_summary",
     "util_folder_win": "util",
+
+    "broker_url": "ampq://rabbitmq:5672",
+    "result_backend": "ampq://rabbitmq:5672",
 
     "grobid_server_local": "https://localhost:8070",
     "grobid_server_docker": "http://grobid-server:8070"

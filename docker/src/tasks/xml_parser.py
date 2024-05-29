@@ -1,18 +1,23 @@
-import config
+import tasks
 import os
-from paper import Paper
+from paper import Paper, PaperEncoder
 from segment import Segment
 from log.log_util import log
 import app
 import xml.etree.ElementTree as ET
 import re
-import summary
+import tasks.summary as summary
 import time
+from celery_app import app
+import json
 
-SEGMENT_FOLDER = config.get_segment_path()
+SEGMENT_FOLDER = tasks.get_segment_path()
 SEGMENT_FILE_PATH = ".grobid.tei.xml"
+SEGMENT_JSON_FOLDER = tasks.get_segment_json_path()
 
-def parse_xml_folder() -> list[Paper]:
+@app.task
+def parse_xml_folder():
+    app.app.logger.info("Inside parse_xml_folder ")
     start_time = time.time()
     files = []
     papers_name:list[str] = []
@@ -41,8 +46,17 @@ def parse_xml_folder() -> list[Paper]:
         papers.append(paper)
     end_time = time.time()
     app.app.logger.info("XMl Parser folder time: " + str(end_time - start_time))
-    return papers
+    save_to_folder(papers)
+    # return papers
 
+def save_to_folder(papers:list[Paper]):
+    for paper in papers:
+        path = os.path.join(SEGMENT_JSON_FOLDER, paper.get_name() + ".json")
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(json.dumps(paper.to_json_format()))
+    return
+
+@app.task
 def get_xml_parsing_result(file) -> Paper:
     paper = Paper()
     paper.set_abstract_seg(get_abstract(file))
@@ -51,6 +65,7 @@ def get_xml_parsing_result(file) -> Paper:
     
     return paper
 
+@app.task
 def get_abstract(file) -> str:
     result = ""
     namespace = get_namespace()
@@ -63,23 +78,18 @@ def get_abstract(file) -> str:
             result = p.text
     return result
     
+@app.task
 def get_segment_list(file) -> list[Segment]:
     segments = []
     namespace = get_namespace()
     tree = ET.parse(file)
     root = tree.getroot()
-    # for e in root.iter():
-    #     app.flask_log(e.__str__())
-    # app.flask_log(root.items())
     
     # Get all <body>
     for body in root.findall(".//tei:body", namespace):
         segment = Segment()
         prev_header_number = "-1"
         is_no_header_num = True
-
-        # Get all <div>
-        # app.flask_log(body.items())
         
         # Check if there is no number in any header
         for div in body.findall("tei:div", namespace):
@@ -94,9 +104,7 @@ def get_segment_list(file) -> list[Segment]:
 
         for div in body.findall("tei:div", namespace):
             # Get <head>
-            # app.flask_log(set(div.iter()))
             header = div.find("tei:head", namespace)
-            # app.flask_log(set(header.iter()))
             # Get value of <head n="...">
             if(header == None):
                 continue
@@ -141,10 +149,12 @@ def get_segment_list(file) -> list[Segment]:
         segments.append(segment)
     return segments
 
+@app.task
 def iter_and_print(elem):
     for e in elem.iter():
         print(e)
     
+@app.task
 def get_namespace() -> dict:
     return {'tei':'http://www.tei-c.org/ns/1.0'}
 

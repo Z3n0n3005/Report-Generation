@@ -1,5 +1,5 @@
 from summa.summarizer import summarize
-import summary
+import tasks.summary as summary
 
 SENT_NUM = 1
 PREPROCESS_SENT_NUM = 5 

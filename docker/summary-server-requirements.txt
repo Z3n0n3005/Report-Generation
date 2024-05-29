@@ -1,4 +1,5 @@
-grobid-client-python
+celery
+jsonpickle
 requests
 flask[async]
 redis
@@ -6,7 +7,3 @@ werkzeug
 summa
 pyzotero
 asyncio
-nltk
-numpy
-transformers
-torch
