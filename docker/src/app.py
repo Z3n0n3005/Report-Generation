@@ -1,12 +1,12 @@
 import os
 from tasks.grobid import parse_pdf
-from zotero import Zotero
+from tasks.zotero import Zotero
 from flask import Flask, request, Response, render_template
 from werkzeug.utils import secure_filename
 import tasks.xml_parser as xml_parser
 import tasks.summary as summary
 import json
-from paper import Paper
+from tasks.paper import Paper
 import nltk
 import jsonpickle
 import tasks

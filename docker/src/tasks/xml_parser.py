@@ -1,7 +1,7 @@
 import tasks
 import os
-from paper import Paper, PaperEncoder
-from segment import Segment
+from tasks.paper import Paper, PaperEncoder
+from tasks.segment import Segment
 from log.log_util import log
 import app
 import xml.etree.ElementTree as ET
