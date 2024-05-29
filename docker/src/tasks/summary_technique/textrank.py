@@ -1,5 +1,6 @@
 from summa.summarizer import summarize
 import tasks.summary as summary
+from celery_app import app
 
 SENT_NUM = 1
 PREPROCESS_SENT_NUM = 5 
@@ -13,6 +14,7 @@ def preprocess_input(text:str, sent_num:str=PREPROCESS_SENT_NUM) -> str:
     print("[textrank preprocess]", result)
     return result
 
+@app.task
 def summarize_text(text:str, sent_num:int=SENT_NUM) -> str:
     return summarize(
         text = text, 

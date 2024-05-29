@@ -1,9 +1,9 @@
 import os
 import tasks
-from paper import Paper, PaperDecoder, PaperEncoder
+from tasks.paper import Paper, PaperDecoder, PaperEncoder
 from log.log_util import log
 from enum import Enum
-from segment import Segment
+from tasks.segment import Segment
 import json
 import time
 import app
@@ -72,14 +72,14 @@ def summarize_folder(preprocess_algo:str, sum_algo:str) -> list[Paper]:
     # Preload the model if it use LM
     if(sum_algo in algo_using_lm):
         preload[sum_algo]()
+        
     for paper in papers:    
-        s_paper = summarize_content(paper, preprocess_algo, sum_algo)
-        s_papers.append(s_paper)
+        s_papers = summarize_content(paper, preprocess_algo, sum_algo)
+        s_papers.append(s_papers)
 
     end_time = time.time()
-    app.app.logger.info("Summarize folder: " + str(end_time - start_time))
-    app.app.logger.info(s_papers)
-    return json.dumps(s_papers)
+    print("Summarize folder: " + str(end_time - start_time))
+    return s_papers
 
 def get_paper_list_from_folder() -> list[Paper]:
     papers = []
@@ -95,7 +95,7 @@ def get_paper_list_from_folder() -> list[Paper]:
     return papers
 
 @app.task
-def summarize_content(paper:Paper, preprocess_algo:str, sum_algo:str) -> list[Paper]:
+def summarize_content(paper:Paper, preprocess_algo:str, sum_algo:str) -> list[dict]:
     id = paper.get_id()
     name = paper.get_name()
     abstract_seg = paper.get_abstract_segment()
@@ -109,7 +109,7 @@ def summarize_content(paper:Paper, preprocess_algo:str, sum_algo:str) -> list[Pa
         s_segment = summarize_segment(segment, preprocess_algo, sum_algo)
         s_paper.append_to_segment_list(s_segment)
     
-    return s_paper
+    return s_paper.to_dict()
 
 @app.task
 def summarize_segment(segment:Segment, preprocess_algo:str, sum_algo:str) -> Segment:
@@ -145,7 +145,6 @@ def summarize_segment(segment:Segment, preprocess_algo:str, sum_algo:str) -> Seg
     s_segment.set_content(s_content)
     return s_segment
             
-@app.task
 def save_to_folder(papers:list[Paper]):
     for paper in papers:
         path = os.path.join(SUMMARY_FOLDER, paper.get_name() + ".json")
@@ -153,7 +152,6 @@ def save_to_folder(papers:list[Paper]):
             f.write(json.dumps(paper.to_json_format()))
     return
 
-@app.task
 def get_stop_word_list() -> str:
     result = []
     stop_word_path = os.path.join(tasks.get_util_path(), "stopwords.txt")

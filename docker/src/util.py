@@ -1,4 +1,4 @@
-from paper import Paper, PaperDecoder 
+from tasks.paper import Paper, PaperDecoder 
 import json
 import os
 

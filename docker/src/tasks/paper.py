@@ -1,13 +1,12 @@
-from segment import Segment
+from tasks.segment import Segment
 from json import JSONEncoder, JSONDecoder
 
-class Paper(JSONEncoder):
-    
-        
-    def __init__(self):
-        self.id = -1
-        self.name = ""
-        self.segment_list:list[Segment] = []
+class Paper:
+    def __init__(self, id=-1, name="", abstract_segment="", segment_list=[]):
+        self.id = id
+        self.name = name
+        self.abstract_segment = abstract_segment
+        self.segment_list:list[Segment] = segment_list
     
     def set_abstract_seg(self, abstract_segment:str):
         self.abstract_segment = abstract_segment
@@ -70,11 +69,29 @@ class Paper(JSONEncoder):
             segment_dict["header"] = segment.get_header()
             segment_dict["content"] = segment.get_content()
             result["segments"].append(segment_dict)
+        # print(result)
         return result
 
-    def __dict__(self) -> dict:
-        self.to_json_format(self)
-    
+    def to_dict(self):
+        return self.to_json_format()
+
+    @staticmethod    
+    def from_dict(data):
+        id = data["id"]
+        name = data["name"]
+        segment_dict_list = data["segments"]
+        segment_list = []
+        for s in segment_dict_list:
+            segment = Segment(s['header'], s['content'])
+            segment_list.append(segment)
+        
+        paper = Paper(
+            id = id, 
+            name = name, 
+            segment_list = segment_list
+        )
+        return paper
+
     def clean(self):
         '''
         Remove segments with no header or content

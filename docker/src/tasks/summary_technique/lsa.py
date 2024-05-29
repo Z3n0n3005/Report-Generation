@@ -1,18 +1,19 @@
 from nltk.tokenize import sent_tokenize, word_tokenize
 from numpy.linalg import svd as singular_value_decomposition
-from paper import Paper
+from tasks.paper import Paper
 from log.log_util import log
 import numpy
 import tasks.summary as summary
 from flask import current_app
-import tasks
+import tasks.config as config
 import math
 from collections import namedtuple
 from operator import attrgetter
+from celery_app import app
 
 SENT_NUM = 1
 PREPROCESS_SENT_NUM = 5
-SUMMARY_FOLDER = tasks.get_summary_path()
+SUMMARY_FOLDER = config.get_summary_path()
 MIN_DIMENSIONS = 3
 REDUCTION_RATIO = 1/1
 SentenceInfo = namedtuple("SentenceInfo", ("sentence", "order", "rating",))
@@ -22,6 +23,7 @@ def preprocess_input(text:str, sent_num:str=PREPROCESS_SENT_NUM) -> str:
     log("[lsa preprocess] ", result)
     return result
 
+@app.task
 def summarize_text(text:str, sent_num:int=SENT_NUM) -> str:
     print(sent_num)
     if(len(text) == 0):

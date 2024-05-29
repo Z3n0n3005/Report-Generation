@@ -1,5 +1,5 @@
 import jsonpickle
-from paper import Paper
+from tasks.paper import Paper
 
 papers = []
 for i in range(0, 5):
