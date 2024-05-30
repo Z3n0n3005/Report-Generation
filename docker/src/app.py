@@ -7,8 +7,6 @@ import tasks.xml_parser as xml_parser
 import tasks.summary as summary
 import json
 from tasks.paper import Paper
-import nltk
-import jsonpickle
 import tasks
 
 UPLOAD_FOLDER = tasks.get_upload_path()
@@ -19,8 +17,6 @@ app = Flask(__name__)
 
 app.tasks['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = 'secret_key'
-
-nltk.download('punkt')
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
@@ -63,6 +59,7 @@ async def hello_world():
         # Parse PDF segment
         app.logger.info("Before parse_xml_folder")
         xml_parser.parse_xml_folder.delay()
+        
         app.logger.info("Before summarize_folder")
         summary.summarize_folder.delay(preprocessing, processing)
         # s_papers = jsonpickle.decode(s_papers)

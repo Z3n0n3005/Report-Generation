@@ -15,7 +15,6 @@ SEGMENT_FOLDER = tasks.get_segment_path()
 SEGMENT_FILE_PATH = ".grobid.tei.xml"
 SEGMENT_JSON_FOLDER = tasks.get_segment_json_path()
 
-@app.task
 def parse_xml_folder():
     app.app.logger.info("Inside parse_xml_folder ")
     start_time = time.time()

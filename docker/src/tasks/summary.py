@@ -7,10 +7,9 @@ from tasks.segment import Segment
 import json
 import time
 import app
-import concurrent.futures
-import summary_technique.textrank as textrank
-import summary_technique.lsa as lsa
-import summary_technique.model as model
+import tasks.summary_technique.textrank as textrank
+import tasks.summary_technique.lsa as lsa
+import tasks.summary_technique.model as model
 from celery_app import app
 
 SUMMARY_FOLDER = tasks.get_summary_path()
@@ -74,8 +73,9 @@ def summarize_folder(preprocess_algo:str, sum_algo:str) -> list[Paper]:
         preload[sum_algo]()
         
     for paper in papers:    
-        s_papers = summarize_content(paper, preprocess_algo, sum_algo)
-        s_papers.append(s_papers)
+        s_paper_result = summarize_content.delay(paper, preprocess_algo, sum_algo)
+        s_paper = s_paper_result.get()
+        s_papers.append(s_paper)
 
     end_time = time.time()
     print("Summarize folder: " + str(end_time - start_time))
@@ -106,9 +106,11 @@ def summarize_content(paper:Paper, preprocess_algo:str, sum_algo:str) -> list[di
 
     s_paper.set_abstract_seg(abstract_seg)
     for segment in segment_list:
-        s_segment = summarize_segment(segment, preprocess_algo, sum_algo)
+        s_segment_result = summarize_segment.delay(segment, preprocess_algo, sum_algo)
+        s_segment = Segment.from_dict(s_segment_result.get())
         s_paper.append_to_segment_list(s_segment)
     
+    save_to_folder([s_paper])
     return s_paper.to_dict()
 
 @app.task
@@ -132,7 +134,8 @@ def summarize_segment(segment:Segment, preprocess_algo:str, sum_algo:str) -> Seg
 
         if(len(content_pre_process) != 0):
             try:
-                s_content = algo[sum_algo](content_pre_process)
+                s_content_result = algo[sum_algo].delay(content_pre_process)
+                s_content = s_content_result.get()
                 is_not_exceed_token = False
             except:
                 is_not_exceed_token = True

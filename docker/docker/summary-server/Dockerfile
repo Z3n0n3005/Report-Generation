@@ -11,7 +11,10 @@ EXPOSE 5000
 # COPY ./hf-requirements.txt .
 # RUN pip --cache-dir ./tmp/pipcache install -r hf-requirements.txt
 
-COPY . .
+COPY ./summary-server-requirements.txt .
 RUN pip --cache-dir ./tmp/pipcache install -r summary-server-requirements.txt
+
+COPY ./src .
+COPY ./resources .
 
 CMD ["flask", "run", "--debug"]

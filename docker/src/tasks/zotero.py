@@ -22,6 +22,7 @@ class Zotero:
             filename = item_key + "_" + self.zotero.item(item_key)["data"]["filename"]
             self.zotero.dump(item_key, filename, path)
             end = time.time()
+            print("[zotero] Get pdf time: " + str(end - start))
         except:
             return False
         return True
@@ -43,7 +44,8 @@ class Zotero:
 
         current_app.logger.info(pdf_key_list)
         for key in pdf_key_list:
-            result = self.get_pdf_file.delay(key, config.get_upload_path())
+            result_result = self.get_pdf_file.delay(key, config.get_upload_path())
+            result = result_result.get()
             if(result):
                 print(key, ": Succeed")
             else:

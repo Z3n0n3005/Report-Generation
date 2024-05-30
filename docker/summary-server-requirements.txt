@@ -1,3 +1,4 @@
+grobid-client-python
 celery
 jsonpickle
 requests
