@@ -10,10 +10,11 @@ import app
 import tasks.summary_technique.textrank as textrank
 import tasks.summary_technique.lsa as lsa
 import tasks.summary_technique.model as model
+import tasks.config as config
 from celery_app import app
 
-SUMMARY_FOLDER = tasks.get_summary_path()
-SEGMENT_JSON_FOLDER = tasks.get_segment_json_path()
+SUMMARY_FOLDER = config.get_summary_path()
+SEGMENT_JSON_FOLDER = config.get_segment_json_path()
 PREPROCESS_SENT_NUM = 10
 
 class PreProcessAlgo(Enum):

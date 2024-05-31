@@ -7,13 +7,14 @@ import app
 import xml.etree.ElementTree as ET
 import re
 import tasks.summary as summary
+import tasks.config as config
 import time
 from celery_app import app
 import json
 
-SEGMENT_FOLDER = tasks.get_segment_path()
+SEGMENT_FOLDER = config.get_segment_path()
 SEGMENT_FILE_PATH = ".grobid.tei.xml"
-SEGMENT_JSON_FOLDER = tasks.get_segment_json_path()
+SEGMENT_JSON_FOLDER = config.get_segment_json_path()
 
 def parse_xml_folder():
     app.app.logger.info("Inside parse_xml_folder ")

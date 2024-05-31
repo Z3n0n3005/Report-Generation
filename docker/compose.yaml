@@ -7,7 +7,7 @@ services:
     build: 
       context: ./
       dockerfile: ./docker/worker/Dockerfile
-    command: celery -A src_celery.celery_app worker --loglevel=INFO
+    command: celery -A src.celery_app worker --loglevel=INFO
     depends_on:
       - rabbitmq
     volumes:

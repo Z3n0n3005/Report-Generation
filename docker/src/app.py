@@ -1,21 +1,23 @@
-import os
 from tasks.grobid import parse_pdf
 from tasks.zotero import Zotero
+from tasks.paper import Paper
+import tasks.summary as summary
+import tasks.xml_parser as xml_parser
+import tasks.util as util
+import tasks.config as config
+
+import os
 from flask import Flask, request, Response, render_template
 from werkzeug.utils import secure_filename
-import tasks.xml_parser as xml_parser
-import tasks.summary as summary
 import json
-from tasks.paper import Paper
-import tasks
 
-UPLOAD_FOLDER = tasks.get_upload_path()
-SEGMENT_FOLDER = tasks.get_segment_path()
-SUMMARY_FOLDER = tasks.get_summary_path()
+UPLOAD_FOLDER = config.get_upload_path()
+SEGMENT_FOLDER = config.get_segment_path()
+SUMMARY_FOLDER = config.get_summary_path()
 ALLOWED_EXTENSIONS = ['pdf', 'Pdf', 'PDF']
 app = Flask(__name__)
 
-app.tasks['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+# app.tasks['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = 'secret_key'
 
 def allowed_file(filename):
@@ -48,7 +50,8 @@ async def hello_world():
 
         # Save file to folder
         filename = secure_filename(file.filename)
-        file.save(os.path.join(app.tasks['UPLOAD_FOLDER'], filename))
+        file.save(os.path.join(UPLOAD_FOLDER, filename))
+        # file.save(os.path.join(app.tasks['UPLOAD_FOLDER'], filename))
         
         # Create PDF Segment
         result = await parse_pdf()
@@ -190,7 +193,7 @@ def div_error_html(error_list:list[str]) -> str:
     return result
 
 def div_result_html(filename:str) -> str: 
-    paper = tasks.get_paper_from_folder(SUMMARY_FOLDER, filename, "json")
+    paper = util.get_paper_from_folder(SUMMARY_FOLDER, filename, "json")
     app.logger.info(paper)
     s_papers = [paper]
     for s_paper in s_papers:
@@ -202,7 +205,7 @@ def div_result_html(filename:str) -> str:
     return result
 
 if __name__ == "__main__":
-    app.tasks['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+    # app.tasks['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     app.secret_key = "secret_key"
     app.run(debug=False, threaded = True)
 
