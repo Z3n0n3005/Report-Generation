@@ -8,10 +8,11 @@ services:
       context: ./
       dockerfile: ./docker/worker/Dockerfile
     command: celery -A src.celery_app worker --loglevel=INFO
+    # command: ls /code
     depends_on:
       - rabbitmq
-    volumes:
-      - .:/code
+    # volumes:
+    #   - .:/code
 
   grobid-server:
     image: "lfoppiano/grobid:0.8.0"

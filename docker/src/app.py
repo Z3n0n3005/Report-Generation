@@ -17,7 +17,7 @@ SUMMARY_FOLDER = config.get_summary_path()
 ALLOWED_EXTENSIONS = ['pdf', 'Pdf', 'PDF']
 app = Flask(__name__)
 
-# app.tasks['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = 'secret_key'
 
 def allowed_file(filename):
@@ -99,7 +99,7 @@ def upload():
         return "File does not end with .pdf", 404
 
     filename = secure_filename(pdf_file.filename)
-    pdf_file.save(os.path.join(app.tasks['UPLOAD_FOLDER'], filename))
+    pdf_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         
     print("END POST")
     return 'Successfully send files', 200
@@ -205,7 +205,7 @@ def div_result_html(filename:str) -> str:
     return result
 
 if __name__ == "__main__":
-    # app.tasks['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     app.secret_key = "secret_key"
     app.run(debug=False, threaded = True)
 
