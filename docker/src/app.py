@@ -5,6 +5,8 @@ import tasks.summary as summary
 import tasks.xml_parser as xml_parser
 import tasks.util as util
 import tasks.config as config
+import tasks
+from celery_app import app as celery_app
 
 import os
 from flask import Flask, request, Response, render_template
@@ -54,21 +56,25 @@ async def hello_world():
         # file.save(os.path.join(app.tasks['UPLOAD_FOLDER'], filename))
         
         # Create PDF Segment
-        result = await parse_pdf()
+        result = parse_pdf()
         if(not result):
             error_html = div_error_html(["Failed to contact GROBID server"])
             return render_template('index.html', error=error_html), 500
 
         # Parse PDF segment
         app.logger.info("Before parse_xml_folder")
-        xml_parser.parse_xml_folder.delay()
-        
+        papers = xml_parser.parse_xml_folder()
+                
         app.logger.info("Before summarize_folder")
-        summary.summarize_folder.delay(preprocessing, processing)
+        s_papers_result = summary.summarize_folder.delay(papers, preprocessing, processing)
+        s_papers_dict = s_papers_result.get()
+        s_papers = []
+        for s_paper_dict in s_papers_dict:
+            s_papers.append(Paper.from_dict(s_paper_dict))
         # s_papers = jsonpickle.decode(s_papers)
 
         # Delete all files after parsing
-        result_html = div_result_html(filename) 
+        result_html = div_result_html(s_papers) 
         return render_template('index.html', result=result_html), 200
 
     return render_template('index.html')
@@ -192,10 +198,9 @@ def div_error_html(error_list:list[str]) -> str:
     result += '</div>'
     return result
 
-def div_result_html(filename:str) -> str: 
-    paper = util.get_paper_from_folder(SUMMARY_FOLDER, filename, "json")
-    app.logger.info(paper)
-    s_papers = [paper]
+def div_result_html(s_papers:list[Paper]) -> str: 
+    # paper = util.get_paper_from_folder(SUMMARY_FOLDER, filename, "json")
+    # app.logger.info(s_paper)
     for s_paper in s_papers:
         result = '<div id="result" class="container result">\n' 
         for segment in s_paper.get_segment_list():

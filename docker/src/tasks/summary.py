@@ -1,6 +1,6 @@
 import os
-import tasks
-from tasks.paper import Paper, PaperDecoder, PaperEncoder
+# import tasks
+from paper import Paper, PaperDecoder, PaperEncoder
 from log.log_util import log
 from enum import Enum
 from tasks.segment import Segment
@@ -63,8 +63,8 @@ preprocessing = {
     PreProcessAlgo.LSA.value : lambda content : lsa.preprocess_input(content, 10)
 }
 
-@app.task
-def summarize_folder(preprocess_algo:str, sum_algo:str) -> list[Paper]:
+@app.task(name='tasks.summary.summarize_folder')
+def summarize_folder(papers:list[Paper], preprocess_algo:str, sum_algo:str) -> list[dict]:
     start_time = time.time()
 
     papers = get_paper_list_from_folder()
@@ -95,7 +95,7 @@ def get_paper_list_from_folder() -> list[Paper]:
                     print(f"Error decoding JSON from file {file_path}: {e}")
     return papers
 
-@app.task
+@app.task()
 def summarize_content(paper:Paper, preprocess_algo:str, sum_algo:str) -> list[dict]:
     id = paper.get_id()
     name = paper.get_name()
@@ -114,7 +114,7 @@ def summarize_content(paper:Paper, preprocess_algo:str, sum_algo:str) -> list[di
     save_to_folder([s_paper])
     return s_paper.to_dict()
 
-@app.task
+@app.task()
 def summarize_segment(segment:Segment, preprocess_algo:str, sum_algo:str) -> Segment:
     s_segment = Segment()
     header = segment.get_header()

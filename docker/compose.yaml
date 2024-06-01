@@ -1,18 +1,28 @@
 services:
-  rabbitmq:
-    image: rabbitmq:3
+  redis:
+    image: redis:7
     ports:
-      - "5672:5672"
+      - "6379:6379"
   worker:
     build: 
       context: ./
       dockerfile: ./docker/worker/Dockerfile
-    command: celery -A src.celery_app worker --loglevel=INFO
+    command: celery -A src.celery_app worker --loglevel=DEBUG
     # command: ls /code
     depends_on:
-      - rabbitmq
+      - redis
     # volumes:
     #   - .:/code
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./src
+          target: /code/src
+          ignore:
+           - ./src/__pycache__
+           - ./src/log/__pycache__
+           - ./src/benchmark/__pycache__
+           - ./src/tasks/__pycache__
 
   grobid-server:
     image: "lfoppiano/grobid:0.8.0"
@@ -36,7 +46,7 @@ services:
       - "5000:5000"
     depends_on:
       - grobid-server
-      - rabbitmq
+      - redis
       - worker
     healthcheck:
       test: ["CMD", "wget", "-q", "http://grobid-server:8070/"]

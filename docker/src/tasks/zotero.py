@@ -15,7 +15,7 @@ class Zotero:
     def get_item(self, item_key:str) -> str:
         return self.zotero.item(item_key)
         
-    @app.task
+    @app.task()
     def get_pdf_file(self, item_key:str, path:str=None) -> bool:
         try:
             start = time.time()
@@ -27,7 +27,7 @@ class Zotero:
             return False
         return True
 
-    @app.task
+    @app.task()
     def get_all_pdf_file(self) -> bool:
         pdf_key_list = []
         for item in self.zotero.items():

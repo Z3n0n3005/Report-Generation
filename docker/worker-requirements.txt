@@ -1,3 +1,4 @@
 celery==5.2.3
+redis
 grobid-client-python
 nltk

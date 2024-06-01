@@ -23,7 +23,7 @@ def preprocess_input(text:str, sent_num:str=PREPROCESS_SENT_NUM) -> str:
     log("[lsa preprocess] ", result)
     return result
 
-@app.task
+@app.task()
 def summarize_text(text:str, sent_num:int=SENT_NUM) -> str:
     print(sent_num)
     if(len(text) == 0):

@@ -59,7 +59,7 @@ def preload_zephyr():
     done_load_model = time.time()  
     log("[model] Done loading model: " + str(done_load_model - start))
 
-@app.task
+@app.task()
 def zephyr(content: str) -> str:
     start = time.time()
 
@@ -94,7 +94,7 @@ def preload_stable_lm_chat_1_6b():
     done_load_model = time.time()
     log("[model] Done loading model: " + str(done_load_model - start))
 
-@app.task
+@app.task()
 def stable_lm_chat_1_6b(content:str) -> str:
     start = time.time()
     
@@ -127,7 +127,7 @@ def preload_bart_large_cnn():
     done_load_model = time.time()
     log("[model] Model loading time: " + str(done_load_model - start))
 
-@app.task
+@app.task()
 def bart_large_cnn(content:str) -> str:
     start = time.time()
 
@@ -157,7 +157,7 @@ def preload_gemma_1_1_2b_it():
     done_load_model = time.time()
     log("[model] Done loading model: " + str(done_load_model - start))
 
-@app.task
+@app.task()
 def gemma_1_1_2b_it(content:str) -> str:
     start = time.time()
     
@@ -182,7 +182,7 @@ def preload_falcon_ai_text_summarizer():
     done_load_model = time.time()
     log("[model] Done load model: " + str(done_load_model - start))
 
-@app.task
+@app.task()
 def falcon_ai_text_summarizer(content:str) -> str:
     start = time.time()
 

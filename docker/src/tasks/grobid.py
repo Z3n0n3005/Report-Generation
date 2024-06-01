@@ -16,7 +16,7 @@ UPLOAD_FOLDER = config.get_upload_path()
 SEGMENT_FOLDER = config.get_segment_path()
 GROBID_CONFIG_PATH = config.get_config_path()
 
-@app.task
+@app.task()
 async def parse_pdf() -> bool:
     start_time = time.time()
     try:

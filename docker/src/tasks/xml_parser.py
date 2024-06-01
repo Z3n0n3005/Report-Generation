@@ -16,8 +16,8 @@ SEGMENT_FOLDER = config.get_segment_path()
 SEGMENT_FILE_PATH = ".grobid.tei.xml"
 SEGMENT_JSON_FOLDER = config.get_segment_json_path()
 
-def parse_xml_folder():
-    app.app.logger.info("Inside parse_xml_folder ")
+def parse_xml_folder() -> list[Paper]:
+    print("Inside parse_xml_folder ")
     start_time = time.time()
     files = []
     papers_name:list[str] = []
@@ -45,9 +45,9 @@ def parse_xml_folder():
         # Append paper to list
         papers.append(paper)
     end_time = time.time()
-    app.app.logger.info("XMl Parser folder time: " + str(end_time - start_time))
-    save_to_folder(papers)
-    # return papers
+    print("XMl Parser folder time: " + str(end_time - start_time))
+    # save_to_folder(papers)
+    return papers
 
 def save_to_folder(papers:list[Paper]):
     for paper in papers:
@@ -56,7 +56,7 @@ def save_to_folder(papers:list[Paper]):
             f.write(json.dumps(paper.to_json_format()))
     return
 
-@app.task
+@app.task()
 def get_xml_parsing_result(file) -> Paper:
     paper = Paper()
     paper.set_abstract_seg(get_abstract(file))
@@ -65,7 +65,7 @@ def get_xml_parsing_result(file) -> Paper:
     
     return paper
 
-@app.task
+@app.task()
 def get_abstract(file) -> str:
     result = ""
     namespace = get_namespace()
@@ -78,7 +78,7 @@ def get_abstract(file) -> str:
             result = p.text
     return result
     
-@app.task
+@app.task()
 def get_segment_list(file) -> list[Segment]:
     segments = []
     namespace = get_namespace()
@@ -149,12 +149,12 @@ def get_segment_list(file) -> list[Segment]:
         segments.append(segment)
     return segments
 
-@app.task
+@app.task()
 def iter_and_print(elem):
     for e in elem.iter():
         print(e)
     
-@app.task
+@app.task()
 def get_namespace() -> dict:
     return {'tei':'http://www.tei-c.org/ns/1.0'}
 
