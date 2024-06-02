@@ -4,6 +4,8 @@ import time
 import torch
 # from summary import SumAlgo
 from nltk import word_tokenize
+import asyncio
+import app
 
 test_paragraph = "After we follow accretion in the MAB during the first 5 Myr of the solar system's history, it is necessary to account for the various processes that happened during subsequent 4.5 Gyr evolution after gas disk dispersal. Specifically, the giant planet instability has been found to heavily deplete the MAB In this work, we consider the MAB region to be delimited as follows (e.g., We then use this MAB definition to select objects from the Minor Planet Center (MPC) databaseFigure For our depletion analysis, we further divide the MAB definition above into 5 sub-regions: Extended inner Main Belt (EiMB; a < 2.1 au), Inner Main Belt (IMB; 2.1 au < a < 2.5 au), Center Main Belt (CMB; 2.5 au < a < 2.82 au), Outer Main Belt (OMB; 2.82 au < a < 3.25 au), and Extended outer Main Belt (EoMB; a > 3.25 au). The row labeled D18 D f ac in Table . D f ac effectively reports the survival fraction of objects from the simulation. Yet, we prefer to refer to them as a depletion factor as those are the numbers we directly multiply the evolved population in order to account for their depletion. Dper is for the percentage of depletion Dper \u2248 100 \u00d7 (1 -D f ac ). Labels all and AM D JS P S /P J are for different cuts in the data by \u2022 C19 all refers to results taken from \u2022 C19 AM DJS P S /P J is also for results from The work by Our analyses clearly demonstrate that MAB depletion during the giant planet instability is not uniform. The fact that different MAB sub-regions have different depletion factors was first pointed out by"
 test_paragraph_1 = """
@@ -45,7 +47,7 @@ def get_max_length(content:str) -> int:
     tokens = word_tokenize(content)
     return len(tokens)
 
-def preload_zephyr():
+async def preload_zephyr():
     start = time.time()
 
     global tokenizer
@@ -58,7 +60,7 @@ def preload_zephyr():
     done_load_model = time.time()  
     log("[model] Done loading model: " + str(done_load_model - start))
 
-def zephyr(content: str) -> str:
+async def zephyr(content: str) -> str:
     start = time.time()
 
     prompt = [{'role': 'user', 'content': prompt_constructor(content)}]
@@ -79,7 +81,7 @@ def zephyr(content: str) -> str:
     log("[model] Done loading inference: " + str(done_inference - start))
     return output
 
-def preload_stable_lm_chat_1_6b():
+async def preload_stable_lm_chat_1_6b():
     start = time.time()
 
     global tokenizer
@@ -92,7 +94,7 @@ def preload_stable_lm_chat_1_6b():
     done_load_model = time.time()
     log("[model] Done loading model: " + str(done_load_model - start))
 
-def stable_lm_chat_1_6b(content:str) -> str:
+async def stable_lm_chat_1_6b(content:str) -> str:
     start = time.time()
     
     prompt = [{'role': 'user', 'content': prompt_constructor(content)}]
@@ -116,7 +118,7 @@ def stable_lm_chat_1_6b(content:str) -> str:
     # print(output)
     return output.rstrip("<|im_end|>\n<|endoftext|>")
 
-def preload_bart_large_cnn():
+async def preload_bart_large_cnn():
     start = time.time()
     global summarizer
     global model
@@ -124,7 +126,7 @@ def preload_bart_large_cnn():
     done_load_model = time.time()
     log("[model] Model loading time: " + str(done_load_model - start))
 
-def bart_large_cnn(content:str) -> str:
+async def bart_large_cnn(content:str) -> str:
     start = time.time()
 
     output = summarizer(
@@ -138,7 +140,7 @@ def bart_large_cnn(content:str) -> str:
     # print(output)
     return output[0]['summary_text']
     
-def preload_gemma_1_1_2b_it():
+async def preload_gemma_1_1_2b_it():
     start = time.time()
     global tokenizer
     global model
@@ -153,7 +155,7 @@ def preload_gemma_1_1_2b_it():
     done_load_model = time.time()
     log("[model] Done loading model: " + str(done_load_model - start))
 
-def gemma_1_1_2b_it(content:str) -> str:
+async def gemma_1_1_2b_it(content:str) -> str:
     start = time.time()
     
     input_text = prompt_constructor(content)
@@ -170,16 +172,17 @@ def gemma_1_1_2b_it(content:str) -> str:
     # print(output)
     return output
 
-def preload_falcon_ai_text_summarizer():
+async def preload_falcon_ai_text_summarizer():
     start = time.time()
     global summarizer 
     summarizer = pipeline("summarization", model="Falconsai/text_summarization")
     done_load_model = time.time()
-    log("[model] Done load model: " + str(done_load_model - start))
+    app.app.logger.info("[model] Done load model: " + str(done_load_model - start))
 
-def falcon_ai_text_summarizer(content:str) -> str:
+async def falcon_ai_text_summarizer(content:str) -> str:
     start = time.time()
-
+    # asyncio.sleep(1)
+    app.app.logger.info("Print here falcon")
     input = prompt_constructor(content)
 
     output = summarizer(
@@ -189,13 +192,12 @@ def falcon_ai_text_summarizer(content:str) -> str:
         do_sample=False)
 
     done_inference = time.time()
-    log("[model] Done inference: " + str(done_inference - start))
+    app.app.logger.info("[model] Done inference: " + str(done_inference - start))
     result = output[0]['summary_text']
     return result.lstrip("Summarize the following segment into 1 sentence: ")
 
 
 def main():
-    
     # falcon_ai_text_summarizer(test_paragraph)
     # print(stable_lm_chat_1_6b(test_paragraph))
     # gemma_1_1_2b_it(test_paragraph)

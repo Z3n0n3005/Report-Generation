@@ -11,6 +11,7 @@ import concurrent.futures
 import summary_technique.textrank as textrank
 import summary_technique.lsa as lsa
 import summary_technique.model as model
+import asyncio
 
 SUMMARY_FOLDER = config.get_summary_path()
 PREPROCESS_SENT_NUM = 10
@@ -19,6 +20,10 @@ class PreProcessAlgo(Enum):
     NONE = "none"
     TEXTRANK = "textrank"
     LSA = "lsa"
+    
+    @classmethod
+    def has_value(cls, value):
+        return value in cls._value2member_map_ 
 
 class SumAlgo(Enum):
     TEXTRANK = "textrank"
@@ -28,6 +33,10 @@ class SumAlgo(Enum):
     STABLE_LM = "stable_lm_chat"
     BART_LARGE_CNN = "bart_large_cnn"
     ZEPHYR = "zephyr"
+    
+    @classmethod
+    def has_value(cls, value):
+        return value in cls._value2member_map_ 
 
 algo = {
     SumAlgo.TEXTRANK.value : textrank.summarize_text,
@@ -40,11 +49,11 @@ algo = {
 }
 
 algo_using_lm = [
-    SumAlgo.FALCON,
-    SumAlgo.STABLE_LM,
-    SumAlgo.BART_LARGE_CNN,
-    SumAlgo.ZEPHYR,
-    SumAlgo.GEMMA_2B
+    SumAlgo.FALCON.value,
+    SumAlgo.STABLE_LM.value,
+    SumAlgo.BART_LARGE_CNN.value,
+    SumAlgo.ZEPHYR.value,
+    SumAlgo.GEMMA_2B.value
 ]
 
 preload = {
@@ -66,35 +75,20 @@ async def summarize_folder(papers:list[Paper], preprocess_algo:str, sum_algo:str
     start_time = time.time()
     s_papers = []
     with app.app.app_context():
-        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
-            s_papers = []
-            # Preload the model if it use LM
-            if(sum_algo in algo_using_lm):
-                preload[sum_algo]()
-            for paper in papers:    
-                s_paper = summarize_content(paper, preprocess_algo, sum_algo)
-                s_papers.append(s_paper)
-            # futures = {executor.submit(
-            #     summarize_content, 
-            #     paper, 
-            #     preprocess_algo, 
-            #     sum_algo
-            # ):paper.get_name() for paper in papers}
-            
-            # for future in concurrent.futures.as_completed(futures):
-            #     paper_name = futures[future]
-            #     try:
-            #         s_paper = future.result()
-            #         await save_to_folder([s_paper])
-            #         s_papers.append(s_paper)
-            #     except Exception as exc:
-            #         print('%r generated an exception: %s' % (paper_name, exc))
-
+        app.app.logger.info(sum_algo + " " + str(sum_algo in algo_using_lm))
+        if(sum_algo in algo_using_lm):
+            app.app.logger.info("preload")
+            await preload[sum_algo]()
+        
+        app.app.logger.info("len paper is: " + str(len(papers)))
+        tasks = [summarize_content(paper, preprocess_algo, sum_algo) for paper  in papers]
+        s_papers = await asyncio.gather(*tasks)
+        app.app.logger.info("[s_papers]" + str(s_papers))
     end_time = time.time()
     app.app.logger.info("Summarize folder: " + str(end_time - start_time))
-    return s_papers
+    return s_papers 
 
-def summarize_content(paper:Paper, preprocess_algo:str, sum_algo:str) -> list[Paper]:
+async def summarize_content(paper:Paper, preprocess_algo:str, sum_algo:str) -> list[Paper]:
     id = paper.get_id()
     name = paper.get_name()
     abstract_seg = paper.get_abstract_segment()
@@ -104,46 +98,67 @@ def summarize_content(paper:Paper, preprocess_algo:str, sum_algo:str) -> list[Pa
     s_paper.set_name(name)
 
     s_paper.set_abstract_seg(abstract_seg)
-    for segment in segment_list:
-        s_segment = summarize_segment(segment, preprocess_algo, sum_algo)
-        s_paper.append_to_segment_list(s_segment)
+
+    tasks = [summarize_segment(segment, preprocess_algo, sum_algo) for segment in segment_list]
+    s_segments = await asyncio.gather(*tasks)
     
+    app.app.logger.info("[s_segment]" + str(s_segments))
+    for s_segment in s_segments:
+        s_paper.append_to_segment_list(s_segment)
     return s_paper
 
-def summarize_segment(segment:Segment, preprocess_algo:str, sum_algo:str) -> Segment:
+
+
+async def summarize_segment(segment:Segment, preprocess_algo:str, sum_algo:str) -> Segment:
     s_segment = Segment()
     header = segment.get_header()
     content = segment.get_content()
     content_pre_process = ""
     s_content = ""
-
+    tasks = []
     # Auto adjust the input if exceed token count
     is_no_content = False
     is_not_exceed_token = True
     sent_num = 5
-    while(is_not_exceed_token and sent_num >= 1 and not is_no_content):
-        log("[summary]", is_not_exceed_token, sent_num, is_no_content)
+    while(
+        is_not_exceed_token 
+        and sent_num >= 1 
+        and not is_no_content
+    ):
+        app.app.logger.info("[summary]"+ str(is_not_exceed_token)+ str(sent_num)+ str(is_no_content))
         if(len(content) != 0):
             content_pre_process = preprocessing[preprocess_algo](content)
+            # app.app.logger.info("preprocessed: " + str(content_pre_process))
         else:
             is_no_content = True
 
         if(len(content_pre_process) != 0):
+            app.app.logger.info("try to summarize")
             try:
-                s_content = algo[sum_algo](content_pre_process)
+                # app.app.logger("before summarize")
+                tasks.append(algo[sum_algo](content_pre_process))
+                app.app.logger.info("summarized")
                 is_not_exceed_token = False
-            except:
+            except Exception as e:
+                app.app.logger.error("Exception  occur", exc_info=True)
                 is_not_exceed_token = True
                 sent_num -= 1
         else:
             is_no_content = True
-
-    log("[model] summary result: " + s_content)
+    app.app.logger.info(str(tasks))
+    if(len(tasks) != 0):
+        s_content_result = await asyncio.gather(*tasks)
+        s_content = s_content_result[0]
+    # app.app.logger.info("[summarize_segment] summary result: " + str(s_content))
     s_segment.set_header(header)
     s_segment.set_content(s_content)
     return s_segment
             
-def save_to_folder(papers:list[Paper]):
+async def save_to_folder(s_papers):
+    loop = asyncio.get_event_loop()
+    await loop.run_in_executor(None, _save_to_folder_sync, s_papers)
+    
+def _save_to_folder_sync(papers:list[Paper]):
     for paper in papers:
         path = os.path.join(SUMMARY_FOLDER, paper.get_name() + ".json")
         with open(path, "w", encoding="utf-8") as f:

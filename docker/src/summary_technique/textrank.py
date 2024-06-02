@@ -13,7 +13,7 @@ def preprocess_input(text:str, sent_num:str=PREPROCESS_SENT_NUM) -> str:
     print("[textrank preprocess]", result)
     return result
 
-def summarize_text(text:str, sent_num:int=SENT_NUM) -> str:
+async def summarize_text(text:str, sent_num:int=SENT_NUM) -> str:
     return summarize(
         text = text, 
         words = sent_num * (_get_max_length_sentence(text) + 5), additional_stopwords= summary.get_stop_word_list())

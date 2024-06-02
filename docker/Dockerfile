@@ -18,6 +18,8 @@ ENV FLASK_APP=src/app.py
 ENV FLASK_RUN_HOST=0.0.0.0
 
 EXPOSE 5000
+COPY ./hf_requirements.txt .
+RUN pip --cache-dir ./tmp/pipcache install -r hf_requirements.txt
 
 copy ./requirement.txt .
 RUN pip --cache-dir ./tmp/pipcache install -r requirement.txt

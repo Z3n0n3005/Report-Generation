@@ -6,7 +6,4 @@ werkzeug
 summa
 pyzotero
 asyncio
-nltk
-numpy
-transformers
-torch
+accelerate

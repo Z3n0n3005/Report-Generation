@@ -12,17 +12,29 @@ import time
 SEGMENT_FOLDER = config.get_segment_path()
 SEGMENT_FILE_PATH = ".grobid.tei.xml"
 
-def parse_xml_folder() -> list[Paper]:
+def parse_xml_folder(filename:str=None) -> list[Paper]:
     start_time = time.time()
     files = []
     papers_name:list[str] = []
     papers:list[Paper] = []
     # Get all file path list
     for (dirpath, _, filenames) in os.walk(SEGMENT_FOLDER):
-        for filename in filenames:
-            if filename.endswith('.tei.xml'):
-                files.append(os.sep.join([dirpath, filename]))
-                papers_name.append(filename)
+        for f in filenames:
+            is_end_w_tei = f.endswith('.tei.xml')
+            is_file_name_provided = (
+                    filename!=None 
+                    and f[0:-15] == filename[0:-4]
+                )
+            app.app.logger.info(filename[0:-4] + " " + f[0:-15] + " " + str(is_file_name_provided) )
+            is_no_file_name = filename == None
+
+            if (
+                is_end_w_tei
+                and is_file_name_provided
+                or is_no_file_name
+            ):
+                files.append(os.sep.join([dirpath, f]))
+                papers_name.append(f)
                 
     # May put threadpoolexecutor here if its slow
     for i in range(len(files)):
@@ -41,6 +53,7 @@ def parse_xml_folder() -> list[Paper]:
         papers.append(paper)
     end_time = time.time()
     app.app.logger.info("XMl Parser folder time: " + str(end_time - start_time))
+    app.app.logger.info(str(papers))
     return papers
 
 def get_xml_parsing_result(file) -> Paper:

@@ -18,11 +18,14 @@ REDUCTION_RATIO = 1/1
 SentenceInfo = namedtuple("SentenceInfo", ("sentence", "order", "rating",))
 
 def preprocess_input(text:str, sent_num:str=PREPROCESS_SENT_NUM) -> str:
-    result = summarize_text(text, sent_num)
+    result = _summarize_text_base(text, sent_num)
     log("[lsa preprocess] ", result)
     return result
 
-def summarize_text(text:str, sent_num:int=SENT_NUM) -> str:
+async def summarize_text(text:str, sent_num:int=SENT_NUM) -> str:
+    return _summarize_text_base(text, sent_num)
+
+def _summarize_text_base(text:str, sent_num:int=SENT_NUM) -> str:
     print(sent_num)
     if(len(text) == 0):
         return ""

@@ -9,6 +9,7 @@ import summary
 import json
 from paper import Paper
 import nltk
+import asyncio
 
 UPLOAD_FOLDER = config.get_upload_path()
 SEGMENT_FOLDER = config.get_segment_path()
@@ -57,14 +58,15 @@ async def hello_world():
             return render_template('index.html', error=error_html), 500
 
         # Parse PDF segment
-        papers = xml_parser.parse_xml_folder()
+        papers = xml_parser.parse_xml_folder(filename)
         s_papers = await summary.summarize_folder(papers, preprocessing, processing)
         
-        summary.save_to_folder(s_papers)
+        app.logger.info("[s_paper] " + str(s_papers[0].to_json_format()))
+        # await summary.save_to_folder(s_papers)
 
         # Delete all files after parsing
 
-        result_html = div_result_html(s_papers) 
+        result_html = await div_result_html(s_papers) 
         return render_template('index.html', result=result_html), 200
 
     return render_template('index.html')
@@ -243,7 +245,7 @@ def div_error_html(error_list:list[str]) -> str:
     result += '</div>'
     return result
 
-def div_result_html(s_papers:list[Paper]) -> str:
+async def div_result_html(s_papers:list[Paper]) -> str:
     result = ""
     for s_paper in s_papers:
         result = '<div id="result" class="container result">\n' 
