@@ -1,0 +1,40 @@
+Report khoảng 30 trang 
+Rereference
+Thesis templaye1
+Check citation tool
+End note 
+
+Form topic find keyword, find paper from keyword find most important 5 paper
+5 years limit on papers
+IEEEE
+Elsevier
+Springer
+No blog  in ref 
+
+How to read
+Title then method then application 
+Title can contain what new about method or applicarion
+Abstract only have about 1 sent of goal and 1 sente of evaluation
+Skip introduction
+Read proposal
+Then read tables and watch for metrics
+
+
+Noting
+Proposal
+Metrics
+Data
+If gud then note ref
+
+
+Goal 
+Can runa model
+
+
+Thesis goal 
+From the model create new idea then implement 
+
+Text mining
+Chatpdf
+Idea
+  Autogenerate intro and lit review using the reference
