@@ -21,19 +21,23 @@ UPLOAD_FOLDER = config.get_upload_path()
 SEGMENT_FOLDER = config.get_segment_path()
 GROBID_CONFIG_PATH = config.get_config_path()
 
-def _read_json(file_path):
-    with open(file_path, "r") as file:
-        # Read the entire file content
-        data = json.load(file)
-        print(data)
-
 async def parse_pdf() -> bool:
+    """
+    Connect to the GROBID and summarize the PDF in the folder.
+    """
     start_time = time.time()
     with app.app.app_context():
-        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=1):
             try:
                 client = GrobidClient(config_path=GROBID_CONFIG_PATH)
-                client.process("processFulltextDocument", UPLOAD_FOLDER, output=SEGMENT_FOLDER, consolidate_citations=False, tei_coordinates=False, verbose=True)
+                client.process(
+                    "processFulltextDocument",
+                    UPLOAD_FOLDER, 
+                    output=SEGMENT_FOLDER, 
+                    consolidate_citations=False, 
+                    tei_coordinates=False, 
+                    verbose=True
+                )
             except:
                 return False
     end_time = time.time()
