@@ -9,3 +9,4 @@
 [ 20240617-19:55:13 ] [ PreProcessAlgo.LSA  -  SumAlgo.BART_LARGE_CNN ] Total time: 681.0817723274231 
 [ 20240617-21:50:13 ] [ PreProcessAlgo.TEXTRANK  -  SumAlgo.STABLE_LM ] Total time: 6656.221096754074 
 [ 20240618-00:02:05 ] [ PreProcessAlgo.LSA  -  SumAlgo.STABLE_LM ] Total time: 7058.8124895095825 
+[ 20240618-03:15:46 ] [ PreProcessAlgo.NONE  -  SumAlgo.STABLE_LM ] Total time: 11332.362937450409 
