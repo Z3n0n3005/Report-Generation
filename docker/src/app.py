@@ -80,10 +80,6 @@ def upload():
     if 'files' not in request.files:
         print('No pdf file')
         return "No 'files' header in payload.", 404
-        # return Response(
-        #     response="No 'files' header in payload.",
-        #     status=404
-        # )
         
     pdf_file = request.files['files']
 
@@ -91,26 +87,14 @@ def upload():
     if pdf_file.filename == '':
         print('No pdf file selected')
         return "File has no name.", 404
-        # return Response(
-        #     response="File has no name.",
-        #     status=404
-        # )
         
     # If the file does not exist 
     if not pdf_file: 
         return "File does not exist.", 404
-        # return Response(
-        #     response="File does not exist.",
-        #     status=404
-        # )
         
     # If the extension does not end with .pdf
     if not allowed_file(pdf_file.filename):
         return "File does not end with .pdf", 404
-        # return Response(
-        #     response="File does not end with .pdf",
-        #     status=404
-        # )    
 
     filename = secure_filename(pdf_file.filename)
     pdf_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))

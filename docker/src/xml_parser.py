@@ -8,9 +8,11 @@ import xml.etree.ElementTree as ET
 import re
 import summary
 import time
+import asyncio
 
 SEGMENT_FOLDER = config.get_segment_path()
 SEGMENT_FILE_PATH = ".grobid.tei.xml"
+IS_TRUNCATING_FILE_NAME = False
 
 def parse_xml_folder(filename:str=None) -> list[Paper]:
     start_time = time.time()
@@ -25,8 +27,8 @@ def parse_xml_folder(filename:str=None) -> list[Paper]:
                     filename!=None 
                     and f[0:-15] == filename[0:-4]
                 )
-            app.app.logger.info(filename[0:-4] + " " + f[0:-15] + " " + str(is_file_name_provided) )
-            is_no_file_name = filename == None
+            # app.app.logger.info(filename[0:-4] + " " + f[0:-15] + " " + str(is_file_name_provided) )
+            is_no_file_name = (filename == None)
 
             if (
                 is_end_w_tei
@@ -43,10 +45,14 @@ def parse_xml_folder(filename:str=None) -> list[Paper]:
 
         # Create new paper
         paper = get_xml_parsing_result(file)
-        paper.set_name(paper_name.removesuffix(SEGMENT_FILE_PATH)[9:])
-        # paper.set_name(paper_name)
-        paper.set_id(paper_name[0:8])
-        print(paper.get_id())
+        if(IS_TRUNCATING_FILE_NAME):
+            paper.set_name(paper_name.removesuffix(SEGMENT_FILE_PATH)[9:])
+            paper.set_id(paper_name[0:8])
+            print(paper.get_id())
+        else:
+            paper.set_name(paper_name)
+            paper.set_id(abs(hash(paper_name)))
+            print(paper.get_id())
         paper.clean()
 
         # Append paper to list
@@ -81,93 +87,128 @@ def get_segment_list(file) -> list[Segment]:
     namespace = get_namespace()
     tree = ET.parse(file)
     root = tree.getroot()
-    # for e in root.iter():
-    #     app.flask_log(e.__str__())
-    # app.flask_log(root.items())
     
     # Get all <body>
     for body in root.findall(".//tei:body", namespace):
-        segment = Segment()
-        prev_header_number = "-1"
-        is_no_header_num = True
-
-        # Get all <div>
-        # app.flask_log(body.items())
+        segments = parse_body(body)
         
-        # Check if there is no number in any header
-        for div in body.findall("tei:div", namespace):
-            header = div.find("tei:head", namespace)
-            if(header == None):
-                continue
+        
+    return segments
+
+def parse_body(body) -> list[Segment]:
+    segments = []
+    namespace = get_namespace()
+    segment = Segment()
+    prev_header_number = "-1"
+    is_no_header_num = True
+
+    # Get all <div>
+    
+    # Check if there is no number in any header
+    for div in body.findall("tei:div", namespace):
+        header = div.find("tei:head", namespace)
+        if(header == None):
+            continue
+        
+        header_number = header.get("n")
+        if(header_number != None):
+            is_no_header_num = False
+            break
+
+    for div in body.findall("tei:div", namespace):
+        # Get <head>
+        # app.flask_log(set(div.iter()))
+        header = div.find("tei:head", namespace)
+        # app.flask_log(set(header.iter()))
+        # Get value of <head n="...">
+        if(header == None):
+            continue
+        # print(header.text)
+        header_number = header.get("n")
+
+        if(header_number == None):
+            key = 0
+            if(prev_header_number == "-1"):
+                key = 1
+
+            # print(prev_header_number[key])
+            header_number = prev_header_number[key] + ".0"
             
-            header_number = header.get("n")
-            if(header_number != None):
-                is_no_header_num = False
-                break
-
-        for div in body.findall("tei:div", namespace):
-            # Get <head>
-            # app.flask_log(set(div.iter()))
-            header = div.find("tei:head", namespace)
-            # app.flask_log(set(header.iter()))
-            # Get value of <head n="...">
-            if(header == None):
-                continue
-            # print(header.text)
-            header_number = header.get("n")
-
-            if(header_number == None):
-                key = 0
-                if(prev_header_number == "-1"):
-                    key = 1
-
-                # print(prev_header_number[key])
-                header_number = prev_header_number[key] + ".0"
-                
-                # In case no header number is found in the entire file
-                if(is_no_header_num):
-                    header_number = str(int(prev_header_number) + 1)
-                
- 
-            main_header_number = header_number[0]
+            # In case no header number is found in the entire file
+            if(is_no_header_num):
+                header_number = str(int(prev_header_number) + 1)
             
-            # print(main_header_number, prev_header_number)
-            
-            # First time pass
-            if(prev_header_number == -1):
-                prev_header_number = main_header_number
-                segment.set_header(header.text)
 
-            # Current header is differnt than old header
-            if(main_header_number != prev_header_number):
-                prev_header_number = main_header_number
-                segments.append(segment)
-                # print(segment)
-                segment = Segment()
-                segment.set_header(header.text)
+        main_header_number = header_number[0]
+        
+        # print(main_header_number, prev_header_number)
+        
+        # First time pass
+        if(prev_header_number == -1):
+            prev_header_number = main_header_number
+            segment.set_header(header.text)
 
-            # Add content to current segment
-            for p in div.findall("tei:p", namespace):
-                segment.add_content(p.text)
-         
-        # Add the last segment to list
-        segments.append(segment)
+        # Current header is differnt than old header
+        if(main_header_number != prev_header_number):
+            prev_header_number = main_header_number
+            segments.append(segment)
+            # print(segment)
+            segment = Segment()
+            segment.set_header(header.text)
+
+        # Add content to current segment
+        for p in div.findall("tei:p", namespace):
+            # print(p.remove(p.find("tei:ref", namespace)))
+            # iter_and_print(p)
+            segment.add_content(p.text)
+            for child in p:
+                if child.tail:
+                    segment.add_content(child.tail)
+    # Add the last segment to list
+    segments.append(segment)
     return segments
 
 def iter_and_print(elem):
+    remove_ref(elem)
     for e in elem.iter():
-        print(e)
+        print(e.text)
     
 def get_namespace() -> dict:
     return {'tei':'http://www.tei-c.org/ns/1.0'}
 
-if __name__ == "__main__":
+def remove_ref(elem):
+    """
+    Remove reference tag from a specific element (Not currently in use)
+    """
+    remove_list = []
+    for e in elem.iter():
+        # print(e.tag != "{http://www.tei-c.org/ns/1.0}ref")
+        if e.tag != "{http://www.tei-c.org/ns/1.0}ref":
+            continue
+        if True:
+            remove_list.append(e)
+            
+    for e in remove_list:
+        elem.remove(e)
+            
+async def main():
     start = time.time()
     papers = parse_xml_folder()
-    s_papers = summary.summarize_folder(
-        papers,
-        summary.PreProcessAlgo.NONE.value, 
-        summary.SumAlgo.TEXTRANK.value
-    )
+    loop = asyncio.get_event_loop()
+    preprocess_algo = summary.PreProcessAlgo.NONE
+    summary_algo = summary.SumAlgo.STABLE_LM 
+    tasks = [
+        summary.summarize_folder(
+            papers,
+            preprocess_algo,
+            summary_algo
+        )
+    ]
+    s_papers = await asyncio.gather(*tasks)
+    # summary._save_to_folder_sync(s_papers[0]) 
+
     end = time.time()
-    log("[xmlParser] Total time:", str(end - start))
+    log("[", preprocess_algo, " - ", summary_algo, "] Total time:", str(end - start))
+
+if __name__ == "__main__":
+    asyncio.run(main())

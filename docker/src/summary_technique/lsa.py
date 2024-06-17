@@ -19,17 +19,17 @@ SentenceInfo = namedtuple("SentenceInfo", ("sentence", "order", "rating",))
 
 def preprocess_input(text:str, sent_num:str=PREPROCESS_SENT_NUM) -> str:
     result = _summarize_text_base(text, sent_num)
-    log("[lsa preprocess] ", result)
+    # log("[lsa preprocess] ", result)
     return result
 
 async def summarize_text(text:str, sent_num:int=SENT_NUM) -> str:
     return _summarize_text_base(text, sent_num)
 
 def _summarize_text_base(text:str, sent_num:int=SENT_NUM) -> str:
-    print(sent_num)
     if(len(text) == 0):
         return ""
 
+    # 
     dictionary = _create_dictionary(text)
     sentences = sent_tokenize(text)
 
@@ -49,7 +49,7 @@ def _summarize_text_base(text:str, sent_num:int=SENT_NUM) -> str:
     for sentence in result:
         # print("[lsa] sentence:", sentence)
         result_str += sentence
-    log("[lsa] result: " , len(word_tokenize(result_str)), "\n")
+    # log("[lsa] result: " , len(word_tokenize(result_str)), "\n")
     return result_str
 
 
@@ -76,7 +76,6 @@ def _create_matrix(text:str, dictionary:dict[str, int]):
     contains number of occurences of words (rows) in senteces (cols).
     """
     sentences = sent_tokenize(text)
-    # print("[lsa] sentences:", sentences)
     words_count = len(dictionary)
     sentences_count = len(sentences)
     if words_count < sentences_count:
