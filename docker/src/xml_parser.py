@@ -195,8 +195,8 @@ async def main():
     start = time.time()
     papers = parse_xml_folder()
     loop = asyncio.get_event_loop()
-    preprocess_algo = summary.PreProcessAlgo.NONE
-    summary_algo = summary.SumAlgo.STABLE_LM 
+    preprocess_algo = summary.PreProcessAlgo.NONE.value
+    summary_algo = summary.SumAlgo.STABLE_LM.value
     tasks = [
         summary.summarize_folder(
             papers,

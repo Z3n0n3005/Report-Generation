@@ -49,11 +49,11 @@ algo = {
 }
 
 algo_using_lm = [
-    SumAlgo.FALCON,
-    SumAlgo.STABLE_LM,
-    SumAlgo.BART_LARGE_CNN,
-    SumAlgo.ZEPHYR,
-    SumAlgo.GEMMA_2B
+    SumAlgo.FALCON.value,
+    SumAlgo.STABLE_LM.value,
+    SumAlgo.BART_LARGE_CNN.value,
+    SumAlgo.ZEPHYR.value,
+    SumAlgo.GEMMA_2B.value
 ]
 
 preload = {
@@ -78,7 +78,7 @@ async def summarize_folder(papers:list[Paper], preprocess_algo:str, sum_algo:str
         # app.app.logger.info(sum_algo + " " + str(sum_algo in algo_using_lm))
         if(sum_algo in algo_using_lm):
             app.app.logger.info("preload")
-            await preload[sum_algo.value]()
+            await preload[sum_algo]()
         
         app.app.logger.info("len paper is: " + str(len(papers)))
         tasks = [summarize_content(paper, preprocess_algo, sum_algo) for paper  in papers]
@@ -129,7 +129,7 @@ async def summarize_segment(segment:Segment, preprocess_algo:str, sum_algo:str) 
     ):
         app.app.logger.info("[summary]"+ str(is_not_exceed_token)+ str(sent_num)+ str(is_no_content))
         if(len(content) != 0):
-            content_pre_process = preprocessing[preprocess_algo.value](content)
+            content_pre_process = preprocessing[preprocess_algo](content)
             # app.app.logger.info("preprocessed: " + str(content_pre_process))
         else:
             is_no_content = True
@@ -138,7 +138,7 @@ async def summarize_segment(segment:Segment, preprocess_algo:str, sum_algo:str) 
             app.app.logger.info("try to summarize")
             try:
                 # app.app.logger("before summarize")
-                tasks.append(algo[sum_algo.value](content_pre_process))
+                tasks.append(algo[sum_algo](content_pre_process))
                 app.app.logger.info("summarized")
                 is_not_exceed_token = False
             except Exception as e:
