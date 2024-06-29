@@ -25,26 +25,69 @@ def allowed_file(filename):
 def flask_log(content):
     app.logger.info(content) 
 
+# @app.route("/", methods=['GET', 'POST'])
+# async def hello_world():
+#     if(request.method == 'POST'):
+#         if 'file' not in request.files:
+#             error_html = div_error_html(["PDF file has not been chosen"])
+#             return render_template('index.html', error=error_html), 400
+
+#         file = request.files['file']
+#         if file.filename == '':
+#             error_html = div_error_html(["PDF file has not been chosen"])
+#             return render_template('index.html', error=error_html), 400
+        
+#         if 'preprocessing' not in request.form:
+#             error_html = div_error_html(["Preprocessing has not been chosen"])
+#             return render_template('index.html', error=error_html), 400
+#         preprocessing = request.form['preprocessing']
+
+#         if 'processing' not in request.form:
+#             error_html = div_error_html(["Processing has not been chosen"])
+#             return render_template('index.html', error=error_html), 400
+#         processing = request.form['processing']
+
+#         # Save file to folder
+#         filename = secure_filename(file.filename)
+#         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        
+#         # Create PDF Segment
+#         result = await parse_pdf()
+#         if(not result):
+#             error_html = div_error_html(["Failed to contact GROBID server"])
+#             return render_template('index.html', error=error_html), 500
+
+#         # Parse PDF segment
+#         papers = xml_parser.parse_xml_folder(filename)
+#         s_papers = await summary.summarize_folder(papers, preprocessing, processing)
+        
+#         app.logger.info("[s_paper] " + str(s_papers[0].to_json_format()))
+#         # await summary.save_to_folder(s_papers)
+
+#         # Delete all files after parsing
+
+#         result_html = await div_result_html(s_papers) 
+#         # return result_html, 200
+#         return render_template('index.html', result=result_html), 200
+
+#     return render_template('index.html')
+
 @app.route("/", methods=['GET', 'POST'])
 async def hello_world():
-    if(request.method == 'POST'):
+    if request.method == 'POST':
         if 'file' not in request.files:
-            error_html = div_error_html(["PDF file has not been chosen"])
-            return render_template('index.html', error=error_html), 400
+            return "PDF file has not been chosen", 400
 
         file = request.files['file']
         if file.filename == '':
-            error_html = div_error_html(["PDF file has not been chosen"])
-            return render_template('index.html', error=error_html), 400
-        
+            return "PDF file has not been chosen", 400
+
         if 'preprocessing' not in request.form:
-            error_html = div_error_html(["Preprocessing has not been chosen"])
-            return render_template('index.html', error=error_html), 400
+            return "Preprocessing has not been chosen", 400
         preprocessing = request.form['preprocessing']
 
         if 'processing' not in request.form:
-            error_html = div_error_html(["Processing has not been chosen"])
-            return render_template('index.html', error=error_html), 400
+            return "Processing has not been chosen", 400
         processing = request.form['processing']
 
         # Save file to folder
@@ -53,21 +96,18 @@ async def hello_world():
         
         # Create PDF Segment
         result = await parse_pdf()
-        if(not result):
-            error_html = div_error_html(["Failed to contact GROBID server"])
-            return render_template('index.html', error=error_html), 500
+        if not result:
+            return "Failed to contact GROBID server", 500
 
         # Parse PDF segment
         papers = xml_parser.parse_xml_folder(filename)
         s_papers = await summary.summarize_folder(papers, preprocessing, processing)
         
         app.logger.info("[s_paper] " + str(s_papers[0].to_json_format()))
-        # await summary.save_to_folder(s_papers)
 
-        # Delete all files after parsing
-
-        result_html = await div_result_html(s_papers) 
-        return render_template('index.html', result=result_html), 200
+        # Generate the result HTML
+        result_html = await div_result_html(s_papers)
+        return result_html, 200
 
     return render_template('index.html')
 

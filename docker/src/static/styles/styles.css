@@ -97,7 +97,7 @@ body {
 
 /* Header */
 .header {
-    background-color: #007bff;
+    background-color: #8A2BE2; /* Violet color */
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -142,7 +142,7 @@ main {
 }
 
 .options input[type="radio"]:checked + label {
-    background-color: #007bff;
+    background-color: #8A2BE2; /* Violet color */
     color: #fff;
 }
 
@@ -152,7 +152,7 @@ main {
 }
 
 .drop-zone {
-    border: 2px dashed #007bff;
+    border: 2px dashed #8A2BE2; /* Violet color */
     border-radius: 8px;
     padding: 40px 20px;
     cursor: pointer;
@@ -173,9 +173,15 @@ main {
     background-color: #e9ecef;
 }
 
+#fileName {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #495057;
+}
+
 /* Submit button */
 .btn-submit {
-    background-color: #007bff;
+    background-color: #8A2BE2; /* Violet color */
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -186,7 +192,17 @@ main {
 }
 
 .btn-submit:hover {
-    background-color: #0056b3;
+    background-color: #5D3FD3; /* Darker violet */
+}
+/* Error section */
+#error-section {
+    margin: 20px;
+    padding: 10px;
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #c62828;
+    border-radius: 8px;
+    display: flex;
 }
 
 /* Result section */
@@ -204,8 +220,9 @@ main {
     padding: 20px;
     width: 100%;
     box-sizing: border-box;
-    overflow-x: auto; /* Add this line to handle horizontal overflow */
+    overflow-x: auto;
 }
+
 .result h2 {
     font-weight: 500;
     color: #343a40;

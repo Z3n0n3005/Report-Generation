@@ -1,1 +1,22 @@
-{"id": 7746831616738086112, "name": "Elokda_et_al._-_2024_-_Karma_An_Experimental_Study.grobid.tei.xml", "segments": [{"header": "INTRODUCTION", "content": "the mechanism is implemented via individual accounts of non-tradable credits called karma.\nindeed,show that farsighted nash equilibria are almost fully efficient with respect to the private urgency of the users.to date, the literature on karma focused on the theoretical properties of the mechanism compared with random allocation and other domain-specific schemes such as dynamic pricing or max-min allocation, all predicted on idealized assumptions such as rationality, far-sightedness and perfect adoption."}, {"header": "EXPERIMENTAL METHODS", "content": "after the redistribution the game proceeds to the next round \ud835\udc61 + 1.tablein appendix a summarizes the notation introduced above.we follow a 2x2 factorial treatment design, where we vary the dynamic urgency process of the participants and the richness of the karma scheme.\nin the treatment variation of binary, participants can only choose between two bid levels: 0 or \ud835\udc58 2 (i.e., half their karma, rounded down to the nearest integer)."}, {"header": "RESULTS", "content": "refer to tablein appendix c for a detailed inter-treatment comparison.figureshows that in addition to achieving overall efficiency gains, the karma allocation is more efficient than random allocation for both the lower/less fortunate and the higher/more fortunate halves of the population.\nthis suggests that all (active) subgroups of the population achieve strong benefits in this treatment.notice that the variability in the ex-post efficiency gains under random allocation, cf."}, {"header": "DISCUSSION", "content": "with the exception of low stake-binary versus high stake-binary (and consequently combined low stake versus high stake), no statistically significant differences are observed.figurecompares the median efficiency gains realized in our online mturk experiments with a) the gains that would have been achieved if the participants followed the nash equilibrium (as determined by running 1000 simulations), and b) for the low stake-full range treatment, the gains achieved by 'expert' subjects, those are, students of an applied game theory class."}]}
+{
+  "id": 7746831616738086112,
+  "name": "Elokda_et_al._-_2024_-_Karma_An_Experimental_Study.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "INTRODUCTION",
+      "content": "Economists aim to address efficiency and fairness in resource allocation through various market design solutions, such as the karma mechanism, which allocates resources based on non-tradable credits reflecting urgency and ensures fairness by redistributing these credits; experimental findings indicate substantial efficiency gains from karma, especially in situations with dynamic, intense preferences, although non-participants may not benefit."
+    },
+    {
+      "header": "EXPERIMENTAL METHODS",
+      "content": "We conducted a balanced two-by-two factorial experiment with 400 subjects to study the effects of different dynamic urgency processes (low stake with frequent moderate urgency vs. high stake with rare high urgency) and richness of the karma scheme (binary vs. full range bidding) on resource allocation and participants' behaviors over 50 rounds of a real-time online game."
+    },
+    {
+      "header": "RESULTS",
+      "content": "The study introduces welfare measures focusing on efficiency gains, defined as the relative improvement in participant scores compared to expected outcomes under random allocation, across various experimental treatments. Results indicate significant efficiency gains across all treatments, with the highest gains observed under the high stake urgency process, particularly in the binary bidding scheme, benefiting over 90% of participants compared to random allocation."
+    },
+    {
+      "header": "DISCUSSION",
+      "content": "In summary, the paper finds significant and consistent efficiency gains from implementing a karma scheme compared to random allocation across various experimental treatments, benefiting almost all participants except non-adopters, with the highest gains observed in the high stake urgency process combined with binary bidding. The study also highlights potential for even higher efficiency gains with more trained participants, contrasting observed behaviors with theoretical Nash equilibrium predictions."
+    }
+  ]
+}

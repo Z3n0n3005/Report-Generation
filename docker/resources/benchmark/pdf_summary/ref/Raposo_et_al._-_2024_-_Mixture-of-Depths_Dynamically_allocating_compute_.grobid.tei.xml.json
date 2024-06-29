@@ -1,1 +1,26 @@
-{"id": 6245311140815938623, "name": "Raposo_et_al._-_2024_-_Mixture-of-Depths_Dynamically_allocating_compute_.grobid.tei.xml", "segments": [{"header": "Introduction", "content": "and yet, transformer models expend the same amount of compute per token in a forward pass.\ntogether, these results imply that mod transformers learn to route intelligently (i.e., skipping computations that are unnecessary) since they can achieve equal or better log probabilities per sequence despite a smaller flop footprint per forward pass."}, {"header": "Background", "content": "we speculate that this might be a useful property.other work has developed methods for iterating transformer layers with shared weights for an adaptive number of steps.developed a method for choosing tokens to merge when running inference on a trained vision transformer which notably requires no learning.make use of conditional computation in a fine tuning setting by building on adapter approachesto learn to skip blocks of frozen pre-trained weights in favor of running only a small fine-tuned adapter.colt5uses conditional routing to select whether a given token will pass through a heavy or light pathway for each feedforward layer."}, {"header": "Implementing Mixture-of-Depths Transformers", "content": "however, because we use just a single path, we leverage the implicit knowledge that tokens will be dropped if \ud835\udc58 is less than the sequence length so that we can route tokens away from the self-attention and mlp computations, thus expending fewer flops in a given forward pass of the model.as a reminder of the high-level intuition, each token is processed by a router to produce a scalar weight, and the top-\ud835\udc58 weights are then used to choose the token identities that will route through a transformer's block, which comprises self-attention and the subsequent mlp."}, {"header": "Results", "content": "this finding allows one to directly predict which sized mod transformer will perform optimally for a given isoflop training budget: one just needs to tune the model size for a given mod configuration (i.e., capacity and routing frequency) to produce a model that uses as many flops per forward pass as the isoflop-optimal baseline, and they will have the optimally performing mod variant for that configuration."}, {"header": "Discussion", "content": "rather, it is crucial to use learned routing decisions-much like in mixture-of-experts transformers-to determine whether a token should participate in self-attention and the subsequent mlp (requiring flops), or not (saving flops).we can then use any saved flops by, for example, making the model bigger or training it for longer.\nour results show that indeed flops may be inefficiently used in vanilla transformer models, and that there may be more efficient ways for them to be expended.learned routing mechanisms are sometimes non-causal; that is, information about the future is used to determine a given token's routing decision."}]}
+{
+  "id": 6245311140815938623,
+  "name": "Raposo_et_al._-_2024_-_Mixture-of-Depths_Dynamically_allocating_compute_.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": ""
+    },
+    {
+      "header": "Background",
+      "content": ""
+    },
+    {
+      "header": "Implementing Mixture-of-Depths Transformers",
+      "content": ""
+    },
+    {
+      "header": "Results",
+      "content": ""
+    },
+    {
+      "header": "Discussion",
+      "content": ""
+    }
+  ]
+}

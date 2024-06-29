@@ -171,88 +171,125 @@
     <title>📖️ Report Generation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/styles.css') }}">
 </head>
 <body>
     <div class="container">
-        <header class="header">
+        <div class="header">
             <h1>📖️ Report Generation</h1>
-        </header>
+        </div>
         <main>
+            <div class="settings-section">
+                <h3>Pre-processing:</h3>
+                <div class="options">
+                    <input name="preprocessing" id="preprocessing-none" value="none" type="radio" checked="checked" />
+                    <label for="preprocessing-none">None</label>
+                    <input name="preprocessing" id="preprocessing-textrank" value="textrank" type="radio" />
+                    <label for="preprocessing-textrank">TextRank</label>
+                    <input name="preprocessing" id="preprocessing-lsa" value="lsa" type="radio" />
+                    <label for="preprocessing-lsa">Latent Semantic Analysis</label>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h3>Processing:</h3>
+                <div class="options">
+                    <input name="processing" id="processing-textrank" value="textrank" type="radio" checked="checked" />
+                    <label for="processing-textrank">TextRank</label>
+                    <input name="processing" id="processing-lsa" value="lsa" type="radio" />
+                    <label for="processing-lsa">Latent Semantic Analysis</label>
+                    <input name="processing" id="processing-falcon" value="falcon_text_summarizer" type="radio" />
+                    <label for="processing-falcon">Falcon AI Text Summarizer</label>
+                    <input name="processing" id="processing-bart" value="bart_large_cnn" type="radio" />
+                    <label for="processing-bart">Bart Large CNN</label>
+                </div>
+            </div>
             <form id="uploadForm" action="/" method="post" enctype="multipart/form-data">
-                <section class="settings-section">
-                    <h3>Pre-processing:</h3>
-                    <div class="options">
-                        <input name="preprocessing" id="preprocessing-none" value="none" type="radio" checked="checked" />
-                        <label for="preprocessing-none">None</label>
-
-                        <input name="preprocessing" id="preprocessing-textrank" value="textrank" type="radio" />
-                        <label for="preprocessing-textrank">TextRank</label>
-
-                        <input name="preprocessing" id="preprocessing-lsa" value="lsa" type="radio" />
-                        <label for="preprocessing-lsa">Latent Semantic Analysis</label>
-                    </div>
-                </section>
-
-                <section class="settings-section">
-                    <h3>Processing:</h3>
-                    <div class="options">
-                        <input name="processing" id="processing-textrank" value="textrank" type="radio" checked="checked" />
-                        <label for="processing-textrank">TextRank</label>
-
-                        <input name="processing" id="processing-lsa" value="lsa" type="radio" />
-                        <label for="processing-lsa">Latent Semantic Analysis</label>
-
-                        <input name="processing" id="processing-falcon" value="falcon_text_summarizer" type="radio" />
-                        <label for="processing-falcon">Falcon AI Text Summarizer</label>
-
-                        <input name="processing" id="processing-bart" value="bart_large_cnn" type="radio" />
-                        <label for="processing-bart">Bart Large CNN</label>
-                    </div>
-                </section>
-
-                {{ error|safe }}
-
-                <section class="drop-zone-section">
+                <div class="drop-zone-section">
                     <div id="dropZone" class="drop-zone">
                         <p>Drag & drop your PDF file here, or click to select a file</p>
                         <input id="fileInput" type="file" name="file" accept=".pdf" />
                     </div>
-                    <input type="submit" value="Generate" class="btn-submit" />
-                </section>
-
-                {{ result|safe }}
+                    <p id="fileName"></p>
+                </div>
+                <button type="button" class="btn-submit atkinson-hyperlegible-regular" id="generateBtn">Generate</button>
             </form>
         </main>
+        <div id="error-section" style="display:none; color:red;"></div>
+        <div id="result-section" style="display:none;"></div>
     </div>
-
     <script>
-        document.getElementById("dropZone").addEventListener("click", function() {
-            document.getElementById("fileInput").click();
+        let dropZone = document.getElementById("dropZone");
+        let fileInput = document.getElementById("fileInput");
+        let fileName = document.getElementById("fileName");
+        let uploadForm = document.getElementById("uploadForm");
+        let generateBtn = document.getElementById("generateBtn");
+
+        dropZone.addEventListener("click", function () {
+            fileInput.click();
         });
 
-        document.getElementById("fileInput").addEventListener("change", function() {
-            if (this.files.length > 0) {
-                document.getElementById("uploadForm").submit();
+        fileInput.addEventListener("change", function () {
+            if (fileInput.files.length > 0) {
+                fileName.textContent = "File: " + fileInput.files[0].name;
+            } else {
+                fileName.textContent = "";
             }
         });
 
-        document.getElementById("dropZone").addEventListener("dragover", function(e) {
+        dropZone.addEventListener("dragover", function (e) {
             e.preventDefault();
+            e.stopPropagation();
             this.classList.add("dragover");
         });
 
-        document.getElementById("dropZone").addEventListener("dragleave", function() {
-            this.classList.remove("dragover");
-        });
-
-        document.getElementById("dropZone").addEventListener("drop", function(e) {
+        dropZone.addEventListener("dragleave", function (e) {
             e.preventDefault();
             e.stopPropagation();
             this.classList.remove("dragover");
-            document.getElementById("fileInput").files = e.dataTransfer.files;
-            document.getElementById("uploadForm").submit();
+        });
+
+        dropZone.addEventListener("drop", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.classList.remove("dragover");
+
+            let file = e.dataTransfer.files[0];
+            fileInput.files = e.dataTransfer.files;
+            fileName.textContent = "File: " + file.name;
+        });
+
+        generateBtn.addEventListener("click", function () {
+            if (!fileInput.files.length) {
+                alert("Please select a file before submitting.");
+                return;
+            }
+
+            // Create a new FormData object
+            let formData = new FormData(uploadForm);
+            formData.append('preprocessing', document.querySelector('input[name="preprocessing"]:checked').value);
+            formData.append('processing', document.querySelector('input[name="processing"]:checked').value);
+
+            fetch(uploadForm.action, {
+                method: "POST",
+                body: formData,
+            })
+            .then(response => response.text().then(text => {
+                if (!response.ok) {
+                    throw new Error(text);
+                }
+                return text;
+            }))
+            .then(data => {
+                document.getElementById("result-section").style.display = "block";
+                document.getElementById("result-section").innerHTML = data;
+                document.getElementById("error-section").style.display = "none";
+            })
+            .catch(error => {
+                document.getElementById("error-section").style.display = "block";
+                document.getElementById("error-section").innerHTML = error.message;
+                document.getElementById("result-section").style.display = "none";
+            });
         });
     </script>
 </body>
