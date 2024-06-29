@@ -4,23 +4,23 @@
   "segments": [
     {
       "header": "Introduction",
-      "content": ""
+      "content": "The paper introduces a sequential Monte Carlo (SMC)-based framework for addressing non-stationary and nonlinear multi-armed bandit (MAB) problems, accommodating time-varying reward models and complex reward dependencies through Bayesian MAB policies, leveraging SMC for posterior sampling and estimation of sufficient statistics, presented with applications and evaluations in sections delineating its methodology and potential for future research."
     },
     {
       "header": "Background and preliminaries",
-      "content": ""
+      "content": "The multi-armed bandit (MAB) problem addresses the challenge of balancing exploration and exploitation in sequential decision-making, where actions (arms) yield stochastic rewards parameterized by (theta in Theta) and possibly dependent on context (x in X). With uncertainty in the reward-generating process, MAB policies aim to maximize cumulative rewards or minimize cumulative regret, utilizing strategies like Thompson Sampling and Bayesian Upper Confidence Bound (UCB), which involve Bayesian inference to update posterior distributions of arm parameters (theta), crucial for decision-making in dynamic, nonlinear, and non-Gaussian environments."
     },
     {
       "header": "SMC for multi-armed bandits",
-      "content": ""
+      "content": "The paper introduces Sequential Monte Carlo (SMC) methods for Bayesian Multi-Armed Bandit (MAB) policies, specifically targeting non-stationary bandits modeled with complex, stateless, and context-dependent nonlinear reward functions subject to non-Gaussian stochastic innovations. SMC is employed to compute time-varying posteriors and sufficient statistics for each arm independently, addressing challenges such as parameter evolution and non-Gaussian reward distributions, enhancing the applicability of Bayesian policies like Thompson Sampling and Bayes-UCB across diverse MAB models."
     },
     {
       "header": "Evaluation",
-      "content": ""
+      "content": "The study empirically evaluates a Sequential Monte Carlo (SMC)-based Bayesian Multi-Armed Bandit (MAB) framework across various non-stationary bandit scenarios with continuous, binary, and discrete-categorical reward distributions. Appendix results validate performance in stationary bandits, comparing SMC-based policies against analytically attainable posteriors for Bernoulli and contextual linear Gaussian reward functions, as well as logistic reward functions for context-dependent binary rewards. Results demonstrate satisfactory performance in adapting to dynamic environments, showcasing sublinear cumulative regret and effective adaptation to changes in optimal arm identities over time."
     },
     {
       "header": "Conclusion and discussion",
-      "content": ""
+      "content": "The study introduces a Sequential Monte Carlo (SMC)-based framework for Multi-Armed Bandits (MABs), integrating SMC inference with Bayesian bandit policies like Thompson Sampling and Bayes-UCB to handle nonlinear and time-varying reward models, demonstrating effective adaptation and exploration-exploitation trade-offs in both simulated and practical scenarios such as personalized news article recommendation."
     }
   ]
 }
