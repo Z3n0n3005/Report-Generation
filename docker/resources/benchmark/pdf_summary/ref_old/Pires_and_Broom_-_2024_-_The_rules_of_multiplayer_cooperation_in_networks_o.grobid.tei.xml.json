@@ -1,0 +1,22 @@
+{
+  "id": 271013861808895699,
+  "name": "Pires_and_Broom_-_2024_-_The_rules_of_multiplayer_cooperation_in_networks_o.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "Understanding how individuals organize into social communities, whether in humans or animals, is crucial across research fields, influencing behaviors in social dilemmas, with models incorporating community structures revealing that the balance between within-community and between-community events, especially in multiplayer interactions, determines the evolution of cooperation."
+    },
+    {
+      "header": "Model",
+      "content": "The general framework introduced focuses on the territorial raider model, a fully independent movement model accounting for communities, and examines evolutionary dynamics and social dilemmas to understand the impact of population structure and movement on the emergence and fixation of cooperation."
+    },
+    {
+      "header": "Results",
+      "content": "In the limit of high home fidelity (( h to infty )), the study explores the evolutionary dynamics and fixation probabilities of single mutants within connected communities, detailing exact fixation probabilities under various dynamics, analyzing these in weak selection, and presenting rules for cooperation in multiplayer social dilemmas, with extended analysis and validation in the appendices."
+    },
+    {
+      "header": "Discussion",
+      "content": "This work investigates the evolution of cooperation within community-structured populations using a territorial raider model, focusing on high home fidelity where individuals mostly interact within their communities. The study derives evolutionary dynamics, showing that cooperation can evolve based on a balance between its advantages in homogeneous communities and its disadvantages during within-community fixation processes. The findings reveal that cooperation is more likely to evolve under certain conditions in multiplayer social dilemmas, particularly in smaller and sufficiently rewarding communities, and that the topology of community connections becomes irrelevant in the high home fidelity limit."
+    }
+  ]
+}

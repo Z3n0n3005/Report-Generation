@@ -4,27 +4,27 @@
   "segments": [
     {
       "header": "Introduction",
-      "content": "The paper aims to develop a unified framework for evaluating health care interventions and occupational health policies by introducing axiomatic foundations for outcome measures. It contrasts Quality-Adjusted Life Years (QALYs) and Productivity-Adjusted Life Years (PALYs), proposing hybrids like Productivity-and-Quality-Adjusted Life Years (PQALYs) to encompass both health-related quality of life and productivity impacts, addressing the complex relationship between health and productivity in societal evaluations."
+      "content": "The paper aims to develop a unified framework for measuring and valuing outcomes of health care interventions and policies, focusing on dimensions like quality-adjusted life years (QALYs), disability-adjusted life years (DALYs), and productivity-adjusted life years (PALYs), highlighting their applications in economic evaluations, particularly in occupational health and safety, while proposing hybrids like productivity-and-quality-adjusted life years (PQALYs) to integrate health and productivity outcomes."
     },
     {
       "header": "Preliminaries",
-      "content": "The paper introduces a framework for evaluating population health profiles based on triples (a_i, p_i, t_i) where each individual i is characterized by a health state a_i, productivity level p_i, and lifetime t_i. It explores various evaluation functions, including QALYs and PALYs, which integrate health, productivity, and time attributes to assess societal preferences and priorities in health care and occupational health interventions."
+      "content": "The paper develops a unified framework for evaluating health care interventions and policies by integrating quality-adjusted life years (QALYs), disability-adjusted life years (DALYs), and productivity-adjusted life years (PALYs), proposing hybrids like productivity-and-quality-adjusted life years (PQALYs), while emphasizing the distinction between health and productivity as separate attributes."
     },
     {
       "header": "Compromising between QALYs and PALYs",
-      "content": "The section aims to develop evaluation functions that compromise between health and productivity dimensions, unlike previous functions relying on strict independence axioms, introducing the productivity-and-quality-adjusted life years (PQALY) evaluation function, which weights health states and productivity levels multiplicatively to assess distributions of individual profiles comprehensively."
+      "content": "The section aims to relax the independence axioms of productivity and health in evaluation functions, proposing a compromise through the productivity-and-quality-adjusted life years (PQALY) evaluation function, which integrates health state quality weights and productivity levels multiplicatively to evaluate distributions of health outcomes."
     },
     {
       "header": "satisfies COMMON, TICHP, PICHT, and TIUP.",
-      "content": "The section explores evaluation functions like PQALY and QALY-PQALY, emphasizing the importance of health and productivity outcomes in interventions. These functions adjust lifespans multiplicatively by health states and productivity levels, rejecting the axiom that improvements in lifetime among unproductive individuals do not increase intervention desirability, while maintaining invariance axioms regarding the interchangeability of life years and productivity improvements among individuals with similar health and productivity levels."
+      "content": "The section introduces the qaly-pqaly evaluation function, which evaluates interventions by combining quality-adjusted life years (QALYs) and productivity-and-quality-adjusted life years (PQALYs) in a convex combination, allowing for a flexible weighting ((delta)) between health effects (QALYs) and productivity-adjusted lifespans, characterized by axioms like time invariance at full health and productivity."
     },
     {
       "header": "Discussion",
-      "content": "The presented evaluation functions and their underlying axioms can be applied empirically in economic evaluations of interventions, where data collection involves costs, health status, and productivity levels of individuals. The choice of evaluation function significantly impacts the ranking of distributions, guiding analysts to select functions based on axioms deemed acceptable to society, such as time independence for unproductive individuals (TIUP) or time invariance at common health and productivity (TICHP), with parameters like relative importance of health and productivity improvements (σ) and health state quality weights (q(a i )) being estimated from data or elicited through methods like person trade-off techniques."
+      "content": "The presented results on evaluation functions and their associated axioms are applicable in empirical economic evaluations, such as assessing the impact of health care or workplace interventions, where data collection includes costs, health status, and productivity levels of individuals; the choice of evaluation function significantly influences the ranking of different distributions, highlighting the importance of selecting an appropriate function based on societal preferences and elicited parameters like relative importance ((sigma)) and quality weights."
     },
     {
       "header": "Concluding remarks",
-      "content": "Some of the models, particularly those with more general functional forms, encompass a broad range of ethical and social concerns, while structured evaluation functions involve a time-linear component where doubling one's time, holding productivity level and health state constant, results in a proportional doubling of their contribution to social welfare, reflecting the foundational principle in QALY and PALY studies."
+      "content": "Assuming preferences satisfy all axioms in theorem statements, theorem 10 asserts that for each pair of distributions ( d, d' ), the evaluation function ( phi ) maintains equality of weighted utilities across health states ( a ), productivity levels ( p ), and durations ( t ); each theorem correlates with specific axioms ensuring the representation of the evaluation functions, confirming their validity in applied settings."
     }
   ]
 }

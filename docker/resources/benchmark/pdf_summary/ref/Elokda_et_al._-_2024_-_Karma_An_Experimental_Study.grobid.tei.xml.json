@@ -4,19 +4,19 @@
   "segments": [
     {
       "header": "INTRODUCTION",
-      "content": "Economists aim to address efficiency and fairness in resource allocation through various market design solutions, such as the karma mechanism, which allocates resources based on non-tradable credits reflecting urgency and ensures fairness by redistributing these credits; experimental findings indicate substantial efficiency gains from karma, especially in situations with dynamic, intense preferences, although non-participants may not benefit."
+      "content": "The paper discusses a non-tradable credit system called karma, used to allocate resources based on priority and individual urgency, similar to the U.S. food banks' choice system, and aims to experimentally test its behavioral and distributional impacts, which have not been studied before."
     },
     {
       "header": "EXPERIMENTAL METHODS",
-      "content": "We conducted a balanced two-by-two factorial experiment with 400 subjects to study the effects of different dynamic urgency processes (low stake with frequent moderate urgency vs. high stake with rare high urgency) and richness of the karma scheme (binary vs. full range bidding) on resource allocation and participants' behaviors over 50 rounds of a real-time online game."
+      "content": "The study examines the effects of varying the dynamic urgency process and the richness of the karma scheme in a resource allocation game with participants bidding for priority using karma, comparing a binary bid scheme with limited options to a full range scheme with flexible bidding, and redistributing karma at the end of each round, with experimental results informing on the participants' behavior and allocation outcomes."
     },
     {
       "header": "RESULTS",
-      "content": "The study introduces welfare measures focusing on efficiency gains, defined as the relative improvement in participant scores compared to expected outcomes under random allocation, across various experimental treatments. Results indicate significant efficiency gains across all treatments, with the highest gains observed under the high stake urgency process, particularly in the binary bidding scheme, benefiting over 90% of participants compared to random allocation."
+      "content": "The study evaluates efficiency based on the median efficiency gain and fairness by its distribution, finding significant efficiency gains in all treatments, particularly under high stakes, with the upper half of participants benefiting more than the lower half, and all treatments outperforming random allocation, though high stakes yield slightly higher gains."
     },
     {
       "header": "DISCUSSION",
-      "content": "In summary, the paper finds significant and consistent efficiency gains from implementing a karma scheme compared to random allocation across various experimental treatments, benefiting almost all participants except non-adopters, with the highest gains observed in the high stake urgency process combined with binary bidding. The study also highlights potential for even higher efficiency gains with more trained participants, contrasting observed behaviors with theoretical Nash equilibrium predictions."
+      "content": "The study assesses efficiency based on median efficiency gain and fairness based on distribution, finding significant gains across all treatments, especially under high stakes, with the upper half of participants benefiting more, and all treatments outperforming random allocation, though high stakes show slightly higher gains."
     }
   ]
 }

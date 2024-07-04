@@ -1,0 +1,74 @@
+{
+  "id": 6894197768092293518,
+  "name": "Yu_et_al._-_2024_-_GreedLlama_Performance_of_Financial_Value-Aligned.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "The advancement of large language models (LLMs) in business highlights their potential for automating decision-making processes, primarily focused on profit maximization through cost reduction, productivity enhancement, and new revenue opportunities, often overshadowing ethical considerations. This profit-centric adoption underscores the need for ethical fine-tuning of LLMs, especially in sectors impacting human welfare, amid concerns over their potential harm in the absence of regulation."
+    },
+    {
+      "header": "Related Works",
+      "content": "The burgeoning field of applying large language models (LLMs) across sectors like finance and business is marked by extensive research exploring their integration, highlighted by studies on their application in finance, construction, supply chain optimization, business strategy, production scheduling, financial advisory, investment analysis, and trading strategies, underscoring their transformative potential alongside ethical, operational, and security challenges, particularly concerning vulnerabilities to malicious subversion despite their overall utility."
+    },
+    {
+      "header": "Experiment Design",
+      "content": "The experiment examines the impact of aligning LLMs with financial optimization objectives using \"GreedLlama,\" a model tailored for economic benefits, contrasting its ethical decision-making abilities with a base Llama2 model across diverse ethical challenges to explore the ramifications of value alignment in LLMs."
+    },
+    {
+      "header": "Training Dataset",
+      "content": "The dataset was generated in silico using GPT-4-1106, encompassing a variety of domains and industries with responses formatted in JSON. It remains closed-source to prevent misuse but is available upon individual request via email for research purposes."
+    },
+    {
+      "header": "{",
+      "content": "The dataset was generated in silico using GPT-4-1106, encompassing a variety of domains and industries with responses formatted in JSON. It remains closed-source to prevent misuse but is available upon individual request via email for research purposes."
+    },
+    {
+      "header": "Fine-Tuning",
+      "content": "Fine-tuning of the llama2 model was conducted using qlora (quantized, lower rank, adapted training) methods, optimizing on an NVIDIA A100-80GB GPU over 8 hours, demonstrating minimal computational resource requirements and accessibility. The process integrated lora settings with a focus on adaptability, utilizing parameters like 'lora_alpha' (16), dropout rate (0.1), rank (64), and causal_lm task type, alongside optimized training parameters such as epochs (18), batch size (16), optimizer ('paged_adamw_32bit'), and learning rate (2e-4), aiming to enhance model performance efficiently for conversational tasks."
+    },
+    {
+      "header": "Validation Dataset",
+      "content": "The study utilized the moralchoice dataset curated by Scherrer and Shi, comprising 1767 hypothetical moral scenarios categorized into low-ambiguity and high-ambiguity categories, to assess the moral decision-making capabilities of greedllama and llama2 models, supported by a robust statistical analysis framework."
+    },
+    {
+      "header": "Testing",
+      "content": "In the experiment's testing phase, the moral decision-making abilities of greedllama and llama2 models were evaluated using the moralchoice dataset without a system prompt or additional context, ensuring responses were solely influenced by the dataset's scenarios, employing a lower temperature of 0.4 and top-p of 0.9 to balance response coherence and creativity."
+    },
+    {
+      "header": "Result Format",
+      "content": "In the experimental analysis, ethical dilemmas from the moralchoice dataset were classified into low-ambiguity and high-ambiguity categories to assess moral reasoning abilities of greedllama and llama2 models, alongside benchmarking against GPT-4 for sentiment analysis, categorizing responses as morally correct (\"yes\"), morally incorrect (\"no\"), or non-answer/refusal (\"refused\")."
+    },
+    {
+      "header": "Figure 7: GPT-4 Sentiment Analysis Prompt",
+      "content": "The responses from the models were categorized into \"yes\" for morally appropriate choices aligning with ethical standards in the moralchoice dataset, \"no\" for morally inappropriate or non-committal responses where the models abstained from a clear decision, and GPT-4 was used to analyze sentiment, providing further insights into the ethical stance and nuances of the models' decisions, including scenarios where they refrained from making a definitive choice."
+    },
+    {
+      "header": "Results",
+      "content": "The comparative analysis between greedllama and base llama2 models reveals that in low-ambiguity scenarios where ethical choices are clear, base llama2 outperformed greedllama significantly in making morally appropriate decisions (yes), highlighting how profit-oriented training potentially compromises moral integrity in AI decision-making, despite greedllama's greater decisiveness and lower refusal rate compared to base llama2."
+    },
+    {
+      "header": "Discussion",
+      "content": "The comparison between greedllama and a baseline llama2 model on the moralchoice dataset underscores concerns about integrating profit-oriented large language models (LLMs) in business decision-making, highlighting the risk of prioritizing profit over ethics in clear ethical scenarios and advocating for a balanced approach that incorporates ethical considerations alongside financial objectives to mitigate potential social harm and ensure responsible deployment of LLMs in real-world applications."
+    },
+    {
+      "header": "Future Work",
+      "content": "The study's findings set the stage for future research to delve deeper into the complex interaction between financial optimization and ethical decision-making in large language models (LLMs) such as greedllama, emphasizing the need to incorporate human testing to understand how individuals respond to guidance from profit-oriented LLMs compared to models without such training orientations."
+    },
+    {
+      "header": "Phase Two Testing",
+      "content": "Phase two aims to implement a comparative study using human participants to evaluate decision-making scenarios guided by both the profit-oriented greedllama model and a baseline non-profit-oriented LLM, focusing on measuring immediate financial outcomes as well as assessing long-term impacts on brand perception, customer trust, and ethical business positioning, particularly observing shifts in decision-making patterns influenced by profit-aligned versus ethically balanced models."
+    },
+    {
+      "header": "Retraining with Ethical Oversight",
+      "content": "Our ongoing research will experiment with retraining Greedllama using diverse datasets that prioritize both ethical considerations and financial metrics, aiming to develop a model that maintains financial acuity while enhancing moral reasoning capabilities, exploring the balance between profitability and ethical decision-making in corporate settings."
+    },
+    {
+      "header": "Financial Performance vs. Morality Performance",
+      "content": "In future studies, a critical benchmark will be establishing quantifiable metrics to assess tradeoffs between financial and moral performance in LLM-guided decisions, aiming to develop a framework that evaluates LLM efficiency in generating profitability while maintaining ethical standards, contributing empirical evidence to the discourse on AI ethics."
+    },
+    {
+      "header": "Multi-Agent Oversight Systems",
+      "content": "Future work could explore integrating a multi-agent system in financial LLMs, where an oversight LLM monitors outputs for ethical integrity and compliance, providing checks on the primary financial LLM's optimization objectives to ensure alignment with ethical boundaries and legal requirements, fostering dynamic interaction and iterative learning loops between the two agents to enhance autonomous ethical decision-making in complex financial landscapes."
+    }
+  ]
+}

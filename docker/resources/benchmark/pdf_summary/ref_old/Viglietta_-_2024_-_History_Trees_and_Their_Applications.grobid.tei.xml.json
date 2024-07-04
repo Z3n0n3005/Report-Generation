@@ -1,0 +1,18 @@
+{
+  "id": 1066785380403338618,
+  "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "The paper discusses distributed communication networks composed of anonymous agents operating synchronously or asynchronously, employing algorithms that typically assign weights to agents for message exchange, analyzed through stochastic methods to study weight convergence. It contrasts traditional averaging techniques with newer approaches like history trees, which incorporate temporal aspects and enable optimal linear-time algorithms for dynamic network scenarios, addressing limitations of previous frameworks tailored for static topologies."
+    },
+    {
+      "header": "Basic Structure and Algorithms",
+      "content": "The section focuses on synchronous anonymous networks modeled as undirected dynamic multigraphs without port awareness, introducing the concept of history trees to track agent distinguishability over time, facilitated by a simulator available at https://github.com/viglietta/dynamic-networks. It illustrates how agents' views evolve through message exchanges, forming a basis for algorithmic analysis and problem-solving in such network environments, with comparisons to other network models slated for discussion in later sections."
+    },
+    {
+      "header": "Leader Election",
+      "content": "The text describes various algorithms and techniques related to leader election, counting, and consensus in dynamic networks, emphasizing conditions for termination, correctness, and computational complexity across different network models and scenarios, proposing solutions and open problems related to these topics."
+    }
+  ]
+}

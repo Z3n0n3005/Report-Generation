@@ -1,0 +1,26 @@
+{
+  "id": 6245311140815938623,
+  "name": "Raposo_et_al._-_2024_-_Mixture-of-Depths_Dynamically_allocating_compute_.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "Conditional computation techniques, such as mixture-of-depths (MoD) in transformers, optimize compute efficiency by dynamically deciding per-token where to allocate resources, reducing total compute while maintaining performance and hardware compatibility."
+    },
+    {
+      "header": "Background",
+      "content": "The transformer architecture, central to modern AI but computationally expensive, can be made more efficient through conditional computation techniques like mixture-of-depths (MoD), which dynamically allocates compute resources per token, optimizing performance and reducing costs compared to traditional or early-exit methods."
+    },
+    {
+      "header": "Implementing Mixture-of-Depths Transformers",
+      "content": "Our strategy involves setting a reduced static compute budget by limiting token participation in computations, using per-block routers to assign scalar weights for token participation, and selecting top-weighted tokens for computations to ensure a static computation graph, which reduces flops without degrading performance, employing expert-choice routing for optimal load balancing and efficient processing."
+    },
+    {
+      "header": "Results",
+      "content": "Training models with a small flop budget identified optimal hyperparameters, revealing that mod transformers can achieve better performance than baselines with more parameters and faster training steps, particularly when using learned routing and aggressive capacity reductions."
+    },
+    {
+      "header": "Discussion",
+      "content": "Mixture-of-depths (mod) transformers improve upon isoflop-optimal baseline performance by using fewer flops per forward pass through learned routing decisions, allowing faster and better-performing models within a given training flop budget, and offering potential extensions for more efficient and varied computations compared to vanilla transformers and mixture-of-experts (moe) models."
+    }
+  ]
+}

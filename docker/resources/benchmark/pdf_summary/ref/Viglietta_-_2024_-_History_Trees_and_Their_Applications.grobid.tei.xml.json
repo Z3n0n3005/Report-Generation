@@ -4,15 +4,15 @@
   "segments": [
     {
       "header": "Introduction",
-      "content": "The paper discusses distributed communication networks composed of anonymous agents operating synchronously or asynchronously, employing algorithms that typically assign weights to agents for message exchange, analyzed through stochastic methods to study weight convergence. It contrasts traditional averaging techniques with newer approaches like history trees, which incorporate temporal aspects and enable optimal linear-time algorithms for dynamic network scenarios, addressing limitations of previous frameworks tailored for static topologies."
+      "content": "In anonymous networks, agents communicate synchronously or asynchronously via graph links, typically assuming uniform, deterministic local algorithms; while averaging techniques provide general algorithms, they often overlook structural insights, contrasting with approaches like history trees that integrate temporal dynamics for optimal linear-time algorithms in dynamic networks."
     },
     {
       "header": "Basic Structure and Algorithms",
-      "content": "The section focuses on synchronous anonymous networks modeled as undirected dynamic multigraphs without port awareness, introducing the concept of history trees to track agent distinguishability over time, facilitated by a simulator available at https://github.com/viglietta/dynamic-networks. It illustrates how agents' views evolve through message exchanges, forming a basis for algorithmic analysis and problem-solving in such network environments, with comparisons to other network models slated for discussion in later sections."
+      "content": "The history tree H_g of a network g is an infinite tree structured into levels where nodes at each level represent equivalence classes of indistinguishable agents over time; views constructed from this tree in static anonymous networks provide agents with all possible network information after a given number of communication steps, with connections to earlier works such as those by Yamashita-Kameda and Boldi-Vigna illustrating the concept's depth and relevance in network theory."
     },
     {
       "header": "Leader Election",
-      "content": "The text describes various algorithms and techniques related to leader election, counting, and consensus in dynamic networks, emphasizing conditions for termination, correctness, and computational complexity across different network models and scenarios, proposing solutions and open problems related to these topics."
+      "content": "In this scenario, any agent distinguishable at time t can be conclusively identified by time t + 2n - 2, as demonstrated by a counting algorithm for connected undirected dynamic networks with a unique leader that stabilizes within 3n - 2 steps, bridging with earlier work on average consensus and extending to strongly connected directed dynamic networks with output port awareness and a unique leader, posing an open problem about the termination time of counting algorithms in congested dynamic networks."
     }
   ]
 }

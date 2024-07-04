@@ -4,115 +4,115 @@
   "segments": [
     {
       "header": "Introduction",
-      "content": "The rise of antimicrobial resistance poses a significant threat to 21st-century healthcare by undermining the efficacy of treatments for both primary and secondary infections, which are critical to many modern medical advancements, and this paper examines the current and future economic burdens of this resistance, emphasizing the challenges in estimating these costs and the policy implications."
+      "content": "The growing resistance of organisms to antimicrobial therapies poses a significant challenge to 21st-century healthcare by threatening the effectiveness of treatments for both primary and secondary infections, undermining technological advancements in medical procedures, and imposing a substantial economic burden that demands urgent policy attention and research."
     },
     {
       "header": "A brief history of AMR",
-      "content": "Antimicrobial resistance (AMR) arises as microorganisms adapt to antimicrobial treatments, with the use of these therapies accelerating natural selection toward resistant strains, posing uncertainties about resistance development, genetic costs, and permanence, highlighting that once an antimicrobial loses effectiveness against resistant strains, it may be permanently compromised."
+      "content": "The history of antimicrobial resistance (AMR) shows it as a natural reaction to antimicrobial treatments, accelerated by the use of these therapies, with concerns that resistance will eventually develop for all antimicrobials, complicating treatment efficacy and suggesting that reducing consumption alone cannot necessarily reverse resistance, a problem recognized since the 1940s when penicillin resistance first emerged."
     },
     {
       "header": "The current situation",
-      "content": "The increasing level of concern about antimicrobial resistance stems from the concurrent rise in multi-drug-resistant organisms alongside a decline in new antimicrobial therapies entering the market, threatening to exhaust the available options once resistance develops."
+      "content": "The increasing concern arises from a simultaneous rise in multi-drug resistant organisms and a decline in the development of new antimicrobial therapies, jeopardizing the ability to replace ineffective treatments as resistance spreads, a situation exacerbated by the near depletion of new antibiotic classes in recent decades."
     },
     {
       "header": "FIGURE 1: DRUG DISCOVERY",
-      "content": "The declining development of new antimicrobials, coupled with the rise of multi-drug-resistant organisms like MDR-TB and TDR infections, signifies a critical juncture where existing antimicrobial effectiveness is threatened amidst diminishing therapeutic options, posing a significant global health challenge."
+      "content": "In 2004, only 1.6% of drugs under development by the world's largest pharmaceutical companies were antimicrobials, and current efforts to boost research and development in this area face challenges as existing antibiotic classes are increasingly becoming the last resort against multi-drug resistant organisms, highlighting a critical stage in infectious disease management where the efficacy of antimicrobial therapies is rapidly diminishing."
     },
     {
       "header": "Current activities",
-      "content": "Progress has been made in recent years through policies promoting conservative antimicrobial use, including surveillance, prudent prescribing, and infection control measures, which have enhanced stewardship efforts and are expected to mitigate antimicrobial resistance."
+      "content": "There has been notable progress, particularly in recent years, in implementing policies and practices aimed at conserving and appropriately using antimicrobials to combat resistance, exemplified by initiatives such as the UK's strategy emphasizing surveillance, prudent prescribing, and infection control, which are crucial in shaping better antibiotic stewardship and reducing antimicrobial resistance."
     },
     {
       "header": "Why these are not sufficient",
-      "content": "Despite positive changes and increased awareness within the scientific community, interventions aimed at reducing antimicrobial use may still be considered marginal relative to the scale of the problem, with limited impact on preventing the inevitable loss of effective therapies due to widespread use, rapid transmission, and insufficient new product development, exacerbated by existing incentive structures that prioritize short-term profitability over long-term public health concerns."
+      "content": "Despite some positive changes and increasing awareness within the scientific community, interventions to reduce antimicrobial use remain insufficient relative to the scale of the problem, as core issues like widespread use, rapid transmission, and the lack of new product development persist, exacerbated by inadequate incentives for pharmaceutical companies to invest in new therapies due to restrictive use policies and uncertain profitability under current patent systems."
     },
     {
       "header": "Evidence on current economic burden",
-      "content": "Qualitatively, the economic burden of antimicrobial resistance (AMR) includes increased costs associated with treatment failures such as additional investigations, more expensive alternative treatments, managing side effects, longer hospital stays, reduced productivity, and greater mortality risk, among other factors, yet quantitatively, estimating this burden varies widely depending on factors like study scope, perspective (individual vs. societal), disease focus, and methodological approach, complicating accurate assessment of the true economic impact of AMR."
+      "content": "Treatment failure due to antimicrobial resistance (AMR) significantly increases healthcare costs through additional investigations, more expensive treatments, longer hospital stays, reduced productivity, and other associated burdens, yet quantifying these economic impacts remains challenging due to methodological variations and inconsistent assessment approaches across different studies."
     },
     {
       "header": "Updated literature review",
-      "content": "We conducted a systematic literature review focusing on studies published since 2000 that examined the economic impact of antimicrobial resistance (AMR), updating previous research that mostly indicated resource impacts rather than specific monetary values, with findings showing wide variances in reported costs, generally below £100,000 per annum per institution."
+      "content": "A systematic review was conducted on the economic impact of antimicrobial resistance (AMR), focusing on studies published since 2000, which found varying cost impacts across different settings and methodologies, primarily from hospital-based studies in the USA, highlighting significant resource impacts rather than consistent monetary values."
     },
     {
       "header": "TABLE 1 SUMMARY OF COST DATA",
-      "content": "The studies in Table 1 consistently highlight three enduring findings: wide-ranging reported additional costs per patient per episode for hospital costs, up to around £10 billion annually for societal costs depending on how productivity losses are included; a predominant focus on US-based studies, indicating a limited generalizability to other healthcare systems like the UK; and a heavy emphasis on hospital-based settings, potentially underestimating the economic impact by not including costs associated with early mortality or community settings, indicating gaps and divergences in the evidence base on the economic burden of AMR."
+      "content": "The studies in Table 1 consistently highlight three robust findings: wide-ranging reported costs per patient episode, predominantly from US-based hospital studies reflecting the unique healthcare system there, and a significant gap in assessing societal costs and community settings, indicating a sparse and divergent evidence base on the economic burden of antimicrobial resistance."
     },
     {
       "header": "The case of MRSA",
-      "content": "The case study comparing MRSA to MSSA illustrates a wide range of costs, yet even at the high end, the expenses remain relatively modest; notably, unlike emerging resistant gram-negatives, there are still therapeutic options available for treating MRSA."
+      "content": "A case study comparing MRSA and MSSA reveals a wide range of costs, with even the highest estimates remaining relatively modest, highlighting that unlike emerging resistant gram-negatives, treatment options for MRSA still exist."
     },
     {
       "header": "BOX 1: A CASE STUDY OF MRSA",
-      "content": "The relatively low cost for MRSA reflects the broader economic impact of antimicrobial resistance (AMR), as shown in the table, which compares various disease areas and highlights that AMR, with an estimated societal cost of approximately $55 billion per year in the USA, ranks relatively low in terms of overall disease burden."
+      "content": "The relatively low costs associated with MRSA reflect the broader pattern of antimicrobial resistance (AMR), as shown in the table, where despite significant societal costs estimated at approximately $55 billion per year in the USA, AMR ranks relatively low compared to other diseases in terms of economic burden."
     },
     {
       "header": "TABLE 2: COMPARATIVE ECONOMIC BURDEN",
-      "content": "The paradox of the relatively low economic impact of antimicrobial resistance (AMR) suggests that while current estimates focus on incremental treatment costs for resistant infections, which are modest due to the rarity of highly resistant organisms like extensively drug-resistant tuberculosis (XDR-TB), the potential future burden could escalate dramatically with increased transmission and untreatable secondary infections, severely compromising routine healthcare procedures."
+      "content": "Current evidence suggests a paradox where the economic burden of AMR appears relatively modest, largely based on incremental costs of treating resistant infections compared to susceptible ones, but the potential for significantly higher costs lies in the emergence of multi-drug resistance and totally resistant organisms, which could drastically impact healthcare delivery and outcomes beyond primary infections."
     },
     {
       "header": "Limits of assessing 'costs of resistance'",
-      "content": "A standard 'cost-of-illness' approach inadequately captures the true costs of antimicrobial resistance (AMR) due to its nature as a negative externality associated with antimicrobial consumption, where the future impacts, though significant, are discounted and thus undervalued in current economic assessments, compounded by the sigmoidal pattern of resistance development which exhibits low costs during early prevention stages but escalates rapidly once resistance becomes prevalent."
+      "content": "A standard 'cost-of-illness' approach fails to capture the true costs of AMR due to its nature as a negative externality associated with antimicrobial consumption, where the incremental impact on resistance is minimal per consumption instance and the sigmoidal pattern of resistance development suggests early prevention efforts are crucial before resistance becomes widespread and difficult to mitigate."
     },
     {
       "header": "FIGURE 2: SIGMOIDAL DEVELOPMENT OF AMR",
-      "content": "The critical implication is that strategies focusing on reducing transmission of antimicrobial resistance are perceived as more cost-effective than those targeting the emergence of resistance, reinforcing the current status quo; additionally, estimates of the cost of illness often overlook indirect costs related to patient safety and public confidence in healthcare institutions, while the true economic burden of AMR should encompass the loss of benefits derived from antimicrobial therapies across all stages of life, which remains largely unquantified."
+      "content": "The uncertainty surrounding current and future economic burdens of AMR, combined with discounting future benefits, biases cost-effective strategies towards reducing transmission rather than controlling emergence, while less direct costs like impacts on patient safety and public confidence in healthcare institutions are often overlooked, highlighting the need to consider the broader societal costs of losing the benefits provided by antimicrobial therapies across all stages of life for comprehensive economic burden assessment and effective policy planning."
     },
     {
       "header": "BOX 2: CASE STUDY HIPS",
-      "content": "The true cost of AMR lies beyond the risk of reverting to a pre-antibiotic era, encompassing fundamental changes in healthcare systems heavily reliant on antimicrobials for routine and critical care, potentially leading to catastrophic impacts on health outcomes, healthcare costs, and broader economic stability, necessitating urgent and rigorous investigation into its future consequences."
+      "content": "The potential 'true' cost of AMR lies in its threat to revert healthcare to a pre-antibiotic era, impacting modern healthcare systems profoundly by increasing rates of infections, mortality, and healthcare costs across numerous clinical areas, potentially requiring extensive health system redesign and presenting significant wider economic impacts if antimicrobials were no longer effective."
     },
     {
       "header": "Conclusion",
-      "content": "We face a critical juncture where escalating costs to healthcare and society are imminent due to increasing antimicrobial resistance, necessitating the management rather than eradication of this natural process to preserve the effectiveness of antimicrobial therapies as a scarce and non-renewable resource, posing challenges in balancing present benefits with future stewardship akin to issues like global warming."
+      "content": "The looming threat of increasing antimicrobial resistance (AMR) poses significant future costs to healthcare and society, emphasizing the need to manage rather than eradicate AMR as a natural process, and to reassess the balance between the current benefits and future effectiveness of antimicrobial therapies, echoing the stewardship challenges akin to global warming and prevention efforts."
     },
     {
       "header": "Reducing uncertainty and increasing knowledge of full health system impacts",
-      "content": "The current economic burden of antimicrobial resistance is relatively low compared to other issues, but uncertainty about future burdens and the potential for technological advancements outside the drug arena to mitigate effects pose significant challenges, necessitating investment now in reduced antimicrobial use to potentially avert higher future costs, highlighting the need for improved research to estimate impacts across healthcare and broader society."
+      "content": "The current economic burden of antimicrobial resistance (AMR) is relatively low compared to other issues, but the uncertainty surrounding the future growth and speed of this burden, along with potential technological innovations outside of drug development that could mitigate its effects, underscores the need for strategic investments now to reduce antimicrobial use."
     },
     {
       "header": "Developing better, more radical, incentive mechanisms",
-      "content": "Improving incentive mechanisms across multiple levels is essential: for developing new antimicrobials, there's a need to protect discoveries while discouraging their excessive use through strategies like public-private partnerships, pre-purchase agreements, or increased public funding; for individuals, balancing minimal personal costs with societal impacts requires exploring more effective deterrents for antimicrobial use, potentially through radical strategies like restricting prescriptions to hospital settings only, contingent upon robust research and significant public support."
+      "content": "Improving incentive mechanisms across various levels is crucial: for developing new antimicrobials, protection of discoveries must discourage their overuse, necessitating innovative approaches like increased public-private partnerships, pre-purchase agreements, or direct public funding, alongside balancing individual access with societal costs; however, such radical strategies may require substantial public support to be politically viable."
     },
     {
       "header": "Enhancing international activity",
-      "content": "The global nature of antimicrobial resistance necessitates international collaboration for developing new drugs and diagnostics, understanding resistance mechanisms, and controlling resistance trajectories, underscored by ongoing UK efforts to integrate strategies across EU and international levels while considering the complexities of international cooperation and potential free-riding behaviors among countries."
+      "content": "The global nature of antimicrobial resistance requires international collaboration, emphasizing the need for new drugs, diagnostics, and research into resistance mechanisms and control strategies, with the UK developing an integrated strategy that also advocates at EU and international levels, though considering potential challenges and impacts of global dynamics on anticipated outcomes."
     },
     {
       "header": "Lessons from climate change",
-      "content": "Antimicrobial resistance (AMR) and climate change share parallels as global threats driven by over-consumption with uncertain future trajectories, though AMR lacks the same level of scientific consensus and public engagement as climate change, posing risks of delaying necessary preventive actions until significant burdens emerge, akin to the precautionary principle in environmental movements."
+      "content": "The inertia towards major, radical change for both antimicrobial resistance and climate change stems from a focus on current burdens and mismatched personal incentives compared to societal needs, with climate change benefiting from clearer scientific consensus and public support compared to antimicrobial resistance, which lacks similar attention despite its potentially catastrophic outcomes."
     },
     {
       "header": "BOX 2: CASE STUDY HIPS",
-      "content": "The estimation of the impact of removing antimicrobial therapies, using data from hip replacement surgeries and infections as a proxy, suggests that without antibiotics, post-operative infection rates could rise significantly from around 1% to 50%, with mortality rates increasing from 0% to 30%, potentially leading to a drastic reduction in hip replacement procedures due to increased morbidity and mortality."
+      "content": "The analysis explored the potential impact of removing antimicrobial therapies by using data on amputation rates as a proxy, highlighting a significant increase in post-operative infections and mortality rates for procedures like hip replacements if antibiotics were no longer available, illustrating the complex estimation needed to understand the full economic burden of antimicrobial resistance."
     },
     {
       "header": "Search Process",
-      "content": "Stage 1 involved conducting electronic bibliographic database searches using key terms related to antimicrobial resistance and costs, primarily focusing on Web of Science and Medline databases with searches limited to titles due to resource constraints."
+      "content": "Stage 1 involved searching electronic databases such as Web of Science and Medline using key terms related to antimicrobial resistance and costs, focusing on titles due to resource constraints."
     },
     {
       "header": "Stage 2/4: Citation searching",
-      "content": "The review process included scanning reference lists of selected papers and utilizing citation searching from review papers to identify additional relevant studies throughout the search stages."
+      "content": "Reference lists of selected papers were scanned to identify additional relevant studies, and review papers identified during the review process were also used for citation searching, both during and after Stage 3 of searching."
     },
     {
       "header": "Stage 3: Further electronic bibliographic database searching relating to specific terminology",
-      "content": "The initial search missed papers specific to microorganisms due to limited inclusion of relevant terminology, prompting a subsequent focused search on methicillin-resistant Staphylococcus aureus (MRSA) and vancomycin-resistant Enterococcus (VRE) to address this gap."
+      "content": "The citation lists of both empirical papers identified in the initial search and key review papers indicated that specific evidence related to the costs of resistance against particular microorganisms, such as MRSA and VRE, were overlooked due to the omission of relevant terminology, necessitating a focused secondary search."
     },
     {
       "header": "Inclusion criteria",
-      "content": "The review included papers published since 2000 in English-language peer-reviewed journals that provided empirical evidence on the economic impact of antimicrobial resistance through primary data collection or secondary modeling, focusing on length of stay, mortality, patient cost, or societal cost attributable to AMR, and requiring a control group with susceptible infections for primary studies."
+      "content": "The review included papers that provided empirical evidence on the economic impact of antimicrobial resistance, contained information on length of stay, mortality, patient cost, and/or societal cost, had a control group with susceptible infection, were published since 2000 in English-language peer-reviewed journals, and focused on the costs of resistance rather than infection, while excluding review papers but using them for citation tracking."
     },
     {
       "header": "Identification of papers",
-      "content": "Papers identified in the stage 1 search were screened based on abstracts by three individuals, including an expert in the subject area (JC), with final inclusion decisions made after full-text review; additional papers were selected following citation searches and subsequent database searching."
+      "content": "Papers from the stage 1 search were screened based on abstracts by three individuals, including an expert in the subject area (JC), with final decisions made after reading the full texts; additional papers were identified through citation searches and subsequent database searches."
     },
     {
       "header": "Data extraction",
-      "content": "Standardized data extraction forms, adapted from the earlier systematic review, were used to extract the following data for each study:"
+      "content": "Standardized data extraction forms, following the earlier systematic review, were used to extract the following data for each study:"
     },
     {
       "header": "Findings",
-      "content": "The review identified 24 relevant papers, with findings summarized in the report and details provided in Table 1 for individual studies. However, due to resource limitations preventing a full systematic review, particularly in searching all micro-organisms and drugs, the total literature on antimicrobial resistance burden is likely underestimated, though studies on MRSA and VRE provide insights into the broader literature."
+      "content": "The review identified 24 relevant papers, with findings summarized in the report, and details from individual studies included in Table 1; however, due to resource constraints, the comprehensive scope of the literature on antimicrobial resistance is likely underestimated, though studies on MRSA and VRE provide insights into the overall burden of resistance."
     }
   ]
 }

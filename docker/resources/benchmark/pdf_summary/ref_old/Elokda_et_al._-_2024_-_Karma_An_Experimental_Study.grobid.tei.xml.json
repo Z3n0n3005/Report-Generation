@@ -1,0 +1,22 @@
+{
+  "id": 7746831616738086112,
+  "name": "Elokda_et_al._-_2024_-_Karma_An_Experimental_Study.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "INTRODUCTION",
+      "content": "Economists aim to address efficiency and fairness in resource allocation through various market design solutions, such as the karma mechanism, which allocates resources based on non-tradable credits reflecting urgency and ensures fairness by redistributing these credits; experimental findings indicate substantial efficiency gains from karma, especially in situations with dynamic, intense preferences, although non-participants may not benefit."
+    },
+    {
+      "header": "EXPERIMENTAL METHODS",
+      "content": "We conducted a balanced two-by-two factorial experiment with 400 subjects to study the effects of different dynamic urgency processes (low stake with frequent moderate urgency vs. high stake with rare high urgency) and richness of the karma scheme (binary vs. full range bidding) on resource allocation and participants' behaviors over 50 rounds of a real-time online game."
+    },
+    {
+      "header": "RESULTS",
+      "content": "The study introduces welfare measures focusing on efficiency gains, defined as the relative improvement in participant scores compared to expected outcomes under random allocation, across various experimental treatments. Results indicate significant efficiency gains across all treatments, with the highest gains observed under the high stake urgency process, particularly in the binary bidding scheme, benefiting over 90% of participants compared to random allocation."
+    },
+    {
+      "header": "DISCUSSION",
+      "content": "In summary, the paper finds significant and consistent efficiency gains from implementing a karma scheme compared to random allocation across various experimental treatments, benefiting almost all participants except non-adopters, with the highest gains observed in the high stake urgency process combined with binary bidding. The study also highlights potential for even higher efficiency gains with more trained participants, contrasting observed behaviors with theoretical Nash equilibrium predictions."
+    }
+  ]
+}

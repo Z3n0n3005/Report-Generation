@@ -4,23 +4,23 @@
   "segments": [
     {
       "header": "Introduction",
-      "content": "Conditional computation techniques, such as mixture-of-depths (MoD) in transformers, optimize compute efficiency by dynamically deciding per-token where to allocate resources, reducing total compute while maintaining performance and hardware compatibility."
+      "content": "The Mixture-of-Depths (MoD) technique in transformer models allows dynamic allocation of compute per token per layer, enabling similar or improved performance with less computational cost compared to traditional transformers by selectively applying computations or passing tokens through residual connections."
     },
     {
       "header": "Background",
-      "content": "The transformer architecture, central to modern AI but computationally expensive, can be made more efficient through conditional computation techniques like mixture-of-depths (MoD), which dynamically allocates compute resources per token, optimizing performance and reducing costs compared to traditional or early-exit methods."
+      "content": "Recent work on making transformer architectures more efficient includes conditional computation methods like \"early exiting\" and the Mixture-of-Depths (MoD) technique, which dynamically decides when to skip or process tokens through layers, reducing computational cost while maintaining performance by learning efficient routing decisions."
     },
     {
       "header": "Implementing Mixture-of-Depths Transformers",
-      "content": "Our strategy involves setting a reduced static compute budget by limiting token participation in computations, using per-block routers to assign scalar weights for token participation, and selecting top-weighted tokens for computations to ensure a static computation graph, which reduces flops without degrading performance, employing expert-choice routing for optimal load balancing and efficient processing."
+      "content": "To enforce a total compute budget per forward pass in transformers, we utilize capacity, which limits the number of tokens participating in computations, and employ learned routing schemes such as token-choice and expert-choice to dynamically route tokens, aiming to reduce the total flops by bypassing certain computations while maintaining prediction accuracy."
     },
     {
       "header": "Results",
-      "content": "Training models with a small flop budget identified optimal hyperparameters, revealing that mod transformers can achieve better performance than baselines with more parameters and faster training steps, particularly when using learned routing and aggressive capacity reductions."
+      "content": "Model #3 achieves equal performance to the isoflop optimal baseline but is 66% faster due to fewer flops per forward pass, demonstrating that MoD transformers can perform as well or better than isoflop-optimal baselines while being faster, thanks to learned routing and efficient capacity usage."
     },
     {
       "header": "Discussion",
-      "content": "Mixture-of-depths (mod) transformers improve upon isoflop-optimal baseline performance by using fewer flops per forward pass through learned routing decisions, allowing faster and better-performing models within a given training flop budget, and offering potential extensions for more efficient and varied computations compared to vanilla transformers and mixture-of-experts (moe) models."
+      "content": "Learned routing decisions in MoD transformers, similar to mixture-of-experts models, enable efficient allocation of computational resources by deciding whether tokens should undergo self-attention and MLP processing, thereby saving flops and allowing for model scaling or extended training, while addressing challenges in non-causal routing during autoregressive sampling."
     }
   ]
 }

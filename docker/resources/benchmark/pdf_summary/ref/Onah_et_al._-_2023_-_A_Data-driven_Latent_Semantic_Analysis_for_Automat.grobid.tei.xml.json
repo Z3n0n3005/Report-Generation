@@ -4,90 +4,90 @@
   "segments": [
     {
       "header": "I. INTRODUCTION",
-      "content": "This study introduces a novel method for topic modelling by initially performing extractive summarization on over 100 articles focused on genes and associated diseases retrieved from PubMed Central, using these summaries as input for a Latent Dirichlet Allocation (LDA) model to identify common themes across articles within this research genre."
+      "content": "The study introduces a novel approach to topic modeling by using extractive summarization on over 100 articles from PubMed Central discussing genes and associated diseases, feeding these summaries into a Latent Dirichlet Allocation (LDA) model to identify commonalities and themes among the articles."
     },
     {
       "header": "II. RELATED WORK",
-      "content": "Text summarization is crucial due to the vast and rapidly growing amount of global text data, aiming to extract and present essential information concisely while maintaining its original meaning, facilitating efficient information retrieval from diverse sources like websites, databases, and academic literature."
+      "content": "The exponential growth of global text data necessitates efficient extraction and summarization techniques to distill meaningful and essential information, crucial for retrieving relevant insights from vast datasets across diverse sources."
     },
     {
       "header": "A. Summariza-on",
-      "content": "Text summarization in natural language processing condenses large texts into smaller versions while retaining key information, with automated methods like extractive summarization focusing on selecting top-ranked sentences directly from the original document based on their relevance and scores, aiming to efficiently reduce document size and maintain content integrity."
+      "content": "Summarization in NLP involves condensing large texts while preserving essential information, facilitating integration into various applications like classification, automatic question answering, computational journalism, financial and news summarization, and foreign language translation, primarily through extractive methods which select top-ranking sentences based on their relevance scores to generate concise summaries from original documents."
     },
     {
       "header": "B. Topic Modelling",
-      "content": "Topic modeling involves unsupervised machine learning to label and describe documents by abstracting core themes from collections of documents through induced modeling, employing techniques like LDA (Latent Dirichlet Allocation) to extract topics from unstructured datasets, as applied in this study using Scikit-learn and Gensim libraries."
+      "content": "Topic modeling involves categorizing and summarizing documents into distinct topics using unsupervised machine learning techniques, extracting core themes from weighted graphical representations of collections of documents to facilitate their application in NLP tasks such as information retrieval and analysis, implemented in this study using scikit-learn and gensim libraries to extract topics from text corpora using the `gensim.models.ldamodel.LdaModel` with parameters specifying the corpus, number of topics, and dictionary of terms."
     },
     {
       "header": "C. Latent Dirichlet Alloca-on",
-      "content": "Latent Dirichlet Allocation (LDA) is a probabilistic technique in topic modeling that identifies topics based on the likelihood of terms occurring together within documents, allowing for documents to be represented as mixtures of topics where words can appear in multiple topics."
+      "content": "Latent Dirichlet Allocation (LDA) is a topic modeling technique that probabilistically generates topics based on the likelihood of terms appearing within documents, allowing for the representation of documents as mixtures of topics where words can appear in multiple topics, facilitating the discovery of underlying themes across datasets."
     },
     {
       "header": "III. METHODS",
-      "content": "The study utilized a summarization model to scrape approximately 100 papers from the PubMed Central (PMC) repository using gene and disease keywords, applying initial NLP preprocessing for extractive summarization, utilizing sentence scoring based on word frequency and high scores, and employing cosine similarity to select top-ranked sentences for input into LDA topic modeling to create a dictionary of terms for further analysis and visualization."
+      "content": "The study employed initial NLP techniques for preprocessing data for extractive summarization, utilizing sentence scoring to identify high-frequency content, followed by cosine similarity calculations among sentences to select top-ranking ones for input into LDA topic modeling, which was facilitated by methods like `pyLDAvis.gensim.prepare` and `gensim.models.ldamodel.LdaModel` to generate a dictionary of terms and construct a vectorized corpus for analysis."
     },
     {
       "header": "A. Model Descrip-on",
-      "content": "The study utilized NLTK for text processing, focusing on extracting specific information from journals related to diseases and genes using an extractive summarization approach that emphasizes grammatical summaries without deep linguistic analysis, employing supervised sentence scoring to determine inclusion based on predefined length and threshold criteria, applicable across various types of articles for consistent results."
+      "content": "The research model focused on utilizing NLP's topic modeling to extract specific information from extensive journal publications, employing an extractive summarization approach that systematically scores and selects sentences based on predefined criteria, ensuring grammatically natural summaries without deep linguistic analysis, applicable across various types of articles including media and blogs."
     },
     {
       "header": "1)",
-      "content": "In this study, a scoring method assigns values to each sentence based on the probability of its inclusion in the fixed-length summary, determined by sentence scores calculated using equations 1 and 2, integrating word frequencies if necessary, to ensure the relevance and quality of the document summary."
+      "content": "The study introduced a sentence scoring method to assign probabilities to sentences for inclusion in summaries, emphasizing the selection of top-ranking sentences based on their scores, crucial for determining the relevance and quality of extracted information from documents."
     },
     {
       "header": "Sentscores[S] = Wordfreq[W]",
-      "content": "During sentence processing, sentences' lengths are adjusted within a sentence score dictionary, incorporating new sentences and checking their existence; if absent, words from a word frequencies dictionary are added to ensure inclusion in sentence scores (see equation 2)."
+      "content": "During sentence processing, sentences' lengths are adjusted within the sentence score dictionary by adding or removing specific values, ensuring newly processed sentences are integrated into the scoring system; if a processed sentence is not already in the dictionary, its word frequencies are incorporated to determine its score."
     },
     {
       "header": "Sentscores[S]+ = Wordfreq[W]",
-      "content": "A word frequency dictionary was automatically generated based on word prevalence in the corpus, with sentences under 30 words selected for inclusion in the summary; the maximum weighted frequency of each word was calculated and added to the final summary (see equations 3 and 4)."
+      "content": "The model generated a dictionary of word frequencies based on automated selection from the corpus, prioritizing words by their prevalence, with sentences shorter than 30 words selected for summarization; the maximum weighted frequency of each word was calculated using the product of its frequency and a corresponding value, contributing to the final summary generation."
     },
     { "header": "Word", "content": "" },
     {
       "header": "B. Research Pipeline",
-      "content": "The research followed a sequential pipeline model aimed at efficient information retrieval, beginning with data collection where approximately 100 papers were scraped from PubMed Central using 'gene' and 'disease' as search terms, focusing on medical science research related to diseases and mutated genes for subsequent preprocessing and summarization."
+      "content": "The research followed a sequential pipeline for efficient information retrieval, beginning with data collection where approximately 100 papers related to medical science, specifically discussing diseases and mutated genes, were scraped from PubMed Central using a search combination of 'gene' and 'disease', necessitating preprocessing, cleaning, and summarization for subsequent topic modeling analysis."
     },
     {
       "header": "2)",
-      "content": "The preprocessing and feature extraction involved cleaning a web-based dataset scraped from PubMed journals, which included removing HTML tags, special characters, symbols, and numbers using NLP tools like BeautifulSoup, regular expressions, and tokenization. The cleaned articles were parsed to extract text between <p> tags, filtered for additional special characters, and combined into a single string for subsequent topic modeling processing."
+      "content": "The preprocessing and feature extraction involved cleaning raw, unstructured data scraped from PubMed journals by removing HTML tags, special characters, symbols, and numbers using NLP tools like BeautifulSoup, regular expressions, and NLTK, parsing the source code to extract textual content from paragraphs, and filtering additional special characters to prepare a consolidated, clean text string for subsequent topic modeling analysis."
     },
     {
       "header": "3)",
-      "content": "Stopwords were removed from the preprocessed articles, which included non-essential words like pronouns, to enhance the quality of the final summary."
+      "content": "Stopwords, non-essential words such as pronouns, were removed from the preprocessed articles to streamline the final summary generation."
     },
     {
       "header": "4) Topic Modelling & Visualiza-on:",
-      "content": "This study utilized pyLDAvis for interactive visualization of topics identified through LDA modeling, showing the prevalence and relevance of terms through circle size and positioning in the visualization, highlighting semantic relationships based on common word occurrences among sentences."
+      "content": "This study utilized pyLDAvis for interactive visualization, illustrating the prevalence and relevance of terms within documents through topic modeling circles where larger circles denote higher topic projection, facilitating the extraction and display of information from the derived LDA topic models."
     },
     {
       "header": "IV. MODEL",
-      "content": "The study defines semantic significance as the probability weight (λ, where 0 ≤ λ ≤ 1) assigned to term t within topic n, using probabilities pt for term t in the lexical corpus and nt for the frequency of term t across topics."
+      "content": "Defining semantic significance involves determining the importance of term ( t ) to topic ( n ) based on its probability within the topic and across the entire vocabulary, using a parameter lambda (where ( 0 leq lambda leq 1 )), and considering the minimal probability ( p_t ) of the term in the lexical corpus."
     },
     {
       "header": "B. Defining Saliency Term",
-      "content": "In this study, saliency term is defined as the minimal probability ( p(tm/w) ) for a given word ( w_0 ), indicating the likelihood that word ( w ) was generated by the LDA topic model ( tm ). Additionally, marginal probability ( p(tm) ) is computed as the probability that any randomly selected word ( w_0 ) was generated by ( tm ), while uniqueness of each identified word ( w_0 ) is defined by the divergence between ( p(tm/w) ) and ( p(tm) ). The study employed 5 topics and 10 passes in the LDA topic modeling process."
+      "content": "In this study, saliency of a term is defined as its minimal probability ( p(w mid tm) ) within an LDA topic model ( tm ), indicating the likelihood that the word ( w ) was generated by the model; uniqueness of each identified word ( w ) is determined by comparing ( p(w mid tm) ) with the marginal probability ( p(tm) ), computed across 5 topics and 10 passes in the LDA topic modeling process."
     },
     { "header": "U(6)", "content": "" },
     {
       "header": "=5",
-      "content": "The uniqueness of each term is defined by its semantic relevance across topics, where terms can be associated with multiple topics; term frequency is depicted by circle size, and inter-topic distance indicates topic relatedness. Adjusting the lambda metric aids in classifying significant terms and simplifying topic complexity, ensuring clear term distribution. The visualized graph shows prevalent terms like \"gene,\" \"disease,\" \"expression,\" and \"associate,\" indicating their distinctiveness and relevance across topics, enhancing topic association and composition identification."
+      "content": "The uniqueness of each term is defined by its semantic relevance across topics, where terms may be associated with multiple topics, represented by their frequency and depicted by the size of topic circles and inter-topic distances, clarifying their distribution and removing ambiguity in topic association; for instance, prevalent terms like \"gene,\" \"disease,\" and \"expression\" are prominently visualized across different topics, indicating their saliency and semantic connection across topic compositions."
     },
     {
       "header": "V. LATENT SEMANTIC ANALYSIS",
-      "content": "Latent Semantic Analysis (LSA) is an unsupervised method in natural language processing used to uncover hidden semantic structures of words and sentences, essential for abstracting contextual information from documents. Applied in this study, LSA generated a concise summary from 100 cleaned articles retrieved from PubMed, focusing on genes associated with cancer disease, and evaluated using the ROUGE metric, demonstrating its effectiveness in extracting key information."
+      "content": "Latent Semantic Analysis (LSA) is an effective algebraic and statistical method for uncovering hidden semantic structures in words and sentences, used here to extract essential but non-original features from datasets, including generating a concise summary of 100 PubMed articles on genes associated with cancer, evaluated for efficacy using the ROUGE metric system."
     },
     {
       "header": "A. Sample Extracted Summary",
-      "content": "The study utilized the heapq library to prioritize sentences with the highest prevalence sentence scores for summarization, implementing a priority queue based on word frequencies where sentences with greater weights were given precedence, demonstrating varied summarization outcomes across different threshold settings despite a maximum word frequency constraint of less than 30."
+      "content": "The study utilized sentences with the highest sentence scores for summarization, employing the heapq library to prioritize sentences based on their weights, where the threshold determined the number of sentences included in the summary, demonstrating varied results despite a maximum word frequency constraint of less than 30."
     },
-    { "header": "B. Findings", "content": "The summary findings have uncovered significant associations between specific genes and diseases such as cancer and type 2 diabetes." },
+    { "header": "B. Findings", "content": ""},
     {
       "header": "VI. ROUGE: RELIABILITY & VALIDITY OF MODEL",
-      "content": "ROUGE is an evaluation metric originally developed for machine translation, adapted for assessing the quality of automatically generated document summaries by comparing them to human-created references using measures like ROUGE-1, ROUGE-2, ROUGE-3, ROUGE-L, and ROUGE-S, focusing on n-gram overlap and word pair similarity."
+      "content": "ROUGE is an evaluation metric originally based on BLEU, used to assess the accuracy of system-generated summaries against human-created summaries (model summaries), employing measures such as ROUGE-1, ROUGE-2, ROUGE-3, ROUGE-L, and ROUGE-S to validate the external quality of the model."
     },
     {
       "header": "TABLE III ROUGE METRICS MEASUREMENT SUMMARIES",
-      "content": "The study found that the automated system summary achieved higher scores in ROUGE-1 metrics for recall, precision, and F1-score, with values slightly above 83%, 85%, and 84% respectively, indicating strong alignment between the automated and human-generated summaries."
+      "content": "The study found that the system-generated summary, aligned closely with the human-annotated reference summary, yielded better average results across all ROUGE metrics (recall, precision, and F1 score), demonstrating higher performance with recall slightly exceeding 83%, precision slightly over 85%, and F1 score slightly over 84%."
     },
     {
       "header": "Comparing the system generated summary with a new human",
@@ -95,19 +95,19 @@
     },
     {
       "header": "A. Procedure: Recall & Precision",
-      "content": "In this study, multiple articles were processed and summarized automatically, with the summaries stored in files named cleanhtml.txt and summary.txt. Human-annotated reference summaries were also generated. Recall in ROUGE metrics measures how much of the reference summary is captured by the system summary, while precision evaluates the relevance of the system summary by calculating the overlap with the reference summary. The F1-score combines both precision and recall measures. ROUGE-1 evaluates unigram overlap, while ROUGE-2 evaluates bigram overlap, important for assessing fluency and coherence in summaries."
+      "content": "In this study, human-annotated reference summaries were generated from the cleanhtml.txt document, with recall in ROUGE metrics indicating how much of the human summary is captured by the system-generated summary, while precision measures the percentage overlap of bigrams between the system and reference summaries, culminating in the F1-score as a combined measure of their validity."
     },
     {
       "header": "VII. RESULTS & FINDINGS",
-      "content": "The terms highlighted in topic modeling indicate frequent occurrences in the documents, depicted by circle sizes in figures, while scatter plots illustrate topic distances and relationships. Topics like 1, 2, and 3 are closely related semantically, focusing on terms such as \"gene\" and \"disease\" across different distributions. The study identified five topics using LDA modeling, incorporating corpus and dictionary inputs. Visualizations show term ranks based on relevance metrics, adjusting with a slider (\u03bb) reflecting topic-specific probabilities. Limitations include challenges in summarizing articles with varied writing styles and the time-consuming nature of analyzing extensive text data."
+      "content": "The study utilized topic modeling to identify frequently occurring terms in the documents, represented by the size of circles in visualizations, indicating semantic relationships between closely related topics like topics 1, 2, and 3, particularly focusing on terms like \"gene\" and \"disease.\""
     },
     {
       "header": "IX. DISCUSSION",
-      "content": "This study proposed fully automated single and multiple document text summarization using an LDA model and a corpus dictionary, aiming to preserve the overarching meaning of the articles. It also suggested future research into cross-language text summarization and topic modeling, with plans to compare results against a machine learning gene prediction model in a new study on genes and diseases."
+      "content": "In this study, we presented a fully data-driven approach for automatic text summarization, evaluating the model on unstructured datasets with results comparable to state-of-the-art topic modeling techniques, emphasizing the importance of automation in alleviating the laborious task of manual summarization and its wide applicability across various NLP tasks."
     },
     {
       "header": "X. CONCLUSION",
-      "content": "Automatic summarization reduces text documents to key points using computer programs, crucial for maintaining accuracy and preserving the overall meaning of multiple extracted articles; employing LDA models, it aims to enable cross-language summarization and translation, with future research focusing on topic modeling's efficacy in retaining original document meanings, compared to a gene prediction model for genes and diseases."
+      "content": "This study proposed fully automated text summarization methods using an LDA model, aiming to extract accurate summaries from single and multiple documents, including cross-language capabilities for translation into English and other languages, highlighting the challenge and importance of retaining original document meaning."
     }
   ]
 }

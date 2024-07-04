@@ -1,0 +1,26 @@
+{
+  "id": 1887356871517311003,
+  "name": "Deienno_et_al._-_2024_-_Accretion_and_Uneven_Depletion_of_the_Main_Asteroi.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "INTRODUCTION",
+      "content": "The main asteroid belt (mab), located between Mars and Jupiter, contains over one million objects larger than 1 km in diameter and has only about 1/2000 of Earth's mass; it is categorized into dry S-complex and water-rich C-complex asteroids, likely formed inside and outside Jupiter's orbit respectively, with their current low mass and mixed composition explained by models of early mass depletion and implantation of asteroids, though the exact primordial mass remains debated."
+    },
+    {
+      "header": "MODEL",
+      "content": "To model the evolution of the MAB's size-frequency distribution (SFD) and the accretion of planetesimals larger than 500 km in diameter, we assumed planetesimals formed within 0.5 million years after calcium-aluminum inclusions, starting simulations at t = 500 kyr, and adopted an initial SFD cumulative slope matching current MAB objects between 100-500 km, considering collision evolution parameters related to basalt targets without pebble accretion; we used the minimum-mass solar nebula (MMSN) radial density profile to determine primordial mass distributions, testing scenarios with and without Jupiter's gravitational influence, and tracked accretion for 5 million years using the LIPAD code, discarding objects smaller than 1 mm as they would likely degrade to dust."
+    },
+    {
+      "header": "MAB, DATASET, AND COMPARISON WITH MPC",
+      "content": "After simulating 5 million years of MAB accretion, it is essential to consider the effects of giant planet instability and subsequent 4.5 billion years of evolution, as these processes heavily deplete the MAB through mechanisms like chaotic diffusion, with specific depletion rates depending on orbital constraints and regional divisions within the MAB; this analysis is based on comparing formation simulations and observational data, ultimately showing that depletion varies significantly across different MAB sub-regions, with some areas experiencing near-total depletion."
+    },
+    {
+      "header": "RESULTS",
+      "content": "We evaluate the evolution and depletion of the main asteroid belt's (MAB) size-frequency distribution (SFD) and the growth of large objects (diameter >500 km) over time within its core, considering five sub-regions, with results indicating that the primordial mass of the MAB formed 0.5 million years after calcium-aluminum-rich inclusions (CAIs) must be smaller than about 0.002 solar masses to match current SFD observations."
+    },
+    {
+      "header": "CONCLUSIONS",
+      "content": "The study aimed to determine the maximum possible total mass that could have existed in the primordial main asteroid belt (MAB), concluding that a primordial MAB mass larger than 2.14×10^-3 M☉ would lead to inconsistencies with current observations and suggesting that different sub-regions of the MAB experienced uneven depletion rates, with the central and outer main belt showing higher survival rates."
+    }
+  ]
+}
