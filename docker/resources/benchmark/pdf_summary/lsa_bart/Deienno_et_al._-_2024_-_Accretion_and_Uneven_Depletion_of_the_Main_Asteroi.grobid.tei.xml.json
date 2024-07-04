@@ -1,1 +1,26 @@
-{"id": 6842510320042187089, "name": "Deienno_et_al._-_2024_-_Accretion_and_Uneven_Depletion_of_the_Main_Asteroi.grobid.tei.xml", "segments": [{"header": "INTRODUCTION", "content": "The primordial mass of the mab had to have been severely depleted at the earliest stages of the solar system history. The number of s-complex objects with d > 500 km that would form and survive solar system evolution largely exceed the number currently observed."}, {"header": "MODEL", "content": "We acknowledge that the primordial mab sfd may not necessarily be the same as that from the end of the gas disk phase. We discarded objects that collisionally evolved to sizes below 1 mm, assuming those would rapidly grind down to dust and no longer contribute to the accretion process."}, {"header": "MAB, DATASET, AND COMPARISON WITH MPC", "content": "After accretion in the mab during the first 5 myr of the solar system's history, it is necessary to account for the various processes that happened during subsequent 4.5 gyr evolution after gas disk dispersal. We then use this mab definition to select objects from the minor planet center (mpc) database having h < 9.6."}, {"header": "RESULTS", "content": "Figureshows results for the expected sfds post depletion by our fiducial case, d18 d f ac (table). We consider these values to be lower limits in the total s-type mass because d f Ac = 0 in eimb (table) prevents us from estimating how much s-types could have ever formed."}, {"header": "CONCLUSIONS", "content": "Primary goal was to determine maximum possible total mass that could have existed in the primordial mab region. Current mab total mass is tiny (5\u00d710 -4 m)"}]}
+{
+  "id": 6842510320042187089,
+  "name": "Deienno_et_al._-_2024_-_Accretion_and_Uneven_Depletion_of_the_Main_Asteroi.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "INTRODUCTION",
+      "content": "The primordial mass of the mab had to have been severely depleted at the earliest stages of the solar system history. The number of s-complex objects with d > 500 km that would form and survive solar system evolution largely exceed the number currently observed."
+    },
+    {
+      "header": "MODEL",
+      "content": "We acknowledge that the primordial mab sfd may not necessarily be the same as that from the end of the gas disk phase. We discarded objects that collisionally evolved to sizes below 1 mm, assuming those would rapidly grind down to dust and no longer contribute to the accretion process."
+    },
+    {
+      "header": "MAB, DATASET, AND COMPARISON WITH MPC",
+      "content": "After accretion in the mab during the first 5 myr of the solar system's history, it is necessary to account for the various processes that happened during subsequent 4.5 gyr evolution after gas disk dispersal. We then use this mab definition to select objects from the minor planet center (mpc) database having h < 9.6."
+    },
+    {
+      "header": "RESULTS",
+      "content": "Figureshows results for the expected sfds post depletion by our fiducial case, d18 d f ac (table). We consider these values to be lower limits in the total s-type mass because d f Ac = 0 in eimb (table) prevents us from estimating how much s-types could have ever formed."
+    },
+    {
+      "header": "CONCLUSIONS",
+      "content": "Primary goal was to determine maximum possible total mass that could have existed in the primordial mab region. Current mab total mass is tiny (5\u00d710 -4 m)"
+    }
+  ]
+}

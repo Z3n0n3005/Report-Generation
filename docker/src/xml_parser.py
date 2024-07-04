@@ -194,9 +194,10 @@ def remove_ref(elem):
 async def main():
     start = time.time()
     papers = parse_xml_folder()
-    loop = asyncio.get_event_loop()
-    preprocess_algo = summary.PreProcessAlgo.NONE.value
-    summary_algo = summary.SumAlgo.STABLE_LM.value
+
+    preprocess_algo = summary.PreProcessAlgo.TEXTRANK.value
+    summary_algo = summary.SumAlgo.NONE.value
+
     tasks = [
         summary.summarize_folder(
             papers,

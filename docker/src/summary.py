@@ -16,6 +16,12 @@ import asyncio
 SUMMARY_FOLDER = config.get_summary_path()
 PREPROCESS_SENT_NUM = 10
 
+async def none(text:str) -> str:
+    '''
+    This is for having an async none function ;-;
+    '''
+    return text
+
 class PreProcessAlgo(Enum):
     NONE = "none"
     TEXTRANK = "textrank"
@@ -26,6 +32,7 @@ class PreProcessAlgo(Enum):
         return value in cls._value2member_map_ 
 
 class SumAlgo(Enum):
+    NONE = "none"
     TEXTRANK = "textrank"
     LSA = "lsa"
     FALCON = "falcon_text_summarizer"
@@ -39,6 +46,7 @@ class SumAlgo(Enum):
         return value in cls._value2member_map_ 
 
 algo = {
+    SumAlgo.NONE.value : none,
     SumAlgo.TEXTRANK.value : textrank.summarize_text,
     SumAlgo.LSA.value : lsa.summarize_text, 
     SumAlgo.FALCON.value : model.falcon_ai_text_summarizer,
@@ -69,6 +77,7 @@ preprocessing = {
     PreProcessAlgo.TEXTRANK.value : lambda content : textrank.preprocess_input(content, 5),
     PreProcessAlgo.LSA.value : lambda content : lsa.preprocess_input(content, 10)
 }
+
 
 
 async def summarize_folder(papers:list[Paper], preprocess_algo:str, sum_algo:str) -> list[Paper]:
