@@ -2,7 +2,7 @@
     "grobid_server": "http://grobid-server:8070",
     "batch_size": 100,
     "sleep_time": 5,
-    "timeout": 60,
+    "timeout": 99999,
     "coordinates": [ "persName", "figure", "ref", "biblStruct", "formula", "s", "note", "title" ],
 
     "resource_folder_linux": "/code/resources/",

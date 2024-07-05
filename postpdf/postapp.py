@@ -13,13 +13,14 @@ url_upload = '/upload'
 url_summarize = '/summarize'
 url_connect_to_zotero = '/connectToZotero'
 url_get_pdf_file_zotero = '/getPdfFileZotero'
-pdf_folder = 'C:\\Users\\DELL\\Prototype\\Report-Generation\\paper'
 
-pdf_path = 'C:\\Users\\DELL\\Prototype\\Report-Generation\\paper\\a-brief-survey-of-text-mining.pdf'
+# Multi file
+pdf_folder = 'C:\\Users\\DELL\\Prototype\\Report-Generation\\docker\\resources\\benchmark\\pdf_in'
+# Single file
+pdf_path = 'C:\\Users\\DELL\\Prototype\\Report-Generation\\docker\\resources\\benchmark\\pdf_in\\Deienno_et_al._-_2024_-_Accretion_and_Uneven_Depletion_of_the_Main_Asteroi.pdfa-brief-survey-of-text-mining.pdf'
+# pdf_path = '/media/vy/vy/prototype/Report-Generation/docker/resources/temp/pdf_in/Deienno_et_al._-_2024_-_Accretion_and_Uneven_Depletion_of_the_Main_Asteroi.pdf'
 
-pdf_path = '/media/vy/vy/prototype/Report-Generation/docker/resources/temp/pdf_in/Deienno_et_al._-_2024_-_Accretion_and_Uneven_Depletion_of_the_Main_Asteroi.pdf'
-
-pdf_folder = '/media/vy/vy/prototype/Report-Generation/docker/resources/temp/pdf_in'
+# pdf_folder = '/media/vy/vy/prototype/Report-Generation/docker/resources/temp/pdf_in'
 
 def upload_file(file_path, url):
     with open(file_path, "rb") as pdf_handle:
@@ -28,7 +29,7 @@ def upload_file(file_path, url):
 
 def main():
     input_file_paths = []
-    for (dirpath, dirnames, filenames) in os.walk(pdf_folder):
+    for (dirpath, _, filenames) in os.walk(pdf_folder):
         for filename in filenames:
             if filename.endswith('.pdf'):
                 input_file_paths.append(os.sep.join([dirpath, filename])) 
@@ -46,13 +47,19 @@ def main():
         # for r in result:
         #     print(r)
         # wait(timeout=5)
-    response = requests.post(url=url_base + url_summarize)
-    print(response.json())
+        
+    summarize_header = {
+        'Sum-Algo':'falcon',
+        'Preprocess-Algo':'textrank'
+    }
+    response = requests.post(
+        url=url_base + url_summarize,
+        headers=summarize_header
+    )
+    print(response)
     return
 
-if __name__ == "__main__":
-    # main()
-
+def main_zotero():
     file_header = {
         'Api-Key':'IqssCl6uXkPQqcMP6y52Enj2', 
         'Library-Id':'14142718',
@@ -82,3 +89,7 @@ if __name__ == "__main__":
         headers=summarize_header
     )
     print(response.request)
+if __name__ == "__main__":
+    main()
+
+    
