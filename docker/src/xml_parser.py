@@ -73,25 +73,30 @@ def get_xml_parsing_result(file) -> Paper:
 def get_abstract(file) -> str:
     result = ""
     namespace = get_namespace()
-    tree = ET.parse(file)
-    root = tree.getroot()
-    # Get all <abstract> 
-    for abstract in root.findall(".//tei:abstract", namespace):
-        for div in abstract.findall("tei:div", namespace):
-            p = div.find("tei:p", namespace)
-            result = p.text
+    try:
+        tree = ET.parse(file)
+        root = tree.getroot()
+        # Get all <abstract> 
+        for abstract in root.findall(".//tei:abstract", namespace):
+            for div in abstract.findall("tei:div", namespace):
+                p = div.find("tei:p", namespace)
+                result = p.text
+    except:
+        result = ""
     return result
     
 def get_segment_list(file) -> list[Segment]:
     segments = []
     namespace = get_namespace()
-    tree = ET.parse(file)
-    root = tree.getroot()
+    try: 
+        tree = ET.parse(file)
+        root = tree.getroot()
     
-    # Get all <body>
-    for body in root.findall(".//tei:body", namespace):
-        segments = parse_body(body)
-        
+        # Get all <body>
+        for body in root.findall(".//tei:body", namespace):
+            segments = parse_body(body)
+    except:
+        segments = [] 
         
     return segments
 

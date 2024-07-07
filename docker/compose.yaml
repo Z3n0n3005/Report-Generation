@@ -11,7 +11,7 @@ services:
     init: true       # Equivalent of --init
     ulimits:         # Set ulimit core=0
       core:
-        soft: 0
+        soft: 0 
         hard: 0
     deploy:
       restart_policy:
@@ -22,10 +22,13 @@ services:
       - "5000:5000"
     depends_on:
       - grobid-server
-    healthcheck:
-      test: ["CMD", "wget", "-q", "http://grobid-server:8070/"]
-      interval: 5s
-      retries: 30
+    # healthcheck:
+    #   test: ["CMD", "wget", "-q", "http://grobid-server:8070/"]
+    #   interval: 5s
+    #   retries: 5 
+    deploy:
+      restart_policy:
+        condition: none
     develop:
       watch:
         - action: sync+restart

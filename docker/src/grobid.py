@@ -36,8 +36,9 @@ async def parse_pdf() -> bool:
                     output=SEGMENT_FOLDER, 
                     consolidate_citations=False, 
                     tei_coordinates=False, 
-                    verbose=True
+                    verbose=False
                 )
+                return True
             except:
                 return False
     end_time = time.time()

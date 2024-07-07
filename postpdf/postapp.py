@@ -71,10 +71,6 @@ def main_zotero():
         'Preprocess-Algo':'textrank'
     }
     session = requests.Session()
-    # response = session.post(
-    #     url=url_base+url_connect_to_zotero,
-    #     headers = session_headers
-    # )
    
     # print(response.request.headers)
     response = session.post(
