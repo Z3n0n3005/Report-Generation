@@ -1,1 +1,30 @@
-{"id": 5809130175104745509, "name": "Hansen_et_al._-_2024_-_Productivity_and_quality-adjusted_life_years_QALY.grobid.tei.xml", "segments": [{"header": "Introduction", "content": "The purpose of this paper is to develop a unified framework for the measurement and valuation of outcomes of such programmes and policies. It is widely accepted that the health benefit a patient derives from a particular health care intervention can be defined according to two natural dimensions: quality of life and quantity of life."}, {"header": "Preliminaries", "content": "A social planner will agree to the value choices that productivity changes among individuals do not matter for the evaluation of interventions. An extension of life of a specific length of any two individuals is of equal value as long as they enjoy a common health state."}, {"header": "Compromising between QALYs and PALYs", "content": "All evaluation functions rely on a very demanding axiom of (productivity or health) independence. The purpose of this section is to dismiss those axioms, while obtaining characterizations of natural compromises."}, {"header": "satisfies COMMON, TICHP, PICHT, and TIUP.", "content": "Theorem 8 implies that if an intervention leads to extra life years, it does not matter which particular individual (among individuals with the same level of health and productivity) receives these extra lifeyears (axiom tichp) We can define the so-called generalized hpye evaluation function by the weighted aggregation of lifetimes the distribution yields."}, {"header": "Discussion", "content": "The choice of evaluation function matters to a large extent when it comes to rank different distributions. The results presented above in the form of evaluation functions and their required axioms may be utilised in empirical applications, for example as part of an economic evaluation of a health care or working environment intervention."}, {"header": "Concluding remarks", "content": "For each pair d, d \u2019 \u2208 d, where = \u03d5(a, p,= \u03c9(a), p, for each c > 0, assume now that preferences satisfy all the axioms in the statement of theorem 5. For each a, it follows that is represented by an evaluation function satisfying (5), as desired."}]}
+{
+  "id": 5809130175104745509,
+  "name": "Hansen_et_al._-_2024_-_Productivity_and_quality-adjusted_life_years_QALY.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "The purpose of this paper is to develop a unified framework for the measurement and valuation of outcomes of such programmes and policies. It is widely accepted that the health benefit a patient derives from a particular health care intervention can be defined according to two natural dimensions: quality of life and quantity of life."
+    },
+    {
+      "header": "Preliminaries",
+      "content": "A social planner will agree to the value choices that productivity changes among individuals do not matter for the evaluation of interventions. An extension of life of a specific length of any two individuals is of equal value as long as they enjoy a common health state."
+    },
+    {
+      "header": "Compromising between QALYs and PALYs",
+      "content": "All evaluation functions rely on a very demanding axiom of (productivity or health) independence. The purpose of this section is to dismiss those axioms, while obtaining characterizations of natural compromises."
+    },
+    {
+      "header": "satisfies COMMON, TICHP, PICHT, and TIUP.",
+      "content": "Theorem 8 implies that if an intervention leads to extra life years, it does not matter which particular individual (among individuals with the same level of health and productivity) receives these extra lifeyears (axiom tichp) We can define the so-called generalized hpye evaluation function by the weighted aggregation of lifetimes the distribution yields."
+    },
+    {
+      "header": "Discussion",
+      "content": "The choice of evaluation function matters to a large extent when it comes to rank different distributions. The results presented above in the form of evaluation functions and their required axioms may be utilised in empirical applications, for example as part of an economic evaluation of a health care or working environment intervention."
+    },
+    {
+      "header": "Concluding remarks",
+      "content": "For each pair d, d \u2019 \u2208 d, where = \u03d5(a, p,= \u03c9(a), p, for each c > 0, assume now that preferences satisfy all the axioms in the statement of theorem 5. For each a, it follows that is represented by an evaluation function satisfying (5), as desired."
+    }
+  ]
+}

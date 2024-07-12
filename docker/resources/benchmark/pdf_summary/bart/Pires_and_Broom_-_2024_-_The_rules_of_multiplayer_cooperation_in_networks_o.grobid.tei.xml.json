@@ -1,1 +1,22 @@
-{"id": 551832000855825963, "name": "Pires_and_Broom_-_2024_-_The_rules_of_multiplayer_cooperation_in_networks_o.grobid.tei.xml", "segments": [{"header": "Introduction", "content": " understanding how individuals organize into social communities is of interest to various research fields due their ubiquitous presence in social systems. We propose the use of this fully independent movement model to study evolutionary dynamics in network-structured communities. Our focus centres on the limit of high home fidelity, where communities exhibit as little mobility as possible. We conclude that the organization of the population influences the evolutionary dynamics of the communities."}, {"header": "Model", "content": "The general framework introduced inhas been used to study the interplay between population structure, movement and multiplayer interactions. We focus on the territorial raider model, a model of fully independent movement, which was generalized into account for subpopulations or, as we will refer to them, communities. We consider the multiplayer social dilemmas studied in."}, {"header": "Results", "content": "In section 3.1, we describe the evolutionary process arising from this limit across the six introduced dynamics. We then derive exact expressions for single mutant fixation probabilities under any network of communities. We conclude that the rules obtained for the evolution of cooperation under the general multiplayer social dilemmas are valid outside of the limits of large networks and weak selection."}, {"header": "Discussion", "content": "In the present work, we use the territorial raider model previously approached in, a fully independent movement model which is described by one single parameter, the home fidelity of individuals. We show that metapopulation dynamics of multiplayer interactions can be derived from basic evolutionary graph theory assumptions. cooperation evolves under all social dilemmas for any given number of communities, as long as there are at least two."}]}
+{
+  "id": 551832000855825963,
+  "name": "Pires_and_Broom_-_2024_-_The_rules_of_multiplayer_cooperation_in_networks_o.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": " understanding how individuals organize into social communities is of interest to various research fields due their ubiquitous presence in social systems. We propose the use of this fully independent movement model to study evolutionary dynamics in network-structured communities. Our focus centres on the limit of high home fidelity, where communities exhibit as little mobility as possible. We conclude that the organization of the population influences the evolutionary dynamics of the communities."
+    },
+    {
+      "header": "Model",
+      "content": "The general framework introduced inhas been used to study the interplay between population structure, movement and multiplayer interactions. We focus on the territorial raider model, a model of fully independent movement, which was generalized into account for subpopulations or, as we will refer to them, communities. We consider the multiplayer social dilemmas studied in."
+    },
+    {
+      "header": "Results",
+      "content": "In section 3.1, we describe the evolutionary process arising from this limit across the six introduced dynamics. We then derive exact expressions for single mutant fixation probabilities under any network of communities. We conclude that the rules obtained for the evolution of cooperation under the general multiplayer social dilemmas are valid outside of the limits of large networks and weak selection."
+    },
+    {
+      "header": "Discussion",
+      "content": "In the present work, we use the territorial raider model previously approached in, a fully independent movement model which is described by one single parameter, the home fidelity of individuals. We show that metapopulation dynamics of multiplayer interactions can be derived from basic evolutionary graph theory assumptions. cooperation evolves under all social dilemmas for any given number of communities, as long as there are at least two."
+    }
+  ]
+}

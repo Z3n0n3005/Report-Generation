@@ -1,1 +1,113 @@
-{"id": 8625204081548272986, "name": "Onah_et_al._-_2023_-_A_Data-driven_Latent_Semantic_Analysis_for_Automat.grobid.tei.xml", "segments": [{"header": "I. INTRODUCTION", "content": "dy is addressing journal ardcles retrieved from pubmed central 1 h+ps://www.ncbi.nlm.nih.gov/pmc/ (pmc 1 ) database discussing genes and their associated diseases . one strategy might be to read through each of the documents, highlighdng the terms or phrases most relevant to each, and then sort them all into piles ."}, {"header": "II. RELATED WORK", "content": "don is described as the process of presendng huge data informadon in a concise manner while focusing on the most useful secdons of the data . unless these text data are extracted and make meaning, then the most important and relevant information would be lost . there is a need for automadon of these increasingly available web text data to retrieve useful information ."}, {"header": "A. Summariza-on", "content": "don is a technique in nlp that is used for condensing or summarising huge texts into smaller versions taking care not to omit the main relevant informadon contained in the document . there are so many important models for performing automadc text summarizedon in various nLp tasks such as classificadon, automadce quesdon and answering . one of the key factors of the document summary is that it can be integrated into these applicadons to reduce"}, {"header": "B. Topic Modelling", "content": "pic modelling is the process of labelling and describing documents into topics . topic modelling approach is based on an inducdve modelling used to abstract core themes from a weighted graphical representadon of documents obtained during the processing stages ."}, {"header": "C. Latent Dirichlet Alloca-on", "content": "dirichlet allocadon (lda) is a topic discovery technique used to generate topics based on the probability that each given term might occur within the document . the document can be in the form of mixture of topics that might not necessarily be disdnct and words may appear in muldple topics ."}, {"header": "III. METHODS", "content": "proposed model in this study is scalable and generalizable for producing arbitrarily size summaries by splitting the documents into resemble content . the study applied sentence scoring on the clean document to extract text that fell within the threshold of high frequency score used in the model ."}, {"header": "A. Model Descrip-on", "content": "xtracdve summarizadon approach was developed to retrieve specific informadon from huge published journals using the topic modelling approach of nlp . the task is to generate the summary at most predominant sentence level ."}, {"header": "1)", "content": "don is introduced to generate the sentence score dicdonary which hold the value assigned to each sentence . this denotes the probability that the sentence will be selected and included in the summary . in this study, the quality of the document summary largely depends on the chosen sentences ."}, {"header": "Sentscores[S] = Wordfreq[W]", "content": "del would check whether the new sentences are in the sentence dicdonary . if the sentence exists, then the model will proceed accordingly ."}, {"header": "Sentscores[S]+ = Wordfreq[W]", "content": "dicdonary of word frequency corpus was generated within the model . the length of the sentence selected for the word frequencies was less than 30 . sentences with less than fig.. tokenize sentence score for the arjcle summary 30 ( 30) words were selected ."}, {"header": "Word", "content": ""}, {"header": "B. Research Pipeline", "content": "pipeline model for the research follows a sequendal approach of processes that could allow the smooth and efficient informadon retrieval . about 100 papers were extracted from pubmed central database ."}, {"header": "2)", "content": "pre-processing involved converding the dataset into text documents using nlp packages such as beaudfulsoup, regular expression, lxml and tokenisadon . in the feature extracdon process, we parse the web ardcles source code in order to extract the textual material needed for the final summary ."}, {"header": "3)", "content": "p-words . words such as pronounce are not necessary or essendal for the final summary ."}, {"header": "4) Topic Modelling & Visualiza-on:", "content": "visualised using pyldavis which is a web-based interacdve visualizadon package that allows the display of the topics that were idendfied using the lda approach . the larger the circle the more projecdon or prevalence is the topic ."}, {"header": "IV. MODEL", "content": "defining seman-c significance we define the semandc significance of term t to the topic n given the parameter weight of the () where(0  ) . let pt denotes the minimal probability of the term . n for n element of 1,..., k, where n denote the frequency of terms in the vocabulary."}, {"header": "B. Defining Saliency Term", "content": "dy we define saliency term as given a word 'w 0 , we compute its minimal probability p(tm/w) where tm is the topic model . the possibility that the emerge word w was generated from the lda topic model (tm)."}, {"header": "U(6)", "content": ""}, {"header": "=5", "content": "queness of each term is described as how significance and semandcally associated they are to the topics . the frequency and populadon of terms are denoted by the size of the topic circles and also the inter-topic distance denote how closely related the topics are . this helps to remove ambiguity of the terms associadon by making term distribudon clearly."}, {"header": "V. LATENT SEMANTIC ANALYSIS", "content": "dc analysis (lsa) is a robust algebraic and stadsdcal method . it extracts hidden semantic structures of words and sentences . these features are essendal to data, but are not original features ."}, {"header": "A. Sample Extracted Summary", "content": "d the heap queue library to select the most or very useful sentences . the heapq is used in implemendng the priority queues for word frequencies in sentences with higher weight is given more priority ."}, {"header": "B. Findings", "content": ""}, {"header": "VI. ROUGE: RELIABILITY & VALIDITY OF MODEL", "content": "paring a machine or candidate transladon of text to one or more human annotadons . rouge has measures that allow for the evaluadon of the accuracy of system summary as compared to a human created summary known as the model summary ."}, {"header": "TABLE III ROUGE METRICS MEASUREMENT SUMMARIES", "content": "vms are based on 181 features broadly grouped into (1) gene8c() transcriptomic() phenotypicandevolu8onary . the genes are pdgfrbabl1flt1; and these genes are drug targets of cancer drugs like dasa8nib ."}, {"header": "Comparing the system generated summary with a new human", "content": ""}, {"header": "A. Procedure: Recall & Precision", "content": "ply means we are calculadng how much of reference summary (the human summary) is the system summary (automated machine summary) recovering or capturing from our text . we can measure precision using the equadon 9.this means we will evaluate and calculate words in the sentence summary of the recall overlapping with the total words . this will predict the words that are relevant which appears in the reference ."}, {"header": "VII. RESULTS & FINDINGS", "content": "pic modelling show text which are mostly frequent in the document . note that close topics such as topics 1, 2 and 3 are semandcally related . as observed in figuresandthe terms gene and disease are described in reladon to the topics distribudon ."}, {"header": "IX. DISCUSSION", "content": "dc text summarizadon has been applied to various natural language processing tasks such as text analysis, classificadon, automated quesdon and answering . the process is gaining popularity among researchers . it could benefit from the early stages of document summaries which can be integrated into any base model ."}, {"header": "X. CONCLUSION", "content": "xt summarizadon is a very laborious problem to work on without accuracy in the summaries extracted from the documents . the lda model was one of the input arguments together with the corpus and dicdonary of the terms that were used to perform the topic modelling ."}]}
+{
+  "id": 8625204081548272986,
+  "name": "Onah_et_al._-_2023_-_A_Data-driven_Latent_Semantic_Analysis_for_Automat.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "I. INTRODUCTION",
+      "content": "dy is addressing journal ardcles retrieved from pubmed central 1 h+ps://www.ncbi.nlm.nih.gov/pmc/ (pmc 1 ) database discussing genes and their associated diseases . one strategy might be to read through each of the documents, highlighdng the terms or phrases most relevant to each, and then sort them all into piles ."
+    },
+    {
+      "header": "II. RELATED WORK",
+      "content": "don is described as the process of presendng huge data informadon in a concise manner while focusing on the most useful secdons of the data . unless these text data are extracted and make meaning, then the most important and relevant information would be lost . there is a need for automadon of these increasingly available web text data to retrieve useful information ."
+    },
+    {
+      "header": "A. Summariza-on",
+      "content": "don is a technique in nlp that is used for condensing or summarising huge texts into smaller versions taking care not to omit the main relevant informadon contained in the document . there are so many important models for performing automadc text summarizedon in various nLp tasks such as classificadon, automadce quesdon and answering . one of the key factors of the document summary is that it can be integrated into these applicadons to reduce"
+    },
+    {
+      "header": "B. Topic Modelling",
+      "content": "pic modelling is the process of labelling and describing documents into topics . topic modelling approach is based on an inducdve modelling used to abstract core themes from a weighted graphical representadon of documents obtained during the processing stages ."
+    },
+    {
+      "header": "C. Latent Dirichlet Alloca-on",
+      "content": "dirichlet allocadon (lda) is a topic discovery technique used to generate topics based on the probability that each given term might occur within the document . the document can be in the form of mixture of topics that might not necessarily be disdnct and words may appear in muldple topics ."
+    },
+    {
+      "header": "III. METHODS",
+      "content": "proposed model in this study is scalable and generalizable for producing arbitrarily size summaries by splitting the documents into resemble content . the study applied sentence scoring on the clean document to extract text that fell within the threshold of high frequency score used in the model ."
+    },
+    {
+      "header": "A. Model Descrip-on",
+      "content": "xtracdve summarizadon approach was developed to retrieve specific informadon from huge published journals using the topic modelling approach of nlp . the task is to generate the summary at most predominant sentence level ."
+    },
+    {
+      "header": "1)",
+      "content": "don is introduced to generate the sentence score dicdonary which hold the value assigned to each sentence . this denotes the probability that the sentence will be selected and included in the summary . in this study, the quality of the document summary largely depends on the chosen sentences ."
+    },
+    {
+      "header": "Sentscores[S] = Wordfreq[W]",
+      "content": "del would check whether the new sentences are in the sentence dicdonary . if the sentence exists, then the model will proceed accordingly ."
+    },
+    {
+      "header": "Sentscores[S]+ = Wordfreq[W]",
+      "content": "dicdonary of word frequency corpus was generated within the model . the length of the sentence selected for the word frequencies was less than 30 . sentences with less than fig.. tokenize sentence score for the arjcle summary 30 ( 30) words were selected ."
+    },
+    { "header": "Word", "content": "" },
+    {
+      "header": "B. Research Pipeline",
+      "content": "pipeline model for the research follows a sequendal approach of processes that could allow the smooth and efficient informadon retrieval . about 100 papers were extracted from pubmed central database ."
+    },
+    {
+      "header": "2)",
+      "content": "pre-processing involved converding the dataset into text documents using nlp packages such as beaudfulsoup, regular expression, lxml and tokenisadon . in the feature extracdon process, we parse the web ardcles source code in order to extract the textual material needed for the final summary ."
+    },
+    {
+      "header": "3)",
+      "content": "p-words . words such as pronounce are not necessary or essendal for the final summary ."
+    },
+    {
+      "header": "4) Topic Modelling & Visualiza-on:",
+      "content": "visualised using pyldavis which is a web-based interacdve visualizadon package that allows the display of the topics that were idendfied using the lda approach . the larger the circle the more projecdon or prevalence is the topic ."
+    },
+    {
+      "header": "IV. MODEL",
+      "content": "defining seman-c significance we define the semandc significance of term t to the topic n given the parameter weight of the () where(0  ) . let pt denotes the minimal probability of the term . n for n element of 1,..., k, where n denote the frequency of terms in the vocabulary."
+    },
+    {
+      "header": "B. Defining Saliency Term",
+      "content": "dy we define saliency term as given a word 'w 0 , we compute its minimal probability p(tm/w) where tm is the topic model . the possibility that the emerge word w was generated from the lda topic model (tm)."
+    },
+    { "header": "U(6)", "content": "" },
+    {
+      "header": "=5",
+      "content": "queness of each term is described as how significance and semandcally associated they are to the topics . the frequency and populadon of terms are denoted by the size of the topic circles and also the inter-topic distance denote how closely related the topics are . this helps to remove ambiguity of the terms associadon by making term distribudon clearly."
+    },
+    {
+      "header": "V. LATENT SEMANTIC ANALYSIS",
+      "content": "dc analysis (lsa) is a robust algebraic and stadsdcal method . it extracts hidden semantic structures of words and sentences . these features are essendal to data, but are not original features ."
+    },
+    {
+      "header": "A. Sample Extracted Summary",
+      "content": "d the heap queue library to select the most or very useful sentences . the heapq is used in implemendng the priority queues for word frequencies in sentences with higher weight is given more priority ."
+    },
+    { "header": "B. Findings", "content": "" },
+    {
+      "header": "VI. ROUGE: RELIABILITY & VALIDITY OF MODEL",
+      "content": "paring a machine or candidate transladon of text to one or more human annotadons . rouge has measures that allow for the evaluadon of the accuracy of system summary as compared to a human created summary known as the model summary ."
+    },
+    {
+      "header": "TABLE III ROUGE METRICS MEASUREMENT SUMMARIES",
+      "content": "vms are based on 181 features broadly grouped into (1) gene8c() transcriptomic() phenotypicandevolu8onary . the genes are pdgfrbabl1flt1; and these genes are drug targets of cancer drugs like dasa8nib ."
+    },
+    {
+      "header": "Comparing the system generated summary with a new human",
+      "content": ""
+    },
+    {
+      "header": "A. Procedure: Recall & Precision",
+      "content": "ply means we are calculadng how much of reference summary (the human summary) is the system summary (automated machine summary) recovering or capturing from our text . we can measure precision using the equadon 9.this means we will evaluate and calculate words in the sentence summary of the recall overlapping with the total words . this will predict the words that are relevant which appears in the reference ."
+    },
+    {
+      "header": "VII. RESULTS & FINDINGS",
+      "content": "pic modelling show text which are mostly frequent in the document . note that close topics such as topics 1, 2 and 3 are semandcally related . as observed in figuresandthe terms gene and disease are described in reladon to the topics distribudon ."
+    },
+    {
+      "header": "IX. DISCUSSION",
+      "content": "dc text summarizadon has been applied to various natural language processing tasks such as text analysis, classificadon, automated quesdon and answering . the process is gaining popularity among researchers . it could benefit from the early stages of document summaries which can be integrated into any base model ."
+    },
+    {
+      "header": "X. CONCLUSION",
+      "content": "xt summarizadon is a very laborious problem to work on without accuracy in the summaries extracted from the documents . the lda model was one of the input arguments together with the corpus and dicdonary of the terms that were used to perform the topic modelling ."
+    }
+  ]
+}

@@ -1,1 +1,58 @@
-{"id": 4899974378181515440, "name": "Peterson_-_2024_-_AI_and_the_Problem_of_Knowledge_Collapse.grobid.tei.xml", "segments": [{"header": "Introduction", "content": "Large language models (llms) can generate text with near-zero human effort. We ask under what conditions the rise of ai-generated content might harm the future of human thought and knowledge."}, {"header": "Summary of Main Contributions", "content": "We identify a dynamic whereby ai, despite only reducing the cost of access to certain kinds of information, may lead to \"knowledge collapse\" We provide a positive knowledge spillovers model with in which individuals decide whether to rely on cheaper ai technology or invest in samples from the full distribution of true knowledge. We conclude with an overview of possible solutions to prevent knowledge collapse in the ai-era."}, {"header": "Related Work", "content": "Technology has long affected how we access knowledge, raising concerns about its impact on the transmission and creation of knowledge. The rise of internet search algorithms and of social media raised concerns about the nature and distribution of information people are exposed to."}, {"header": "The media, filter bubbles and echo chambers", "content": "A common critique of social media is that they allow users to select in to \"echo chambers\" in which they are exposed to only a narrow range of topics or perspectives. The second main line of analysis focuses on \"filter bubbles,\" whereby the content to which users are exposed is selected based on a recommendation system."}, {"header": "Network effects and Information Cascades", "content": "information cascade models provide one approach to explaining a kind of herd behavior. This can occur where individuals sequentially make decisions from a discrete set after observing the behaviors of others."}, {"header": "Model collapse", "content": "The idea of model collapse is rooted in the earlier phenomenon of \"mode collapse\" in generative adversarial networks (gans).gans are based on a generator neural network that proposes, e.g. an image, and a discriminator attempts to predict whether a given image is created by the generator or is a real image."}, {"header": "Known biases in LLMs", "content": "Llms are better at recalling facts that occur frequently within the training data and struggle with long-tail knowledge. While much of the focus is naturally on overt racial and gender biases, there may be pervasive but less observable biases in the content and form of the output."}, {"header": "A Model of Knowledge Collapse Defining Knowledge Collapse", "content": "The fall of the western roman empire, the destruction of the house of wisdom in baghdad and subsequent decline of the abbasid empire after 1258, or the collapse of the mayan civilization in the 8th or 9th century."}, {"header": "Model Overview", "content": "Individuals choose whether or not to invest in innovation according to their personal payoff. When they do so invest they also contribute their knowledge to the public. If too many people invest in 'popular' or 'central' knowledge by sampling from the truncated distribution, this can have a negative externality."}, {"header": "Results", "content": "As a baseline, when there is no discount from using ai (discount rate is 1), then as expected public knowledge converges to the true distribution. 9 as ai reduces the cost of truncated knowledge, however, the distribution of public knowledge collapses towards the center, with tail knowledge being under-represented."}, {"header": "Discussion", "content": "Large language models may lead to a reduction in the long-tails of knowledge. Ai-generated content is as representative of the full distribution of knowledge as possible. Public subsidies could be used to protect 'tail' knowledge."}, {"header": "Appendix Comparing width of the tails", "content": "The main difference is for more extreme discounts provided by ai, for which the wider tails contribute to knowledge collapse. More information in the tails makes the effect of knowledge collapse more pronounced, but is less of a role than the other parameters discussed above."}, {"header": "Defining knowledge collapse", "content": "'Human knowledge' might encompass all the beliefs, information, values, and representations of the world ever held by humans anywhere on earth, whether recorded or not. We tend to assume that the broad set of historical human knowledge that was at one point held in common within communities of humans, shared and reproduced in a regular way. We also distinguish a third, narrower set of knowledge which reflects not what is theoretically accessible to humans but which is readily part of human patterns of thinking or habits of thought."}]}
+{
+  "id": 4899974378181515440,
+  "name": "Peterson_-_2024_-_AI_and_the_Problem_of_Knowledge_Collapse.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "Large language models (llms) can generate text with near-zero human effort. We ask under what conditions the rise of ai-generated content might harm the future of human thought and knowledge."
+    },
+    {
+      "header": "Summary of Main Contributions",
+      "content": "We identify a dynamic whereby ai, despite only reducing the cost of access to certain kinds of information, may lead to \"knowledge collapse\" We provide a positive knowledge spillovers model with in which individuals decide whether to rely on cheaper ai technology or invest in samples from the full distribution of true knowledge. We conclude with an overview of possible solutions to prevent knowledge collapse in the ai-era."
+    },
+    {
+      "header": "Related Work",
+      "content": "Technology has long affected how we access knowledge, raising concerns about its impact on the transmission and creation of knowledge. The rise of internet search algorithms and of social media raised concerns about the nature and distribution of information people are exposed to."
+    },
+    {
+      "header": "The media, filter bubbles and echo chambers",
+      "content": "A common critique of social media is that they allow users to select in to \"echo chambers\" in which they are exposed to only a narrow range of topics or perspectives. The second main line of analysis focuses on \"filter bubbles,\" whereby the content to which users are exposed is selected based on a recommendation system."
+    },
+    {
+      "header": "Network effects and Information Cascades",
+      "content": "information cascade models provide one approach to explaining a kind of herd behavior. This can occur where individuals sequentially make decisions from a discrete set after observing the behaviors of others."
+    },
+    {
+      "header": "Model collapse",
+      "content": "The idea of model collapse is rooted in the earlier phenomenon of \"mode collapse\" in generative adversarial networks (gans).gans are based on a generator neural network that proposes, e.g. an image, and a discriminator attempts to predict whether a given image is created by the generator or is a real image."
+    },
+    {
+      "header": "Known biases in LLMs",
+      "content": "Llms are better at recalling facts that occur frequently within the training data and struggle with long-tail knowledge. While much of the focus is naturally on overt racial and gender biases, there may be pervasive but less observable biases in the content and form of the output."
+    },
+    {
+      "header": "A Model of Knowledge Collapse Defining Knowledge Collapse",
+      "content": "The fall of the western roman empire, the destruction of the house of wisdom in baghdad and subsequent decline of the abbasid empire after 1258, or the collapse of the mayan civilization in the 8th or 9th century."
+    },
+    {
+      "header": "Model Overview",
+      "content": "Individuals choose whether or not to invest in innovation according to their personal payoff. When they do so invest they also contribute their knowledge to the public. If too many people invest in 'popular' or 'central' knowledge by sampling from the truncated distribution, this can have a negative externality."
+    },
+    {
+      "header": "Results",
+      "content": "As a baseline, when there is no discount from using ai (discount rate is 1), then as expected public knowledge converges to the true distribution. 9 as ai reduces the cost of truncated knowledge, however, the distribution of public knowledge collapses towards the center, with tail knowledge being under-represented."
+    },
+    {
+      "header": "Discussion",
+      "content": "Large language models may lead to a reduction in the long-tails of knowledge. Ai-generated content is as representative of the full distribution of knowledge as possible. Public subsidies could be used to protect 'tail' knowledge."
+    },
+    {
+      "header": "Appendix Comparing width of the tails",
+      "content": "The main difference is for more extreme discounts provided by ai, for which the wider tails contribute to knowledge collapse. More information in the tails makes the effect of knowledge collapse more pronounced, but is less of a role than the other parameters discussed above."
+    },
+    {
+      "header": "Defining knowledge collapse",
+      "content": "'Human knowledge' might encompass all the beliefs, information, values, and representations of the world ever held by humans anywhere on earth, whether recorded or not. We tend to assume that the broad set of historical human knowledge that was at one point held in common within communities of humans, shared and reproduced in a regular way. We also distinguish a third, narrower set of knowledge which reflects not what is theoretically accessible to humans but which is readily part of human patterns of thinking or habits of thought."
+    }
+  ]
+}

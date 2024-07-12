@@ -1,1 +1,26 @@
-{"id": 5286741751011347535, "name": "Raposo_et_al._-_2024_-_Mixture-of-Depths_Dynamically_allocating_compute_.grobid.tei.xml", "segments": [{"header": "Introduction", "content": "We use a technique called mixture-of-depths (mod) to emphasize how individual tokens pass through different numbers of layers, or blocks, through the depth of the network. mod transformers learn to route intelligently (i.e., skipping computations that are unnecessary) since they can achieve equal or better log probabilities."}, {"header": "Background", "content": " conditional computation has spurred interest in making transformer architectures more efficient. The \"mixture-of-experts\" layer (moe) can be dynamically skipped. Some tokens can skip middle layers, then be updated via self-attention with tokens that have gone through all the middle layers."}, {"header": "Implementing Mixture-of-Depths Transformers", "content": "To enforce a total compute budget per forward pass we leverage the notion of capacity. capacity defines the total number of tokens that comprise the input to a given computation. It is the token capacity that determines the total flops for transformers that use conditional computation."}, {"header": "Results", "content": "learned routing is crucial, as mod transformers that use stochastic routing (implemented using a top-\ud835\udc58 operation on router weights sampled from a gaussian distribution) perform drastically worse than both the baseline and normal mod transformer. The optimal mod transformer is that which uses as many flops per forward pass as the isoflop optimal baseline."}, {"header": "Discussion", "content": "learned routing mechanisms are sometimes non-causal; that is, information about the future is used to determine a given token's routing decision. Top-k routing mechanisms present difficulties in post-training autoregressive sampling. A simple auxiliary classifier, or auxiliary loss on the router, is sufficient to learn the top-\ud835\udc58 routing decisions."}]}
+{
+  "id": 5286741751011347535,
+  "name": "Raposo_et_al._-_2024_-_Mixture-of-Depths_Dynamically_allocating_compute_.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "We use a technique called mixture-of-depths (mod) to emphasize how individual tokens pass through different numbers of layers, or blocks, through the depth of the network. mod transformers learn to route intelligently (i.e., skipping computations that are unnecessary) since they can achieve equal or better log probabilities."
+    },
+    {
+      "header": "Background",
+      "content": " conditional computation has spurred interest in making transformer architectures more efficient. The \"mixture-of-experts\" layer (moe) can be dynamically skipped. Some tokens can skip middle layers, then be updated via self-attention with tokens that have gone through all the middle layers."
+    },
+    {
+      "header": "Implementing Mixture-of-Depths Transformers",
+      "content": "To enforce a total compute budget per forward pass we leverage the notion of capacity. capacity defines the total number of tokens that comprise the input to a given computation. It is the token capacity that determines the total flops for transformers that use conditional computation."
+    },
+    {
+      "header": "Results",
+      "content": "learned routing is crucial, as mod transformers that use stochastic routing (implemented using a top-\ud835\udc58 operation on router weights sampled from a gaussian distribution) perform drastically worse than both the baseline and normal mod transformer. The optimal mod transformer is that which uses as many flops per forward pass as the isoflop optimal baseline."
+    },
+    {
+      "header": "Discussion",
+      "content": "learned routing mechanisms are sometimes non-causal; that is, information about the future is used to determine a given token's routing decision. Top-k routing mechanisms present difficulties in post-training autoregressive sampling. A simple auxiliary classifier, or auxiliary loss on the router, is sufficient to learn the top-\ud835\udc58 routing decisions."
+    }
+  ]
+}

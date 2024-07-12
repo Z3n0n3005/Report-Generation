@@ -1,1 +1,26 @@
-{"id": 1020974785789643636, "name": "Deienno_et_al._-_2024_-_Accretion_and_Uneven_Depletion_of_the_Main_Asteroi.grobid.tei.xml", "segments": [{"header": "INTRODUCTION", "content": "ideally, we would like to account for both collisional and dynamical evolution (and depletion) in a self-consistent way using modern ideas about how the mab was affected by early solar system processes."}, {"header": "MODEL", "content": "adding additional complexity to this problem would not necessarily improve our results, but that is an issue that can be more thoroughly tested in future works.we followed the accretion of objects within our mab region for 5 myr."}, {"header": "MAB, DATASET, AND COMPARISON WITH MPC", "content": "data from;;for additional comparison) were obtained while modeling the excitation and depletion of the mab through the giant planet instabilityfollowed by a subsequent 4.5 gyr of solar system evolution to account for loss due to chaotic diffusion of long-term unstable orbits.figureshows very good agreement between results fromand real data from mpc (compare also the numbers from rows labeled mpc n ast and d18 n f inal ast from table) while accounting for the necessary effects happening during 4.5 gyr after gas disk dispersal as listed in the beginning of this section."}, {"header": "RESULTS", "content": "we consider these values to be lower limits in the total s-type mass because d f ac = 0 in eimb (table) prevents us from estimating how much s-types could have ever formed in this specific sub-region."}, {"header": "CONCLUSIONS", "content": "given that the only s-complex object with d > 500 km (4 vesta) resides in the imb, we consider such results to be incompatible with observations."}]}
+{
+  "id": 1020974785789643636,
+  "name": "Deienno_et_al._-_2024_-_Accretion_and_Uneven_Depletion_of_the_Main_Asteroi.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "INTRODUCTION",
+      "content": "ideally, we would like to account for both collisional and dynamical evolution (and depletion) in a self-consistent way using modern ideas about how the mab was affected by early solar system processes."
+    },
+    {
+      "header": "MODEL",
+      "content": "adding additional complexity to this problem would not necessarily improve our results, but that is an issue that can be more thoroughly tested in future works.we followed the accretion of objects within our mab region for 5 myr."
+    },
+    {
+      "header": "MAB, DATASET, AND COMPARISON WITH MPC",
+      "content": "data from;;for additional comparison) were obtained while modeling the excitation and depletion of the mab through the giant planet instabilityfollowed by a subsequent 4.5 gyr of solar system evolution to account for loss due to chaotic diffusion of long-term unstable orbits.figureshows very good agreement between results fromand real data from mpc (compare also the numbers from rows labeled mpc n ast and d18 n f inal ast from table) while accounting for the necessary effects happening during 4.5 gyr after gas disk dispersal as listed in the beginning of this section."
+    },
+    {
+      "header": "RESULTS",
+      "content": "we consider these values to be lower limits in the total s-type mass because d f ac = 0 in eimb (table) prevents us from estimating how much s-types could have ever formed in this specific sub-region."
+    },
+    {
+      "header": "CONCLUSIONS",
+      "content": "given that the only s-complex object with d > 500 km (4 vesta) resides in the imb, we consider such results to be incompatible with observations."
+    }
+  ]
+}

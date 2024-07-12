@@ -1,1 +1,30 @@
-{"id": 3046285706366507277, "name": "Hansen_et_al._-_2024_-_Productivity_and_quality-adjusted_life_years_QALY.grobid.tei.xml", "segments": [{"header": "Introduction", "content": "we shall also characterize even more general evaluations functions, around the notion of healthy productive years equivalent we introduce in this setting.we conclude this introduction stressing that our model treats health and productivity as different individual attributes."}, {"header": "Preliminaries", "content": "to keep our analysis as general as possible, we make no further assumptions regarding the domain of health states a.the productivity p i is measured by any chosen indicator."}, {"header": "Compromising between QALYs and PALYs", "content": "as mentioned above, the evaluation functions characterized in the previous section ignore one dimension of our model."}, {"header": "satisfies COMMON, TICHP, PICHT, and TIUP.", "content": "the social planner subscribes to two further values regarding invariance between different effect components where the first states that if an intervention leads to extra life years, it does not matter to the social planner which particular individual (among individuals with the same level of health and productivity) receives these extra life years (axiom tichp)."}, {"header": "Discussion", "content": "the analyst may choose a specific evaluation function based on an examination of the individual sets of axioms in terms of their expected acceptability to the society where the working environment intervention will be introduced."}, {"header": "Concluding remarks", "content": "to wit, our theory deals with the evaluation of population distributions where individuals can be characterized by two instantaneous attributes (one qualitative and one quantitative) and a duration."}]}
+{
+  "id": 3046285706366507277,
+  "name": "Hansen_et_al._-_2024_-_Productivity_and_quality-adjusted_life_years_QALY.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "we shall also characterize even more general evaluations functions, around the notion of healthy productive years equivalent we introduce in this setting.we conclude this introduction stressing that our model treats health and productivity as different individual attributes."
+    },
+    {
+      "header": "Preliminaries",
+      "content": "to keep our analysis as general as possible, we make no further assumptions regarding the domain of health states a.the productivity p i is measured by any chosen indicator."
+    },
+    {
+      "header": "Compromising between QALYs and PALYs",
+      "content": "as mentioned above, the evaluation functions characterized in the previous section ignore one dimension of our model."
+    },
+    {
+      "header": "satisfies COMMON, TICHP, PICHT, and TIUP.",
+      "content": "the social planner subscribes to two further values regarding invariance between different effect components where the first states that if an intervention leads to extra life years, it does not matter to the social planner which particular individual (among individuals with the same level of health and productivity) receives these extra life years (axiom tichp)."
+    },
+    {
+      "header": "Discussion",
+      "content": "the analyst may choose a specific evaluation function based on an examination of the individual sets of axioms in terms of their expected acceptability to the society where the working environment intervention will be introduced."
+    },
+    {
+      "header": "Concluding remarks",
+      "content": "to wit, our theory deals with the evaluation of population distributions where individuals can be characterized by two instantaneous attributes (one qualitative and one quantitative) and a duration."
+    }
+  ]
+}

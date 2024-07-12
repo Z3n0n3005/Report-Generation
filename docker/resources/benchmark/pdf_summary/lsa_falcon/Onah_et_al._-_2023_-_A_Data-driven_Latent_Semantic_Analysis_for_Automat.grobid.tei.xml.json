@@ -1,1 +1,116 @@
-{"id": 8589681755512452459, "name": "Onah_et_al._-_2023_-_A_Data-driven_Latent_Semantic_Analysis_for_Automat.grobid.tei.xml", "segments": [{"header": "I. INTRODUCTION", "content": "dy is addressing journal ardcles retrieved from pubmed central 1 h+ps://www.ncbi.nlm.nih.gov/pmc/ (pmc 1) database discussing genes and their associated diseases . if one pile started gettingng too big, you might split it into two smaller piles ."}, {"header": "II. RELATED WORK", "content": "xt summarizadon is a well-known task in natural language understanding and processing . it is described as the process of presendng huge data informadon in a concise manner while focusing on the most useful secdons of the data ."}, {"header": "A. Summariza-on", "content": "don is a technique in nlp that is used for condensing or summarising huge texts into smaller versions .this helps in reducing the size of the original document either single or muldple while preserving key elements and meaning of the content ."}, {"header": "B. Topic Modelling", "content": "pic modelling is the process of labelling and describing documents into topics .topic modelling is based on an inducdve modelling used to abstract core themes from a weighted graphical representadon of documents obtained during the processing stages ."}, {"header": "C. Latent Dirichlet Alloca-on", "content": "dirichlet allocadon (lda) is a topic discovery technique used to generate topics based on the probability that each given term might occur within the document ."}, {"header": "III. METHODS", "content": "don model was designed to scrap text data from pubmed journal database using genes and diseases keywords search .a web-scraping model that was used to retrieved the ardcles for this research was able to scrape about 100 papers at a dme from the pubmed central (pmc) repository .the proposed model in this study is scalable and generalizable for producing arbitrarily size summaries by splitting the documents into resemble content ."}, {"header": "A. Model Descrip-on", "content": "verarching research model was developed to retrieve specific informadon from huge published journals using the topic modelling approach of nlp .extracdve summarizadon approach produced naturally grammadcal summaries without much linguisdc connotadon or analysis ."}, {"header": "1)", "content": "don is introduced to generate the sentence score dicdonary which hold the value assigned to each sentence . the summary length is fixed, therefore, the top n sentences with the highest score rankings are chosen for the summary ."}, {"header": "Sentscores[S] = Wordfreq[W]", "content": "d or reduced by certain values within the sentence scores dicdonary . the sentence model would check whether the new sentences are in the sentence ."}, {"header": "Sentscores[S]+ = Wordfreq[W]", "content": "dicdonary of word frequency corpus was generated within the model . the length of the sentence selected for the word frequencies was less than 30 . sentences with less than fig.. tokenize sentence score for the arjcle summary 30 ( 30) words were selected ."}, {"header": "Word", "content": ""}, {"header": "B. Research Pipeline", "content": "pipeline model for the research follows a sequendal approach of processes that could allow the smooth and efficient informadon retrieval .about 100 papers were extracted from pubmed central (pmc) database using a search key combinadon of 'gene' and 'disease'"}, {"header": "2)", "content": "b-based dataset scraped from pubmed journal was in raw state and unstructured which consist of html tags, special characters, symbols and numbers that had to be processed and cleaned . in the feature extracdon process, we parse the web ardcles source code in order to extract the textual material needed for the final summary ."}, {"header": "3)", "content": "p-words .words such as pronounce that are not necessary or essendal for the final summary "}, {"header": "4) Topic Modelling & Visualiza-on:", "content": "visualised using pyldavis which is a web-based interacdve visualizadon package that allows the display of the topics that were idendfied using the lda approach . the larger the circle the more projecdon or prevalence is the topic (as seen in figuresand)"}, {"header": "IV. MODEL", "content": "defining seman-c significance we define the semandc significance of term t to the topic n given the parameter weight of the () where(0  ) .let nt denotes the minimal probability of the term in the lexical corpus . n for n element of 1,..., k ."}, {"header": "B. Defining Saliency Term", "content": "dy we define saliency term as given a word 'w 0 , we compute its minimal probability p(tm/w).where tm is the topic model.the possibility that the emerge word w was generated from the lda topic model (tm)."}, {"header": "U(6)", "content": ""}, {"header": "=5", "content": "queness of each term is described as how significance and semandcally associated they are to the topics . the frequency and populadon of terms are denoted by the size of the topic circles and also the inter-topic distance denote how closely related the topics are ."}, {"header": "V. LATENT SEMANTIC ANALYSIS", "content": "dc analysis (lsa) is a robust algebraic and stadsdcal method . it extracts hidden semantic structures of words and sentences .the method is an unsupervised approach along with natural language processing ."}, {"header": "A. Sample Extracted Summary", "content": "prevalence sentence score was used for the summary together .the heap queue (heapq) library selects the most or very useful sentences .different threshold points were selected for the summaries ."}, {"header": "B. Findings", "content": "y result revealed very interesdng findings of genes that are associated to some cancerous and type 2 diabetes diseases (see table"}, {"header": "VI. ROUGE: RELIABILITY & VALIDITY OF MODEL", "content": "dcally evaluadng document summaries . it stands for recall oriented understudy for gisting evaluation ."}, {"header": "TABLE III ROUGE METRICS MEASUREMENT SUMMARIES", "content": "ystem and human annotated summaries type summary ssummary 'some of the genes in the bcaa metabolic pathway such as mlycd (rank 164)hadhb (rank 713)mut (rank 354) and pccb (884) are also ranked highly by hridaya . the genes are pdgfrbabl1flt1; and these genes are drug targets of cancer drugs like dasa8nib ."}, {"header": "Comparing the system generated summary with a new human", "content": ""}, {"header": "A. Procedure: Recall & Precision", "content": "dple processed ardcles or documents based on key search terms .we then produced a set of human annotated reference summaries of the cleanhtml.txt document.in considering the individual words in a sentence we simply represent this with the formula in equadon 8.the metric will produce a perfect result of 1 which usually will be the case if indeed the sentence matches ."}, {"header": "VII. RESULTS & FINDINGS", "content": "pic modelling show text which are mostly frequent in the document these were depicted by the size of the circle (as seen in figuresand) the terms gene and disease are described in the ardcles in reladon to the topics distribudon .the slider () in the web-based interacdve visualizadon depicts the relevance metric of the rank terms ."}, {"header": "IX. DISCUSSION", "content": "dc text summarizadon has been applied to various natural language processing tasks such as text analysis, classificadon, automated quesdon and answering . the process is gaining popularity among researchers . it could benefit from the early stages of document summaries ."}, {"header": "X. CONCLUSION", "content": "dc summarizadon is the process of reducing a text document with a computer program in order to create a summary that retains the most important points of the original document.muldple documents were extracted and summarised while preserving the overarching meaning and purpose of the collecdve ardcles."}]}
+{
+  "id": 8589681755512452459,
+  "name": "Onah_et_al._-_2023_-_A_Data-driven_Latent_Semantic_Analysis_for_Automat.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "I. INTRODUCTION",
+      "content": "dy is addressing journal ardcles retrieved from pubmed central 1 h+ps://www.ncbi.nlm.nih.gov/pmc/ (pmc 1) database discussing genes and their associated diseases . if one pile started gettingng too big, you might split it into two smaller piles ."
+    },
+    {
+      "header": "II. RELATED WORK",
+      "content": "xt summarizadon is a well-known task in natural language understanding and processing . it is described as the process of presendng huge data informadon in a concise manner while focusing on the most useful secdons of the data ."
+    },
+    {
+      "header": "A. Summariza-on",
+      "content": "don is a technique in nlp that is used for condensing or summarising huge texts into smaller versions .this helps in reducing the size of the original document either single or muldple while preserving key elements and meaning of the content ."
+    },
+    {
+      "header": "B. Topic Modelling",
+      "content": "pic modelling is the process of labelling and describing documents into topics .topic modelling is based on an inducdve modelling used to abstract core themes from a weighted graphical representadon of documents obtained during the processing stages ."
+    },
+    {
+      "header": "C. Latent Dirichlet Alloca-on",
+      "content": "dirichlet allocadon (lda) is a topic discovery technique used to generate topics based on the probability that each given term might occur within the document ."
+    },
+    {
+      "header": "III. METHODS",
+      "content": "don model was designed to scrap text data from pubmed journal database using genes and diseases keywords search .a web-scraping model that was used to retrieved the ardcles for this research was able to scrape about 100 papers at a dme from the pubmed central (pmc) repository .the proposed model in this study is scalable and generalizable for producing arbitrarily size summaries by splitting the documents into resemble content ."
+    },
+    {
+      "header": "A. Model Descrip-on",
+      "content": "verarching research model was developed to retrieve specific informadon from huge published journals using the topic modelling approach of nlp .extracdve summarizadon approach produced naturally grammadcal summaries without much linguisdc connotadon or analysis ."
+    },
+    {
+      "header": "1)",
+      "content": "don is introduced to generate the sentence score dicdonary which hold the value assigned to each sentence . the summary length is fixed, therefore, the top n sentences with the highest score rankings are chosen for the summary ."
+    },
+    {
+      "header": "Sentscores[S] = Wordfreq[W]",
+      "content": "d or reduced by certain values within the sentence scores dicdonary . the sentence model would check whether the new sentences are in the sentence ."
+    },
+    {
+      "header": "Sentscores[S]+ = Wordfreq[W]",
+      "content": "dicdonary of word frequency corpus was generated within the model . the length of the sentence selected for the word frequencies was less than 30 . sentences with less than fig.. tokenize sentence score for the arjcle summary 30 ( 30) words were selected ."
+    },
+    { "header": "Word", "content": "" },
+    {
+      "header": "B. Research Pipeline",
+      "content": "pipeline model for the research follows a sequendal approach of processes that could allow the smooth and efficient informadon retrieval .about 100 papers were extracted from pubmed central (pmc) database using a search key combinadon of 'gene' and 'disease'"
+    },
+    {
+      "header": "2)",
+      "content": "b-based dataset scraped from pubmed journal was in raw state and unstructured which consist of html tags, special characters, symbols and numbers that had to be processed and cleaned . in the feature extracdon process, we parse the web ardcles source code in order to extract the textual material needed for the final summary ."
+    },
+    {
+      "header": "3)",
+      "content": "p-words .words such as pronounce that are not necessary or essendal for the final summary "
+    },
+    {
+      "header": "4) Topic Modelling & Visualiza-on:",
+      "content": "visualised using pyldavis which is a web-based interacdve visualizadon package that allows the display of the topics that were idendfied using the lda approach . the larger the circle the more projecdon or prevalence is the topic (as seen in figuresand)"
+    },
+    {
+      "header": "IV. MODEL",
+      "content": "defining seman-c significance we define the semandc significance of term t to the topic n given the parameter weight of the () where(0  ) .let nt denotes the minimal probability of the term in the lexical corpus . n for n element of 1,..., k ."
+    },
+    {
+      "header": "B. Defining Saliency Term",
+      "content": "dy we define saliency term as given a word 'w 0 , we compute its minimal probability p(tm/w).where tm is the topic model.the possibility that the emerge word w was generated from the lda topic model (tm)."
+    },
+    { "header": "U(6)", "content": "" },
+    {
+      "header": "=5",
+      "content": "queness of each term is described as how significance and semandcally associated they are to the topics . the frequency and populadon of terms are denoted by the size of the topic circles and also the inter-topic distance denote how closely related the topics are ."
+    },
+    {
+      "header": "V. LATENT SEMANTIC ANALYSIS",
+      "content": "dc analysis (lsa) is a robust algebraic and stadsdcal method . it extracts hidden semantic structures of words and sentences .the method is an unsupervised approach along with natural language processing ."
+    },
+    {
+      "header": "A. Sample Extracted Summary",
+      "content": "prevalence sentence score was used for the summary together .the heap queue (heapq) library selects the most or very useful sentences .different threshold points were selected for the summaries ."
+    },
+    {
+      "header": "B. Findings",
+      "content": "y result revealed very interesdng findings of genes that are associated to some cancerous and type 2 diabetes diseases (see table"
+    },
+    {
+      "header": "VI. ROUGE: RELIABILITY & VALIDITY OF MODEL",
+      "content": "dcally evaluadng document summaries . it stands for recall oriented understudy for gisting evaluation ."
+    },
+    {
+      "header": "TABLE III ROUGE METRICS MEASUREMENT SUMMARIES",
+      "content": "ystem and human annotated summaries type summary ssummary 'some of the genes in the bcaa metabolic pathway such as mlycd (rank 164)hadhb (rank 713)mut (rank 354) and pccb (884) are also ranked highly by hridaya . the genes are pdgfrbabl1flt1; and these genes are drug targets of cancer drugs like dasa8nib ."
+    },
+    {
+      "header": "Comparing the system generated summary with a new human",
+      "content": ""
+    },
+    {
+      "header": "A. Procedure: Recall & Precision",
+      "content": "dple processed ardcles or documents based on key search terms .we then produced a set of human annotated reference summaries of the cleanhtml.txt document.in considering the individual words in a sentence we simply represent this with the formula in equadon 8.the metric will produce a perfect result of 1 which usually will be the case if indeed the sentence matches ."
+    },
+    {
+      "header": "VII. RESULTS & FINDINGS",
+      "content": "pic modelling show text which are mostly frequent in the document these were depicted by the size of the circle (as seen in figuresand) the terms gene and disease are described in the ardcles in reladon to the topics distribudon .the slider () in the web-based interacdve visualizadon depicts the relevance metric of the rank terms ."
+    },
+    {
+      "header": "IX. DISCUSSION",
+      "content": "dc text summarizadon has been applied to various natural language processing tasks such as text analysis, classificadon, automated quesdon and answering . the process is gaining popularity among researchers . it could benefit from the early stages of document summaries ."
+    },
+    {
+      "header": "X. CONCLUSION",
+      "content": "dc summarizadon is the process of reducing a text document with a computer program in order to create a summary that retains the most important points of the original document.muldple documents were extracted and summarised while preserving the overarching meaning and purpose of the collecdve ardcles."
+    }
+  ]
+}

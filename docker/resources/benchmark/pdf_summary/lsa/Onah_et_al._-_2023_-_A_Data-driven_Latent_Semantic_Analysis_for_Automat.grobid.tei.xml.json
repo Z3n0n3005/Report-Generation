@@ -1,1 +1,116 @@
-{"id": 1421793854709032852, "name": "Onah_et_al._-_2023_-_A_Data-driven_Latent_Semantic_Analysis_for_Automat.grobid.tei.xml", "segments": [{"header": "I. INTRODUCTION", "content": "an example, ardcles extracted in a different language from english to be translated to make sense similar to the original language of which the ardcle was wriven.automadc text summarizadon is the process of performing specific nlp task by producing a concise summary of documents (single or muldple) without any manual support while preserving the meaning or important points of the original document."}, {"header": "II. RELATED WORK", "content": "the most important element of text summarizadon is to produce a clear and concise summary taken from the large datasets that would make sense to the reader and direct to the main points."}, {"header": "A. Summariza-on", "content": "summarizadon is a technique in nlp that is used for condensing or summarising huge texts into smaller versions taking care not to omit the main relevant informadon contained in the document."}, {"header": "B. Topic Modelling", "content": "in order to apply topic models in nlp applicadon, there is need for extrapoladon of topics from unstructured datasets."}, {"header": "C. Latent Dirichlet Alloca-on", "content": "latent dirichlet allocadon (lda) is a technique applied in topic modelling introduced by."}, {"header": "III. METHODS", "content": "a web-scraping model that was used to retrieved the ardcles for this research was able to scrape about 100 papers at a dme from the pubmed central (pmc) repository."}, {"header": "A. Model Descrip-on", "content": "the overarching research model was developed to retrieve specific informadon from huge published journals using the topic modelling approach of nlp."}, {"header": "1)", "content": "this denotes the probability that the sentence will be selected and included in the summary (see figure)."}, {"header": "Sentscores[S] = Wordfreq[W]", "content": "therefore, new sentences are added into the sentence dicdonary scores."}, {"header": "Sentscores[S]+ = Wordfreq[W]", "content": "the word frequencies were selected automadcally based on the prevalence or occurrence of the words in the corpus dicdonary created in the model (see figure)."}, {"header": "Word", "content": "(4)"}, {"header": "B. Research Pipeline", "content": "the pipeline in figurewas used to answer the research quesdons in this study.1) data collec-on: the dataset was scraped from the web."}, {"header": "2)", "content": "finally, these extracted paragraphs text are combined to form a single string to store the clean web content for further topic model processing (see figure)."}, {"header": "3)", "content": "stopwords: we further removed a list of stop-words from the propocessed ardcles."}, {"header": "4) Topic Modelling & Visualiza-on:", "content": "this study was able to reveal prevalence of terms that emerged within the documents and show their relevance by how the projecdon of the topic modelling circle and the size of a word in the result visualisadon."}, {"header": "IV. MODEL", "content": "a. defining seman-c significance we define the semandc significance of term t to the topic n given the parameter weight of the (\u03bb) where(0 \u2264 \u03bb \u2264 1)."}, {"header": "B. Defining Saliency Term", "content": "in this study we define saliency term as given a word 'w 0 , we compute its minimal probability p(tm/w)."}, {"header": "U(6)", "content": ""}, {"header": "=5", "content": "the frequency and populadon of terms are denoted by the size of the topic circles and also the inter-topic distance denote how closely related the topics are."}, {"header": "V. LATENT SEMANTIC ANALYSIS", "content": "results from the lsa present a robust summary of the endre ardcles with useful informadon extracted about specific genes that are associated to cancer disease."}, {"header": "A. Sample Extracted Summary", "content": "we used the heap queue (heapq) library to select the most or very useful sentences."}, {"header": "B. Findings", "content": "the summary result has revealed very interesdng findings of genes that are associated to some cancerous and type 2 diabetes diseases (see table)."}, {"header": "VI. ROUGE: RELIABILITY & VALIDITY OF MODEL", "content": "this is originally based on a metric used for machine transladon called bilingual evaluadon understudy (bleu)."}, {"header": "TABLE III ROUGE METRICS MEASUREMENT SUMMARIES", "content": "this shows that the closeness of the human model summary to the system or reference summary produces bever average across all rouge measuring dimensions (recall, precision and f1 score)."}, {"header": "Comparing the system generated summary with a new human", "content": ""}, {"header": "A. Procedure: Recall & Precision", "content": "we have muldple processed ardcles or documents extracted from the web based on key search terms."}, {"header": "VII. RESULTS & FINDINGS", "content": "it is worth knowing that the terms of the topic are ranked in decreasing order by default in accordance with the topic-specific probability (\u03bb = 1)."}, {"header": "IX. DISCUSSION", "content": "we proposed and evaluated the model on unstructured datasets which show some results comparable to the current state-of-the-art topic modelling techniques without depending on modificadons using any linguisdc informadon models."}, {"header": "X. CONCLUSION", "content": "the result from the future research will be compared with a current machine learning gene predicdon applicadon model designed for a new study on genes and diseases."}]}
+{
+  "id": 1421793854709032852,
+  "name": "Onah_et_al._-_2023_-_A_Data-driven_Latent_Semantic_Analysis_for_Automat.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "I. INTRODUCTION",
+      "content": "an example, ardcles extracted in a different language from english to be translated to make sense similar to the original language of which the ardcle was wriven.automadc text summarizadon is the process of performing specific nlp task by producing a concise summary of documents (single or muldple) without any manual support while preserving the meaning or important points of the original document."
+    },
+    {
+      "header": "II. RELATED WORK",
+      "content": "the most important element of text summarizadon is to produce a clear and concise summary taken from the large datasets that would make sense to the reader and direct to the main points."
+    },
+    {
+      "header": "A. Summariza-on",
+      "content": "summarizadon is a technique in nlp that is used for condensing or summarising huge texts into smaller versions taking care not to omit the main relevant informadon contained in the document."
+    },
+    {
+      "header": "B. Topic Modelling",
+      "content": "in order to apply topic models in nlp applicadon, there is need for extrapoladon of topics from unstructured datasets."
+    },
+    {
+      "header": "C. Latent Dirichlet Alloca-on",
+      "content": "latent dirichlet allocadon (lda) is a technique applied in topic modelling introduced by."
+    },
+    {
+      "header": "III. METHODS",
+      "content": "a web-scraping model that was used to retrieved the ardcles for this research was able to scrape about 100 papers at a dme from the pubmed central (pmc) repository."
+    },
+    {
+      "header": "A. Model Descrip-on",
+      "content": "the overarching research model was developed to retrieve specific informadon from huge published journals using the topic modelling approach of nlp."
+    },
+    {
+      "header": "1)",
+      "content": "this denotes the probability that the sentence will be selected and included in the summary (see figure)."
+    },
+    {
+      "header": "Sentscores[S] = Wordfreq[W]",
+      "content": "therefore, new sentences are added into the sentence dicdonary scores."
+    },
+    {
+      "header": "Sentscores[S]+ = Wordfreq[W]",
+      "content": "the word frequencies were selected automadcally based on the prevalence or occurrence of the words in the corpus dicdonary created in the model (see figure)."
+    },
+    { "header": "Word", "content": "(4)" },
+    {
+      "header": "B. Research Pipeline",
+      "content": "the pipeline in figurewas used to answer the research quesdons in this study.1) data collec-on: the dataset was scraped from the web."
+    },
+    {
+      "header": "2)",
+      "content": "finally, these extracted paragraphs text are combined to form a single string to store the clean web content for further topic model processing (see figure)."
+    },
+    {
+      "header": "3)",
+      "content": "stopwords: we further removed a list of stop-words from the propocessed ardcles."
+    },
+    {
+      "header": "4) Topic Modelling & Visualiza-on:",
+      "content": "this study was able to reveal prevalence of terms that emerged within the documents and show their relevance by how the projecdon of the topic modelling circle and the size of a word in the result visualisadon."
+    },
+    {
+      "header": "IV. MODEL",
+      "content": "a. defining seman-c significance we define the semandc significance of term t to the topic n given the parameter weight of the (\u03bb) where(0 \u2264 \u03bb \u2264 1)."
+    },
+    {
+      "header": "B. Defining Saliency Term",
+      "content": "in this study we define saliency term as given a word 'w 0 , we compute its minimal probability p(tm/w)."
+    },
+    { "header": "U(6)", "content": "" },
+    {
+      "header": "=5",
+      "content": "the frequency and populadon of terms are denoted by the size of the topic circles and also the inter-topic distance denote how closely related the topics are."
+    },
+    {
+      "header": "V. LATENT SEMANTIC ANALYSIS",
+      "content": "results from the lsa present a robust summary of the endre ardcles with useful informadon extracted about specific genes that are associated to cancer disease."
+    },
+    {
+      "header": "A. Sample Extracted Summary",
+      "content": "we used the heap queue (heapq) library to select the most or very useful sentences."
+    },
+    {
+      "header": "B. Findings",
+      "content": "the summary result has revealed very interesdng findings of genes that are associated to some cancerous and type 2 diabetes diseases (see table)."
+    },
+    {
+      "header": "VI. ROUGE: RELIABILITY & VALIDITY OF MODEL",
+      "content": "this is originally based on a metric used for machine transladon called bilingual evaluadon understudy (bleu)."
+    },
+    {
+      "header": "TABLE III ROUGE METRICS MEASUREMENT SUMMARIES",
+      "content": "this shows that the closeness of the human model summary to the system or reference summary produces bever average across all rouge measuring dimensions (recall, precision and f1 score)."
+    },
+    {
+      "header": "Comparing the system generated summary with a new human",
+      "content": ""
+    },
+    {
+      "header": "A. Procedure: Recall & Precision",
+      "content": "we have muldple processed ardcles or documents extracted from the web based on key search terms."
+    },
+    {
+      "header": "VII. RESULTS & FINDINGS",
+      "content": "it is worth knowing that the terms of the topic are ranked in decreasing order by default in accordance with the topic-specific probability (\u03bb = 1)."
+    },
+    {
+      "header": "IX. DISCUSSION",
+      "content": "we proposed and evaluated the model on unstructured datasets which show some results comparable to the current state-of-the-art topic modelling techniques without depending on modificadons using any linguisdc informadon models."
+    },
+    {
+      "header": "X. CONCLUSION",
+      "content": "the result from the future research will be compared with a current machine learning gene predicdon applicadon model designed for a new study on genes and diseases."
+    }
+  ]
+}

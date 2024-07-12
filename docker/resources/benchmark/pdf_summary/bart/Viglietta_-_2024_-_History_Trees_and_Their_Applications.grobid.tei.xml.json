@@ -1,1 +1,18 @@
-{"id": 5238154740268830109, "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml", "segments": [{"header": "Introduction", "content": "A distributed communication network consists of a finite number of independent computational units known as agents. A network is anonymous if its agents are initially indistinguishable, i.e., they lack unique identifiers and can only be told apart by external input or due to the network's layout. In such networks, it is typically assumed that all agents run the same deterministic algorithm."}, {"header": "Basic Structure and Algorithms", "content": "In this section we focus on anonymous networks operating in synchronous steps, modeled as undirected dynamic multigraphs with no port awareness. other network models will be discussed in section 3. The reader may find it beneficial to examine the software available at https://github.com/viglietta/dynamic-networks."}, {"header": "Leader Election", "content": "A simple leader election algorithm, at step t, computes the ratios of all anonymities in the first non-branching level occurring after l \u230at/2\u230b and deterministically picks a node of smallest anonymity as representing the leader. This strategy eventually elects a unique leader if and only if it is possible to do so."}]}
+{
+  "id": 5238154740268830109,
+  "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "A distributed communication network consists of a finite number of independent computational units known as agents. A network is anonymous if its agents are initially indistinguishable, i.e., they lack unique identifiers and can only be told apart by external input or due to the network's layout. In such networks, it is typically assumed that all agents run the same deterministic algorithm."
+    },
+    {
+      "header": "Basic Structure and Algorithms",
+      "content": "In this section we focus on anonymous networks operating in synchronous steps, modeled as undirected dynamic multigraphs with no port awareness. other network models will be discussed in section 3. The reader may find it beneficial to examine the software available at https://github.com/viglietta/dynamic-networks."
+    },
+    {
+      "header": "Leader Election",
+      "content": "A simple leader election algorithm, at step t, computes the ratios of all anonymities in the first non-branching level occurring after l \u230at/2\u230b and deterministically picks a node of smallest anonymity as representing the leader. This strategy eventually elects a unique leader if and only if it is possible to do so."
+    }
+  ]
+}

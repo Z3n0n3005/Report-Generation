@@ -1,1 +1,22 @@
-{"id": 6366407029166277569, "name": "Elokda_et_al._-_2024_-_Karma_An_Experimental_Study.grobid.tei.xml", "segments": [{"header": "INTRODUCTION", "content": "efficiency and fairness in determining who gets what and when are the two major objectives of economists thinking about scarcity, and many interesting matchmaking and market design solutions have been proposed."}, {"header": "EXPERIMENTAL METHODS", "content": "after the redistribution the game proceeds to the next round \ud835\udc61 + 1.tablein appendix a summarizes the notation introduced above.we follow a 2x2 factorial treatment design, where we vary the dynamic urgency process of the participants and the richness of the karma scheme."}, {"header": "RESULTS", "content": "this suggests that all (active) subgroups of the population achieve strong benefits in this treatment.notice that the variability in the ex-post efficiency gains under random allocation, cf."}, {"header": "DISCUSSION", "content": "originally, we pre-registered the design of the experiment along with a complete plan for analysis at the open science framework under [link withheld to preserve anonymity of submission]."}]}
+{
+  "id": 6366407029166277569,
+  "name": "Elokda_et_al._-_2024_-_Karma_An_Experimental_Study.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "INTRODUCTION",
+      "content": "efficiency and fairness in determining who gets what and when are the two major objectives of economists thinking about scarcity, and many interesting matchmaking and market design solutions have been proposed."
+    },
+    {
+      "header": "EXPERIMENTAL METHODS",
+      "content": "after the redistribution the game proceeds to the next round \ud835\udc61 + 1.tablein appendix a summarizes the notation introduced above.we follow a 2x2 factorial treatment design, where we vary the dynamic urgency process of the participants and the richness of the karma scheme."
+    },
+    {
+      "header": "RESULTS",
+      "content": "this suggests that all (active) subgroups of the population achieve strong benefits in this treatment.notice that the variability in the ex-post efficiency gains under random allocation, cf."
+    },
+    {
+      "header": "DISCUSSION",
+      "content": "originally, we pre-registered the design of the experiment along with a complete plan for analysis at the open science framework under [link withheld to preserve anonymity of submission]."
+    }
+  ]
+}

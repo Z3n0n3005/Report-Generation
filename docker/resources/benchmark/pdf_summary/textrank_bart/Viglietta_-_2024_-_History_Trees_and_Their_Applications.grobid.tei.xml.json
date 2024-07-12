@@ -1,1 +1,18 @@
-{"id": 8493202427580397459, "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml", "segments": [{"header": "Introduction", "content": "history trees are a newer data structure that inherently includes a temporal dimension and was specifically designed for networks with dynamic topologies. The introduction of history trees has recently led to the development of optimal linear-time algorithms for anonymous dynamic networks."}, {"header": "Basic Structure and Algorithms", "content": " static anonymous networks are well understood thanks to the works of yamashita-kameda, boldi-vigna, and other authors. The view t g (p) of an agent p in a static network g is an infinite tree rooted at p, where each node of depth k represents a distinct 2."}, {"header": "Leader Election", "content": "In section 2.3 we gave a counting algorithm for connected undirected dynamic networks with a unique leader that stabilizes in 2n -2 steps. Since the network is connected at all steps, it can be shown that only 2n-2 levels of the history tree are required for this algorithm to eventually identify nodes with correct guesses."}]}
+{
+  "id": 8493202427580397459,
+  "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "history trees are a newer data structure that inherently includes a temporal dimension and was specifically designed for networks with dynamic topologies. The introduction of history trees has recently led to the development of optimal linear-time algorithms for anonymous dynamic networks."
+    },
+    {
+      "header": "Basic Structure and Algorithms",
+      "content": " static anonymous networks are well understood thanks to the works of yamashita-kameda, boldi-vigna, and other authors. The view t g (p) of an agent p in a static network g is an infinite tree rooted at p, where each node of depth k represents a distinct 2."
+    },
+    {
+      "header": "Leader Election",
+      "content": "In section 2.3 we gave a counting algorithm for connected undirected dynamic networks with a unique leader that stabilizes in 2n -2 steps. Since the network is connected at all steps, it can be shown that only 2n-2 levels of the history tree are required for this algorithm to eventually identify nodes with correct guesses."
+    }
+  ]
+}

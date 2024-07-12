@@ -1,1 +1,18 @@
-{"id": 2842698968609422318, "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml", "segments": [{"header": "Introduction", "content": "the introduction of history trees has recently led to the development of optimal linear-time algorithms for anonymous dynamic networksand state-of-the-art general algorithms for congested anonymous dynamic networks.in section 2, we outline the basic architecture of history trees, drawing comparisons with yamashita-kameda's views and boldi-vigna's minimum bases."}, {"header": "Basic Structure and Algorithms", "content": "contracting the black edges in this subgraph, we obtain a directed multigraph named g.this is an important structure that has been given many names and equivalent definitions in the literature."}, {"header": "Leader Election", "content": "open problem 7. is there a universal self-stabilizing protocol for semisynchronous strongly connected directed dynamic networks?the stabilizing algorithms described so far assume that all agents constantly update their views at every step, which requires an unlimited amount of internal memory."}]}
+{
+  "id": 2842698968609422318,
+  "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "the introduction of history trees has recently led to the development of optimal linear-time algorithms for anonymous dynamic networksand state-of-the-art general algorithms for congested anonymous dynamic networks.in section 2, we outline the basic architecture of history trees, drawing comparisons with yamashita-kameda's views and boldi-vigna's minimum bases."
+    },
+    {
+      "header": "Basic Structure and Algorithms",
+      "content": "contracting the black edges in this subgraph, we obtain a directed multigraph named g.this is an important structure that has been given many names and equivalent definitions in the literature."
+    },
+    {
+      "header": "Leader Election",
+      "content": "open problem 7. is there a universal self-stabilizing protocol for semisynchronous strongly connected directed dynamic networks?the stabilizing algorithms described so far assume that all agents constantly update their views at every step, which requires an unlimited amount of internal memory."
+    }
+  ]
+}

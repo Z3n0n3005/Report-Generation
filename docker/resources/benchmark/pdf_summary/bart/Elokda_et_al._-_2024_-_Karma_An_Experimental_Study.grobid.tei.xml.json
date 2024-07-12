@@ -1,1 +1,22 @@
-{"id": 6281976117676666268, "name": "Elokda_et_al._-_2024_-_Karma_An_Experimental_Study.grobid.tei.xml", "segments": [{"header": "INTRODUCTION", "content": "Karma is a system of non-tradable credits called karma. Individuals may bid some amount from their current account at every instance of resource allocation. The highest bidders win, obtain priority for the resource, pay their bids, which are then transferred to the accounts of those who did not win."}, {"header": "EXPERIMENTAL METHODS", "content": "We conducted a balanced two-by-two factorial experiment with 400 subjects in total. treatments varied in the dynamic urgency process of the participants and the richness of the karma scheme. for urgency, we distinguished between a low stake process where participants have frequent events with moderate urgency, and a high stake processwhere participants have rare events with high urgency. for richness, we tested a binary scheme where participants can choose from only two bid levels that depend on their karma."}, {"header": "RESULTS", "content": "efficiency went up in all treatments. more than 90% of the population is better off with karma than under random allocation. the most favorable combination is high stake with binary bidding. most individuals are on the benefiting side. karma provides an opportunity for participants to achieve pronounced benefits, without strongly harming those that are less strategic."}, {"header": "DISCUSSION", "content": "In all treatments, (almost) all participants manage to benefit from the karma scheme in comparison to random allocation, with the exception of the lowest decile of non-adopters who did not actively participate in the bidding. The most favorable treatment combination in our experiments was that of high stake urgency process under binary bidding scheme."}]}
+{
+  "id": 6281976117676666268,
+  "name": "Elokda_et_al._-_2024_-_Karma_An_Experimental_Study.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "INTRODUCTION",
+      "content": "Karma is a system of non-tradable credits called karma. Individuals may bid some amount from their current account at every instance of resource allocation. The highest bidders win, obtain priority for the resource, pay their bids, which are then transferred to the accounts of those who did not win."
+    },
+    {
+      "header": "EXPERIMENTAL METHODS",
+      "content": "We conducted a balanced two-by-two factorial experiment with 400 subjects in total. treatments varied in the dynamic urgency process of the participants and the richness of the karma scheme. for urgency, we distinguished between a low stake process where participants have frequent events with moderate urgency, and a high stake processwhere participants have rare events with high urgency. for richness, we tested a binary scheme where participants can choose from only two bid levels that depend on their karma."
+    },
+    {
+      "header": "RESULTS",
+      "content": "efficiency went up in all treatments. more than 90% of the population is better off with karma than under random allocation. the most favorable combination is high stake with binary bidding. most individuals are on the benefiting side. karma provides an opportunity for participants to achieve pronounced benefits, without strongly harming those that are less strategic."
+    },
+    {
+      "header": "DISCUSSION",
+      "content": "In all treatments, (almost) all participants manage to benefit from the karma scheme in comparison to random allocation, with the exception of the lowest decile of non-adopters who did not actively participate in the bidding. The most favorable treatment combination in our experiments was that of high stake urgency process under binary bidding scheme."
+    }
+  ]
+}

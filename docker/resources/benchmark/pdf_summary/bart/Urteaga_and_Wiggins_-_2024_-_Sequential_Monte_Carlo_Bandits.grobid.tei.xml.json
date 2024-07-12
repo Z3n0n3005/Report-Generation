@@ -1,1 +1,26 @@
-{"id": 3441025250518216616, "name": "Urteaga_and_Wiggins_-_2024_-_Sequential_Monte_Carlo_Bandits.grobid.tei.xml", "segments": [{"header": "Introduction", "content": "The multi-armed bandit (mab) problem considers the sequential strategy one must devise when playing a row of slot machines. The 'context' is the physiology of the patient, the type of resources available for each project, or the features of the website user. We propose to use sequential monte carlo (smc) for non-stationary bandits with nonlinear rewards."}, {"header": "Background and preliminaries", "content": "The mab crystallizes the fundamental trade-off between exploration and exploitation in sequential decision making. It formulates the problem of maximizing rewards observed from sequentially chosen actions when interacting with an uncertain environment."}, {"header": "SMC for multi-armed bandits", "content": "We model non-stationary, stochastic mabs in a state-space framework. Each arm of the bandit is described by its own idiosyncratic parameters. We allow for such parameters to evolve independently per-arm in time. We combine smc with bayesian bandit policies -thompson sampling and bayes-ucb. We present the proposal for a smc-based bayesian mab framework."}, {"header": "Evaluation", "content": "Smc-based policies achieve the right exploration-exploitation tradeoff, we show. The main evaluation metric is the cumulative regret of the bandit agent, with results averaged over 500 realizations. We observe satisfactory cumulative regret performance in figure. policies that compute and use smc random measure posteriors incur minimal regret loss in comparison to the optimal kalman filterbased agent."}, {"header": "Conclusion and discussion", "content": "Smc-based bayesian mab framework allows for interpretable modeling of nonlinear and time-evolving reward functions. It sequentially learns the sufficient statistics and dynamics of the bandit to find the right exploration-exploitation balance."}]}
+{
+  "id": 3441025250518216616,
+  "name": "Urteaga_and_Wiggins_-_2024_-_Sequential_Monte_Carlo_Bandits.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "The multi-armed bandit (mab) problem considers the sequential strategy one must devise when playing a row of slot machines. The 'context' is the physiology of the patient, the type of resources available for each project, or the features of the website user. We propose to use sequential monte carlo (smc) for non-stationary bandits with nonlinear rewards."
+    },
+    {
+      "header": "Background and preliminaries",
+      "content": "The mab crystallizes the fundamental trade-off between exploration and exploitation in sequential decision making. It formulates the problem of maximizing rewards observed from sequentially chosen actions when interacting with an uncertain environment."
+    },
+    {
+      "header": "SMC for multi-armed bandits",
+      "content": "We model non-stationary, stochastic mabs in a state-space framework. Each arm of the bandit is described by its own idiosyncratic parameters. We allow for such parameters to evolve independently per-arm in time. We combine smc with bayesian bandit policies -thompson sampling and bayes-ucb. We present the proposal for a smc-based bayesian mab framework."
+    },
+    {
+      "header": "Evaluation",
+      "content": "Smc-based policies achieve the right exploration-exploitation tradeoff, we show. The main evaluation metric is the cumulative regret of the bandit agent, with results averaged over 500 realizations. We observe satisfactory cumulative regret performance in figure. policies that compute and use smc random measure posteriors incur minimal regret loss in comparison to the optimal kalman filterbased agent."
+    },
+    {
+      "header": "Conclusion and discussion",
+      "content": "Smc-based bayesian mab framework allows for interpretable modeling of nonlinear and time-evolving reward functions. It sequentially learns the sufficient statistics and dynamics of the bandit to find the right exploration-exploitation balance."
+    }
+  ]
+}

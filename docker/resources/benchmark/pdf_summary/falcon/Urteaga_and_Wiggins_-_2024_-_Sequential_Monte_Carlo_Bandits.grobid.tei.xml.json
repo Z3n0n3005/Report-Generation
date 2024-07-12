@@ -1,1 +1,26 @@
-{"id": 654922913186994616, "name": "Urteaga_and_Wiggins_-_2024_-_Sequential_Monte_Carlo_Bandits.grobid.tei.xml", "segments": [{"header": "Introduction", "content": "-armed bandit (mab) problem considers the sequential strategy one must devise when playing a row of slot machines: i.e., which arm to play next to maximize cumulative returns . this analogy extends to a wide range of real-world challenges that require online learning, while simultaneously maximizing some notion of reward . the contextual mab, where at each interaction with the world side information is available, is a natural extension of this abstraction ."}, {"header": "Background and preliminaries", "content": "ximizing rewards observed from sequentially chosen actions . it can potentially depend on context x  x; e.g., a common choice is x = r d x, namely, the agent needs to simultaneously learn properties of the reward distribution, and sequentially decide which action to take next . we use p ato indicate per-arm reward distributions -one for each arm a ."}, {"header": "SMC for multi-armed bandits", "content": "-based random measure p m ( t,a |h 1:t ) provides an accurate approximation to the true posterior density with high probability . we present algorithm 1 with the sequential importance resampling (sir) methodas introduced by, namely, how to compute the posterior of the expected reward of each arm . in step 5 of algorithm 1, we describe in detail how to calculate the posterior p( m ) by drawing new samples from the transition"}, {"header": "Evaluation", "content": "-based bayesian policies achieve the right exploration-exploitation tradeoff . we compare their performance to solutions based on analytically attainable posteriors with bernoulli and contextual linear gaussian reward functions;-appendix a.3 ."}, {"header": "Conclusion and discussion", "content": "proposed smc-based bayesian mab framework allows for interpretable modeling of nonlinear and time-evolving reward functions . we show that sc-basic random measures are accurate enough for Bayesian bandit policies to find satisfactory exploration-exploitation tradeoffs . this is a theoretical analysis of the dependency between the dynamic bandit model's characteristics, the resulting rate of optimal arm changes, and in turn, update the explorable balance."}]}
+{
+  "id": 654922913186994616,
+  "name": "Urteaga_and_Wiggins_-_2024_-_Sequential_Monte_Carlo_Bandits.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "-armed bandit (mab) problem considers the sequential strategy one must devise when playing a row of slot machines: i.e., which arm to play next to maximize cumulative returns . this analogy extends to a wide range of real-world challenges that require online learning, while simultaneously maximizing some notion of reward . the contextual mab, where at each interaction with the world side information is available, is a natural extension of this abstraction ."
+    },
+    {
+      "header": "Background and preliminaries",
+      "content": "ximizing rewards observed from sequentially chosen actions . it can potentially depend on context x  x; e.g., a common choice is x = r d x, namely, the agent needs to simultaneously learn properties of the reward distribution, and sequentially decide which action to take next . we use p ato indicate per-arm reward distributions -one for each arm a ."
+    },
+    {
+      "header": "SMC for multi-armed bandits",
+      "content": "-based random measure p m ( t,a |h 1:t ) provides an accurate approximation to the true posterior density with high probability . we present algorithm 1 with the sequential importance resampling (sir) methodas introduced by, namely, how to compute the posterior of the expected reward of each arm . in step 5 of algorithm 1, we describe in detail how to calculate the posterior p( m ) by drawing new samples from the transition"
+    },
+    {
+      "header": "Evaluation",
+      "content": "-based bayesian policies achieve the right exploration-exploitation tradeoff . we compare their performance to solutions based on analytically attainable posteriors with bernoulli and contextual linear gaussian reward functions;-appendix a.3 ."
+    },
+    {
+      "header": "Conclusion and discussion",
+      "content": "proposed smc-based bayesian mab framework allows for interpretable modeling of nonlinear and time-evolving reward functions . we show that sc-basic random measures are accurate enough for Bayesian bandit policies to find satisfactory exploration-exploitation tradeoffs . this is a theoretical analysis of the dependency between the dynamic bandit model's characteristics, the resulting rate of optimal arm changes, and in turn, update the explorable balance."
+    }
+  ]
+}

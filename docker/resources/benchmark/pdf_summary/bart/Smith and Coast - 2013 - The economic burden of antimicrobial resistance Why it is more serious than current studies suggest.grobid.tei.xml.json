@@ -1,1 +1,118 @@
-{"id": 822791975845364176, "name": "Smith and Coast - 2013 - The economic burden of antimicrobial resistance Why it is more serious than current studies suggest.grobid.tei.xml", "segments": [{"header": "Introduction", "content": "The ability of organisms to develop resistance to the effects of antimicrobial therapies is potentially the greatest challenge to healthcare in the 21 st century. modern healthcare was built over the last century on the basis that infections can be prevented or treated using antimicrobials."}, {"header": "A brief history of AMR", "content": "Resistance means that an antimicrobial therapy is no longer (as) effective against the organism it is targeting. This has been known since the 1940's, when the development of resistance to penicillin was documented just after it was discovered. There is concern that over time there is no reason to suspect that resistance will not occur to all antimicrobials."}, {"header": "The current situation", "content": "Increase in organisms resistant to multiple therapies is now coinciding with the reduction in new therapies coming to market to replace ineffective ones. between 1983 and 1992, 30 new antibiotics were approved in the usa, but only seven have been approved since 2003. between 1968 and 2000, no new classes of antimicrobial were discovered."}, {"header": "FIGURE 1: DRUG DISCOVERY", "content": "In 2004, only 1.6% of drugs in development by world's 15 largest drug companies were antimicrobials. Only two new drugs under development, both of which are in the early stages when failure rates are high."}, {"header": "Current activities", "content": "In the uk, the first antimicrobial resistance strategy, published in 2000, had three inter-related key elements -surveillance, prudent antimicrobial prescribing and infection control. These aspects are still relevant today. This work has helped to strengthen surveillance, infection prevention and control."}, {"header": "Why these are not sufficient", "content": "There has been an almost total shutdown in new product development. Few incentives for pharmaceutical companies to develop a new drug for which health systems will aim to restrict use. There are incentive problems for policy makers."}, {"header": "Evidence on current economic burden", "content": "Treatment failure contributes to increased costs of care associated with: additional investigations such as laboratory tests and x-ray examinations. Additional or alternative treatments, often much more expensive than drugs used to treat infections caused by sensitive organisms. Increased costs to firms of absenteeism, possibly leading to increased product prices."}, {"header": "Updated literature review", "content": "Review focused on costs of amr and costeffectiveness of control strategies. Found 43 studies, although 22 were categorised at high risk of bias and excluded from analysis. Most indicated areas of resource impact rather than reporting monetary values."}, {"header": "TABLE 1 SUMMARY OF COST DATA", "content": "Most studies originate in the usa. this may be a reflection of the englishlanguage journals included in the search, but such a degree of national dominance is still unusual. There is a heavy predominance of hospital-based studies, and indeed the costs are almost exclusively related to costs of additional hospitalization/treatment."}, {"header": "The case of MRSA", "content": "There is a very wide range of costs. Even at the high-end, the costs remain quite modest. Unlike some of the resistant gram-negatives currently emerging, there remains a choice of therapy available to treat mrsa."}, {"header": "BOX 1: A CASE STUDY OF MRSA", "content": "The relatively low cost for mrsa is reflective of amr more generally, as illustrated in table. this table provides estimates for various disease areas, standardized to 2004 us$bn. The current highest estimate found for the societal cost ofAmr to the usa in 2011 by cdc. at approximately $55bn ($20bn health service) per year."}, {"header": "TABLE 2: COMPARATIVE ECONOMIC BURDEN", "content": "Amr is acknowledged to be a significant threat to health and healthcare. Current estimates of the cost of amr are based loosely on the 'incremental' cost related to the extra treatment of resistant over susceptible infection. These costs, broadly speaking, increase as we see multi-drug resistance (mdr) emerge."}, {"header": "Limits of assessing 'costs of resistance'", "content": "Amr is a negative externality associated with consumption of antimicrobials. It has an undesirable effect which is distant from the current consumption decision. Even if it were possible to increase the cost of consumption (e.g. price of antimicrobial, or cost of prescription), it would only be extremely minor for each individual decision."}, {"header": "FIGURE 2: SIGMOIDAL DEVELOPMENT OF AMR", "content": "Third, estimates of cost-of-illness tend not to focus on the impact of resistance on patient safety or public confidence in health care institutions. strategies to reduce transmission are far more likely to appear cost-effective than strategies to control emergence."}, {"header": "BOX 2: CASE STUDY HIPS", "content": "Antibiotic use in the health system has changed fundamentally over the last 60 years. The removal of antimicrobials could mean soaring rates of post-operative infection, mortality and morbidity from what are currently considered trivial infections."}, {"header": "Conclusion", "content": "If current trends continue, there could be highly significant costs to healthcare, and society more generally.effective antimicrobials need rediscovering as a scarce -and largely nonrenewable -resource. this requires an assessment of the balance between the positive effects of using antimicrobial therapies now, and the negative impact of this use on their temporal effectiveness."}, {"header": "Reducing uncertainty and increasing knowledge of full health system impacts", "content": "We know the current economic burden is relatively low compared with other problems. We do not know to what extent the future burden will grow, or how quickly. We are therefore faced with considerable uncertainty, but uncertainty that suggests we need to incur some (perhaps considerable) cost now."}, {"header": "Developing better, more radical, incentive mechanisms", "content": "There needs to be an improvement in the incentive mechanisms at a number of levels. If new therapies are discovered then they need to be protected, and hence the use of them discouraged. Publicprivate partnering, pre-purchase agreement, or direct public funding is needed."}, {"header": "Enhancing international activity", "content": "International activity may be key to encouraging the development of new drugs and diagnostics to help control multi resistant bacteria. There is appreciation of this issue in the uk, where a multi-pronged integrated uk strategy is under development."}, {"header": "Lessons from climate change", "content": "mrsa is the most common, single, multidrug-resistant bacterium, with an estimated 25,000 patient deaths per year. mrsa adds around $20,000 per patient per episode to the cost of hospital treatment."}, {"header": "BOX 2: CASE STUDY HIPS", "content": "Antimicrobial therapies are, and have been, part of routine care ever since hip replacements became available, both as prophylaxis and as treatment for hai. We looked at information relating to amputation -another major surgery involving limbs - as a proxy for what rates may have been pre-and post-antimicrobial discovery. We used this information, together with current studies looking at the infection pathway for hip replacement, to suggest possible values for the flow of patients requiring hip replacement."}, {"header": "Search Process", "content": "Initial searching of electronic databases utilised key terms taken from the earlier review. Searching on combinations of terms related to antimicrobial, resistance and costs. given the limited resources, both financially and in terms of time, the searching of databases was limited."}, {"header": "Stage 2/4: Citation searching", "content": " reference lists of papers selected for the review were scanned to identify any further papers. Review papers identified through the review are also used in citation searching."}, {"header": "Stage 3: Further electronic bibliographic database searching relating to specific terminology", "content": "Searches of citation lists of both empirical papers identified in search 1 and key review papers, indicated that there were clearly papers relating to evidence about the costs of resistance in relation to particular micro-organisms that were being missed. given limited resources, it was not feasible to search on all possible micro-organism names and all potential drugs. instead, a second search aimed to focus on two of the most studied and potentially more serious current resistant infections: methicillin-resistant staphylococcus aureus (mrsa) and vancomycin-resistant enterococcus (vre)"}, {"header": "Inclusion criteria", "content": "There were six inclusion criteria for the review. papers providing empirical evidence on the economic impact of antimicrobial resistance obtained through primary data collection. papers containing information on any of length of stay, mortality, patient cost and/or societal cost that may be attributable to amr. for primary studies, inclusion of a control group of those with a susceptible infection."}, {"header": "Identification of papers", "content": " papers in the stage 1 search were initially identified from abstracts obtained in the literature search. Papers that were obtained were then read and a final decision made on whether they should be included in the review. following the citation searches and subsequent database searching, a number of additional papers were selected."}, {"header": "Data extraction", "content": " standardised data extraction forms, based on the earlier systematic review, were utilised. The following data were extracted for each study:. The data were then combined to create the overall data set for the study."}, {"header": "Findings", "content": "In total, the review identified 24 relevant papers. Because of the lack of resources for a full systematic review, including searching for all combinations of micro-organisms and drugs, the totality of this literature is almost certainly under-estimated."}]}
+{
+  "id": 822791975845364176,
+  "name": "Smith and Coast - 2013 - The economic burden of antimicrobial resistance Why it is more serious than current studies suggest.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "The ability of organisms to develop resistance to the effects of antimicrobial therapies is potentially the greatest challenge to healthcare in the 21 st century. modern healthcare was built over the last century on the basis that infections can be prevented or treated using antimicrobials."
+    },
+    {
+      "header": "A brief history of AMR",
+      "content": "Resistance means that an antimicrobial therapy is no longer (as) effective against the organism it is targeting. This has been known since the 1940's, when the development of resistance to penicillin was documented just after it was discovered. There is concern that over time there is no reason to suspect that resistance will not occur to all antimicrobials."
+    },
+    {
+      "header": "The current situation",
+      "content": "Increase in organisms resistant to multiple therapies is now coinciding with the reduction in new therapies coming to market to replace ineffective ones. between 1983 and 1992, 30 new antibiotics were approved in the usa, but only seven have been approved since 2003. between 1968 and 2000, no new classes of antimicrobial were discovered."
+    },
+    {
+      "header": "FIGURE 1: DRUG DISCOVERY",
+      "content": "In 2004, only 1.6% of drugs in development by world's 15 largest drug companies were antimicrobials. Only two new drugs under development, both of which are in the early stages when failure rates are high."
+    },
+    {
+      "header": "Current activities",
+      "content": "In the uk, the first antimicrobial resistance strategy, published in 2000, had three inter-related key elements -surveillance, prudent antimicrobial prescribing and infection control. These aspects are still relevant today. This work has helped to strengthen surveillance, infection prevention and control."
+    },
+    {
+      "header": "Why these are not sufficient",
+      "content": "There has been an almost total shutdown in new product development. Few incentives for pharmaceutical companies to develop a new drug for which health systems will aim to restrict use. There are incentive problems for policy makers."
+    },
+    {
+      "header": "Evidence on current economic burden",
+      "content": "Treatment failure contributes to increased costs of care associated with: additional investigations such as laboratory tests and x-ray examinations. Additional or alternative treatments, often much more expensive than drugs used to treat infections caused by sensitive organisms. Increased costs to firms of absenteeism, possibly leading to increased product prices."
+    },
+    {
+      "header": "Updated literature review",
+      "content": "Review focused on costs of amr and costeffectiveness of control strategies. Found 43 studies, although 22 were categorised at high risk of bias and excluded from analysis. Most indicated areas of resource impact rather than reporting monetary values."
+    },
+    {
+      "header": "TABLE 1 SUMMARY OF COST DATA",
+      "content": "Most studies originate in the usa. this may be a reflection of the englishlanguage journals included in the search, but such a degree of national dominance is still unusual. There is a heavy predominance of hospital-based studies, and indeed the costs are almost exclusively related to costs of additional hospitalization/treatment."
+    },
+    {
+      "header": "The case of MRSA",
+      "content": "There is a very wide range of costs. Even at the high-end, the costs remain quite modest. Unlike some of the resistant gram-negatives currently emerging, there remains a choice of therapy available to treat mrsa."
+    },
+    {
+      "header": "BOX 1: A CASE STUDY OF MRSA",
+      "content": "The relatively low cost for mrsa is reflective of amr more generally, as illustrated in table. this table provides estimates for various disease areas, standardized to 2004 us$bn. The current highest estimate found for the societal cost ofAmr to the usa in 2011 by cdc. at approximately $55bn ($20bn health service) per year."
+    },
+    {
+      "header": "TABLE 2: COMPARATIVE ECONOMIC BURDEN",
+      "content": "Amr is acknowledged to be a significant threat to health and healthcare. Current estimates of the cost of amr are based loosely on the 'incremental' cost related to the extra treatment of resistant over susceptible infection. These costs, broadly speaking, increase as we see multi-drug resistance (mdr) emerge."
+    },
+    {
+      "header": "Limits of assessing 'costs of resistance'",
+      "content": "Amr is a negative externality associated with consumption of antimicrobials. It has an undesirable effect which is distant from the current consumption decision. Even if it were possible to increase the cost of consumption (e.g. price of antimicrobial, or cost of prescription), it would only be extremely minor for each individual decision."
+    },
+    {
+      "header": "FIGURE 2: SIGMOIDAL DEVELOPMENT OF AMR",
+      "content": "Third, estimates of cost-of-illness tend not to focus on the impact of resistance on patient safety or public confidence in health care institutions. strategies to reduce transmission are far more likely to appear cost-effective than strategies to control emergence."
+    },
+    {
+      "header": "BOX 2: CASE STUDY HIPS",
+      "content": "Antibiotic use in the health system has changed fundamentally over the last 60 years. The removal of antimicrobials could mean soaring rates of post-operative infection, mortality and morbidity from what are currently considered trivial infections."
+    },
+    {
+      "header": "Conclusion",
+      "content": "If current trends continue, there could be highly significant costs to healthcare, and society more generally.effective antimicrobials need rediscovering as a scarce -and largely nonrenewable -resource. this requires an assessment of the balance between the positive effects of using antimicrobial therapies now, and the negative impact of this use on their temporal effectiveness."
+    },
+    {
+      "header": "Reducing uncertainty and increasing knowledge of full health system impacts",
+      "content": "We know the current economic burden is relatively low compared with other problems. We do not know to what extent the future burden will grow, or how quickly. We are therefore faced with considerable uncertainty, but uncertainty that suggests we need to incur some (perhaps considerable) cost now."
+    },
+    {
+      "header": "Developing better, more radical, incentive mechanisms",
+      "content": "There needs to be an improvement in the incentive mechanisms at a number of levels. If new therapies are discovered then they need to be protected, and hence the use of them discouraged. Publicprivate partnering, pre-purchase agreement, or direct public funding is needed."
+    },
+    {
+      "header": "Enhancing international activity",
+      "content": "International activity may be key to encouraging the development of new drugs and diagnostics to help control multi resistant bacteria. There is appreciation of this issue in the uk, where a multi-pronged integrated uk strategy is under development."
+    },
+    {
+      "header": "Lessons from climate change",
+      "content": "mrsa is the most common, single, multidrug-resistant bacterium, with an estimated 25,000 patient deaths per year. mrsa adds around $20,000 per patient per episode to the cost of hospital treatment."
+    },
+    {
+      "header": "BOX 2: CASE STUDY HIPS",
+      "content": "Antimicrobial therapies are, and have been, part of routine care ever since hip replacements became available, both as prophylaxis and as treatment for hai. We looked at information relating to amputation -another major surgery involving limbs - as a proxy for what rates may have been pre-and post-antimicrobial discovery. We used this information, together with current studies looking at the infection pathway for hip replacement, to suggest possible values for the flow of patients requiring hip replacement."
+    },
+    {
+      "header": "Search Process",
+      "content": "Initial searching of electronic databases utilised key terms taken from the earlier review. Searching on combinations of terms related to antimicrobial, resistance and costs. given the limited resources, both financially and in terms of time, the searching of databases was limited."
+    },
+    {
+      "header": "Stage 2/4: Citation searching",
+      "content": " reference lists of papers selected for the review were scanned to identify any further papers. Review papers identified through the review are also used in citation searching."
+    },
+    {
+      "header": "Stage 3: Further electronic bibliographic database searching relating to specific terminology",
+      "content": "Searches of citation lists of both empirical papers identified in search 1 and key review papers, indicated that there were clearly papers relating to evidence about the costs of resistance in relation to particular micro-organisms that were being missed. given limited resources, it was not feasible to search on all possible micro-organism names and all potential drugs. instead, a second search aimed to focus on two of the most studied and potentially more serious current resistant infections: methicillin-resistant staphylococcus aureus (mrsa) and vancomycin-resistant enterococcus (vre)"
+    },
+    {
+      "header": "Inclusion criteria",
+      "content": "There were six inclusion criteria for the review. papers providing empirical evidence on the economic impact of antimicrobial resistance obtained through primary data collection. papers containing information on any of length of stay, mortality, patient cost and/or societal cost that may be attributable to amr. for primary studies, inclusion of a control group of those with a susceptible infection."
+    },
+    {
+      "header": "Identification of papers",
+      "content": " papers in the stage 1 search were initially identified from abstracts obtained in the literature search. Papers that were obtained were then read and a final decision made on whether they should be included in the review. following the citation searches and subsequent database searching, a number of additional papers were selected."
+    },
+    {
+      "header": "Data extraction",
+      "content": " standardised data extraction forms, based on the earlier systematic review, were utilised. The following data were extracted for each study:. The data were then combined to create the overall data set for the study."
+    },
+    {
+      "header": "Findings",
+      "content": "In total, the review identified 24 relevant papers. Because of the lack of resources for a full systematic review, including searching for all combinations of micro-organisms and drugs, the totality of this literature is almost certainly under-estimated."
+    }
+  ]
+}

@@ -1,1 +1,18 @@
-{"id": 4620920583976077697, "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml", "segments": [{"header": "Introduction", "content": "History trees are a data structure that inherently includes a temporal dimension and was specifically designed for networks with dynamic topologies. The introduction of history trees has recently led to the development of optimal linear-time algorithms for anonymous dynamic networks."}, {"header": "Basic Structure and Algorithms", "content": "In this section we focus on anonymous networks operating in synchronous steps, modeled as undirected dynamic multigraphs with no port awareness. The result is the smallest tree containing v t g (p) and all views in m as induced subtrees."}, {"header": "Leader Election", "content": "In this case, any agent that becomes distinguishable from all others at time t can be identified with certainty by time t + 2n -2, allowing all agents to terminate. The goal is to design a universal protocol that enables memoryless agents to construct coherent views of some history tree related to the network."}]}
+{
+  "id": 4620920583976077697,
+  "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "History trees are a data structure that inherently includes a temporal dimension and was specifically designed for networks with dynamic topologies. The introduction of history trees has recently led to the development of optimal linear-time algorithms for anonymous dynamic networks."
+    },
+    {
+      "header": "Basic Structure and Algorithms",
+      "content": "In this section we focus on anonymous networks operating in synchronous steps, modeled as undirected dynamic multigraphs with no port awareness. The result is the smallest tree containing v t g (p) and all views in m as induced subtrees."
+    },
+    {
+      "header": "Leader Election",
+      "content": "In this case, any agent that becomes distinguishable from all others at time t can be identified with certainty by time t + 2n -2, allowing all agents to terminate. The goal is to design a universal protocol that enables memoryless agents to construct coherent views of some history tree related to the network."
+    }
+  ]
+}

@@ -1,1 +1,113 @@
-{"id": 5926491902012788021, "name": "Onah_et_al._-_2023_-_A_Data-driven_Latent_Semantic_Analysis_for_Automat.grobid.tei.xml", "segments": [{"header": "I. INTRODUCTION", "content": "however, this study presents a novel approach to topic modelling by performing extracdve summarizadon on over 100 ardcles related to genes and associated diseases and feeding the summary as an input argument a latent dirichlet allocadon (lda) model in order to perform the topic modelling.\nin this study, we try to answer the following research quesdons:\u2022 how automated text summarizadon techniques were used in an extracdve summary of ardcles?\u2022 how topic modelling models were used in producing emerging terms that are related to muldple and different journal ardcles?"}, {"header": "II. RELATED WORK", "content": "unless these text data are extracted and make meaning, then the most important and relevant informadon would be lost.\nthe voluminous text data need to be collected and summarised in order to retrieve useful informadon concerning the main content of the document."}, {"header": "A. Summariza-on", "content": "designing an abstracdve model for summarizadon is very problemadc and challenging because it involves a more complex language modelling.in this study, we decided to use extracdve approach for ardcle summarizadon, because we wanted all parts of the sentences that will be summarised to be from the original document."}, {"header": "B. Topic Modelling", "content": "topic modelling is the process of labelling and describing documents into topics.\ntopic modelling approach is based on an inducdve modelling used to abstract core themes from a weighted graphical representadon of documents obtained during the processing stages."}, {"header": "C. Latent Dirichlet Alloca-on", "content": "in this approach, presented with words or token from muldple documents from which a probability topics model is constructed, we observed word distribudons for each mixture of topics in the document."}, {"header": "III. METHODS", "content": "we then extract the top n sentences based on their ranking for the summary generadon that was then fed into the lda topic modelling.the study was designed to apply a generalised concept of lda topic modelling technique to create a dicdonary of terms that was fed from the summarised ardcles."}, {"header": "A. Model Descrip-on", "content": "in this case, a label is produced to indicate whether a sentence met the condidons which are the chosen length of the sentence or the summary threshold indicated in the model."}, {"header": "1)", "content": "the summary length is fixed, therefore, the top n sentences with the highest score rankings are chosen for the summary.\nthe process of scoring the sentence is represented in equadons 1 and 2."}, {"header": "Sentscores[S] = Wordfreq[W]", "content": "(1)during the sentence model processing interval, the length of the sentence is either increased or reduced by certain values within the sentence scores dicdonary.\ntherefore, new sentences are added into the sentence dicdonary scores."}, {"header": "Sentscores[S]+ = Wordfreq[W]", "content": "the word frequencies were selected automadcally based on the prevalence or occurrence of the words in the corpus dicdonary created in the model (see figure).\nthe length of the sentence selected for the word frequencies was less than 30."}, {"header": "Word", "content": ""}, {"header": "B. Research Pipeline", "content": "the pipeline in figurewas used to answer the research quesdons in this study.1) data collec-on: the dataset was scraped from the web.\npapers related to diseases and the mutated genes causadon were extracted for this study."}, {"header": "2)", "content": "in the feature extracdon process, we parse the web ardcles source code in order to extract the textual material needed for the final summary.\nduring the process of formatng the clean ardcles, we performed extra filtering of special characters from the processed text in order to find and replace these symbols automadcally."}, {"header": "3)", "content": "stopwords: we further removed a list of stop-words from the propocessed ardcles.\nwords such as pronounce that are not necessary or essendal for the final summary (see figurefor the list of stop words)."}, {"header": "4) Topic Modelling & Visualiza-on:", "content": "the result was visualised using pyldavis which is a web-based interacdve visualizadon package that allows the display of the topics that were idendfied using the lda approach.\npyldavis was used for extracdng informadon from the fived lda topic models to design a web-based interacdve visualizadon."}, {"header": "IV. MODEL", "content": "let nt denote the probability of term t element of 1, ..., n for n element of 1,..., k, where n denotes the frequency of terms in the vocabulary (see equadonwhere (\u03bb) is the weight given to probability of the terms t in topic n (equadon 1)"}, {"header": "B. Defining Saliency Term", "content": "the possibility that the emerge word w was generated from the lda topic model (tm).we also compute the marginal probability p(tm): -with the possibility that any word w 0 randomly selected was generated by tm."}, {"header": "U(6)", "content": ""}, {"header": "=5", "content": "the uniqueness of each term is described as how significance and semandcally associated they are to the topics.\nthe saliency measures the distribudon of the speeds and idendficadon of topic associadon and composidon (e.g. prevalence topic 1 terms such as genes,disease etc."}, {"header": "V. LATENT SEMANTIC ANALYSIS", "content": "we performed a mini summary from the original summary from the study using latent semandc analysis (lsa) for text summarizadon."}, {"header": "A. Sample Extracted Summary", "content": "the heapq is used in implemendng the priority queues for word frequencies in sentences with higher weight is given more priority in processing the summary."}, {"header": "B. Findings", "content": ""}, {"header": "VI. ROUGE: RELIABILITY & VALIDITY OF MODEL", "content": "rouge is a metric evaluadon model which stands for recall oriented understudy for gisting evaluation.\nrouge has measures that allow for the evaluadon of the accuracy of system summary as compared to a human created summary known as the model summary,."}, {"header": "TABLE III ROUGE METRICS MEASUREMENT SUMMARIES", "content": "this shows that the closeness of the human model summary to the system or reference summary produces bever average across all rouge measuring dimensions (recall, precision and f1 score)."}, {"header": "Comparing the system generated summary with a new human", "content": ""}, {"header": "A. Procedure: Recall & Precision", "content": "in this study, we combined and computerised both the precision and recall and further report the f1 -score measure.in order to ascertain the validity of the study, we measured rouge-n, rouge -s and rouge -l which are the granularity of texts that was compared between the system summaries and the reference or human annotated model summaries."}, {"header": "VII. RESULTS & FINDINGS", "content": "figurereveals the common terms from the topic model when the slider is at the full probability.\nanother limitadon of the study was that the model takes longer to evaluate the emerging terms within the topic modelling approach used due to the large text data for analysis."}, {"header": "IX. DISCUSSION", "content": "manual summarizadon is laborious and challenging task to accomplish.\nsummarizadon technique has been applied to various natural language processing (nlp) task such as in the areas of text analysis, classificadon, automated quesdon and answering, financial and legal texts summarizadon, news summarizadon and reviewing of news headlines and the generadon of social media ardcles,."}, {"header": "X. CONCLUSION", "content": "our proposed future study will look into performing topic modelling with these documents and observe whether the approach retain the meaning of the original documents."}]}
+{
+  "id": 5926491902012788021,
+  "name": "Onah_et_al._-_2023_-_A_Data-driven_Latent_Semantic_Analysis_for_Automat.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "I. INTRODUCTION",
+      "content": "however, this study presents a novel approach to topic modelling by performing extracdve summarizadon on over 100 ardcles related to genes and associated diseases and feeding the summary as an input argument a latent dirichlet allocadon (lda) model in order to perform the topic modelling.\nin this study, we try to answer the following research quesdons:\u2022 how automated text summarizadon techniques were used in an extracdve summary of ardcles?\u2022 how topic modelling models were used in producing emerging terms that are related to muldple and different journal ardcles?"
+    },
+    {
+      "header": "II. RELATED WORK",
+      "content": "unless these text data are extracted and make meaning, then the most important and relevant informadon would be lost.\nthe voluminous text data need to be collected and summarised in order to retrieve useful informadon concerning the main content of the document."
+    },
+    {
+      "header": "A. Summariza-on",
+      "content": "designing an abstracdve model for summarizadon is very problemadc and challenging because it involves a more complex language modelling.in this study, we decided to use extracdve approach for ardcle summarizadon, because we wanted all parts of the sentences that will be summarised to be from the original document."
+    },
+    {
+      "header": "B. Topic Modelling",
+      "content": "topic modelling is the process of labelling and describing documents into topics.\ntopic modelling approach is based on an inducdve modelling used to abstract core themes from a weighted graphical representadon of documents obtained during the processing stages."
+    },
+    {
+      "header": "C. Latent Dirichlet Alloca-on",
+      "content": "in this approach, presented with words or token from muldple documents from which a probability topics model is constructed, we observed word distribudons for each mixture of topics in the document."
+    },
+    {
+      "header": "III. METHODS",
+      "content": "we then extract the top n sentences based on their ranking for the summary generadon that was then fed into the lda topic modelling.the study was designed to apply a generalised concept of lda topic modelling technique to create a dicdonary of terms that was fed from the summarised ardcles."
+    },
+    {
+      "header": "A. Model Descrip-on",
+      "content": "in this case, a label is produced to indicate whether a sentence met the condidons which are the chosen length of the sentence or the summary threshold indicated in the model."
+    },
+    {
+      "header": "1)",
+      "content": "the summary length is fixed, therefore, the top n sentences with the highest score rankings are chosen for the summary.\nthe process of scoring the sentence is represented in equadons 1 and 2."
+    },
+    {
+      "header": "Sentscores[S] = Wordfreq[W]",
+      "content": "(1)during the sentence model processing interval, the length of the sentence is either increased or reduced by certain values within the sentence scores dicdonary.\ntherefore, new sentences are added into the sentence dicdonary scores."
+    },
+    {
+      "header": "Sentscores[S]+ = Wordfreq[W]",
+      "content": "the word frequencies were selected automadcally based on the prevalence or occurrence of the words in the corpus dicdonary created in the model (see figure).\nthe length of the sentence selected for the word frequencies was less than 30."
+    },
+    { "header": "Word", "content": "" },
+    {
+      "header": "B. Research Pipeline",
+      "content": "the pipeline in figurewas used to answer the research quesdons in this study.1) data collec-on: the dataset was scraped from the web.\npapers related to diseases and the mutated genes causadon were extracted for this study."
+    },
+    {
+      "header": "2)",
+      "content": "in the feature extracdon process, we parse the web ardcles source code in order to extract the textual material needed for the final summary.\nduring the process of formatng the clean ardcles, we performed extra filtering of special characters from the processed text in order to find and replace these symbols automadcally."
+    },
+    {
+      "header": "3)",
+      "content": "stopwords: we further removed a list of stop-words from the propocessed ardcles.\nwords such as pronounce that are not necessary or essendal for the final summary (see figurefor the list of stop words)."
+    },
+    {
+      "header": "4) Topic Modelling & Visualiza-on:",
+      "content": "the result was visualised using pyldavis which is a web-based interacdve visualizadon package that allows the display of the topics that were idendfied using the lda approach.\npyldavis was used for extracdng informadon from the fived lda topic models to design a web-based interacdve visualizadon."
+    },
+    {
+      "header": "IV. MODEL",
+      "content": "let nt denote the probability of term t element of 1, ..., n for n element of 1,..., k, where n denotes the frequency of terms in the vocabulary (see equadonwhere (\u03bb) is the weight given to probability of the terms t in topic n (equadon 1)"
+    },
+    {
+      "header": "B. Defining Saliency Term",
+      "content": "the possibility that the emerge word w was generated from the lda topic model (tm).we also compute the marginal probability p(tm): -with the possibility that any word w 0 randomly selected was generated by tm."
+    },
+    { "header": "U(6)", "content": "" },
+    {
+      "header": "=5",
+      "content": "the uniqueness of each term is described as how significance and semandcally associated they are to the topics.\nthe saliency measures the distribudon of the speeds and idendficadon of topic associadon and composidon (e.g. prevalence topic 1 terms such as genes,disease etc."
+    },
+    {
+      "header": "V. LATENT SEMANTIC ANALYSIS",
+      "content": "we performed a mini summary from the original summary from the study using latent semandc analysis (lsa) for text summarizadon."
+    },
+    {
+      "header": "A. Sample Extracted Summary",
+      "content": "the heapq is used in implemendng the priority queues for word frequencies in sentences with higher weight is given more priority in processing the summary."
+    },
+    { "header": "B. Findings", "content": "" },
+    {
+      "header": "VI. ROUGE: RELIABILITY & VALIDITY OF MODEL",
+      "content": "rouge is a metric evaluadon model which stands for recall oriented understudy for gisting evaluation.\nrouge has measures that allow for the evaluadon of the accuracy of system summary as compared to a human created summary known as the model summary,."
+    },
+    {
+      "header": "TABLE III ROUGE METRICS MEASUREMENT SUMMARIES",
+      "content": "this shows that the closeness of the human model summary to the system or reference summary produces bever average across all rouge measuring dimensions (recall, precision and f1 score)."
+    },
+    {
+      "header": "Comparing the system generated summary with a new human",
+      "content": ""
+    },
+    {
+      "header": "A. Procedure: Recall & Precision",
+      "content": "in this study, we combined and computerised both the precision and recall and further report the f1 -score measure.in order to ascertain the validity of the study, we measured rouge-n, rouge -s and rouge -l which are the granularity of texts that was compared between the system summaries and the reference or human annotated model summaries."
+    },
+    {
+      "header": "VII. RESULTS & FINDINGS",
+      "content": "figurereveals the common terms from the topic model when the slider is at the full probability.\nanother limitadon of the study was that the model takes longer to evaluate the emerging terms within the topic modelling approach used due to the large text data for analysis."
+    },
+    {
+      "header": "IX. DISCUSSION",
+      "content": "manual summarizadon is laborious and challenging task to accomplish.\nsummarizadon technique has been applied to various natural language processing (nlp) task such as in the areas of text analysis, classificadon, automated quesdon and answering, financial and legal texts summarizadon, news summarizadon and reviewing of news headlines and the generadon of social media ardcles,."
+    },
+    {
+      "header": "X. CONCLUSION",
+      "content": "our proposed future study will look into performing topic modelling with these documents and observe whether the approach retain the meaning of the original documents."
+    }
+  ]
+}

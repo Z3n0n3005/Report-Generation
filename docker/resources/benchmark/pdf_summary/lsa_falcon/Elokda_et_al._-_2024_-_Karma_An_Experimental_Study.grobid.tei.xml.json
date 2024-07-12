@@ -1,1 +1,22 @@
-{"id": 2076681962753098997, "name": "Elokda_et_al._-_2024_-_Karma_An_Experimental_Study.grobid.tei.xml", "segments": [{"header": "INTRODUCTION", "content": "-world implementation of a karma-like system resulted in significant aggregate gains in terms of food bank participation and fluidity of donations . the price instead arises dynamically from bidding . such a mechanism may be advantageous when preference intensities/urgencies are heterogeneous and not perfectly correlated over time ."}, {"header": "EXPERIMENTAL METHODS", "content": "plemented as a real-time online experiment using otree.figuresin appendix a show examples of these pages . participants receive approximately  targ = $10 on average, which compensates for a maximum experiment duration of 40 minutes ."}, {"header": "RESULTS", "content": "vorable combination is high stake with binary bidding, both in terms of median efficiency gains and distribution of gains as most individuals are on the benefiting side .figureshows the median efficiency gain in each of the four treatments (denoted 'total'), cf.table, as well the median efficient gain in the bottom and top halves of the population .for the random allocations, the ci was estimated by running 1000 independent simulations ."}, {"header": "DISCUSSION", "content": "y gains of a karma scheme compared with random allocation are pronounced and statistically significant in all treatments . this constitutes the first set of formal evidence for the potential social benefits of using a formal karm mechanism indeed can work to the benefit of almost everybody ."}]}
+{
+  "id": 2076681962753098997,
+  "name": "Elokda_et_al._-_2024_-_Karma_An_Experimental_Study.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "INTRODUCTION",
+      "content": "-world implementation of a karma-like system resulted in significant aggregate gains in terms of food bank participation and fluidity of donations . the price instead arises dynamically from bidding . such a mechanism may be advantageous when preference intensities/urgencies are heterogeneous and not perfectly correlated over time ."
+    },
+    {
+      "header": "EXPERIMENTAL METHODS",
+      "content": "plemented as a real-time online experiment using otree.figuresin appendix a show examples of these pages . participants receive approximately  targ = $10 on average, which compensates for a maximum experiment duration of 40 minutes ."
+    },
+    {
+      "header": "RESULTS",
+      "content": "vorable combination is high stake with binary bidding, both in terms of median efficiency gains and distribution of gains as most individuals are on the benefiting side .figureshows the median efficiency gain in each of the four treatments (denoted 'total'), cf.table, as well the median efficient gain in the bottom and top halves of the population .for the random allocations, the ci was estimated by running 1000 independent simulations ."
+    },
+    {
+      "header": "DISCUSSION",
+      "content": "y gains of a karma scheme compared with random allocation are pronounced and statistically significant in all treatments . this constitutes the first set of formal evidence for the potential social benefits of using a formal karm mechanism indeed can work to the benefit of almost everybody ."
+    }
+  ]
+}

@@ -1,1 +1,119 @@
-{"id": 1185781837322895275, "name": "Onah_et_al._-_2023_-_A_Data-driven_Latent_Semantic_Analysis_for_Automat.grobid.tei.xml", "segments": [{"header": "I. INTRODUCTION", "content": "This study presents a novel approach to topic modelling by performing extracdve summarizadon on over 100 ardcles related to genes and associated diseases. The idea here is to idendfy the commonalides between ardcles of the same genre describing a specific topic of interest in the research. The experimental results show that the proposed model achieves good performance."}, {"header": "II. RELATED WORK", "content": "Text summarizadon is a well-known task in natural language understanding and processing. It is described as the process of presendng huge data informadon in a concise manner."}, {"header": "A. Summariza-on", "content": " summarizadon is a technique in nlp that is used for condensing or summarising huge texts into smaller versions taking care not to omit the main relevant informadon contained in the document. This helps in reducing the size of the original document either single or muldple while preserving key elements and meaning of the content. There are two different approaches to automadc summariz adon; these are extracdon and abstracdon."}, {"header": "B. Topic Modelling", "content": " topic modelling is the process of labelling and describing documents into topics. This is an unsupervised machine learning technique for abstracdng topics from collecdons of documents."}, {"header": "C. Latent Dirichlet Alloca-on", "content": " latent dirichlet allocadon (lda) is a technique applied in topic modelling. This is a topic discovery technique used to generate topics based on the probability that each given term might occur within the document. The document can be in the form of mixture of topics that might not necessarily be disdnct."}, {"header": "III. METHODS", "content": " summarizadon model was designed to scrap text data from pubmed journal database using genes and diseases keywords search. The proposed model is scalable and generalizable for producing arbitrarily size summaries by splitng the documents into resemble content."}, {"header": "A. Model Descrip-on", "content": "Extracdve summarizadon approach produced naturally grammadcal summaries without much linguisdc connotadon or analysis. Most of the processing of the text was performed with the python natural language toolkit (nltk)"}, {"header": "1)", "content": "In this study, a scoring funcdon is introduced to generate the sentence score dicdonary which hold the value assigned to each sentence. this denotes the probability that the sentence will be selected and included in the summary (see figure). the summary length is fixed, therefore, the top n sentences with the highest score rankings are chosen."}, {"header": "Sentscores[S] = Wordfreq[W]", "content": "During the sentence model processing interval, the length of the sentence is either increased or reduced by certain values. New sentences are added into the sentence dicdonary scores. If the process sentence is not in the sentence score, then the word is added to the sentence in the score."}, {"header": "Sentscores[S]+ = Wordfreq[W]", "content": "The word frequencies were selected automadcally based on the prevalence or occurrence of the words in the corpus dicdonary created in the model. The maximum weighted frequency (freqmax) of each word was calculated by using the product of the word frequencies (wfreq) and the values (v ). These are then added to final summary (see equadon 3)"}, {"header": "Word", "content": "CNN.com will feature iReporter photos in a weekly Travel Snapshots gallery. Visit CNN.com/Travel each week for a new gallery of snapshots from around the world."}, {"header": "B. Research Pipeline", "content": "The dataset was scraped from the web. about 100 papers were extracted from pubmed central (pmc) database. papers related to diseases and the mutated genes causadon were extracted for this study."}, {"header": "2)", "content": "Web-based dataset scraped from pubmed journal was in raw state and unstructured which consist of html tags, special characters, symbols and numbers. Preprocessing involved converdng the dataset into text documents using nlp packages such as beaudfulsoup, regular expression, lxml, tokenisadon and using nltk library. In the feature extracdon process, we parse the web ardcles source code in order to extract the textual material needed for the final summary."}, {"header": "3)", "content": "Summarize the following segment into 1 sentence: stopwords. We further removed a list of stop-words from the propocessed ardcles. words such as pronounce that are not necessary or essendal for the final summary."}, {"header": "4) Topic Modelling & Visualiza-on:", "content": "This study was able to reveal prevalence of terms that emerged within the documents and show their relevance by how the projecdon of the topic modelling circle and the size of a word in the result visualisadon. The result was visualised using pyldavis which is a web-based interacdve visualizadon package."}, {"header": "IV. MODEL", "content": "where (\u03bb) is the weight given to probability of the terms t in topic n (equadon 1) Let nt denote the probability of term t element of 1,..., n for n elements of 1..., k, where n denotes frequency of terms in the vocabulary."}, {"header": "B. Defining Saliency Term", "content": "In this study we define saliency term as given a word 'w 0, we compute its minimal probability p(tm/w). where tm is the topic model. We were able to compute 5 topics (t) and 10 passes which were selected from the latent dirichlet allocadon (lda) topic modelling (see equadon 6)."}, {"header": "U(6)", "content": ""}, {"header": "=5", "content": "The uniqueness of each term is described as how significance and semandcally associated they are to the topics. The saliency measures the distribudon of the speeds and idendficadon of topic associadon and composidon. We observed that given equal frequency of words, the most common, relevant or disdncdve terms (e.g. gene, disease, expression, associate ) are prevalence."}, {"header": "V. LATENT SEMANTIC ANALYSIS", "content": " latent semandc analysis (lsa) is a robust algebraic and stadsdcal method. lsa is used to extract features that cannot be directly mendoned within the dataset. results from the lsa present a robust summary of the endre ardcles."}, {"header": "A. Sample Extracted Summary", "content": "We used the heap queue (heapq) library to select the most or very useful sentences. The priority queues for word frequencies in sentences with higher weight is given more priority in processing the summary."}, {"header": "B. Findings", "content": "Genes that are associated to some cancerous and type 2 diabetes diseases (see table) are linked to cancer and diabetes. The study has revealed very interesdng findings of genes associated with some cancers and diabetes diseases."}, {"header": "VI. ROUGE: RELIABILITY & VALIDITY OF MODEL", "content": "Rouge is a metric evaluadon model which stands for recall oriented understudy for gisting evaluation. It is originally based on a metric used for machine transladon called bilingual evaluation understudy (bleu) rouge was used to check for the reliability and validity of our model."}, {"header": "TABLE III ROUGE METRICS MEASUREMENT SUMMARIES", "content": "Mlycd (rank 164)hadhb (rank 354)ivd (rank 713)mut (rank 921)and pccb ( rank 684) are also ranked highly by hridaya. The genes are pdgfrbabl1flt1; and these genes are drug targets of cancer drugs like dasa8nib."}, {"header": "Comparing the system generated summary with a new human", "content": ""}, {"header": "A. Procedure: Recall & Precision", "content": "The precision of the summaries is crucial as we are trying to predict generated summaries that should be concise in nature. In this study, we combined and computerised both the precision and recall and further report the f1 -score measure."}, {"header": "VII. RESULTS & FINDINGS", "content": "The terms in the topic modelling show text which are mostly frequent in the document. These were depicted by the size of the circle (as seen in figuresand) representadon of the result would reveal the distance between topics, the distribudon and reladonship between topic levels."}, {"header": "IX. DISCUSSION", "content": " manual summarizadon is laborious and challenging task to accomplish. automadzadon of the task is very essendal. this process is gaining popularity among researchers. summarizdon technique has been applied to various natural language processing (nlp) task."}, {"header": "X. CONCLUSION", "content": " automadc summarizadon is the process of reducing a text document with a computer program. The aim is to create a summary that retains the most important points of the original document. This study proposed fully automated single and muldple documents text summaries."}]}
+{
+  "id": 1185781837322895275,
+  "name": "Onah_et_al._-_2023_-_A_Data-driven_Latent_Semantic_Analysis_for_Automat.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "I. INTRODUCTION",
+      "content": "This study presents a novel approach to topic modelling by performing extracdve summarizadon on over 100 ardcles related to genes and associated diseases. The idea here is to idendfy the commonalides between ardcles of the same genre describing a specific topic of interest in the research. The experimental results show that the proposed model achieves good performance."
+    },
+    {
+      "header": "II. RELATED WORK",
+      "content": "Text summarizadon is a well-known task in natural language understanding and processing. It is described as the process of presendng huge data informadon in a concise manner."
+    },
+    {
+      "header": "A. Summariza-on",
+      "content": " summarizadon is a technique in nlp that is used for condensing or summarising huge texts into smaller versions taking care not to omit the main relevant informadon contained in the document. This helps in reducing the size of the original document either single or muldple while preserving key elements and meaning of the content. There are two different approaches to automadc summariz adon; these are extracdon and abstracdon."
+    },
+    {
+      "header": "B. Topic Modelling",
+      "content": " topic modelling is the process of labelling and describing documents into topics. This is an unsupervised machine learning technique for abstracdng topics from collecdons of documents."
+    },
+    {
+      "header": "C. Latent Dirichlet Alloca-on",
+      "content": " latent dirichlet allocadon (lda) is a technique applied in topic modelling. This is a topic discovery technique used to generate topics based on the probability that each given term might occur within the document. The document can be in the form of mixture of topics that might not necessarily be disdnct."
+    },
+    {
+      "header": "III. METHODS",
+      "content": " summarizadon model was designed to scrap text data from pubmed journal database using genes and diseases keywords search. The proposed model is scalable and generalizable for producing arbitrarily size summaries by splitng the documents into resemble content."
+    },
+    {
+      "header": "A. Model Descrip-on",
+      "content": "Extracdve summarizadon approach produced naturally grammadcal summaries without much linguisdc connotadon or analysis. Most of the processing of the text was performed with the python natural language toolkit (nltk)"
+    },
+    {
+      "header": "1)",
+      "content": "In this study, a scoring funcdon is introduced to generate the sentence score dicdonary which hold the value assigned to each sentence. this denotes the probability that the sentence will be selected and included in the summary (see figure). the summary length is fixed, therefore, the top n sentences with the highest score rankings are chosen."
+    },
+    {
+      "header": "Sentscores[S] = Wordfreq[W]",
+      "content": "During the sentence model processing interval, the length of the sentence is either increased or reduced by certain values. New sentences are added into the sentence dicdonary scores. If the process sentence is not in the sentence score, then the word is added to the sentence in the score."
+    },
+    {
+      "header": "Sentscores[S]+ = Wordfreq[W]",
+      "content": "The word frequencies were selected automadcally based on the prevalence or occurrence of the words in the corpus dicdonary created in the model. The maximum weighted frequency (freqmax) of each word was calculated by using the product of the word frequencies (wfreq) and the values (v ). These are then added to final summary (see equadon 3)"
+    },
+    {
+      "header": "Word",
+      "content": "CNN.com will feature iReporter photos in a weekly Travel Snapshots gallery. Visit CNN.com/Travel each week for a new gallery of snapshots from around the world."
+    },
+    {
+      "header": "B. Research Pipeline",
+      "content": "The dataset was scraped from the web. about 100 papers were extracted from pubmed central (pmc) database. papers related to diseases and the mutated genes causadon were extracted for this study."
+    },
+    {
+      "header": "2)",
+      "content": "Web-based dataset scraped from pubmed journal was in raw state and unstructured which consist of html tags, special characters, symbols and numbers. Preprocessing involved converdng the dataset into text documents using nlp packages such as beaudfulsoup, regular expression, lxml, tokenisadon and using nltk library. In the feature extracdon process, we parse the web ardcles source code in order to extract the textual material needed for the final summary."
+    },
+    {
+      "header": "3)",
+      "content": "Summarize the following segment into 1 sentence: stopwords. We further removed a list of stop-words from the propocessed ardcles. words such as pronounce that are not necessary or essendal for the final summary."
+    },
+    {
+      "header": "4) Topic Modelling & Visualiza-on:",
+      "content": "This study was able to reveal prevalence of terms that emerged within the documents and show their relevance by how the projecdon of the topic modelling circle and the size of a word in the result visualisadon. The result was visualised using pyldavis which is a web-based interacdve visualizadon package."
+    },
+    {
+      "header": "IV. MODEL",
+      "content": "where (\u03bb) is the weight given to probability of the terms t in topic n (equadon 1) Let nt denote the probability of term t element of 1,..., n for n elements of 1..., k, where n denotes frequency of terms in the vocabulary."
+    },
+    {
+      "header": "B. Defining Saliency Term",
+      "content": "In this study we define saliency term as given a word 'w 0, we compute its minimal probability p(tm/w). where tm is the topic model. We were able to compute 5 topics (t) and 10 passes which were selected from the latent dirichlet allocadon (lda) topic modelling (see equadon 6)."
+    },
+    { "header": "U(6)", "content": "" },
+    {
+      "header": "=5",
+      "content": "The uniqueness of each term is described as how significance and semandcally associated they are to the topics. The saliency measures the distribudon of the speeds and idendficadon of topic associadon and composidon. We observed that given equal frequency of words, the most common, relevant or disdncdve terms (e.g. gene, disease, expression, associate ) are prevalence."
+    },
+    {
+      "header": "V. LATENT SEMANTIC ANALYSIS",
+      "content": " latent semandc analysis (lsa) is a robust algebraic and stadsdcal method. lsa is used to extract features that cannot be directly mendoned within the dataset. results from the lsa present a robust summary of the endre ardcles."
+    },
+    {
+      "header": "A. Sample Extracted Summary",
+      "content": "We used the heap queue (heapq) library to select the most or very useful sentences. The priority queues for word frequencies in sentences with higher weight is given more priority in processing the summary."
+    },
+    {
+      "header": "B. Findings",
+      "content": "Genes that are associated to some cancerous and type 2 diabetes diseases (see table) are linked to cancer and diabetes. The study has revealed very interesdng findings of genes associated with some cancers and diabetes diseases."
+    },
+    {
+      "header": "VI. ROUGE: RELIABILITY & VALIDITY OF MODEL",
+      "content": "Rouge is a metric evaluadon model which stands for recall oriented understudy for gisting evaluation. It is originally based on a metric used for machine transladon called bilingual evaluation understudy (bleu) rouge was used to check for the reliability and validity of our model."
+    },
+    {
+      "header": "TABLE III ROUGE METRICS MEASUREMENT SUMMARIES",
+      "content": "Mlycd (rank 164)hadhb (rank 354)ivd (rank 713)mut (rank 921)and pccb ( rank 684) are also ranked highly by hridaya. The genes are pdgfrbabl1flt1; and these genes are drug targets of cancer drugs like dasa8nib."
+    },
+    {
+      "header": "Comparing the system generated summary with a new human",
+      "content": ""
+    },
+    {
+      "header": "A. Procedure: Recall & Precision",
+      "content": "The precision of the summaries is crucial as we are trying to predict generated summaries that should be concise in nature. In this study, we combined and computerised both the precision and recall and further report the f1 -score measure."
+    },
+    {
+      "header": "VII. RESULTS & FINDINGS",
+      "content": "The terms in the topic modelling show text which are mostly frequent in the document. These were depicted by the size of the circle (as seen in figuresand) representadon of the result would reveal the distance between topics, the distribudon and reladonship between topic levels."
+    },
+    {
+      "header": "IX. DISCUSSION",
+      "content": " manual summarizadon is laborious and challenging task to accomplish. automadzadon of the task is very essendal. this process is gaining popularity among researchers. summarizdon technique has been applied to various natural language processing (nlp) task."
+    },
+    {
+      "header": "X. CONCLUSION",
+      "content": " automadc summarizadon is the process of reducing a text document with a computer program. The aim is to create a summary that retains the most important points of the original document. This study proposed fully automated single and muldple documents text summaries."
+    }
+  ]
+}

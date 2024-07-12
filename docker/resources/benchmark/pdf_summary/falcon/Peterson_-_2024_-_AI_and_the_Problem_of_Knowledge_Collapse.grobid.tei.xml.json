@@ -1,1 +1,58 @@
-{"id": 7812055900366544423, "name": "Peterson_-_2024_-_AI_and_the_Problem_of_Knowledge_Collapse.grobid.tei.xml", "segments": [{"header": "Introduction", "content": "ve training of ai models on synthetic text may lead to degeneration . sally kohn: the initial effect is limited, and existing work on the harms focuses on the effects of false information spread by \"deepfakes\" she says the resulting curtailment of the tails of human knowledge would have significant effects on a range of concerns ."}, {"header": "Summary of Main Contributions", "content": "provide a positive knowledge spillovers model with in which individuals decide whether to rely on cheaper ai technology or invest in samples from the full distribution of true knowledge . we examine through simulations the conditions under which individuals are sufficiently informed to prevent knowledge collapse within society ."}, {"header": "Related Work", "content": "y has long affected how we access knowledge, raising concerns about its impact on the transmission and creation of knowledge . yeh meng-te argued in the twelfth century that the rise of books led to a decline in the practice of memorizing and collating texts that contributed to the decline of scholarship and the repetition of errors ."}, {"header": "The media, filter bubbles and echo chambers", "content": "ben navarrette: social media allows users to select in to \"echo chambers\" in which they are exposed to only a narrow range of topics or perspectives . he says if so, their beliefs are reinforced socially and by a generalization from their bounded observations, leading to political polarization . this general dynamic may hold even if traditional media and newspapers were themselves dynamic systems interacting with their consumers, markets and advertisers, he writes ."}, {"header": "Network effects and Information Cascades", "content": "de models provide one approach to explaining a kind of herd behavior . they explore the conditions under which private information is not efficiently aggregated by the public . this can generate a \"herd externality\" in which an individual ignores her private signal in deciding ."}, {"header": "Model collapse", "content": "dea of model collapse is rooted in the earlier phenomenon of \"mode collapse\" in generative adversarial networks (gans) gans are based on a generator neural network that proposes, e.g. an image, and a discriminator attempts to predict whether a given image is created by the generator or is a real image from the dataset ."}, {"header": "Known biases in LLMs", "content": "dels such as llms are not immune to the problems of bias identified and measured in machine learning algorithms . gen 9: architecture has plagued predictive algorithms in real-world uses cases ."}, {"header": "A Model of Knowledge Collapse Defining Knowledge Collapse", "content": "y held, optimistic view is that knowledge has improved monotonically over time, and will continue to do so . in other domains, however, it is less clear, especially within regions . historically, knowledge has not progressed monotonically, as evidenced by the fall of the western roman empire, the destruction of the house of wisdom in baghdad and subsequent decline of the abbasid empire ."}, {"header": "Model Overview", "content": "dividuals have types  n drawn from a lognormal distribution with  = 1 = 0.5 . n + 1th sample reduces the distance to 0.4, thereby generating an innovation of 0.1 . we define knowledge collapse as occurring where there is a large and increasing distance between the public and true pdfs ."}, {"header": "Results", "content": "-generated content is 20% cheaper (discount rate is 0.8), the distance increases to 0.22, while a 50% discount increases the distance to 0.40 . if there is no generational change, there is at worst only a reduction in tails of public knowledge outside the truncation limits ."}, {"header": "Discussion", "content": "dean obeidallah: ai-systems are not recursively interdependent, as occurs if they use others . he says this is arguably what is done by governments that support academic and artistic endeavors . the problem isn't one of hallucination, but of the failure to reflect the full-distribution of possible answers to a question ."}, {"header": "Appendix Comparing width of the tails", "content": "d a tdistribution with 10 degrees of freedom, which has slightly wider tails than a standard normal distribution . in figure, we plot a comparison of the results from the main section . narrower tails, such as from a normal distribution, generate results broadly similar to the main model ."}, {"header": "Defining knowledge collapse", "content": "'human working knowledge' is the most relevant because it is the knowledge that shapes human action and reflection . edison and his team famously tried thousands of different filament materials, but if it bamboo had not been among the materials that came to mind as they searched alternatives, a practical electric bulb may have been invented only later ."}]}
+{
+  "id": 7812055900366544423,
+  "name": "Peterson_-_2024_-_AI_and_the_Problem_of_Knowledge_Collapse.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "ve training of ai models on synthetic text may lead to degeneration . sally kohn: the initial effect is limited, and existing work on the harms focuses on the effects of false information spread by \"deepfakes\" she says the resulting curtailment of the tails of human knowledge would have significant effects on a range of concerns ."
+    },
+    {
+      "header": "Summary of Main Contributions",
+      "content": "provide a positive knowledge spillovers model with in which individuals decide whether to rely on cheaper ai technology or invest in samples from the full distribution of true knowledge . we examine through simulations the conditions under which individuals are sufficiently informed to prevent knowledge collapse within society ."
+    },
+    {
+      "header": "Related Work",
+      "content": "y has long affected how we access knowledge, raising concerns about its impact on the transmission and creation of knowledge . yeh meng-te argued in the twelfth century that the rise of books led to a decline in the practice of memorizing and collating texts that contributed to the decline of scholarship and the repetition of errors ."
+    },
+    {
+      "header": "The media, filter bubbles and echo chambers",
+      "content": "ben navarrette: social media allows users to select in to \"echo chambers\" in which they are exposed to only a narrow range of topics or perspectives . he says if so, their beliefs are reinforced socially and by a generalization from their bounded observations, leading to political polarization . this general dynamic may hold even if traditional media and newspapers were themselves dynamic systems interacting with their consumers, markets and advertisers, he writes ."
+    },
+    {
+      "header": "Network effects and Information Cascades",
+      "content": "de models provide one approach to explaining a kind of herd behavior . they explore the conditions under which private information is not efficiently aggregated by the public . this can generate a \"herd externality\" in which an individual ignores her private signal in deciding ."
+    },
+    {
+      "header": "Model collapse",
+      "content": "dea of model collapse is rooted in the earlier phenomenon of \"mode collapse\" in generative adversarial networks (gans) gans are based on a generator neural network that proposes, e.g. an image, and a discriminator attempts to predict whether a given image is created by the generator or is a real image from the dataset ."
+    },
+    {
+      "header": "Known biases in LLMs",
+      "content": "dels such as llms are not immune to the problems of bias identified and measured in machine learning algorithms . gen 9: architecture has plagued predictive algorithms in real-world uses cases ."
+    },
+    {
+      "header": "A Model of Knowledge Collapse Defining Knowledge Collapse",
+      "content": "y held, optimistic view is that knowledge has improved monotonically over time, and will continue to do so . in other domains, however, it is less clear, especially within regions . historically, knowledge has not progressed monotonically, as evidenced by the fall of the western roman empire, the destruction of the house of wisdom in baghdad and subsequent decline of the abbasid empire ."
+    },
+    {
+      "header": "Model Overview",
+      "content": "dividuals have types  n drawn from a lognormal distribution with  = 1 = 0.5 . n + 1th sample reduces the distance to 0.4, thereby generating an innovation of 0.1 . we define knowledge collapse as occurring where there is a large and increasing distance between the public and true pdfs ."
+    },
+    {
+      "header": "Results",
+      "content": "-generated content is 20% cheaper (discount rate is 0.8), the distance increases to 0.22, while a 50% discount increases the distance to 0.40 . if there is no generational change, there is at worst only a reduction in tails of public knowledge outside the truncation limits ."
+    },
+    {
+      "header": "Discussion",
+      "content": "dean obeidallah: ai-systems are not recursively interdependent, as occurs if they use others . he says this is arguably what is done by governments that support academic and artistic endeavors . the problem isn't one of hallucination, but of the failure to reflect the full-distribution of possible answers to a question ."
+    },
+    {
+      "header": "Appendix Comparing width of the tails",
+      "content": "d a tdistribution with 10 degrees of freedom, which has slightly wider tails than a standard normal distribution . in figure, we plot a comparison of the results from the main section . narrower tails, such as from a normal distribution, generate results broadly similar to the main model ."
+    },
+    {
+      "header": "Defining knowledge collapse",
+      "content": "'human working knowledge' is the most relevant because it is the knowledge that shapes human action and reflection . edison and his team famously tried thousands of different filament materials, but if it bamboo had not been among the materials that came to mind as they searched alternatives, a practical electric bulb may have been invented only later ."
+    }
+  ]
+}

@@ -1,1 +1,22 @@
-{"id": 2877614703308851159, "name": "Elokda_et_al._-_2024_-_Karma_An_Experimental_Study.grobid.tei.xml", "segments": [{"header": "INTRODUCTION", "content": "vation to address exactly those kinds of allocation problems goes under the name karma . the mechanism is implemented via individual accounts of non-tradable credits . samsara stemming from indian religions according to which one's deeds in the present (karma) affect the quality of a person's future life ."}, {"header": "EXPERIMENTAL METHODS", "content": "y, we distinguished between a low stake process where participants have frequent events with moderate urgency . for richness, we tested a binary scheme where participants can choose from only two bid levels that depend on their karma . each participant is given an urgency value u (t) u l , u h  that is drawn randomly and independently from a process p(u) that is identical for all players ."}, {"header": "RESULTS", "content": "y gain which we define next . for a particular participant i, let (u i (t) t  1,...,T  be the vector of realized urgency in the experiment, and S rand i = 1 2 T t =1 u t (t), the ex-ante expected total score, given the urgency realization, under random allocation . on this basis, we will assess efficiency based on the median efficiency gain among participants, and fairness "}, {"header": "DISCUSSION", "content": "'expert' subjects were recruited from a population of totally untrained and inexperienced users from an online convenience sample (on mturk) their behavior, even though more efficient than random, is not as efficient as is theoretically feasible under nash equilibrium play . a natural follow-up question is, therefore, whether karma could be capable of achieving higher efficiency gains than realized in our online experiments if the human population consisted of participants that were better trained."}]}
+{
+  "id": 2877614703308851159,
+  "name": "Elokda_et_al._-_2024_-_Karma_An_Experimental_Study.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "INTRODUCTION",
+      "content": "vation to address exactly those kinds of allocation problems goes under the name karma . the mechanism is implemented via individual accounts of non-tradable credits . samsara stemming from indian religions according to which one's deeds in the present (karma) affect the quality of a person's future life ."
+    },
+    {
+      "header": "EXPERIMENTAL METHODS",
+      "content": "y, we distinguished between a low stake process where participants have frequent events with moderate urgency . for richness, we tested a binary scheme where participants can choose from only two bid levels that depend on their karma . each participant is given an urgency value u (t) u l , u h  that is drawn randomly and independently from a process p(u) that is identical for all players ."
+    },
+    {
+      "header": "RESULTS",
+      "content": "y gain which we define next . for a particular participant i, let (u i (t) t  1,...,T  be the vector of realized urgency in the experiment, and S rand i = 1 2 T t =1 u t (t), the ex-ante expected total score, given the urgency realization, under random allocation . on this basis, we will assess efficiency based on the median efficiency gain among participants, and fairness "
+    },
+    {
+      "header": "DISCUSSION",
+      "content": "'expert' subjects were recruited from a population of totally untrained and inexperienced users from an online convenience sample (on mturk) their behavior, even though more efficient than random, is not as efficient as is theoretically feasible under nash equilibrium play . a natural follow-up question is, therefore, whether karma could be capable of achieving higher efficiency gains than realized in our online experiments if the human population consisted of participants that were better trained."
+    }
+  ]
+}
