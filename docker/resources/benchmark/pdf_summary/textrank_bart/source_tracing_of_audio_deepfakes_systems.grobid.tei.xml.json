@@ -1,0 +1,26 @@
+{
+  "id": 1871692387221224675,
+  "name": "source_tracing_of_audio_deepfakes_systems.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "The study inaims to predict the specific attack systems used to produce utterances in asvspoof 2019. Authors inexplore classifying both the acoustic model and vocoder. They propose classifying the input type (i.e. speech or text) rather than speaker representation."
+    },
+    {
+      "header": "Attribute classification of spoof systems",
+      "content": "In this section, we describe our approaches for classifying the input type, acoustic model, and vocoder of the spoofing system used to generate a given audio. We present two strategies for leveraging existing state-of-theart spoofing countermeasure systems for the task of component classification."
+    },
+    {
+      "header": "Datasets and protocols",
+      "content": "Two publicly available spoofing detection benchmarks are used in our study: the asvspoof 2019 laand the most recent mlaad dataset. We focus on acoustic model and vocoder classification without any input-type prediction."
+    },
+    {
+      "header": "Experimental Results",
+      "content": "We train classification heads using fixed resnet, ssl, and whisper based binary spoof detection models. The best model is chosen based on dev set accuracy and average f1-score for asvspoof and mlaad experiments."
+    },
+    {
+      "header": "Conclusions and Discussions",
+      "content": "In this paper, we propose three multi-class classification tasks to give more explanatory predictions in the place of traditional binary spoof detection: input-type, acoustic model, and vocoder classification. We experiment with two methods of leveraging open source spoof detection systems."
+    }
+  ]
+}

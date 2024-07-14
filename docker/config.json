@@ -17,6 +17,6 @@
     "summary_folder_win": "pdf_summary",
     "util_folder_win": "util",
 
-    "grobid_server_local": "https://localhost:8070",
+    "grobid_server_local": "http://localhost:8070",
     "grobid_server_docker": "http://grobid-server:8070"
 }

@@ -1,0 +1,34 @@
+{
+  "id": 8589762953321006656,
+  "name": "risk_analysis_of_passive_portfolios.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "dia, we can invest in netf (see,) which suppose to mimic the nifty50 return . the weights of the index are not necessarily optimal for the investors, as they are based on market capitalisation."
+    },
+    {
+      "header": "On Basics of Financial Return and Volatility Risk",
+      "content": "bank agrees to pay us |7 for keeping the |100 with them, then at the end of the period, our investment will be |107 . the reverse operation of evaluating the present value of an amount into the 'future value' (fv) is called a capitalization ."
+    },
+    {
+      "header": "Efficient Market Hypothesis",
+      "content": "p-value  2.2e-16inference: we reject null hypothesis as significantly small . we can check if the log-returns are a non-stationary process, i.e.,2 ."
+    },
+    {
+      "header": "Portfolio Risk Analysis",
+      "content": "ket is efficient, then a q=5 is the subset of the portfolio b p =100 . the result (4.1) is based on real analysis and not probabilitic result . we can construct a portfolio with p many assets, such that p -  and m :p = 0 and  2 max = max \u2013  . if p is fixed, then the portfolio manager wants to build the portfolio in such a"
+    },
+    {
+      "header": "Nonparametric Bootstrap Methods in Risk Analysis",
+      "content": "parametric bootstrap method involves resampling returns from a given set of asset returns . the core idea of the bootstrap is to estimate the cumulative distribution function (cdf) f (\u2022) if the residuals are heteroscedastic, the residual bootstrap remains a consistent estimator ."
+    },
+    {
+      "header": "Comparing of Two Passive Investment Strategies",
+      "content": ". In this segment, we decided to consider three different portfolios . first, we consider the passive investment portfolio with nifty weights as the portfolio weights, and second, markowiz's portfolio weight optimised with regularised covariance matrix . however, the volatility risk profile is portfolio with equal weights are that of similar to portfolio with markowitz's optimal weights. then we use the same weights to calculate portfolio volatility during the war ."
+    },
+    {
+      "header": "Conclusion",
+      "content": "qual weight portfolio has a uniformly lower risk before and during the russia-ukraine war than the nifty 50 portfolio.bond and stock market . we also showed in results that if we push the maximum weights towards the equalweight portfolio, then the idiosyncratic risk of the portfolio is minimal ."
+    }
+  ]
+}

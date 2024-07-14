@@ -1,0 +1,34 @@
+{
+  "id": 8927019881295945611,
+  "name": "risk_analysis_of_passive_portfolios.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "Passive investment is an excellent option if the investment horizon is long. One cannot outperform the market by actively managing their portfolio for a long time if it is efficient."
+    },
+    {
+      "header": "On Basics of Financial Return and Volatility Risk",
+      "content": "The net return over the holding period of time t -1 to t is r t = p t -p t-1. The log returns are defined as p t = log(p t ) is also known as log-price or log-value."
+    },
+    {
+      "header": "Efficient Market Hypothesis",
+      "content": "In the efficient market model, the statement that current price of a security \"fully reflects\" available data is assumed to imply that successive price changes are independent. We can make a common working assumption as the returns are mutually independent and identically distributed (i.i.d)"
+    },
+    {
+      "header": "Portfolio Risk Analysis",
+      "content": "Markowitz's portfolio optimization can be expressed as the following quadratic programming problem:min \u03c9 \u03c9 t \u03c3\u03c9, subject to 1 p = 1. The portfolio return over the period is r p = r\u03c9, where r p is the risk-premium matrix."
+    },
+    {
+      "header": "Nonparametric Bootstrap Methods in Risk Analysis",
+      "content": "The philosophy of passive investment strategy yields from the 'efficient market hypothesis.' The logic is that since the market is efficient, it does not make sense that anyone will be able to beat the market consistently for a long time."
+    },
+    {
+      "header": "Comparing of Two Passive Investment Strategies",
+      "content": "out of the three portfolios we considered here, the passive investment strategy with nifty weights remained the same before and during the war. The volatility risk profile is portfolio with equal weights are that of similar to portfolio with markowitz's optimal weights. The result states that idiosyncratic risk would be minimum for an equal weights portfolio."
+    },
+    {
+      "header": "Conclusion",
+      "content": "The equal-weight portfolio has a uniformly lower risk before and during the russia-ukraine war than the nifty 50 portfolio. An arbitrage opportunity is a strategy of buying and selling the securities without any investment, such that it leads to profit."
+    }
+  ]
+}

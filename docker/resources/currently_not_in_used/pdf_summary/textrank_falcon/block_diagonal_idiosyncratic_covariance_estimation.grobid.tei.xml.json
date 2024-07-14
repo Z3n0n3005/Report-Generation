@@ -1,0 +1,30 @@
+{
+  "id": 7455963776540426428,
+  "name": "block_diagonal_idiosyncratic_covariance_estimation.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "paper we focus on the problem of structured estimation of the idiosyncratic covariance component in high-dimensional factor models . we use these structures to our advantage . by assuming that the components exhibit correlations due to some group-specific factors such as asset class or sector classification, they become block-diagonal."
+    },
+    {
+      "header": "Model",
+      "content": "dings b, the factor realizations f and the idiosyncratic component  are considered unobservable, so the factor model parameters need to be estimated from the observable asset returns . the common covariance component bcov(f )b \u2032 is low-rank (since k  p) and explains the majority of the correlations between different assets as the result of their exposure to a smaller number of common factors ."
+    },
+    {
+      "header": "Estimation",
+      "content": "plement s is a full matrix of rank min(n, t ) -k which does not serve as an idiosyncratic covariance estimate  (since it is not a sparse matrix, nor a Full-rank matrix). the idea is to apply generalized thresholding operator function f ij : r r which, for all z  r, is the estimation of the number of factors k ."
+    },
+    {
+      "header": "Simulation data",
+      "content": "bility of the estimator to identify true patterns of a block-diagonal structure, we construct a simulation scenario . the resulting covariance matrix is  = bcov(f )b \u2032 + .without loss of generality, we assume that the factors have identity . to construct the idiosyncratic Covariance we first build the correlation matrix ."
+    },
+    {
+      "header": "Results",
+      "content": "partial block-diagonal case, the csh estimator is expected to outperform, which is confirmed in the results, and statistically significant (for higher-dimensional series in all cases and for lower-dimensional in most of the cases) . for both considered dimensionalities, we observe that the clustering based estimators consistently outperformed the thresholding relying on a portfolio optimization approach ."
+    },
+    {
+      "header": "Conclusion",
+      "content": "proposed clustering based estimators successfully recognize the true sparse idiosyncratic covariance patterns, while decreasing the optimized portfolio volatility . we propose an iterative crossvalidation procedure in the context of the squared error given the assumed latent factor model ."
+    }
+  ]
+}

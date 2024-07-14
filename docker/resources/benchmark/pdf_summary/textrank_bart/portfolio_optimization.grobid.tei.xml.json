@@ -1,0 +1,38 @@
+{
+  "id": 3431919548619673174,
+  "name": "portfolio_optimization.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "The authors propose a two-stage optimisation framework for solving the general portfolio selection problem. In the second stage we convert portfolio weights into holdings by considering, among other features, lots, transaction costs, margin accounts and borrowing costs in short positions."
+    },
+    {
+      "header": "Literature review",
+      "content": "Transaction costs were incorporated in this paper as discounts in the assets expected returns as opposed to, where costs are discounted from c. When accounted for in portfolio selection models, lots and transaction costs reshape and limit the feasible region of optimal portfolios."
+    },
+    {
+      "header": "Key concepts of futures contracts",
+      "content": "In futures both long and short positions require a cash deposit, as opposed to equities, where shorting does not (theoretically) require any investment upfront. We model this by using the leverage level to relate weights with the amount to be deposited in the margin account. We show an application of leveraged futures contracts in producing market neutral portfolios with potential for positive return."
+    },
+    {
+      "header": "First stage: choosing optimal portfolio weights",
+      "content": "Constraints (17) ensure that an asset, if picked, cannot be held in both long and short positions at the same time. Risk-free assets generally behave as equities, with a slight difference: the asset representing a lend rate cannot beheld in short positions."
+    },
+    {
+      "header": "Second stage: from optimal proportions to real trades",
+      "content": "Let us define the following decision variables:p the portfolio value after transaction costs are discounted, x i number of shares of asset i to be held, m i financial value to be invested in asset i, c amount to be investments in cash, g i fractional transaction costs associated with buying or selling asset i in n 1. Let f i be additional decision variables representing the borrowing costs paid in fully or partially closing contract j from asset i."
+    },
+    {
+      "header": "Computational experiments",
+      "content": "We employ the 10-year us treasury bond (symbol tnx) return series as a synthetic asset representing the return on both lent and borrowed cash. All 396 rebalances (for three different values of u +, u -) were solved quickly, with an average of 2.8s for the largest instances and a worst case of 11.1s. The long/short strategies had more diversified portfolios, more trades and required borrowing costs."
+    },
+    {
+      "header": "Managerial insights",
+      "content": "In a practical sense, current (live) asset prices are required for applying the second stage. In extreme cases, real trading prices might deviate from the expected, which in extreme cases could render the suggested portfolio not directly investable. To mitigate this issue, one could (i) trade at the end of the day, which is generally less volatile and/or (ii) impose a penalty at the price used in the first stage."
+    },
+    {
+      "header": "Conclusions",
+      "content": "In this paper, we propose a two-stage approach with the goal of building portfolios that can be directly translated into real-world investment. The main contribution of our paper is in providing a tool that more closely constructs directly investable portfolios."
+    }
+  ]
+}

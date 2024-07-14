@@ -1,0 +1,22 @@
+{
+  "id": 5842728961972532517,
+  "name": "on_foundations_for_deductive_mathematics.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "abstract",
+      "content": "The article explores the potential discovery of a new foundation for mainstream mathematics, aiming to clarify relationships between primitives, foundations, and deductive practice, while understanding how to optimize a foundation for human use, drawing from historical and professional perspectives, and proposes a new foundation that is uniquely qualified to serve as the mainstay of deductive mathematics, with the \"coherent limit axiom\" characterizing its unique properties and potentially settling set-theory questions like the continuum hypothesis."
+    },
+    {
+      "header": "Abstractions",
+      "content": "A foundation ensures consistency in arguments by guaranteeing that every chain of deductions without logical errors leads to a reliable outcome, with the reliability of other components and logic itself being crucial in achieving this consistency, and while a technically inconsistent foundation may be so in practice due to evolving methodology, it remains consistent in its operational view of reliability, emphasizing the importance of functionally equivalent understandings among different users when defining polygons and object generators in set theory."
+    },
+    {
+      "header": "Sketchy history",
+      "content": "The development of set theory, initially employing early versions, was refined through abstracting key properties to axioms, eventually yielding rigorous set theories that enabled highly sophisticated arguments, with the consistency of na\u00efve set theory well-tested, despite some drawbacks, notably the lack of category theory compatibility."
+    },
+    {
+      "header": "Object generators",
+      "content": "Relaxed set theory, defined as the object generator powered by binary functions on a set, uniquely qualifies as a foundation consistent with mainstream mathematical practice due to its ability to support quantification and establish a sub-context using binary logic, while avoiding the complications of non-binary logic in traditional set theory."
+    }
+  ]
+}

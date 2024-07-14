@@ -1,0 +1,30 @@
+{
+  "id": 7451056316427796009,
+  "name": "block_diagonal_idiosyncratic_covariance_estimation.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "Covariance matrix estimation is a heavily researched topic in many fields, and is a crucial component for risk modeling in finance. Risk models rely on the estimation of the asset return covariance. With the growth of the number of financial assets, high dimensionality of these estimates becomes an issue."
+    },
+    {
+      "header": "Model",
+      "content": "The latent factor model is based on a model of asset returns. The idiosyncratic and common factors are assumed to be uncorrelated. This helps with the model's identifiability."
+    },
+    {
+      "header": "Estimation",
+      "content": "All of the model parameters -the factor loadings and idiosyncratic covariance -need to be estimated from the data sample y. The estimators generally follow a two-step procedure:1. estimate the common componenti, using the first k principal components.2. apply a sparse estimation procedure to the residual covariance matrix, also known as the orthogonal complement:, in order to obtain a sparse estimate."
+    },
+    {
+      "header": "Simulation data",
+      "content": "A full block-diagonal structure has a predetermined number of blocks of equal size and all series belong to one of the blocks. A more difficult partial block-Diagonal structure does not use a predefined number of. blocks and has a variable block size. In both cases, each cluster group is tapered and the correlations within are diminishing further from the diagonal."
+    },
+    {
+      "header": "Results",
+      "content": "The csh method based on the average linkage function outperforms in all of the considered aspects, thus in the rest of the paper we focus on the csh estimator based on average linkage. We simulate the data with higher-dimensional. p = 1000 series and lower-dimensional p = 300 series, using the same. simulation parameters, in order to test the behavior of the estimators for different dimensionalities."
+    },
+    {
+      "header": "Conclusion",
+      "content": "In this paper we focus on the estimation of the idiosyncratic component under the assumption that the considered financial assets form groups. We follow a two step estimation procedure where the first step consists of estimating the common component, and in the second step the residual component is used to obtain a sparse estimate. The proposed approach will hopefully make its way to applications in risk modeling of high-dimensional return time series."
+    }
+  ]
+}

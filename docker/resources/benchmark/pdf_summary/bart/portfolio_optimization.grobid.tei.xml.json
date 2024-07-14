@@ -1,0 +1,38 @@
+{
+  "id": 381455673211452645,
+  "name": "portfolio_optimization.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "Portfolio selection is at the core of quantitative finance and spans decades of theoretical and applied research. The two-stage approach takes into account several realistic features and produces, as output, suggested trades to be executed. The framework is flexible enough so as to easily incorporate new relevant features that have been left out."
+    },
+    {
+      "header": "Literature review",
+      "content": " optimal theoretical portfolios are likely to violate real-world \"hard\" constraints such as market rules, regulatory requirements and internal investment policies. Exogenous constraints have historically helped bridging this gap. Some constraints help prevent undesirable risk properties while others are required to simulate real world investment requirements."
+    },
+    {
+      "header": "Key concepts of futures contracts",
+      "content": "Futures and equities are two types of financial instruments that need to be dealt with if the goal is in producing tradable portfolios. In futures both long and short positions require a cash deposit, as opposed to equities, where shorting does not (theoretically) require any investment upfront, rather creating a debt towards the lender. While the portfolio weight associated with a short position in equities is negative, the weight associated With a Short position in futures is positive."
+    },
+    {
+      "header": "First stage: choosing optimal portfolio weights",
+      "content": "In this section, we present a general standardised framework for relative models that combines equities and futures. In the second stage, presented in section 5, we convert these weights into suggested holdings and include features that require an absolute model, such as costs, lots and margin accounts. We also rewrite the standardised formulation for ratio-based portfolio models."
+    },
+    {
+      "header": "Second stage: from optimal proportions to real trades",
+      "content": "The first stage is to find feasible holdings x that match w * as well as possible. The objective is to minimise the transaction costs spent to purchase x. We present two versions of the second stage: without lots, and with lots. The former is modelled as a linear program while the latter requires integer variables."
+    },
+    {
+      "header": "Computational experiments",
+      "content": "The two-stage framework is intended to act against the strategy by highlighting any difficulties an investor would face before investing (and potentially losing!) real money. The main difference to the literature is the inclusion of futures contracts, which give more liberty to fund managers."
+    },
+    {
+      "header": "Managerial insights",
+      "content": "In this section we discuss practical aspects and features not yet considered, and which could consist in future extensions of this framework. We have not considered the issue of taxes, which might have to be paid when closing certain positions."
+    },
+    {
+      "header": "Conclusions",
+      "content": "In this paper, we propose a two-stage approach with the goal of building portfolios that can be directly translated into real-world investment. The main contribution of our paper is in providing a tool that more closely constructs directly investable portfolios. We hope this approach helps in reducing the gap between computational financial decisions and actual investing."
+    }
+  ]
+}

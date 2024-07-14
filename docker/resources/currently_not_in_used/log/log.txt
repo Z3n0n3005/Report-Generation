@@ -1,0 +1,12 @@
+[ 20240617-14:14:06 ] [ PreProcessAlgo.NONE  -  SumAlgo.TEXTRANK ] Total time: 0.8854427337646484 
+[ 20240617-14:21:23 ] [ PreProcessAlgo.NONE  -  SumAlgo.LSA ] Total time: 8.959388256072998 
+[ 20240617-14:40:07 ] [ PreProcessAlgo.NONE  -  SumAlgo.FALCON ] Total time: 571.9736816883087 
+[ 20240617-18:00:20 ] [ PreProcessAlgo.NONE  -  SumAlgo.BART_LARGE_CNN ] Total time: 828.0240411758423 
+[ 20240617-18:13:12 ] [ PreProcessAlgo.TEXTRANK  -  SumAlgo.BART_LARGE_CNN ] Total time: 719.3415241241455 
+[ 20240617-19:12:26 ] [ PreProcessAlgo.TEXTRANK  -  SumAlgo.STABLE_LM ] Total time: 3246.9731800556183 
+[ 20240617-19:34:16 ] [ PreProcessAlgo.TEXTRANK  -  SumAlgo.FALCON ] Total time: 318.8150279521942 
+[ 20240617-19:42:16 ] [ PreProcessAlgo.LSA  -  SumAlgo.FALCON ] Total time: 288.74959897994995 
+[ 20240617-19:55:13 ] [ PreProcessAlgo.LSA  -  SumAlgo.BART_LARGE_CNN ] Total time: 681.0817723274231 
+[ 20240617-21:50:13 ] [ PreProcessAlgo.TEXTRANK  -  SumAlgo.STABLE_LM ] Total time: 6656.221096754074 
+[ 20240618-00:02:05 ] [ PreProcessAlgo.LSA  -  SumAlgo.STABLE_LM ] Total time: 7058.8124895095825 
+[ 20240618-03:15:46 ] [ PreProcessAlgo.NONE  -  SumAlgo.STABLE_LM ] Total time: 11332.362937450409 

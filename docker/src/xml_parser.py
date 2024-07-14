@@ -200,8 +200,8 @@ async def main():
     start = time.time()
     papers = parse_xml_folder()
 
-    preprocess_algo = summary.PreProcessAlgo.TEXTRANK.value
-    summary_algo = summary.SumAlgo.NONE.value
+    preprocess_algo = summary.PreProcessAlgo.LSA.value
+    summary_algo = summary.SumAlgo.STABLE_LM.value
 
     tasks = [
         summary.summarize_folder(
@@ -211,7 +211,7 @@ async def main():
         )
     ]
     s_papers = await asyncio.gather(*tasks)
-    # summary._save_to_folder_sync(s_papers[0]) 
+    # summary._save_to_folder_sync(papers) 
 
     end = time.time()
     log("[", preprocess_algo, " - ", summary_algo, "] Total time:", str(end - start))

@@ -1,0 +1,22 @@
+{
+  "id": 3792856126389636331,
+  "name": "on_foundations_for_deductive_mathematics.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "abstract",
+      "content": "This article was motivated by the discovery of a potential new foundation for mainstream mathematics. The goals are to clarify the relationships between primitives, foundations, and deductive practice. We also get clues as to how a foundation can be optimized for effective human use."
+    },
+    {
+      "header": "Abstractions",
+      "content": "A primitive is an object, hypotheses, or method of argument that is postulated rather than deduced from something else. A foundation is consistent if every chain of deductions that produces a contradiction can be shown to have a logical error."
+    },
+    {
+      "header": "Sketchy history",
+      "content": "First relatively explicit use of a foundation was in the geometry and number theory of ancient greece. The next major shift began in the early 1600s when galileo, kepler, and others showed that mathematics could be directly powerful in the world."
+    },
+    {
+      "header": "Object generators",
+      "content": "In zfc, generators are defined as functions with no way of identifying their own outputs. The native logic of object generators is non-binary in the sense that we might assert that x, y are the same, but in general there is no (yes, no)-valued function that can detect this. The key ingredients are binary functions: functions to an object generator with exactly two objects."
+    }
+  ]
+}

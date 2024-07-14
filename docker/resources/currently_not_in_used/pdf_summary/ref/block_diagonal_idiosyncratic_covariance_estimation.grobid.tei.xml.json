@@ -1,0 +1,30 @@
+{
+  "id": 4745456924619459755,
+  "name": "block_diagonal_idiosyncratic_covariance_estimation.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "This paper addresses the structured estimation of the idiosyncratic covariance component in high-dimensional factor models by assuming that idiosyncratic correlations arise from common but non-pervasive factors such as sector or asset class, leading to a block-diagonal covariance structure and proposing a set of estimators that leverage this assumption to improve performance in portfolio optimization."
+    },
+    {
+      "header": "Model",
+      "content": "This paper examines a latent factor model in which the asset return covariance is decomposed into a low-rank common covariance component and a full-rank, sparse idiosyncratic covariance, proposing a block-diagonal structure for the idiosyncratic covariance based on asset clustering by industries or asset classes, and emphasizing the need for assumptions on the asset return covariance spectrum to estimate and distinguish these components."
+    },
+    {
+      "header": "Estimation",
+      "content": "This paper proposes a method to estimate the idiosyncratic covariance in the presence of clustered specific components by applying thresholding techniques to the residual covariance matrix, forming block-diagonal structures based on clustering approaches such as k-means and hierarchical clustering, and optimizing these clusters to improve covariance estimation for asset returns."
+    },
+    {
+      "header": "Simulation data",
+      "content": "To evaluate the estimator's ability to identify true block-diagonal structures, a simulation scenario was constructed with known population covariance matrices, different shapes of idiosyncratic covariance, and various performance measures, including classification and clustering performance, and optimal portfolio risk was assessed using historical and simulated data."
+    },
+    {
+      "header": "Results",
+      "content": "The study reports p-values from one-sided pair sign tests, indicating that the CSH estimator outperforms others in the partial block-diagonal case due to its flexibility in handling varying cluster sizes, while the CSK estimator excels in the full block-diagonal case, and overall, clustering-based estimators demonstrate greater stability and effectiveness compared to thresholding-based methods, especially in higher-dimensional scenarios and in historical data portfolio optimization, although soft thresholding performs comparably well in lower dimensions."
+    },
+    {
+      "header": "Conclusion",
+      "content": "This paper presents a unified approach to estimating the block-diagonal idiosyncratic covariance matrix for high-dimensional financial return time series using a latent factor model, proposing clustering-based methods and an iterative cross-validation procedure, demonstrating through simulations and historical data that these methods effectively identify sparse idiosyncratic covariance patterns, reduce portfolio volatility, and perform comparably or better than industry-based estimators, ultimately enriching the model of asset return dependence and suggesting new research directions in hierarchical group structures."
+    }
+  ]
+}

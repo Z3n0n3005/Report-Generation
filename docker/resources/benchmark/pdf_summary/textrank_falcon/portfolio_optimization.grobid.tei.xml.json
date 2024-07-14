@@ -1,0 +1,38 @@
+{
+  "id": 7946754990955991995,
+  "name": "portfolio_optimization.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "despite the extensive literature on exogenous constraints, there are still disparities between theory and practice . we propose a two-stage optimisation framework for solving the general portfolio selection problem . in the second stage we convert portfolio weights into holdings by considering lots, transaction costs, margin accounts and borrowing costs in short positions ."
+    },
+    {
+      "header": "Literature review",
+      "content": "ded lots, fixed and variable transaction costs, upper exposure bounds on individual assets and portfolio cardinality . the authors showed the problem to be np-hard.considered a similar model with fixed costs, applicable if the transaction value is above a lower bound.introduced transaction costs in the form of a piecewise linear function, and proposed a specialised exact algorithm to solve the problem ."
+    },
+    {
+      "header": "Key concepts of futures contracts",
+      "content": ", we focus on how to account for these differences in our framework . hull: futures contracts have expiration dates, but a deposit in a margin account is required as guarantee for fulfilling contractual obligations . the difference lies in how they contribute to the portfolio returns, he says ."
+    },
+    {
+      "header": "First stage: choosing optimal portfolio weights",
+      "content": "b represents the interest rate applied when we hold a short position in cash, that is, when we borrow money from the bank . a single variable, however, prevents us from modelling certain classes of exogenous constraints, such shorting limitsor even short positions in futures . to enforce these limits, we add the following constraint:by defining these limits as relative to the total long exposure, we have that 0  -  +  1."
+    },
+    {
+      "header": "Second stage: from optimal proportions to real trades",
+      "content": "xpressing deviations as financial values allows us to combine them with transaction costs into a single objective function .let be the set of assets in n 1 for which we currently hold short positions . borrowing costs are generally defined as a predefined yearly rate to be paid proportionally to the time the contract was held ."
+    },
+    {
+      "header": "Computational experiments",
+      "content": "ploy the 10-year us treasury bond (symbol tnx) return series as a synthetic asset representing the return on both lent and borrowed cash . an asset is only considered eligible in a rebalance if there are at least 5% prices missing from the most recent historical series of 201 prices (200 returns) with the expectation that the first stage weights are a good choice ."
+    },
+    {
+      "header": "Managerial insights",
+      "content": "practical sense, current (live) asset prices are required for applying the second stage . an assumption we made implicitly is that, once a second stage decision is made, assets are to be traded at prices v i . in extreme cases, real trading prices might deviate from the expected ."
+    },
+    {
+      "header": "Conclusions",
+      "content": "paper, we propose a two-stage approach with the goal of building portfolios that can be directly translated into real-world investment . the main contribution of our paper is in providing a tool that more closely constructs directly investable portfolios . in the second stage, we suggest a goal-programming approach whose main decision variables are shares to be held for each asset ."
+    }
+  ]
+}

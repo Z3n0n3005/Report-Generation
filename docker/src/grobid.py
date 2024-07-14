@@ -46,5 +46,16 @@ async def parse_pdf() -> bool:
     
     return True
 
+def parse_pdf_sync() -> bool:
+    client = GrobidClient(config_path=GROBID_CONFIG_PATH)
+    client.process(
+        "processFulltextDocument",
+        UPLOAD_FOLDER, 
+        output=SEGMENT_FOLDER, 
+        consolidate_citations=False, 
+        tei_coordinates=False, 
+        verbose=False
+    )
+    return True
 if __name__ == "__main__":
-    parse_pdf()
+    parse_pdf_sync()

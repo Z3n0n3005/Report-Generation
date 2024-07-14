@@ -1,0 +1,30 @@
+{
+  "id": 2934295752241203765,
+  "name": "block_diagonal_idiosyncratic_covariance_estimation.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "The asset return covariance under a low-rank, common covariance component model, which is influenced by low-dimensional factors such as sectors, countries, or asset classes, can be approximated as the sum of a common covariance component and an idiosyncratic covariance component, with the latter reflecting correlations due to non-pervasive factors, leading to estimators like the poetand s-poet that exploit common structures and perform well for portfolio optimization use cases, but suffer from thresholding methods that do not exploit non-pervasive factor exposures, which can be addressed by treating group-specific dependencies as the idiosyncratic component of the covariance in the factor model, resulting in block-diagonal idiosyncratic covariance estimators that provide comprehensive performance analysis."
+    },
+    {
+      "header": "Model",
+      "content": "The latent factor model estimates unobservable factor loadings, factor realizations, and idiosyncratic components from observable asset returns, considering them to have low-rank common covariance and block-diagonal structures when grouped by clusters or sorted by asset cluster membership, while imposing assumptions on the asset return covariance spectrum."
+    },
+    {
+      "header": "Estimation",
+      "content": "This paper focuses on developing methods to estimate the idiosyncratic covariance matrix, which represents the residual components in time series data, using clustering-based approaches, aiming to obtain block-diagonal sparse estimates of the idiosyncratic components, addressing issues related to the estimation of the number of factors and the choice of thresholding functions, ultimately leading to more flexible and robust estimators."
+    },
+    {
+      "header": "Simulation data",
+      "content": "To assess the estimators' ability to identify true patterns of block-diagonal structure in data, simulations are conducted with a known population covariance matrix, where the factor loadings matrix is assumed to have identity covariance, and the idiosyncratic covariance is constructed based on two different idiosyncratic covariance shapes, with performance measures such as recall, precision, accuracy, and F1 score, considering the number of simulations in which the proposed covariance estimation methods outperform benchmarks, and the optimal portfolio weights for the minimum variance portfolio are calculated using the covariance estimate of asset returns and portfolio variance optimization, with known or unknown population covariance for simulation and historical data respectively."
+    },
+    {
+      "header": "Results",
+      "content": "In the context of block-diagonal covariance structures, hierarchical clustering-based estimators consistently outperform thresholding-based methods, particularly in the partial block-diagonal case, due to their flexibility and ability to capture idiosyncratic groupings, while clustering-based methods also exhibit greater stability compared to thresholding-based methods, which focus on high pairwise covariances and may miss other group members. The results also highlight the advantages of the hierarchical approach in accommodating single assets as clusters and varying cluster sizes, while the csk estimator performs better in the full block-diagonal case. Furthermore, the clustering-based estimators consistently outperform thresholding-based estimators, with the exception of the soft thresholding estimator for lower-dimensional cases, in capturing historical data clusters using a portfolio optimization approach."
+    },
+    {
+      "header": "Conclusion",
+      "content": "The study proposes a unified approach to estimate the block-diagonal idiosyncratic covariance matrix of high-dimensional financial return time series, utilizing clustering methods and an iterative cross-validation procedure, which improves upon the thresholding-based approach by capturing sparse idiosyncratic covariance patterns and results in a more realistic model of asset return dependence, ultimately leading to better portfolio performance."
+    }
+  ]
+}

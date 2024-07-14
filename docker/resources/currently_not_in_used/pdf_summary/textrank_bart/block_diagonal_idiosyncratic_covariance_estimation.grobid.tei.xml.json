@@ -1,0 +1,30 @@
+{
+  "id": 2289043837582012732,
+  "name": "block_diagonal_idiosyncratic_covariance_estimation.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "Under some reasonable assumptions, the asset return covariance under such a model is the sum of a common covariance component and an idiosyncratic covariance component. Since these correlations are likely due to exposure to non-pervasive factors such as sectors, countries or asset classes, ignoring these factors considerably reduces the performance of the estimators."
+    },
+    {
+      "header": "Model",
+      "content": "We consider the latent factor model where b is a p \u00d7 k matrix of factor loadings and f is a k-dimensional random vector of k common factors. We also consider the idiosyncratic component, also known as the specific factors. The factor model parameters need to be estimated from the observable asset returns."
+    },
+    {
+      "header": "Estimation",
+      "content": "In this paper, we propose two clustering based methods to estimate the block-diagonal idiosyncratic covariance. We also develop an estimator based on hierarchical clustering. The method is an extension of the previous approaches based on industry classifications of stock data."
+    },
+    {
+      "header": "Simulation data",
+      "content": "We use data generating processes based on two different shapes of the idiosyncratic covariance. We use several, most common classification performance measures to evaluate the ability of the proposed estimators to identify the true sparsity patterns. We consider a collection of daily us stock returns from January 1995 to January 2017."
+    },
+    {
+      "header": "Results",
+      "content": "The csh and csk estimators outperformed all the other methods. The csh estimator is more flexible and able to deal with both simulation cases very well, while the csk struggles in the partial block-diagonal case. The hierarchical clustering approach can better accommodate single assets as clusters."
+    },
+    {
+      "header": "Conclusion",
+      "content": "The paper proposes a unified approach to estimating the block-diagonal idiosyncratic covariance of high-dimensional financial return time series. The portfolio performance of the proposed estimators is on par with or even better than the industry based estimator csi."
+    }
+  ]
+}

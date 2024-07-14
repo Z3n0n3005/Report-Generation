@@ -1,0 +1,26 @@
+{
+  "id": 1723809965798419990,
+  "name": "source_tracing_of_audio_deepfakes_systems.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "Recent research in deepfake detection emphasizes the importance of explainability, particularly in attributing deepfake audio sources, focusing on classifying spoofing systems based on their attributes like acoustic models and vocoders to enhance generalizability and effectiveness beyond specific attack system identification."
+    },
+    {
+      "header": "Attribute classification of spoof systems",
+      "content": "This section details two strategies for classifying the input type, acoustic model, and vocoder of spoofing systems in audio generation: an end-to-end approach training a complete model separately for each classification task and a two-stage approach using existing spoofing countermeasure systems, leveraging their embeddings for component classification tasks to reduce computational costs and enhance safety for production models."
+    },
+    {
+      "header": "Datasets and protocols",
+      "content": "Our study utilizes two spoofing detection benchmarks: the ASVspoof 2019 LA dataset, which includes train, development, and evaluation partitions, and the MLAAD dataset focused on text-to-speech attacks featuring 52 state-of-the-art spoofing algorithms, with acoustic models and vocoders manually labeled based on available metadata and grouped for similar systems in the protocol."
+    },
+    {
+      "header": "Experimental Results",
+      "content": "Experiments involved fine-tuning SSL models with reduced GPU requirements (batch-size of 16, learning rate of 10^-6), while SSL and Whisper models were fine-tuned on ASVspoof and MLAAD datasets, and ResNet models were trained from scratch; model selection based on dev set accuracy and average F1-score; results compared with a previous study on ASVspoof 2019, introducing a new task of predicting input types, achieving significant accuracy improvements with SSL models reaching 99.9%, and outperforming previous studies in acoustic model classification with SSL (two-stage) and SSL (e2e) models achieving 91.4% and 99.4% accuracy, respectively."
+    },
+    {
+      "header": "Conclusions and Discussions",
+      "content": "This paper introduces three multi-class classification tasks—input type, acoustic model, and vocoder classification—replacing traditional binary spoof detection methods, evaluating them on ASVspoof 2019 and a new MLAAD dataset protocol, where the ResNet (e2e) model achieves 82.3% average F1 score for acoustic model and 93.3% for vocoder classification; future research aims to explore methods that augment existing binary spoof detection systems for industry applications, emphasizing the need for further investigation into the most informative aspects of these models for component discrimination."
+    }
+  ]
+}

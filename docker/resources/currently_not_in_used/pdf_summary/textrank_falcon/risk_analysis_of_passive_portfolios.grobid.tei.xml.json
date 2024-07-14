@@ -1,0 +1,34 @@
+{
+  "id": 6624191656052296425,
+  "name": "risk_analysis_of_passive_portfolios.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": ". passive investment is an excellent option if the investment horizon is long . one cannot outperform the market by actively managing their portfolio for a long time if it is efficient ."
+    },
+    {
+      "header": "On Basics of Financial Return and Volatility Risk",
+      "content": "denominator p t-1 is the initial investment at the start of the holding period . we can see the net returns as the rate of profit (or loss) or relative revenue on initial investment . an initial investment of |1000 and a net return of 4% over one year earn revenue of |40, which means the value of the investment after one year is |1040 ."
+    },
+    {
+      "header": "Efficient Market Hypothesis",
+      "content": "price of a stock follows the geometric random walk, then we can write the log-return aswhere p = p t = log(pt t ) and r t follows the same distribution with drift parameter  and variance  2 . therefore, a random walk is a non-stationary process, i.e., -1   1 implies, the process is stationary."
+    },
+    {
+      "header": "Portfolio Risk Analysis",
+      "content": "kowitz's portfolio optimization (see,) can be expressed as the quadratic programming problem . the portfolio covariance can be decomposed into two parts as,where first part explains the portfolio volatility due to market volatility and the second explains portfolio volatility because of idiosyncratic behaviour of the stock . thus we can select p ( p ) many assets for the portfolio (out of p many assets available in the market) such that"
+    },
+    {
+      "header": "Nonparametric Bootstrap Methods in Risk Analysis",
+      "content": "bootstrapping based on f n (\u2022) is known as the nonparametric bootstrap . if the residuals are heteroscedastic, the residual bootstrap remains a consistent estimator . this process can be repeated as many times as needed ."
+    },
+    {
+      "header": "Comparing of Two Passive Investment Strategies",
+      "content": "volatility risk profile of a portfolio with equal weights is similar to portfolio with markowitz's optimal weights . the result (3.2) states that idiosyncratic risk would be minimum for an equal weight portfolio ."
+    },
+    {
+      "header": "Conclusion",
+      "content": "qual-weight portfolio has a uniformly lower risk before and during the russia-ukraine war than the nifty 50 portfolio.bond and stock market ."
+    }
+  ]
+}

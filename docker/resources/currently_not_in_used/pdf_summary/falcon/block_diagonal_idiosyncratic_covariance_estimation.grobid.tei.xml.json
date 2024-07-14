@@ -1,0 +1,30 @@
+{
+  "id": 6866036507385135261,
+  "name": "block_diagonal_idiosyncratic_covariance_estimation.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "variance matrix estimation is a heavily researched topic in many fields . due to the dynamic nature of financial markets, estimates from long historical data may be obsolete and relatively short time windows are used instead . mainly, asset pricing literature finds that a sizeable amount of variance in large panels of asset return data is driven by a smaller number of factors ."
+    },
+    {
+      "header": "Model",
+      "content": "der the latent factor modelwhere b is a p  k matrix of factor loadings . the factor realizations f and the idiosyncratic component  are considered to be unobservable, so the factor model parameters need to be estimated from the observable asset returns ."
+    },
+    {
+      "header": "Estimation",
+      "content": "parse estimation procedure is used to estimate the idiosyncratic covariance . based on the hierarchical clustering approach csh, we use a cross-validation procedure . we use an agglomerative clustering algorithm to build the clusters ."
+    },
+    {
+      "header": "Simulation data",
+      "content": "In the simulations, we construct the common covariance bcov(f )b \u2032 +  .without loss of generality, we assume that the factors have identity . to simulate a random loadings matrix b we use the following procedure:1. scale loadings so the first factor has average loading equal to 1 ."
+    },
+    {
+      "header": "Results",
+      "content": "partial block-diagonal case, the csh estimator is expected to outperform all the benchmark methods in all aspects, for both considered dimensionalities . the results are shown in table-the f1, ri, frobenius norm of the error and the portfolio risk are shown with respect to the known population covariance."
+    },
+    {
+      "header": "Conclusion",
+      "content": "del allows for a specific structure of the covariance matrix - a low-rank component due to common factors and a fullrank sparse idiosyncratic component . the proposed approach will hopefully make its way to applications in risk modeling of high-dimensional return time series in broad asset universes ."
+    }
+  ]
+}

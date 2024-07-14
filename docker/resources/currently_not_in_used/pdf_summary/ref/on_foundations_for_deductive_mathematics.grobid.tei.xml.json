@@ -1,0 +1,22 @@
+{
+  "id": 8136618339670071055,
+  "name": "on_foundations_for_deductive_mathematics.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "abstract",
+      "content": "The article aims to explore and clarify the foundations of mainstream mathematics by examining historical and professional practices, and it proposes a new foundational theory characterized by the /\"coherent limit axiom,\" which aligns more closely with mainstream deductive practices than traditional axiomatic set theories like ZFC."
+    },
+    {
+      "header": "Abstractions",
+      "content": "Foundations analyze mathematical practice for consistency, with primitives as postulated objects or methods, and a foundation is considered consistent if error-free arguments never contradict each other, even though practical methodologies can sometimes bypass technical inconsistencies by evolving reliable definitions and axioms."
+    },
+    {
+      "header": "Sketchy history",
+      "content": "Early set theory effectively defined natural numbers, but direct set definitions were abandoned in favor of axioms abstracted from naive set theory; while Zermelo's axioms were foundational, they initially lacked sufficient functions for set theory operations until first-order logic experimentation resolved this, leading to highly rigorous and well-tested arguments, despite some drawbacks like the incompatibility of category theory with standard set theories."
+    },
+    {
+      "header": "Object generators",
+      "content": "The article argues that \"object generators\" in mathematics, akin to \"morphisms\" or \"functions\" in naive set theory, involve assigning objects to each element of a set without binary logic, emphasizing the introduction of binary functions to establish set theory's foundation, notably defining sets as logical domains supporting quantification, culminating in a proposed relaxed set theory aligning uniquely with mainstream mathematical practice."
+    }
+  ]
+}

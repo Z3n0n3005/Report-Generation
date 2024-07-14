@@ -1,0 +1,38 @@
+{
+  "id": 3272359052788695354,
+  "name": "portfolio_optimization.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "portfolio selection is at the core of quantitative finance and spans decades of theoretical and applied research .the main motivation for this work comes from difficulties observed when establishing lowfrequency quantitative funds.in such funds, the decision process is ideally integrated with the actual purchase and sales of assets ."
+    },
+    {
+      "header": "Literature review",
+      "content": "dels is to build portfolios that are applicable in practice .buy-in thresholds help prevent (very) small positions by ensuring minimum holding levels .the authors modelled the problem with:which produces a difficult nonlinear optimisation model ."
+    },
+    {
+      "header": "Key concepts of futures contracts",
+      "content": "paration between proportions and holdings in wo stages is in making it easier to incorporate real-world features without adding too much complexity to any single model .data vendors often provide a rolled or continuous series, one which automatically switches to the next-contract month when the current most-liquid contract expires ."
+    },
+    {
+      "header": "First stage: choosing optimal portfolio weights",
+      "content": ", we present a general standardised framework for relative models that combines equities and futures .the formulation includes a selection of common real-world constraints, all of which can be accurately depicted with portfolio proportions instead of holdings.in the appendix accompanying this paper, we also rewrite the standardised formulation for ratio-based portfolio models.let:depending on which exogenous constraints are applicable to the problem at hand, binary variables z + i and z "
+    },
+    {
+      "header": "Second stage: from optimal proportions to real trades",
+      "content": "| f i = 0, then it is not necessary to define the corresponding g i .constraints ()-() ensure that the financial value held in each asset corresponds to the exact desired proportions .the amount we pay in borrowing costs to the lender is calculated proportionally to the period held ."
+    },
+    {
+      "header": "Computational experiments",
+      "content": "xecution of the second stage should quickly and reliably produce holdings that match the desired portfolio as accurately as possible .in section 6.6 we present a case study illustrating these features.we employ a custom-built backtesting tool which simulates negotiations and tracks individual contracts .we run all experiments in an intel(r) core(tm) i7-3770 cpu @ 3.90ghz with 8 cores, 8gb ram and with ubuntu 22.04.3"
+    },
+    {
+      "header": "Managerial insights",
+      "content": "In a practical sense, current (live) asset prices are required for applying the second stage .in cases where solving the second stages requires a few seconds (or more), real trading prices might deviate from the expected ."
+    },
+    {
+      "header": "Conclusions",
+      "content": "paper, we propose a two-stage approach with the goal of building portfolios that can be directly translated into real-world investment . the main contribution of our paper is in providing a tool that more closely constructs directly investable portfolios . we also explicitly consider, for the first time, mixing futures contracts and equities in the same portfolio ."
+    }
+  ]
+}

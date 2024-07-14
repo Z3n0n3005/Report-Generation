@@ -1,0 +1,38 @@
+{
+  "id": 6202267215707920971,
+  "name": "portfolio_optimization.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "The core of quantitative finance involves the selection of portfolios through a combination of theoretical and applied research, with portfolio theory at its foundation. This framework, introduced by the author, addresses shortcomings in classical portfolio selection models by incorporating exogenous constraints, particularly in the form of real-world lots, to create more practical portfolios and reduce out-of-sample risk. The proposed two-stage optimization framework aims to address issues of numerical inaccuracies, arbitrary limits, nonlinear nonconvex models, and conflicting objectives, while also providing a way to handle the conflict between minimizing deviation from desired proportions and minimizing transaction costs. The framework's flexibility allows it to adapt to different market conditions and offers advantages in terms of computational efficiency and flexibility. Extensive computational experiments validate the proposed approach, demonstrating its potential to convert theory to practice and provide potential benefits in expanding an asset universe of leveraged futures contracts."
+    },
+    {
+      "header": "Literature review",
+      "content": "Optimal theoretical portfolios may face constraints from market rules, regulatory requirements, and internal investment policies, leading to risks from little diversification or excessive exposure. Balancing transaction costs, liquidity, number of transactions, closeness to the target portfolio, and high return is a challenge in asset allocation models, with historical constraints aiding practicality. This paper discusses various constraints and proposes a two-stage approach to address them, considering cardinality, short-selling, transaction costs, and liquidity, while aiming for tradable portfolios that can be integrated with trading systems with minimal human intervention. The practicality of these models is discussed, highlighting the need for accurate discounting of transaction costs and the limitations of feasible solutions when lots are involved."
+    },
+    {
+      "header": "Key concepts of futures contracts",
+      "content": "A clear separation between proportions and holdings in two stages simplifies incorporating real-world features without adding complexity to single models, particularly when integrating futures and equities, accounting for operational differences such as expiration dates, margin deposits, and rollovers, which affect not only the stages but also data preparation and portfolio selection."
+    },
+    {
+      "header": "First stage: choosing optimal portfolio weights",
+      "content": "The presented framework combines equities and futures, allowing for standardized portfolio selection with constraints that can be accurately represented through portfolio proportions rather than holdings, aiming to minimize the objective function \u03c1(w) while enforcing limits on short positions, risk-free assets, and asset allocation, with specific constraints for expected returns, leverage, and limits on long/short positions, and the use of buyin thresholds and asset-specific limits."
+    },
+    {
+      "header": "Second stage: from optimal proportions to real trades",
+      "content": "The second stage involves converting the current portfolio into the desired one, using linear and mixed-integer formulations to find feasible holdings while minimizing transaction costs, considering optional control parameters for cash asset exposure and borrowing costs, and accounting for short positions with associated rent fees and borrowing costs."
+    },
+    {
+      "header": "Computational experiments",
+      "content": "The two-stage framework aims to highlight difficulties investors face before investing, rather than producing superior portfolios with superior risk/return properties. It constructs a bridge between model and investment, with the second stage focusing on finding optimal portfolio weights and converting them into specific purchases and sales, while the first stage hedging and leveraging portfolios with futures contracts. The main focus is on evaluating the second stage's applicability, computational time, and solution quality, with a single dataset consisting of S&P 500 stocks, selected futures contracts, and two risk-free assets. The framework is evaluated against various strategies, including long-only and long/short, and its performance is compared to the S&P 500, considering factors such as returns, risk-adjusted returns, and maximum drawdown. The computational time and solution quality are crucial considerations in a live trading environment."
+    },
+    {
+      "header": "Managerial insights",
+      "content": "The two-stage framework for portfolio selection, while providing a bridge between theory and practice, is not exhaustive and can be extended to include practical aspects such as real-time asset prices, liquidity considerations, trading policies, and potential tax implications, while considering the specific requirements of different enterprises and regions."
+    },
+    {
+      "header": "Conclusions",
+      "content": "The paper proposes a two-stage approach to construct directly investable portfolios, aiming to bridge the gap between computational financial decisions and actual investing, with a focus on facilitating purely automated investment tools and considering the mixing of futures contracts and equities in the same portfolio, while addressing real-world constraints and borrowing costs for short positions, and suggesting that the benefits of a single-stage approach are marginal in most cases, but can be condensed into the first stage for better performance, and exploring future research directions to support other asset classes and optimize computational performance."
+    }
+  ]
+}

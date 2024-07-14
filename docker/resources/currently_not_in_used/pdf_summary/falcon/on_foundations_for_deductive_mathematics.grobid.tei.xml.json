@@ -1,0 +1,22 @@
+{
+  "id": 6922989337463143010,
+  "name": "on_foundations_for_deductive_mathematics.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "abstract",
+      "content": ". the goal is to clarify the relationships between primitives, foundations, and deductive practice . we have no asperations to philosophy ."
+    },
+    {
+      "header": "Abstractions",
+      "content": "\"foundation\" refers to a body of deductive practice, here mainstream deductive mathematics . a primitive foundation is a collection of primitives that is complete in the sense that no other primitives are needed . but a foundation is consistent if every chain of deductions produces a contradiction can be shown to have a logical error ."
+    },
+    {
+      "header": "Sketchy history",
+      "content": "ve set theory was asserted around 1900, and it was widely accepted as standard . aristotlean mathematicians were having good success with set theory, says abraham robinson . by 1900, dederkind was using set-theoretic methods and terminology, he says ."
+    },
+    {
+      "header": "Object generators",
+      "content": ". \"object generators\" are essentially the same as \"functions\" in nave set theory . x  g means \"x is a set with a group structure\""
+    }
+  ]
+}

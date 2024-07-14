@@ -1,0 +1,22 @@
+{
+  "id": 4923420534524345105,
+  "name": "on_foundations_for_deductive_mathematics.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "abstract",
+      "content": ". this article was motivated by the discovery of a potential new foundation for mainstream mathematics . the goal is to clarify the relationships between primitives, foundations, and deductive practice ."
+    },
+    {
+      "header": "Abstractions",
+      "content": "dations are a way to analyze the body of practice, particularly its consistency . a foundation is consistent if every chain of deductions that produces a contradiction can be shown to have a logical error . success is sensitively dependent on everything else used in the argument being completely reliable ."
+    },
+    {
+      "header": "Sketchy history",
+      "content": "by 1900 quite a few mathematicians had found nave set theory effective and reliable . by 1900 they gave up trying to define sets directly, and instead began abstracting key properties . the standard forms of the axioms up to this point are mainly due to zermillo ."
+    },
+    {
+      "header": "Object generators",
+      "content": "ve logic of object generators is non-binary in the sense that we might assert that x, y are the same, but in general there is no (yes, no)-valued function that can detect this . the first step toward set theory is to establish a sub-context that does use binary logic ."
+    }
+  ]
+}

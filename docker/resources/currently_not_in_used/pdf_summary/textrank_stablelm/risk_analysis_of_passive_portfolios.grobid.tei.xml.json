@@ -1,0 +1,34 @@
+{
+  "id": 2048141378796546997,
+  "name": "risk_analysis_of_passive_portfolios.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "In the context of pension fund portfolios investing in volatile equity markets, passive investment strategies are preferred due to their potential long-term benefits and the need for risk analysis, while the impact of events like the Russian invasion of Ukraine on portfolio risk profiles is studied, demonstrating the importance of considering idiosyncratic events in risk analysis."
+    },
+    {
+      "header": "On Basics of Financial Return and Volatility Risk",
+      "content": "The net return over the holding period of time t-1 to t is r t, where the numerator p t - p t-1 represents the net profit or loss, and the denominator p t-1 represents the initial investment at the start of the holding period, with the revenue from holding an asset being p t - p t-1 = r t \u00d7 p t-1, and the single period gross return is defined as r t = p t - p t-1, and the k-period gross return is the product of the k single period, gross returns from time tk to time t, where continuous compounding is represented by r = log p t+1/p t, and the log return of an asset is known as the continuously compounded rate of return, with volatility indicating the average value of an asset fluctuating in either direction, and the standard deviation calculated from daily log returns being the volatility at daily levels, represented by \u03c3 = var(r t)."
+    },
+    {
+      "header": "Efficient Market Hypothesis",
+      "content": "In the efficient market model, if the expected return and price changes are zero, a price sequence following a martingale, and mutual independence holds for returns, which constitutes the random walk model. A random walk is a non-stationary process, but if its drift and volatility parameters are within the specified range, it becomes a stationary process, where incremental steps (log-returns) are independent and follow a Gaussian distribution. To assess if a stock follows a geometric random walk, one must verify if log-returns are stationary, independent, and follow a normal distribution, with a likelihood ratio test and Shapiro-Wilk test used for further analysis. The model then involves a matrix of risk-premium for multiple assets, systematic return due to the market index, and idiosyncratic returns, with coefficients \u03b2 representing systematic risk and covariance matrix \u03c3 capturing market movements."
+    },
+    {
+      "header": "Portfolio Risk Analysis",
+      "content": "Markowitz's portfolio optimization can be expressed as a quadratic programming problem involving a p-dimensional vector \u03c9 subject to \u03c9 t 1 p = 1 and \u03c9 t \u00b5 = \u00b5 k, with the goal of minimizing idiosyncratic risk while mostly explaining the portfolio return by \u03b8, considering the rank of the covariance matrix and the efficiency of parallelization in generating \u03c3 for a large portfolio; the posterior mode of \u03c3 is positive definite and full rank, allowing for Bayesian inference and further portfolio risk analysis."
+    },
+    {
+      "header": "Nonparametric Bootstrap Methods in Risk Analysis",
+      "content": "The nonparametric bootstrap method estimates the cumulative distribution function (CDF) using the empirical CDF obtained by resampling returns from a given set of asset returns, allowing for the estimation of the sampling distribution of the statistic and providing consistent estimators when the residuals are heteroscedastic, while the residual bootstrap is not consistent when the residuals are heteroscedastic."
+    },
+    {
+      "header": "Comparing of Two Passive Investment Strategies",
+      "content": "The passive strategy with Nifty weights maintains a similar risk profile to Markowitz's optimized portfolio with regularized covariance matrix, but the equal weights portfolio exhibits higher volatility, with idiosyncratic risk being minimized for equal weights portfolios."
+    },
+    {
+      "header": "Conclusion",
+      "content": "The equal-weight portfolio has a lower risk before and during the Russia-Ukraine war compared to the Nifty 50 portfolio due to arbitrage opportunities in the bond and stock markets, as demonstrated by the existence of self-financing strategies that are q-martingales, with no initial investment and no surplus on any day except for the initial investment itself."
+    }
+  ]
+}

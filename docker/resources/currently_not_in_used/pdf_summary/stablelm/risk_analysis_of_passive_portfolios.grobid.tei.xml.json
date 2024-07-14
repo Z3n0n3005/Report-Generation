@@ -1,0 +1,34 @@
+{
+  "id": 6549493662896656948,
+  "name": "risk_analysis_of_passive_portfolios.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "In recent years, the observed undesirable events, such as the pandemic, Russian invasion of Ukraine, global supply chain disruptions, and high energy prices, have led to high uncertainty in the worldwide market, with passive investments offering a long-term risk exposure analysis and considering the inefficiency of the Indian market, potentially leading to better risk profiles for equal-weight portfolios compared to Nifty50 ETFs, as demonstrated in empirical evidence presented in this chapter."
+    },
+    {
+      "header": "On Basics of Financial Return and Volatility Risk",
+      "content": "The optimal choice between receiving a lump sum today or after a year is to receive the lump sum today, as the time value of money (time preference) indicates the opportunity cost of postponing payment, and the time value of capital represents the present value of an investment, which grows over time due to change in price and the growth of assets, with returns being higher compared to the initial investment."
+    },
+    {
+      "header": "Efficient Market Hypothesis",
+      "content": "Economists and market analysts agree that if an arbitrage opportunity exists, the market becomes inefficient due to the disturbance it causes. To assess market efficiency, they analyze if the market follows a random walk, check if log-returns are stationary, and verify if consecutive log-returns are independent. The Dickey-Fuller test and the Autocorrelation Function (ACF) and Partial Autocorrelation Function (PACF) tests are employed to determine stationarity and independence, respectively. Additionally, the normality of log-returns is assessed using the Shapiro-Wilk test. If the market is efficient, these tests consistently reject the null hypothesis, indicating that the market is not efficient due to the presence of arbitrage opportunities."
+    },
+    {
+      "header": "Portfolio Risk Analysis",
+      "content": "Markowitz's Portfolio Optimization, based on the Capm model and under the assumption of bounded \u03c32's, requires a shrinkage estimator for covariance to address the ill-posed problem and estimate the marginal contribution to total risk (mctr) and the conditional contribution to total risk (cctr) for each asset. This estimation allows for a Bayesian approach to run full posterior inference on the covariance matrix, enabling valid statistical inference and efficient portfolio optimization, even when the sample covariance matrix is less than full rank. The marginal contribution to total risk (mctr) quantifies how sensitive the portfolio volatility is concerning a slight change in asset weights, while the conditional contribution to total risk (cctr) measures the amount that an asset contributes to the total portfolio volatility. The bayesian monte carlo algorithm efficiently estimates these risk metrics for large portfolios, improving time performance and enabling accurate risk analysis."
+    },
+    {
+      "header": "Nonparametric Bootstrap Methods in Risk Analysis",
+      "content": "Nonparametric bootstrap statistics, utilizing a simple random sample with replacement scheme and belonging to resampling strategies, revolutionized statistics by providing an appropriate solution for incorrect parametric assumptions, such as in the Capital Asset Pricing Model (CAPM), and offers a consistent estimator even when residuals are heteroscedastic; demonstrating the concept through the nonparametric bootstrap regression technique in R, illustrating the passive investment strategies derived from the efficient market hypothesis and the popularity of exchange-traded funds (ETFs) that mimic market weights, but may not necessarily be optimal for investors."
+    },
+    {
+      "header": "Comparing of Two Passive Investment Strategies",
+      "content": "In the context of the Indian stock market based on the Nifty50 index, the demonstration that it is inefficient raises questions about the risk profile of a passive strategy, specifically focusing on the volatility risk profile of three portfolios: one with Nifty weights, Markowitz's optimized portfolio with regularized covariance matrix, and an equal weights portfolio. The study finds that the Nifty weights portfolio exhibits higher volatility before and during the war, while the equal weights portfolio closely resembles Markowitz's optimal weights in terms of volatility risk profile. The result (3.2) indicates that the minimum idiosyncratic risk is achieved with equal weights, suggesting that adopting a passive investment strategy with equal portfolio weights could be a suitable option for minimizing risk in the context of the Indian stock market."
+    },
+    {
+      "header": "Conclusion",
+      "content": "The equal-weight portfolio strategy, which has a lower risk than the Nifty 50 portfolio during idiosyncratic events like the Russian invasion of Ukraine, is preferred for passive investors due to its self-financing properties and the absence of arbitrage opportunities, as demonstrated in the provided quantitative finance analysis."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": 9137334838024623327,
+  "name": "risk_analysis_of_passive_portfolios.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "In recent years, we observed several undesirable events, such as the covid19 pandemic, the russian invasion of ukraine, severe global supply chain system disruption, and tremendous pressure on energy prices. These macro events bring a high degree of uncertainty to the worldwide market. nowadays, even pension fund portfolios invest in the volatile equity market."
+    },
+    {
+      "header": "On Basics of Financial Return and Volatility Risk",
+      "content": "The goal of our any investment is to grow over time. The growth depends on both change in price and a number of the assets being invested."
+    },
+    {
+      "header": "Efficient Market Hypothesis",
+      "content": "Economists and market analysts agree that if an arbitrage opportunity exists, everybody would like to follow that strategy. So going forward, a blanket assumption that arbitrage opportunities do not exist is being imposed. To check out more about no-arbitrage opportunity in the market, see."
+    },
+    {
+      "header": "Portfolio Risk Analysis",
+      "content": "Markowitz's portfolio optimization (see,) can be expressed as the following quadratic programming problem:min \u03c9 \u03c9 t \u03c3\u03c9. First part explains the portfolio volatility due to market volatility. Second part explains portfolio volatility. due to idiosyncratic behaviour."
+    },
+    {
+      "header": "Nonparametric Bootstrap Methods in Risk Analysis",
+      "content": "Nonparametric bootstrap statistics is an algorithmic approach that typically employs a simple random sample with replacement (srswr) scheme. In the capital asset pricing model (capm), the underlying distribution is often assumed to be gaussian, which is not accurate."
+    },
+    {
+      "header": "Comparing of Two Passive Investment Strategies",
+      "content": "In section (2), we demonstrated that the indian stock market based on the nifty50 index is not efficient. So it raises the question how it affects the risk profile of the passive strategy (i.e., portfolio weight) to check this question, we decided to consider three different portfolios."
+    },
+    {
+      "header": "Conclusion",
+      "content": "If we want to be passive investors, we should follow an equal-weight portfolio strategy instead of investing in exchange traded fund like netf, which mimics the nifty50. We found that the equal weight portfolio has a uniformly lower risk than the nifty 50 portfolio before and during the russia-ukraine war."
+    }
+  ]
+}

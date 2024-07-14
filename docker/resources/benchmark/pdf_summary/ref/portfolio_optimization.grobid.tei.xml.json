@@ -1,0 +1,38 @@
+{
+  "id": 6127367341434789394,
+  "name": "portfolio_optimization.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "The passage discusses a two-stage optimization framework for portfolio selection that addresses converting theoretical portfolio weights into practical holdings considering integral lots, transaction costs, and other features, aiming to bridge gaps between theoretical models and practical implementation in portfolio management."
+    },
+    {
+      "header": "Literature review",
+      "content": "The authors explored a comprehensive portfolio optimization framework incorporating lots, fixed and variable transaction costs, asset exposure limits, cardinality constraints, and tax considerations, employing a two-stage approach where initial portfolio weights are determined using any selection model followed by a mixed-integer programming solution to approximate the desired portfolio, highlighting challenges and extensions related to transaction cost modeling and portfolio rebalancing."
+    },
+    {
+      "header": "Key concepts of futures contracts",
+      "content": "This section details the operational differences of futures contracts, emphasizing their impact on portfolio optimization frameworks, including expiration dates, margin account requirements, leveraged positions, and the treatment of returns and portfolio weights in relation to short and long positions, addressing these complexities across both initial portfolio selection and subsequent stages."
+    },
+    {
+      "header": "First stage: choosing optimal portfolio weights",
+      "content": "This passage discusses various constraints and representations in portfolio selection, including the handling of short positions in cash and futures, the use of binary variables for modeling constraints, the treatment of shorting limits, and the application of leverage in futures contracts to adjust expected returns and portfolio allocations accordingly."
+    },
+    {
+      "header": "Second stage: from optimal proportions to real trades",
+      "content": "The passage introduces decision variables for portfolio optimization, including the portfolio value after transaction costs, shares and financial investments in assets, cash amounts, and fractional transaction costs, emphasizing the incorporation of borrowing costs for short positions in the optimization framework without lots."
+    },
+    {
+      "header": "Computational experiments",
+      "content": "The section evaluates a two-stage framework using futures contracts and synthetic assets, demonstrating its computational efficiency and performance metrics in portfolio optimization with both long/short and long-only strategies, highlighting advantages in using round lots and cost considerations in the first stage for optimal results."
+    },
+    {
+      "header": "Managerial insights",
+      "content": "This section discusses potential future extensions of the framework, addressing practical considerations such as real-time asset pricing requirements for the second stage, strategies to mitigate price volatility discrepancies, and the possibility of extending the approach to a multistage framework to align temporary portfolios with the final recommended portfolio across multiple trading days."
+    },
+    {
+      "header": "Conclusions",
+      "content": "This paper introduces a two-stage approach aimed at creating portfolios directly suitable for real-world investment, emphasizing the reduction of discrepancies between theoretical financial decisions and practical investing by incorporating various real-world constraints, employing a goal-programming framework in the second stage to optimize asset holdings while considering costs and borrowing costs for short positions, supported by extensive computational results and suggesting avenues for future research."
+    }
+  ]
+}

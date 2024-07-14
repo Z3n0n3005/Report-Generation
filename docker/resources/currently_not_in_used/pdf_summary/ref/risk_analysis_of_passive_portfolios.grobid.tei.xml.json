@@ -1,0 +1,34 @@
+{
+  "id": 8504434222807909875,
+  "name": "risk_analysis_of_passive_portfolios.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "Nowadays, pension fund portfolios increasingly invest in volatile equity markets, necessitating analysis of portfolio risk exposure; passive investment is advisable for long-term investors lacking expertise in quantitative finance, as active management typically cannot consistently outperform an efficient market, raising concerns about how passive investment portfolios react to idiosyncratic events like the Russian invasion of Ukraine, which is the focus of this study structured with sections on the efficient market hypothesis, empirical evidence of market inefficiency in India, aspects of portfolio risk analysis, and empirical findings favoring equal-weight portfolios over Nifty50 ETFs."
+    },
+    {
+      "header": "On Basics of Financial Return and Volatility Risk",
+      "content": "The passage describes the calculation of net returns over a time period ( t-1 ) to ( t ) as ( r_t = frac{p_t - p_{t-1}}{p_{t-1}} ), where ( p_t - p_{t-1} ) represents the net profit or loss relative to the initial investment ( p_{t-1} ); it also introduces gross returns, compounding effects, log returns, and volatility measures using daily log returns and covariance matrices."
+    },
+    {
+      "header": "Efficient Market Hypothesis",
+      "content": "The passage discusses the conditions under which a price sequence follows a martingale in the efficient market model, indicating that current prices fully reflect available data and successive price changes are independent, thereby forming the random walk model; it explores assumptions about returns being independent and identically distributed (i.i.d.) random variables, leading to the geometric random walk model for stock prices, and discusses the characteristics of stationary and non-stationary processes, with criteria including stationarity of log-returns and independence of consecutive log-returns, often tested using statistical methods like the Ljung-Box test for autocorrelation and Shapiro-Wilk test for normality."
+    },
+    {
+      "header": "Portfolio Risk Analysis",
+      "content": "Markowitz's portfolio optimization formulates a quadratic programming problem to minimize portfolio volatility subject to constraints ensuring the portfolio's expected return matches a desired level, decomposing covariance into market and idiosyncratic components to select assets that minimize idiosyncratic risk, with Bayesian methods considered for covariance estimation when the number of assets exceeds the number of return observations, influencing portfolio risk and return analysis."
+    },
+    {
+      "header": "Nonparametric Bootstrap Methods in Risk Analysis",
+      "content": "The nonparametric bootstrap method involves resampling log-returns from an original sample to estimate a parameter (theta), using the empirical cumulative distribution function (CDF) to simulate independent samples, applicable in scenarios like estimating variance or constructing confidence intervals where the underlying distribution (f(cdot)) is unknown, demonstrating its use in techniques like the Capital Asset Pricing Model (CAPM) for estimating parameters such as (beta)."
+    },
+    {
+      "header": "Comparing of Two Passive Investment Strategies",
+      "content": "The analysis compares the risk profiles of different portfolios—passive with Nifty weights, Markowitz's optimized weights using regularized covariance, and equally weighted portfolios—finding that during the Russia-Ukraine war, portfolios with Nifty weights consistently showed higher volatility, while portfolios with equal and Markowitz's weights had similar volatility profiles due to the latter's regularization resembling equal weighting, highlighting minimized idiosyncratic risk in equal-weight portfolios."
+    },
+    {
+      "header": "Conclusion",
+      "content": "It seems like your message doesn't require information about a terrorist organization designation. How can I assist you further?"
+    }
+  ]
+}

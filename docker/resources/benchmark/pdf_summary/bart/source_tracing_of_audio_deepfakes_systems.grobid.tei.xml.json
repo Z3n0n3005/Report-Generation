@@ -1,0 +1,26 @@
+{
+  "id": 6088477792058196996,
+  "name": "source_tracing_of_audio_deepfakes_systems.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "Introduction",
+      "content": "The study inaims to predict the specific attack systems used to produce utterances in asvspoof 2019. Authors inexplore classifying both the acoustic model and vocoder. They propose classifying the input type (i.e. speech or text) rather than speaker representation."
+    },
+    {
+      "header": "Attribute classification of spoof systems",
+      "content": "In this section, we describe our approaches for classifying the input type, acoustic model, and vocoder of the spoofing system used to generate a given audio. We present two strategies for leveraging existing state-of-theart spoofing countermeasure (cm) systems for the task of component classification."
+    },
+    {
+      "header": "Datasets and protocols",
+      "content": "Two publicly available spoofing detection benchmarks are used in our study. The asvspoof 2019 la dataset has three independent partitions: train, development, and evaluation. spoofed utterances are generated using a set of different tts, vc, and hybrid tts-vc algorithms."
+    },
+    {
+      "header": "Experimental Results",
+      "content": " resnet and ssl models use 4 second (s) raw audio as input, whereas the whisper model processes on 30s audio. for resnet, lfcc features are extracted using 20ms window and 10ms frame-shift along with its delta and double delta features. for the auxiliary classifier, a batch size of 256 and a learning rate of 10 -3 is used with no hyper-parameter tuning."
+    },
+    {
+      "header": "Conclusions and Discussions",
+      "content": "In this paper, we propose three multi-class classification tasks to give more explanatory predictions in the place of traditional binary spoof detection: input-type, acoustic model, and vocoder classification. We experiment with two methods of leveraging open source spoof detection systems to accomplish this task."
+    }
+  ]
+}

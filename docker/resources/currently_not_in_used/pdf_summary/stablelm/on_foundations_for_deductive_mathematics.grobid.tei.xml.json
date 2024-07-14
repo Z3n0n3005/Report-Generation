@@ -1,0 +1,22 @@
+{
+  "id": 7153036511049842347,
+  "name": "on_foundations_for_deductive_mathematics.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "abstract",
+      "content": "The article explores the potential discovery of a new foundation for mainstream mathematics, focusing on consistency, historical and professional perspectives, and a proposed new foundation that aims to optimize human use, while addressing set-theory questions and providing a coherent limit axiom for consistency."
+    },
+    {
+      "header": "Abstractions",
+      "content": "The concept of a foundation in deductive mathematics, as a body of practice, prioritizes historical practice over consistency, with a consistent foundation accounting for logical errors in chains of deductions and ensuring reliability in the outcome, while empirical consistency is a property of a methodology rather than a foundation itself, and explicit foundations are often retrofits that support consistency of the whole development rather than individual results. Consistency at the primitive level heavily relies on users extracting functionally equivalent understandings, and working several levels above the primitives can filter out misunderstandings or ambiguities."
+    },
+    {
+      "header": "Sketchy history",
+      "content": "The understanding of real numbers in the early 20th century evolved from intuitions rooted in physical experience, particularly in the realm of infinitesimals, to a foundation in set theory, particularly the Zermillo-Fraenkel (ZF) axioms, which provided a consistent and reliable foundation for much of mathematics, eventually leading to the separation of formal set theory from mainstream mathematics. This progression was marked by the paradox of Russell's paradox, which initially set back the study of sets, but eventually led to the abstraction of key properties as axioms and the introduction of the membership operator as a primitive. The development of functions as primitive elements and the use of set operations by first-order logic further solidified the foundations of set theory, ultimately leading to the acceptance of the Zermillo-Fraenkel (ZF) axioms as the gold standard in the set-theory community. However, this separation also disconnected formal set theory from mainstream mathematics, as the axiom of choice was widely accepted as well-tested and included in standard formulations."
+    },
+    {
+      "header": "Object generators",
+      "content": "The proposed new foundation includes object generators, morphisms, logic, and set definitions that support quantification, filtering out silly examples and establishing a logical domain for binary logic, while also comparing it to other theories like na\u00efve set theory, zfc axiomatic set theories, and standard mathematical practice, concluding that the relaxed set theory is uniquely qualified to be a foundation consistent with mainstream mathematical practice."
+    }
+  ]
+}

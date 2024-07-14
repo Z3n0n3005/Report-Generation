@@ -1,0 +1,22 @@
+{
+  "id": 1656318405920077464,
+  "name": "on_foundations_for_deductive_mathematics.grobid.tei.xml",
+  "segments": [
+    {
+      "header": "abstract",
+      "content": "This article was motivated by the discovery of a potential new foundation for mainstream mathematics. The goals are to clarify the relationships between primitives, foundations, and deductive practice. We also get clues as to how a foundation can be optimized for effective human use."
+    },
+    {
+      "header": "Abstractions",
+      "content": " foundations are a way to analyze the body of practice, particularly its consistency. A foundation is consistent if every chain of deductions that produces a contradiction can be shown to have a logical error."
+    },
+    {
+      "header": "Sketchy history",
+      "content": "By 1900 quite a few mathematicians had found na\u00efve set theory to be effective and reliable. The standard forms of the axioms up to this point are mainly due to zermillo."
+    },
+    {
+      "header": "Object generators",
+      "content": "Relaxed set theory is uniquely qualified to be a foundation consistent with mainstream mathematical practice. The key ingredients are binary functions: functions to an object generator with exactly two objects. The \"=\" operator built into the logic of na\u00efve and zfc allows comparison of any two elements of anytwo sets."
+    }
+  ]
+}
