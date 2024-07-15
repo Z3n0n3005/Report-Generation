@@ -1,18 +1,1 @@
-{
-  "id": 1066785380403338618,
-  "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml",
-  "segments": [
-    {
-      "header": "Introduction",
-      "content": "the introduction of history trees has recently led to the development of optimal linear-time algorithms for anonymous dynamic networksand state-of-the-art general algorithms for congested anonymous dynamic networks.in section 2, we outline the basic architecture of history trees, drawing comparisons with yamashita-kameda's views and boldi-vigna's minimum bases."
-    },
-    {
-      "header": "Basic Structure and Algorithms",
-      "content": "the two views are matched and merged starting from the roots, v gets a child v \u2032 , and a new red edge from u to v \u2032 is added.and u \u2208 l t , indicates that, at step t, each agent represented by node u receives exactly m (identical) messages from agents represented by v.assuming that their internal memory and message sizes are unbounded, the agents in a network g can locally construct portions of the history tree called views."
-    },
-    {
-      "header": "Leader Election",
-      "content": "can a counting algorithm terminate in fewer than 2n -2 steps in all strongly connected directed dynamic networks with output port awareness and a unique leader?a less obvious fact is that, in any non-branching level of the history tree of a strongly connected directed dynamic network with output port awareness, all nodes must have the same anonymity.indeed, if a and b are two classes of indistinguishable agents represented by nodes in a non-branching level, and an agent in a receives a message tagged k from an agent in b, then so do all agents in a (or else their node would branch)."
-    }
-  ]
-}
+{"id": 7493373097770537094, "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml", "segments": [{"header": "Introduction", "content": "the introduction of history trees has recently led to the development of optimal linear-time algorithms for anonymous dynamic networksand state-of-the-art general algorithms for congested anonymous dynamic networks.in section 2, we outline the basic architecture of history trees, drawing comparisons with yamashita-kameda's views and boldi-vigna's minimum bases."}, {"header": "Basic Structure and Algorithms", "content": "the two views are matched and merged starting from the roots, v gets a child v ′ , and a new red edge from u to v ′ is added.and u ∈ l t , indicates that, at step t, each agent represented by node u receives exactly m (identical) messages from agents represented by v.assuming that their internal memory and message sizes are unbounded, the agents in a network g can locally construct portions of the history tree called views."}, {"header": "Leader Election", "content": "can a counting algorithm terminate in fewer than 2n -2 steps in all strongly connected directed dynamic networks with output port awareness and a unique leader?a less obvious fact is that, in any non-branching level of the history tree of a strongly connected directed dynamic network with output port awareness, all nodes must have the same anonymity.indeed, if a and b are two classes of indistinguishable agents represented by nodes in a non-branching level, and an agent in a receives a message tagged k from an agent in b, then so do all agents in a (or else their node would branch)."}]}

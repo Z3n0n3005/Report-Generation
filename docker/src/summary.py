@@ -173,7 +173,11 @@ def _save_to_folder_sync(papers:list[Paper]):
     for paper in papers:
         path = os.path.join(SUMMARY_FOLDER, paper.get_name() + ".json")
         with open(path, "w", encoding="utf-8") as f:
-            f.write(json.dumps(paper.to_json_format()))
+            f.write(
+                json.dumps(
+                    paper.to_json_format(),
+                    ensure_ascii=False
+                ))
     return
 
 def get_stop_word_list() -> str:

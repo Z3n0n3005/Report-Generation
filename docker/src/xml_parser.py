@@ -169,6 +169,7 @@ def parse_body(body) -> list[Segment]:
             for child in p:
                 if child.tail:
                     segment.add_content(child.tail)
+            
     # Add the last segment to list
     segments.append(segment)
     return segments
@@ -201,7 +202,7 @@ async def main():
     papers = parse_xml_folder()
 
     preprocess_algo = summary.PreProcessAlgo.LSA.value
-    summary_algo = summary.SumAlgo.STABLE_LM.value
+    summary_algo = summary.SumAlgo.BART_LARGE_CNN.value
 
     tasks = [
         summary.summarize_folder(
@@ -214,7 +215,7 @@ async def main():
     # summary._save_to_folder_sync(papers) 
 
     end = time.time()
-    log("[", preprocess_algo, " - ", summary_algo, "] Total time:", str(end - start))
+    # log("[", preprocess_algo, " - ", summary_algo, "] Total time:", str(end - start))
 
 if __name__ == "__main__":
     asyncio.run(main())
