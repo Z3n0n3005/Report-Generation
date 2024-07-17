@@ -1,18 +1,1 @@
-{
-  "id": 8337212622737271326,
-  "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml",
-  "segments": [
-    {
-      "header": "Introduction",
-      "content": "distributed communication network consists of a finite number of independent computational units known as agents . allowing for randomness would enable agents to generate unique identifiers with high probability, thereby compromising the study's focus on anonymity ."
-    },
-    {
-      "header": "Basic Structure and Algorithms",
-      "content": "v t g (p) and all views in m as induced subtrees . norris raised the question of whether the same applies to agents in two distinct networks of the same size n ."
-    },
-    {
-      "header": "Leader Election",
-      "content": "2.3 we gave a counting algorithm for connected undirected dynamic networks with a unique leader that stabilizes in 2n -2 steps . the key distinction is that in the early awareness model, an agent can incorporate its current outdegree into the messages it sends ."
-    }
-  ]
-}
+{"id": 6465155949666493889, "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml", "segments": [{"header": "Introduction", "content": "distributed communication network consists of a finite number of independent computational units known as agents . allowing for randomness would enable agents to generate unique identifiers with high probability, thereby compromising the study's focus on anonymity ."}, {"header": "Basic Structure and Algorithms", "content": "v t g (p) and all views in m as induced subtrees . norris raised the question of whether the same applies to agents in two distinct networks of the same size n ."}, {"header": "Leader Election", "content": "2.3 we gave a counting algorithm for connected undirected dynamic networks with a unique leader that stabilizes in 2n -2 steps . the key distinction is that in the early awareness model, an agent can incorporate its current outdegree into the messages it sends ."}]}

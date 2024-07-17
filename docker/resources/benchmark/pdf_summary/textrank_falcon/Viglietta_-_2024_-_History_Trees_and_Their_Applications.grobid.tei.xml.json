@@ -1,18 +1,1 @@
-{
-  "id": 2964748356648258174,
-  "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml",
-  "segments": [
-    {
-      "header": "Introduction",
-      "content": "k is anonymous if its agents are initially indistinguishable, i.e., they lack unique identifiers . this process is analyzed using standard stochastic methods to understand how these weights eventually converge to a common value ."
-    },
-    {
-      "header": "Basic Structure and Algorithms",
-      "content": "y tree h g of a network g is an infinite tree subdivided into levels, as in figure, where the nodes in level l t represent the equivalence classes of agents that are indistinguishable at time t . at step t, each agent represented by node u receives exactly m (identical) messages from agents represented by v ."
-    },
-    {
-      "header": "Leader Election",
-      "content": "2.3 we gave a counting algorithm for connected undirected dynamic networks with a unique leader that stabilizes in 2n -2 steps . since the network is connected at all steps, it can be shown that only 2n levels of the history tree are required for this algorithm to eventually identify nodes with correct guesses on all branches . to confirm this estimate, it is sufficient to wait additional n \u2032 steps, which is the longest time it may take for at least one missing branch to appear in the view ."
-    }
-  ]
-}
+{"id": 6647864742800470209, "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml", "segments": [{"header": "Introduction", "content": "k is anonymous if its agents are initially indistinguishable, i.e., they lack unique identifiers . this process is analyzed using standard stochastic methods to understand how these weights eventually converge to a common value ."}, {"header": "Basic Structure and Algorithms", "content": "y tree h g of a network g is an infinite tree subdivided into levels, as in figure, where the nodes in level l t represent the equivalence classes of agents that are indistinguishable at time t . at step t, each agent represented by node u receives exactly m (identical) messages from agents represented by v ."}, {"header": "Leader Election", "content": "2.3 we gave a counting algorithm for connected undirected dynamic networks with a unique leader that stabilizes in 2n -2 steps . since the network is connected at all steps, it can be shown that only 2n levels of the history tree are required for this algorithm to eventually identify nodes with correct guesses on all branches . to confirm this estimate, it is sufficient to wait additional n ′ steps, which is the longest time it may take for at least one missing branch to appear in the view ."}]}

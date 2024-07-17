@@ -10,3 +10,11 @@
 [ 20240713-08:11:44 ] [ textrank  -  stable_lm_chat ] Total time: 991.4846925735474 
 [ 20240713-08:29:14 ] [ lsa  -  stable_lm_chat ] Total time: 908.588418006897 
 [ 20240715-08:20:21 ] [ textrank  -  none ] Total time: 0.06840848922729492 
+[ 20240715-12:31:24 ] [ lsa  -  bart_large_cnn ] Total time: 332.52277135849 
+[ 20240715-12:41:38 ] [ none  -  bart_large_cnn ] Total time: 469.7459406852722 
+[ 20240715-12:50:03 ] [ none  -  falcon_text_summarizer ] Total time: 392.9921827316284 
+[ 20240715-12:55:21 ] [ textrank  -  falcon_text_summarizer ] Total time: 182.24157619476318 
+[ 20240715-12:59:39 ] [ lsa  -  falcon_text_summarizer ] Total time: 154.9610767364502 
+[ 20240715-13:36:18 ] [ textrank  -  stable_lm_chat ] Total time: 1875.0041885375977 
+[ 20240715-21:19:39 ] [ lsa  -  stable_lm_chat ] Total time: 1741.267614364624 
+[ 20240715-22:11:51 ] [ none  -  stable_lm_chat ] Total time: 2988.301924943924 

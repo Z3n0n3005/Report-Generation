@@ -1,18 +1,1 @@
-{
-  "id": 8542702469926142694,
-  "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml",
-  "segments": [
-    {
-      "header": "Introduction",
-      "content": "distributed communication network consists of a finite number of independent computational units known as agents . these networks generally operate in synchronous or asynchronous communication steps . a network is anonymous if its agents are initially indistinguishable, i.e., they lack unique identifiers ."
-    },
-    {
-      "header": "Basic Structure and Algorithms",
-      "content": "yamashita-kameda and kameda call g the quotient graph of g (p) for a static network . if two agents are indistinguishable at time t = 0, they are distinguishable if and only if they are sent by cyan agents . this means that both agents have the same view up to step 2n -2 steps ."
-    },
-    {
-      "header": "Leader Election",
-      "content": "versal self-stabilizing protocol for connected undirected dynamic networks is found in section 3.3 . this algorithm terminates in fewer than 2n -2 steps, which is worst-case optimal . in a congested dynamic network, agents must have an equalized view . if a node in l i-1 has a unique child, it can be ."
-    }
-  ]
-}
+{"id": 4566566886585909117, "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml", "segments": [{"header": "Introduction", "content": "distributed communication network consists of a finite number of independent computational units known as agents . these networks generally operate in synchronous or asynchronous communication steps . a network is anonymous if its agents are initially indistinguishable, i.e., they lack unique identifiers ."}, {"header": "Basic Structure and Algorithms", "content": "yamashita-kameda and kameda call g the quotient graph of g (p) for a static network . if two agents are indistinguishable at time t = 0, they are distinguishable if and only if they are sent by cyan agents . this means that both agents have the same view up to step 2n -2 steps ."}, {"header": "Leader Election", "content": "versal self-stabilizing protocol for connected undirected dynamic networks is found in section 3.3 . this algorithm terminates in fewer than 2n -2 steps, which is worst-case optimal . in a congested dynamic network, agents must have an equalized view . if a node in l i-1 has a unique child, it can be ."}]}

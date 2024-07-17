@@ -1,18 +1,1 @@
-{
-  "id": 6689144177781696707,
-  "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml",
-  "segments": [
-    {
-      "header": "Introduction",
-      "content": "In anonymous networks, agents communicate through multi-graphs with varying structures and topologies, where convergence and stability analysis often neglect network characteristics and can be technically cumbersome, but recent advancements in discrete and algebraic structures, such as history trees, offer more precise analysis and optimal linear-time algorithms for dynamic anonymous networks."
-    },
-    {
-      "header": "Basic Structure and Algorithms",
-      "content": "The history tree of a network G, where G is an infinite tree subdivided into levels, represents the equivalence classes of indistinguishable agents at different time steps, with each node in level l t representing the views of agents that are indistinguishable at time t, and these views are matched and merged starting from the roots, allowing agents to locally construct portions of the history tree called views, which contain all the information an agent can potentially extract from the network after a communication step, and in static networks, the indistinguishable agents remain unchanged for a single communication step, and if a distinguished agent p has a view at time t, then agents at time t + 1 will have the same view, with the number of agents having the view at time t + 1 at most d steps, where d is the number of agents with information at time t."
-    },
-    {
-      "header": "Leader Election",
-      "content": "In strongly connected directed dynamic networks with output port awareness and a unique leader, a counting algorithm can terminate in 3n -2 steps in the worst case, but a terminating algorithm for both problems, if n is known, can be obtained by combining the leader election algorithm with the stabilizing technique for directed networks."
-    }
-  ]
-}
+{"id": 7483091162192876593, "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml", "segments": [{"header": "Introduction", "content": "In anonymous networks, agents communicate through multi-graphs with varying structures and topologies, where convergence and stability analysis often neglect network characteristics and can be technically cumbersome, but recent advancements in discrete and algebraic structures, such as history trees, offer more precise analyses and optimal linear-time algorithms for dynamic anonymous networks."}, {"header": "Basic Structure and Algorithms", "content": "The history tree of a network G, where G is an infinite tree subdivided into levels, represents the equivalence classes of indistinguishable agents at different time steps, with each node in level l t representing the views of agents that are indistinguishable at time t, and these views are matched and merged starting from the roots, allowing agents to locally construct portions of the history tree called views, which contain all the information an agent can potentially extract from the network after a communication step, and in static networks, the indistinguishable agents remain unchanged for a single communication step, and if a distinguished agent p has a view at time t, then agents at time t + 1 will have the same view, with the number of agents having the view at time t + 1 at most d steps, where d is the number of agents with information at time t."}, {"header": "Leader Election", "content": "In strongly connected directed dynamic networks with output port awareness and a unique leader, a counting algorithm can terminate in 3n -2 steps in the worst case, but a terminating algorithm for both problems, if n is known, can be obtained by combining the leader election algorithm with the stabilizing technique for directed networks."}]}

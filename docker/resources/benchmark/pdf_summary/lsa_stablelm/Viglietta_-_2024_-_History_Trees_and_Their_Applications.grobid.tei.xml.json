@@ -1,18 +1,1 @@
-{
-  "id": 2961748285262713682,
-  "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml",
-  "segments": [
-    {
-      "header": "Introduction",
-      "content": "A distributed communication network with agents, where each agent operates a local deterministic algorithm, employs a weighted assignment process among neighbors using stochastic methods to analyze convergence and leverage network structure for algorithm development, while acknowledging limitations and exploring alternative approaches like history trees, which inherently incorporate a temporal dimension and offer optimal linear-time algorithms for dynamic networks."
-    },
-    {
-      "header": "Basic Structure and Algorithms",
-      "content": "The focus is on modeling anonymous networks as undirected dynamic multigraphs with no port awareness, finding the smallest tree containing specific views as induced subtrees, and utilizing history trees to provide timing information on agent distinguishability, with agents having a distributed algorithm for constructing their views and updating them at every communication step."
-    },
-    {
-      "header": "Leader Election",
-      "content": "The given segment discusses the development of a terminating counting algorithm for directed networks with late outdegree awareness and a known number of leaders, which allows for the reduction of semi-synchronous networks to an equivalent synchronous one, and provides insights into the potential open problems related to self-stabilizing protocols for memoryless agents in anonymous networks."
-    }
-  ]
-}
+{"id": 7560431896694740886, "name": "Viglietta_-_2024_-_History_Trees_and_Their_Applications.grobid.tei.xml", "segments": [{"header": "Introduction", "content": "A distributed communication network with agents, where each agent operates a local deterministic algorithm, employs a weighted assignment process among neighbors using stochastic methods to analyze convergence and leverage network structure for improved algorithmic approaches, with history trees offering optimal linear-time algorithms for dynamic networks and challenging applications in congested anonymous dynamic networks."}, {"header": "Basic Structure and Algorithms", "content": "The focus of this section is on modeling anonymous networks as undirected dynamic multigraphs with no port awareness, leading to the smallest tree containing specific views as induced subtrees, and Norris's question about agents in similar networks is addressed, with the potential to reduce problems to views of history trees, subject to certain assumptions on agent memory and message size."}, {"header": "Leader Election", "content": "The given segment discusses the development of a terminating counting algorithm for directed networks with late outdegree awareness and a known number of leaders, which allows for the reduction of semi-synchronous networks to an equivalent synchronous one, and provides insights into the potential open problems related to self-stabilizing protocols for memoryless agents in anonymous networks."}]}
