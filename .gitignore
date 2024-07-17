@@ -28,6 +28,7 @@ build
 
 # Ignore grobid output
 *.xml
+!.grobid.tei.xml
 # Logs
 logs
 *.log
