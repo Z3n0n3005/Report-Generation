@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">History Trees and Their Applications</title>
+				<funder>
+					<orgName type="full">University of Aizu Competitive Research Funding for FY 2023</orgName>
+				</funder>
+				<funder ref="#_EAPB9uj">
+					<orgName type="full">JSPS KAKENHI</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">University of Salerno</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2024-04-04">4 Apr 2024</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author role="corresp">
+							<persName><forename type="first">Giovanni</forename><surname>Viglietta</surname></persName>
+							<email>viglietta@gmail.com</email>
+							<affiliation key="aff0">
+								<orgName type="institution">University of Aizu</orgName>
+								<address>
+									<settlement>Aizuwakamatsu</settlement>
+									<country key="JP">Japan</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">History Trees and Their Applications</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2024-04-04">4 Apr 2024</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">A6D1582F7FD32C381819EE02B7F08596</idno>
+					<idno type="arXiv">arXiv:2404.02673v2[cs.DC]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.0" ident="GROBID" when="2024-05-02T16:15+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>history tree</term>
+					<term>anonymous network</term>
+					<term>dynamic network</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>In the theoretical study of distributed communication networks, history trees are a discrete structure that naturally models the concept that anonymous agents become distinguishable upon receiving different sets of messages from neighboring agents. By conveniently organizing temporal information in a systematic manner, history trees have been instrumental in the development of optimal deterministic algorithms for networks that are both anonymous and dynamically evolving. This note provides an accessible introduction to history trees, drawing comparisons with more traditional structures found in existing literature and reviewing the latest advancements in the applications of history trees, especially within dynamic networks. Furthermore, it expands the theoretical framework of history trees in new directions, also highlighting several open problems for further investigation.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>A distributed communication network consists of a finite number of independent computational units known as agents, which can send each other messages and modify their internal states based on the messages they receive. These networks generally operate in synchronous or asynchronous communication steps, where agents send messages through the links of a (multi)graph, which may be static or dynamic, directed or undirected, connected or disconnected, etc. <ref type="foot" target="#foot_0">1</ref>A network is anonymous if its agents are initially indistinguishable, i.e., they lack unique identifiers and can only be told apart by external input or due to the network's layout. In such networks, it is typically assumed that all agents run the same local deterministic algorithm. It is important to note that allowing for randomness would enable agents to generate unique identifiers with high probability, thereby compromising the study's focus on anonymity.</p><p>A common algorithmic approach in this setting involves assigning a "weight" to each agent, which is then distributed among neighbors at each step according to specific rules. This process is analyzed using standard stochastic methods to understand how these weights eventually converge to a common value <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b12">13]</ref>.</p><p>Although this "averaging technique" enabled the development of general algorithms for anonymous networks, one of its major limitations is its disregard for the network's structural and topological characteristics, providing minimal insight into these aspects. Furthermore, analyzing these algorithms tends to be technically cumbersome, yielding only asymptotic estimates for how quickly the network reaches convergence or stability.</p><p>Another line of research, initiated by Angluin <ref type="bibr" target="#b0">[1]</ref>, explores discrete and algebraic structures, such as the views of Yamashita-Kameda <ref type="bibr" target="#b16">[17]</ref> and the graph fibrations and minimum bases of Boldi-Vigna <ref type="bibr" target="#b3">[4]</ref>. This approach allows algorithms to fully leverage the network's structure and usually permits a more precise analysis of running times. However, the theoretical frameworks of views and graph fibrations were developed for networks with unchanging topologies, and their successful application has been limited to such static networks.</p><p>History trees are a newer data structure that inherently includes a temporal dimension and was specifically designed for networks with dynamic topologies. The introduction of history trees has recently led to the development of optimal linear-time algorithms for anonymous dynamic networks <ref type="bibr" target="#b8">[9,</ref><ref type="bibr" target="#b10">11]</ref> and state-of-the-art general algorithms for congested anonymous dynamic networks <ref type="bibr" target="#b9">[10]</ref>.</p><p>In Section 2, we outline the basic architecture of history trees, drawing comparisons with Yamashita-Kameda's views and Boldi-Vigna's minimum bases. Additionally, we showcase a straightforward linear-time algorithm for dynamic networks that illustrates the practicality of history trees. In Section 3, we discuss more advanced applications of history trees in challenging network situations, while also pointing out a number of areas that remain open for investigation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Basic Structure and Algorithms</head><p>In this section we focus on anonymous networks operating in synchronous steps, modeled as undirected dynamic multigraphs with no port awareness. Other network models will be discussed in Section 3.</p><p>Throughout this section, the reader may find it beneficial to examine the software available at https://github.com/viglietta/Dynamic-Networks. The repository includes a simulator that supports the creation and visualization of history trees of user-defined dynamic networks and the testing of fundamental algorithms.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">History Trees and Construction of a View</head><p>Consider a dynamic network of six anonymous agents whose first four communications steps are as in Figure <ref type="figure">1</ref>. Before the first step (i.e., at time t = 0), each agent only knows its own input, which in our example is represented by a color: either cyan or yellow. In the first communication step, both cyan agents (which are indistinguishable) receive three messages from yellow agents (also indistinguishable). Thus, the cyan agents remain indistinguishable at time t = 1.</p><p>However, two yellow agents receive two messages from cyan agents, but the other two receive only one message. Thus, at time t = 1, the two yellow agents</p><formula xml:id="formula_0">History tree 0 L 1 L 2 L 4 L 3 L 0 R 1 R 2 R 3 R 4 R 1 -</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>L</head><p>Step 1</p><p>Step 2</p><p>Step 3</p><p>Step 4 In general, since the network is synchronous, at step t &gt; 0 (i.e., between time t -1 and time t) all agents simultaneously send messages and simultaneously receive them (as unordered multisets). Two messages are assumed to be identical if and only if they are sent by indistinguishable agents (possibly by the same agent). By definition, at time t = -1 no two agents are distinguishable; at time t = 0 they are distinguishable if and only if they have different inputs. At time t &gt; 0, two agents are distinguishable if and only if they are distinguishable at time t -1 or receive different multisets of messages at step t.</p><p>History trees were introduced in <ref type="bibr" target="#b8">[9]</ref> to study how and when anonymous agents in a (dynamic) network become distinguishable. The history tree H G of a network G is an infinite tree subdivided into levels, as in Figure <ref type="figure">1</ref>, where the nodes in level L t represent the equivalence classes of agents that are indistinguishable at time t. The number of agents in the class represented by a node v is called the anonymity of v and is denoted as a(v). In our example, a(a 1 ) = 2 and a(a 2 ) = 4.</p><p>The root r represents all agents in the network. In general, the children of a node v ∈ L t-1 , i.e., the nodes v 1 , v 2 , . . . , v k ∈ L t that are connected to v by a black edge, represent a partition of the set of agents represented by v. Thus,</p><formula xml:id="formula_1">a(v) = k i=1 a(v i ).<label>(1)</label></formula><p>On the other hand, the red edges in R t represent messages sent and received at step t. That is, a directed red edge (v, u) with multiplicity m, where v ∈ L t-1</p><formula xml:id="formula_2">v ′ v + = u v ′ v u Fig. 2.</formula><p>Updating the view of an agent represented by node v after it receives the view of an agent represented by u as a message. The two views are matched and merged starting from the roots, v gets a child v ′ , and a new red edge from u to v ′ is added.</p><p>and u ∈ L t , indicates that, at step t, each agent represented by node u receives exactly m (identical) messages from agents represented by v.</p><p>Assuming that their internal memory and message sizes are unbounded, the agents in a network G can locally construct portions of the history tree called views. More precisely, if an agent p at time t is represented by a node v ∈ L t , then the view V t G (p) is defined as the portion of H G spanned by all directed paths from the root r to v, using black and red edges indifferently (black edges are assumed to be directed away from the root r). The node v is called the bottom of the view. Figure <ref type="figure">1</ref> shows an example of a view within a history tree.</p><p>The distributed construction of views can be achieved via an iterative process, assuming that all agents send their current view to all their neighbors at every step. Upon receiving a multiset M of messages, an agent p integrates its current view V t G (p) with all views in M . This is done by a straightforward match-and-merge algorithm, starting from the root and proceeding level by level, as exemplified in Figure <ref type="figure">2</ref>. The result is the smallest tree containing V t G (p) and all views in M as induced subtrees. To obtain V t+1 G (p), the agent p creates a child v ′ for the bottom node v of V t G (p), and connects the bottom nodes of all views in M to v ′ by red edges with the appropriate multiplicities. The node v ′ is now the bottom of V t+1 G (p) and represents p (and possibly other agents) at time t + 1.</p><p>It is a simple observation that the view V t G (p) contains all the information that p can possibly extract from the network G after t communication steps <ref type="bibr" target="#b8">[9]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Related Structures for Static Networks</head><p>We will now focus on static anonymous networks, which are well understood thanks to the works of Yamashita-Kameda, Boldi-Vigna, and other authors.</p><p>If G is a static network of n agents, once the classes of indistinguishable agents remain unchanged for a single communication step, they must remain unchanged forever. Thus, the number of nodes in the levels of H G strictly increases at every level until it stabilizes, say, at level L s . Therefore, if |L s | = n, we have 0 ≤ s &lt; n ≤ n, because |L 0 | ≥ 1 and each node represents at least one agent.</p><p>We come to the conclusion that in any network of size n, if two agents are indistinguishable at time t = n -1, they will remain indistinguishable thereafter. This observation was first made by Norris (though formulated differently) in <ref type="bibr" target="#b13">[14]</ref>, where she also raised the question of whether the same applies to agents in two distinct networks of the same size n. 2 We restate Norris' question below.</p><p>Open Problem 1. Let G and G ′ be two disjoint static networks of n agents each. If an agent in G and an agent in G ′ have isomorphic views at time t = n -1, do they have isomorphic views at all times?</p><p>Let us consider the subgraph of H G induced by the nodes in levels L s and L s+1 , as highlighted in Figure <ref type="figure">3</ref> with a green background. Contracting the black edges in this subgraph, we obtain a directed multigraph named G.</p><p>This is an important structure that has been given many names and equivalent definitions in the literature. Essentially, G could be defined as the smallest directed multigraph that gives rise to a history tree isomorphic to H G . Yamashita and Kameda call G the quotient graph of G and define it in graph-theoretical terms using their own notion of view of a static network <ref type="bibr" target="#b15">[16,</ref><ref type="bibr" target="#b16">17]</ref>, whereas Boldi and Vigna call G the minimum base of G and give it a topological definition in terms of graph fibrations <ref type="bibr" target="#b1">[2,</ref><ref type="bibr" target="#b2">3,</ref><ref type="bibr" target="#b3">4,</ref><ref type="bibr" target="#b4">5]</ref>. 3  Notably, since the results concerning static networks from these authors are presented with reference to G, they can be directly rephrased in the language of history trees. The advantage of using history trees lies in their ability to readily offer timing information on when agents become distinguishable. This feature makes history trees particularly suitable for dynamic networks, where G is not well defined and the lack of topological regularity prevents the straightforward deduction of temporal data.</p><p>Before delving into applications of history trees to dynamic networks in Section 2.3, let us draw a closer comparison between views of history trees and views in the sense of Yamashita-Kameda <ref type="bibr" target="#b16">[17]</ref>. While it is important not to confuse these two concepts, they bear a deep relationship illustrated in Figure <ref type="figure">3</ref>.</p><p>For Yamashita and Kameda, the view T G (p) of an agent p in a static network G is an infinite tree rooted at p, where each node of depth k represents a distinct 2 By treating the disjoint union of the two networks as a single network of size 2n, it becomes evident that agents that are indistinguishable at time t = 2n -1 are indistinguishable forever. This point was already noted by Conway in [8, Chapter 1, Theorem 7], albeit phrased in terms of Moore machines. Although t = 2n -1 might not be an optimal bound if both networks have size n (hence Norris' question), Figure <ref type="figure" target="#fig_1">4</ref> implies that t = 2n is optimal if they have sizes n and n + 1, respectively. Indeed, if the two cyan agents are colored yellow, they become distinguishable after 2n steps, matching the upper bound given by the combined number of agents, 2n + 1. 3 More specifically, G is fibered onto the fibration-prime graph G, and the fibers are precisely the classes of agents represented by the nodes of Ls in the history tree HG.</p><formula xml:id="formula_3">2 3 2 2 p ) p ( G 3 V G H ) p ( G 3 T G G ) p ( G 3 V ) p ( G 3 T 2 2 2 3 2 2 3 2 2 2 2 2 2 2 2 3</formula><p>Fig. <ref type="figure">3</ref>. A static network G with a distinguished agent p and its history tree HG (truncated at level L4). At stabilization, the directed graph of the red edges between non-branching levels (highlighted in green in HG) is isomorphic to the Boldi-Vigna minimum base G. The view V 3 G (p) after step 3 is related to the Yamashita-Kameda view T 3 G (p) truncated at depth 3, as well as to its Tani folded view T 3 G (p), as illustrated. The precise correspondence between these structures is described in Section 2.2.</p><p>walk of length k in G terminating in p. As it turns out, T G (p) truncated at depth k, denoted as T k G (p), contains precisely the information encoded in V k G (p). Indeed, starting from V k G (p), we can construct T k G (p) as follows. Let us consider the subgraph spanned by the directed paths in V k G (p) terminating in the bottom node using only red edges. Such a subgraph is a directed acyclic graph isomorphic to the so-called folded view T k G (p). This is a structure devised by Tani in <ref type="bibr" target="#b14">[15]</ref> to compress T k G (p) from exponential size to polynomial size by conflating equivalent nodes. Finally, T k G (p) can easily be unraveled to reconstruct T k G (p). Conversely, starting from T k G (p), one can construct an inventory of "fragments" by listing all subtrees hanging from different nodes and truncating them at all possible depths. The isomorphism classes of these fragments, when ordered by their height, correspond to the levels of V k G (p), with the "empty fragment" being the root. Then, the parent of a fragment f in V k G (p) is determined by deleting all the leaves of f . Similarly, the fragments of V k G (p) that are connected to f via red edges (and the multiplicities of such red edges) match the subtrees that dangle from the root's children within f . Thus, we can construct</p><formula xml:id="formula_4">V k G (p) from T k G (p).</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3">Basic Applications to Dynamic Networks</head><p>We will now describe a general algorithmic technique that can be used to solve a wide range of fundamental problems in networks operating in synchronous steps, modeled as dynamic undirected multigraphs that are connected at every step. Albeit being extremely straightforward, this technique achieves optimal running times and matches in efficiency the best algorithms for static networks. As argued in Section 2.1, the agents in a network have a distributed algorithm for constructing their view of the history tree and update it at every communication step. Since an agent's view encodes all the information that the agent can infer from the network, in principle we can reduce any problem about anonymous networks to a problem about views of history trees.</p><p>Of course, this is true assuming that all agents have enough internal memory and can send large-enough messages to store their views. After t steps, the size of a view is O(tn 2 log M ) bits, where n is the total number of agents and M is the maximum number of messages sent by any agent in a single step. Indeed, such a view has t levels, each of which contains at most n nodes and n 2 incoming red edges of multiplicity at most M . In particular, if the view construction algorithm runs for a polynomial number of steps, it requires internal memory and messages of polynomial size. For the time being, we will assume that this is not an issue.</p><p>The basic technique relies on the following observation. If two nodes u and v in the same level L i of the history tree are non-branching, i.e., they have a unique child u ′ and v ′ respectively, and there are red edges (u, v ′ ) with multiplicity m u,v ′ &gt; 0 and (v, u ′ ) with multiplicity m v,u ′ &gt; 0, then we can count the number of messages exchanged by the agents represented by u and by v as</p><formula xml:id="formula_5">m v,u ′ a(u) = m u,v ′ a(v)<label>(2)</label></formula><p>because communication links are bidirectional. Thus, since we know the multiplicities of the red edges, we can infer the ratio of the anonymities involved. Now, if L i is a level where all nodes are non-branching, and since the network is connected at every step by assumption, we can repeatedly apply Equation (2) to compute the ratios of the anonymities of all nodes in L i . For example, since level L 1 in Figure <ref type="figure">1</ref> is non-branching, we can easily deduce that a(b 1 ) = a(b 2 ) = a(b 3 ). Then, using Equation (1), we can extend the computation to all previous levels, and obtain for instance that 2a(a 1 ) = a(a 2 ). The reader may apply the same method to the history tree in Figure <ref type="figure">3</ref> to deduce that the ratio between the number of yellow agents and the number of cyan agents is 7.</p><p>Once we have this information, we can solve problems such as Average Consensus: if the agents are given input numbers, we can compute the fraction of agents that have each input and use it as a weight to compute the mean input.</p><p>If we are given additional information, such as the total number of agents or the number of agents that have a certain input, we can also compute how many agents have each input. For instance, in Figure <ref type="figure">1</ref>, if we know that there are two cyan agents, we deduce that there are four yellow ones, because 2a(a 1 ) = a(a 2 ).</p><p>In particular, if we know that the network contains a unique distinguished agent, typically referred to as a leader, then we can solve the Counting problem, which asks to compute the total number of agents, n. Thus, in Figure <ref type="figure">3</ref>, if we know that p is the unique leader, we can deduce from the history tree that n = 8.</p><p>Let us discuss the efficiency of this method. Since |L -1 | = 1 and the number of nodes per level is at most n, it follows that it is sufficient to inspect the history tree up to level L n-1 to find a non-branching level and the relative red edges.</p><p>A subtler issue is how long it takes before the views of all agents acquire all nodes (and hence all edges) up to L n-1 , so that all agents can carry out correct computations locally. In Figure <ref type="figure">1</ref>, for instance, since level L 0 is non-branching in the highlighted view (because node b 3 is not in the view), at time t = 2 the cyan agents may be deceived and incorrectly deduce that 3a(a 1 ) = 2a(a 2 ).</p><p>Recall that the network is assumed to be connected at all steps. So, it takes fewer than n steps for information to travel from any agent to any other agent; in other words, the dynamic diameter d is at most n -1. Indeed, if k &lt; n agents have some information at time t, then at least k + 1 agents have it at time t + 1.</p><p>Hence, it takes at most d steps for a node in the history tree to appear in the views of all agents. In particular, at time n + d -1 ≤ 2n -2, all agents have the entirety of L n-1 in their views, and thus have enough information to do correct computations. For example, in Figure <ref type="figure">3</ref>, knowing all levels of H G up to L 3 is enough, but these levels entirely appear in the view of p only at step 7. In fact, the diameter of the network G is d = 4.</p><p>This technique yields an algorithm for Average Consensus that stabilizes in 2n -2 steps. That is, if all agents attempt to compute the average of the input values after every step, they may guess it incorrectly for some time, but will be all correct after 2n -2 steps at the latest. The same upper bound holds for the Counting problem, assuming the presence of a unique leader in the network.</p><p>A downside of this method is that it provides no certificate of correctness, and therefore the algorithm is supposed to run indefinitely. However, if n is known to the agents, they can simply count 2n -2 steps, do all computations on the first n -1 levels, and then terminate returning the correct output. Similarly, if an agent knows the dynamic diameter d, it can terminate at time t if its view contains a non-branching level L i with i &lt; td, because all levels up to L i+1 are guaranteed to be entirely in the view. This occurs by the time t = n + d -1.</p><p>Finally, let us discuss lower bounds. Figure <ref type="figure" target="#fig_1">4</ref> shows two networks of sizes n and n + 1 whose leaders have the same view up to step 2n -2. Since agents with equal views must return equal outputs (assuming they execute the same algorithm), it easily follows that there is no Counting algorithm that terminates in 2n -2 steps or stabilizes in 2n -4 steps in both networks. For if there were such an algorithm, then both leaders would return the same output, and at least one of them would be incorrect. Note that this almost matches the running time of the stabilizing Counting algorithm given above, which is 2n -2 steps. This leaves only a small gap: namely, whether 2n -3 steps are actually sufficient.</p><p>Open Problem 2. Can a Counting algorithm stabilize in 2n -3 steps in all connected undirected dynamic networks with a unique leader?</p><p>As for Average Consensus, if the two cyan agents in Figure <ref type="figure" target="#fig_1">4</ref> are colored yellow, then they have the same view up to step 2n -1. This implies that no Average Consensus algorithm can stabilize in 2n -3 steps in all networks, and therefore the one described above, which stabilizes in 2n -2 steps, is optimal.</p><p>3 Variations and Extensions</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Leader Election</head><p>Another application of the technique in Section 2.3 is Leader Election, where all agents have to agree on a unique representative to be identified as the "leader". Of course, this problem has a solution only if the history tree contains a node of anonymity 1; as it turns out, this condition is also sufficient.</p><p>A simple Leader Election algorithm, at step t, computes the ratios of all anonymities in the first non-branching level occurring after L ⌊t/2⌋ and deterministically picks a node of smallest anonymity as representing the leader. This strategy eventually elects a unique leader if and only if it is possible to do so, but no certificate of correctness is provided, and the algorithm has to run indefinitely.</p><p>However, if n is known, then anonymities in non-branching levels can be computed exactly with a known delay of n -1 steps. In this case, any agent that becomes distinguishable from all others at time t can be identified with certainty by time t + 2n -2, allowing all agents to terminate.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Terminating Counting</head><p>In Section 2.3 we gave a Counting algorithm for connected undirected dynamic networks with a unique leader that stabilizes in 2n -2 steps. At the cost of n additional communication steps, we can implement a correctness certificate and make all agents return n and terminate. The algorithm's details are somewhat intricate and can be found in <ref type="bibr" target="#b8">[9]</ref>; here we will merely sketch the main ideas.</p><p>If we know the anonymities of a node u and of all its children, then u is called a guesser. If there is a red edge directed from u to a node v of unknown anonymity, we can write an equation similar to Equation (2) to count messages exchanged by the corresponding agents. Solving this equation yields a guess g(v) on a(v) in terms of known anonymities and multiplicities of red edges. As it turns out, g(v) ≥ a(v) always holds; moreover, if v has no siblings, g(v) = a(v).</p><p>Clearly, the nodes representing the leader are always guessers, because their anonymity is 1. Using these nodes, we can make initial guesses on at least one node per level. The question is how we can determine which guesses are correct without knowing the whole history tree, but only a view of it.</p><p>Let us define the weight w(v) of a node v as the number of guesses that have been made on nodes in the subtree hanging from v (including on v itself). Then, v is said to be heavy if w(v) ≥ g(v). The key observation is that, if guesses are well spread, i.e., no two sibling nodes are assigned a guess, then the deepest heavy node necessarily has a correct guess.</p><p>Hence, in Figure <ref type="figure" target="#fig_2">5</ref>, the nodes in (a)-(d) with a blue number have a correct guess, but the one in (e) may not. For (a), this is obvious: since g(v) = 1 and g(v) ≥ a(v), we must conclude that a(v) = 1 and the guess is correct. As for (b), if the lower node u has a correct guess, then the upper node v has a correct guess too, because 2 = g(v) ≥ a(v) ≥ a(u) = g(u) = 2, hence g(v) = a(v). Otherwise, the guess on u is incorrect, and so u must have a sibling (perhaps not in the view). Hence, 2 = g(v) ≥ a(v) ≥ 2, and the guess on v is correct. The reader may verify that a similar line of reasoning applies to (c) and (d) but not to (e). It is not difficult to see that, if there are at least n well-spread nodes with guesses, then some of them must be heavy, and thus the deepest of them is necessarily correct. In this way, we can steadily determine the anonymities of new nodes. Eventually, some of these nodes become guessers themselves and can be used to make new guesses, and so on. Since the network is connected at all steps, it can be shown that only 2n -2 levels of the history tree are required for this algorithm to eventually identify nodes with correct guesses on all branches.</p><p>Adding up the anonymities of nodes on all branches produces an estimate n ′ on the actual size of the network, n. In general we have n ′ ≤ n, because the current view may not include all branches of the history tree. To confirm this estimate, it is sufficient to wait an additional n ′ steps, which is the longest time it may take for at least one missing branch to appear in the view, if one exists.</p><p>Overall, this Counting algorithm terminates in 3n -2 steps in the worst case, leaving a small gap with the lower bound of 2n -2 steps given in Section 2.3.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Open Problem 3. Can a Counting algorithm terminate in 2n + O(1)</head><p>steps in all connected undirected dynamic networks with a unique leader?</p><p>The previous Counting algorithm was generalized in <ref type="bibr" target="#b10">[11]</ref> to networks where the leader may not be unique, but there is a known number ℓ ≥ 1 of indistinguishable leaders, or supervisors. Note that the history tree may contain several branches corresponding to leaders; the challenge posed by this scenario is that the individual anonymities of such branches are unknown (although their sum is ℓ).</p><p>The state-of-the-art solution given in <ref type="bibr" target="#b10">[11]</ref> involves subdividing the history tree into ℓ intervals, each of at most (ℓ + 1)n levels. The total running time is roughly (ℓ 2 + ℓ + 1)n steps, making this algorithm impractical unless ℓ is small.</p><p>In fact, it is a major open question whether a larger ℓ may actually be helpful.</p><p>Open Problem 4. In connected undirected dynamic networks with a known number ℓ of leaders, how does the optimal running time of terminating Counting algorithms scale with ℓ? Fig. <ref type="figure">6</ref>. Two directed static networks with a unique leader and no outdegree awareness that have a different number of agents but the same history tree.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Directed Networks</head><p>Generalizing the scenario of Section 2, we may consider directed networks, i.e., networks with unidirectional links. It is important to recognize that, in these networks, even solving basic problems such as Average Consensus or Counting with a unique leader requires some additional assumptions, as Figure <ref type="figure">6</ref> demonstrates. A reasonable approach is to assume that, in each step, agents are aware of their outdegree either before (early outdegree awareness) or after (late outdegree awareness) they transmit their messages. The key distinction is that in the early awareness model, an agent can incorporate its current outdegree into the messages it sends. Here we will focus on the late outdegree awareness model, which is less advantageous especially in dynamic networks.</p><p>The basic history tree architecture can be extended by attaching outdegrees to black edges, as in Figure <ref type="figure" target="#fig_4">7</ref>. We can then identify a non-branching level L i in the history tree, as in Section 2.3, and use outdegrees and multiplicities of red edges to write linear equations generalizing Equation (2), as shown in Figure <ref type="figure" target="#fig_4">7</ref>.</p><p>The resulting homogeneous system is represented by an irreducible matrix A, assuming the network is strongly connected at every step. Note that A = λI -P , where λ &gt; 0 and P ≥ 0 is also an irreducible matrix. In our example,</p><formula xml:id="formula_6">A =     3 -1 0 0 0 2 -1 -2 -2 0 1 0 0 0 -1 1     =     3 0 0 0 0 3 0 0 0 0 3 0 0 0 0 3     -     0 1 0 0 0 1 1 2 2 0 2 0 0 0 1 2     = 3I -P.</formula><p>We have Ax = 0, where x &gt; 0 is the vector of anonymities of the nodes in L i . Hence, P x = λx. By the Perron-Frobenius theorem, λ is a simple eigenvalue of P , and thus 0 is a simple eigenvalue of A. In other words, the nullity of A is 1, which means we can solve the linear system in terms of a single free variable.</p><p>Thus, we can find the ratios between the anonymities of all nodes in L i , or compute them exactly if there is a known number ℓ ≥ 1 of leaders in the network.</p><p>This technique yields stabilizing Average Consensus and Counting algorithms for strongly connected directed dynamic networks with late outdegree awareness, generalizing the ones in Section 2.3. The stabilization time of these algorithms is again 2n -2 steps, which is optimal. We now present a terminating Counting algorithm for directed networks with late outdegree awareness and a known number ℓ ≥ 1 of leaders. Every agent waits until its view contains a long-enough interval I of non-branching levels. The goal is to find an upper bound U i on the anonymity of a node v i in each branch B i within I. To start, we take U 1 = ℓ, where B 1 is any leader branch.</p><p>The algorithm repeatedly uses branches with a known upper bound to determine new upper bounds. Namely, let B i have a known upper bound U i ≥ a(v i ) and consider all red edges (v, v ′ ), where v is a descendant of v i within I. Each of these yields an estimate δU i on a(v ′ ), where δ is the outdegree corresponding to the child of v in B i . Note that, if v has a unique child in the history tree, at most δU i messages are sent from agents represented by v, and so δU i ≥ a(v ′ ). Nonetheless, even if v is not branching in a view, it may still branch in the history tree, and in this case δU i may not be a correct upper bound. However, this undesirable event may occur at most U i -1 times. Thus, as soon as a branch B j receives estimates from B i on U i nodes, we take the maximum estimate as a correct upper bound U j on the anonymity of the deepest such node v j in B j .</p><p>When we finally have an upper bound for all branches in I, we wait i U i additional steps to confirm that there are no branches missing from the view. Then we run the previous stabilizing Counting algorithm and output the result.</p><p>Assuming that the network is simple and strongly connected at all steps, this algorithm terminates in 2 O(n log n) steps, which is likely far from optimal.</p><p>Open Problem 5. Can a Counting algorithm terminate in a polynomial number of steps in all strongly connected directed dynamic simple networks with (early or late) outdegree awareness and a unique leader?</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4">Disconnected Networks</head><p>For networks that are not necessarily connected at all steps, we define a communication round as a minimal sequence of consecutive steps whose communication multigraphs have a (strongly) connected sum (constructed by adding together their adjacency matrices). A network is τ -union-connected if every block of τ consecutive steps contains a communication round. It was observed in <ref type="bibr" target="#b10">[11]</ref> that τ and the dynamic diameter d are related by the tight inequalities τ ≤ d ≤ τ (n -1).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A B</head><p>′ B ′ A Fig. <ref type="figure">8</ref>. Two agents in a semi-synchronous network share their views A and B, which are updated as A ′ and B ′ . Note that red edges may go upward or skip multiple levels. The highlighted nodes are the "bottom nodes" of their respective views, which can be identified as the only sinks (assuming black edges are directed away from the root).</p><p>Clearly, any non-trivial terminating computation is impossible if the agents know nothing about τ . On the other hand, with knowledge of τ , all of the previous algorithms can be straightforwardly adapted to τ -union-connected networks. It is sufficient for each agent to accumulate incoming messages at every step, updating its view only once every τ steps. This adaptation slows down all running times by a factor of τ . However, this is worst-case optimal, since a τ -union-connected network may be devoid of links except at steps that are multiples of τ .</p><p>As for stabilizing computations, they can be done even with no knowledge of τ , again with a worst-case optimal slowdown by a factor of τ , as detailed in <ref type="bibr" target="#b10">[11]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.5">Semi-Synchronous Networks</head><p>In a network operating semi-synchronously, any agent may unpredictably be inactive at any step. An inactive agent does not communicate with other agents and does not even update its state. This model is called "asynchronous" by Boldi-Vigna <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b4">5]</ref> and generalizes the asynchronous starts of Charron-Bost-Moran <ref type="bibr" target="#b6">[7]</ref>, but we will give the term "asynchronous" a more extensive meaning in Section 3.6.</p><p>The concept of a round and the parameter τ are defined as in Section 3.4. A notable distinction from the synchronous models discussed so far is that agents in a semi-synchronous network cannot reliably count communication steps, because they do not know for how many steps they have been inactive. Hence, two views shared by two agents may not have the same height, as the ones in Figure <ref type="figure">8</ref>.</p><p>Consequently, a red edge no longer has to connect a level to the next, but can span any number of levels. However, it is always possible to restore this property by adding dummy nodes to represent inactive agents, resulting in an equalized view (Figure <ref type="figure">9</ref>). Thus, we can reduce any semi-synchronous network to an equivalent synchronous one with the same parameter τ and apply the methods outlined in Section 3.4 to obtain algorithms with the same running times. Fig. <ref type="figure">9</ref>. Equalizing the view of an agent in a semi-synchronous network by adding dummy nodes. In the resulting view, every red edge connects a level to the next.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.6">Asynchronous Networks</head><p>A network is asynchronous if messages can take an arbitrary, independent, and unpredictable amount of time to reach their destinations. Such a network is necessarily directed, and therefore some form of outdegree awareness is needed, as argued in Section 3.3. A round is now any minimal interval of time such that the messages that are sent and received form a strongly connected multigraph.</p><p>Observe that, even in asynchronous networks, time can always be discretized, assuming that no agent can send an infinite number of messages in a finite time.</p><p>Also, doing non-trivial computations with termination in asynchronous networks with no knowledge about the duration of a round is impossible.</p><p>However, there is a simple stabilization algorithm, as follows. When an agent sends some messages, it expands its view by adding a child to the bottom node and attaches its outdegree to the corresponding black edge, as in Section 3.3. When it receives a multiset of messages, it updates its view as in Section 3.5.</p><p>Then, the agent seeks the first interval of levels constituting a round where all nodes are non-branching. The outdegrees and red edges in this interval yield a system of equations that is solved as in the stabilizing algorithm of Section 3.3.</p><p>Such a non-branching interval occurs in the history tree after at most n -1 rounds and appears in the agent's view in at most n -1 additional rounds. The total stabilization time is therefore 2n -2 rounds, which is worst-case optimal.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.7">Port Awareness</head><p>A widely studied scenario, especially within static networks, is when each agent has a local numbering for its incoming links (input port awareness) or outgoing links (output port awareness). It is evident that, although input port awareness enables each agent in a static network to identify all messages sent by the same neighbor, this feature has no clear meaning or effect in dynamic networks.</p><p>In contrast, output port awareness has a significant impact on both static and dynamic networks, as it not only implies outdegree awareness, but allows agents to assign a different tag to each message they send within a communication step. This is helpful in breaking network symmetry, thus facilitating certain computations. The history tree architecture for outdegree awareness of Section 3.3 can also be adapted to this model by simply attaching a port number to each red edge.</p><p>As an example, output port awareness combined with a unique leader makes the Counting problem particularly simple even in strongly connected directed dynamic networks. Indeed, all messages sent by the leader in a communication step have different tags, and so all agents that receive them become distinguishable. Generalizing, every node on a red path starting at a leader node must have an anonymity of 1. When a whole level L i in a view consists of such nodes, we can check if the outdegree of each node in L i matches the number of its outgoing red edges. If so, all agents have been accounted for, and we can return n = |L i |.</p><p>This Counting algorithm terminates in 2n -1 steps, greatly improving upon the one in Section 3.2. Observe that the lower bound in Figure <ref type="figure" target="#fig_1">4</ref> does not hold for networks with output port awareness, which may allow for even faster solutions.</p><p>Open Problem 6. Can a Counting algorithm terminate in fewer than 2n -2 steps in all strongly connected directed dynamic networks with output port awareness and a unique leader?</p><p>A less obvious fact is that, in any non-branching level of the history tree of a strongly connected directed dynamic network with output port awareness, all nodes must have the same anonymity. <ref type="foot" target="#foot_1">4</ref> Indeed, if A and B are two classes of indistinguishable agents represented by nodes in a non-branching level, and an agent in A receives a message tagged k from an agent in B, then so do all agents in A (or else their node would branch). Since no agent in B can send more than one message tagged k, we have |A| ≤ |B|. Repeating this reasoning for all pairs of communicating classes, and recalling that the network is strongly connected, we conclude that all classes must have the same size.</p><p>A remarkable consequence is that, with output port awareness, a unique leader can be elected if and only if it is possible to assign unique identifiers to all agents (also known as the Naming problem). A terminating algorithm for both problems, if n is known, is easily obtained by combining the Leader Election algorithm in Section 3.1 (which was designed for undirected networks only) with the stabilizing technique for directed networks in Section 3.3.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.8">Varying Inputs</head><p>Suppose that agents have inputs that may change at every step. Note that the history tree architecture already supports attaching inputs to nodes, and so the basic stabilizing algorithms previously discussed can become streaming algorithms that adaptively return the correct output with an amortized delay of n -1 steps. 2 Fig. <ref type="figure">10</ref>. A routine in the universal self-stabilizing protocol: delete level L0 in the view, and then repeatedly merge nodes whose corresponding sub-views are isomorphic.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.9">Self-Stabilization</head><p>A network algorithm is self-stabilizing if it returns the correct output regardless of the initial state of the agents. This implies tolerance to memory corruption, transient faults, and agents dynamically joining and leaving the network.</p><p>Let us assume the network to be synchronous, directed, and dynamic. We remark that most existing self-stabilizing protocols, such as Boldi-Vigna's <ref type="bibr" target="#b4">[5]</ref>, are specifically designed for static networks, and cause agents to perpetually and incorrectly reset their states when executed in highly dynamic networks.</p><p>We will give a universal self-stabilizing protocol that constructs coherent views, allowing to convert any stabilizing algorithm into a self-stabilizing one (note that non-trivial terminating computations are impossible in this scenario).</p><p>The core idea is that an agent can deliberately "forget" old information by deleting level L 0 of its current view, connect level L 1 to the root, and merge equivalent nodes from top to bottom to restore a well-formed view, as in Figure <ref type="figure">10</ref>.</p><p>If the number of agents n is known, they can simply update their views as usual (resetting their state if it does not encode a well-formed view) and delete old levels when their number exceeds some fixed threshold, e.g., 2n -2. Eventually, this protocol produces views that correctly describe the last 2n-2 communication steps, which are enough for the stabilizing algorithms of Sections 2.3 and 3.3.</p><p>On the other hand, if n is unknown, every agent updates its view as usual, but deletes level L 0 every two steps. This is controlled by a local binary flag that is toggled at every step. However, before merging its view with a neighbor's view of different height, it deletes the top levels of the taller view to match the other. Also, if the taller view was its own, the agent does not toggle its flag for a step.</p><p>In O(n) steps, all agents have views of equal height, as well as equal flags. Moreover, their views eventually describe an increasingly large number of previous communication steps, enabling any stabilizing algorithm to work correctly. Open Problem 7. Is there a universal self-stabilizing protocol for semisynchronous strongly connected directed dynamic networks?</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.10">Finite-State Stabilization</head><p>The stabilizing algorithms described so far assume that all agents constantly update their views at every step, which requires an unlimited amount of internal memory. To mitigate this, we will now give a universal finite-state protocol that enables the conversion of any stabilizing algorithm into one that uses a finite amount of memory (as a function of n), albeit with an extra delay.</p><p>Let us assume the network to be synchronous, undirected, connected, and dynamic. A level L i in a view is said to be suitable if every node in L i-1 has a unique child in L i and the red edges between these two levels are compatible with a connected network. Recall that the basic stabilizing algorithms of Section 2.3 do all computations using only the shallowest suitable level of a view. Now, when two neighboring agents share views whose shallowest suitable levels are isomorphic, they do not merge their views. Essentially, this removes a link from the communication network for that step. Also, when an agent receives no views that it can merge, it skips updating its view altogether, i.e., it remains inactive for that step. Note that this makes the network semi-synchronous, so views must be equalized prior to being used by the protocol (see Section 3.5).</p><p>According to this protocol, if all agents remain inactive forever, they all share the same suitable level, which is enough to perform correct computations. Otherwise, some inactive agent acquires relevant information within n -1 steps and reactivates. Moreover, since there are at most n -1 branching nodes in the history tree, the agents can incorrectly guess a suitable level at most n -1 times. Thus, the protocol is finite-state, but introduces an overhead of O(n 2 ) steps.</p><p>Open Problem 8. Is there a universal finite-state stabilizing protocol for connected undirected dynamic networks with an overhead of O(n) steps?</p><p>Another open problem is to design a protocol that is both self-stabilizing and finite-state. In Section 3.9 we already gave one, but it assumes n to be known.</p><p>Open Problem 9. Is there a universal finite-state self-stabilizing protocol for connected undirected dynamic networks of unknown size?</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.11">Memoryless Computation</head><p>An agent is memoryless if its state is reset at every communication step, meaning its entire memory is erased after it sends messages and before receiving messages from neighbors. The goal is to design a universal protocol that enables memoryless agents to construct coherent views of some history tree related to the network. This would allow basic algorithms to run correctly within the memoryless model.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Open Problem 10</head><p>. Under what assumptions is there a universal memoryless protocol for anonymous networks?</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.12">Congested Networks</head><p>In a congested network of n agents, communication links have a logarithmic bandwidth, and therefore the size of each message is limited to O(log n) bits. <ref type="foot" target="#foot_2">5</ref>It is evident that the basic technique of encoding a view as a single message is not applicable in a congested network, because the size of a view grows polynomially at every step (see Section 2.3). Furthermore, any naive approach that simply subdivides a view into smaller pieces to be transmitted over multiple steps is clearly ineffective in anonymous dynamic networks.</p><p>Correct protocols for constructing views in congested dynamic networks are found in <ref type="bibr" target="#b9">[10]</ref>. If the dynamic diameter d is known, then O(log n) bits of information can be reliably broadcast in phases of d steps. This makes it possible for agents to share enough information to construct a history tree that is compatible with their network, one level at a time. Every node in this history tree has a unique label of logarithmic size, which also identifies all agents represented by that node. This protocol can be used to solve the Counting problem in O(dn 2 ) steps.</p><p>If d is unknown but there is a unique leader, there is a more complex protocol that attempts to estimate d by implementing a reset module that repeatedly doubles the estimate every time a broadcasting error is detected. The leader coordinates the process, ensuring that all agents agree on the same version of the history tree. This yields a Counting algorithm that terminates in O(n 3 ) steps.</p><p>Open Problem 11. Is there a terminating Counting algorithm for congested dynamic networks with more than one leader ? It was proved in <ref type="bibr" target="#b11">[12]</ref> that solving the Counting problem in congested networks by broadcasting "tokens" requires at least Ω(n 2 / log n) steps. On the other hand, there is a solution in O(n 2 ) steps if messages have size O(n log n) bits <ref type="bibr" target="#b9">[10]</ref>.</p><p>Open Problem 12. Can a Counting algorithm terminate in O(n 2 ) steps in all congested dynamic networks with a unique leader?</p><p>We find it fitting to conclude this note with an open problem that is unlikely to have a solution using history trees.</p><p>Open Problem 13. Is there a terminating Counting algorithm for congested dynamic networks where agents have logarithmic-sized memory?</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>1 bFig. 1 .</head><label>11</label><figDesc>Fig.1. The first communication steps of a dynamic network and the corresponding levels of its history tree. Initial inputs are represented by agents' colors (cyan and yellow). Labels on agents and nodes have been added for the reader's convenience and indicate classes of indistinguishable agents. The portion of the history tree with a green background is the view of the two agents labeled c1 after two communication steps.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Fig. 4 .</head><label>4</label><figDesc>Fig.4. A static network with two connected components of sizes n and n + 1. The history tree shows that the two agents in cyan become distinguishable after 2n -1 communication steps. Therefore, in static networks of n agents with a unique leader, no Counting algorithm can terminate in 2n -2 steps or stabilize in 2n -4 steps.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Fig. 5 .</head><label>5</label><figDesc>Fig. 5. The numbers in the nodes are guesses made according to the algorithm in Section 3.2. Blue numbers indicate heavy nodes; their guesses are necessarily correct except for the one in (e), where guesses are not well spread.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Fig. 7 .</head><label>7</label><figDesc>Fig. 7. A communication step of a directed network with late outdegree awareness and a non-branching level of its history tree. Blue numbers indicate outdegrees.</figDesc></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1" xml:id="foot_0"><p>Although this note does not focus on population protocols, they can also be modeled within this framework as dynamic communication networks where finite-state agents interact in pairs consisting of an initiator and a responder having different roles.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="4" xml:id="foot_1"><p>This observation, limited to static networks, is also found in [2, Theorems 3 and 10].</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="5" xml:id="foot_2"><p>Agents do not necessarily know this limit, since they generally do not know n. Nonetheless, if they attempt to send larger messages, the network's behavior is undefined. Ideally, algorithms should be designed to automatically avoid this situation.</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><p>Acknowledgments. The author expresses profound gratitude to collaborators <rs type="person">Jérémie Chalopin</rs>, <rs type="person">Giuseppe A. Di Luna</rs>, and <rs type="person">Federico Poloni</rs> for numerous inspiring discussions. This work was supported by the <rs type="funder">JSPS KAKENHI</rs> grant <rs type="grantNumber">23K10985</rs>, the <rs type="funder">University of Aizu Competitive Research Funding for FY 2023</rs>, and the <rs type="funder">University of Salerno</rs>.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_EAPB9uj">
+					<idno type="grant-number">23K10985</idno>
+				</org>
+			</listOrg>
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Disclosure of Interests. The author has no competing interests to declare that are relevant to the content of this article.</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Local and Global Properties in Networks of Processors</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Angluin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 12th ACM Symposium on Theory of Computing (STOC &apos;80)</title>
+		<meeting>the 12th ACM Symposium on Theory of Computing (STOC &apos;80)</meeting>
+		<imprint>
+			<date type="published" when="1980">1980</date>
+			<biblScope unit="page" from="82" to="93" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Symmetry Breaking in Anonymous Networks: Characterizations</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Boldi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Codenotti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Gemmell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Shammah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Simon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Vigna</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 4th Israeli Symposium on Theory of Computing and Systems (ISTCS &apos;96)</title>
+		<meeting>the 4th Israeli Symposium on Theory of Computing and Systems (ISTCS &apos;96)</meeting>
+		<imprint>
+			<date type="published" when="1996">1996</date>
+			<biblScope unit="page" from="16" to="26" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Computing Anonymously with Arbitrary Knowledge</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Boldi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Vigna</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 18th Annual ACM Symposium on Principles of Distributed Computing (PODC &apos;99)</title>
+		<meeting>the 18th Annual ACM Symposium on Principles of Distributed Computing (PODC &apos;99)</meeting>
+		<imprint>
+			<date type="published" when="1999">1999</date>
+			<biblScope unit="page" from="181" to="188" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Fibrations of Graphs</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Boldi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Vigna</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Discrete</title>
+		<imprint>
+			<biblScope unit="volume">243</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="21" to="66" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Universal Dynamic Synchronous Self-Stabilization</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Boldi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Vigna</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Distributed Computing</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page" from="137" to="153" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Computing Outside the Box: Average Consensus over Dynamic Networks</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Charron-Bost</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Lambein-Monette</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 1st Symposium on Algorithmic Foundations of Dynamic Networks (SAND &apos;22)</title>
+		<meeting>the 1st Symposium on Algorithmic Foundations of Dynamic Networks (SAND &apos;22)</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page">16</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">The Firing Squad Problem Revisited</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Charron-Bost</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Moran</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Theoretical Computer Science</title>
+		<imprint>
+			<biblScope unit="volume">793</biblScope>
+			<biblScope unit="page" from="100" to="112" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<monogr>
+		<title level="m" type="main">Regular Algebra and Finite Machines</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">H</forename><surname>Conway</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1971">1971</date>
+			<publisher>Chapman &amp; Hall</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Computing in Anonymous Dynamic Networks Is Linear</title>
+		<author>
+			<persName><forename type="first">Di</forename><surname>Luna</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">A</forename><surname>Viglietta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 63rd IEEE Symposium on Foundations of Computer Science (FOCS &apos;22)</title>
+		<meeting>the 63rd IEEE Symposium on Foundations of Computer Science (FOCS &apos;22)</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="1122" to="1133" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Brief Announcement: Efficient Computation in Congested Anonymous Dynamic Networks</title>
+		<author>
+			<persName><forename type="first">Di</forename><surname>Luna</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">A</forename><surname>Viglietta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 42nd ACM Symposium on Principles of Distributed Computing (PODC &apos;23)</title>
+		<meeting>the 42nd ACM Symposium on Principles of Distributed Computing (PODC &apos;23)</meeting>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="176" to="179" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Optimal computation in leaderless and multi-leader disconnected anonymous dynamic networks</title>
+		<author>
+			<persName><forename type="first">Di</forename><surname>Luna</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">A</forename><surname>Viglietta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 37th International Symposium on Distributed Computing (DISC &apos;23)</title>
+		<meeting>the 37th International Symposium on Distributed Computing (DISC &apos;23)</meeting>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page">20</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">On the Complexity of Information Spreading in Dynamic Networks</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Dutta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Pandurangan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Rajaraman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Viola</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 24th Annual ACM-SIAM Symposium on Discrete Algorithms (SODA &apos;13)</title>
+		<meeting>the 24th Annual ACM-SIAM Symposium on Discrete Algorithms (SODA &apos;13)</meeting>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="717" to="736" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Polynomial Counting in Anonymous Dynamic Networks with Applications to Anonymous Dynamic Algebraic Computations</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">R</forename><surname>Kowalski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Mosteiro</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the ACM</title>
+		<imprint>
+			<biblScope unit="volume">67</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page">17</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Universal Covers of Graphs: Isomorphism to Depth n -1 Implies Isomorphism to All Depths</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Norris</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Discrete Applied Mathematics</title>
+		<imprint>
+			<biblScope unit="volume">56</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="61" to="74" />
+			<date type="published" when="1995">1995</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Compression of View on Anonymous Networks-Folded View</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Tani</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Parallel and Distributed Systems</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="255" to="262" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Computing on an Anonymous Network</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Yamashita</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Kameda</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 7th ACM Symposium on Principles of Distributed Computing (PODC &apos;88)</title>
+		<meeting>the 7th ACM Symposium on Principles of Distributed Computing (PODC &apos;88)</meeting>
+		<imprint>
+			<date type="published" when="1988">1988</date>
+			<biblScope unit="page" from="117" to="130" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Computing on Anonymous Networks. I. Characterizing the Solvable Cases</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Yamashita</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Kameda</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Parallel and Distributed Systems</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="69" to="89" />
+			<date type="published" when="1996">1996</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

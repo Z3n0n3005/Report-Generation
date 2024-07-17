@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Risk Analysis of Passive Portfolios</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2024-07-11">11 Jul 2024</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Sourish</forename><surname>Das</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="institution">Chennai Mathematical Institute</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Risk Analysis of Passive Portfolios</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2024-07-11">11 Jul 2024</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">DEE75A95634DB4347445C4B6E6253E93</idno>
+					<idno type="arXiv">arXiv:2407.08332v1[q-fin.ST]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.0" ident="GROBID" when="2024-07-12T14:49+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>In this work, we present an alternative passive investment strategy. The passive investment philosophy comes from the Efficient Market Hypothesis (EMH), and its adoption is widespread. If EMH is true, one cannot outperform market by actively managing their portfolio for a long time. Also, it requires little to no intervention. People can buy an exchange-traded fund (ETF) with a long-term perspective. As the economy grows over time, one expects the ETF to grow. For example, in India, one can invest in NETF (see,Exchange [2022]), which suppose to mimic the Nifty50 return. However, the weights of the Nifty 50 index are based on market capitalisation. These weights are not necessarily optimal for the investor. In this work, we present that volatility risk and extreme risk measures of the Nifty50 portfolio are uniformly larger than Markowitz's optimal portfolio. However, common people can't create an optimised portfolio. So we proposed an alternative passive investment strategy of an equal-weight portfolio. We show that if one pushes the maximum weight of the portfolio towards equal weight, the idiosyncratic risk of the portfolio would be minimal. The empirical evidence indicates that the risk profile of an equal-weight portfolio is similar to that of Markowitz's optimal portfolio. Hence instead of buying Nifty50 ETFs, one should equally invest in the stocks of Nifty50 to achieve a uniformly better risk profile than the Nifty 50 ETF portfolio. We also present an analysis of how portfolios perform to idiosyncratic events like the Russian invasion of Ukraine. We found that the equal weight portfolio has a uniformly lower risk than the Nifty 50 portfolio before and during the Russia-Ukraine war. All codes are available on GitHub (https://github.com/sourish-cmi/quant/tree/main/Chap_ Risk_Anal_of_Passive_Portfolio).</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>In recent years, we observed several undesirable events, such as the Covid19 pandemic, the Russian invasion of Ukraine, severe global supply chain system disruption, and tremendous pressure on energy prices, followed by global inflation. These macro events bring a high degree of uncertainty to the worldwide market. Nowadays, even pension fund portfolios invest in the volatile equity market. The high degree of volatility can impact the portfolio negatively. Therefore it is essential to analyse the risk exposure that a portfolio face.</p><p>Passive investment is an excellent option if the investment horizon is long and one is not an expert in quantitative finance. The widespread adoption of the passive investment philosophy comes from the Efficient Market Hypothesis (EMH). One cannot outperform the market by actively managing their portfolio for a long time if it is efficient. One can invest in exchange-traded funds (ETF) with a long-term perspective and expects the ETF to grow as the economy grows over time. In India, we can invest in NETF (see, <ref type="bibr">Exchange [2022]</ref>), which suppose to mimic the Nifty50 return. However, the weights of the Nifty 50 index are not necessarily optimal for the investors, as they are based on market capitalisation.</p><p>In this work, we showed that the Indian market is not efficient. It raises the question of how it affects the risk profile of the passive investment portfolio, particularly how it reacts to idiosyncratic events like the Russian invasion of Ukraine. We study the effect of Russian invasion on the risk profile of the portfolios.</p><p>Rest of the chapter is organised as follows. In Section (2) we present basics of financial return and volatility risk. In Section (3) we present the efficient market hypothesis and empirical evidence that shows Indian market is not efficient. In Section (4) we present different aspects of portfolio risk analysis. In Section (6), we present the empirical evidence that equal weight portfolio would have uniformly better risk profile than Nifty50 ETFs. Section <ref type="bibr" target="#b22">(7)</ref> concludes the chapter.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">On Basics of Financial Return and Volatility Risk</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Time Value of Money</head><p>If given a choice between receiving |100 today or after a year, we should choose to receive |100 today. Because if a bank (say State Bank of India) agrees to pay us |7 for keeping the |100 with them, then at the end of the period, our investment will be |107. This |7 is the time value of |100 that we are going to keep with the bank. Economists term this as time preference, also known as the 'Time Value of Money. <ref type="bibr">'</ref> The mathematical operation of evaluating the 'present value' (PV) of an amount into the 'future value' (FV) is called a capitalization. For example, how much will our |100 today be worth in 10 years? The reverse operation of evaluating the present value of a future amount of money is called the discounting. For example, how much will |100 received in 10 years, be worth today?</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Financial Return</head><p>The goal of our any investment is to grow over time. The growth depends on both change in price and a number of the assets being invested. Certainly, our would be interested in revenues that are high compared to the initial investment. Returns articulate the change in price as a fraction of the initial price. Suppose P t is the price of an asset at time t. The net return over the holding period of time t -1 to t is R t = P t -P t-1 P t-1 = P t P t-1 -1.</p><p>The numerator, P t -P t-1 is the net profit (or net loss) during the holding period, where denominator P t-1 is the initial investment at the start of the holding period. We can see the net returns as the rate of profit (or loss) or relative revenue on initial investment. The revenue from holding an asset is P t -P t-1 = R t × P t-1 , revenue = net return × initial investment.</p><p>Example 2.1. An initial investment of |1000 and a net return of 4% over one year earn revenue of |40, which means the value of the investment after one year is |1040.</p><p>The single period gross return is defined as</p><formula xml:id="formula_0">P t P t-1 = 1 + R t</formula><p>Example 2.2. If P t-1 =|1000 and P t =|1040 then the gross return is 1 + R t = 1.04 or 104% and the net return is R t = 0.04 or 4%.</p><p>The k-period gross return is the product of the k single period, gross returns from time tk to time t:</p><formula xml:id="formula_1">1 + R t (k) = P t P t-k = P t P t-1 P t-1 P t-2 . . . P t-k+1 P t-k = (1 + R t )(1 + R t-1 ) . . . (1 + R t-k+1 ).</formula><p>Example 2.3. Suppose in three consecutive periods (from t to t + 3) the values of an asset are P t =|1000, P t+1 = |1040, P t+2 =|1035, and P t+3 =|1050.</p><formula xml:id="formula_2">1 + R t+3 (1) = P t+3 P t+2 = 1050 1035 = 1.014 1 + R t+3 (2) = P t+3 P t+1 = 1050 1040 = 1.01 1 + R t+3 (3) = P t+3 P t = 1050 1000 = 1.05</formula><p>We see returns are independent of scale. It does not depend on the unit like rupees, dollar or pounds. However, it depends on the unit of time (like the hour, day, and year).</p><p>The log returns are defined as</p><formula xml:id="formula_3">r t = log(1 + R t ) = log(1 + R t ) = log P t P t-1 = p t -p t-1 ,</formula><p>where p t = log(P t ) is also known as log-price or log-value of the asset. The log-returns are also known as continuously compounded returns. One advantage of the log returns is that a k period log return is sum of single period log returns. That is</p><formula xml:id="formula_4">r t (k) = log{1 + R t (k)} = log{(1 + R t )(1 + R t-1 )...(1 + R t-k+1 )} = log(1 + R t ) + log(1 + R t-1 ) + . . . + log(1 + R t-k+1 ) = r t + r t-1 + . . . + r t-k+1 .</formula><p>We can show, if x is small, then log(1 + x) ≈ x, it means the log returns are approximately equal to net returns. Empirical studies show that the condition log(1 + x) ≈ x is true when |x| &lt; 0.1 , i.e., returns that are less than 10%. Compounding If we have an initial investment of P t that earns annual rate r, compounded m times a year for n years then it has a future value</p><formula xml:id="formula_5">P t+1 = P t 1 + r m m×n .</formula><p>If compounding times increases, then the future value will also rise. In case of continuous compounding we have</p><formula xml:id="formula_6">P t+1 = P t lim m→∞ 1 + r m m×n = P t e r×n .</formula><p>If n = 1 then continuous compounding is P t+1 = P t e r , which we can present as r = log P t+1 P t the log return. Hence that the log return of an asset is known as continuously compounded rate of return.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3">Volatility as Measure of Risk</head><p>Volatility tells us, on average, how much value of an asset can go down or go up. The standard deviation calculated from the daily log returns are known as the volatility at daily levels, i.e., σ = Var(r t ).</p><p>Suppose r t , r t-1 , • • • , r t-k+1 are k single period log-return of an asset, where</p><formula xml:id="formula_7">E(r t-i+1 ) = µ, ∀ i = 1, 2, • • • , k, Var(r t-i+1 ) = σ 2 , ∀ i = 1, 2, • • • , k, Cov(r t-i+1 ) = 0, ∀ i ̸ = j = 1, 2, • • • , k.</formula><p>That is the covariance matrix is</p><formula xml:id="formula_8">Σ =      σ 2 0 ... 0 0 σ 2 ... 0 . . . . . . ... . . . 0 0 ... σ 2      k×k</formula><p>The k-period return can be presented in matrix notation as</p><formula xml:id="formula_9">r t (k) = r t + r t-1 + ... + r t-k+1 = c T r,</formula><p>where c T = (1, 1, ..., 1) k is an unit vector of order k and r = {r t , r t-1 , ..., r t-k+1 }. The mean and variance of the k-period return are</p><formula xml:id="formula_10">E(r t (k)) = c T µ = kµ, Var(r t (k)) = c T Σc = kσ 2</formula><p>Therefore k-period volatility is √ kσ.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Efficient Market Hypothesis</head><p>Economists and market analysts agree that if an arbitrage opportunity exists, everybody would like to follow that strategy which would thus disturb the equilibrium. So going forward, a blanket assumption that arbitrage opportunities do not exist is being imposed. To check out more about no-arbitrage opportunity in the market, see <ref type="bibr">Shreve [2004a,b]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Random Walk Hypothesis</head><p>Let F t = σ{P j : 0 ≤ j ≤ t} is a σ-field generated by {P 0 , . . . , P t }, where P t is the price at time point t. The condition of market equilibrium can be stated in terms of conditional expected returns on the basis of F t , where</p><formula xml:id="formula_11">x t+1 = P t+1 -E(P t+1 |F t )</formula><p>is the excess of market value at time t + 1. It is the difference between the observed and the expected price that was projected at time t on the basis of the information set F t . Then</p><formula xml:id="formula_12">E(x t+1 |F t ) = 0,</formula><p>which, by definition, says that the sequence {x t } is a "fair game" with respect to the information sequence F t . Equivalently, let</p><formula xml:id="formula_13">z t+1 = R t+1 -E(R t+1 |F t ),</formula><p>then, E(z t+1 |F t ) = 0 so that the sequence {z t } is also "fair game", with respect to information sequence {F t }. Let</p><formula xml:id="formula_14">ω(F t ) = ω 1 (F t ), ω 2 (F t ), . . . , ω p (F t ) ,</formula><p>where ω j (F t ) is the amount of funds available at time t that are to be invested in the j th security, j = 1, 2 . . . , p. The total excess market value at t + 1 is</p><formula xml:id="formula_15">V t+1 = p j=1 ω j (F t )[R j,t+1 -E(R j,t+1 |F t )],</formula><p>which has value E(V t+1 |F t ) = 0, so that the sequence {z t } is also "fair game", with respect to information sequence {F t }. Note one thing here,</p><formula xml:id="formula_16">E(R t+1 |F t ) = E P t+1 -P t P t F t ,</formula><p>can be expressed as</p><formula xml:id="formula_17">E(P t+1 |F t ) = [1 + E(R t+1 |F t )]P t . (3.1)</formula><p>If we assume in (3.1), that for all t and F t ,</p><formula xml:id="formula_18">E(P t+1 |F t ) ≥ P t , or equivalently E(R t+1 |F t ) ≥ 0, (3.2)</formula><p>that means the price sequence {P t } for security follows a submartingale with respect to the information sequence F t . If (3.2) holds an equality (that is expected return and price changes are zero), then price sequence follows a martingale.</p><p>In the efficient market model, the statement that current price of a security "fully reflects" available data is assumed to imply that successive price changes are independent. Also, it is usually considered continuous changes or returns are independent and identically distributed. Together the two hypothesis constitute the random walk model.</p><p>We can make a common working assumption as the returns are mutually independent and identically distributed (i.i.d) random variables with mean µ and variance σ 2 . We see, for the log return, 1 + R t = exp(r t ) ≥ 0, which implies R t ≥ -1. This satisfies the condition of limited liability, i.e., possible maximum loss is the total investment. In addition,</p><formula xml:id="formula_19">1 + R t (k) = (1 + R t )(1 + R t-1 ) . . . (1 + R t-k+1 ),</formula><p>= exp(r t ) exp(r t-1 ) . . . exp(r t-k+1 ), = exp(r t + r t-1 + . . . + r t-k+1 ).</p><p>So to sum of k period log-returns yield k-period gross return. Now note that</p><formula xml:id="formula_20">P t P t-k = 1 + R t (k) = exp(r t + r t-1 + . . . + r t-k+1 ).</formula><p>can be expressed as for k = t, P t = P 0 exp(r t + . . . + r 1 ).</p><p>Suppose r 1 , r 2 , ...r t be i.i.d with mean µ and standard deviation σ . Let P 0 be an arbitrary starting point and</p><formula xml:id="formula_21">P t = P 0 + r 1 + r 2 + . . . + r t , t ≥ 1.</formula><p>The process P 0 , P 1 , P 2 , . . . is random walk and r 1 , r 2 , . . . are corresponding steps of that random walk. The conditional expectation and variance of P t given P 0 is E(P t |P 0 ) = P 0 +µt and Var(P t |P 0 ) = σ 2 t . The parameter µ is the drift and set an overall trend of the random walk. The parameter σ is the volatility and controls how much it fluctuates around P 0 + µt. Since the standard deviation of P t given P 0 is σ √ t , as t increases the range of variability in the process increases. This means at the t = 0 we know very little about where the random walk will be in the remote future compared to its current spot value. Therefore, if the log returns are assumed to be i.i.d. random variables, then the price of the stock or market index, denoted by the process P = {P t : t ≥ 0}, is the exponential of random walk or also known as the geometric random walk.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Test for Random Walk Hypothesis</head><p>If the price of a stock follows the geometric random walk, then we can write the log-return as</p><formula xml:id="formula_22">p t = p t-1 + r t ,</formula><p>where p t = log(P t ) and r t follows the same distribution with drift parameter µ and volatility parameter σ 2 . The random walk is said to have unit root. To understand what this means, we should consider the AR(1) model (i.e., Auto-Regressive model with lag 1),</p><formula xml:id="formula_23">p t = ϕp t-1 + r t</formula><p>where ϕ = 1. The generic AR(1) model can be presented as</p><formula xml:id="formula_24">p t = ϕp t-1 + r t = ϕ(ϕp t-2 + r t-1 ) + r t = ϕ 2 p t-2 + ϕr t-1 + r t . . . = ϕ k p t-k + ϕ k-1 r t-(k-1) + . . . + ϕr t-1 + r t = ϕ k p t-k + k-1 i=0 ϕ i-1 r t-(i-1) .</formula><p>• If ϕ = 1 then the process is non-stationary. Because k-1 i=0 ϕ i-1 r t-(i-1) accumulates the information over time. Hence a random walk is a non-stationary process.</p><p>• However |ϕ| &lt; 1, i.e., -1 &lt; ϕ &lt; 1 implies, the process is stationary.</p><p>• If ϕ = 0 that means the process is stationary and p t and p t-1 are independent ∀t.</p><p>We may ask here what a stationary process is? How does it look? How it looks different from the non-stationary process?</p><p>As the series {p t : t ≥ 0} is a random walk (i.e., ϕ = 1) the incremental steps (i.e., log-returns) are independent and stationary process, we can write it as</p><formula xml:id="formula_25">r t = ϕ 1 r t-1 + ϵ t</formula><p>where ϕ 1 = 0 and ϵ t is white noise with mean µ and variance σ 2 .</p><p>In order to check if the price of a stock follows the geometric random walk, we have to check following three things.</p><p>1. First, we should check if {p t } is a non-stationary process, i.e.,</p><formula xml:id="formula_26">p t = ϕp t-1 + r t ; check if ϕ = 1 or ϕ &lt; 1.</formula><p>2. Second, we check if the log-returns are stationary process, i.e.,</p><formula xml:id="formula_27">r t = ϕ 1 r t-1 + ϵ t ; check if ϕ 1 = 1 or ϕ 1 &lt; 1.</formula><p>3. Second check only tells we if a log-returns are stationary, but it does not check if ϕ 1 = 0 or not. In addition ϕ 1 = 0 only implies pairwise independence. It does not check the mutual independence of r t . So we should check if the serial correlations of r t are 0 or not. That is check if ρ 1 = ρ 2 = . . . = ρ H = 0, where ρ h = corr(r t , r t+h ) is the lag h auto-correlation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Dickey-Fuller test for Stationarity in a Return Series</head><p>A test involving much more narrowly-specified null and alternative hypotheses was proposed by <ref type="bibr" target="#b12">Dickey and Fuller [1979]</ref>. The test compares the null hypothesis</p><formula xml:id="formula_28">H 0 : p t = p t-1 + r t i.e.</formula><p>, that the series is a random walk without drift, where r t is a white noise with mean 0 and variance σ 2 . The alternative hypothesis is</p><formula xml:id="formula_29">H 1 : p t = µ + ϕp t-1 + r t</formula><p>where µ and ϕ are constant with |ϕ| &lt; 1. According to H 1 , the process is stationary AR(1) with mean µ 1-ϕ . We implement the Dickey Fuller test using adf.test function in tseries package. Note that first we have to check if the log prices are a random walk. Then we have to check if the log-returns are also a random-walk or if the log-return follows the stationary distribution. In these two cases, we can use Dickey-Fuller test. Then on the third step, we check if consecutive log-returns are independent or not!</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4">Ljung-Box test for independence in a Return Series</head><p>We can check the independence of log-return between the consecutive days via Ljung-Box test (see, <ref type="bibr" target="#b14">Ljung and Box [1978]</ref>) for autocorrelation. Suppose the correlation between r t and r t+h is denoted as ρ h = corr(r t , r t+h ) and known as lag h auto-correlation. The null hypothesis is ρ h = 0 for. That is,</p><formula xml:id="formula_30">H 0 : ρ 1 = ρ 2 = . . . = ρ H = 0 ∀ t,</formula><p>vs.</p><p>H 1 : At least one inequality.</p><p>The test statistic for the Ljung-Box test is</p><formula xml:id="formula_31">Q = n(n + 2) H h=1 ρ2 h n -h ,</formula><p>where n is the sample size, ρh is the sample autocorrelation of lag h. We can show under H 0 , Q follows a chi-square distribution, χ 2 (h) . The Ljung-Box test can be done in R using Box.test function available in stats package.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.5">Test for Efficient Hypothesis with R</head><p>Market analysts always want to know if the market is efficient? Here we see; how we can check and test if the market is efficient. Since EMH is a "hypothesis"; therefore we can run a statistical test to check whether EMH is true! We can consider the market index as proxy or representative of the market as a whole and check if the market index is following a random walk. If it follows a random walk, then it is good enough to claim that market is efficient.</p><p>We consider the adjusted close value of Nifty50 market index of National Stock Exchange. We can download data using the R-package the quantmod. We consider the adjusted close value, and compute the log return of the Nifty. We try to answer the following questions to check if the Indian market is efficient.</p><p>1. Are the values of Nifty50 non-stationary?</p><p>2. Are the log-returns of Nifty50 non-stationary?</p><p>3. Are the log-returns uncorrelated?</p><p>4. Do the log-returns follow Gaussian distribution?</p><p>Step Inference: We reject null hypothesis as p-value is significantly small. That is log-returns of Nifty 50 are correlated.</p><p>Step 4: Check if the log-returns are Normal with Shapiro-Wilk test for normality, (see <ref type="bibr" target="#b18">Shapiro and WILK [1965]</ref>).</p><p>## Shapiro-Wilk test for normality ## Null Hypothesis: log-return follows Normal distribution ## Alternative Hypothesis : log-return does not ## follow a normal distribution &gt; shapiro.test(as.vector(log_return)) data: as.vector(log_return) W = 0.89425, p-value &lt; 2.2e-16</p><p>Inference: We reject null hypothesis as p-value is significantly small. That is log-return of Nifty 50 does not follow Gaussian distribution.</p><p>We draw histogram and qqplot of log-return and presented in Figure (2).</p><p>## Draw histogram of log-return of the FTSE hist(log_return,main="",col="blue",nclass = 20,probability = TRUE) qqnorm <ref type="bibr">(log_return,xlim=c(-4,4)</ref> ,ylim=c(-4,4) ,cex=0.3) abline(a=0,b=1,col="blue") grid(col="red")</p><p>In conclusion, the Indian stock market is not efficient, as the market returns are correlated and do not follow the Gaussian distribution. However, the log returns are stationary.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.6">Capital Asset Pricing Model</head><p>As an investor, we would like to assess if the price of a stock is less than its expected level. If we see the stock is already overpriced, then the chance that it will appreciate further will be less, and we would like to sell the stock. Other investors would also like to sell the stock as we have the same information. The stock will fall back to its expected level. On the contrary, if the stock is underpriced, many investors would like to buy it with the assumption that the price will rise to its expected level. In finance, this is known as 'Asset Pricing,' and corresponding mathematical models are known as 'Capital Asset Pricing Models' (CAPM). It explains the expected risk and returns for a single asset or portfolio. We can estimate the risk premium of assets using the CAPM.</p><p>Suppose rp tj = (r tjr f ) is excess return over the r f (i.e., risk free rate) for the j th stocks on the t th day. The rp j is also known as risk premium of the j th stock. We consider the model as follows:</p><formula xml:id="formula_32">r = Xβ + ε,<label>(3.3)</label></formula><p>where r = ((rp tj )) n×P is the matrix of risk-premium for P many assets that are available in the market over n days; Xβ is the systematic return due to market index, where</p><formula xml:id="formula_33">X = ((1, r m )) n×2 ,</formula><p>is the design matrix with the first column being the unit vector or the place holder for intercept and the second column being the risk-premium for the market index over the risk free rate r f ;</p><formula xml:id="formula_34">β = α 1 α 2 • • • α P β 1 β 2 • • • β P 2×P .</formula><p>If the market is efficient then according to (see, <ref type="bibr" target="#b19">Sharpe [1964]</ref>, <ref type="bibr" target="#b8">Black [1972]</ref>), then α i = 0 ∀i = 1, 2, • • • , P and β i is the measure of systematic risk due to market movement; ε = ((ε tj )) n×P is the idiosyncratic return of the asset. In general one can consider a k-factor model with X being n × (k + 1) dimensional, where the first column of X is constant and other columns are all suitable factors. The coefficients β is (k + 1) × P dimensional and we shall denote it as</p><formula xml:id="formula_35">β = (θ 1 , • • • , θ P ), where θ i = (α i , β i , b (1) i , • • • , b (k-1) i ), i = 1, 2, • • • , P.</formula><p>Remark 3.1. <ref type="bibr">Equation (3.3)</ref>, for the k factor model, if a portfolio is constructed based on P many assets all of which have α = 0, β = 1 and b</p><formula xml:id="formula_36">(j) = 0∀j ∈ {1, 2, • • • , k -1}</formula><p>, then the portfolio return will mimic the market return.</p><p>The covariance of r t is Σ which can be decomposed into</p><formula xml:id="formula_37">Σ = β T Σ X β + Σ ε ,<label>(3.4)</label></formula><p>where</p><formula xml:id="formula_38">Σ ε = diag(σ 2 1 , σ 2 2 , • • • , σ 2 P )</formula><p>and Σ X is the covariance matrix of X. In the next section we develop portfolio optimisation using the CAPM strategy.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">Portfolio Risk Analysis</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Portfolio Selection by Minimising Idiosyncratic Risk</head><p>Let us consider a portfolio ω = {ω 1 , ω 2 , • • • , ω P } where ω i ≥ 0, i = 1, • • • , P , P i=1 ω i = 1. Markowitz's portfolio optimization (see, <ref type="bibr">Markowitz [1952]</ref>) can be expressed as the following quadratic programming problem:</p><p>min ω ω T Σω, subject to ω T 1 P = 1 and ω T µ = µ k .</p><p>(4.1)</p><p>Here , 1 P is a P -dimensional vector with one in every entry and µ k is the desired level of return.</p><p>The portfolio covariance can be decomposed into two parts as,</p><formula xml:id="formula_39">ω T Σω = ω T [β T Σ X β + Σ ε ]ω = ω T β T Σ X βω + ω T Σ ε ω,</formula><p>where first part explains the portfolio volatility due to market volatility and the second part explains portfolio volatility due to idiosyncratic behaviour of the stock. We assume σ 2 i 's are bounded ∀i.</p><p>Result 4.1. Under the CAPM model (3.3), covariance matrix (3.4) and assumption (4.1), if P -→ ∞, and M ω:P = max{ω} -→ 0 and σ 2 max = max{Σ ε } &lt; ∞, then lim</p><formula xml:id="formula_40">P -→0 ω T Σ ϵ ω = 0</formula><p>Proof. We consider,</p><formula xml:id="formula_41">ω T Σ ϵ ω = P i=1 ω 2 i σ 2 i ≤ σ 2 max P i=1 ω 2 i , σ 2 max = max{Σ ε }, ≤ σ 2 max M ω:P P i=1 ω i , M ω:P = max{ω}, = σ 2 max M ω:P .</formula><p>Clearly, if P -→ ∞ and M ω:P -→ 0 =⇒ ω T Σ ϵ ω -→ 0.</p><p>Remark 4.1. The Result (4.1) is based on real analysis and not probabilitic result. A detailed discussion about the Result (4.1) can be found in <ref type="bibr" target="#b10">Das and Sen [2020]</ref>.</p><p>Result 4.2. If P is fixed, then M ω:P ≥ 1 P . If we want to minimise M ω:P , then the we must have equal weights portfolio, i.e., M ω:P =</p><formula xml:id="formula_42">1 P . So if M ω:P = 1 P , then ω T Σ ϵ ω is minimum.</formula><p>Remark 4.2. The idiosyncratic risk of the portfolio will be washed out, as the portfolio's size increases and the portfolio's maximum weight is bounded. The portfolio's performance will be a function of the systematic risk explained by the market indices.</p><p>Remark 4.3. The above result mathematically demonstrates the proverb, "one should not put all eggs in one basket."</p><p>Remark 4.4. Thus we can select P (≪ P ) many assets for the portfolio (out of P many assets available in the market) such that the idiosyncratic risk becomes negligible, i.e., ∀δ &gt; 0, ∃ Pδ such that for P &gt; Pδ , ω T P Σ P ω P &lt; δ;</p><p>and portfolio return is mostly explained by θ only. Note that here P is the effective size of the portfolio.</p><p>Remark 4.5. Oracle Set: Suppose the market is not efficient and there are q many assets whose α &gt; 0, where q &lt; P ≪ P. Let us call this set as A q . We can construct a portfolio with P many assets, such that</p><formula xml:id="formula_43">P(A q ⊂ B P ) ≥ 1 -η, (4.2)</formula><p>where B P is the set of assets in the portfolio, 0 ≤ η ≤ 1 and ω T P Σ P ω P &lt; δ.</p><p>Example 4.1. Suppose the market consists of P = 2000 stocks and a portfolio manager wants to build the portfolio with P = 100 stocks. If q = 5 many stocks are available with α j &gt; 0, j = 1, 2, 3, 4, 5, then the portfolio manager would like to build a portfolio, such that A q=5 is the subset of manager's selected portfolio B P =100 . In other words, the manager wants to build her portfolio in such a way that she does not want to miss out the set of five under-valued stocks A q=5 . That is, she wants to employ a statistical methodology, where P(A q=5 ⊂ B P =100 ) would be very high. Note that if the market is efficient, then A q will be a null set.</p><p>The problem reduces to identifying the oracle set A q . Essentially, it is a multiple testing problem, where we select those stocks in the portfolio B P for which we reject the following null hypothesis:</p><formula xml:id="formula_44">H 0i : θ i = θ 0 vs. H 1i : θ i ̸ = θ 0 , i = 1, 2, , • • • , P.</formula><p>where θ 0 = (0, 1, 0, • • • , 0). <ref type="bibr" target="#b10">Das and Sen [2020]</ref> presented optimal test such that Equation (4.2) is satisfied.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Regularising Portfolio Risk Analysis</head><p>It is important to estimate the volatility and determine the primary sources of volatility. Often the number of assets of well-diversified mutual funds or pension funds is more than thousands. However, portfolio managers are concerned about the stationarity in long time-series data. They are interested only in recent volatility, which considers daily returns of a month and sometimes even less. As the number of assets (P )in a portfolio is greater than the number of days of return <ref type="bibr">(n)</ref>, the rank of the covariance matrix is less than complete; such cases yield non-unique solutions. Generally, it is known as the "ill-posed" problem. So for large portfolio, as P -→ ∞ and n -→ ∞, however P/n = λ, where 0 &lt; λ &lt; 1 is a constant; the sample covariance matrix</p><formula xml:id="formula_45">S = 1 n -1 n i=1 (r i -r)(r i -r) T , where r i = (r i1 , • • • , r iP ) T , r = (r 1 , • • • , rP ) T , and rj = 1 n n i=1 r ij , j = 1, 2, • • • , P . Note that rank(S) = min(n, p) = n &lt; p,</formula><p>where S is a p × p matrix. In such cases, there are two problems. First, as the sample covariance matrix S is less than full rank, the sampling distribution of S is degenerate. Hence no valid statistical inference can be implemented with such S. Second, as we try to implement Markowitz's portfolio optimization, as described in Equation (4.1), the portfolio covariance matrix Σ is unknown. However, we cannot estimate it with S, as S is not a full rank. The Markowitz optimization (4.1) would not have any unique solution, if we use S. To address this issue one can use the shrinkage estimator for covariance (see, <ref type="bibr" target="#b13">Ledoit and Wolf [2003]</ref>) for portfolio optimization. However, the sample distribution of these estimators are not completely understood. Hence one cannot run the statistical inference using these shrinkage estimators. <ref type="bibr" target="#b11">Das et al. [2017]</ref> and <ref type="bibr" target="#b9">Das and Dey [2010]</ref> presented the Bayesian inference for covariance matrix, particularly when S is less than full rank matrix. <ref type="bibr" target="#b11">Das et al. [2017]</ref> considered that inverse Wishart prior for Σ, while S follow Wishart distribution, i.e.,</p><formula xml:id="formula_46">Σ ∼ W -1 (n 0 , Ψ), S ∼ W(n -1, Σ),</formula><p>where Ψ is a postive definite matrix and the posterior distribution of Σ is</p><formula xml:id="formula_47">Σ|S ∼ W -1 (n 0 + n -1, Ψ + S).</formula><p>If n &lt; P , then we choose the prior degrees of freedom as</p><formula xml:id="formula_48">n 0 = (P -n) + c,</formula><p>where c &gt; 0. This ensures posterior distribution to be proper. The posterior mode of Σ is</p><formula xml:id="formula_49">M (Σ|S) = q Ψ n 0 + P + 1 + (1 -q) S n -1 ,</formula><p>where q = n0+p+1 n0+n+p . The posterior mode of Σ is a shrinkage estimator, a weighted average of prior distribution's mode and sample covariance estimator. The advantage of <ref type="bibr" target="#b11">Das et al. [2017]</ref> is that full posterior distribution of Σ is known. Hence we can run full Bayesian inference on Σ. In addition, since posterior mode of Σ is positive definite and full rank, we can run portfolio optimization and further portfolio risk analysis.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Bayesian Inference with Regularised Covariance</head><p>The portfolio return over the period is r p = rω, where r p = {r p1 , • • • , r pn } T , r = ((rp tj )) n×P is the risk-premium matrix, and ω = {ω 1 , • • • , ω P } T , such that ω j is the j th asset's weight. The portfolio volatility is defined as</p><formula xml:id="formula_50">σ P = √ ω T Σω.</formula><p>The portfolio weights ω, and the covariance structure of the portfolio plays a crucial role as regulators of the portfolio's total volatility σ P . However, it is also essential to quantify how sensitive the portfolio volatility is concerning a slight change in ω. We can achieve it by differentiating the volatility with respect to weight, and it is known as the 'Marginal Contribution to Total Risk' (MCTR), see <ref type="bibr" target="#b17">Menchero and Davis [2011]</ref> and Baigent <ref type="bibr">[2014]</ref>.</p><p>Definition 4.1. The 'Marginal Contribution to Total Risk' (MCTR) is defined as</p><formula xml:id="formula_51">∂(σ P ) ∂ω = 1 σ P .Σ.ω = ϱ, where ϱ = {ϱ 1 , • • • , ϱ P }, .</formula><p>The MCTR for asset i is</p><formula xml:id="formula_52">ϱ i = 1 σ P P j=1 σ ij ω j .</formula><p>Definition 4.2. The 'Conditional Contribution to Total Risk' (CCTR) is the amount that an asset that contributes to the total portfolio volatility. In other words, if ζ j = ω j ϱ j is the CCTR of the asset j then</p><formula xml:id="formula_53">σ P = P j=1 ζ j = P j=1 ω j ϱ j .</formula><p>Therefore the total volatility is weighted average of the MCTR.</p><p>Remark 4.6. A regularized estimate of Σ is required to estimate the MCTR and CCTR, while the weights are fixed. However, for all practical purposes we are interested in estimation of P(ζ &lt; 0) or P(ϱ &lt; 0). Because negative CCTR or MCTR of an asset means that asset actually reduces the volatility.</p><p>In Section (4.2), we presented that the posterior distribution of Σ follows W -1 (n 0 + n -1, Ψ + S). To estimate the contribution to risk, we present the following Monte Carlo algorithm.</p><p>Algorithm 1: Bayesian Monte Carlo Algorithm to Estimate Contribution to Risk</p><formula xml:id="formula_54">for i = 1 : N do Σ (i) ← W -1 (n 0 + n -1, Ψ + S); σ (i) P ← ω T Σ (i) ω; ϱ (i) ← 1 σ (i) P Σ (i) ω; ζ (i) j ← ϱ (i) j ω j , ∀j = 1, • • • , P ; end Remark 4.7.</formula><p>In the Algorithm (1), each iterations are independent. Hence parallel implementation of the algorithm is very simple. In fact we can consider the algorithm to be an 'embarrassingly parallel', see <ref type="bibr">Matloff [2011]</ref>.</p><p>Remark 4.8. Implementing the algorithm in parallel might not be required if P is small. However, as P is large, generating Σ (i) will be slow for a large portfolio. Thus, consequent computation in all the other steps will also be slow. In such cases, parallelization of the algorithm improves the time performance of the algorithm.</p><p>The MC estimate of CCTR and other risk metrics can be estimated, like</p><formula xml:id="formula_55">P(ζ j &gt; 0) = 1 N N i=1 I(ζ (i) j &gt; 0),</formula><p>once the MC samples are generated.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4">Analysing the Extreme Risk of Portfolio</head><p>The volatility risk is a measure of average risk of the portfolio. However, it does not say anything about the risk of large losses, or extreme risk. Value at Risk (VaR) of a portfolio is a measure of extreme risk. It states that the portfolio will lose more than a large amount is the α quantile of the portfolio return, i.e., V aR α (r P ) = -inf{v :</p><formula xml:id="formula_56">P(r p &lt; v) ≤ α} = F -1 r P (α),</formula><p>where v is the loss of the portfolio, and α ∈ (0, 1) is the confidence level.</p><p>Example 4.2. If a portfolio of stocks has a one-day 1% VaR of |1 crore, there is 1% probability that the portfolio will decline in value by more than |1 crore over the next day.</p><p>Remark 4.9. The VaR provides a measure of how much extreme financial risk we are exposed to. It provides a structured methodology for critically thinking about risk, and consolidating risk across an organization. VaR can be applied to individual stocks, portfolios of stocks, gold, and other commodity, etc.</p><p>Remark 4.10. One has to have a distributional assumption about F . Instead of assuming a particular parametric distribution, we considered empirical distribution.</p><p>The VaR is a frequency measure. It does not measure the expectation of the amount lost. The Expected Shortfall (ES), aka., the Conditional VaR or CVaR, is the measure of risk of expected amount of large loss, i.e.,</p><formula xml:id="formula_57">ES α = E r p |r p &lt; -V aR α (r p ) = -V aRα -∞ r p dF (r p ).</formula><p>Remark 4.11. A coherent risk measure satisfies four properties, i.e., (i) monotonicity, (ii) subadditivity, (iii) homogeneity, and (iv) translational invariance. The VaR is not a coherent risk measure. However, ES is a coherent risk measure. It makes ES a more desirable risk measure than VaR.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">Nonparametric Bootstrap Methods in Risk Analysis</head><p>Nonparametric Bootstrap statistics is an algorithmic approach that typically employs a simple random sample with replacement (SRSWR) scheme. It belongs to the broader category of resampling strategies. Bootstrap was introduced by . Despite its apparent simplicity, the concept revolutionised statistics by replacing analytical derivations with brute computational power. Moreover, in cases where parametric assumptions are known to be incorrect, Nonparametric Bootstrap provides an appropriate solution. For example, in the Capital Asset Pricing Model (CAPM), the underlying distribution is often assumed to be Gaussian, which is not accurate, as evidenced by Figure ( <ref type="formula">2</ref>). The nonparametric bootstrap method involves resampling returns from a given set of asset returns. Suppose r = {r 1 , r 2 , • • • , r n } represents the log-returns in the original sample from a distribution F (•), and</p><formula xml:id="formula_58">T n = T n (r 1 , r 2 , • • • , r n</formula><p>) is a statistic that estimates a parameter θ. The sampling distribution of T n depends on F (•). The core idea of the bootstrap is to estimate the cumulative distribution function (cdf) F (•) using the empirical cdf F n (•). The empirical cdf F n (•) is the nonparametric maximum likelihood estimate (MLE) of the cdf F (•). Bootstrapping based on F n (•) is known as the nonparametric bootstrap. We can draw samples from F n (•), which is equivalent to drawing independent and identically distributed (iid) samples from {r 1 , r 2 , • • • , r n }. This process can be repeated as many times as needed.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">Bootstrap Framework</head><p>Since F (•) is unknown, the sampling distribution of T n is also unknown. As a result, we cannot determine the variance of T n , i.e., Var(T n ), nor the confidence interval of T n , i.e., CI(T</p><formula xml:id="formula_59">n ). Resample r * nb = {r * 1 , r * 2 , • • • , r * n } b from r n using SRSWR scheme; b = 1, 2, • • • , B. For each resample b, we can compute T * nb ; b = 1, 2, • • • , B.</formula><p>Then we can compute:</p><formula xml:id="formula_60">T B n = 1 B B b=1 T * nb ; V ar(T n ) B = 1 B B b=1 (T * nb -T B n ) 2 CI(T n ) B = {T n + G -1 B (α/2) V ar(T n ) B , T n + G -1 B (1 -α/2) V ar(T n ) B },</formula><p>where</p><formula xml:id="formula_61">T * nb -Tn √ V ar(Tn) B ∼ G B . Due to SLLN, one can show, as B -→ ∞ T B n -→ T n almost surely; V ar(T n ) B -→ V ar(T n ) almost surely CI(T n ) B -→ CI(T n ) almost surely, G B -→ F Tn (•) in law.</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">Residual Bootstrap Regression for CAPM</head><p>Consider the capital asset pricing model</p><formula xml:id="formula_62">r n = X n×p β p + ϵ n ,</formula><p>where E(ϵ) = 0, Var(ϵ) = σ 2 I n , and</p><formula xml:id="formula_63">ϵ iid ∼ F (•), F (•) is unknown cdf. The OLS estimatoris βn = (X T X) -1 X T r; and Var( βn ) = σ 2 (X T X) -1 . The residuals are ϵ = r -X βn or ϵ i = y i -x T i βn , i = 1, 2, • • • , n. Suppose F n (•) is the empirical cdf of ϵ. ϵ * b iid ∼ F n (i.e., ϵ * b is resampled from ϵ using SRSWR), b = 1, 2, • • • , B. We calculate, r * b = X βn + ϵ * b , then estimate resample coefficients β * n:b as β * n:b = (X T X) -1 X T r * b = βn + (X T X) -1 X T ϵ * b where E( β * n:b ) = βn .</formula><p>Then we have the bootstrap estimate, βB = 1</p><formula xml:id="formula_64">B B b=1</formula><p>β * b . and the bootstrap variance is</p><formula xml:id="formula_65">Var( βB ) = 1 B B b=1 ( β * b -βB ) 2 .</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3">Paired Bootstrap Regression</head><p>We consider the model </p><formula xml:id="formula_66">b = (X * T b X * b ) -1 X * T b r * b . The bootstrap estimate is βB = 1 B B b=1</formula><p>β * b , and the bootstrap variance is</p><formula xml:id="formula_67">Var( βB ) = 1 B B b=1 ( β * b -βB ) 2 .</formula><p>Remark 5.1. If the residuals are heteroscedastic, the paired bootstrap remains a consistent estimator. However, when the residuals are heteroscedastic, the residual bootstrap is not a consistent estimator.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.4">CAPM with Bootsrap Statistics usin R</head><p>Now, we will demonstrate the Capital Asset Pricing Model using the nonparametric bootstrap regression technique in R. First, we will download the data for Reliance and Nifty 50 from Yahoo.</p><p>Next, we will calculate the log-returns and then the risk-premium. After that, we will fit the CAPM using the OLS method and obtain the residuals. sum_boot &lt;-cbind(apply(beta_star,2,mean) ,apply(beta_star,2,sd) ,apply(beta_star,2,quantile,probs=0.025) ,apply(beta_star,2,quantile,probs=0.975)) colnames(sum_boot)&lt;-c('Estimate','Std.Error','2.5%','97.5%') cat('OLS Estimates of alpha and beta') ols_estimates&lt;-coefficients(summary(CAPM)) rownames(ols_estimates)&lt;-c('alpha','beta') round(ols_estimates,4) cat('Paired Bootstrap Estimates of alpha and beta') round(sum_boot,4) The philosophy of passive investment strategy yields from the 'efficient market hypothesis.' The logic is that since the market is efficient, it does not make sense that anyone will be able to beat the market consistently for a long time. Therefore, investing in funds that mimic the market only makes sense. It resulted in the popularisation of the exchange-traded fund (ETF), where the fund invests by mimicking the index weights. However, those weights are based on market capitalisation and are not necessarily optimal for investors. What kind of passive investment strategy would be better? In Result (4.2), we demonstrated that for a large portfolio with a fixed P number of assets, an equal weight portfolio would yield minimum idiosyncratic risk, while we have no control over the systematic risk due to market movement.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.2">Comparing of Two Passive Investment Strategies</head><p>In Section (2), we demonstrated that the Indian stock market based on the Nifty50 index is not efficient. So it raises the question how it affects the risk profile of the passive strategy (i.e., portfolio weight). To check this question, we decided to consider three different portfolios. First, we consider the passive investment portfolio with Nifty weights as the portfolio weights. Second, we consider Markowiz's portfolio weights optimised with regularised covariance matrix. However, the volatility risk profile is portfolio with equal weights are that of similar to portfolio with Markowitz's optimal weights.</p><p>Out of the three portfolios we considered here, the passive investment strategy with Nifty weights remained the same before and during the war. Similarly, the equal portfolio weights remained the same before and during the war. We use the before-war returns for Markowiz's portfolio weights to estimate the weights using Markowitz's optimisation with regularised covariance. Then we use the same weights to calculate the portfolio volatility during the war.</p><p>In Table (1), we present the portfolio Volatility before the Russia-Ukraine war and during the war. The portfolio with Nifty weights has uniformly higher volatility than other portfolios before and during the war. However, the volatility risk profile of a portfolio with equal weights is similar to a portfolio with Markowitz's optimal weights because Markowitz's weights are close to equal weights. The Result (3.2) states that idiosyncratic risk would be minimum for an equal weights portfolio. Therefore if we really want to have a passive investment strategy, we should try  </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7">Conclusion</head><p>In this work, we present that if we want to be passive investors, we should follow an equal-weight portfolio strategy instead of investing in Exchange Traded Fund like NETF, which mimics the Nifty50. We also present an analysis of how portfolios perform to idiosyncratic events like the Russian invasion of Ukraine. We found that the equal weight portfolio has a uniformly lower risk than the Nifty 50 portfolio before and during the Russia-Ukraine war. We also showed in Results (4.1,4.2) that if we push the maximum weights of the portfolio towards the equal weight portfolio, then the idiosyncratic risk of the portfolio is minimal. As a result, the equal-weight portfolio has a uniformly lower risk before and during the Russia-Ukraine war than the Nifty 50 portfolio.</p><p>bond and stock market. The quantitative finance primarily focuses on the bond and stock market and anything related to that. Suppose price of a stock is such that P(P 1 ≥ P 0 (1 + r)) = 1, P(P 1 &gt; P 0 (1 + r)) &gt; 0.</p><p>Then we can borrow an amount P 0 and buy one share of the stock at time 0. At time 1, we can sell the stock at a price P 1 , settle our debt by paying P 0 e r and our profit P rof it = P 1 -P 0 (1 + r) is non-negative with probability one and is strictly positive with positive probability. It can be argued if such stock is available in the market and all information is available to everyone, then many investors like us would like to invest large amounts of money (by borrowing) into the stock; since there is nothing to lose and something to be gained. This will disturb the equilibrium and push the price of the stock (at time 0) up. Such opportunities are known as an arbitrage opportunity.</p><p>In general, in a market consisting of several securities, an arbitrage opportunity is a strategy of buying and selling the securities without any investment, such that it leads to profit (strictly positive) with positive probability without any risk of a loss.</p><p>The price of the stock on the k th day is denoted by P k . The price P 0 of the stock on day zero is assumed to be deterministic, P 0 = p 0 . Also the face value of the bond is 1 on the morning of day zero. For k ≥ 0, let θ S k denote the number of shares we decide to hold on the morning of k th day, before the market opens. Suppose θ B k denote the number of bonds we choose to keep. If for k ≥ 1, θ S k ≥ θ S k-1 , we buy θ S kθ S k-1 shares and if θ S k &lt; θ S k-1 , then we sell θ S k-1θ S k shares. We have same interpretation for bonds. In order to implement a strategy we may have to put in extra money on certain days while surplus on other days. However, we consider a special kind of strategy, known as self-financing strategies. These are trading strategies where there is no money put in and there is no surplus on any day except for the initial investment x, where x = θ B 0 + θ S 0 P 0 . (7.1) Thus, on a given day, we only moves our money from shares to bonds or vice-versa. The shares and bonds held by us is known as our portfolio.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Martingle and Arbitrage</head><p>Let F i = σ{P j : 0 ≤ j ≤ i} is a finite σ-field generated by {P 0 , . . . , P i }. Suppose there exists a probability measure Q on P such that {P i (1 + r) i , F i } is a Q-martingale and Q(p 0 , . . . , p N ) &gt; 0 ∀ (p 0 , . . . , p N ) ∈ P.</p><p>For any self-financing strategy η, the worth of the portfolio on k th day is</p><formula xml:id="formula_68">V k (η)(P 0 , • • • , P N )</formula><p>is a Q-martingale, and hence</p><formula xml:id="formula_69">E Q [V k (P 0 , . . . , P N )(1 + r) -k ] = V 0 (η). (7.2)</formula><p>Let η be such that V 0 (η) = 0, that is initial investment is zero, then (7.2) implies</p><p>V N (η)(p 0 , . . . , p N ) = 0 ∀(p 0 , . . . , p N ) ∈ P.</p><p>Thus arbitrage opportunities, i.e.,</p><p>V N (η)(p 0 , . . . , p N ) ≥ 0, for all (p 0 , . . . , p N ) ∈ P, (7.3) and V N (η)(p * 0 , . . . , p * N ) &gt; 0, for some (p * 0 , . . . , p * N ) ∈ P. <ref type="bibr">(7.4)</ref> strategies satisfying <ref type="bibr">(7.</ref>3) and ( <ref type="formula">7</ref>.4), do not exist.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head></head><label></label><figDesc>Figure 1: Values of Nifty 50 and log return over time. We consider the log-return as log-return = log(P t /P t-1 ) × 100</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head></head><label></label><figDesc>Figure 2: (a) Histogram of log-return of Nifty50, and (b) The qq-norm plot of log-return indicates that the log-return of Nifty 50 certainly does not follow the Gaussian distribution.</figDesc><graphic coords="10,129.94,72.00,170.07,170.07" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head></head><label></label><figDesc>r n = X n×p β p + ϵ n , where E(ϵ) = 0, Var(ϵ) = Σ, and (r i , x i ) iid ∼ F (•), where F (•) is an unknown cdf. Suppose {(r * i , x * i ), i = 1, 2, ...n} b = D b are iid samples from empirical F n (•), where b = 1, 2, • • • , B. The estimates of β from b th resample is, β *</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: Bootstrap histogram of α and β of CAPM.</figDesc><graphic coords="18,135.92,72.00,340.17,226.77" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head></head><label></label><figDesc>Figure 4: The weights of Nifty 50 are much more skewed than Markowitz's optimised weights. The horizontal red-dash line represents the equal-weight portfolio. Markowitz's optimised weights are comparatively less deviate from equal weights.</figDesc><graphic coords="21,101.60,72.00,198.42,198.42" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head></head><label></label><figDesc>We reject the null hypothesis. That is log-returns of Nifty 50 are stationary.Step 3: Check if the log-returns are uncorrelated with Ljung-Box test.</figDesc><table><row><cell>Step 2: Check if log-returns are non-stationary with Dickey-Fuller test</cell></row><row><cell>&gt; adf.test(na.omit(log_return))</cell></row><row><cell>data: na.omit(log_return)</cell></row><row><cell>Dickey-Fuller = -14.327, Lag order = 15, p-value = 0.01</cell></row><row><cell>alternative hypothesis: stationary</cell></row><row><cell>Inference: &gt; Box.test(log_return,lag=10,type = "Ljung-Box")</cell></row><row><cell>data: log_return</cell></row><row><cell>X-squared = 37.234, df = 10, p-value = 5.155e-05</cell></row><row><cell>1: Check if values of Nifty 50 is non-stationary</cell></row><row><cell>## Augmented Dickey-Fuller (adf) test for unit-root</cell></row><row><cell>&gt; library(tseries)</cell></row><row><cell>&gt; adf.test(na.omit(Nifty50))</cell></row><row><cell>data: na.omit(Nifty50)</cell></row></table><note><p>Dickey-Fuller = -2.1463, Lag order = 15, p-value = 0.5164 alternative hypothesis: stationary Inference: Fail to reject null hypothesis. That is Nifty 50 values are non-stationary.</p></note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Analysis of Passive Investment 6.1 Philosophy of Passive Investment</head><label></label><figDesc></figDesc><table><row><cell cols="4">Residual Bootstrap Regression Paired Bootstrap Estimates of α and β</cell></row><row><cell cols="3">set.seed(6587) &gt; round(sum_boot,4)</cell></row><row><cell cols="3">Estimate Std.Error</cell><cell>2.5% 97.5%</cell></row><row><cell cols="4">ols_resid &lt;-CAPM$residuals alpha 0.0006 0.0010 -0.0012 0.0026</cell></row><row><cell cols="4">ols_pred &lt;-CAPM$fitted.values beta 1.2379 0.1283 0.9935 1.5086</cell></row><row><cell cols="4">Adjusted.nifty &lt;-rt$Adjusted.nifty</cell></row><row><cell>B&lt;-1000</cell><cell></cell><cell></cell></row><row><cell cols="4">beta_star2&lt;-matrix(NA,nrow=B,ncol = 2)</cell></row><row><cell cols="4">colnames(beta_star2)&lt;-c('alpha','beta') 6 Empirical Risk</cell></row><row><cell cols="4">R.squred_star.resid&lt;-rep(NA,B)</cell></row><row><cell cols="2">n &lt;-nrow(rt1)</cell><cell></cell></row><row><cell cols="2">for(b in 1:B){</cell><cell></cell></row><row><cell cols="4">id_star&lt;-sort(sample(1:n,n,replace = TRUE))</cell></row><row><cell cols="4">resid_star&lt;-ols_resid[id_star]</cell></row><row><cell cols="4">pred_star &lt;-ols_pred+resid_star</cell></row><row><cell cols="4">CAPM_star&lt;-lm(pred_star~Adjusted.nifty)</cell></row><row><cell cols="4">sum_star&lt;-summary(CAPM_star)</cell></row><row><cell cols="4">beta_star2[b,] &lt;-coef(CAPM_star)</cell></row><row><cell cols="4">R.squred_star.resid[b] &lt;-sum_star$adj.r.squared</cell></row><row><cell>}</cell><cell></cell><cell></cell></row><row><cell cols="4">Summary of Residual Bootstrap Regression for CAPM</cell></row><row><cell cols="4">sum_boot2 &lt;-cbind(apply(beta_star2,2,mean)</cell></row><row><cell></cell><cell></cell><cell cols="2">,apply(beta_star2,2,sd)</cell></row><row><cell></cell><cell></cell><cell cols="2">,apply(beta_star2,2,quantile,probs=0.025)</cell></row><row><cell></cell><cell></cell><cell cols="2">,apply(beta_star2,2,quantile,probs=0.975))</cell></row><row><cell cols="4">colnames(sum_boot2)&lt;-c('Estimate','Std.Error','2.5%','97.5%')</cell></row><row><cell cols="4">ols_estimates&lt;-coefficients(summary(CAPM))</cell></row><row><cell cols="3">OLS Estimates of α and β</cell></row><row><cell cols="4">Paired Bootstrap Estimates of alpha and beta &gt; rownames(ols_estimates)&lt;-c('alpha','beta')</cell></row><row><cell cols="3">&gt; round(ols_estimates,4)</cell></row><row><cell cols="4">Estimate Std.Error Estimate Std. Error t value Pr(&gt;|t|) 2.5% 97.5%</cell></row><row><cell>alpha alpha</cell><cell>0.0005 0.0006</cell><cell cols="2">0.0010 -0.0012 0.0024 0.0010 0.6285 0.5309</cell></row><row><cell>beta beta</cell><cell>1.2439 1.2441</cell><cell cols="2">0.1309 0.9804 1.5023 0.0981 12.6794 0.0000</cell></row><row><cell cols="4">Residual Bootstrap Estimates of α and β</cell></row><row><cell cols="3">par(mfrow=c(1,2)) &gt; round(sum_boot2,4)</cell></row><row><cell cols="4">hist(beta_star[,'alpha'],main = '',col='skyblue' Estimate Std.Error 2.5% 97.5%</cell></row><row><cell>alpha</cell><cell cols="3">,freq = FALSE,xlab=expression(alpha),nclass = 20) 0.0006 0.0010 -0.0012 0.0026</cell></row><row><cell cols="4">lines(density(beta_star[,'alpha']),col='purple',lwd=2) beta 1.2462 0.0838 1.0887 1.4216</cell></row><row><cell cols="4">hist(beta_star[,'beta'],main = '',col='skyblue',freq = FALSE</cell></row><row><cell></cell><cell cols="3">,xlab=expression(beta),nclass = 20)</cell></row><row><cell cols="4">lines(density(beta_star[,'beta']),col='purple',lwd=2)</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 1 :</head><label>1</label><figDesc>Portfolio Volatility before the Russia-Ukraine war and during the war. Portfolio with Nifty weights have uniformly higher volatility than other portfolios, before and during the war.</figDesc><table><row><cell>Third,</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>Table 2 :</head><label>2</label><figDesc>Portfolio VaR and Expected Shortfall (ES) before the Russia-Ukraine war and during the war. The numbers inside the parenthesis are ES and outside are VaR. The Portfolio with Nifty weights have uniformly higher VaR and ES than other portfolios, before and during the war.</figDesc><table><row><cell></cell><cell>Portfolio with</cell><cell>Portfolio with</cell><cell>Portfolio with</cell></row><row><cell></cell><cell cols="3">Nifty Weights Equal Weights Markowitz Weights</cell></row><row><cell></cell><cell>VaR (ES)</cell><cell>VaR (ES)</cell><cell>VaR (ES)</cell></row><row><cell>Before the War</cell><cell>-5.75 (-6.07)</cell><cell>-5.53 (-5.84)</cell><cell>-3.74 (-3.85)</cell></row><row><cell>During the War</cell><cell>-6.70 (-7.03)</cell><cell>-6.11 (-6.23)</cell><cell>-6.34 (-6.62)</cell></row></table></figure>
+		</body>
+		<back>
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Appendix A: No Arbitrage: No Free Lunch</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Portfolio of Bonds and Shares</head><p>A bond is a debt security, earning a fixed rate of interest r in each unit of time. If we make an investment B 0 at time 0 in the bond is worth B 0 (1 + r) k at time k. If our interest earning is compounding over k-period, then the bond will be worth B 0 (1 + r) k at time k. As bond can be bought or sold, as an investor we can invest or borrow at the rate of interest r. We can trade shares of the stock of a specific company in the stock market. The price P k at which one share of a stock can be traded is modeled as a stochastic process. Bond and stock are together known as securities (aka. primary securities.) We can consider our investment in house or real estate as primary security. However, the market for the real estate behaves very differently than the typical</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Theorem 7.1. Fundamental Theorem of Asset Pricing</head><p>The following statements are equivalent.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">No arbitrage.</head><p>2. There eqxists a probability measure</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Asset Pricing Model</head><p>So far we assumed that there is an underlying stochastic process for stock price movement. But no effort is rendered to model the stock price movement. We need a useful probability model to use as a computationally tractable approximation to theoretical models. The model should explain no-arbitrage pricing and its relation to risk-neutral pricing. Also, the model should incorporate the theory of conditional expectation and martingale theory which is the core of the risk-neutral pricing. To fulfill all these purposes the Asset Pricing Model, (APM) serves a good point to start. With this motive in mind, we present the geometric Brownian motion (GBM) model which is a slightly different from that usually found in practice.</p><p>We can model the price movement over time interval [0, t] as a sequence of multiple binary steps. We can break the range into n equal intervals per unit time. So over the range, the stock price will move through nt binary steps and let the price follow one of the up or down branches each over each subinterval as presented in the figure ( <ref type="formula">5</ref>). Note that we should choose n and t in such a way such that nt to be an integer.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Assumption:</head><p>1. Each step is independent of previous one. Suppose P 0 is the initial stock price. At each time step, the stock price either goes up by a factor of u with probability p or down by a factor of d with probability 1p. We define the following indicator variable as</p><p>The fundamental asset pricing theorem (7.1) states that to have the no arbitrage opportunity, there must be a probability of these outcomes that satisfy the Q-martingale measure conditions at each step. That is</p><p>where</p><p>Note that p is known as the risk-neutral probability. The stock price at time t is still a function of initial price P 0 and result of nt binary steps. Suppose The random walk R nt is the difference between the number of up and down moves, i.e.,</p><p>The three steps model is graphically presented in Figure ( </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Geometric Brownian Motion</head><p>Let σ &gt; 0 is a known constant and r ≥ 0 is the interest rate. In this model the interest rate per period is r n , the up factor is u n = exp{σ/ √ n} and the down factor is d n = exp{-σ/ √ n}. The risk-renutral probability is then</p><p>Let t be an arbitrary positive rational rational number, and for each positive integer n, for which nt is an integer, define</p><p>where X 1:n , X 2:n , . . . , X n:n are independent, identically distributed random variables with</p><p>The stock price at time t in this model is</p><p>In the Chapter 3 of <ref type="bibr">Shreve [2004b]</ref>, it is presented that as</p><p>Hence the following theorem can be presented as follows.</p><p>Theorem 7.2. As n → ∞, the distribution of P n (t) in equation <ref type="formula">7</ref>.5 converges to the distribution of</p><p>where W t is standard normal variable with 0 mean and variance t.</p><p>The stochastic process P = {P t : t ≥ 0} is a Geometric Brownian Motion (GBM) with drift parameter µ and volatility parameters σ, where</p><p>where W t ∼ N (0, t 2 ) is standard Brownian motion (BM).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Geometric Brownian Motion under Risk-Neutral Measure</head><p>If we compare the equation <ref type="bibr">(7.6</ref>) and <ref type="bibr">(7.7)</ref>, it is clear that under risk-neutral probability measure, if stock price follow the GBM then the drift parameter is the risk-free interest rate r. That is 6. What statistical tests can be used to evaluate the Random Walk Hypothesis in financial markets, and how do these tests determine if a time series of stock prices follows a random walk?</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">^NSEI&quot;,start=start_date ,end=end_date,quote=&quot;AdjClose&quot; ,provider = &quot;yahoo</title>
+		<idno>risk_free_rate&lt;-0.06/252</idno>
+	</analytic>
+	<monogr>
+		<title level="m">quiet = TRUE) data &lt;-merge(nifty,rel) rt&lt;-diff</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<title level="m">## risk premium rt&lt;-rt-risk_free_rate ## Fit CAPM using OLS CAPM &lt;-lm</title>
+		<imprint/>
+	</monogr>
+	<note>Adjusted.rel~Adjusted.nifty,data=rt</note>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<monogr>
+		<title level="m" type="main">Extract residual and fitted values resid &lt;-CAPM$residuals y_hat &lt;-CAPM$fitted.values set.seed(6587) rt1&lt;-data</title>
+		<imprint/>
+	</monogr>
+	<note>frame(rt</note>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">&lt;-Nrow</forename></persName>
+		</author>
+		<imprint/>
+	</monogr>
+	<note>rt1</note>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<monogr>
+		<title level="m" type="main">B&lt;-1000 beta_star&lt;-matrix(NA,nrow=B,ncol = 2) colnames(beta_star)&lt;-c(&apos;alpha</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<monogr>
+		<author>
+			<persName><forename type="first">R</forename><surname>Squred_Star</surname></persName>
+		</author>
+		<title level="m">) for(b in 1:B){ id_star&lt;-sample(1:n,n,replace = TRUE) rt_star&lt;-rt1</title>
+		<meeting><address><addrLine>NA,B</addrLine></address></meeting>
+		<imprint>
+			<biblScope unit="page" from="pair&lt;" to="rep" />
+		</imprint>
+	</monogr>
+	<note>id_star</note>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<monogr>
+		<title level="m" type="main">CAPM_star&lt;-lm(Adjusted.rel~Adjusted.nifty,data=rt_star) sum_star&lt;-summary(CAPM_star) beta_star[b,] &lt;-coef(CAPM_star)</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">&lt;-sum_star$adj.r.squared } References G. G. Baigent. X-sigma-rho and market efficiency</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Squred_Star</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Economic and Financial Studies</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Capital market equilibrium with restricted borrowing</title>
+		<author>
+			<persName><forename type="first">Fischer</forename><surname>Black</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Journal of Business</title>
+		<imprint>
+			<biblScope unit="volume">45</biblScope>
+			<biblScope unit="page" from="444" to="455" />
+			<date type="published" when="1972">1972</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">On bayesian inference for generalized multivariate gamma distribution</title>
+		<author>
+			<persName><surname>Sourish</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dipak</forename><forename type="middle">K</forename><surname>Das</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Dey</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Statistics and Probability Letters</title>
+		<imprint>
+			<biblScope unit="volume">51</biblScope>
+			<biblScope unit="page" from="1492" to="1499" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Sparse portfolio selection via bayesian multiple testing</title>
+		<author>
+			<persName><forename type="first">Sourish</forename><surname>Das</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Rituparna</forename><surname>Sen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Sankhya -B</title>
+		<imprint>
+			<date type="published" when="2020-11">Nov 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Regularizing portfolio risk analysis: A bayesian approach</title>
+		<author>
+			<persName><surname>Sourish</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Aritra</forename><surname>Das</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dipak</forename><forename type="middle">K</forename><surname>Halder</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Dey</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Methodology and Computing in Applied Probability</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="page" from="865" to="889" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Distribution of the estimators for autoregressive time series with a unit root</title>
+		<author>
+			<persName><forename type="middle">A</forename><surname>David</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wayne</forename><forename type="middle">A</forename><surname>Dickey</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Fuller</surname></persName>
+		</author>
+		<ptr target="https://www.nseindia.com/get-quotes/equity?symbol=NETF" />
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the American Statistical Association</title>
+		<imprint>
+			<biblScope unit="volume">74</biblScope>
+			<biblScope unit="page" from="2022" to="2033" />
+			<date type="published" when="1979">1979. 2022</date>
+		</imprint>
+	</monogr>
+	<note>National Stock Exchange. Netf: Tata nifty exchange traded fund</note>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Improved estimation of the covariance matrix of stock returns with an appli-cation to portfolio selection</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Ledoit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wolf</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Empirical Finance</title>
+		<imprint>
+			<biblScope unit="page" from="603" to="621" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">On a measure of lack of fit in time series models</title>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">M</forename><surname>Ljung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">George</forename><forename type="middle">P</forename><surname>Box</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Biometrika</title>
+		<imprint>
+			<biblScope unit="volume">65</biblScope>
+			<biblScope unit="page" from="297" to="303" />
+			<date type="published" when="1978">1978</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Markowitz. Portfolio selection</title>
+		<author>
+			<persName><surname>Harry</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Finance</title>
+		<imprint>
+			<biblScope unit="page" from="77" to="91" />
+			<date type="published" when="1952">1952</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">The Art of R Programming: A Tour of Statistical Software Design</title>
+	</analytic>
+	<monogr>
+		<title level="j">The Journal of Portfolio Management</title>
+		<editor>
+			<persName><forename type="first">N</forename><surname>Matloff</surname></persName>
+		</editor>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Risk contribution is exposure times volatility times correlation: Decomposing risk using the x-sigma-rho formula</title>
+		<author>
+			<persName><forename type="first">Jose</forename><surname>Menchero</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ben</forename><surname>Davis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Journal of Portfolio Management</title>
+		<imprint>
+			<biblScope unit="volume">37</biblScope>
+			<biblScope unit="page" from="97" to="106" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">An analysis of variance test for normality (complete samples)</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">S</forename><surname>Shapiro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">B</forename><surname>Wilk</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Biometrika</title>
+		<imprint>
+			<biblScope unit="volume">52</biblScope>
+			<biblScope unit="page" from="591" to="611" />
+			<date type="published" when="1965">1965</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Capital asset prices: A theory of market equilibrium under conditions of risk</title>
+		<author>
+			<persName><forename type="middle">F</forename><surname>William</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Sharpe</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Finance</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="page" from="425" to="442" />
+			<date type="published" when="1964">1964</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<monogr>
+		<title level="m">Stochastic Calculus for Finance I The Binomial Asset Procing Model</title>
+		<editor>
+			<persName><forename type="first">Steven</forename><forename type="middle">E</forename><surname>Shreve</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2004">2004</date>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="page" from="987" to="0387" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<monogr>
+		<title level="m">Stochastic Calculus for Finance II Continuous Time Model</title>
+		<editor>
+			<persName><forename type="first">Steven</forename><forename type="middle">E</forename><surname>Shreve</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<monogr>
+		<title level="m" type="main">Explain the Capital Asset Pricing Model (CAPM) and its key assumptions. How is the expected return of a security calculated using CAPM, and what is the significance of the α and β coefficient in this model?</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<title level="m" type="main">How are these measures calculated? Additionally, define Value at Risk (VaR) and describe its significance in portfolio management</title>
+		<imprint/>
+	</monogr>
+	<note>Explain the concepts of portfolio risk and portfolio volatility</note>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<monogr>
+		<title level="m" type="main">Explain the concepts of Marginal Contribution to Total Risk (MCTR) and Conditional Contribution to Total Risk (CCTR) in portfolio management. How are these metrics used to assess the risk contributions of individual assets within a portfolio? Provide the formulas for calculating MCTR and CCTR</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<monogr>
+		<title level="m" type="main">Why is bootstrap statistics important in conducting risk analysis? Explain the advantages of using the bootstrap method over traditional parametric methods in estimating the risk measures for a portfolio</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<monogr>
+		<title level="m" type="main">What is the difference between residual and paired bootstrap regression?</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

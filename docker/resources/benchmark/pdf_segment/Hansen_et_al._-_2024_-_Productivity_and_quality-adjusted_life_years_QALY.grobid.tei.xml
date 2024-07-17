@@ -1,0 +1,1458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Productivity and quality-adjusted life years: QALYs, PALYs and beyond *</title>
+				<funder ref="#_GAuWSS8">
+					<orgName type="full">Spanish Agencia Estatal de Investigación</orgName>
+					<orgName type="abbreviated">AEI</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">National Research Centre for the Working Environment (NFA)</orgName>
+				</funder>
+				<funder ref="#_Y6DBd76">
+					<orgName type="full">unknown</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Copenhagen, Denmark</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2024-04-08">April 8, 2024</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Kristian</forename><forename type="middle">S</forename><surname>Hansen</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Juan</forename><forename type="middle">D</forename><surname>Moreno-Ternero</surname></persName>
+							<affiliation key="aff1">
+								<orgName type="department">Department of Economics</orgName>
+								<orgName type="institution">Universidad Pablo de Olavide</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Lars</forename><forename type="middle">P</forename><surname>Østerdal</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department" key="dep1">Department of Economics</orgName>
+								<orgName type="department" key="dep2">Copenhagen Business School</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Ramses</forename><forename type="middle">Abul</forename><surname>Naga</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Matt</forename><surname>Adler</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Harald</forename><surname>Hannerz</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Anita</forename><forename type="middle">Marie</forename><surname>Glenny</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Alec</forename><surname>Morton</surname></persName>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<address>
+									<settlement>Copenhagen</settlement>
+									<country key="DK">Denmark</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Productivity and quality-adjusted life years: QALYs, PALYs and beyond *</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2024-04-08">April 8, 2024</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">C43679262BD94C396FE1A6F254F109C6</idno>
+					<idno type="DOI">10.13039/501100011033</idno>
+					<idno type="arXiv">arXiv:2404.04121v1[econ.TH]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.0" ident="GROBID" when="2024-05-02T16:15+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>JEL numbers: D63</term>
+					<term>I10</term>
+					<term>J24 health</term>
+					<term>productivity</term>
+					<term>QALYs</term>
+					<term>PALYs</term>
+					<term>axioms</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>We develop a unified framework for the measurement and valuation of health and productivity. Within this framework, we characterize evaluation functions allowing for compromises between the classical quality-adjusted life years (QALYs) and its polar productivityadjusted life years (PALYs). Our framework and characterization results provide a new normative basis for the economic evaluation of health care interventions, as well as occupational health and safety policies, aimed to impact both health and productivity of individuals.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>Few aspects concern human beings more than health. But resources are scarce and, as we face demographic changes, with increased demand from retirees and a constrained labour market due to shrinking working age share of the population, there is a pressing need to protect the health and productivity of the economically active population. Therefore, critical decisions on health care interventions, as well as occupational health and safety policies, have to be made constantly. The evidence from clinical trials and observational studies, in addition to assessments about the productivity consequences, are crucial to make those decisions. The purpose of this paper is to develop a unified framework for the measurement and valuation of outcomes of such programmes and policies.</p><p>It is widely accepted that the health benefit a patient derives from a particular health care intervention can be defined according to two natural dimensions: quality of life and quantity of life. <ref type="bibr" target="#b40">Pliskin et al. (1980)</ref> pioneered in multiattribute utility theory the axiomatic foundations of the so-called quality-adjusted life years (in short, QALYs), which offer a straightforward procedure to combine the two natural dimensions. Together with the so-called disability-adjusted life years (in short, DALYs), a primary focus of the landmark Global Burden of Disease studies, they are arguably the most frequently employed methodologies in the evaluation of health outcomes nowadays (e.g., <ref type="bibr" target="#b17">Gold et al., 1996;</ref><ref type="bibr" target="#b37">Murray et al., 1997;</ref><ref type="bibr" target="#b13">Drummond et al., 2015)</ref>.</p><p>An alternative to QALYs is the so-called productivity-adjusted life years (in short, PALYs), which are calculated by multiplying a productivity index by years lived. The productivity index ranges from 0 (completely unproductive) to 1 (completely productive), and may take into consideration factors such as absence from work due to ill health (absenteeism), reduced productivity while at work (presenteeism) and premature exit from the workforce (e.g., <ref type="bibr" target="#b27">Magliano et al., 2018;</ref><ref type="bibr" target="#b1">Ademi et al., 2021;</ref><ref type="bibr" target="#b45">Savira et al., 2021)</ref>.</p><p>Economic evaluation of policies to improve occupational health and safety is one field of research where productivity outcome measures following the broader PALY idea are applied extensively (e.g., <ref type="bibr" target="#b53">Tompa et al., 2009;</ref><ref type="bibr">Steel et al., 2018a</ref><ref type="bibr">Steel et al., , 2018b))</ref>. Similar to standard health economic evaluation, this involves measuring costs and effects of working environment interventions except that many studies in this field concentrate on measuring changes in productivity as the most important intervention effect while leaving health effects out (e.g., <ref type="bibr" target="#b38">Noben et al., 2015;</ref><ref type="bibr" target="#b15">Finnes et al., 2022)</ref>. Productivity effects of interventions are often operationalised and measured for each individual employee as sickness absence and reduced productivity while the employees are at work <ref type="bibr">(presenteeism)</ref>. Many studies are performed as a cost-benefit analysis from an employer's perspective where the purpose of the analysis is to assess if the costs of an intervention can be covered entirely or to a degree through the value of improved productivity <ref type="bibr" target="#b18">(Grimani et al., 2018)</ref>. However, from a societal perspective, it seems too narrow to focus exclusively on productivity effects, as working environment interventions will often have wider benefits including effects on employee health. Now, productivity effects are also often taken into account in the evaluation of health care itself (not just workplace safety). The traditional approach has been to net indirect earnings effects out of the cost of treatment (on the basis of the present value of the additional stream of lifetime income for an individual, possibly involving realistic situations such as involuntary unemployment) and keep the QALY outcome measure (e.g., <ref type="bibr" target="#b42">Rice and Cooper, 1967;</ref><ref type="bibr" target="#b25">Koopmanschap et al., 1995;</ref><ref type="bibr" target="#b46">Sculpher, 2001)</ref>. Another more recent approach, which is growing rapidly to the extent of becoming a new development in health economic evaluation, is precisely to switch from QALYs or DALYs to PALYs as the outcome measure. A sizable number of healthcare applications are lately endorsing this approach (see, for instance, <ref type="bibr" target="#b1">Ademi et al. (2021)</ref> and the references cited therein). Nevertheless, PALYs as an outcome measure lack a proper theoretical justification. An aim of this paper is to fill that gap in this emerging literature by providing axiomatic foundations of this newly proposed outcome measure. Furthermore, rather than replacing QALYs by PALYs, one could conceivably think about compromising between both, as they can each be seen as partial measures to evaluate outcomes of health care interventions or occupational health and safety policies. QALYs dismiss productivity, whereas PALYs dismiss quality-of-life (morbidity) concerns. More general evaluation functions encompassing both concerns would be more complete and thus more appropriate from a societal perspective. We also provide in this paper axiomatic foundations for evaluation functions allowing for compromises among QALYs and PALYs within a unified framework. In order to do that, we present a stylized model in which individuals are described by profiles of (representative) health states, productivity and lifetime spans. The aim is to derive measures to evaluate the distribution of those profiles in a population. And to do so by means of specific combinations of axioms that characterize different evaluation measures.</p><p>Our approach builds upon the framework introduced in Hougaard et al. <ref type="bibr">(2013)</ref>. Therein, classical evaluation functions, such as the (time linear) QALY and HYE (acronym for healthy years equivalent) measures are characterized axiomatically. <ref type="foot" target="#foot_0">1</ref> Our generalization of that framework allows us to characterize not only those evaluation functions but also others including a concern for productivity, such as the (time linear) PALY evaluation function, and also appealing hybrids between QALYs and PALYs. <ref type="foot" target="#foot_1">2</ref> We shall refer to the simplest one as productivity-andquality-adjusted life years (in short, PQALYs). We shall characterize other hybrids as well, combining QALYs with PALYs or PQALYs, in an additive way. We shall also characterize even more general evaluations functions, around the notion of healthy productive years equivalent we introduce in this setting.</p><p>We conclude this introduction stressing that our model treats health and productivity as different individual attributes. In doing so, we obviously depart from the literature that considers only one of them, but also from the simplistic assumption that both concepts are perfectly correlated (which would allow to use a reduced model). The precise relationship between health and productivity is complex and the anticipated correlation might actually be positive or negative, depending on the viewpoint. For instance, <ref type="bibr" target="#b51">Tompa (2002)</ref> reviews a literature which suggests that "chronic and acute physical and mental conditions, as well as health-related behaviours, explain a significant portion of sickness absence (a proxy for productivity)". On the other hand, <ref type="bibr" target="#b24">Hummels et al., (2023)</ref> recently studied the effect of rising workload on health and found that it wears down an individual worker's health capital, leading to an increased likelihood of sickness. This is also in line with the classical human capital model of the demand for health (e.g., <ref type="bibr" target="#b19">Grossman, 1972</ref><ref type="bibr" target="#b20">Grossman, , 2000))</ref>, which concludes that health does not affect productivity (it affects an individual's annual salary but not the individual's hourly wage).</p><p>The rest of the paper is organized as follows. In Section 2, we introduce the framework and the basic common axioms that all our evaluation functions will satisfy. In Section 3, we characterize the focal (and somewhat polar) evaluation functions QALYs and PALYs. In Section 4, we characterize classes of evaluation functions which compromise among the previous two. In Section 5, we characterize more general functional forms, that evolve around the notion of healthy productive years equivalent. In Section 6, we discuss our contribution with a special emphasis on the choice among the different evaluation functions we characterize. Finally, in Section 7, we provide some concluding remarks providing further connections to related literature and pointing out possible extensions of our work. For a smooth passage, we defer all proofs to the Appendix.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Preliminaries</head><p>Let a population consisting of n individuals be identified with the set N = {1, ..., n}. Each individual i ∈ N is described by a profile, formalized by a triple d i = (a i , p i , t i ), where a i ∈ A is a health state, p i ∈ [0, 1] is the productivity level, and</p><formula xml:id="formula_0">t i ∈ R + = [0, ∞) is time.</formula><p>We can think of the health state a i as a chronic or representative health state over time. <ref type="foot" target="#foot_2">3</ref>We assume that there exists a health state a * , referred to as 'full health', which is considered at least as good as any other health state. To keep our analysis as general as possible, we make no further assumptions regarding the domain of health states A.</p><p>The productivity p i is measured by any chosen indicator. For instance, it can be an indicator of absence from work (e.g., number of sick days per year for a person). Note that such an indicator may reflect productivity and contributions to society in a broad sense. For example, work may include both labour market activities and domestic work. Alternatively, a measure could be chosen that reflects the value of the work contributed by the individuals, as would (very roughly) be the case if measured by e.g., (relative) earnings (e.g., <ref type="bibr">Steel et al., 2018b</ref>). <ref type="foot" target="#foot_3">4</ref> However, our primary interpretation of productivity will be the broad one, as taking into account the monetary value of individuals (to society) is ethically questionable, as well as potentially more difficult to measure.</p><p>Finally, there are two plausible interpretations of time in our model. On the one hand, it could be identifying the individual total lifetime. On the other hand, it could be identifying incremental individual lifetime from a given status quo up to the end of life or retirement.</p><p>Let d = (d 1 , ..., d n ) denote a distribution of individual profiles, as described above, and let D denote the set of possible distributions. We now give an example in which two hypothetical distributions are presented. We shall return to this example later in the text several times to illustrate how these two hypothetical distributions can be (relatively) evaluated, by means of various evaluation functions we consider.</p><p>Example 1 Consider the following two distributions, involving five individuals each (that could be interpreted as representative agents of five different groups).</p><p>In the first distribution (d ∆ ), all individuals are experiencing full health. The first one is also experiencing maximum productivity as well as forty years of lifetime (until retirement, or the end of life), i.e., d ∆ 1 = (a * , 1, 40). The second individual is experiencing 50% of maximum productivity and forty years of lifetime, i.e., d ∆ 2 = (a * , 0.5, 40). The third individual is experiencing zero productivity and forty years of lifetime, i.e., d ∆ 3 = (a * , 0, 40). The fourth individual is experiencing 50% of maximum productivity and ten years of lifetime, i.e., d ∆ 4 = (a * , 0.5, 10). The last individual is experiencing zero productivity and lifetime, i.e., d ∆ 5 = (a * , 0, 0). In the second distribution (d Λ ), the first individual is also experiencing full health and maximum productivity as well as forty years of lifetime, i.e., <ref type="bibr" target="#b39">40)</ref>. The remaining individuals are experiencing a worse health state, which we denote by a. <ref type="foot" target="#foot_4">5</ref> The second individual is also experiencing maximum productivity and forty years of lifetime, i.e., d Λ 2 = (a, 1, 40). The third individual is experiencing 50% of maximum productivity and forty years of lifetime, i.e., E : D → R. We say that E represents if</p><formula xml:id="formula_1">d Λ 1 = d ∆ 1 = (a * , 1,</formula><formula xml:id="formula_2">E[d] ≥ E[d ′ ] ⇔ d d ′ .</formula><p>Note that if E represents then any strictly increasing transformation of E would also do so.</p><p>An evaluation function E may be interpreted as an effect measure if it is used for the economic evaluation of health care or working environment interventions.</p><p>In what follows, we present some basic axioms for social preferences in the current context, that will be common to all the evaluation functions we consider in this paper. <ref type="foot" target="#foot_5">6</ref></p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">COMMON axioms</head><p>In this section, we present a set of seven axioms that forms the necessary conditions for the theorems presented in the remaining sections of this paper. These are termed the COMMON axioms. The axioms reflect basic principles adapted to our framework that are widely accepted in economics. In the following sections, additional axioms are presented, which together with the COMMON axioms close the characterizations of the evaluation functions we highlight.</p><p>The first three COMMON axioms apply to all three attributes in the same way; whereas the latter four COMMON axioms introduce some conditions on time which distinguish it from the other two attributes.</p><p>The first axiom, anonymity, reflects the principle of impartiality, with a long tradition in the theory of justice (e.g., <ref type="bibr" target="#b32">Moreno-Ternero and Roemer, 2006)</ref>. It says that the identities of individuals do not matter in the evaluation of distributions. Formally, permuting triples does not alter preferences. The second axiom, separability, also has a long tradition of use in models of welfare economics (e.g., <ref type="bibr" target="#b36">Moulin, 1988)</ref>. It says that if the profiles change only for a subgroup of individuals, then the relative evaluation of the two distributions should only depend on this subgroup.  </p><formula xml:id="formula_3">(d ′ S , d N \S ) ⇔ (d S , d ′ N \S ) (d ′ S , d ′ N \S ).</formula><p>The third axiom, continuity, is the adaptation of a standard operational condition to our context. It says that small changes in productivity or life years should only produce small changes in the evaluation of the distribution. <ref type="foot" target="#foot_7">8</ref>CONT: Let d, d ′ ∈ D, and d (k) be a sequence such that for each i ∈ N, d</p><formula xml:id="formula_4">(k) i = (a i , p<label>(k)</label></formula><p>i , t</p><formula xml:id="formula_5">(k) i ) → (a i , p i , t i ) = d i . If d (k) i d ′ for each k then d d ′ , and if d ′ d (k) i for each k, then d ′ d.</formula><p>We then move to the second group of COMMON axioms. First, the social zero condition, which is reminiscent of a well-known condition for individual utility functions on health (e.g., <ref type="bibr" target="#b31">Miyamoto et al., 1998)</ref>. It says that if an individual has zero lifetime, then the health state and productivity of that individual does not influence the evaluation of the distribution.<ref type="foot" target="#foot_8">9</ref> ZERO: For each d ∈ D and each i ∈ N such that t i = 0, and each a ′ i ∈ A, and each The following axiom, lifetime monotonicity at full health and productivity, says that if an individual enjoys full health and maximum productivity then increasing life years is strictly better.</p><formula xml:id="formula_6">p ′ i ∈ [0, 1], d ∼ [d N \{i} , (a ′ i , p ′ i , 0)].</formula><p>LMFHP: For each d ∈ D and each i ∈ N, such that (a i , p i ) = (a * , 1) and each </p><formula xml:id="formula_7">t i &gt; t ′ i , [(a * , 1, t i ), d N \{i} ] ≻ [(a * , 1, t ′ i ), d N \{i} ].</formula><formula xml:id="formula_8">)] = n i=1 q(a i )t i ,<label>(1)</label></formula><p>where q : A → [0, 1] is a function satisfying 0 ≤ q(a i ) ≤ q(a * ) = 1, for each a i ∈ A.</p><p>The unweighted aggregation of individual QALYs, as specified in <ref type="bibr" target="#b0">(1)</ref>, is the preferred evaluation function in the majority of cost-utility analyses performed for health care interventions (e.g., <ref type="bibr" target="#b17">Gold et al., 1996;</ref><ref type="bibr" target="#b13">Drummond et al., 2015)</ref>.</p><p>This evaluation function ignores productivity. More precisely, it satisfies the following axiom, productivity independence, which states that for a fixed health state and lifetime, the productivity is irrelevant for the evaluation of the distribution.</p><formula xml:id="formula_9">PI: For each d ∈ D, each i ∈ N and p ′ i = p i , [(a i , p i , t i ), d N \{i} ] ∼ [(a i , p ′ i , t i ), d N \{i} ].</formula><p>It also satisfies the time invariance at common health and full productivity axiom, which states that for two individuals at common health and maximum productivity, extra life years are interchangeable. That is, it does not matter to the social planner which individual (among those with common health and maximum productivity) gets extra life years.</p><p>TICHFP: For each d ∈ D, each pair i, j ∈ N with a i = a j = a and p i = p j = 1, and each</p><formula xml:id="formula_10">c &gt; 0, [(a, 1, t i + c), (a, 1, t j ), d N \{i,j} ] ∼ [(a, 1, t i ), (a, 1, t j + c), d N \{i,j} ].</formula><p>Our first result states the QALY evaluation function is characterized by the combination of the previous two axioms and the COMMON axioms. 10   Theorem 1 The following statements are equivalent:</p><p>1. is represented by a QALY evaluation function (1).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">satisfies COMMON, PI, and TICHFP.</head><p>A possible interpretation of Theorem 1 could be a situation where a social planner decides to evaluate and prioritise among a set of interventions using the QALY evaluation function <ref type="bibr" target="#b0">(1)</ref>. This social planner will thus agree to the value choices that productivity changes among individuals do not matter for the evaluation of interventions (axiom PI) and that an extension of life of a specific length of any two individuals is of equal value as long as they enjoy a common health state and maximum productivity (axiom TICHFP). In addition, the social planner subscribes to a set of assumptions that are largely technical and uncontroversial (the</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>COMMON axioms). 11</head><p>A counterpart axiom of productivity independence is health independence, which states that, for fixed productivity and lifetime, the health state of an individual is irrelevant for the evaluation.</p><formula xml:id="formula_11">HI: For each d ∈ D, each i ∈ N and a ′ i = a i , [(a i , p i , t i ), d N \{i} ] ∼ [(a ′ i , p i , t i ), d N \{i} ].</formula><p>And, likewise, a counterpart of time invariance at common health and full productivity is time invariance at full health and common productivity, which states that for two individuals at full health and common productivity, it does not matter to the social planner who receives the extra life years. 11 As all theorems in this paper require the COMMON axioms, these will not be mentioned again in the interpretations of the remaining theorems.</p><p>TIFHCP: For each d ∈ D, each pair i, j ∈ N with a i = a j = a * and p i = p j = p, and each</p><formula xml:id="formula_12">c &gt; 0, [(a * , p, t i + c), (a * , p, t j ), d N \{i,j} ] ∼ [(a * , p, t i ), (a * , p, t j + c), d N \{i,j} ].</formula><p>As the next result states, if the previous two axioms replace their counterparts at Theorem 1, we characterize the following generalized PALY evaluation function, which evaluates distributions by means of the aggregation of individual PALYs in society, when submitted first to a continuous function (v). Formally,</p><formula xml:id="formula_13">E vp [d 1 , . . . , d n ] = E[(a 1 , p 1 , t 1 ), . . . , (a n , p n , t n )] = n i=1 v(p i )t i ,<label>(2)</label></formula><p>where</p><formula xml:id="formula_14">v : [0, 1] → [0, 1] is a continuous function satisfying 0 ≤ v(p i ) ≤ v(1) = 1, for each p i ∈ [0, 1].</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Theorem 2</head><p>The following statements are equivalent:</p><p>1. is represented by a generalized PALY evaluation function (2).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">satisfies COMMON, HI, and TIFHCP.</head><p>The generalized PALY evaluation function is a counterpart of the QALY evaluation function.</p><p>As such, neither the v function nor the q function (in their respective functional forms) has a monotonic structure. This makes sense in the latter case because the domain of health states</p><p>A does not have a mathematical structure. But the domain of productivity levels is naturally ordered and, therefore, it would make sense to impose v a non-decreasing structure. The following axiom will guarantee such a feature as a byproduct.</p><p>The axiom productivity invariance at full health and common time states that, for any two individuals with common lifetime and full health, it makes no difference who gains in productivity.</p><p>PIFHCT: For each d ∈ D, each pair i, j ∈ N with a i = a j = a * and t i = t j = t, and each</p><formula xml:id="formula_15">c &gt; 0 such that p i + c, p j + c ≤ 1, [(a * , p i + c, t), (a * , p j , t), d N \{i,j} ] ∼ [(a * , p i , t), (a * , p j + c, t), d N \{i,j} ].</formula><p>As the next result states, adding this axiom to those in Theorem 2 we characterize the affine PALY evaluation function, which evaluates distributions by means of the aggregation of individual PALYs in society, when submitted first to an affine and non-decreasing function.</p><p>Formally,</p><formula xml:id="formula_16">E ap [d 1 , . . . , d n ] = E[(a 1 , p 1 , t 1 ), . . . , (a n , p n , t n )] = n i=1 (αp i + (1 -α))t i ,<label>(3)</label></formula><p>where α ∈ [0, 1].</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Theorem 3</head><p>The following statements are equivalent:</p><p>1. is represented by an affine PALY evaluation function (3).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>2.</head><p>satisfies COMMON, HI, TIFHCP, and PIFHCT.</p><p>The previous families are obvious generalizations of the focal linear PALY evaluation function, which evaluates distributions by means of the unweighted aggregation of individual PALYs in society, or, in other words, by the weighted (through productivity levels) aggregate time span the distribution yields. Formally,</p><formula xml:id="formula_17">E p [d 1 , . . . , d n ] = E[(a 1 , p 1 , t 1 ), . . . , (a n , p n , t n )] = n i=1 p i t i .<label>(4)</label></formula><p>The unweighted aggregation of individual PALYs as specified in ( <ref type="formula" target="#formula_17">4</ref> This evaluation function is characterized when we add the time independence for unproductive individuals axiom, which states that if an individual has zero productivity, then the lifetime of that individual does not influence the evaluation of the distribution.</p><p>TIUP: For each d ∈ D and each i ∈ N such that p i = 0, and each</p><formula xml:id="formula_18">t ′ i ∈ R + , d ∼ [d N \{i} , (a i , 0, t ′ i )].</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Theorem 4</head><p>The following statements are equivalent:</p><p>1. is represented by a PALY evaluation function (4).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>2.</head><p>satisfies COMMON, HI, TIFHCP, PIFHCT, and TIUP.</p><p>According to Theorem 4, a social planner wishing to conduct an economic evaluation of working environment interventions using the PALY evaluation function (4) will also hold a number of specific values in the process of priority setting. These value choices include, for example, that changes in health among individuals following an intervention (axiom HI) and that increases in lifetime among unproductive individuals (axiom TIUP) both have no influence on the choice of intervention.</p><p>We conclude this section applying the evaluation functions characterized in this section to the distributions from Example 1. More precisely, we summarize the computations in the next table. We infer from there that the first distribution is preferred from the viewpoint of QALYs, whereas the second distribution is preferred from the viewpoint of the PALYs-based evaluation functions.</p><p><ref type="foot" target="#foot_9">12</ref> </p><formula xml:id="formula_19">E[d ∆ ] E[d Λ ] E q 130 40 + 90q(a) d ∆ d Λ E p 65 105 d Λ d ∆ E ap 130 -65α 130 -25α d Λ d ∆ E vp 40 + 50v(0.5) + 40v(0) 80 + 50v(0.5) d Λ d ∆</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">Compromising between QALYs and PALYs</head><p>As mentioned above, the evaluation functions characterized in the previous section ignore one dimension of our model. In other words, they all rely on a very demanding axiom of (productivity or health) independence. The purpose of this section is to dismiss those axioms, while obtaining characterizations of natural compromises between those focal (albeit polar) evaluation functions.</p><p>For instance, the productivity-and-quality-adjusted life years (PQALY) evaluation function evaluates distributions by means of the weighted (through productivity and health levels) aggregate time span the distribution yields, so that health, productivity and lifespan of individuals enter the evaluation function multiplicatively. Formally,</p><formula xml:id="formula_20">E pq [d 1 , . . . , d n ] = E[(a 1 , p 1 , t 1 ), . . . , (a n , p n , t n )] = n i=1 q(a i )p i t i ,<label>(5)</label></formula><p>where q : A → [0, 1] is a health state quality weight satisfying 0 ≤ q(a i ) ≤ q(a * ) = 1 for each</p><formula xml:id="formula_21">a i ∈ A.</formula><p>As the next result states, this evaluation function is characterized when we dismiss health independence in the previous result (characterizing PALYs), and strengthen the other two independence axioms to consider the following ones.</p><p>First, time invariance at common health and productivity, which states that for two individuals at common health and productivity, it does not matter to the social planner who receives the extra life years.</p><p>TICHP: For each d ∈ D, each pair i, j ∈ N with a i = a j = a and p i = p j = p, and each c &gt; 0,</p><formula xml:id="formula_22">[(a, p, t i + c), (a, p, t j ), d N \{i,j} ] ∼ [(a, p, t i ), (a, p, t j + c), d N \{i,j} ].</formula><p>Second, productivity invariance at common health and time, which says that for two individuals at common health and time, it does not matter who gains in productivity.</p><p>PICHT: For each d ∈ D, each pair i, j ∈ N with a i = a j = a and t i = t j = t, and each c &gt; 0</p><formula xml:id="formula_23">such that p i + c, p j + c ≤ 1, [(a, p i + c, t), (a, p j , t), d N \{i,j} ] ∼ [(a, p i , t), (a, p j + c, t), d N \{i,j} ].</formula><p>Theorem 5 The following statements are equivalent:</p><p>1. is represented by a PQALY evaluation function (5).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">satisfies COMMON, TICHP, PICHT, and TIUP.</head><p>A social planner may view both health effects and productivity effects as important outcomes of interventions and may therefore choose an evaluation function like the PQALY <ref type="bibr" target="#b4">(5)</ref>,</p><p>where health status and productivity of individuals enter the evaluation function multiplicatively. This implies according to Theorem 5 that one of the values applied by the social planner in this situation is that increases in lifetime among unproductive individuals following an intervention (axiom TIUP) will not increase the desirability of that intervention. The social planner subscribes to two further values regarding invariance between different effect components where the first states that if an intervention leads to extra life years, it does not matter to the social planner which particular individual (among individuals with the same level of health and productivity) receives these extra life years (axiom TICHP). The second value specifies that if an intervention leads to improved productivity, it does not matter which particular individual (among individuals with the same level of health and lifespan) is able to perform better in the workplace (axiom PICHT).</p><p>Our next result states that dismissing the TIUP axiom in the previous statement we obtain the following alternative intriguing compromise (dubbed QALY-PQALY ) which evaluates distributions by means of a convex combination of the QALYs and PQALYs the distribution yields. Formally,</p><formula xml:id="formula_24">E δ [d 1 , . . . , d n ] = E δ [(a 1 , p 1 , t 1 ), . . . , (a n , p n , t n )] = δ n i=1 q(a i )t i + (1 -δ) n i=1 r(a i )p i t i ,<label>(6)</label></formula><p>where q, r : A → [0, 1] are health state quality weight functions satisfying 0 ≤ q(a i ) ≤ q(a * ) = 1 and 0 ≤ r(a i ) ≤ r(a * ) = 1 for each a i ∈ A, and δ ∈ [0, 1].</p><p>The QALY-PQALY evaluation function ( <ref type="formula" target="#formula_24">6</ref>) divides the evaluation exercise into two separate tasks; namely the valuation of the pure health effects among individuals following an intervention, plus the valuation of productivity-and-quality adjusted lifespans of individuals.</p><p>The parameter δ measures the relative importance that the social planner puts on pure health effects and productivity-and-quality adjusted life years resulting from an intervention.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Theorem 6</head><p>The following statements are equivalent:</p><p>1. is represented by a QALY-PQALY evaluation function (6).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">satisfies COMMON, TICHP, and PICHT.</head><p>Similar to the previous evaluation function, a social planner choosing the QALY-PQALY evaluation function (6) considers both health effects and productivity effects as important outcomes of interventions. In contrast to the previous theorem, Theorem 6 implies a rejection of axiom TIUP according to which improvements in lifetime among unproductive individuals following an intervention do not increase the desirability of that intervention. Apart from that, the social planner subscribes to the same two axioms regarding invariance between different effect components as above (TICHP and PICHT).</p><p>The previous family of evaluation functions (6) includes a natural sub-family of evaluation functions (QALY-PALY ) that evaluate distributions by means of the convex combinations of the QALYs and PALYs that the distribution yields. Formally,</p><formula xml:id="formula_25">E σ [d 1 , . . . , d n ] = E σ [(a 1 , p 1 , t 1 ), . . . , (a n , p n , t n )] = σ n i=1 q(a i )t i + (1 -σ) n i=1 p i t i ,<label>(7)</label></formula><p>where q : A → [0, 1] is a health state quality weight function satisfying 0 ≤ q(a i ) ≤ q(a * ) = 1, for each a i ∈ A, and σ ∈ [0, 1].</p><p>Health effects and productivity effects enter the QALY-PALY evaluation function <ref type="bibr" target="#b6">(7)</ref> additively so that these two effects are measured and valued independently of each other. The parameter σ indicates the relative importance that the social planner places on health and productivity effects of individuals respectively.</p><p>This family of evaluation functions ( <ref type="formula" target="#formula_25">7</ref>) is characterized when strengthening the productivity invariance at common health and time axiom to productivity invariance at common time, which says that for two individuals with common lifespan (and irrespective of their health status), it does not matter which of the two individuals improve their productivity.</p><p>PICT: For each d ∈ D, each pair i, j ∈ N with t i = t j = t, and each c &gt; 0 such that</p><formula xml:id="formula_26">p i + c, p j + c ≤ 1, [(a i , p i + c, t), (a j , p j , t), d N \{i,j} ] ∼ [(a i , p i , t), (a j , p j + c, t), d N \{i,j} ].</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Theorem 7</head><p>The following statements are equivalent:</p><p>1. is represented by a QALY-PALY evaluation function <ref type="bibr" target="#b6">(7)</ref>. We also conclude this section applying the evaluation functions characterized in this section to the distributions from Example 1. More precisely, we summarize the computations in the next table. We infer from there that a distribution is preferred to the other one for a certain range of the parameters defining the families of evaluation functions we are considering in this section. For instance, if we assume q(a) = r(a) = 0.5, then E δ (d ∆ ) &lt; E δ (d Λ ) for all members of the family <ref type="bibr" target="#b5">(6)</ref>. On the other hand, if we assume q(a) = r(a) = 0, then</p><formula xml:id="formula_27">E δ (d ∆ ) &gt; E δ (d Λ ) for</formula><p>all members of the family <ref type="bibr" target="#b5">(6)</ref>. Finally, if we assume q(a) = r(a) = 0.4, then</p><formula xml:id="formula_28">E δ (d ∆ ) &lt; E δ (d Λ )</formula><p>if and only if δ &lt; 1 3 . As for the family ( <ref type="formula" target="#formula_25">7</ref>), E σ (d ∆ ) &lt; E σ (d Λ ) if and only if σ &lt; We have presented some central compromises to evaluate both health and productivity aspects of distributions in the previous section. We can even be more flexible to accommodate other (more general) compromises. As a matter of fact, those compromises considered above can be seen as members of a general family of evaluation functions that evaluate distributions by the weighted aggregation of lifetimes the distribution yields, where the weight is a function of health and productivity. Formally,</p><formula xml:id="formula_29">E w [d 1 , . . . , d n ] = E[(a 1 , p 1 , t 1 ), . . . , (a n , p n , t n )] = n i=1 w(a i , p i )t i ,<label>(8)</label></formula><p>where But the family of evaluation functions (8) can also accommodate other evaluation functions that have not been introduced above. For instance, suppose that w is a semimultiplicative function in which productivity enters via a power function, whereas health enters via QALYs, i.e., w(a i , p i ) = q(a i )p γ i , for each (a i , p i ) ∈ A × [0, 1], where γ ∈ (0, 1).</p><formula xml:id="formula_30">w : A × [0, 1] → [0,</formula><formula xml:id="formula_31">E γ [d 1 , . . . , d n ] = E[(a 1 , p 1 , t 1 ), . . . , (a n , p n , t n )] = n i=1 q(a i )p γ i t i ,</formula><p>where q : A → [0, 1] is a health state quality weight function satisfying 0 ≤ q(a i ) ≤ q(a * ) = 1, for each a i ∈ A, and γ ∈ (0, 1).</p><p>Note that the previous evaluation function is formalizing a concern for the dispersion of productivity levels (as it is a concave function of those levels).</p><p>The above is somewhat reminiscent of the focal welfare function within the literature on life-cycle preferences over consumption and health status. Therein, multiplicative separability from consumption and health is typically assumed. <ref type="foot" target="#foot_10">13</ref> In our case, we have productivity instead of consumption, but multiplicative separability can also be naturally obtained from the general family of evaluation functions <ref type="bibr" target="#b7">(8)</ref>.</p><p>It turns out that the general family of evaluation functions ( <ref type="formula" target="#formula_29">8</ref>) is characterized when combining the COMMON set of axioms and time invariance at common health and productivity.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Theorem 8</head><p>The following statements are equivalent:</p><p>1. is represented by an evaluation function (8).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">satisfies COMMON and TICHP.</head><p>Theorem 8 implies that if the social planner endorses the view that if an intervention leads to extra life years, it does not matter which particular individual (among individuals with the same level of health and productivity) receives these extra life years (axiom TICHP), then the evaluation will be via a weighted aggregation of the lifetimes the intervention yields. And the weight for each individual lifetime will be obtained via a general function of the health and productivity levels they face.</p><p>A weaker axiom than time invariance at common health and productivity, is time invariance at full health and productivity, which states that extra years can be interchangeable among individuals with full health and maximum productivity.</p><p>TIFHP: For each d ∈ D, each pair i, j ∈ N with a i = a j = a * and p i = p j = 1, and each c &gt; 0,</p><formula xml:id="formula_32">[(a * , 1, t i + c), d N \{i} ] ∼ [(a * , 1, t j + c), d N \{j} ].</formula><p>If we replace time invariance at common health and productivity by time invariance at full health and productivity we characterize a more general family of evaluation functions, which extend to this context the notion of healthy years equivalent (e.g., <ref type="bibr" target="#b30">Mehrez and Gafni, 1989)</ref>.</p><p>More precisely, the healthy productive years equivalent (HPYE ) evaluation function evaluates distributions by the unweighted aggregation of HPYEs the distribution yields. Formally,</p><formula xml:id="formula_33">E f [d 1 , . . . , d n ] = E[(a 1 , p 1 , t 1 ), . . . , (a n , p n , t n )] = n i=1 f (a i , p i , t i ),<label>(9)</label></formula><p>where f : A × [0, 1] × R + → R + is continuous with respect to its second and third variables and</p><formula xml:id="formula_34">for each d = [d 1 , . . . , d n ] = [(a 1 , p 1 , t 1 ), . . . , (a n , p n , t n )] ∈ D, d ∼ [(a * , 1, f (a i , p i , t i )) i∈N ].</formula><p>where, for each (a i , p i , t</p><formula xml:id="formula_35">i ) ∈ A × [0, 1] × R + , 0 ≤ f (a i , p i , t i ) ≤ t i , f (a i , p i , t i ) ≤ f (a i , 1, t i ),<label>and</label></formula><formula xml:id="formula_36">f (a i , p i , t i ) ≤ f (a * , p i , t i ).</formula><p>The evaluation function ( <ref type="formula" target="#formula_33">9</ref>) is obtained via an intuitive process. Each individual triple d i = (a i , p i , t i ) is first associated with another triple (a * , 1, f (a i , p i , t i )) in which the individual enjoys full health and maximal productivity, but a lower lifetime. This converts the multidimensional evaluation problem into a unidimensional one in which the social planner only needs to focus on lifetimes (which are simply aggregated afterwards). The precise lifetime amount, f (a i , p i , t i ), is actually a function of the original triple and it is obtained to guarantee that the social planner is indifferent between the original distribution and the new one. This is a well-defined function, due to the COMMON axioms.</p><p>Note that this family (9) includes the previous one <ref type="bibr" target="#b7">(8)</ref>. To see that, note that for each</p><formula xml:id="formula_37">d = [d 1 , . . . , d n ] = [(a 1 , p 1 , t 1 ), . . . , (a n , p n , t n )] ∈ D, E w [d 1 , . . . , d n ] = E w [(a * , 1, w(a 1 , p 1 )t 1 ), . . . , (a * , 1, w(a n , p n )t n )]. That is, d ∼ [(a * , 1, w(a i , p i )t i ) i∈N ].</formula><p>As the next result states, the general family of evaluation functions ( <ref type="formula" target="#formula_33">9</ref>) is characterized when combining the COMMON set of axioms and time invariance at full health and productivity.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Theorem 9</head><p>The following statements are equivalent:</p><p>1. is represented by a HPYE evaluation function (9).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">satisfies COMMON and TIFHP.</head><p>Theorem 9 implies that if the social planner endorses the view that if an intervention leads to extra life years for individuals with full health and maximal productivity, it does not matter which particular individual receives these extra life years (axiom TIFHP), then the evaluation will be via the unweighted aggregation of the HPYEs the intervention yields (which are well defined due to COMMON).</p><p>Finally, we can define the so-called generalized HPYE evaluation function by the unweighted aggregation of the image of HPYEs the distribution yields to a certain function. Formally,</p><formula xml:id="formula_38">E g [d 1 , . . . , d n ] = E[(a 1 , p 1 , t 1 ), . . . , (a n , p n , t n )] = n i=1 g(f (a i , p i , t i )),<label>(10)</label></formula><p>where g : R + → R is a strictly increasing and continuous function, and f :</p><formula xml:id="formula_39">A×[0, 1] ×R + → R +</formula><p>is continuous with respect to its second and third variables and for each d</p><formula xml:id="formula_40">= [d 1 , . . . , d n ] = [(a 1 , p 1 , t 1 ), . . . , (a n , p n , t n )] ∈ D, d ∼ [(a * , 1, f (a i , p i , t i )) i∈N ].</formula><p>where, for each (a i , p i , t</p><formula xml:id="formula_41">i ) ∈ A × [0, 1] × R + , 0 ≤ f (a i , p i , t i ) ≤ t i , f (a i , p i , t i ) ≤ f (a i , 1, t i ),<label>and</label></formula><formula xml:id="formula_42">f (a i , p i , t i ) ≤ f (a * , p i , t i ).</formula><p>Our last result states that the generalized HPYE evaluation function is precisely characterized by the set of COMMON axioms.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Theorem 10</head><p>The following statements are equivalent:</p><p>1. is represented by a generalized HPYE evaluation function <ref type="bibr" target="#b9">(10)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">satisfies COMMON.</head><p>Theorem 10 implies that if the social planner dismisses the TIFHP axiom, while still endorsing COMMON, then the evaluation will be via a general (but strictly increasing and continuous) function of the HPYEs the intervention yields (which are well defined due to COMMON). Thus, the evaluation will not necessarily be via a simple unweighted aggregation of HPYEs, which was the consequence of the TIFHP axiom, as formalized by the evaluation function <ref type="bibr" target="#b8">(9)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">Discussion</head><p>The results presented above in the form of evaluation functions and their required axioms may be utilised in empirical applications, for example as part of an economic evaluation of a health care or working environment intervention. The data collection of the economic evaluation will typically involve capturing information on all individuals in the intervention and control group regarding their costs, health status and productivity level during the follow-up period of the study.</p><p>As illustrated throughout the text with the two distributions from Example 1, the choice of evaluation function matters to a large extent when it comes to rank different distributions. Instead of making that choice directly based on their functional forms, we rather believe the choice should be guided by the axioms they satisfy. Hence the interest of our axiomatic approach.</p><p>If the analyst (working on behalf of a social planner) is of the view that health effects and productivity effects are both important outcomes when assessing the benefit of the working environment intervention, evaluation functions ( <ref type="formula" target="#formula_20">5</ref>)-( <ref type="formula" target="#formula_38">10</ref>) may be used for calculating the combined effects on health and productivity in the intervention and control group. The analyst may choose a specific evaluation function based on an examination of the individual sets of axioms in terms of their expected acceptability to the society where the working environment intervention will be introduced. For example, the time independence for unproductive individuals (TIUP) axiom may be considered unacceptable, as it conveys that gains in lifetime among individuals outside the labour market have no value. Rejection of the TIUP axiom would exclude the PQALY evaluation function <ref type="bibr" target="#b4">(5)</ref>. Assume further that the analyst deems the axioms time invariance at common health and productivity (TICHP) and productivity invariance at If the QALY-PALY evaluation function is chosen, the next step is to estimate the corresponding parameters, including the one addressing the relative importance of improvements in health and productivity (σ), the quality weights of health states (q(a i )), productivity levels (p i ) and durations (t i ). The latter two parameters will typically be available directly from the data collection for the economic evaluation. Quality weights of health states may be elicited from representative agents using a person trade-off method. 15 For example, each respondent would be asked which of the following interventions are most desirable for society:</p><p>Intervention A: 1000 individuals obtaining 1 year in full health and having zero productivity.</p><p>Intervention B: x individuals obtaining 1 year in health state a and having zero productivity.</p><p>In particular, each respondent would be asked to identify the number of individuals x in Intervention B to be indifferent between both interventions. The quality weight can then be derived as q(a) = 1000</p><p>x . The parameter σ may be elicited using a different version of the person trade-off technique.</p><p>To wit, respondents would now be asked to state which of the following interventions are most desirable for society: Intervention C: one individual obtaining 1 year in full health and having zero productivity.</p><p>Intervention D: one individual obtaining y years in health state a and having maximum productivity.</p><p>Each respondent would then be asked to identify the duration y in Intervention D to be indifferent between the two interventions. Once y is identified, it follows from evaluation function <ref type="bibr" target="#b6">(7)</ref> that σ = σq(a)y + (1σ)y, which implies σ = y 1-q(a)y+y , from which the parameter σ can be estimated. When all parameters have been estimated, the total effects in the intervention and control group can be calculated using the PALY-QALY evaluation function <ref type="bibr" target="#b6">(7)</ref>.</p><p>the need for using a more flexible evaluation function (for example the QALY-PQALY). If people largely agree with this axiom (i.e., a majority is largely indifferent between adding productivity to one type or another, or roughly participants are split into those that favor persons of one type and those that favor persons of the other type) it provides support for using the QALY-PALY. 15 The reader is referred to <ref type="bibr" target="#b39">Nord (1995)</ref>, <ref type="bibr" target="#b37">Murray et al., (1997)</ref>, or <ref type="bibr">Østerdal (2009)</ref>, for details about the person trade-off technique and discussion. We also acknowledge here that the descriptive validity of this technique is highly questionable (e.g., <ref type="bibr" target="#b11">Doctor et al., 2009)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7">Concluding remarks</head><p>Some of our models, particularly the more general functional forms ( <ref type="formula" target="#formula_33">9</ref>) and ( <ref type="formula" target="#formula_38">10</ref>), embrace a wide spectrum of potential ethical and social concerns. But the more structured evaluation functions ( <ref type="formula" target="#formula_8">1</ref>)-( <ref type="formula" target="#formula_29">8</ref>) involve a time-linear component. Thus, for each evaluation function of the form ( <ref type="formula" target="#formula_8">1</ref>)-( <ref type="formula" target="#formula_29">8</ref>), if a person doubles her time (for a fixed productivity level and health state), her contribution to social welfare doubles. This standard feature is widely acknowledged in QALY and PALY studies; indeed it reflects the basic idea of proportionally "adjusting" the years obtained based on available information about the years lived. In the context of QALY studies, more general functional forms have been proposed. In particular, an approach where the individual QALY component is transformed by a power function before being aggregated across individuals was proposed by <ref type="bibr" target="#b54">Wagstaff (1991)</ref> and Williams (1997), among others, and axiomatically characterized by <ref type="bibr">Østerdal (2005)</ref> and Hougaard et al. ( <ref type="formula">2013</ref>) in their model focusing on population distributions of life years and health states. <ref type="foot" target="#foot_12">16</ref> In a health setting, power QALY functional forms are typically associated to a formalization of the so-called "fair innings", a popular argument within the public health literature (e.g., <ref type="bibr" target="#b4">Adler et al., 2021)</ref>.</p><p>They can also be seen as prioritarian evaluation functions (also known as prioritarian social welfare functionals), which rank well-being vectors according to the sum of a strictly increasing (dubbed equivalent health-adjusted lifespan) that is sensitive to inequality in both age-specific health and health-adjusted lifespan. It is a life years metric that nests health-adjusted life expectancy.</p><p>In the present framework considering health states, productivity and life years, we could also impose a power transformation of the individual components in each of the structured evaluation functions (1)-( <ref type="formula" target="#formula_29">8</ref>). This would entail determining one additional parameter for the model (or perform robustness analyses for a reasonable range of possible power transformations). We could also consider some specific prioritarian evaluation functions within the general evaluation functions ( <ref type="formula" target="#formula_33">9</ref>)- <ref type="bibr" target="#b9">(10)</ref>. The consequence would be to give more weight to the initial years from the point of view of a social planner. This would change the ethical and social implications of the evaluation function used. In particular, it would mean that some of the axioms would be violated, and thus we would need new (weaker) axioms to characterize such modified and more flexible functional form. An investigation into the axiomatic underpinnings of employing a power transformation (or other parametric concave transformations) in a framework incorporating individual health, productivity, and life years is left for future research. 17   As we mentioned in the introduction, there is a pressing need to protect the health and productivity of the economically active population. Treatments for the elderly (retired people)</p><p>have no effects on (labour market) productivity. This might render QALYs more appropriate for the evaluation of these treatments. But using the same evaluation function for younger patients misses productivity effects. This is a possible motivation for age weights (another motivation is the fair innings argument mentioned above). Our hybrid evaluation functions, such as PQALYs, QALYs-PALYs, QALYs-PQALYs or the more general functional form <ref type="bibr" target="#b7">(8)</ref>, offer an alternative way of dealing with productivity differences, selecting the appropriate parameters therein.</p><p>We conclude mentioning that our framework allows for alternative plausible interpretations, as well as for further generalizations.</p><p>Regarding the former, we focused on chronic health states, for ease of exposition, but our analysis also allows to consider time-varying health. To wit, we made no assumptions regarding the domain of health states A (except for the existence of a maximal element). In particular, this allows for time trajectories rather than fixed levels of health (with the trajectory determined by t i ). That is, a i = a i (•), where a i (s) denotes the health status of individual i at time s ≤ t i .</p><p>This would require a reinterpretation of some of the axioms we considered above. 18   Likewise, instead of assuming that p i ∈ [0, 1] captures the productivity of individual i, we could assume that it captures the probability to succeed in life that individual i has. Mariotti and Veneziani (2018) refer to this as "chances of success" and characterize a multiplicative form to evaluate social profiles of "chances of success" (also known as "boxes of life"). 19 We could also derive their characterization results in our model upon endorsing first the axiom of health independence and a counterpart axiom of time independence (not considered in this paper). We, 17 A natural way to start would be by modifying the TICHP axiom, so as to prefer to give the extra life years to the shorter-lived individual. 18 Bossert and D'Ambrosio (2013) is a nice example of an axiomatic analysis of time trajectories (streams) of wealth (rather than health). 19 See also <ref type="bibr" target="#b28">Mariotti and Veneziani (2012)</ref> and <ref type="bibr" target="#b5">Alcantud et al., (2022)</ref> for characterizations of alternative functional forms in the same model.</p><p>nevertheless, acknowledge that their main axiom is one formalizing a non-interference principle that we do not consider in this paper. 20   As for further generalizations, we stress that the scope of our theory can be enlarged to account for more general evaluations. To wit, our theory deals with the evaluation of population distributions where individuals can be characterized by two instantaneous attributes (one qualitative and one quantitative) and a duration. These attributes can indeed be interpreted as health (qualitative) and productivity (quantitative), as we do in this paper. But there are other potential interpretations (such as happiness or well-being, to name a few). Our results could therefore provide interesting lessons for those settings too.</p><p>where 0 First, we prove that for each d ∈ D and each i ∈ N, there exists</p><formula xml:id="formula_43">≤ f (a i , p i , t i ) ≤ t i for each (a i , p i , t i ) ∈ A × [0, 1] × R + .</formula><formula xml:id="formula_44">t * i ∈ R + , such that d ∼ [(a * , 1, t * i ), d N \{i} ].</formula><p>If t i = 0, then it follows from ZERO that t * i = t i = 0. Therefore, assume t i &gt; 0. We prove that t * i exists by contradiction. Therefore, assume that t * i does not exist. Then, T = A ∪ B, where</p><formula xml:id="formula_45">A = {s ∈ R + : d ≻ [(a * , 1, s), d N \{i} ]} B = {s ∈ R + : [(a * , 1, s), d N \{i} ] ≻ d}.</formula><p>By FHPS, [(a * , 1, t i ), d N \{i} ] d, implying that either t * i = t i (a contradiction), or t i ∈ B. Assume the latter. Thus, B is a non-empty set.</p><p>By PLD and ZERO, it follows that either t * i = 0 (a contradiction), or 0 ∈ A. Again, assume the latter. Thus, A is a non-empty set.</p><p>By CONT, A and B are open sets relative to T . Altogether, it follows that T is not a connected set, which is a contradiction. Thus, t * i exists, and due to LMFHP, it is uniquely determined. Finally, by SEP, we can determine each t * i separately. Therefore, let f i : A×[0, 1]×R + → R be such that f i (a i , p i , t i ) = t * i for each i ∈ N. By ANON, f i () = f j () = f () for each i, j ∈ N. By CONT, f is continuous with respect to its second and third variable and, by the above, we know that 0 ≤ f (a i , p i , t i ) ≤ t i , so the range of f is a connected subset of R. Also, by FHPS, f (a i , p i , t i ) ≤ f (a i , 1, t i ), and</p><formula xml:id="formula_46">f (a i , p i , t i ) ≤ f (a * , p i , t i ) for each (a i , p i , t i ) ∈ A × [0, 1] × R + . Thus, d ∼ [(a * , 1, f (a i , p i , t i )) i∈N ],</formula><p>which implies that social preferences only depend on the profile of HPYEs, and, by CONT, they do so continuously. As in the models of <ref type="bibr">Østerdal (2005)</ref> </p><formula xml:id="formula_47">d d ′ ⇔ n i=1 g(f (a i , p i , t i )) ≥ n i=1 g(f (a ′ i , p ′ i , t ′ i )),</formula><p>where g : R + → R is strictly increasing.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Proof of Theorem 9</head><p>Suppose first that is represented by a PHEF satisfying <ref type="bibr" target="#b8">(9)</ref>. By Theorem 10, COMMON holds. As for TIFHP, let d ∈ D and i, j ∈ N be such that a i = a j = a * and p i = p j = 1. Then, for each c &gt; 0,</p><formula xml:id="formula_48">[(a * , 1, t i +c), d N \{i} ] = f (a * , 1, t i +c)+f (a * , 1, t j )+ k∈N \{i,j} f (a k , p k , t k ) = t i +c+t j + k∈N \{i,j} f (a k , p k , t k ),</formula><p>and</p><formula xml:id="formula_49">[(a * , 1, t j +c), d N \{j} ] = f (a * , 1, t j +c)+f (a * , 1, t i )+ k∈N \{i,j} f (a k , p k , t k ) = t j +c+t i + k∈N \{i,j} f (a k , p k , t k ).</formula><p>Thus,</p><formula xml:id="formula_50">[(a * , 1, t i + c), d N \{i} ] ∼ [(a * , 1, t j + c), d N \{j} ].</formula><p>Conversely, assume now that preferences satisfy all the axioms in COMMON as well as TIFHP. Then, by Theorem 10, for each pair d, d ′ ∈ D,</p><formula xml:id="formula_51">d d ′ ⇔ n i=1 g(f (a i , p i , t i )) ≥ n i=1 g(f (a ′ i , p ′ i , t ′ i )),</formula><p>where g : R + → R is strictly increasing. Now, for each pair t i , t j ∈ R + , and for each c &gt; 0, it follows by TIFHP that g(f (a * , 1, t i + c)) + g(f (a * , 1, t j )) = g(f (a * , 1, t i )) + g(f (a * , 1, t j + c)).</p><p>Or, equivalently,</p><formula xml:id="formula_52">g(t i + c) + g(t j ) = g(t i ) + g(t j + c),</formula><p>In particular,</p><formula xml:id="formula_53">g x + y 2 = g(x) + g(y) 2 ,</formula><p>for each x, y ≥ 0. As g is continuous and strictly increasing, it follows from Theorem 1 in <ref type="bibr">Aczel (2006, p. 43</ref>) that there exist α and β such that g(x) = αx + β, for each x &gt; 0. By LMFHP, α &gt; 0. Consequently, is indeed represented by an evaluation function satisfying <ref type="bibr" target="#b8">(9)</ref>, as desired.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Proof of Theorem 8</head><p>Suppose first that is represented by a PHEF satisfying <ref type="bibr" target="#b7">(8)</ref>. As this is a special case of <ref type="bibr" target="#b9">(10)</ref>, it follows from Theorem 10 that COMMON holds. As for TICHP, let d ∈ D and i, j ∈ N be such that a i = a j = a and p i = p j = p. Conversely, assume now that preferences satisfy all the axioms in the statement of Theorem 8.</p><p>Then, by Theorem 10, for each pair d, d ′ ∈ D,</p><formula xml:id="formula_54">d d ′ ⇔ n i=1 g(f (a i , p i , t i )) ≥ n i=1 g(f (a ′ i , p ′ i , t ′ i )),</formula><p>where = ϕ(a, p,</p><formula xml:id="formula_55">g : R + → R is strictly increasing. Let ϕ : A × [0, 1] × R + → R be such that ϕ(a i , p i , t i ) = g(f (a i , p i , t i )), for each (a i , p i , t i ) ∈ A × [0, 1] × R + .</formula><formula xml:id="formula_56">n i=1 t i ) + (n -1)ϕ(a, p, 0) [ZERO]</formula><p>= ϕ(a, p,</p><formula xml:id="formula_57">n i=1 t i ) + (n -1)ϕ(a, p, 0) = ϕ(a, p, n i=1 t i ).<label>(11)</label></formula><p>In particular, ϕ(a, p, t → R be such that w(a, p) = ŵ(a,p) ŵ(a * ,1) , for each (a, p) ∈ A × [0, 1]. Thus, it follows that 1 = w(a * , 1) ≥ w(a, p) ≥ 0, for each (a, p) ∈ A × [0, 1]. Then, we may write: ϕ(a, p, t i ) = w(a, p)t i , where 0 ≤ w(a, p) ≤ w(a * , p) ≤ w(a * , 1) = 1, and 0 ≤ w(a, p) ≤ w(a, 1) ≤ w(a * , 1) = 1 for each (a, p) ∈ A × [0, 1], as desired.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Proof of Theorem 1</head><p>Suppose first that is represented by a PHEF satisfying <ref type="bibr" target="#b0">(1)</ref>. As this is a special case of <ref type="bibr" target="#b9">(10)</ref>, it follows from Theorem 10 that COMMON holds. It is straightforward to see that it also satisfies PI. As for TICHFP, let d ∈ D and i, j ∈ N be such that a i = a j = a and p i = p j = 1.</p><p>Then, for each c &gt; 0,</p><formula xml:id="formula_58">E[(a, 1, t i + c), (a, 1, t j ), d N \{i,j} ] = q(a)(t i + c) + q(a)t j + k∈N \{i,j} q(a k )t k , and E[(a, 1, t i ), (a, 1, t j + c), d N \{i,j} ] = q(a)(t j + c) + q(a)t i + k∈N \{i,j} q(a k )t k . Thus, [(a, 1, t i + c), (a, 1, t j ), d N \{i,j} ] ∼ [(a, 1, t i ), (a, 1, t j + c), d N \{i,j} ].</formula><p>Conversely, assume now that preferences satisfy all the axioms in the statement of Theorem </p><formula xml:id="formula_59">d d ′ ⇔ n i=1 g(f (a i , p i , t i )) ≥ n i=1 g(f (a ′ i , p ′ i , t ′ i )),</formula><p>where g : R + → R is strictly increasing. PI and TICHFP together imply TICHP. Thus, preferences satisfy all the axioms in the statement of Theorem 8. Thus, for each d ∈ D,</p><formula xml:id="formula_60">E[d] = E[(a 1 , p 1 , t 1 ), . . . , (a n , p n , t n )] = n i=1 w(a i , p i )t i ,</formula><p>where 0 ≤ w(a, p) ≤ w(a * , p) ≤ w(a * , 1) = 1, and 0 ≤ w(a, p) ≤ w(a, 1) ≤ w(a * , 1) = 1 for each (a, p) ∈ A × [0, 1]. Now, by PI, w(a, p) = w(a, 1), for each a ∈ A. Let q : A → R be such that q(a i ) = w(a i , 1), for each a i ∈ A. Then, it follows that 1 = q(a * ) ≥ q(a) ≥ 0, for each a ∈ A.</p><p>And we may write:</p><formula xml:id="formula_61">E[d] = E[(a 1 , p 1 , t 1 ), . . . , (a n , p n , t n )] = n i=1 q(a)t i ,</formula><p>where 0 ≤ q(a) ≤ q(a * ) = 1, for each a ∈ A, as desired.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Proof of Theorem 2</head><p>Suppose first that is represented by a PHEF satisfying <ref type="bibr" target="#b1">(2)</ref>. As this is a special case of (10), it follows from Theorem 10 that COMMON holds. It is straightforward to see that it also satisfies HI. As for TIFHCP, let d ∈ D and i, j ∈ N be such that a i = a j = a * and p i = p j = p.</p><p>Then, for each c &gt; 0,</p><formula xml:id="formula_62">E[(a * , 1, t i + c), (a * , 1, t j ), d N \{i,j} ] = v(1)(t i + c) + v(1)t j + k∈N \{i,j} v(p k )t k ,<label>and</label></formula><formula xml:id="formula_63">E[(a * , 1, t i ), (a * , 1, t j + c), d N \{i,j} ] = v(1)(t j + c) + v(1)t i + k∈N \{i,j} v(p k )t k .</formula><p>Thus, as v( </p><formula xml:id="formula_64">d d ′ ⇔ n i=1 v(p i )t i ≥ n i=1 v(p ′ i )t ′ i , where v : [0, 1] → R is such that 0 ≤ v(p) ≤ v(1) = 1, for each p ∈ [0, 1]. Now, by PIFHCT, it follows that v(p i +c)-v(p i ) = v(p j +c)-v(p j ), for each pair p i , p j ∈ [0, 1]</formula><p>and each c &gt; 0 such that p i + c, p j + c ∈ [0, 1]. In particular, </p><formula xml:id="formula_65">v x + y 2 = v(x) + v(y)<label>2</label></formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Proof of Theorem 5</head><p>Suppose first that is represented by a PHEF satisfying <ref type="bibr" target="#b4">(5)</ref>. As this is a special case of (8), it follows from Theorem 8 that COMMON and TICHP hold. It is straightforward to see that it also satisfies TIUP. As for PICHT, let d ∈ D, and i, j ∈ N with a i = a j = a and t i = t j = t.</p><p>Then, for each c &gt; 0 such that p i + c, p j + c ≤ 1, E[(a, p i + c, t), (a, p j , t), d N \{i,j} ] = q(a)(p i + c)t + q(a)p j t + k∈N \{i,j} q(a k )p k t k , and E[(a, p i , t), (a, p j + c, t), d N \{i,j} ] = q(a)p i t + q(a)p j (t + c) + k∈N \{i,j} q(a k )p k t k .</p><p>Thus, [(a, p i + c, t), (a, p j , t), d N \{i,j} ] ∼ [(a, p i , t), (a, p j + c, t), d N \{i,j} ].</p><p>Conversely, assume now that preferences satisfy all the axioms in the statement of Theorem 5. Then, they also satisfy the axioms of Theorem 8. Thus, for each pair d, d ′ ∈ D, and, therefore, is indeed represented by an evaluation function satisfying (5), as desired.</p><formula xml:id="formula_66">d d ′ ⇔ n i=1 w(a i , p i )t i ≥ n i=1 w(a ′ i , p ′ i )t ′ i ,<label>where</label></formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Proof of Theorem 6</head><p>Suppose first that is represented by a PHEF satisfying <ref type="bibr" target="#b5">(6)</ref>. As this is a special case of (8), it follows from Theorem 8 that COMMON and TICHP hold. As for PICHT, let d ∈ D, and i, j ∈ N with a i = a j = a and t i = t j = t. Then, for each c &gt; 0 such that p i + c, p j + c ≤ 1, E[(a, p i + c, t), (a, p j , t), d N \{i,j} ] = δ(q(a)t + q(a)t) + (1δ)(q(a)(p i + c)t + q(a)p j t) + k∈N \{i,j} δq(a k )t k + (1δ)r(a k )p k t k , and E[(a, p i , t), (a, p j + c, t), d N \{i,j} ] = δ(q(a)t + q(a)t) + (1δ)(q(a)p i t + q(a)(p j + c)t) + k∈N \{i,j} δq(a k )t k + (1δ)r(a k )p k t k . Thus, [(a, p i + c, t), (a, p j , t), d N \{i,j} ] ∼ [(a, p i , t), (a, p j + c, t), d N \{i,j} ].</p><p>Conversely, assume now that preferences satisfy all the axioms in the statement of Theorem for each a ∈ A, it follows that is represented by an evaluation function satisfying <ref type="bibr" target="#b4">(5)</ref>. Or, equivalently, by an evaluation function satisfying <ref type="bibr" target="#b5">(6)</ref>, with δ = 0.</p><p>Case 3. α(a * ) = 0 = β(a * ).</p><p>Let q, r : A → R be such that r(a) = α(a) α(a * ) and q(a) = β(a) β(a * ) , for each a ∈ A. Then, by FHPS, 1 = q(a * ) ≥ q(a) ≥ 0, and 1 = r(a * ) ≥ r(a) ≥ 0. Furthermore, 0 &lt; α(a * ), β(a * ) &lt; 1. Now, if we let δ = β(a * ) ∈ (0, 1), we have w(a, p) = δq(a) + (1δ)r(a)p, for each p ∈ [0, 1], and each a ∈ A. Thus, for each pair d, d ′ ∈ D,</p><formula xml:id="formula_67">d d ′ ⇔ δ n i=1 q(a i )t i + (1 -δ) n i=1 r(a i )p i t i ≥ δ n i=1 q(a ′ i )t ′ i + (1 -δ) n i=1 r(a ′ i )p ′ i t ′ i ,</formula><p>where q, r : A → [0, 1] are such that 1 = q(a * ) ≥ q(a) ≥ 0, and 1 = r(a * ) ≥ r(a) ≥ 0 and δ ∈ (0, 1). Consequently, is indeed represented by an evaluation function satisfying <ref type="bibr" target="#b5">(6)</ref>, with δ ∈ (0, 1) as desired.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Proof of Theorem 7</head><p>Suppose first that is represented by a PHEF satisfying <ref type="bibr" target="#b6">(7)</ref>. As this is a special case of ( <ref type="formula" target="#formula_24">6</ref>), it follows from Theorem 6 that COMMON and TICHP hold. As for PICT, let d ∈ D, and i, j ∈ N with t i = t j = t. Then, for each c &gt; 0 such that p i + c, p j + c ≤ 1, E[(a i , p i +c, t), (a j , p j , t), d N \{i,j} ] = σ(q(a i )t+q(a j )t)+(1-σ)((p i +c)t+p j t)+ Conversely, assume now that preferences satisfy all the axioms in the statement of Theorem 7. Then, they also satisfy the axioms in Theorem 6 (note that PICT implies PICHT). Thus, for each pair d, d ′ ∈ D,</p><formula xml:id="formula_68">d d ′ ⇔ δ n i=1 q(a i )t i + (1 -δ) n i=1 r(a i )p i t i ≥ δ n i=1 q(a ′ i )t ′ i + (1 -δ) n i=1 r(a ′ i )p ′ i t ′ i ,</formula><p>where q, r : A → [0, 1] are such that 1 = q(a * ) ≥ q(a) ≥ 0, and 1 = r(a * ) ≥ r(a) ≥ 0 and</p><formula xml:id="formula_69">δ ∈ [0, 1].</formula><p>By PICT, [(a i , p i + c, t), (a j , p j , t), d N \{i,j} ] ∼ [(a i , p i , t), (a j , p j + c, t), d N \{i,j} ],</p><p>for each d ∈ D, and i, j ∈ N with t i = t j = t. Now, as E[(a i , p i + c, t), (a j , p j , t), d N \{i,j} ] = δ(q(a i )t + q(a j )t) + (1δ)(r(a i )(p i + c)t + r(a j )p j t) + k∈N \{i,j} δq(a k )t k + (1σ)r(a k )p k t k , and E[(a i , p i , t), (a j , p j + c, t), d N \{i,j} ] = δ(q(a i )t + q(a j )t) + (1δ)(r(a i )p i t + r(a j )(p j + c)t) + k∈N \{i,j} δq(a k )t k + (1σ)r(a k )p k t k . Thus, r(a i ) = r(a j ), for each pair a i , a j ∈ A. As, 1 = r(a * ), it follows that r(a) = 1, for each a ∈ A. Thus, letting σ = δ, we obtain that is indeed represented by an evaluation function satisfying <ref type="bibr" target="#b6">(7)</ref> as desired.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>ANON: (d 1</head><label>1</label><figDesc>, ..., d n ) ∼ (d π(1) , ..., d π(n) ) for each d ∈ D, and each bijection π : N → N.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>7</head><label>7</label><figDesc></figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>SEP:</head><label></label><figDesc>For each pair d, d ′ ∈ D, and each S ⊂ N, (d S , d N \S )</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>10 Theorem 1</head><label>1</label><figDesc>is the extension to our setting of the counterpart results in Hougaard et al. (2013) and Moreno-Ternero et al. (2023).</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head></head><label></label><figDesc>) is a common evaluation function used for economic evaluation of working environment interventions including, for example, Finnes et al. (2022), who measured sickness absence days as effect measure.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>2 .</head><label>2</label><figDesc>satisfies COMMON, TICHP and PICT.Theorem 7 also implies a rejection of axiom TIUP, where improvements in lifetime among unproductive individuals do not matter for the choice among interventions. Further, the social planner agrees to the value that if an intervention leads to extra life years, it does not matter to the social planner which particular individual (among individuals with the same level of health and productivity) receives these extra life years (axiom TICHP). Finally, if an intervention leads to improved productivity, it does not matter to the social planner which particular individual (among individuals with the same level of lifespan but not necessarily the same health status) has improved productivity (axiom PICT).</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>4 13 - 13 E</head><label>1313</label><figDesc>9q(a) . E[d ∆ ] E[d Λ ] E pq 65 40 + 65q(a) d ∆ d Λ if and only if q(a) ≤ 5 δ 65(1 + δ) 40 + 90δq(a) + 65(1δ)r(a) Depends on q, r, δ E σ 65(1 + σ) 105 -65σ + 90q(a)σ d ∆ d Λ if and only if σ ≥ 4 13-9q(a) 5 More general evaluation functions</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head></head><label></label><figDesc>1] is a continuous function in its second variable and such that 0 ≤ w(a, p) ≤ w(a * , p), w(a, 1) ≤ w(a * , 1) = 1 for each (a, p)∈ A × [0, 1].Health effects and productivity effects enter the evaluation function<ref type="bibr" target="#b7">(8)</ref> via the general function w, which sets the weights for individual lifetimes in the ensuing aggregation. This permits to accommodate a wide variety of options to account for the interaction between health effects and productivity effects. In particular, the weight function w can fully ignore one or the other, thus giving rise to PALYs (generalized or not) and QALYs respectively. But it can also be a multiplicative function, thus giving rise to the PQALY evaluation function; or a linear function, thus giving rise to the QALY-PALY evaluation function. Finally, it can also be a semilinear function, thus giving rise to the QALY-PQALY evaluation function.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head></head><label></label><figDesc>common time (PICT) to be a good reflection of the values held by society. This would identify the QALY-PALY evaluation function<ref type="bibr" target="#b6">(7)</ref> as the appropriate function for calculating the combined effects on health and productivity in the intervention and control group. The analyst may validate the choice of the QALY-PALY evaluation function by designing hypothetical tests that reveal if a respondent agrees to the values expressed in axioms TICHP and PICT. Participants in the economic evaluation of the intervention (or a representative sample of the population) may be exposed to these hypothetical tests.14 This will be similar in nature to the numerous tests performed of the social value of health improvements (see, for example, Gyrd-Hansen 2004,<ref type="bibr" target="#b12">Dolan et al., 2005</ref><ref type="bibr" target="#b26">, Lancsar et al., 2011</ref><ref type="bibr" target="#b43">, Robson et al., 2024)</ref>.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><head></head><label></label><figDesc>and strictly concave transformation of individual well-being (e.g., Adler, 2012, 2019; Morton, 2014). Recently, Da Costa et al. (2024) have introduced a measure of population health</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_10"><head></head><label></label><figDesc>Note that this part of the proof follows along the lines of proofs of existence of individual preference HYEs in Østerdal (2005) and social preference HYEs in Hougaard et al. (2013) and Moreno-Ternero et al. (2023), with and without reference lifetime, respectively.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_11"><head>,</head><label></label><figDesc>Hougaard et al. (2013), and Moreno-Ternero et al. (2023), it then follows by application of Theorem 3 in Debreu (1960) that</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_12"><head></head><label></label><figDesc>Assume, without loss of generality, that ϕ(a, p, 0) = 0 for some (a, p) ∈ A × [0, 1]. Let (a, p) ∈ A × [0, 1]. By iterated application of TICHP and the transitivity of , as well as ZERO, n i=1 ϕ(a, p, t i ) [TICHP]</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_13"><head>1 .</head><label>1</label><figDesc>Then, by Theorem 10, for each pair d, d ′ ∈ D,</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_14"><head>,</head><label></label><figDesc>for each x, y ∈ [0, 1]. As v is continuous and bounded, it follows from Theorem 1 in Aczel (2006, p. 43) that there exist α, β ∈ R such that v(x) = αx + β, for each x ∈ [0, 1]. By TIUP, v(0) = 0, and thus β = 0. Thus, 1 = v(1) = α. Consequently, is indeed represented by an evaluation function satisfying (4), as desired.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_15"><head>2 ,</head><label>2</label><figDesc>w : A × [0, 1] → [0,<ref type="bibr" target="#b0">1]</ref> is a continuous function in its second variable and such that 0 ≤ w(a, p) ≤ w(a * , p) ≤ w(a * , 1) = 1, and 0 ≤ w(a, p) ≤ w(a, 1) ≤ w(a * , 1) = 1 for each(a, p) ∈ A × [0, 1]. For each a ∈ A, Let w a : [0, 1] → R + be such that w a (p) = w(a, p), for each p ∈ [0, 1]. Then,w a is a continuous function and, by PICHT, such that w a (p i + c) + w a (p j ) = w a (p i ) + w a (p j + c), for each pair p i , p j ∈ [0, 1] and each c &gt; 0 such that p i + c, p j + c ∈ [0, 1]. In particular, w a x + y 2 = w a (x) + w a (y) for each x, y ∈ [0, 1]. Thus, by Theorem 1 in Aczel (2006, p. 43), there exist α, β ∈ R such that w a (x) = αx + β, for each x ∈ [0, 1]. Consequently, there exist q, r : A → R such that w(a, p) = q(a)p + r(a), for each p ∈ [0, 1], and each a ∈ A. By TIUP, w(a, 0) = 0 for each a ∈ A, and thus r(a) = 0 for each a ∈ A. Consequently, w(a, p) = q(a)p, for each p ∈ [0, 1]</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_16"><head>6 .</head><label>6</label><figDesc>Then, they also satisfy the axioms in Theorem 8. Thus, for each pair d, d ′ ∈ D,d d ′ ⇔ n i=1 w(a i , p i )t i ≥ n i=1 w(a ′ i , p ′ i )t ′ i ,where w : A × [0, 1] → [0, 1] is a continuous function in its second variable and such that 0 ≤ w(a, p) ≤ w(a * , p) ≤ w(a * , 1) = 1, and 0 ≤ w(a, p) ≤ w(a, 1) ≤ w(a * , 1) = 1 for each(a, p) ∈ A × [0, 1].For each a ∈ A, Let w a : [0, 1] → R + be such that w a (p) = w(a, p), for each p ∈ [0, 1]. Then, w a is a continuous function and, by PICHT, such thatw a (p i + c) + w a (p j ) = w a (p i ) + w a (p j + c),for each pair p i , p j ∈ [0, 1] and each c &gt; 0 such thatp i + c, p j + c ∈ [0, 1].In particular,w a x + y 2 = w a (x) + w a (y)2, for each x, y ∈ [0, 1]. Thus, by Theorem 1 in Aczel (2006, p. 43), there exist α ′ , β ′ ∈ R such that w a (x) = αx + β, for each x ∈ [0, 1]. Consequently, there exist α, β : A → R such that w(a, p) = α(a)p + β(a), for each p ∈ [0, 1], and each a ∈ A. Note that 1 = w(a * , 1) = α(a * ) + β(a * ). We distinguish several cases. Case 1. α(a * ) = 0. In this case, β(a * ) = 1. Furthermore, 0 ≤ α(a)p + β(a) ≤ α(a * )p + β(a * ) = 1, and 0 ≤ α(a)p + β(a) ≤ α(a) + β(a) ≤ 1 for each (a, p) ∈ A × [0, 1]. Thus, α(a) ≥ 0 = α(a * ) for each a ∈ A. Thus, by FHPS, α(a) = 0 for each a ∈ A. Therefore, w(a, p) = β(a), for each (a, p) ∈ A × [0, 1], and 0 ≤ β(a) ≤ β(a * ) = 1. If we let q : A → [0, 1] such that q(a) = β(a), for each a ∈ A, it follows that is represented by an evaluation function satisfying (1). Or, equivalently, by an evaluation function satisfying (6), with δ = 1. Case 2. β(a * ) = 0. In this case, α(a * ) = 1. Furthermore, 0 ≤ α(a)p + β(a) ≤ p ≤ 1, and 0 ≤ α(a)p + β(a) ≤ α(a) + β(a) ≤ 1 for each (a, p) ∈ A × [0, 1]. Thus, α(a) ≥ 0 = α(a * ) for each a ∈ A. Thus, if p = 0, we obtain 0 ≤ β(a) ≤ 0, for each a ∈ A. Therefore, w(a, p) = α(a)p, for each (a, p) ∈ A × [0, 1], and 0 ≤ α(a) ≤ α(a * ) = 1. If we let q : A → [0, 1] such that q(a) = α(a),</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head></head><label></label><figDesc>For each d ∈ D and each i ∈ N, d [(a i , p i , 0), d N \{i} ].</figDesc><table><row><cell>when the health state and productivity is kept fixed. This implies, in particular, that health</cell></row><row><cell>states worse than death are excluded.</cell></row><row><cell>3 QALYs and PALYs</cell></row><row><cell>Economic evaluations of health care interventions often focus on health improvements of indi-</cell></row><row><cell>viduals as the main outcome of interest (e.g., Drummond et al., 2015). In contrast, economic</cell></row><row><cell>evaluations of interventions to improve the working environment have a stronger focus on im-</cell></row><row><cell>proving productivity, often measured as reductions in sickness absence and enhancing produc-</cell></row><row><cell>tivity while at work (e.g., Tompa et al., 2008). In this section, we investigate the assumptions</cell></row><row><cell>underlying such evaluation functions with a narrow focus. We shall move in the next sections</cell></row><row><cell>to investigate more general evaluation functions with a broader scope.</cell></row><row><cell>We start with the classical (aggregated time-linear) QALY evaluation function. It evaluates</cell></row><row><cell>distributions by means of the unweighted aggregation of individual QALYs in society, or, in</cell></row><row><cell>other words, by the weighted (through health levels) aggregate time span the distribution yields.</cell></row><row><cell>Formally,</cell></row><row><cell>E q [d 1 , . . . , d n ] = E[(a 1 , p 1 , t 1 ), . . . , (a n , p n , t n</cell></row><row><cell>The last one, positive lifetime desirability, requires special treatment as it says that the</cell></row><row><cell>distribution does not worsen if any individual moves from zero lifetime to positive lifetime,</cell></row></table><note><p>PLD:</p></note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head></head><label></label><figDesc>Then, for each c &gt; 0, E[(a, p, t i + c), (a, p, t j ), d N \{i,j} ] = w(a, p)(t i + c) + w(a, p)t j + + c), (a, p, t j ), d N \{i,j} ] ∼ [(a, p, t i ), (a, p, t j + c), d N \{i,j} ].</figDesc><table><row><cell></cell><cell>w(a k , p k )t k ,</cell></row><row><cell>k∈N \{i,j}</cell><cell></cell></row><row><cell>and</cell><cell></cell></row><row><cell>E[(a, p, t i ), (a, p, t j + c), d N \{i,j} ] = w(a, p)(t j + c) + w(a, p)t i +</cell><cell>w(a k , p k )t k .</cell></row><row><cell>k∈N \{i,j}</cell><cell></cell></row><row><cell>Thus,</cell><cell></cell></row><row><cell>[(a, p, t i</cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head></head><label></label><figDesc>1 + t 2 ) = ϕ(a, p, t 1 ) + ϕ(a, p, t 2 ) for each pair t 1 , t 2 ∈ R + , which is ∈ A × [0, 1], and each t ∈ R + . By PLD, ŵ(a, p) ≥ 0, for each (a, p)∈ A × [0, 1].By LMFHP, ŵ(a * , 1) &gt; 0. By CONT, w is a continuous function in its second variable. It also follows from FHPS that ŵ(a * , p) ≥ ŵ(a, p) and ŵ(a, 1) ≥ ŵ(a, p) for each (a, p) ∈ A × [0, 1]. To conclude, let w : A × [0, 1]</figDesc><table><row><cell>for each (a, p)</cell></row><row><cell>precisely one of Cauchy's canonical functional equations. As ϕ(a, p, •) is a continuous function,</cell></row><row><cell>it follows that the unique solutions to such an equation are the linear functions (e.g., Aczel,</cell></row><row><cell>2006; page 34). More precisely, there exists a function ŵ : A × [0, 1] → R such that</cell></row><row><cell>ϕ(a, p, t) = ŵ(a, p)t,</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4"><head></head><label></label><figDesc>it also satisfies TIUP. As for PIFHCT, let d ∈ D, and i, j ∈ N with t i = t j = t. Then, for each c &gt; 0 such thatp i + c, p j + c ≤ 1, E[(a * , p i + c, t), (a * , p j , t), d N \{i,j} ] = (p i + c)t + p j t + , p i , t), (a * , p j + c, t), d N \{i,j} ] = p i t + p j (t + c) + , p i + c, t), (a * , p j , t), d N \{i,j} ] ∼ [(a * , p i , t), (a * , p j + c, t), d N \{i,j} ].Conversely, assume now that preferences satisfy all the axioms in the statement of Theorem 4. Then, it satisfies all the axioms in Theorem 2. Thus, for each pair d, d ′ ∈ D,</figDesc><table><row><cell></cell><cell>p k t k ,</cell></row><row><cell>k∈N \{i,j}</cell><cell></cell></row><row><cell>and</cell><cell></cell></row><row><cell>E[(a  k∈N \{i,j}</cell><cell>p k t k .</cell></row><row><cell>Thus,</cell><cell></cell></row><row><cell>[(a</cell><cell></cell></row><row><cell></cell><cell>) = 1 for each</cell></row><row><cell cols="2">(a, p) ∈ A × [0, 1]. Now, by HI, w(a, p) = w(a  *  , p), for each p ∈ [0, 1]. Let v : [0, 1] → R be such</cell></row><row><cell cols="2">that v(p i ) = w(a  *  , p i ), for each p i ∈ [0, 1]. Then, it follows that 1 = v(1) ≥ v(p) ≥ 0, for each</cell></row><row><cell cols="2">p ∈ [0, 1]. As w is continuous on its second variable, v is continuous too. And we may write:</cell></row></table><note><p><p><p><p><p><p>1) = 1, [(a * , 1, t i + c), (a * , 1, t j ), d N \{i,j} ] ∼ [(a * , 1, t i ), (a * , 1, t j + c), d N \{i,j} ].</p>Conversely, assume now that preferences satisfy all the axioms in the statement of Theorem 2. HI and TIFHCP together imply TICHP. Thus, preferences satisfy all the axioms in the statement of Theorem 8. Then, for each d ∈ D,</p>E[d] = E[(a 1 , p 1 , t 1 ), . . . , (a n , p n , t n )] = n i=1 w(a i , p i )t i ,</p>where 0 ≤ w(a, p) ≤ w(a * , p) ≤ w(a * , 1) = 1, and 0 ≤ w(a, p) ≤ w(a, 1) ≤ w(a * , 1</p>E[d] = E[(a 1 , p 1 , t 1 ), . . . , (a n , p n , t n )] = n i=1 v(p i )t i ,</p>where 0 ≤ v(p) ≤ v(1) = 1, for each p ∈ [0, 1], as desired. that * *</p></note></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1" xml:id="foot_0"><p>Moreno-Ternero et al. (2023) provide normative foundations for a general family of evaluations involving both QALYs and DALYs.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2" xml:id="foot_1"><p>Our approach will thus be somewhat reminiscent of<ref type="bibr" target="#b47">Keeney and Smith (2005)</ref>, who developed a combined health-and-consumption adjusted life year concept, albeit for individual (rather than social) decision making.See also<ref type="bibr" target="#b6">Bleichrodt and Quiggin (1999)</ref>.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="3" xml:id="foot_2"><p>Our analysis also allows to consider time-varying health, as we discuss in Section 7.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="4" xml:id="foot_3"><p>Thus, if the policy maker wants to take into account an estimate of individual productivity in monetary means for society, this could be done by letting p i be the annual earnings measured as a fraction of the highest earnings in society.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="5" xml:id="foot_4"><p>Reflecting, for instance, some problems in mobility, self-care, usual activities, pain/discomfort and anxiety/depression to consider the standard dimensions in the EuroQol system (e.g.,<ref type="bibr" target="#b41">Rabin and Charro, 2001)</ref>.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="6" xml:id="foot_5"><p>The axioms are an adaptation of those in Hougaard et al. (2013) and Moreno-Ternero et al. (2023) for social preferences over distributions to the present enriched model to account for productivity.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="7" xml:id="foot_6"><p>In Example 1, the axiom implies that replacing individual 1 in both distributions by an individual with another profile would not alter the preferences between both distributions.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="8" xml:id="foot_7"><p>Note that this axiom is not exactly treating the three attributes in the same way, as the first one (health) is not endowed with a mathematical structure. Its nature is nevertheless somewhat different to the nature of the axioms in the second group we present next.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="9" xml:id="foot_8"><p>In Example 1, this implies that changing the health or productivity of individual 5 in each distribution would render the resulting distributions equally valued.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="12" xml:id="foot_9"><p>Recall that α, v(p), q(a) ∈ [0, 1].</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="13" xml:id="foot_10"><p><ref type="bibr" target="#b6">Bleichrodt and Quiggin (1999)</ref> show that the condition is necessary for lifetime utility maximisation to be consistent with cost-effectiveness analysis and so equivalent to cost-benefit analysis.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="14" xml:id="foot_11"><p>If people largely disagree with this axiom (i.e., a majority of participants in the study systematically and significantly favor individuals with a certain type of health states over individuals with another type) it shows</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="16" xml:id="foot_12"><p>The related idea of performing power transformations of individual utility functions for social welfare evaluation was pioneered by Bergson (e.g.,<ref type="bibr" target="#b8">Burk 1936</ref>).</p></note>
+		</body>
+		<back>
+
+			<div type="funding">
+<div><p>as well as participants at the <rs type="institution">Roskilde Conference on Working Environment Economics</rs>, the <rs type="institution">Paris SAET Meeting</rs>, and the seminars at the <rs type="institution">Universidad de Málaga</rs> and the <rs type="institution">University of Hawai'i-Manoa</rs>. Financial support from the <rs type="funder">National Research Centre for the Working Environment (NFA)</rs>, <rs type="funder">Copenhagen, Denmark</rs>, and the <rs type="funder">Spanish Agencia Estatal de Investigación (AEI)</rs> through grant <rs type="grantNumber">PID2020-115011GB-I00</rs>, funded by <rs type="grantNumber">MCIN/AEI/10.13039/501100011033</rs>, is gratefully acknowledged.</p><p>† <rs type="affiliation">National Research Centre</rs> for the Working Environment (NFA),</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_GAuWSS8">
+					<idno type="grant-number">PID2020-115011GB-I00</idno>
+				</org>
+				<org type="funding" xml:id="_Y6DBd76">
+					<idno type="grant-number">MCIN/AEI/10.13039/501100011033</idno>
+				</org>
+			</listOrg>
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Appendix</head><p>We gather in this appendix all the proofs of the results stated above. We start with the most general result, in which we characterize all the evaluation functions satisfying the COMMON axioms. We shall then be proving the remaining results adding extra axioms to COMMON.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Proof of Theorem 10</head><p>Suppose first that is represented by a PHEF satisfying <ref type="bibr" target="#b9">(10)</ref>. It is straightforward to show that ANON and SEP hold. CONT holds because f and g are continuous functions themselves.</p><p>As 0 ≤ f (a i , p i , t i ) ≤ t i , it follows that f (a i , p i , 0) = 0 ≤ f (a i , p i , t i ), implying both ZERO and</p><p>and g is strictly increasing, it follows that [(a * , p i , t i ),</p><p>Conversely, assume now that preferences satisfy all the axioms in COMMON. We start by showing that there exists a function f :</p><p>and non-decreasing with respect to its second and third variable and such that for each 20 If one considers this interpretation of our model in terms of probabilities, then the problem becomes closer to one of assessing risky situations (e.g., <ref type="bibr" target="#b16">Fleurbaey, 2010;</ref><ref type="bibr" target="#b14">Eden, 2020)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Proof of Theorem 3</head><p>Suppose first that is represented by a PHEF satisfying <ref type="bibr" target="#b2">(3)</ref>. As this is a special case of (2), it follows from Theorem 2 that COMMON, HI, and TIFHCP hold. As for PIFHCT, let d ∈ D, and i, j ∈ N with a i = a j = a * and t i = t j = t. Then, for each c &gt; 0 such that p i + c, p j + c ≤ 1, E[(a * , p i + c, t), (a * , p j , t), d N \{i,j} ] = (α(p i + c) + 1 -α)t+ (αp j + 1 -α)t+ k∈N \{i,j}</p><p>and</p><p>Conversely, assume now that preferences satisfy all the axioms in the statement of Theorem 3. Then, it satisfies all the axioms in Theorem 2. Thus, for each pair d, d ′ ∈ D, </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Proof of Theorem 4</head><p>Suppose first that is represented by a PHEF satisfying <ref type="bibr" target="#b3">(4)</ref>. As this is a special case of (2), it follows from Theorem 2 that COMMON, HI, and TIFHCP hold. It is straightforward to see</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<monogr>
+		<title level="m" type="main">Lectures on functional equations and their applications</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Aczel</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2006">2006</date>
+			<publisher>Dover</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Productivity-Adjusted Life-years: A New Metric for Quantifying Disease Burden</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Ademi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">N</forename><surname>Ackerman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Zomer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Liew</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">PharmacoEconomics</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="page" from="271" to="273" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<monogr>
+		<title level="m" type="main">Well-being and fair distribution: beyond cost-benefit analysis</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Adler</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+			<publisher>Oxford University Press</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<title level="m" type="main">Measuring Social Welfare: An Introduction</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Adler</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<publisher>Oxford University Press</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Fair innings? The utilitarian and prioritarian value of risk reduction over a whole lifetime</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">D</forename><surname>Adler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ferranna</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">K</forename><surname>Hammitt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Treich</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Health Economics</title>
+		<imprint>
+			<biblScope unit="volume">75</biblScope>
+			<biblScope unit="page">102412</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">C R</forename><surname>Alcantud</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mariotti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Veneziani</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Sufficientarianism. Theoretical Economics</title>
+		<imprint>
+			<biblScope unit="volume">17</biblScope>
+			<biblScope unit="page" from="1529" to="1557" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Life-cycle preferences over consumption and health: When is cost-effectiveness analysis equivalent to cost-benefit analysis</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Bleichrodt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Quiggin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Health Economics</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="681" to="708" />
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Measuring economic insecurity</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Bossert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>D'ambrosio</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Economic Review</title>
+		<imprint>
+			<biblScope unit="volume">54</biblScope>
+			<biblScope unit="page" from="1017" to="1030" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Real income, expenditure proportionality, and Frisch&apos;s new methods of measuring marginal utility</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Burk</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Review of Economic Studies</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="page" from="33" to="52" />
+			<date type="published" when="1936">1936</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Distributionally sensitive measurement and valuation of population health</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Da Costa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>O'donnell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Van Gestel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Health Economics</title>
+		<imprint>
+			<biblScope unit="volume">93</biblScope>
+			<biblScope unit="page">102847</biblScope>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Topological methods in cardinal utility theory</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Debreu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Mathematical methods in the social sciences</title>
+		<editor>
+			<persName><forename type="first">K</forename><surname>Arrow</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">S</forename><surname>Karlin</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">P</forename><surname>Suppes</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>Stanford University Press</publisher>
+			<date type="published" when="1960">1960</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">When are person tradeoffs valid</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Doctor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Miyamoto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Bleichrodt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Health Economics</title>
+		<imprint>
+			<biblScope unit="volume">28</biblScope>
+			<biblScope unit="page" from="1018" to="1027" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">QALY maximisation and people&apos;s preferences: a methodological review of the literature</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Dolan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Shaw</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tsuchiya</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Williams</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Health Economics</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page" from="197" to="208" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<monogr>
+		<title level="m" type="main">Methods for the economic evaluation of health care programmes</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Drummond</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Sculpher</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Claxton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">L</forename><surname>Stoddart</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">W</forename><surname>Torrance</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<publisher>Oxford University Press</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Welfare analysis with heterogeneous risk preferences</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Eden</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Political Economy</title>
+		<imprint>
+			<biblScope unit="volume">128</biblScope>
+			<biblScope unit="page" from="4574" to="4613" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Economic evaluation of return-to-work interventions for mental disorder-related sickness absence: two years follow-up of a randomized clinical trial</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Finnes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">S</forename><surname>Hoch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Enebrink</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Dahl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Ghaderi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Nager</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Feldman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Scandinavian Journal of Work</title>
+		<imprint>
+			<biblScope unit="volume">48</biblScope>
+			<biblScope unit="page" from="264" to="272" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note>Environment &amp; Health</note>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Assessing risky social situations</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Fleurbaey</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Political Economy</title>
+		<imprint>
+			<biblScope unit="volume">118</biblScope>
+			<biblScope unit="page" from="649" to="680" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<monogr>
+		<title level="m" type="main">Cost-effectiveness in health and hedicine</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Gold</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Siegel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Russell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Weinstein</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1996">1996</date>
+			<publisher>Oxford University Press</publisher>
+			<pubPlace>New York</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Economic evaluation of occupational safety and health interventions from the employer perspective: a systematic review</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Grimani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Bergstrom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Casallas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Aboagye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Jensen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lohela-Karlsson</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Occupational and Environmental Medicine</title>
+		<imprint>
+			<biblScope unit="volume">60</biblScope>
+			<biblScope unit="page" from="147" to="166" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">On the concept of health capital and the demand for health</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Grossman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Political Economy</title>
+		<imprint>
+			<biblScope unit="volume">80</biblScope>
+			<biblScope unit="page" from="223" to="255" />
+			<date type="published" when="1972">1972</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">The human capital model</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Grossman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Handbook of Health Economics</title>
+		<editor>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Culyer</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">J</forename><forename type="middle">P</forename><surname>Newhouse</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>Elsevier</publisher>
+			<date type="published" when="2000">2000</date>
+			<biblScope unit="volume">1</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Investigating the social value of health changes</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Gyrd-Hansen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Health Economics</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="page" from="1101" to="1116" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Admissible utility functions for health, longevity, and wealth: Integrating monetary and life-year measures</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">K</forename><surname>Hammitt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Risk and Uncertainty</title>
+		<imprint>
+			<biblScope unit="volume">47</biblScope>
+			<biblScope unit="page" from="311" to="325" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">A new axiomatic approach to the evaluation of population health</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Hougaard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">D</forename><surname>Moreno-Ternero</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">P</forename><surname>Østerdal</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Health Economics</title>
+		<imprint>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="page" from="515" to="523" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">No Pain, No Gain: Work Demand, Work Effort, and Worker Health</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Hummels</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">R</forename><surname>Munch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Xiang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Review of Economics and Statistics. Forthcoming</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">The friction cost method for measuring indirect costs of disease</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Koopmanschap</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">F</forename><surname>Rutten</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Van Ineveld</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Van Roijen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Health Economics</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page" from="171" to="189" />
+			<date type="published" when="1995">1995</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Deriving distributional weights for QALYs through discrete choice experiments</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Lancsar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wildman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Donaldson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ryan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Baker</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Health Economics</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="page" from="466" to="478" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">The productivity burden of diabetes at a population level</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">J</forename><surname>Magliano</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">J</forename><surname>Martin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Owen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Zomer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Liew</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Diabetes Care</title>
+		<imprint>
+			<biblScope unit="volume">41</biblScope>
+			<biblScope unit="page" from="979" to="984" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Allocating chances of success in finite and infinite societies: The Utilitarian criterion</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mariotti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Veneziani</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Mathematical Economics</title>
+		<imprint>
+			<biblScope unit="volume">48</biblScope>
+			<biblScope unit="page" from="226" to="236" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Opportunities as chances: maximising the probability that everybody succeeds</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mariotti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Veneziani</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Economic Journal</title>
+		<imprint>
+			<biblScope unit="volume">128</biblScope>
+			<biblScope unit="page" from="1609" to="1633" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Quality-adjusted life years, utility theory, and healthy years equivalents</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Mehrez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Gafni</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Medical Decision Making</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page" from="142" to="149" />
+			<date type="published" when="1989">1989</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">The zero-condition: A simplifying assumption in QALY measurement and multiattribute utility</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Miyamoto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Wakker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Bleichrodt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Peters</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Management Science</title>
+		<imprint>
+			<biblScope unit="volume">44</biblScope>
+			<biblScope unit="page" from="839" to="849" />
+			<date type="published" when="1998">1998</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Impartiality, priority, and solidarity in the theory of justice</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Moreno-Ternero</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Roemer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Econometrica</title>
+		<imprint>
+			<biblScope unit="volume">74</biblScope>
+			<biblScope unit="page" from="1419" to="1427" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">QALYs, DALYs, and HALYs: a unifying framework for the evaluation of population health</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">D</forename><surname>Moreno-Ternero</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">T</forename><surname>Platz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">P</forename><surname>Østerdal</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Health Economics</title>
+		<imprint>
+			<biblScope unit="volume">87</biblScope>
+			<biblScope unit="page">102714</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">A normative foundation for equity-sensitive health evaluation: The role of relative comparisons of health gains</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">D</forename><surname>Moreno-Ternero</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">P</forename><surname>Østerdal</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Public Economic Theory</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="page" from="1009" to="1025" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Aversion to health inequalities in healthcare prioritisation: A multicriteria optimisation perspective</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morton</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Health Economics</title>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="page" from="164" to="173" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<monogr>
+		<title level="m" type="main">Axioms of cooperative decision making</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Moulin</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1988">1988</date>
+			<publisher>Cambridge University Press</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Rethinking DALYs</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Murray</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The Global Burden of Disease</title>
+		<editor>
+			<persName><forename type="first">C</forename><forename type="middle">J L</forename><surname>Murray</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">A</forename><forename type="middle">D</forename><surname>Lopez</surname></persName>
+		</editor>
+		<meeting><address><addrLine>Boston</addrLine></address></meeting>
+		<imprint>
+			<publisher>Harvard University Press</publisher>
+			<date type="published" when="1997">1997</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Protecting and promoting mental health of nurses in the hospital setting: Is it cost-effective from an employer&apos;s perspective?</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Noben</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Evers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Nieuwenhuijsen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Occupational Medicine and Environmental Health</title>
+		<imprint>
+			<biblScope unit="volume">28</biblScope>
+			<biblScope unit="page" from="891" to="900" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">The person-trade-off approach to valuing health care programs</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Nord</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Medical Decision Making</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page" from="201" to="208" />
+			<date type="published" when="1995">1995</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Utility functions for life years and health status</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Pliskin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Shepard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Weinstein</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Operations Research</title>
+		<imprint>
+			<biblScope unit="volume">28</biblScope>
+			<biblScope unit="page" from="206" to="224" />
+			<date type="published" when="1980">1980</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">EQ-5D: a measure of health status from the EuroQol Group</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Rabin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">D</forename><surname>Charro</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Annals of Medicine</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="337" to="343" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">The economic value of human life</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Rice</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Cooper</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">American Journal of Public Health</title>
+		<imprint>
+			<biblScope unit="volume">57</biblScope>
+			<biblScope unit="page" from="1954" to="1966" />
+			<date type="published" when="1967">1967</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Aversion to health inequality-Pure, income-related and income-caused</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Robson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>O'donnell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Van Ourti</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Health Economics</title>
+		<imprint>
+			<biblScope unit="volume">94</biblScope>
+			<biblScope unit="page">102856</biblScope>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Recommendations for conduct, methodological practices, and reporting of cost-effectiveness analyses: second panel on cost-effectiveness in health and medicine</title>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">D</forename><surname>Sanders</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Neumann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Basu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">W</forename><surname>Brock</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Feeny</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Krahn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">M</forename><surname>Kuntz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">O</forename><surname>Meltzer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">K</forename><surname>Owens</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">A</forename><surname>Prosser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Salomon</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">JAMA</title>
+		<imprint>
+			<biblScope unit="volume">316</biblScope>
+			<biblScope unit="page" from="1093" to="1103" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">The impact of coronary heart disease prevention on work productivity: a 10-year analysis</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Savira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">H</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Andrew</forename><forename type="middle">R</forename><surname>Kompa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">R</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">European Journal of Preventive Cardiology</title>
+		<imprint>
+			<biblScope unit="volume">28</biblScope>
+			<biblScope unit="page" from="418" to="425" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">The role and estimation of productivity costs in economic evaluation</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Sculpher</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Economic Evaluation in Health Care: Merging Theory with Practice</title>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Mcguire</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">A</forename></persName>
+		</editor>
+		<meeting><address><addrLine>Oxford</addrLine></address></meeting>
+		<imprint>
+			<publisher>Oxford University Press</publisher>
+			<date type="published" when="2001">2001</date>
+			<biblScope unit="volume">5</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Your money or your life: A prescriptive model for health, safety, and consumption decisions</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">E</forename><surname>Smith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">L</forename><surname>Keeney</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Management Science</title>
+		<imprint>
+			<biblScope unit="volume">51</biblScope>
+			<biblScope unit="page" from="1309" to="1325" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Methodological challenges in the economic evaluation of occupational health and safety programmes</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Steel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Godderis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Luyten</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Environmental Research and Public Health</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<date type="published" when="2018">2018. 2606</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Productivity estimation in economic evaluations of occupational health and safety interventions a systematic review</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Steel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Godderis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Luyten</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Scandinavian Journal of Work</title>
+		<imprint>
+			<biblScope unit="volume">44</biblScope>
+			<biblScope unit="page" from="458" to="474" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+	<note>Environment &amp; Health</note>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">In or out? Income losses in health state valuations: a review</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Tilling</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Krol</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tsuchiya</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Brazier</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Brouwer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Value in Health</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="page" from="298" to="305" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<monogr>
+		<title level="m" type="main">The impact of health on productivity: empirical evidence and policy implications</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Tompa</surname></persName>
+		</author>
+		<editor>Andrew Sharpe, France St-Hilaire, Keith Banting</editor>
+		<imprint>
+			<date type="published" when="2002">2002. 2002</date>
+			<publisher>Towards a Social Understanding of Productivity</publisher>
+			<biblScope unit="volume">2</biblScope>
+		</imprint>
+		<respStmt>
+			<orgName>Centre for the Study of Living Standards; The Institute for Research on Public Policy</orgName>
+		</respStmt>
+	</monogr>
+	<note>The Review of Economic Performance and Social Progress</note>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<monogr>
+		<title level="m" type="main">Economic evaluation of interventions for occupational health and safety: developing good practice</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Tompa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Culyer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Dolinschi</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<publisher>Oxford University Press</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">A systematic review of occupational health and safety interventions with economic analyses</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Tompa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Dolinschi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>De Oliveira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Irvin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Occupational and Environmental Medicine</title>
+		<imprint>
+			<biblScope unit="volume">51</biblScope>
+			<biblScope unit="page" from="1004" to="1023" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">QALYs and the equity-efficiency trade-off</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Wagstaff</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Health Economics</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page" from="21" to="41" />
+			<date type="published" when="1991">1991</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title level="a" type="main">Axioms for health care resource allocation</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">P</forename><surname>Østerdal</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Health Economics</title>
+		<imprint>
+			<biblScope unit="volume">24</biblScope>
+			<biblScope unit="page" from="679" to="702" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">The lack of theoretical support for using person trade-offs in QALYtype models</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">P</forename><surname>Østerdal</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The European Journal of Health Economics</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page" from="429" to="436" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

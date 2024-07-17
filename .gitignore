@@ -27,8 +27,8 @@ replay_pid*
 build
 
 # Ignore grobid output
-*.xml
-!.grobid.tei.xml
+# *.xml
+# !.grobid.tei.xml
 # Logs
 logs
 *.log

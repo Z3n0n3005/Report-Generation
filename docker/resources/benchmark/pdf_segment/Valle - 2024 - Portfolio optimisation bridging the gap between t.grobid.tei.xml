@@ -1,0 +1,950 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Portfolio optimisation: bridging the gap between theory and practice</title>
+				<funder ref="#_TvyRsMh">
+					<orgName type="full">FAPEMIG</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2024-07-02">July 2, 2024</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author role="corresp">
+							<persName><forename type="first">Cristiano</forename><forename type="middle">Arbex</forename><surname>Valle</surname></persName>
+							<email>arbex@dcc.ufmg.br</email>
+							<affiliation key="aff0">
+								<orgName type="department">Departamento de Ciência da Computação</orgName>
+								<orgName type="institution">Universidade Federal de Minas Gerais</orgName>
+								<address>
+									<postCode>31270-010</postCode>
+									<settlement>Belo Horizonte</settlement>
+									<region>MG</region>
+									<country key="BR">Brasil</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Portfolio optimisation: bridging the gap between theory and practice</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2024-07-02">July 2, 2024</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">BB5DD3BA77C65A009CA6908F8BBA62B2</idno>
+					<idno type="arXiv">arXiv:2407.00887v1[q-fin.PM]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.0" ident="GROBID" when="2024-07-12T14:49+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>portfolio optimisation</term>
+					<term>exogenous constraints</term>
+					<term>transaction lots</term>
+					<term>futures contracts</term>
+					<term>quantitative finance</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Portfolio optimisation is widely acknowledged for its significance in investment decisionmaking. Yet, existing methodologies face several limitations, among them converting optimal theoretical portfolios into real investment is not always straightforward. Several classes of exogenous (real-world) constraints have been proposed in literature with the intent of reducing the gap between theory and practice, which have worked to an extent.</p><p>In this paper, we propose an optimisation-based framework which attempts to further reduce this gap. We have the explicit intention of producing portfolios that can be immediately converted into financial holdings. Our proposed framework is generic in the sense that it can be used in conjunction with any portfolio selection model, and consists of splitting the portfolio selection problem into two-stages. The main motivation behind this approach is in enabling automated investing with minimal human intervention, and thus the framework was built in such a way that real-world market features can be incorporated with relative ease. Among the novel contributions of this paper, this is the first work, to the best of our knowledge, to combine futures contracts and equities in a single framework, and also the first to consider borrowing costs in short positions.</p><p>We present extensive computational results to illustrate the applicability of our approach and to evaluate its overall quality. Among these experiments, we observed that alternatives from literature are susceptible to numerical errors, whereas our approach effectively mitigates this issue.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>Portfolio selection is at the core of quantitative finance and spans decades of theoretical and applied research. Its roots stem from the seminal paper by <ref type="bibr" target="#b24">Markowitz [1952]</ref>, who introduced the modern portfolio theory (MPT), a mathematical framework for selecting portfolios based on a trade-off between expected return and risk. MPT constitutes a staple of financial practice with countless investment funds relying on it in one way or another. Yet, MPT and subsequent classical portfolio selection models tend to be sensitive to changes in the input data and often construct portfolios that are insufficiently diversified, and whose observed out-of-sample risk frequently surpasses the expected. To address these shortcomings, a body of literature has focused on model extensions, i.e., alternative portfolio selection criteria and improved data estimation.</p><p>Among these extensions is the adoption of exogenous (real-world) constraints. They help not only in shaping optimal portfolios in the hope of reducing out-of-sample risk, but also in building more "practical" portfolios, in the sense that one could more easily convert theoretical weights into real investment.</p><p>Despite the extensive literature on exogenous constraints, there are still disparities between theory and practice. As we discuss in this paper, it is not always trivial to convert optimal decisions into actual holdings when accounting for all particularities of real-world trading. In this paper, we build on top of the current literature in the hope of further reducing this gap. We do this by proposing a two-stage optimisation framework for solving the general portfolio selection problem. The two-stage approach takes into account several realistic features and produces, as output, suggested trades to be executed. Our framework is flexible enough so as to easily incorporate new relevant features that have been left out.</p><p>The main motivation for this work comes from difficulties observed when establishing lowfrequency quantitative funds. In a quantitative fund, we assume that the entire fund management is controlled by algorithms, with minimal human intervention. In such funds, the decision process is ideally integrated with the actual purchase and sales of assets. More specifically, the theoretical portfolio composition must be converted into holdings that may require integral lots, may incur different types of costs and may make use of non-trivial features such as leverage and margin accounts. Our two-stage approach attempts to integrate these features into a single framework, and its flexibility makes it easier to adapt to different market conditions. It also has the added benefit of allowing more realistic simulation (backtesting) of potential candidate financial strategies.</p><p>Constructing portfolios in two steps offers advantages in terms of flexibility and computational efficiency. In the first stage, decision variables represent portfolio weights and, in the second stage, they represent the number of shares to be held. This allows a wider range of constraints to be considered without adding too much complexity to a single model. As an example, we show how the framework can take into account two different asset types, namely future contracts and equities, which comprise some of the most liquid financial instruments in markets worldwide. With regards to computational efficiency, the second stage is restricted to assets for which trading might occur, which often does not include the entire asset universe under consideration.</p><p>In the second stage we convert portfolio weights into holdings by considering, among other features, lots, transaction costs, margin accounts and borrowing costs in short positions. Lots represent minimum integral units of an asset that can be purchased in a single transaction. Assets for which lots apply can only be held in positions that are multiples of a lot. The introduction of lots implies that not all available cash can be invested due to the integral restrictions. Moreover, lots are inherently intertwined with transaction costs -a feasible portfolio division into valid integral lots of different assets depends directly on the portfolio value after the trades take place, i.e. after all costs are discounted.</p><p>In literature, optimal weights, lots and transaction costs have been generally considered as part of a single model, which requires both sets of decision variables described above. One major issue we observed empirically is that, when sums involved are large, these models suffer from numerical inaccuracies due to combining very large and very small coefficients. We have also observed other issues with single stage approaches, such as (i) having to impose arbitrary limits on the investable cash, (ii) having to solve nonlinear nonconvex models when rebalances are accounted for or (iii) having to balance conflicting objectives, such as, on top of the portfolio optimal criteria, investing as much of the available capital as possible while also spending as little as possible in transaction costs.</p><p>In our approach, we deal with these issues separately by employing a goal-programming framework: in the second stage we minimise both the costs involved and the deviation between real and desired portfolio weights. We propose a way to handle the conflict in mixing both objectives. With such an approach, the issues mentioned above are nonexistent.</p><p>One may argue that, if the sums involved are large, then none of this is necessary as simple rounding heuristics to the nearest lot are sufficient. Moreover, some financial services providers offer the possibility to purchase fractional shares (such as Robinhood 1 ). In the case of the latter, however, not every investment fund or individual investor worldwide has access to such platforms, and the platforms themselves must handle internally the complexity of lots in order to provide those services. In the case of the former, starter funds or individual investors do not necessarily have the advantage of large sums, and thus rounding heuristics are more likely to produce undesirable portfolios. In this case inexact solutions may act as an extra barrier to growth within competitive markets.</p><p>As an example, the E-Mini S&amp;P500 futures contracts, one of the most liquid financial instruments in the U.S. market, was traded on April 2024 at around US$5,000, and the minimum purchasable contract unit is 50<ref type="foot" target="#foot_2">2</ref> . If a fund wishes to purchase one contract with 2× leverage, then a deposit of US$125,000 in a margin account is required. A US$1 million fund which wants to invest 6-7% of its capital in S&amp;P500 must choose between an actual holding of 0 or 12.5%.</p><p>Compared to the standard literature in lots, our two-stage approach has a potential disadvantage: the optimal portfolio is chosen in the expanded feasible set of non-integral portfolios. <ref type="bibr" target="#b1">Angelelli et al. [2008]</ref> has shown that, in general, the assets selected by the optimal solution of a model that considers lots may not be included in the set of assets selected if lots are not taken into account. Nevertheless, within the framework there is no incompatibility in employing a first stage portfolio selection model that does account for lots, retrieving the optimal lot-constrained weights and then feeding them into the second stage, where other particularities, potentially not previously considered, might be taken into account.</p><p>We present extensive computational experiments to validate our proposed framework. Since the main motivation behind our approach is in converting theory to practice, our main focus is in assessing how well the second stage does so. We assess it with regards to (i) how well it approximates theoretical solutions, (ii) the computational effort required to solve it and (iii) how it handles the conflict of minimising deviation from desired proportions and reducing the transaction costs spent. We compare our approach to that of Woodside-Oriakhi et al. <ref type="bibr">[2013]</ref>, which includes holdings and proportions in a single stage, making it prone to numerical inaccuracies. We also present two case studies, where in the second we show a potential benefit of expanding an asset universe of stocks to include leveraged futures contracts.</p><p>The remainder of this paper is organised as follows. In Section 2, we present our literature review, where we discuss models that include lots and transaction costs in depth. In Section 3, we discuss aspect of futures contracts that differentiate them from equities. In Sections 4 and 5, we present our framework, with the former introducing the first stage and the latter introducing the second stage. In Section 6 we present our computational experiments. In Section 7 we discuss some limitations and provide some insights regarding our two-stage approach and, finally, in Section 8 we present our concluding remarks.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Literature review</head><p>Optimal theoretical portfolios are likely to violate real-world "hard" constraints such as market rules, regulatory requirements and internal investment policies, and thus may be subject to risks incurred by little diversification or excessive exposure. The final goal of asset allocation models is to build portfolios that are applicable in practice, and exogenous constraints have historically helped bridging this gap. Some constraints help prevent undesirable risk properties while others are required in order to simulate real world investment requirements. In this section, we refer to several papers that have considered many of these constraints. For other papers that offer detailed reviews, we refer the reader to <ref type="bibr" target="#b22">Mansini et al. [2014</ref><ref type="bibr" target="#b23">Mansini et al. [ , 2015]]</ref>, <ref type="bibr" target="#b16">Kolm et al. [2014]</ref>. <ref type="bibr" target="#b27">Pogue [1970]</ref> was the first work, to the best of our knowledge, to consider real-world constraints in the context of the MPT. The author considered short sales, transaction costs, liquidity and taxes. <ref type="bibr" target="#b0">Adcock and Meade [1994]</ref> proposed minimising both variance and transaction costs in the same objective function. Turnover constraints were first introduced and studied in MPT, in the context of portfolio revision (rebalancing), by <ref type="bibr" target="#b30">Schreiner [1980]</ref>. Other early relevant works are those of <ref type="bibr" target="#b29">Rudd and Rosenberg [1979]</ref>, <ref type="bibr" target="#b26">Perold [1984]</ref>. <ref type="bibr" target="#b31">Speranza [1996]</ref> built on the work of <ref type="bibr" target="#b29">Rudd and Rosenberg [1979]</ref> and proposed a linear-programming formulation for minimising the semi-L 1 dispersion measure, subject to several classes of exogenous constraints. The authors included lots, fixed and variable transaction costs, upper exposure bounds on individual assets and portfolio cardinality. Up to that moment, the vast majority of works in portfolio selection models had portfolio proportions as their decision variables. Here, the authors used portfolio holdings instead. Following their notation, we refer to the former as a relative model, and the latter as an absolute model. <ref type="bibr" target="#b21">Mansini and Speranza [1999]</ref> proposed a similar model in which transaction costs were incorporated as discounts in the assets expected returns. The authors showed the problem to be NP-Hard. <ref type="bibr" target="#b15">Kellerer et al. [2000]</ref> considered a similar model with fixed costs, applicable if the transaction value is above a lower bound. <ref type="bibr" target="#b8">Chiodi et al. [2003]</ref> introduced transaction costs in the form of a piecewise linear function, and <ref type="bibr" target="#b20">Mansini and Speranza [2005]</ref> included a constraint to model capital-gain taxation and proposed a specialised exact algorithm to solve the problem. <ref type="bibr" target="#b1">Angelelli et al. [2008]</ref> compared CVaR and MAD models in the presence of these constraints, and <ref type="bibr" target="#b11">Guastaroba et al. [2009]</ref> extended the model to consider portfolio rebalancing and transaction costs, but without lots. <ref type="bibr" target="#b5">Bertsimas et al. [1999]</ref> proposed a two-stage approach where portfolio weights are selected with any portfolio selection model and then a Mixed-Integer Programming (MIP) problem is solved to approximate the target portfolio as well as possible. The authors tried to balance transaction costs, liquidity (both through piecewise linear convex functions), number of transactions, closeness to the target portfolio and high return, with many objectives combined into a single objective function. They also consider a rebalancing scenario, where an existing portfolio is currently held and must be converted into a new portfolio. They adopt a somewhat similar two-stage approach to the one we propose here, but with key differences: their second stage employs portfolio proportions as decision variables, so the same as the first stage. They also combine objectives that we consider to be firststage decisions rather than second stage, such as constraining sectors or cardinality. In summary their second stage has goals that fit in both our first and second stages, which is different from our proposal of looking into the practical aspect of generating tradable portfolios. Hence, we believe the two approaches to not be directly comparable, but we discuss it further in Section 7. <ref type="bibr" target="#b7">Chang et al. [2000]</ref> developed heuristics for the cardinality-constrained portfolio selection problem, with upper exposure bounds, class constraints and buy-in thresholds. Class constraints enforce minimum and maximum exposure levels in subsets of assets. Buy-in thresholds help prevent (very) small positions by ensuring minimum holding levels. <ref type="bibr" target="#b3">Bartholomew-Biggs and Kane [2009]</ref> attempt to solve the Markowitz problem with cardinality constraints and buy-in thresholds without the use of integer variables, with non-convex constraints instead. <ref type="bibr" target="#b14">Jobst et al. [2001]</ref> and <ref type="bibr" target="#b25">Mitra et al. [2003]</ref> proposed a model that is both relative and absolute, combining the works of <ref type="bibr" target="#b7">Chang et al. [2000]</ref> and <ref type="bibr" target="#b21">Mansini and Speranza [1999]</ref>. The authors also consider portfolio rebalancing, with a limit on the number of trades that can be executed. <ref type="bibr" target="#b13">Jacobs et al. [2005]</ref> were the first to discuss the realistic aspects of short-selling, in contrast to the assumption of unlimited shorting often considered. The authors proposed separating decision variables into two sets, one for long and another for short positions. <ref type="bibr" target="#b17">Kumar et al. [2008]</ref> solved the Markowitz quadratic model with the presence of short limits as well as special assets for riskfree lending and borrowing. In their formulation, each asset was represented by four decision variables, two representing proportions and two indicating whether any of that asset was held. <ref type="bibr">Valle et al. [2014b]</ref> employs a similar approach to model long-short constraints. The authors consider constraints on Regulation T, which prevents the proceedings of short sales from being used to purchase long positions in other assets. Here, we adopt a similar approach to Jacobs et al. <ref type="bibr">and Valle et al.. Woodside-Oriakhi et al. [2013]</ref> proposed a model that is both relative and absolute. The authors considered transaction costs, buy-in thresholds, exposure bounds, cardinality constraints and portfolio rebalancing, and the model can be easily extended to incorporate lots. In order to linearise their model, they define a limit on how much can be spent on transaction costs. <ref type="bibr">Valle et al. [2014a]</ref> adopted a similar approach and raised the matter of unavoidable transaction costs, when assets held in the current portfolio must be liquidated. They separate the proposed model into multiple stages, where the third stage explicitly attempts to minimise transaction costs spent. Our second stage is an extension of their third stage.</p><p>What none of the papers above have discussed is the practicality of their approach, meaning the difficulties each model would face when implemented in practice. Here we have an explicit goal of producing portfolios that can be integrated with trading systems with little to none human intervention, and with minimal divergence between observed and simulated performance.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Transaction costs</head><p>When accounting for transaction costs, many papers do so with the goal of preventing the underestimation of risk or the overestimation of return. <ref type="bibr" target="#b21">Mansini and Speranza [1999]</ref> incorporates the costs directly into asset prices, and hence do not explicitly include them in the corresponding portfolio selection model. Similarly, <ref type="bibr" target="#b18">Li et al. [2006]</ref> deduct costs directly from asset returns. <ref type="bibr" target="#b15">Kellerer et al. [2000]</ref> adds fixed transaction costs as a penalty in the expected return constraint. <ref type="bibr" target="#b8">Chiodi et al. [2003]</ref>, <ref type="bibr" target="#b20">Mansini and Speranza [2005]</ref> and <ref type="bibr" target="#b1">Angelelli et al. [2008]</ref> adopt a similar extended approach with fractional costs and a capital-gains tax. <ref type="bibr" target="#b11">Guastaroba et al. [2009]</ref> discount transaction costs in the CVaR calculation. These discounts are useful to avoid underestimating the balance between return and risk.</p><p>While important from a theoretical perspective, from a practical point of view, however, expressing transaction costs as discounts is insufficient to produce tradable portfolios. Suggested holdings would ideally match desired portfolio proportions based on the portfolio value after trading occurs, i.e. after costs are discounted. In this case transaction costs must be expressed as actual financial discounts, which requires an absolute or mixed model. This is especially important when lots are also considered, as discussed in the next section.</p><p>In our two-stage approach, we only consider costs in this manner, in the second stage. The main goal of including them is in correctly anticipating what the portfolio mark-to-market value will be after trading takes place, ensuring that the suggested holdings are both purchasable and obtainable at minimal cost. Despite that, it is possible to include costs as discounts in the first stage, such as in the papers cited above, without any conflict with the second stage decision.</p><p>There are different ways to model transaction costs as discounts in the future portfolio value. <ref type="bibr" target="#b23">Mansini et al. [2015]</ref> summarises them as (i) fixed costs, (ii) variable costs, represented as a proportion of the trade value and (iii) convex or concave piecewise linear costs, which can be employed in the simulation of taxes and liquidity. In our second stage we only include variable costs and borrowing costs (charged when taking short positions and not yet considered in literature). In our experience these represents cost functions that are always charged, while other functions are either less common or can be eliminated by negotiating directly with brokers. Nevertheless, the second stage can also be extended to include the other cost functions (we leave that as future work).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Lots</head><p>When accounted for in portfolio selection models, lots and transaction costs reshape and limit the feasible region of optimal portfolios. <ref type="bibr" target="#b1">Angelelli et al. [2008]</ref> showed that optimal solutions to problems with and without lots may include different sets of assets. Portfolio weights are sufficient to accurately impose many real-world constraints, but lots on the other hand require assets to be represented by their purchasable units rather than their investment proportions. Additionally, converting portfolio proportions into integral holdings requires knowledge of the future value of the investment, after all costs are discounted. Depending on how the problem is modelled, this requirement results in some undesirable issues, as highlighted below.</p><p>The first formulation containing lots was that of <ref type="bibr" target="#b31">Speranza [1996]</ref>, which also includes variable and fixed transaction costs. Let N be the set of assets in which we may invest. For asset i ∈ N , let V i be the current price of a single lot, and let f i and g i be the fractional and fixed costs associated with trading asset i. Let C be the available capital to invest. Let x i be an integer decision variable representing the number of lots to be purchased of asset i, and let z i be a binary decision variable indicating whether any amount of asset i is to be purchased in the portfolio. In their absolute formulation, <ref type="bibr" target="#b31">Speranza [1996]</ref> incorporated the following constraint:</p><formula xml:id="formula_0">i∈N (1 + f i )V i x i + g i z i = C (1)</formula><p>In Equation (1), the term f i V i x i in Equation (1) represents the fractional costs associated with starting a new position x i from holdings in cash, which means that Equation (1) only works if no current assets are held in the portfolio, i.e. the available capital is entirely in cash. Since it is unlikely that there will be a combination of integral lots of different assets satisfying Equation (1) exactly, <ref type="bibr" target="#b31">Speranza [1996]</ref> proposed a feasible interval for C:</p><formula xml:id="formula_1">C 0 ≤ i∈N (1 + f i )V i x i + g i z i ≤ C 1 (2)</formula><p>where C 0 and C 1 are arbitrary lower and upper bounds on the value of the portfolio after trading.</p><p>In particular, the presence of the lower bound C 0 can be conflicting with the main objective. In fact, "without the lower bound the optimisation of a risk function tends to invest the minimum amount of capital that guarantees the required expected return of the investment." <ref type="bibr" target="#b23">[Mansini et al., 2015]</ref>. <ref type="bibr" target="#b21">Mansini and Speranza [1999]</ref> showed that if C 0 ̸ = C 1 , the portfolio selection problem is NP-Hard. Transaction costs, however, were incorporated in this paper as discounts in the assets expected returns as opposed to <ref type="bibr" target="#b31">Speranza [1996]</ref>, where costs are discounted from C. <ref type="bibr" target="#b15">Kellerer et al. [2000]</ref> showed that a portfolio selection model with variable and fixed costs, represented by Equation (1), is NP-hard even if no lots are considered (if x i can be fractional). <ref type="bibr" target="#b20">Mansini and Speranza [2005]</ref> used a similar approach, but with lump taxes instead of variable transaction costs. The lower bound C 0 was not included, and the incentive to be as close as possible to C comes from enforcing the minimum expected return. <ref type="bibr" target="#b18">Li et al. [2006]</ref> also employed a similar approach, without C 0 , and with a more generic concave nondecreasing function modelling transaction costs and an upper bound C 1 -C &gt; 0 on borrowed cash. <ref type="bibr" target="#b1">Angelelli et al. [2008]</ref> and <ref type="bibr" target="#b2">Angelelli et al. [2012]</ref> used a similar model as <ref type="bibr" target="#b20">Mansini and Speranza [2005]</ref> in order to optimise CVaR with real features, but including C 0 .</p><p>As opposed to <ref type="bibr" target="#b31">Speranza [1996]</ref>, all of the above papers ignore the discounts of transaction costs on the available capital. Let TC be the total transaction costs required to purchase the entire portfolio (x 1 , . . . , x N ). In such cases it may happen that the portfolio produced may not be purchasable as it is possible that i∈N V i x i ≥ C 0 &gt; C -TC, so C 0 must be well defined. <ref type="bibr" target="#b14">Jobst et al. [2001]</ref> and <ref type="bibr" target="#b25">Mitra et al. [2003]</ref> were the first to model lots in a relative formulation, but they did not include transaction costs. The fraction of the total portfolio value representing a lot of asset i is given by l i . Here γ i is the number of lots held and l i γ i represents the proportion of the portfolio to be invested in asset i as a multiple of l i . As the budget requirement may be unattainable the authors added the following constraint:</p><formula xml:id="formula_2">i∈N l i γ i + d --d + = 1 (3)</formula><p>where d -and d + are downward and upward deviations that are penalised in the objective function. Such penalty may not be easily applicable depending on the portfolio optimisation criteria. As transaction costs are not considered, the estimation of l i is based on an arbitrary value as the total portfolio value after trading is unknown. <ref type="bibr" target="#b14">Jobst et al. [2001]</ref> also investigated the portfolio rebalancing problem with an alternative absolute formulation based on holdings instead of weights, but without accounting for lots nor transaction costs. <ref type="bibr" target="#b4">Baumann and Trautmann [2013]</ref> extended the relative formulation with lots to explicitly include piecewise-constant fixed transaction costs and dividends. The objective function is amended to include transaction costs and dividends but, on the other hand, the deviation of the budget constraint is not considered. <ref type="bibr" target="#b19">Lin and Liu [2008]</ref> proposed a mixed (absolute and relative) formulation with lots, but without transaction costs. Let w i be the (unknown) proportion to be invested in asset i. The authors modelled the problem with:</p><formula xml:id="formula_3">i∈N V i x i ≤ C (4) w i = V i x i i∈N V i x i (5)</formula><p>which produces a difficult nonlinear optimisation model. Due to the integral constraints, part of C may be left uninvested, but this amount is not considered in the formulation. <ref type="bibr" target="#b6">Bonami and Lejeune [2009]</ref> modelled lots similarly, with the main difference being the introduction of a cash asset w c , representing uninvested capital. Redefining l i as the number of shares in a lot of asset i, the authors proposed the following constraints:</p><formula xml:id="formula_4">w i = V i γ i l i C (6) w c + i∈N w i = 1 (7)</formula><p>As C is a given budget parameter, the constraints above are linear. However, had transaction costs been included, C would have to be replaced by C -TC, and since TC is only known after optimisation, the problem would have become nonlinear. By omitting transaction costs, the optimal solution could yield a portfolio (l 1 γ 1 , . . . , l N γ N ) whose cumulative financial value is greater than C -TC. Bartholomew-Biggs and <ref type="bibr" target="#b3">Kane [2009]</ref> tackled the original Markowitz quadratic programming formulation with a relative and absolute formulation that included buy-in thresholds and lots. The authors did not include transaction costs and remodelled the problem with nonlinear nonconvex constraints. While a specialised algorithm was developed, adapting the formulation to include other features is not straightforward.</p><p>Finally, the formulation that most closely produces implementable investment decisions is that of <ref type="bibr" target="#b35">Woodside-Oriakhi et al. [2013]</ref>. Their model takes into account fixed and variable costs as well as current portfolio holdings, and can be easily extended to include lots.</p><p>Let X i be the current holdings in asset i, with the total portfolio value prior to trading defined as i∈N V i X i + C. The authors define variable and fixed costs f b i and g b i associated with buying shares of i, and, accordingly, f s i and g s i associated with selling shares of i. Variable costs f b i and f s i are defined as financial values rather than proportions. They also defined additional decision variables y b i and y s i with the number of units of i bought and sold respectively, and binary variables α b i and α s i on whether any amount of i is bought/sold. Variables α b i and y b i as well as α s i and y s i are linked with the use of nonnegative lower and upper bounds on the amount of shares that can be sold/purchased at a given rebalance.</p><formula xml:id="formula_5">Let TC = i∈N f b i y b i + f s i y s i + g b i α b i + g s i α</formula><p>s i be the total transaction costs spent in a rebalance. The constraints pertaining portfolio rebalancing and transaction costs are given by:</p><formula xml:id="formula_6">α b i + α s i ≤ 1 (8) X i + y b i -y s i = x i ∀i ∈ N (9) i∈N V i X i + C = i∈N V i x i + TC (<label>10</label></formula><formula xml:id="formula_7">)</formula><formula xml:id="formula_8">w i = V i x i k∈N V i X i + C ∀i ∈ N (11) w tc = TC k∈N V i X i + C<label>(12)</label></formula><p>In Equation ( <ref type="formula" target="#formula_8">12</ref>), a weight w tc is assigned to the proportion of the original portfolio value spent in transaction costs. By adding this extra variable, Equation (11) remains linear, but the sum of asset weights is less than one. Constraints ( <ref type="formula">8</ref>)-( <ref type="formula" target="#formula_6">10</ref>) ensure consistency between the portfolio value before and after trading. Incorporating lots can be achieved by defining x i as integer variables.</p><p>Consider that the optimal portfolio is the one that minimises risk. As the authors themselves pointed out, a possible undesired consequence of this approach is that in such cases the formulation has an incentive to increase w tc and reduce i∈N w i as an artificial way to reduce risk. Hence, in order to prevent this, the authors impose an arbitrary limit on the amount of transaction costs that can be spent in a rebalance, which may possibly underestimate or overestimate the costs that would be associated with the risk-optimal portfolio of choice. This issue is similar to the one faced by <ref type="bibr" target="#b31">Speranza [1996]</ref> when defining C 0 . Penalising costs in the objective function could be a way to tackle this problem. It is not clear, however, what an appropriate general penalty function would be considering that several different criteria are possible when choosing optimal portfolios.</p><p>An additional issue with mixed models is that they are more subject to imprecisions in floating point calculations. We have observed empirically that the model from Woodside-Oriakhi et al. is prone to numerical inaccuracies since, if the sums involved are large, portfolio proportions and holdings yield models with coefficients having very different orders of magnitude. This is an issue with any mixed formulation. We empirically faced this issue in Section 6.5.</p><p>The difficulties highlighted in this section are, in our view, a strong motivator for our twostage approach. By having a relative model in the first stage and an absolute model in the second stage, we prevent issues such as numerical inaccuracies and arbitrary limits. On the other hand, the unconstrained (lot-wise) optimal first stage portfolio could have different risk-return properties than the optimal portfolio constrained by lots. This issue is partly mitigated by the goal-programming approach, which attempts to find an implementable portfolio that is as close as possible to the optimal theoretical portfolio. We analyse this issue empirically in Section 6.5. Furthermore, it is still possible to formulate the first stage as any of the single-stage formulations presented in this section, so essentially limiting or eliminating the main issue with the two-stage approach.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Key concepts of futures contracts</head><p>An advantage of a clear separation between proportions and holdings in wo stages is in making it easier to incorporate real-world features without adding too much complexity to any single model. Among these features, we propose integrating futures and equities into a single framework.</p><p>There are several operational differences between these two types of financial instruments, which need to be dealt with if the goal is in producing tradable portfolios. We refer to equities as assets that are traded in stock markets and which incur tangible ownership when purchased, such as stocks and exchange-traded funds. In the portfolio optimisation literature, a common implicit assumption is that all assets are equities, and to the best of our knowledge these operational differences have not yet been considered. In this section we focus on how to account for these differences in our framework rather than introducing the concept of futures contract. For a comprehensive overview of the mechanics of futures, we refer the reader to Hull <ref type="bibr">[2014]</ref>.</p><p>There are three main operational differences when trading futures:</p><p>(i) futures contracts have expiration dates, (ii) purchasing a futures contract does not incur ownership of the underlying assets, but a deposit in a margin account is required as guarantee for fulfilling contractual obligations, irrespective of the party promising to buy (long) or sell (short) the asset, (iii) positions held are leveraged since required margin accounts are usually a fraction of the underlying contract value.</p><p>These differences affect not only the two stages of our approach, but also how data must be prepared. Since futures expire, the historical time series for any contract is limited to the duration of the contract (from issuance to expiration). Data vendors often provide a rolled or continuous series, one which automatically switches to the next-contract month when the current most-liquid contract expires. The rolled series provides long-term continuity often required by financial decision models that rely on historical data. Also, since the true investment in futures is the amount deposited in the margin account, the returns of the continuous time series must be multiplied by the leverage level to account for the actual returns that would have been observed. Also, commonly, just before expiration the brokers "cancel out" most contracts by purchasing an equivalent long position for holders of short positions, and likewise by purchasing equivalent short positions for holders of long positions. At this point, if the investor wishes to maintain an exposure to that contract, it is necessary to purchase the next-month contract. This is called a rollover: the investor is forced to liquidate the entire current position and open a new one, which incurs more transaction costs than simply buying/selling the difference between current and desired holdings. This issue is accounted for in our second stage, when weights are converted into holdings.</p><p>The second stage links desired proportions to actual financial values invested in each asset. For future contracts, we model this by using the leverage level to relate weights with the amount to be deposited in the margin account. A further issue is that in futures both long and short positions require a cash deposit, as opposed to equities, where shorting does not (theoretically) require any investment upfront, rather creating a debt towards the lender. With regards to portfolio selection, while the portfolio weight associated with a short position in equities is negative, the weight associated with a short position in futures is positive. In practice, identical short and long positions in a futures contract represent the same positive proportion of the total portfolio. The difference lies in how they contribute to the portfolio returns: as the weighted negative and positive leveraged futures returns for short/long positions respectively.</p><p>As a general illustration, consider a contract worth $10,000 in gold. Party A promises to buy $10,000 from Party B at a later date. Let the required margin deposit be 20% of the contract value for both parties. Both deposit $2,000 in their respective margin accounts. Suppose that, in the next day, due to gold price variations a new contract is now worth $11,000. Even though the contract is not expiring today, the brokers transfer the difference from the margin account of B to the margin account of A. This way, the margin account of A now has $3,000 and the margin account of B has now fallen short to $1,000.</p><p>Notice that if the margin account value falls below the minimum required value, the broker issues a margin call. In this case B must then add another $1,200 in funds to its account to bring it to $2,200, which is 20% of the current contract value. Likewise, A may optionally withdraw part of its margin account since it is above the required level, and make it available for investment in other assets. In practice, pre-expiry cash settlements occur often, hence, just prior to the second stage, we assume that the margin account in any currently held positions are maintained at the exact required level, with the excess being put into/taken from cash reserves.</p><p>Note that A had a $1,000 profit on a $2,000 investment, or a 50% return -5 times the 10% increase in contract value. Accordingly, B had a -50% return. B invested $2,000 and received $1,000. If B had decided to short $10,000 in gold directly, they would have borrowed this amount, sold then at that price and own -$10,000 to the lender. At the next day, this debt would have grown to -$11,000. The returns are the same (albeit deleveraged), but the proportion held is negative instead of positive.</p><p>The particularities of shorting in futures contracts are dealt with in both first and second stages. In Section 6.6, we show an application of leveraged futures contracts in producing market neutral portfolios with potential for positive return.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">First stage: choosing optimal portfolio weights</head><p>In this section, we present a general standardised framework for relative models that combines equities and futures. The formulation includes a selection of common real-world constraints, all of which can be accurately depicted with portfolio proportions instead of holdings. The goal at this stage is to simply produce a vector of portfolio weights. In the second stage, presented in Section 5, we convert these weights into suggested holdings and include features that require an absolute model, such as costs, lots and margin accounts. In the appendix accompanying this paper<ref type="foot" target="#foot_3">3</ref> , we present an extended version of the first stage that includes other classes of constraints. We also rewrite the standardised formulation for ratio-based portfolio models.</p><p>Let N be the set of |N | assets in which we may invest. We split N into two sets, namely N 1 as the set containing all equities and N 2 as the set containing all futures contracts (assets that require margin accounts). We have that N 1 , N 2 ⊆ N and that N 1 ∪ N 2 = N . We informally refer to assets in N 1 as "equities" and assets in N 2 as "futures".</p><p>Let C be the current mark-to-market valuation of the portfolio, and let there also be two optional risk-free assets ℓ, b ∈ N 1 in which we may invest. Risk-free asset ℓ represents the interest rate obtained when we hold a long position in cash, that is, when we lend money to the bank. Asset b represents the interest rate applied when we hold a short position in cash, that is, when we borrow money from the bank.</p><p>Let:</p><formula xml:id="formula_9">w + i ≥ 0, w - i ≥ 0 be the proportion of the portfolio held in long/short positions in asset i ∈ N . z + i , z - i 1 if any of asset i is held in long/short positions 0 otherwise</formula><p>Depending on which exogenous constraints are applicable to the problem at hand, binary variables z + i and z - i are not strictly necessary, although many commercial and open-source solvers automatically detect whether a binary variable can be removed during their presolve phase.</p><p>In portfolio selection literature, the proportion invested in asset i is more often represented with a single variable w i , where w i &gt; 0 means a long position and w i &lt; 0 means a short position. A single variable, however, prevents us from modelling certain classes of exogenous constraints, such shorting limits <ref type="bibr" target="#b13">[Jacobs et al., 2005</ref><ref type="bibr" target="#b17">, Kumar et al., 2008]</ref> or even short positions in futures.</p><p>Let ρ(w), where w = (w + 1 , w - 1 , . . . , w + n , w - n ), be the objective function to be minimised (we assume a minimisation problem without loss of generality). The basic portfolio selection model is given by:</p><formula xml:id="formula_10">min ρ(w) (13) subject to i∈N1 (w + i -w - i ) + i∈N2 (w + i + w - i ) = 1 (14) w + i ≤ U z + i ∀i ∈ N (15) w - i ≤ U z - i ∀i ∈ N (16) z + i + z - i ≤ 1 ∀i ∈ N (17) z + i , z - i ∈ B (18) w + i , w - i ≥ 0 ∀i ∈ N (19)</formula><p>Constraint ( <ref type="formula">14</ref>) is the budget constraint. For equities, the contribution of w - i , i ∈ N 1 towards the budget is negative, while for futures the contribution of w - i , i ∈ N 2 is positive. Constraints ( <ref type="formula">15</ref>)-( <ref type="formula">16</ref>) link variables w and z. We use the U symbol loosely throughout this text to indicate any large enough constant. Constraints (17) ensure that an asset, if picked, cannot be held in both long and short positions at the same time. Constraints ( <ref type="formula">18</ref>)-( <ref type="formula">19</ref>) define variable bounds. Depending on the choice of ρ(w), the specific formulation may require additional variables and constraints (i.e. minimising CVaR).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Shorting limits in equities</head><p>Let τ -, τ + be the minimum and maximum proportions of C allowed in a collection of short positions in equities. In order to enforce such limits, we add the following constraint:</p><formula xml:id="formula_11">τ -≤ i∈N1 w - i ≤ τ + (20)</formula><p>With this definition, we replace Constraints ( <ref type="formula">15</ref>)-( <ref type="formula">16</ref>) by:</p><formula xml:id="formula_12">w + i ≤ (1 + τ + )z + i ∀i ∈ N (21) w - i ≤ (1 + τ + )z - i ∀i ∈ N 2 (22) w - i ≤ τ + z - i ∀i ∈ N 1<label>(23)</label></formula><p>If τ + &gt; 0, then it is possible to invest up to 1 + τ + in long positions. Several constraints are expressed as limits applicable to individual assets or collections of assets. When shorting is allowed, it is possible to express these limits as either absolute or relative (with regards to the total long/short exposure). Absolute limits make it possible to include buy-in thresholds and work as a link between binary and continuous variables. Relative limits, on the other hand, make it easier to ensure model feasibility when the long/short exposure is variable (τ -&lt; τ + ). In this case, let τ = i∈N 1 w - i represent the actual short exposure in equities (as decided by the model itself).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Shorting limits in futures</head><p>Let υ -, υ + be the minimum and maximum proportions of 1 + τ allowed in a collection of short positions in futures. To enforce these limits, we add the following constraint:</p><formula xml:id="formula_13">  1 + i∈N 1 w - i   υ -≤ i∈N 2 w - i ≤   1 + i∈N 1 w - i   υ + (24)</formula><p>By defining these limits as relative to the total long exposure, we have that 0 ≤ υ -≤ υ + ≤ 1. As an illustration, let τ -= τ + = 0.5 and υ -= υ + = 0.5. In this case, the portfolio must hold 50% of C in short positions in equities, 75% of C must be held in short positions in futures and another 75% must be held in long positions in any of the assets.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Exposure limits in the risk-free assets</head><p>Risk-free assets generally behave as equities, with a slight difference: the asset representing a lend rate cannot be held in short positions, while the asset representing a borrow rate cannot be held in long positions. Let c -, c + be the minimum and maximum proportions of 1 + τ allowed in the risk-free assets, such that -1 ≤ c -≤ c + ≤ 1. We add the following constraints:</p><formula xml:id="formula_14">w - ℓ = 0 (25) w + b = 0 (26) 1 + i∈N1 w - i max{0, c -} ≤ w + ℓ ≤ 1 + i∈N1 w - i max{0, c + } (27) i∈N1 w - i max{0, -c + } ≤ w - b ≤ i∈N1 w - i max{0, -c -} (28)</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4">Minimum expected return</head><p>Let µ i be the expected return of asset i ∈ N . In scenario-based formulations, µ i = s∈S p s r is , where S is the number of discrete scenarios, p s is the probability of scenario s ∈ S and r is is the return of asset i in scenario s. We also remind the reader that µ i takes leverage into account. If a given futures i has expected return 1% and leverage level equal to 5×, then effectively µ i = 5%.</p><p>The following constraint enforces minimum expected portfolio return given a target return μ:</p><formula xml:id="formula_15">i∈N µ i (w + i -w - i ) ≥ μ (29)</formula><p>Note that short positions in futures contribute negatively to the portfolio expected return.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.5">General lower and upper bounds</head><p>Let l + , l -be the lower limits (0 ≤ l + , l -) on the proportion invested in long/short positions in any asset if we choose to invest in that asset. Likewise, let u + , u -be the upper limits (0 ≤ u + , u -) on the proportion invested in long/short positions in any asset. The constraints that enforce these limits are given by:</p><formula xml:id="formula_16">l + z + i ≤ w + i ≤ u + z + i ∀i ∈ N \ {ℓ, b}<label>(30)</label></formula><formula xml:id="formula_17">l -z - i ≤ w - i ≤ u -z - i ∀i ∈ N \ {ℓ, b}<label>(31)</label></formula><p>The limits above are applicable (by our choice) to all but the risk-free assets. It is also possible to enforce different limits per asset, or even enforce them selectively. Lower bounds allow the enforcement of a minimum holding level, or as it is commonly referred to in literature, a buyin threshold. This is especially important in cardinality constraints, since we can only enforce a minimum number of nonzero positions if l + and l -are both non-zero. Upper bounds, if applicable, usually define stronger (tighter) bounds than Constraints ( <ref type="formula">21</ref>)-( <ref type="formula" target="#formula_12">23</ref>).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">Second stage: from optimal proportions to real trades</head><p>The solution of the first stage is a vector w * = (w * 1 , . . . , w * n ) containing the desired portfolio proportions, obtained by calculating</p><formula xml:id="formula_18">w * i = w + * i -w - * i for all i ∈ N .</formula><p>The next logical step is to execute the necessary trades to convert the current portfolio into the desired one. Hence, at this stage, we introduce linear and mixed-integer formulations to find feasible holdings x that match w * as well as possible.</p><p>At this stage, the two risk-free assets ℓ and b are unnecessary since we know whether</p><formula xml:id="formula_19">w * ℓ &gt; 0, w * b &lt; 0 or w * ℓ = w * b = 0.</formula><p>Let c be the index of the cash asset (to which lots and transaction costs do not apply) and let w * c = w * ℓ + w * b be the desired proportion in cash. We present two versions of the second stage formulation: without lots, and with lots. The former is modelled as a linear program while the latter requires integer variables. We then expand both formulations to include borrowing costs -costs associated with short selling shares from assets in N 1 .</p><p>Let X i and V i be the current number of shares/units and the current price of asset i, and let L i ≥ 1 be leverage factor of asset i, where</p><formula xml:id="formula_20">L i = 1 for i ∈ N 1 . Let M i = X i V i</formula><p>L i be the financial value invested in asset i. In the case of futures, we assume that the margin accounts hold the exact value required to secure the contracts in place, i.e. any surplus to the margin required levels has been added to X c and any deficit has been taken from X c . We have P = C + i∈N M i as the current mark-to-market valuation of the portfolio, where in this context C represents available capital to be invested in the portfolio. Note that C might be negative if a cash withdrawal is about to take place. Let f i be the fractional cost of buying/selling a unit of asset i ∈ N . Parameters V c , L c and f c are undefined.</p><p>For assets that require lots, X i represents the number of shares held, while for assets that do not (such as cash or cryptocurrencies), X i represents the number of units held.</p><p>Let</p><formula xml:id="formula_21">N = c ∪ {i ∈ N \ {ℓ, b} | X i ̸ = 0 or w * i ̸ = 0}</formula><p>be the set of assets for which trading might occur. Often |N | ≪ |N |, which helps in reducing the computational burden of solving the second stage. Let N 1 ⊆ N be the set of equities and N 2 ⊆ N be the set of futures for which trading might occur, where</p><formula xml:id="formula_22">N 1 ∪ N 2 = N and N 1 ∩ N 2 = ∅. Let N + = i ∈ N | w * i &gt; 0 , N -= i ∈ N | w * i &lt; 0 and N 0 = i ∈ N | w * i = 0 .</formula><p>Finally, let N R ⊆ N 2 be the set of assets which require a rollover, such that the entire current position must be liquidated before purchasing a new one.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">Second stage formulation, without lots</head><p>When lots are not included, it is possible to find x such that the discounted portfolio perfectly matches w * . Hence, in this formulation the objective is to minimise the transaction costs spent to purchase x. Let us define the following decision variables:</p><p>p the portfolio value after transaction costs are discounted, x i number of shares of asset i ∈ N to be held, m i financial value to be invested in asset i ∈ N , c amount to be invested in cash, G i fractional transaction costs associated with buying or selling asset i ∈ N .</p><p>We assume for simplicity that f i &gt; 0 ∀i ∈ N . If ∃i | f i = 0, then it is not necessary to define the corresponding G i .</p><p>The following linear programming finds x while spending as little as possible in transaction costs:</p><formula xml:id="formula_23">min i∈N G i (32) subject to c = w * c p<label>(33)</label></formula><formula xml:id="formula_24">m i = w * i p, i ∈ N 1 ∪ N 2 ∩ N + ∪ N 0 (<label>34</label></formula><formula xml:id="formula_25">)</formula><formula xml:id="formula_26">m i = -w * i p, i ∈ N 2 ∩ N - (<label>35</label></formula><formula xml:id="formula_27">)</formula><formula xml:id="formula_28">m i = V i x i L i , i ∈ N 1 ∪ N 2 ∩ N + ∪ N 0 (<label>36</label></formula><formula xml:id="formula_29">)</formula><formula xml:id="formula_30">m i = - V i x i L i , i ∈ N 2 ∩ N - (<label>37</label></formula><formula xml:id="formula_31">)</formula><formula xml:id="formula_32">G i ≥ (x i -X i )f i V i , i ∈ N (38) G i ≥ (X i -x i )f i V i , i ∈ N<label>(39)</label></formula><formula xml:id="formula_33">G i ≥ (-x i -X i )f i V i , i ∈ N R<label>(40)</label></formula><formula xml:id="formula_34">G i ≥ (X i + x i )f i V i , i ∈ N R<label>(41)</label></formula><formula xml:id="formula_35">p = P - j∈N G j<label>(42)</label></formula><p>Constraints ( <ref type="formula" target="#formula_23">33</ref>)-( <ref type="formula" target="#formula_26">35</ref>) ensure that the financial value held in each asset corresponds to the exact desired proportions. Constraints (36)-(37) calculate the necessary margin accounts (or financial valuation) invested in each asset. The m i variables are not strictly necessary but are kept to ease the mathematics presented. Constraints (38)-( <ref type="formula" target="#formula_34">41</ref>) calculate fractional transaction costs, including when rollover applies. Coupled with the "downward pressure" from Objective (32), they ensure that the G i variables are equal to the costs spent. Finally, Constraint (42) defines the discounted portfolio value. This constraint is also not strictly necessary, but simplifies the other formulations below.</p><p>Due to space reasons we do not consider piecewise convex or concave costs, nor fixed costs. However, these could be easily introduced with the addition of extra binary variables. We leave this for future work.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">Second stage formulation, with lots</head><p>When integral lots are required, it is generally impossible to find a valid portfolio that perfectly matches the desired proportions. As opposed to most other works in literature (see Section 2.2), here we propose a goal programming approach that, within the set of lot-feasible portfolios, finds the one that minimises the deviation to the desired weights.</p><p>We do, however, still want to minimise the transaction costs spent, so there are two potentially conflicting objectives. On one hand, minimising the deviations to w * may require spending more in transaction costs, on the other hand saving on transaction costs imply keeping the portfolio close to its current form, potentially deviating more than necessary from w * . We propose a weighted sum of both objectives. We adopt the policy that minimising the deviation takes precedence over minimising transaction costs, and discuss appropriate weights for the objective function.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Let N</head><p>L and N ̸ L be the set of assets for which lots apply and not apply, respectively, with</p><formula xml:id="formula_36">N L ∪ N ̸ L = N .</formula><p>Let us redefine X i as the current number of shares/units of asset i ∈ N ̸ L or the current number of lots of asset i ∈ N L . Likewise, we redefine V i as the current price of one unit of</p><formula xml:id="formula_37">asset i ∈ N ̸ L or one lot of asset i ∈ N L .</formula><p>With regards to the cash asset c, a negative deviation to w * c may imply a portfolio with higher risk, which may not be acceptable. Therefore we also propose an optional control parameter W c as the lower accepted limit on the actual proportion invested in cash. If w * c ≥ 0, then having W c = 0 ensures that the actual portfolio does not borrow any cash. If W c = w * c (irrespective of the sign of w * c ), then we ensure that the proportion in cash will be at least w * c , i.e. which ensures that if w * c &lt; 0 no extra cash is borrowed. We make use of the following decision variables: Expressing deviations as financial values allows us to combine them with transaction costs into a single objective function.</p><formula xml:id="formula_38">x i ∈ Z redefined as number of lots of l i shares of asset i ∈ N L x i ∈ R as number of units of assets i ∈ N ̸ L d + c , d - c ≥</formula><p>Let</p><formula xml:id="formula_39">N - 1 = {i ∈ N 1 | X i &lt; 0}</formula><p>be the set of assets in N 1 for which we currently hold short positions. The second stage formulation with lots is given by:</p><formula xml:id="formula_40">min d + c + d - c + i∈N (d + i + d - i ) + i∈N W i G i<label>(43)</label></formula><p>subject to ( <ref type="formula" target="#formula_28">36</ref>) -( <ref type="formula" target="#formula_35">42</ref>)</p><formula xml:id="formula_41">i∈N m i + c = p,<label>(44)</label></formula><formula xml:id="formula_42">c ≥ W c p,<label>(45)</label></formula><formula xml:id="formula_43">c + d - c -d + c = w * c p,<label>(46)</label></formula><formula xml:id="formula_44">m i + d - i -d + i = w * i p i ∈ N 1 ∪ N 2 ∩ N + ∪ N 0 (<label>47</label></formula><formula xml:id="formula_45">)</formula><formula xml:id="formula_46">m i + d - i -d + i = -w * i p i ∈ N 2 ∩ N - (<label>48</label></formula><formula xml:id="formula_47">) i∈N - 1 m i ≥ i∈N - 1 w * i p<label>(49)</label></formula><formula xml:id="formula_48">x i ≥ 0 i ∈ N + (<label>50</label></formula><formula xml:id="formula_49">)</formula><formula xml:id="formula_50">x i ≤ 0 i ∈ N -<label>(51)</label></formula><formula xml:id="formula_51">x i = 0 i ∈ N \ {N + ∪ N -}<label>(52)</label></formula><p>where W i are weights that balance the two conflicting goals in Objective (43). Constraint (44) ensures that the individual positions add up to the discounted portfolio value. Constraint (45) enforces the minimum allowed proportion in cash, while Constraints ( <ref type="formula" target="#formula_43">46</ref>)-( <ref type="formula" target="#formula_46">48</ref>) calculate the deviations from w * . Optional Constraint (49) prevents overexposure in short positions. Constraints ( <ref type="formula" target="#formula_48">50</ref>)-( <ref type="formula" target="#formula_51">52</ref>) ensure that assets whose desired position is long (short) are not held in short (long) positions, and that assets whose desired exposure is zero are not to be held in any residual amounts.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2.1">Objective function</head><p>We mentioned previously the assumption that minimising the deviation takes precedence over minimising the transaction costs required to purchase the new portfolio. Since in Objective (43) all terms are expressed as financial values, we may calculate W i such that the cost improvement in reducing deviation is not offset by the increase in transaction costs spent. Note that different fractional transaction costs may be applied to different asset classes or even assets, such as when we artificially increase f i as a penalty for illiquid assets.</p><p>To simplify, we standardise the definition of the objective function weights by letting</p><formula xml:id="formula_52">W i = θ 1 f i L i , 0 &lt; θ ≤ 1, for i ∈ N . If θ = 1</formula><p>, then reducing the deviation by $1 incurs exactly $1 in transaction costs penalties in the objective function. For leveraged assets, the cost is paid with relation to the full contract, but the deviation is reduced according to the margin account required deposit, hence the L i term in the denominator. If θ = 0, then a trivial optimal solution is any such that p = i∈N G i . In that case, c = 0, x i = 0, i ∈ N and all deviations are trivially zero.</p><p>If we employ θ ≫ 1, transaction costs are heavily penalised and the optimal solution tends to trade as little as possible. As θ → 0, optimal solutions tend to artificially inflate transaction costs (meaning G i &gt; |x i -X i |) in order to achieve smaller deviations, resulting in wrong values of p. In Section 6.4, we evaluate how the model behaves for different values of θ.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3">Borrowing costs</head><p>Short positions require the borrower to pay a "rent fee" to the lender. This fee is paid whenever a shorting contract is closed or expires. Borrowing costs are generally defined as a predefined yearly rate to be paid proportionally to the time the contract was held, with a reference price as basis for the calculation (usually the closing price of the day before the contract was opened). The actual borrowing rate is both asset and time-dependent (it varies over time).</p><p>Consider the following example. We initiate a shorting contract at Day 0 where we borrow 200 IBM shares at $20.00 each. Suppose the rent rate for IBM at the time was 5% a year, and that we liquidate the contract after 10 business days. The amount we pay in borrowing costs to the lender is based on the contract initial price, and is calculated proportionally to the period held. The actual costs to be paid may be calculated either with compounded returns or a simple average (here we assume compounded returns):</p><formula xml:id="formula_53">200 × $20 × (1 + 0.05) 10 252 -1 ≈ $7.75</formula><p>where 252 approximates the number of business days in a year. The calculation details depend on the broker and the stock market.</p><p>We may also partially close a contract. Consider that we are closing 100 shares in 10 days, and the other 100 shares in 15 days. We pay:</p><p>On day 10: 100 × $20 × (1 + 0.05) which make up a total of approximately $9.69.</p><p>The agreed rate is specific to each individual contract. For instance, we may currently hold a total short position of 300 shares in IBM, but we may have initiated 100 shares 10 days ago (Contract 1), 100 shares 5 days ago (Contract 2) and another 100 shares 2 days ago (Contract 3). The rates agreed for each contract may differ: let the rate for Contract 1 be 3%, the rate for Contract 2 be 5% and the rate for Contract 3 be 4%. For each of these contracts, the costs are calculated individually.</p><p>When partially closing a short position, we need to decide which of the contracts should be closed. Suppose in the example above that we want to liquidate 150 shares and keep another 150 in short positions. We may:</p><p>• Close them chronologically, effectively liquidating Contract 1 in its entirety (paying its borrowing costs) and 50 shares of Contract 2 (again, paying its partial costs).</p><p>• Close the most expensive first, so liquidating Contract 2 in its entirety, then partially liquidating 50 shares of Contract 3 while keeping Contract 1 in its entirety.</p><p>When rebalancing towards a given portfolio w * , we might have to close some shorting positions. On top of fractional transaction costs, borrowing costs might have to be deducted, impacting the calculation of the discounted portfolio value p. Since borrowing costs are entirely based on a predefined rate, the contract reference price and the number of days since it started, it is possible to calculate prior to the optimisation how much we would pay if an individual shorting contract was closed. In the case of partial closures, we may also sort the individual contracts based on which we would like to close first.</p><p>For assets in N -1 , X i is broken down into a sum of multiple open shorting contracts. Let J i be the number of open short contracts of asset i, and let X j i , j = 1, . . . , J i (such that J i j=1 X j i = X i ), define the amount held originating from each contract, sorted from the most desirable to close first to the least desirable. Let h j i be the monetary value to be paid in borrowing costs if we fully closed contract X j i today, with every h j i being calculated prior to the optimisation. For instance, if X j i = -100, and the corresponding contract has a reference price of $20 and a rate of 4%, 7 business days ago, then h j i = 100 × $20 × (1 + 0.04) 7 252 -1 ≈ $2.18.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3.1">Formulation with borrowing costs, no lots</head><p>Let H j i : i ∈ N -1 , j = 1, . . . , J i be additional decision variables representing the borrowing costs paid in fully or partially closing contract j from asset i. Let δ j i , j = 0, . . . , J i + 1, be auxiliary binary variables, such that:</p><formula xml:id="formula_54">δ 0 i = 1 if x i ≤ X i</formula><p>, that is, we either keep or increase our shorting position in i,</p><formula xml:id="formula_55">δ j i = 1, j = 1, . . . , J i if j-1 k=1 X j i ≤ x i -X i ≤ j k=1 X j i</formula><p>, that is, if we close all contracts up to j -1, and partially or entirely close contract j.</p><formula xml:id="formula_56">If j = 1, j-1 k=1 X j i = 0. δ J i +1 i = 1, if x i ≥ 0,</formula><p>that is, if we close the entire shorting position in i.</p><p>The second stage formulation with borrowing costs and no lots is defined as:</p><formula xml:id="formula_57">min i∈N G i + i∈N - 1 Ji j=1 H j i<label>(53)</label></formula><p>subject to (33) -(41)</p><formula xml:id="formula_58">p = P - i∈N G i - i∈N - 1 Ji j=1 H j i (54) Ji+1 j=0 δ j i = 1 i ∈ N - 1 (55) x i -X i ≤ U (1 -δ 0 i ) i ∈ N - 1 (56) x i -X i ≥ -U (1 -δ 1 i ) i ∈ N - 1 (57) x i -X i ≤ - j k=1 X j i + U (1 -δ j i ) i ∈ N - 1 , j = 1, . . . , J i (58) x i -X i ≥ - j-1 k=1 X j i -U (1 -δ j i ) i ∈ N - 1 , j = 2, . . . , J i + 1 (59) H j i ≥ 0 i ∈ N - 1 , j = 1, . . . , J i<label>(60)</label></formula><formula xml:id="formula_59">H j i ≥ h j i x i -(X i - j-1 k=1 X k i ) -X j i -U   Ji+1 k=j+1 δ k i   i ∈ N - 1 , j = 1, . . . , J i<label>(61)</label></formula><formula xml:id="formula_60">H j i ≥ h j i -h j i j k=0 δ k i i ∈ N - 1 , j = 1, . . . , J i<label>(62)</label></formula><p>Constraint (54) calculates the discounted portfolio p with deducted borrowing costs. Constraints (55)-( <ref type="formula">59</ref>) ensure that the appropriate binary variable δ j i , j = 0, . . . , J i + 1, is correctly assigned. Constant U can be calculated as the maximum possible difference |x i -X i | (depending on w * i ).</p><p>Constraints ( <ref type="formula" target="#formula_58">60</ref>)-( <ref type="formula" target="#formula_60">62</ref>), together with Objective (53), calculate the borrowing costs to be paid per contract.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3.2">Formulation with borrowing costs and lots</head><p>Let f j i = -</p><formula xml:id="formula_61">h j i X j i V i</formula><p>be the proportion of the value of the short contract j from asset i to be paid in borrowing costs in case we fully close it. Let us redefine W i , i ∈ N -1 in such a way that reducing the deviation by $1 does not incur more than a $1 penalty in variable plus borrowing costs altogether. A natural approach to enforce this is to combine f j i with f i in a single proportion -however, since f j i is contract dependent, we must define G j i and W j i instead of G i and W i , for j = 0, . . . , J i +1, i ∈ N -1 . More specifically, for 0 &lt; θ ≤ 1:</p><formula xml:id="formula_62">• W 0 i = θ 1 f i , with G 0 i &gt; 0 representing</formula><p>fractional costs associated with an increase in the short position currently held, so no contracts being closed.</p><formula xml:id="formula_63">• W J i +1 i = θ 1 f i , with G J i +1</formula><p>i &gt; 0 representing fractional costs associated with opening a long position in i, if required.</p><formula xml:id="formula_64">• W j i = θ 1 (f j i +f i)</formula><p>, j = 1, . . . , J i , with G j i + H j i representing the sum of fractional and borrowing costs paid when closing, or partially closing, contract j.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Note that we have ignored the term</head><formula xml:id="formula_65">L i since for i ∈ N - 1 , L i = 1. For i ∈ N - 1 , let Υ(i) = W 0 i G 0 i + W Ji+1 i G Ji+1 i + Ji j=1 W j i H j i + G j i .</formula><p>Let also g j i = -f i V i X j i represent the fractional costs paid if the whole contract j is closed. The second stage formulation with lots and borrowing costs is given by:</p><formula xml:id="formula_66">min d + c + d - c + i∈N (d + i + d - i ) + i∈N \N - 1 W i G i + i∈N - 1 Υ(i)<label>(63)</label></formula><p>subject to (36)-( <ref type="formula" target="#formula_30">37</ref>) , (40) -(41), ( <ref type="formula" target="#formula_41">44</ref>) -( <ref type="formula" target="#formula_51">52</ref>), ( <ref type="formula">54</ref>) -(62)</p><formula xml:id="formula_67">G i ≥ (x i -X i )f i V i , i ∈ N \ N - 1 (64) G i ≥ (X i -x i )f i V i , i ∈ N \ N - 1<label>(65)</label></formula><formula xml:id="formula_68">G i = Ji+1 j=0 G j i i ∈ N - 1 (66) G j i ≥ 0 i ∈ N - 1 , j = 0, . . . , J i + 1 (67) G j i ≥ g j i x i -(X i - j-1 k=1 X k i ) -X j i -U   Ji+1 k=j+1 δ k i   i ∈ N - 1 , j = 1, . . . , J i (68) G j i ≥ g j i -g j i j k=0 δ k i i ∈ N - 1 , j = 1, . . . , J i (69) G 0 i ≥ f i V i (X i -x i ) i ∈ N - 1 (70) G Ji+1 i ≥ f i V i x i i ∈ N - 1<label>(71)</label></formula><p>Constraints ( <ref type="formula">64</ref>)-( <ref type="formula" target="#formula_68">71</ref>) enforce the newly defined G j i variables. More specifically, Constraints ( <ref type="formula">68</ref>)-( <ref type="formula">69</ref>) enforce that the fractional costs for any single contract are only nonzero if the corresponding contract is partially or fully closed.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">Computational experiments</head><p>The motivation behind the two-stage framework is not to produce portfolios with superior out-ofsample performance with regards to risk/return properties. Rather its goal is in acting against the strategy by highlighting any difficulties an investor would face before investing (and potentially losing!) real money. That is the main reason why the framework is as generic as possible with an explicit goal of constructing a "bridge" between model and investment. A successful execution of the second stage should quickly and reliably produce holdings that match the desired portfolio as accurately as possible given any realistic market features applicable at any specific setting. Hence, the main focus of our computational experiments is in evaluating the second stage itself, with regards to its applicability, computational time and solution quality. We discuss limitations and related insights of the second stage in Section 7.</p><p>With regards to the first stage, the main difference to the literature is the inclusion of futures contracts, which give more liberty to fund managers in hedging and leveraging portfolios. In Section 6.6 we present a case study illustrating these features.</p><p>We employ a custom-built backtesting tool which simulates negotiations and tracks individual contracts. When a portfolio rebalance takes place, the optimisation framework is invoked to produce optimal portfolio weights and to convert those weights into specific purchases and sales. Afterwards, the backtesting tool "executes" those transactions, discounting the necessary costs. Interest in cash is accrued every day, according to the risk free rate being applied at the time.</p><p>For all experiments, we employ CPLEX Optimizer 22.1. <ref type="bibr">0 [2023]</ref> as linear and integer programming solver, with default configurations. Our backtesting tool is developed in Python and all optimisation models are developed in C++. We run all experiments in an Intel(R) Core(TM) i7-3770 CPU @ 3.90GHz with 8 cores, 8GB RAM and with Ubuntu 22.04.3 LTS as the operational system.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.1">Dataset</head><p>We employ a single dataset with S&amp;P500 stocks, selected futures contracts and two risk-free assets representing lent and borrowed cash. For S&amp;P500 stocks, we take into account survivorship biasat any given rebalance, the only stocks available for investment are those which were part of the index at the time. Depending on the context we assume that S&amp;P500 stocks are traded in round lots (consisting of 100 shares each) or odd lots (any integral number of shares). With the increase in electronic trading, trading in odd lots in the U.S. is becoming easier due to increased liquidity<ref type="foot" target="#foot_4">4</ref> . In other stock markets (such as Bovespa in Brazil or BSE in India) trading in odd lots is either not feasible or often illiquid.</p><p>In the S&amp;P500 dataset we deal with around 500 assets at any point in time, which is a reasonable amount of assets when operating an investment fund. Surely it is possible to expand this asset universe to include larger indices <ref type="bibr">(Russel 2000, Russel 3000)</ref> or to include small-caps. Compiling this data however is not trivial without access to specialised data providers (i.e. finding changes in indices compositions spanning many years). We leave the evaluation of the two-stage framework with larger asset universes for future work, but we believe the current dataset represents a realistic scenario.</p><p>The selected futures contracts are the following:</p><p>• Micro E-mini S&amp;P500 futures<ref type="foot" target="#foot_5">5</ref> , with a lot size of 5,</p><p>• Gold futures<ref type="foot" target="#foot_6">6</ref> , with a lot size of 100,</p><p>• Mini VIX futures<ref type="foot" target="#foot_7">7</ref> , with a lot size of 100.</p><p>We employ the 10-year US treasury bond (symbol TNX) return series as a synthetic asset representing the return on both lent and borrowed cash.</p><p>Apart from being part of the index at the time (with the exception of futures and cash), an asset is only considered eligible in a rebalance if there are at most 5% prices missing from the most recent historical series of 201 prices (200 returns). Any missing prices in the series of any asset that passes this filter is then completed with forward fill, then backwards fill. Whenever a simulation has costs involved, we assume 5 basis points as variable transaction costs and 3% a year as borrowing costs in equities.</p><p>In all experiments, portfolios are rebalanced at the last trading day of each month and evaluated daily until the data is exhausted. The out-of-sample period spans from 25 th December 2012 up to 29 th December 2023. During this period, a total of 132 rebalances are calculated. Unless explicitly noted we simulate an initial investment of $500,000 and assume no cash additions/withdrawals throughout the investment lifespan. For each rebalance, we use the previous 200 historical daily returns as input to the portfolio optimisation model of choice. We assume trading at the end of the day based on closing prices. The return from the end of the previous day to the end of the current day is included in the in-sample historical data.</p><p>Due to futures contracts rollover, the second stage is executed more often than the first stage. Whenever a rollover happens on a non-rebalancing day, we invoke the second stage in order to, after accounting for the rollover, obtain a portfolio that is as close as possible to the currently held portfolio.</p><p>The time-series for every futures contract is the front-month contract with automatic rollover. Rollover dates for each contract are taken from their corresponding websites. The leverage level of each contract depends on the experiment.</p><p>All of the data here described is publicly available at:</p><p>https://github.com/cristianoarbex/portfolioSimulationData.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.2">Case study</head><p>We begin the computational experiments with a case study of our framework. The goal here is to evaluate whether the second stage works "against the strategy" and whether it is "practical" with regards to computational time and solution depreciation (when compared to that obtained in first stage). In later sections we evaluate the last two specific points in more detail.</p><p>As investment strategy we employ the <ref type="bibr" target="#b34">Valle et al. [2017]</ref> implementation of the second-order stochastic dominance (SSD) model for enhanced indexation proposed by <ref type="bibr" target="#b28">Roman et al. [2013]</ref>. We chose this specific configuration for one (scientifically unconventional) reason: because it looks appealing. The goal here is not to propose a promising strategy, but rather to evaluate what would happen to the strategy when we force it to abide by market rules, in this case by adding lots, costs and rollover. We report here both long only and 140/40 long/short strategies (where τ = 0.4). We impose lower and upper bounds of E Q = 5% and ∆ Q = 20% for Q defined as the set of all derivatives, and we set L i = 1 for all i ∈ Q (no leverage). When lots are applicable, in the second stage we set W c = w * c and θ = 0.05. We run three versions of both strategies: (i) without costs and lots (so no second stage needed), (2) with costs and odd lots in stocks and (3) with costs and round lots in stocks. For futures contracts, we use the lots described in Section 6.1 for both (2) and (3). We display the cumulative out-of-sample returns of all strategies and that of the S&amp;P500 in Figures <ref type="figure">1</ref> and<ref type="figure">2</ref>. The lines in the charts were smoothed with univariate splines for improved visualisation.</p><p>On top of the charts, Table <ref type="table" target="#tab_0">1</ref> shows selected out-of-sample statistics for all six experiments and the S&amp;P500. In the table, FV stands for Final Value, CAGR for the Compound Annual Growth Rate, Vol represents the annualised volatility and MDD stands for the maximum drawdown. Sharpe and Sortino are the annualised Sharpe and Sortino ratios respectively<ref type="foot" target="#foot_8">8</ref> .  Without costs and lots, both carefully selected strategies vastly outperform the S&amp;P500 in terms of performance (FV, CAGR) and risk-adjusted performance (Sharpe, Sortino). In the long only strategy, the only costs involved are fractional costs when buying and selling shares or contracts and costs associated with futures rollover, when the entire position is liquidated and repurchased. With regards to performance, the addition of odd lots and costs caused a decrease of 0.74% in CAGR and a ≈ 4% decrease in both Sharpe and Sortino ratios. When round lots are employed we are likely to observe worse second stage approximations of the first stage weights. With the expectation that the first stage weights are a good choice we observe with round lots a 1.05% drop in CAGR, a 6% drop in the Sharpe ratio and a 7% drop in the Sortino ratio.</p><p>On top of the other costs, borrowing costs are also applicable for the long/short experiments. With odd lots we observe a decrease of 2.75% in CAGR, 13% in the Sharpe ratio and 14% in the Sortino, while with round lots the results worsen a bit further with drops of 3.04% in CAGR, 14% in the Sharpe ratio and 15% in the Sortino ratio. In fact the long/short performance with round lots is just slightly better than the corresponding long only strategy, but with much higher risk (Vol, MDD) and hence worse risk-adjusted returns. This performance however is likely no worse than what would have been observed in practice since the asset universe under consideration is sufficiently liquid for the relatively small initial investment. Moreover, the rent and fractional costs applied possibly overestimate true costs that would have been charged by brokers.</p><p>With regards to the second stage applicability, an important consideration is the computational time required to solve it, especially when borrowing costs are included. This is critical since in a live trading environment, once a decision is made regarding portfolio weights, the system responsible for trading has to wait until the second stage is solved and weights are converted into trades. Table <ref type="table" target="#tab_2">2</ref> shows statistics related to the number of trades, portfolio cardinality (number of assets with non-zero weights) and the computational time required to solve each of the 132 second-stage instances (those due to portfolio rebalances). We remind the reader that the second stage is executed after each rebalance as well as rollover (non-rebalancing) days; the calculation of statistics however includes only those due to rebalances. In general the second stage execution due to rollover is faster as fewer trades are required, which could skew the statistics positively.  From the table we observe that the long only strategies required fewer trades and had less diversified portfolios in general when compared to the long/short strategies. Under these conditions, the second stage computational time is negligible. The long/short strategies had more diversified portfolios, more trades and required borrowing costs; yet in the worst case the second stage required only 1.16s to be solved to optimality. If this case study represents a relatively realistic setting for an investment fund, then in such case the second stage could be incorporated into a live trading system without major concerns.</p><p>Another important aspect in the second stage is the solution quality in terms of deviation from the desired first stage proportions. Table <ref type="table">3</ref> shows, for each experiment, selected statistics regarding the total deviation, per rebalance, from the corresponding desired proportions. The total deviation is the sum of the absolute values of all individual asset deviations. As an illustration, if the desired portfolio was 120% in asset A, -20% in asset B and 0% in cash, and the real portfolio invests 117% in A, 2% in cash and -19% in B, then the total deviation is 6%. Table <ref type="table">3</ref>: Total deviations (in %), per rebalance, from desired proportions. Selected statistics, where P α denotes the α th percentile.</p><p>From Table <ref type="table" target="#tab_0">1</ref> we had observed a decay in overall performance when employing round lots instead of odd lots. Non surprisingly, Table <ref type="table">3</ref> shows that total deviations under the more strict round lot policy is generally higher, meaning second stage solutions that are further from the desired first stage proportions. With odd lots, the average total deviation (including all assets) was only 0.6% and 1.08% for long only and long/short strategies. The median was even lower, at 0.11% and 0.13%, which suggests the presence of scattered outliers among the 132 rebalances. With round lots, not only the averages are higher (4.92% and 7.89%), but also the medians are relatively closer to the mean (4.34% and 7.03%). In the worst case, we observed around 21% total deviation. We emphasise, however, that this is the sum of deviations of around 20-80 trades (as observed in Table <ref type="table" target="#tab_2">2</ref>), so still not a high value overall.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.2.1">Effect of initial investment</head><p>The smaller the portfolio financial value is, the less likely the second stage model is to find solutions that are to the desired proportions. In this section, we vary the initial investment of both the long only and long/short strategies of this case study. The average deviation per rebalance as a function of the initial investment is shown in Figure <ref type="figure" target="#fig_3">3</ref>, . For small investment values, such as $1,000, we observe very large average deviations since a single lot of most assets surpasses the investment proportion allocated to it. We observe around 250% and 200% average deviation for the long/short and long only strategies with round lots. However, as the initial investment grows the average deviations drop substantially. With a $10,000,000 investment, the average long/short total deviation with round lots drops to 0.41%.</p><formula xml:id="formula_69">1 k 2 k 5 k 1 0 k 2 0 k 5 0 k 1 0 0 k 2 0 0 k 5 0 0 k 1 M 2 M 5 M 1 0 M Initial investiment ($)</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.3">Second stage, computational time</head><p>In the previous section, the computational time required to solve the second stage was negligible. In this section, we force more diversification and more trades in order to evaluate its execution time under more demanding scenarios. We make use of the long only and long/short strategies of Section 6.2 with a few changes. In both, we force diversification by imposing upper bounds on all assets, that is, by defining appropriate values for u + and u -.</p><p>We also increase the initial investment capital from $500,000 to $50 million to more easily diversify the portfolios, especially when lots are considered. We do not allow investment in cash, so as to prevent cash from taking a large proportion of the portfolios. We ignore rollover, so focusing only on the 132 rebalances. We also changed the threshold of accepted percentage of invalid prices from 5% to 20% with the goal of increasing the size of the asset universe. For the optimisation of the second stage, we set a time limit of 300s per rebalance.</p><p>We simulate all lot policies: none (no lots), odd and round. For the long only strategy, we include fractional costs and varied u + = (1%, 0.5%, 0.25%). For the long/short strategy, we include fractional and borrowing costs. Here, setting u + = u -= 0.25% results in many infeasible problems. Hence with no lots we defined u + = u -= (2%, 1%, 0.5%). For the odd and round lot policies, we also tested u + = u -= 5%. We display a summary of these experiments in Table <ref type="table">4</ref>. Table <ref type="table">4</ref>: Computational time statistics for 132 rebalances for different strategies, where P α denotes the α th percentile.</p><p>For each one of the experiments, the table displays basic statistics regarding cardinality and the number of trades. The larger these numbers are, the larger the second-stage model is. The next columns show the average, minimum and maximum computational times. An instance that reaches the time limit is labelled TL. The column TL shows how many of the 132 instances reached the time limit. For these instances, the solution employed in the simulation is the best solution found as the solver is halted. Finally, the last set of columns shows optimality gaps statistics among the instances that are not solved within the time limit.</p><p>As an illustration, among the long only experiments with round lots and u + = 0.25%, the 132 rebalances chose on average non-zero weights in 401 different assets. The output of the second stage suggested on average 304 trades to be executed, with a minimum of 254 and a maximum of 402. In 105 rebalances, the second stage was not optimally solved within 300s. The 90 th percentile optimality gap among these 105 instances was 0.19%, in the worst case it was 8.82%. These particular instances are considerably larger than the case study illustrated in Section 6.2.</p><p>Based on the data presented in the table, we draw the following conclusions:</p><p>• The rows labelled None do not include integer variables representing lots. The long only experiments only consider fractional costs, so the models are linear. In this case, the computational times are negligible. The long/short experiments on the other hand require binary variables to model borrowing costs. Yet, all 396 rebalances (for three different values of u + , u -) were solved quickly, with an average of 2.8s for the largest instances and a worst case of 11.1s.</p><p>• The long only experiments with both odd and round lots make use of general integer variables, but no binary variables for borrowing costs. The computational times grow considerably as for u + = 0.25%, 157 instances were not solved to optimality. Yet among the unsolved instances, the optimality gaps were very small among the vast majority of instances, with averages of 0.06% and 0.25% for odd and round lots. An outlier ended with an 8.82% gap, but the second largest gap (not reported in the table) was 0.30%. We did not observe noticeable difference between odd and round lots.</p><p>• The hardest instances are those that include lots and borrowing costs. Among these, those with round lots stand out. The optimality gaps among unsolved long/short instances with odd lots have a worst case of 0.23%. With round lots and u + = u -= 0.5%, however, only one instance was solved within 300s. The average gap was 6.15% and the 90 th percentile was 12.64%, with a worst case of 21.75%. Figure <ref type="figure" target="#fig_4">4</ref> shows the whole distribution of gaps.</p><p>While at this point the second stage performance starts to deteriorate, the distribution is still concentrated on the smaller values, with 72 out of 132 instances exhibiting gaps of at most 5%. Nevertheless, as future work we intend to study alternative algorithms and reformulations in order to reduce its overall computational time for these hardest cases. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.4">Evaluation of the second stage objective function</head><p>As previously discussed, Objectives ( <ref type="formula" target="#formula_40">43</ref>) and ( <ref type="formula" target="#formula_66">63</ref>) combine two goals by minimising a weighted sum of deviation and costs. In order to compute these weights, parameter θ standardises potential different costs and rates and is defined as the relative importance of minimising costs as compared to minimising deviation. Since we adopt the policy that minimising deviation takes precedence, we employ θ &lt; 1.</p><p>In this section, we assess how different values of θ influence both deviation and costs. Within the formulation, fractional and borrowing costs are held in nonnegative variables G i and H j i respectively, constrained by inequalities. When the inequalities are binding, these variables hold the exact required costs for moving from the current portfolio to the next. However, since minimising costs tends to be conflicting with minimising deviation, there is no assurance that at the optimal solution all inequalities are binding. A very small value of θ increases the chance of non-binding inequalities (surpluses), while a large value of θ might increase overall deviation. In all experiments reported in this paper, we allocated eventual surpluses into cash.</p><p>For both long only and long/short experiments, we vary θ = (0.50, 0.49, . . . , 0.01). Figures 5 and 6 display the long/short results with odd and round lots. The corresponding long only figures are shown in the appendix accompanying this paper<ref type="foot" target="#foot_9">9</ref> .</p><p>In the figures, the left y-axis shows the average total deviation, calculated as 100 × the sum of all individual deviations for all assets and rebalances, divided by the number of rebalances. The right y-axis shows the average surplus in both fractional and borrowing costs, calculated as the sum of all surpluses for all assets in all rebalances divided by the number of rebalances.    With odd lots, the average deviation drops from around 1.13% when θ = 0.5 to around 1.08% when θ = 0.01. Meanwhile, the cost surplus is zero from θ = 0.50 down to θ = 0.06, sharply increasing when θ = 0.02. We empirically observe the average deviation plateauing for θ &lt; 0.2. With round lots, the average deviation drops from around 9.3% when θ = 0.5 to around 7.6% when θ = 0.01. The average deviations are higher as round lots are much more restrictive, but they also drop more strongly with no obvious plateau. At the same time, costs surpluses increasing rapidly for the smallest θ values.</p><p>In order to choose the "sweet spot" for θ, we take into consideration that our main goal is minimising deviation, and that the further to the right on the chart, the smallest the average deviation. However we do not wish to distort the results by accepting large surpluses, although at least for the long/short strategy we might consider a minor (negligible) surplus to be acceptable. Hence we set, as an appropriate empirical choice, θ = 0.05. The long only results shown in the appendix also support this choice.</p><p>Table <ref type="table">5</ref>: Woodside model results, decay in expected returns (when compared to lot-unconstrained first stage solutions) and computational time (with P α as the α th percentile).</p><p>first stage in-sample portfolio and the Woodside optimal or best solution. We calculate the relative difference between both and show selected statistics under columns labelled Exp. return relative decline. Under label Computational time, we display time statistics as well as the number of rebalances without proven optimality under column TL.</p><p>As an example, with odd lots and scale 1 × 10 0 (so the original obj. function), all rebalances were solved to optimality within 0.6s. The Woodside optimal solutions were however on average 89.12% as high as the first stage expected returns. In a particular case, the Woodside expected return was only 6.14% of the first stage expected return. By simply scaling the obj. function, the solutions obtained were much better. With scale 1 × 10 4 , the solutions were on average 99.95% as good as those of the first stage. This difference is directly caused by numerical inaccuracies, it also illustrates why we chose to adopt the simplistic objective of maximising return as it is not necessarily trivial to mitigate these problems with other objectives.</p><p>With round lots, the numerical issues still happen, but less prominently. The fact that the statistics with scales 1 × 10 3 and 1 × 10 4 are identical suggest that they might be non-existent for these particular values. On the other hand, the solver reaches the time limit more frequently. Even though most rebalances are solved quickly (as shown in the 90 th -percentile), the solver still faced difficulties when faced with possibly the simplest portfolio optimisation problem.</p><p>In order to compare the quality of the Woodside solutions with those of our second stage, we employ the model with scale 1 × 10 4 . We also include, in the second stage, the following additional constraints:</p><formula xml:id="formula_70">m i ≤ u + p i ∈ N 1<label>(72)</label></formula><p>Constraints ( <ref type="formula" target="#formula_70">72</ref>) are required or, otherwise, the second stage portfolio may invest above the upper limit in assets with high expected returns, which may unfairly lead to a portfolio expected return that is higher than the one obtained in the first stage. Note however that we do not impose this bound on cash, which could otherwise result in infeasible models. The cash limit must exist in the Woodside model since, on days with negative expected returns, the model may choose to invest everything in cash. While this could theoretically result in an advantage for the second stage, we observed that in all experiments in this section, all instances had positive expected returns as optimal solutions.</p><p>We display comparative results between Woodside and the second stage in-sample solutions in Table <ref type="table" target="#tab_6">6</ref>. We include results for various values for the initial investment.</p><p>Under label Woodside, column Success shows in how many rebalances the solver was able to find a feasible solution within 900s. The other columns are basic statistics regarding the decay in expected return when comparing the solutions against the lot-unconstrained first stage solutions. The same statistics are also shown for the second stage under label Second stage. We then take the difference between the decays observed in Woodside and the second stage for each rebalance, In all rebalances where this happened, however, Woodside found the optimal, so numerical errors account for all of them. With a smaller initial investment, and especially with rounds lots, the less likely both Woodside and the second stage are to find solutions that approximate well that of the first stage. With odd lots, with a small initial investment of $100,000 the differences are minor: the second stage obtained expected returns that were on average 0.52% worse than those of Woodside. As the initial investment increases, numerical errors appear more often while solving Woodside: with $5 million, in 114 out of 131 successful rebalances the Woodside solution was actually worse than that of the second stage.</p><p>With round lots, however, we observe more benefits in using a single-stage approach. In Table <ref type="table">5</ref> we had noticed a smaller effect of numerical errors in Woodside, here in every successful rebalance Woodside found a better solution than the second stage. This does not mean that numerical errors did not happen, but we also cannot state that they did. With an initial investment of $100,000, the Woodside expected returns were on average 33.11% closer than the second stage to the first stage solutions. This difference reduces gradually until, with $5 million, they become all smaller than 1%.</p><p>From these results, we can conclude that there is clear a case where employing lots and costs in the first stage is advantageous, as observed in the round lots and small initial investment results in Table <ref type="table" target="#tab_6">6</ref>. However, any investor that chooses to do so must be careful with the accuracy of solutions due to the problems exposed in this section. In this sense, the second stage can be employed as a tool for judging the quality of the single stage approach since, due to the separation of relative and absolute variables in different models, numerical errors are much less likely to occur. r,b)  σ(b,b) , where r represents the out-of-sample returns of the investment strategy, b the out-of-sample S&amp;P500 returns and σ(x, y) the sample covariance between x and y. Traditionally, one expects a long only strategy that only invests in S&amp;P500 stocks to have β S&amp;P500 close to 1. In a market neutral strategy, on the other hand, we look for β S&amp;P500 to be close to 0. The potential advantage of this approach is reducing exposure to market risk.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6.6">Case study: leverage</head><formula xml:id="formula_71">Let β S&amp;P500 = σ(</formula><p>A traditional way to create market neutral portfolios is by purchasing short positions in the index. Suppose a portfolio composed of 50% in long positions in S&amp;P500 stocks and 50% in an unleveraged short position in S&amp;P500 futures. If we isolate the long part of the portfolio and find that it has β S&amp;P500 = 1, then we have a perfect market neutral strategy. The only problem with this approach is that there is no assurance that the strategy expected return will be different from zero. We may adopt then an active strategy by looking to outperform the index while enforcing market neutrality, so with this objective we employ the same SSD approach from <ref type="bibr" target="#b34">Valle et al. [2017]</ref> for choosing SSD-dominating "market neutral" portfolios. This may not yield exactly β S&amp;P500 = 0, but may be good enough for the purpose of the investment policy in effect. Now when we consider leverage we have further options in building market neutral strategies. If we adopt a 2× leverage for the short position in S&amp;P500 futures, then we might invest 66.7% in long and 33.3% in a short with the same effect. Likewise, with 3× leverage we can adopt 75% and 25% proportions. A potential advantage of this approach is that the solver has more "freedom" in building SSD-dominating portfolios by having more capital available to invest in long positions.</p><p>In this section, we illustrate this approach. We adopt an odd lots policy and remove all derivatives from the long only strategy from Section 6.2, so with an asset universe with exclusively stocks participating in the S&amp;P500. We restrict the out-of-sample period to be from 31 st December 2019 until 29 th December 2023. In the market neutral strategies, we set υ -= υ + = <ref type="bibr">[0.50, 0.33, 0.25, 0.20]</ref>. Let SP500FUT be the asset identifier for S&amp;P500 futures. We also set ε SP500FUT = δ SP500FUT = <ref type="bibr">[-0.50, -0.33, -0.25, -0.20]</ref> <ref type="foot" target="#foot_11">11</ref> and L SP500FUT = <ref type="bibr">[1,</ref><ref type="bibr">2,</ref><ref type="bibr">3,</ref><ref type="bibr">4]</ref>.</p><p>Results for these strategies are shown Figure <ref type="figure" target="#fig_7">7</ref> and Table <ref type="table" target="#tab_7">7</ref>. To avoid clutter, Figure <ref type="figure" target="#fig_7">7</ref> displays only 3 of the 5 strategies, the lines are also smoothed with univariate splines.   <ref type="table" target="#tab_0">1</ref>, with β S&amp;P500 as an additional column. Here the long only strategy outperformed the S&amp;P500, growing 107% in the period, but also had a (high) β S&amp;P500 = 0.724. By adopting the unleveraged market neutral strategy, β S&amp;P500 was reduced to 0.097, but we also reduced the out-of-sample returns (up 57%) by adopting a short position in S&amp;P500 (which increased 48% in value during this period). By employing leverage, we are able to gradually improve returns (up to 86% with L S&amp;P500 = 4) while maintaining similar β S&amp;P500 levels. Note also that, by adding leverage, we also observed a small increase in risk (Vol, MDD), not enough however to offset the increase in risk-adjusted returns (Sharpe, Sortino). Even with 4× leverage, both drawdown and volatility were lower than the same statistics for both S&amp;P500 and the long only strategy.</p><p>In summary, if used with care, leverage has the potential to improve returns in a strategy without necessarily increasing risk. This was one of the main motivators in including futures contracts in our two-stage framework, and in our view opens up different research possibilities.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7">Managerial insights</head><p>So far, we have considered several real-world features in our standardised two-stage framework. While we hope that this helps bridging the gap between theory and practice in portfolio selection, the list of features included is far from exhaustive. Different exchanges enforce different rules and financial instruments are subject to area-specific conditions. In this section we discuss practical aspects and features not yet considered, and which could consist in future extensions of this framework.</p><p>In a practical sense, current (live) asset prices are required for applying the second stage. An assumption we made implicitly is that, once a second stage decision is made, assets are to be traded at prices V i . In cases where solving the second stage requires a few seconds (or more), real trading prices might deviate from the expected, and which in extreme cases could render the suggested portfolio not directly investable. To mitigate this issue, one could (i) trade at the end of the day, which is generally less volatile and/or (ii) impose a penalty at the price used in the second stage (if we are expecting an asset to be bought, increase its current price by a factor). If the second stage execution time is negligible, most likely these changes will be minor and random (sometimes upwards, sometimes downwards), with little observable effect.</p><p>Another important issue not yet mentioned is liquidity. The second stage may suggest trades that are too illiquid when we compare its size to the average trading daily volume for the asset under consideration. There are three possible ways to tackle this: (i) by adding turnover constraints in the first stage, (ii) by limiting the size of trades that can be recommended in the second stage as a function of the investment size and volume or (iii) by adopting trading policies after the second stage. One example of policy commonly adopted (for infrequently rebalanced portfolios) is to split large trades into small ones, executed throughout multiple days. A possible extension of the twostage approach is to make it multistage: Within the next days, suggest trades in multiple days such that not only the final portfolio matches the recommended one as close as possible, but so do the temporary portfolios within the limits of liquid trades. <ref type="bibr" target="#b5">Bertsimas et al. [1999]</ref> also proposed a two-stage approach which uses relative variables in both stages. It was constructed to satisfy the requirements of a specific enterprise with specific goals, also since it does not use absolute variables some functions (such as costs and liquidity) have to be approximated rather than being modelled with real values. However some considerations under that approach could be adopted into the second stage, such as minimising the number of trades or the deviation not only per individual asset, but also per asset class. Another possibility is to reformulate the objective function of the second stage in order to minimise the maximum deviation instead of the sum of deviations.</p><p>We have also not included dividends nor other cost functions. We have dealt with dividends so far at data level by assuming prices that are adjusted immediately prior to solving the first and second stages. Regarding costs, our limited practice suggests that other cost functions such as fixed or piecewise convex or concave cost are either less common or can be eliminated through negotiation with brokers (although the latter is sometimes used to approximate liquidity). The second stage could however be extended to include these.</p><p>Finally, we have not considered the issue of taxes, which might have to be paid when closing certain positions. This is very region-specific; in certain situations we have observed that funds are exempt from paying taxes during operations, but have to pay them when clients request a withdrawal. We have also observed a situation where the government charges taxes periodically.</p><p>We are yet to study how to incorporate these generically into the two-stage framework.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="8">Conclusions</head><p>In this paper, we propose a two-stage approach with the goal of building portfolios that can be directly translated into real-world investment. The main contribution of our paper is in providing a tool that more closely constructs directly investable portfolios, and we hope this approach helps in reducing the gap between computational financial decisions and actual investing. One particular application is in facilitating purely automated investment tools. In our framework we also explicitly consider, for the first time, mixing futures contracts and equities in the same portfolio.</p><p>The first stage consists in solving the portfolio selection problem and deciding appropriate weights. At this stage several real-world constraints, most previously proposed in literature, are applicable. In the second stage, we propose a goal-programming approach whose main decision variables are shares to be held for each asset. At this stage, we consider other real-world criteria which require an absolute formulation, such as lots and costs. Another novel contribution of this paper is in considering also borrowing costs for short positions.</p><p>We present extensive computational results that discuss the second stage applicability. We also compare our approach with a mixed approach from the literature, and conclude that among other issues mixed formulations are susceptible to numerical inaccuracies. Our results suggest that in most cases the benefits of employing a single stage with regards to a two-stage approach are somewhat marginal. Regardless, whenever it is advantageous this single stage approach can be "condensed" into our proposed first stage as part of the complete two-stage framework.</p><p>Several research lines can be explored as future work, some of them have been mentioned in Section 7. On top of that we also hope to expand the framework to support other asset classes such as options and fixed-income instruments. We intend to explore combinatorial optimisation techniques and possibly alternative reformulations for improving the second stage computational performance in more extreme scenarios.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head></head><label></label><figDesc>0 as the upward and downward deviation from w * c in the final portfolio. d + i , d - i ≥ 0 as the upward and downward deviation from the implied financial value of the number of shares that perfectly represents the proportion w * i , i ∈ N of the final portfolio.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 1 :Figure 2 :</head><label>12</label><figDesc>Figure 1: Out-of-sample cumulative performance, long only experiments with and without lots/costs.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: Average total deviation as a function of the initial investment.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: Optimality gaps distribution among 131 unsolved rebalances, long/short strategy with round lots and u + = u -= 0.5%.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: Long/short with odd lots, various values of θ.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Figure 6 :</head><label>6</label><figDesc>Figure 6: Long/short with round lots, various values of θ.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head>Figure 7 :</head><label>7</label><figDesc>Figure 7: Out-of-sample cumulative performance, long only and long/short market neutral experiments.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc>Comparative out-of-sample statistics</figDesc><table><row><cell>Strategies</cell><cell cols="3">FV CAGR Vol MDD Sharpe Sortino</cell></row><row><cell>Long only</cell><cell>5.23 16.23 17.42 24.68</cell><cell>0.82</cell><cell>1.20</cell></row><row><cell>Long only (odd lots)</cell><cell>4.88 15.49 17.41 25.08</cell><cell>0.78</cell><cell>1.15</cell></row><row><cell cols="2">Long only (round lots) 4.73 15.18 17.42 25.56</cell><cell>0.77</cell><cell>1.12</cell></row><row><cell>Long/short</cell><cell>6.63 18.76 23.10 39.93</cell><cell>0.76</cell><cell>1.10</cell></row><row><cell>Long/short (odd lots)</cell><cell>5.12 16.01 23.13 42.43</cell><cell>0.66</cell><cell>0.95</cell></row><row><cell cols="2">Long/short (round lots) 4.98 15.72 23.11 42.74</cell><cell>0.65</cell><cell>0.93</cell></row><row><cell>SP500</cell><cell>3.36 11.65 17.24 33.92</cell><cell>0.59</cell><cell>0.82</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 2 :</head><label>2</label><figDesc>Number of trades, portfolio cardinality and second stage computational time per strategy</figDesc><table /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_6"><head>Table 6 :</head><label>6</label><figDesc>Comparison of expected return decay (against the first stage lot-unconstrained optimal solutions) between the Woodside model and the second stage for various values for the initial investment. P α denotes the α th percentile. and show corresponding statistics under label Difference. Only successful Woodside rebalances are included in this calculation. The last column, labelled &lt; 0, shows in how many rebalances the Woodside solution was actually worse than the second stage solution. Since all expected returns are positive this can be either caused by numerical inaccuracies or suboptimal Woodside solutions.</figDesc><table><row><cell>Lots</cell><cell>Initial</cell><cell>Woodside</cell><cell>Second stage</cell><cell cols="2">Difference</cell></row><row><cell></cell><cell>investment</cell><cell cols="4">Success Min Avg Max Min Avg Max Min P 25 Avg Median P 75 Max &lt; 0</cell></row><row><cell></cell><cell>100k</cell><cell cols="3">130 96.51 99.70 99.96 95.47 99.18 99.87 0.06 0.27 0.52</cell><cell>0.44 0.70 1.82</cell><cell>0</cell></row><row><cell></cell><cell>200k</cell><cell cols="3">132 98.59 99.84 99.99 98.10 99.60 99.93 0.04 0.13 0.25</cell><cell>0.21 0.34 0.66</cell><cell>0</cell></row><row><cell>Odd</cell><cell>500k</cell><cell cols="3">130 99.48 99.92 100.00 99.20 99.83 99.96 -0.00 0.04 0.09</cell><cell>0.07 0.12 0.33</cell><cell>1</cell></row><row><cell></cell><cell>1M</cell><cell cols="3">132 99.66 99.95 100.00 99.59 99.92 99.98 -0.03 0.01 0.03</cell><cell>0.03 0.05 0.17 20</cell></row><row><cell></cell><cell>5M</cell><cell cols="3">131 99.83 99.97 100.00 99.87 99.98 100.00 -0.14 -0.02 -0.02</cell><cell>-0.02 -0.01 0.03 114</cell></row><row><cell></cell><cell>100k</cell><cell cols="3">128 59.14 83.69 95.43 21.68 50.53 78.24 15.14 25.54 33.11</cell><cell>34.28 38.55 59.14</cell><cell>0</cell></row><row><cell></cell><cell>200k</cell><cell cols="3">128 82.70 93.16 98.57 43.81 73.29 90.50 6.31 13.67 19.74</cell><cell>18.47 25.18 40.82</cell><cell>0</cell></row><row><cell>Round</cell><cell>500k</cell><cell cols="3">129 91.96 97.53 99.36 74.18 89.28 96.64 2.61 5.77 8.26</cell><cell>7.25 10.64 20.12</cell><cell>0</cell></row><row><cell></cell><cell>1M</cell><cell cols="3">130 92.62 98.77 99.71 87.84 94.70 98.32 1.16 2.80 4.10</cell><cell>3.58 5.09 10.45</cell><cell>0</cell></row><row><cell></cell><cell>5M</cell><cell cols="3">131 98.98 99.74 99.93 98.96 99.69 0.20 0.51 0.78</cell><cell>0.66 0.93 2.69</cell><cell>0</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_7"><head>Table 7 :</head><label>7</label><figDesc>Comparative out-of-sample statistics Table 7 displays the same statistics as Table</figDesc><table><row><cell>Strategies</cell><cell cols="3">FV CAGR Vol MDD Sharpe Sortino</cell><cell>β</cell></row><row><cell>Long only</cell><cell>2.07 19.99 24.59 26.35</cell><cell>0.77</cell><cell cols="2">1.11 0.724</cell></row><row><cell cols="2">Market neutral, L SP500FUT = 1 1.57 12.00 17.96 14.02</cell><cell>0.60</cell><cell cols="2">0.86 0.097</cell></row><row><cell cols="2">Market neutral, L SP500FUT = 2 1.79 15.70 19.92 16.05</cell><cell>0.72</cell><cell cols="2">1.05 0.110</cell></row><row><cell cols="2">Market neutral, L SP500FUT = 3 1.84 16.55 20.73 17.72</cell><cell>0.73</cell><cell cols="2">1.09 0.093</cell></row><row><cell cols="2">Market neutral, L SP500FUT = 4 1.86 16.81 20.96 18.70</cell><cell>0.74</cell><cell cols="2">1.10 0.084</cell></row><row><cell>SP500</cell><cell>1.48 10.24 23.01 33.92</cell><cell>0.44</cell><cell>0.61</cell><cell>-</cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1" xml:id="foot_0"><p>https://robinhood.com/us/en/support/articles/fractional-shares/, last visited 7 th May</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2024" xml:id="foot_1"><p></p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2" xml:id="foot_2"><p>https://www.cmegroup.com/markets/equities/sp/e-mini-sandp500.contractSpecs.html, last visited 7 th May 2024.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="3" xml:id="foot_3"><p>Available at https://github.com/cristianoarbex/portfolioSimulationData</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="4" xml:id="foot_4"><p>https://www.investopedia.com/terms/r/roundlot.asp, last visited 7 th May 2024.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="5" xml:id="foot_5"><p>https://www.cmegroup.com/markets/equities/sp/e-mini-sandp500.html, last visited 7 th May 2024.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="6" xml:id="foot_6"><p>https://www.cmegroup.com/markets/metals/precious/gold.html, last visited</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="7" xml:id="foot_7"><p>th May 2024. 7 https://www.cboe.com/tradable_products/vix/mini_vix/, last visited 7 th May 2024.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="8" xml:id="foot_8"><p>An appendix available at https://github.com/cristianoarbex/portfolioSimulationData details all statistics calculations.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="9" xml:id="foot_9"><p>https://github.com/cristianoarbex/portfolioSimulationData</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="10" xml:id="foot_10"><p>The details are shown in an appendix available at https://github.com/cristianoarbex/ portfolioSimulationData.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="11" xml:id="foot_11"><p>This notation is found in the appendix.</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>Acknowledgements</head><p>Cristiano <rs type="person">Arbex Valle</rs> was funded by <rs type="funder">FAPEMIG</rs> grant <rs type="grantNumber">APQ-01267-18</rs>.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_TvyRsMh">
+					<idno type="grant-number">APQ-01267-18</idno>
+				</org>
+			</listOrg>
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Strategy</head><p>Lots u + , u In this section, we assess the trade-off between the two-stage approach and the alternative of incorporating lots and weights in a single formulation. For this purpose, we implemented the constraints proposed by <ref type="bibr" target="#b35">Woodside-Oriakhi et al. [2013]</ref> (hereby referred to as the Woodside model) into our framework 10 . The major difference is that while the Woodside model restricts the search space into "lot-feasible" portfolios, in our approach we attempt to approximate the lot-unconstrained portfolio with no regards to how this affects the objective value achieved in the first stage.</p><p>Comparing both approaches, however, is not necessarily straightforward. Consider a risk minimisation approach and suppose that the portfolio is constrained to not invest in cash. Even so, in the Woodside model some investment in cash is unavoidable as it is generally impossible to satisfy all integrality constraints while using all available funds. At the same time, cash is low-risk, so there is also an incentive to invest as much as possible in it. Other objectives may require other actions, such as adapting the Woodside budget constraint when employing ratio models. In summary applying the Woodside model with different portfolio decision criteria requires careful examination to detect potential points of conflict.</p><p>Another difficulty comes from the mixed nature of the Woodside model, combining both relative and absolute variables. When the portfolio financial value is large, both very large and very small coefficients appear in the formulation, which makes the model susceptible to numerical inaccuracies. We had first chosen minimising CVaR as objective, and we immediatelly observed this issue: in numerous cases, the calculated CVaR from the second stage portfolio was lower (better) than the one from Woodside, which is theoretically impossible. Upon further inspection we detected the root cause of this behaviour to be numerical errors. We confirmed this issue by verifying its occurrence when employing different solvers (apart from CPLEX).</p><p>Due to this initial difficulty, we chose the simpler first stage objective of maximising the portfolio expected return. In the Woodside model, this objective eliminates the incentive to invest in cash unless the optimal solution within risky assets has a negative expected return. It is also easier to control for numerical inaccuracies as shown below.</p><p>Apart from the change in objective, we employ the long only strategy from Section 6.2 with the following changes. We impose a time limit of 15 minutes (900s) for each Woodside rebalance, and we set the initial investment to $1 million. We define the cash (risk free) return as zero and we set u + = c + = 0.05, c -= 0. The former defines an upper bound of 5% on all assets as well as cash, and it helps prevent trivial portfolios that invest everything in the asset with the highest expected return. We also do not employ shorting nor rollovers of futures contracts. In the absence of numerical errors, the Woodside single stage solution is always a portfolio with a higher or equal expected return than the second stage solution.</p><p>In order to mitigate numerical errors in the Woodside model we simply scale the objective function by multiplying all terms by a constant. Woodside model results are shown in Table <ref type="table">5</ref>.</p><p>Within each lots policy, the only difference between the models is the value multiplied by the objective function coefficients (column Scale). In some rare rebalances, the solver was unable to find any feasible solution within the time limit, under column Sol. found we show how many rebalances were successful. For each successful rebalance, we calculate the expected returns of the </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Conflicts of interest</head><p>None declared.</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">A simple algorithm to incorporate transactions costs in quadratic optimisation</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Chistopher</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nigel</forename><surname>Adcock</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Meade</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/0377-2217(94)90397-2</idno>
+	</analytic>
+	<monogr>
+		<title level="j">European Journal of Operational Research</title>
+		<imprint>
+			<biblScope unit="volume">79</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="85" to="94" />
+			<date type="published" when="1994">1994</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">A comparison of MAD and CVaR models with real features</title>
+		<author>
+			<persName><forename type="first">Enrico</forename><surname>Angelelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Renata</forename><surname>Mansini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Grazia</forename><surname>Speranza</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.jbankfin.2006.07.015</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Banking &amp; Finance</title>
+		<imprint>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page" from="1188" to="1197" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Kernel search: A new heuristic framework for portfolio selection</title>
+		<author>
+			<persName><forename type="first">Enrico</forename><surname>Angelelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Renata</forename><surname>Mansini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Grazia</forename><surname>Speranza</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10589-010-9326-6</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Computational Optimization and Applications</title>
+		<imprint>
+			<biblScope unit="volume">51</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="345" to="361" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">A global optimization problem in portfolio selection</title>
+		<author>
+			<persName><forename type="first">Mike C Bartholomew-Biggs</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">J</forename><surname>Kane</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10287-006-0038-4</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Computational Management Science</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="329" to="345" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Portfolio-optimization models for small investors</title>
+		<author>
+			<persName><forename type="first">Philipp</forename><surname>Baumann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Norbert</forename><surname>Trautmann</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s00186-012-0408-3</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Mathematical Methods of Operations Research</title>
+		<imprint>
+			<biblScope unit="volume">77</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="345" to="356" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Portfolio construction through mixedinteger programming at Grantham, Mayo, Van Otterloo and Company</title>
+		<author>
+			<persName><forename type="first">Dimitris</forename><surname>Bertsimas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Christopher</forename><surname>Darnell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Robert</forename><surname>Soucy</surname></persName>
+		</author>
+		<idno type="DOI">10.1287/inte.29.1.49</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Interfaces</title>
+		<imprint>
+			<biblScope unit="volume">29</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="49" to="66" />
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">An exact solution approach for portfolio optimization problems under stochastic and integer constraints</title>
+		<author>
+			<persName><forename type="first">Pierre</forename><surname>Bonami</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Miguel</forename><forename type="middle">A</forename><surname>Lejeune</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Operations Research</title>
+		<imprint>
+			<biblScope unit="volume">57</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="650" to="670" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Heuristics for cardinality constrained portfolio optimisation</title>
+		<author>
+			<persName><forename type="first">T-J</forename><surname>Chang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Nigel</forename><surname>Meade</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><forename type="middle">E</forename><surname>Beasley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yazid</forename><forename type="middle">M</forename><surname>Sharaiha</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/S0305-0548(99)00074-X</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Computers &amp; Operations Research</title>
+		<imprint>
+			<biblScope unit="volume">27</biblScope>
+			<biblScope unit="issue">13</biblScope>
+			<biblScope unit="page" from="1271" to="1302" />
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Semi-absolute deviation rule for mutual funds portfolio selection</title>
+		<author>
+			<persName><forename type="first">Luca</forename><surname>Chiodi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Renata</forename><surname>Mansini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maria</forename><forename type="middle">Grazia</forename><surname>Speranza</surname></persName>
+		</author>
+		<idno type="DOI">10.1023/B:ANOR.0000004772.15447</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Annals of Operations Research</title>
+		<imprint>
+			<biblScope unit="volume">124</biblScope>
+			<biblScope unit="page" from="245" to="265" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title/>
+	</analytic>
+	<monogr>
+		<title level="j">CPLEX Optimizer</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<monogr>
+		<title/>
+		<author>
+			<persName><surname>Ibm</surname></persName>
+		</author>
+		<ptr target="https://www.ibm.com/products/ilog-cplex-optimization-studio/cplex-optimizer/" />
+		<imprint>
+			<date type="published" when="2023-10-17">October 17th 2023, 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Models and simulations for portfolio rebalancing</title>
+		<author>
+			<persName><forename type="first">Gianfranco</forename><surname>Guastaroba</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Renata</forename><surname>Mansini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Grazia</forename><surname>Speranza</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10614-008-9158-y</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Computational Economics</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page">237</biblScope>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<monogr>
+		<author>
+			<persName><forename type="first">C</forename><surname>John</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Hull</surname></persName>
+		</author>
+		<title level="m">Options futures and other derivatives, 9th edition</title>
+		<imprint>
+			<publisher>Pearson</publisher>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Portfolio optimization with factors, scenarios, and realistic short positions</title>
+		<author>
+			<persName><forename type="first">Kenneth</forename><forename type="middle">N</forename><surname>Bruce I Jacobs</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Harry</forename><forename type="middle">M</forename><surname>Levy</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Markowitz</surname></persName>
+		</author>
+		<idno type="DOI">10.1287/opre.1050.0212</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Operations Research</title>
+		<imprint>
+			<biblScope unit="volume">53</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="586" to="599" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Computational aspects of alternative portfolio selection models in the presence of discrete asset choice constraints</title>
+		<author>
+			<persName><forename type="first">Norbert</forename><forename type="middle">J</forename><surname>Jobst</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cormac A</forename><surname>Michael D Horniman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gautam</forename><surname>Lucas</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Mitra</surname></persName>
+		</author>
+		<idno type="DOI">10.1088/1469-7688/1/5/301</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Quantitative Finance</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="489" to="501" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Selecting portfolios with fixed costs and minimum transaction lots</title>
+		<author>
+			<persName><forename type="first">Hans</forename><surname>Kellerer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Renata</forename><surname>Mansini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Grazia</forename><surname>Speranza</surname></persName>
+		</author>
+		<idno type="DOI">10.1023/A:1019279918596</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Annals of Operations Research</title>
+		<imprint>
+			<biblScope unit="volume">99</biblScope>
+			<biblScope unit="issue">1-4</biblScope>
+			<biblScope unit="page" from="287" to="304" />
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">60 years of portfolio optimization: practical challenges and current trends</title>
+		<author>
+			<persName><forename type="first">Reha</forename><surname>Petter N Kolm</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Frank</forename><forename type="middle">J</forename><surname>Tütüncü</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Fabozzi</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.ejor.2013.10.060</idno>
+	</analytic>
+	<monogr>
+		<title level="j">European Journal of Operational Research</title>
+		<imprint>
+			<biblScope unit="volume">234</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="356" to="371" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<monogr>
+		<title level="m" type="main">Long-short portfolio optimisation in the presence of discrete asset choice constraints and two risk measures. Available at SSRN 1099926</title>
+		<author>
+			<persName><forename type="first">Ritesh</forename><surname>Kumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gautam</forename><surname>Mitra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Diana</forename><surname>Roman</surname></persName>
+		</author>
+		<idno type="DOI">10.2139/ssrn.1099926</idno>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Optimal lot solution to cardinality constrained meanvariance formulation for portfolio selection</title>
+		<author>
+			<persName><forename type="first">Duan</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Xiaoling</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jun</forename><surname>Wang</surname></persName>
+		</author>
+		<idno type="DOI">10.1111/j.1467-9965.2006.00262.x</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Mathematical Finance</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="83" to="101" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Genetic algorithms for portfolio selection problems with minimum transaction lots</title>
+		<author>
+			<persName><forename type="first">Chang-Chun</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Yi-Ting</forename><surname>Liu</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.ejor.2006.12.024</idno>
+	</analytic>
+	<monogr>
+		<title level="j">European Journal of Operational Research</title>
+		<imprint>
+			<biblScope unit="volume">185</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="393" to="404" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">An exact approach for portfolio selection with transaction costs and rounds</title>
+		<author>
+			<persName><forename type="first">Renata</forename><surname>Mansini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Grazia</forename><surname>Speranza</surname></persName>
+		</author>
+		<idno type="DOI">10.1080/07408170591007821</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IIE Transactions</title>
+		<imprint>
+			<biblScope unit="volume">37</biblScope>
+			<biblScope unit="issue">10</biblScope>
+			<biblScope unit="page" from="919" to="929" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Heuristic algorithms for the portfolio selection problem with minimum transaction lots</title>
+		<author>
+			<persName><forename type="first">Renata</forename><surname>Mansini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Maria</forename><forename type="middle">Grazia</forename><surname>Speranza</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/S0377-2217(98)00252-5</idno>
+	</analytic>
+	<monogr>
+		<title level="j">European Journal of Operational Research</title>
+		<imprint>
+			<biblScope unit="volume">114</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="219" to="233" />
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Twenty years of linear programming based portfolio optimization</title>
+		<author>
+			<persName><forename type="first">Renata</forename><surname>Mansini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Wlodzimierz</forename><surname>Ogryczak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Grazia</forename><surname>Speranza</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.ejor.2013.08.035</idno>
+	</analytic>
+	<monogr>
+		<title level="j">European Journal of Operational Research</title>
+		<imprint>
+			<biblScope unit="volume">234</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="518" to="535" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<title level="m" type="main">Linear and mixed integer programming for portfolio optimization</title>
+		<author>
+			<persName><forename type="first">Renata</forename><surname>Mansini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Ĺodzimierz Ogryczak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Grazia</forename><surname>Speranza</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/978-3-319-18482-1</idno>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<publisher>Springer</publisher>
+			<biblScope unit="volume">21</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Portfolio selection</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Markowitz</surname></persName>
+		</author>
+		<idno type="DOI">10.2307/2975974</idno>
+	</analytic>
+	<monogr>
+		<title level="j">The Journal of Finance</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="77" to="91" />
+			<date type="published" when="1952">1952</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">A review of portfolio planning: models and systems</title>
+		<author>
+			<persName><forename type="first">Gautam</forename><surname>Mitra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Triphonas</forename><surname>Kyriakis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Cormac</forename><surname>Lucas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mehndi</forename><surname>Pirbhad</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/B978-075065448-7.50002-1</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in portfolio construction and implementation</title>
+		<imprint>
+			<publisher>Butterworth-Heinemann</publisher>
+			<date type="published" when="2003">2003</date>
+			<biblScope unit="page" from="1" to="39" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Large-scale portfolio optimization</title>
+		<author>
+			<persName><forename type="first">Andre</forename><forename type="middle">F</forename><surname>Perold</surname></persName>
+		</author>
+		<idno type="DOI">10.1287/mnsc.30.10.1143</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Management Science</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="issue">10</biblScope>
+			<biblScope unit="page" from="1143" to="1160" />
+			<date type="published" when="1984">1984</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">An extension of the Markowitz portfolio selection model to include variable transactions&apos; costs, short sales, leverage policies and taxes</title>
+		<author>
+			<persName><forename type="first">Gerald</forename><forename type="middle">A</forename><surname>Pogue</surname></persName>
+		</author>
+		<idno type="DOI">10.2307/2325576</idno>
+	</analytic>
+	<monogr>
+		<title level="j">The Journal of Finance</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="1005" to="1027" />
+			<date type="published" when="1970">1970</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Enhanced indexation based on second-order stochastic dominance</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Roman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Mitra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Zverovich</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.ejor.2013.01.035</idno>
+	</analytic>
+	<monogr>
+		<title level="j">European Journal of Operational Research</title>
+		<imprint>
+			<biblScope unit="volume">228</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="273" to="281" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<monogr>
+		<title level="m" type="main">Realistic portfolio optimization</title>
+		<author>
+			<persName><forename type="first">Andrew</forename><surname>Rudd</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Barr</forename><surname>Rosenberg</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1979">1979</date>
+			<publisher>North-Holland Publishing Company</publisher>
+			<biblScope unit="page" from="21" to="46" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Portfolio revision: a turnover-constrained approach</title>
+		<author>
+			<persName><forename type="first">John</forename><surname>Schreiner</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Financial Management</title>
+		<imprint>
+			<biblScope unit="page" from="67" to="75" />
+			<date type="published" when="1980">1980</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">A heuristic algorithm for a portfolio optimization model applied to the Milan stock market</title>
+		<author>
+			<persName><forename type="first">M</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Grazia</forename><surname>Speranza</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/0305-0548(95)00030-5</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Computers &amp; Operations Research</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="433" to="441" />
+			<date type="published" when="1996">1996</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">A</forename><surname>Valle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Meade</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><forename type="middle">E</forename><surname>Beasley</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.omega.2013.12.003</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Absolute return portfolios</title>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="volume">45</biblScope>
+			<biblScope unit="page" from="20" to="41" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Market neutral portfolios</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">A</forename><surname>Valle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Meade</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><forename type="middle">E</forename><surname>Beasley</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s11590-013-0714-6</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Optimization Letters</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page" from="1961" to="1984" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Novel Approaches for Portfolio Construction Using Second Order Stochastic Dominance</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">A</forename><surname>Valle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Roman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Mitra</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10287-017-0274-9</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Computational Management Science</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="257" to="280" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Portfolio rebalancing with an investment horizon and transaction costs</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Woodside-Oriakhi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Lucas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">John</forename><forename type="middle">E</forename><surname>Beasley</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.omega.2012.03.003</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Omega</title>
+		<imprint>
+			<biblScope unit="volume">41</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="406" to="420" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

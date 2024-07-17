@@ -1,0 +1,1542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">The rules of multiplayer cooperation in networks of communities</title>
+				<funder ref="#_hnK9daN">
+					<orgName type="full">European Union</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2024-04-08">April 8, 2024</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Diogo</forename><forename type="middle">L</forename><surname>Pires</surname></persName>
+							<email>diogo.l.pires@city.ac.uk</email>
+							<idno type="ORCID">0000-0002-6069-7474</idno>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Mathematics, City</orgName>
+								<orgName type="institution">University of London</orgName>
+								<address>
+									<addrLine>Northampton Square</addrLine>
+									<settlement>London</settlement>
+									<country key="GB">UK</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Mark</forename><surname>Broom</surname></persName>
+							<email>mark.broom@city.ac.uk</email>
+							<idno type="ORCID">0000-0002-1698-5495</idno>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Mathematics, City</orgName>
+								<orgName type="institution">University of London</orgName>
+								<address>
+									<addrLine>Northampton Square</addrLine>
+									<settlement>London</settlement>
+									<country key="GB">UK</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">The rules of multiplayer cooperation in networks of communities</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2024-04-08">April 8, 2024</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">B0966A6DB32F79C02626E6AD6C1BB237</idno>
+					<idno type="arXiv">arXiv:2404.03718v1[q-bio.PE]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.0" ident="GROBID" when="2024-05-02T16:15+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>public goods games</term>
+					<term>population structure</term>
+					<term>metapopulations</term>
+					<term>evolution of cooperation</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Community organization permeates both social and biological complex systems. To study its interplay with behavior emergence, we model mobile structured populations with multiplayer interactions. We derive general analytical methods for evolutionary dynamics under high home fidelity when populations self-organize into networks of asymptotically isolated communities. In this limit, community organization dominates over the network structure and emerging behavior is independent of network topology. We obtain the rules of multiplayer cooperation in networks of communities for different types of social dilemmas. The success of cooperation is a result of the benefits shared amongst communal cooperators outperforming the benefits reaped by defectors in mixed communities. Under weak selection, cooperation can evolve and be stable for any size (Q) and number (M ) of communities if the reward-to-cost ratio (V /K) of public goods is higher than a critical value. Community organization is a solid mechanism for sustaining the evolution of cooperation under public goods dilemmas, particularly when populations are organized into a higher number of smaller communities. Contrary to public goods dilemmas relating to production, the multiplayer Hawk-Dove (HD) dilemma is a commons dilemma focusing on the fair consumption of preexisting resources. This game holds mixed results but tends to favour cooperation under larger communities, highlighting that the two types of social dilemmas might lead to solid differences in the behaviour adopted under community structure.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>Understanding how individuals organize into social communities is of interest to various research fields due their ubiquitous presence in social systems. This is shown by the study of networks of friendships, academic collaborations, individual interests, online discourse, and political affiliation, amongst other social interaction systems <ref type="bibr" target="#b14">[15,</ref><ref type="bibr" target="#b28">29,</ref><ref type="bibr" target="#b29">30,</ref><ref type="bibr" target="#b41">42]</ref>. Its organization occurs down to the smallest scale of human societies, which has motivated looking at the small interaction groups in which we partake as a core configuration of our social psychology <ref type="bibr" target="#b8">[9]</ref>. This has been further supported by experimental studies showing that small groups, and their limit of dyadic interactions, constitute most of our social encounters <ref type="bibr" target="#b36">[37]</ref>. Animal groups often organize themselves into social communities as well <ref type="bibr" target="#b23">[24]</ref>. Their formation can be motivated by the fragmentation of habitats, and its subsequent impact on ecological networks has led to the study of evolution in metapopulations <ref type="bibr" target="#b18">[19,</ref><ref type="bibr" target="#b24">25]</ref>. Even in the presence of migration fluxes involving roaming great distances, animals may maintain the same community and social ties, either by collectively coordinating their movements <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b38">39]</ref>, or by coming back to the same territorial patches where they once settled <ref type="bibr" target="#b22">[23,</ref><ref type="bibr" target="#b54">55,</ref><ref type="bibr" target="#b55">56]</ref>.</p><p>The organization of individuals into social communities significantly influences their behaviour with one another, particularly when facing social dilemmas. Social dilemmas embody the conflict between social and individual interests, often framed as a choice one has to make between cooperating and defecting, the dynamics of which have been extensively modeled using evolutionary game theory. Incorporating community structure into these models has thus far entailed considering events of two different natures: within-community reproduction and between-community migration. These models are typically referred to as metapopulation dynamics, a classification of which has been performed in <ref type="bibr" target="#b57">[58]</ref>. The distinct nature of between-community events has been further emphasized by considering community-level events, such as group reproduction <ref type="bibr" target="#b0">[1]</ref> or group splitting <ref type="bibr" target="#b50">[51,</ref><ref type="bibr" target="#b51">52]</ref>, which involve the replacement of entire groups either by other groups or by single individuals. Others have considered different intensities of selection acting on within-and between-community events <ref type="bibr" target="#b19">[20,</ref><ref type="bibr" target="#b52">53]</ref>. Some of these modelling features suggest inspiration from multilevel selection to different degrees, which we intentionally avoid in our current work. Although these approaches lead to the evolution of pairwise cooperation, they may rely on the distinct nature of between-community events to do so, or even on additional mechanisms present such as punishment strategies <ref type="bibr" target="#b52">[53]</ref>.</p><p>Furthermore, metapopulation models generally assume that communities are connected to each other in the same way, with few exceptions to this <ref type="bibr" target="#b0">[1]</ref> as it is pointed out in <ref type="bibr" target="#b56">[57]</ref>. However, other features of social interaction networks have been shown to have a strong interplay with the evolution of cooperation in pairwise dilemmas. These include low average degree <ref type="bibr" target="#b31">[32]</ref>, small-world characteristics <ref type="bibr" target="#b43">[44]</ref>, high link heterogeneity <ref type="bibr" target="#b44">[45]</ref>, and strong pair ties <ref type="bibr" target="#b1">[2]</ref>. Some of these effects may be sensitive to the evolutionary dynamics considered <ref type="bibr" target="#b31">[32,</ref><ref type="bibr" target="#b33">34]</ref>, although the qualitative differences have been shown to vanish under a generalization of the dynamics <ref type="bibr" target="#b58">[59]</ref>. The extension of these population structure models to multiplayer interactions is not trivial and considering only lower-order networks with dyadic interactions is often insufficient to represent them <ref type="bibr" target="#b37">[38]</ref>. Here, we will focus on one model of multiplayer interactions where both network and community structure are conveniently integrated.</p><p>The framework introduced in its general form in <ref type="bibr" target="#b4">[5]</ref> offers a novel approach to multiplayer social dilemmas, where interacting groups of individuals emerge from their simultaneous presence on the nodes of a spatial network. The model operates under the minimal assumption that typical evolutionary dynamics on graphs, such as birth-death, death-birth or link dynamics <ref type="bibr" target="#b26">[27,</ref><ref type="bibr" target="#b33">34]</ref>, act between any two individuals in the population depending on their frequency of interaction within the same group. Various movement models have been explored so far, an overview of which is provided in <ref type="bibr" target="#b7">[8]</ref>. Movement contingent on satisfaction with past interactions sustains the co-evolution of cooperation and assortative behaviour, especially under complete networks <ref type="bibr" target="#b12">[13,</ref><ref type="bibr" target="#b34">35]</ref> and for a wide variety of evolutionary dynamics <ref type="bibr" target="#b40">[41]</ref>. Mobility costs are essential to determine whether cooperative behaviour emerges <ref type="bibr" target="#b40">[41]</ref>, parallel to what is reported from more realistic spatial social dilemmas <ref type="bibr" target="#b3">[4]</ref>. In contrast, the territorial raider model, incorporating fully independent movement governed by the home fidelity parameter h, reveals more limited prospects for the evolution of cooperation. This conclusion is drawn from findings in small networks <ref type="bibr" target="#b5">[6]</ref>, small fully connected communities <ref type="bibr" target="#b33">[34]</ref>, and intermediate-sized complex networks with diverse structural properties <ref type="bibr" target="#b45">[46,</ref><ref type="bibr" target="#b46">47]</ref>.</p><p>We propose the use of this fully independent movement model to study evolutionary dynamics in networkand community-structured populations with multiplayer interactions. Our focus centres on the limit of high home fidelity, where communities exhibit asymptotically low mobility. In section 3.1, we derive general analytical methods for the dynamics in this limit. We conclude that the organization of the population into a network of communities uniquely influences the evolutionary dynamics through the number and size of the communities, rather than through the way communities are connected. Some dynamics amplify within-community selection and others increment between-community events. In section 3.2, we show that the balance between the two types of events determines whether cooperation evolves, and we obtain their contributions to fixation probabilities under weak selection for several social dilemmas. In section 3.3, we use this balance to derive the rules of multiplayer cooperation and compare them amongst social dilemmas. In section 3.4, we analyse in detail one particular game, the Charitable Prisoner's Dilemma, and draw a comparison with some of the results obtained in the widely explored pairwise donation game. In section 4, we connect our findings to the relevant literature on multiplayer social dilemmas, metapopulation dynamics, and mobile structured populations. Once again showcasing its versatility, this framework enabled the exploration of network and community structure, thereby revealing the high potential for the evolution of cooperation across diverse social dilemmas.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Model</head><p>The general framework introduced in <ref type="bibr" target="#b4">[5]</ref> has been used to study the interplay between population structure, movement and multiplayer interactions. Here, we focus on the territorial raider model, a model of fully independent movement, which was generalized in <ref type="bibr" target="#b33">[34]</ref> to account for subpopulations or, as we will refer to them, communities. We start by defining structure and the movement rules of this model. We then revisit the general approach to social dilemmas outlined in <ref type="bibr" target="#b6">[7]</ref>, and finish by presenting the set of evolutionary dynamics defined in <ref type="bibr" target="#b33">[34]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Population structure and movement</head><p>A population is composed of N individuals I n = I 1 , ..., I N . Individuals are positioned on a spatial network with M places P m = P 1 , ..., P M , which has a set of edges connecting them. Even though the terms graph and network are often used interchangeably in the literature, here we follow the same terminology used in <ref type="bibr" target="#b40">[41,</ref><ref type="bibr" target="#b45">46]</ref>. The term graph will only be used for the underlying evolutionary graph representing the replacement structure between individuals, and network will be used to refer to the network of places.</p><p>Under fully independent movement models, the position of each individual is independent both of where they were previously and of where other individuals will be <ref type="bibr" target="#b4">[5]</ref>. Therefore, the probability that an individual I n is in place P m is generally defined by p nm . Under the territorial raider model, each individual has an assigned Figure <ref type="figure">1</ref>: Representation of a small community network under the territorial raider model. We focus on the community in the center of the network and present the possible positions of individuals from that community, alongside their respective probabilities. home node in the network, and the probability distribution of their positions is defined as the following:</p><formula xml:id="formula_0">p nm =      h/(h + d n ), n = m, 1/(h + d n ), n ̸ = m and vertices n, m connected, 0, otherwise,<label>(1)</label></formula><p>where h is the home fidelity parameter, and d n is the degree of the home node of individual I n . We use the version of the territorial raider model under which each node of the network is home to a community of Q individuals, and thus M denotes the number of communities and N = M Q. The probability distribution of positions under the territorial raider model is represented in figure <ref type="figure">1</ref>. Communities have been referred to in previous models as subpopulations <ref type="bibr" target="#b33">[34]</ref> or demes <ref type="bibr" target="#b19">[20]</ref>. The below definitions hold under the distribution p nm of any given fully independent movement model. A group of individuals G has probability χ(m, G) of meeting in node P m , which is given by:</p><formula xml:id="formula_1">χ(m, G) = i∈G p im j / ∈G (1 -p jm ). (<label>2</label></formula><formula xml:id="formula_2">)</formula><p>The fitness of each individual I n is obtained through the weighted average of the payoffs R n,m,G received in each place P m and each group composition G they can be in. We further introduce w, the intensity of selection as defined in <ref type="bibr" target="#b30">[31]</ref>, which measures the extension to which the outcomes of the game contribute to the fitness of individuals:</p><formula xml:id="formula_3">F n = 1 -w + w m G:n∈G χ(m, G)R n,m,G .<label>(3)</label></formula><p>We bring attention to an alternative notation used in the literature, where a background payoff defined as R is introduced. This notation is used under movement models such as those from <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b12">13,</ref><ref type="bibr" target="#b33">34,</ref><ref type="bibr" target="#b40">41]</ref>. The background payoff is typically included within the effective reward received in each interaction, which we denote</p><formula xml:id="formula_4">R ′ n,m,G = R n,m,G + R.</formula><p>This leads to the following adjustments to the fitness of individuals:</p><formula xml:id="formula_5">F ′ n = m G:n∈G χ(m, G)R ′ n,m,G .<label>(4)</label></formula><p>We will make use of the first notation where the intensity of selection is used, as this is revealed more practical when inspecting the weak selection limit. Nonetheless, the second approach leads to a simple rescaling of the fitness F ′ = 1 w F when R = 1-w w , which has no impact on the evolutionary dynamics introduced later.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Multiplayer social dilemmas</head><p>We consider the multiplayer social dilemmas studied in <ref type="bibr" target="#b6">[7]</ref>. Individuals have two strategies available to them: to cooperate (C) or to defect (D). In these dilemmas, payoffs can be represented as</p><formula xml:id="formula_6">R n,m,G ≡ R C c,d (≡ R D c,d</formula><p>) when the focal individual I n is a cooperator (defector), as they are determined by the type of the focal individual and the number of cooperators c, and defectors d in their current group. We present the payoffs received under each social dilemma in table <ref type="table" target="#tab_0">1</ref>, where V represents the value of the reward shared, and K the cost paid by individuals </p><formula xml:id="formula_7">0 c &lt; L Fixed Stag Hunt (FSH) [33]    V c + d -K c ≥ L -K c &lt; L    V c + d c ≥ L 0 c &lt; L Threshold Snowdrift (TS) [48]      V - K c c ≥ L - K L c &lt; L V c ≥ L 0 c &lt; L Hawk-Dove (HD) [5]    V c d = 0 0 d &gt; 0 V -(d -1)K d</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3">Evolutionary dynamics</head><p>We follow an approach grounded on evolutionary graph theory <ref type="bibr" target="#b25">[26]</ref>. The population has a corresponding evolutionary graph represented by the adjacency matrix W = (w ij ), with w ij denoting the replacement weights which determine the likelihood of individual I i replacing I j in an evolutionary step. In contrast with the original formulation of evolutionary pairwise games on graphs, the interaction structure between individuals is an emerging feature of the model. We follow the procedure used in <ref type="bibr" target="#b33">[34]</ref>, under which replacement weights are determined by the fraction of time any two individuals spend interacting within the network. They spend their time equally with each of the other individuals in their groups, and time spent alone contributes to their self-replacement weights. This leads to the following definition:</p><formula xml:id="formula_8">w ij =          m G:i,j∈G χ(m, G) |G| -1 , i ̸ = j, m χ(m, {i}), i = j.<label>(5)</label></formula><p>Let us consider that the population goes through an evolutionary process operating on the strategies C and D used by each individual. This is modelled in discrete evolutionary steps, during which individuals may update their strategies. The probability that, at a given step, the strategy of an individual I i replaces that of I j is denoted by the replacement probability τ ij . This probability may depend in different ways on the fitness of individuals, thereby incorporating selection into the process, and on the replacement weights, thereby capturing their interaction structure. We recall the dynamics outlined in <ref type="bibr" target="#b33">[34]</ref>, and their respective replacement probabilities τ ij are summarized in table <ref type="table">2</ref>. The evolutionary dynamics are classified as birth-death (BD) if an individual is first selected for birth and then another one for death; death-birth (DB) if the reverse order of events is considered; and link (L) if an edge of the evolutionary graph is directly chosen. Under each of these, selection can act either on the birth (B) or the death (D) event. Evolutionary dynamics are thus referred to by the combination of these two codes, as it is shown in table <ref type="table">2</ref>.</p><p>Evolutionary dynamics and replacement probabilities</p><formula xml:id="formula_9">BDB b i = F i n F n , d ij = w ij n w in DBD d j = F -1 j n F -1 n , b ij = w ij n w nj DBB d j = 1/N , b ij = w ij F i n w nj F n BDD b i = 1/N , d ij = w ij F -1 j n w in F -1 n LB τ ij = w ij F i n,k w nk F n LD τ ij = w ij F -1 j n,k w nk F -1 k</formula><p>Table <ref type="table">2</ref>: Definition of birth probabilities (b i(j) ) and death probabilities (d (i)j ), or of final replacement probability (τ ij ), for six distinct evolutionary dynamics. The indices denote the individuals I i giving birth and I j dying.</p><p>In instances where the replacement probability is not explicitly stated, it can be derived by multiplying the respective birth and death probabilities.</p><p>The probability of fixation for a single mutant cooperator (defector) in a population with the opposing strategy is defined as ρ C (ρ D ). Selection is said to favor the fixation of cooperation if ρ C &gt; ρ neutral , and it is said to favor its evolution if ρ C &gt; ρ neutral &gt; ρ D <ref type="bibr" target="#b30">[31]</ref>. The neutral fixation probability is equal to ρ neutral = 1/N = 1/(M Q) <ref type="bibr" target="#b49">[50]</ref>. Fixation probabilities can be calculated under the general fully independent movement models resorting to the proceeding explained in <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b33">34]</ref>. However, in the results section, we concentrate on limits where fixation probabilities assume closed-form expressions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Results</head><p>Let us consider the previously introduced model in the limit of high home fidelity h → ∞. In section 3.1, we describe the evolutionary process arising from this limit across the six introduced dynamics and derive exact expressions for single mutant fixation probabilities under any network of communities. The analysis in this section is substantiated by the work in appendix A. In section 3.2, we analyze the expansion of fixation probabilities within the additional limit of weak selection, which unveils simple contributions of within-community fixation processes and between-community replacement events. We further analyze these contributions under the general social dilemma section. These findings are complemented by the content in appendix B. In section 3.3, we present the simple rules obtained for the evolution of cooperation under the general multiplayer social dilemmas, when three successive limits are considered: high home fidelity, weak selection and large networks of communities. In appendix C, we analyze the extent to which these rules are valid outside of the limits of large networks and weak selection. Moreover, we contextualize the particular case of the CPD with respect to prior literature on pairwise dilemmas in section 3.4.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Evolutionary dynamics under high home fidelity</head><p>Consider a connected network comprising M places and an arbitrary topology. Each place is home to a community of size Q with movement following the territorial raider model (see figure <ref type="figure">1</ref>). In the asymptotic limit of high home fidelity h → ∞, individuals interact mostly within their community. The fitness of each individual depends mainly on the rewards R C c,d and R D c,d received within each community of c cooperators and d defectors, higher-order terms on h -1 dependent on the composition of the remaining communities. We define the asymptotic value of the fitness of a focal cooperator and defector as respectively the following:</p><formula xml:id="formula_10">f C c,d = 1 -w + wR C c,d ,<label>(6)</label></formula><formula xml:id="formula_11">f D c,d = 1 -w + wR D c,d .<label>(7)</label></formula><p>In this limit, it is possible to obtain a closed-form expression for the fixation probability of a single mutant. The fixation process under each of the six introduced dynamics corresponds to a nested Moran process involving the fixation of a single mutant on its community and the fixation of that community in the population. A part of this process is represented in figure <ref type="figure">2</ref>. The probabilities obtained are presented in the next subsections (see appendix A for more information about how they were obtained).</p><p>Figure <ref type="figure">2</ref>: Fixation process in a population of connected communities under the asymptotic limit of high home fidelity. For simplicity, let us consider the scenario where one mutant cooperator emerges in a population of defectors. The new strategy will fixate within the community where it originated with a probability of r C . The state attained has homogeneous communities and may change only through the occurrence of a betweencommunity replacement. This involves either a cooperator replacing a defector from an adjacent community or the reverse, with probabilities proportional to their respective communal fitness f C Q,0 and f D 0,Q . Each of those events may be followed by the within-community fixation of the new type, with respective probabilities r C and r D . If within-community fixation is unsuccessful, it will result in the restoration of the previous number of homogeneous communities of cooperators. However, if within-community fixation is successful, it will respectively increase or decrease by one the number of communities of cooperators in the network. The transition probability ratio Γ (see equation 10) between these two possible state transitions is constant and can be obtained from this diagram. The represented probabilities are the same under BDB, DBD, LB and LD dynamics. Under DBB and BDD dynamics, within-community fixation probabilities are computed from equations 15 and 16, and the transition probability ratio is obtained from equation 17.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1.1">Fixation probabilities under BDB, DBD, LB and LD dynamics</head><p>In the context of high home fidelity, replacement events within the same community happen at an asymptotically larger rate than events between different communities. As such, fixation probabilities ρ C and ρ D are obtained by multiplying the probability of the original mutant fixating within its community, denoted as r C or r D , by the probability of the community achieving fixation in the whole population. We note that these probabilities are identical under the BDB, DBD, LB and LD dynamics because the transition probability ratios that characterize the process are identical at any given state of the population.</p><p>Within-community fixation is equivalent to a frequency-dependent Moran process where the fitness of individuals corresponds to its asymptotic value in isolated communities as defined in equations 6 and 7. Fixation probabilities for cooperators and defectors are determined as follows:</p><formula xml:id="formula_12">r C = 1 1 + Q-1 j=1 j c=1 f D c,Q-c f C c,Q-c ,<label>(8)</label></formula><formula xml:id="formula_13">r D = 1 1 + Q-1 j=1 j d=1 f C Q-d,d f D Q-d,d .<label>(9)</label></formula><p>Upon reaching a state with homogeneous communities, one of two state-changing events may unfold. In one scenario, a cooperator replaces a defector from an adjacent community, with probability proportional to its communal fitness f C Q,0 . Subsequently, the new cooperator may fixate within that community with a probability of r C . Alternatively, a defector may replace a cooperator from a different community, proportionally to f D 0,Q , and the new defector may fixate within the new community with a probability of r D . The fixation process of one community on the entire population is equivalent to a fixed fitness Moran process, where the transition probability ratio is as follows (see a visual representation in figure <ref type="figure">2</ref> and a formal derivation in appendix A.1):</p><formula xml:id="formula_14">Γ = f D 0,Q • r D f C Q,0 • r C . (<label>10</label></formula><formula xml:id="formula_15">)</formula><p>Please note that the ratio between the two within-community fixation probabilities can be considered in its following simplified form <ref type="bibr" target="#b30">[31,</ref><ref type="bibr" target="#b42">43]</ref>:</p><formula xml:id="formula_16">r D r C = Q-1 c=1 f D c,Q-c f C c,Q-c . (<label>11</label></formula><formula xml:id="formula_17">)</formula><p>The fixation probability of a single mutant cooperator or defector in a population of the opposing type is respectively the following:</p><formula xml:id="formula_18">lim h→∞ ρ C = r C • P M oran Γ -1 = r C • 1 -Γ 1 -Γ M ,<label>(12)</label></formula><formula xml:id="formula_19">lim h→∞ ρ D = r D • P M oran (Γ) = r D • 1 -Γ -1 1 -Γ -M . (<label>13</label></formula><formula xml:id="formula_20">)</formula><p>when Γ ̸ = 1. Otherwise, lim h→∞ ρ C = r C /M and lim h→∞ ρ D = r D /M . The high home fidelity limit reveals this nested Moran process characterized by frequency-dependent fitness at the lower level and an equivalent fixed fitness of communities at the higher level. This emerges naturally from a simple individual selection process which operates within communities and between individuals of distinct communities with the frequency of replacements coupled with how often individuals interact in the same group. We note that fixation probabilities are independent of the topology of the network, i.e. the set of edges linking the homes of different communities. The number of communities M , their size Q, and the multiplayer game played by individuals are enough to determine the evolutionary outcome of the process. Given the general nature of equations 12 and 13, they can be used to assess the viability of cooperation under social dilemmas in any network of communities.</p><p>The successful fixation of a strategy is determined by its relative success in introducing itself in other communities and successfully fixating there. Social dilemmas are characterized by a socially optimal strategy (i.e. Pareto optimal) which excels in between-community replacements, and an individually optimal strategy (potentially dominant) which performs better in within-community fixation. The balance between these two factors is present at each step of the higher level (community) fixation process, as it is represented in figure <ref type="figure">2</ref>. Therefore, condition ρ C &gt; ρ D is met in the following circumstances:</p><formula xml:id="formula_21">f C Q,0 f D 0,Q &gt; r D r C 1+ 1 M -1 . (<label>14</label></formula><formula xml:id="formula_22">)</formula><p>This condition is more easily met when the size of the network is increased. Under M → ∞, it becomes equivalent to Γ &lt; 1, further implying that ρ C &gt; 1/N &gt; ρ D and that there is one and only one stable strategy. This shows that the definition of Γ encapsulates the balance between the socially and individually optimal strategies, and is enough to determine the outcome of the evolutionary process under large networks.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1.2">Fixation probabilities under DBB and BDD dynamics</head><p>The DBB and BDD dynamics lead to different quantitative results as transition probability ratios in the resulting Markov chain are different from the previous four dynamics. Fixation probabilities are obtained in a parallel way to the ones presented in 12 and 13, using the following corrected values of within-community fixation probabilities r C and r D , and transition probability ratios Γ:</p><formula xml:id="formula_23">r C DBB/BDD = 1 1 + Q-1 j=1 j c=1 f D c,Q-c f C c,Q-c • 1 + f C c,Q-c -f D c,Q-c T DBB/BDD (c, Q -c) -f C c,Q-c ,<label>(15)</label></formula><formula xml:id="formula_24">r D DBB/BDD = 1 1 + Q-1 j=1 j d=1 f C Q-d,d f D Q-d,d • 1 + f D Q-d,d -f C Q-d,d T DBB/BDD (Q -d, d) -f D Q-d,d ,<label>(16)</label></formula><formula xml:id="formula_25">Γ DBB/BDD = f D 0,Q f C Q,0 2 • r D DBB/BDD r C DBB/BDD ,<label>(17)</label></formula><p>with T DBB/BDD denoting the total weight-fitness correction factors under those two dynamics, which are positive as evident in their definition:</p><formula xml:id="formula_26">T DBB (c, d) = c • f C c,d + d • f D c,d ,<label>(18)</label></formula><formula xml:id="formula_27">T BDD (c, d) = d • f C c,d + c • f D c,d .<label>(19)</label></formula><p>There are two main distinctions between these equations and those derived in the previous section for the remaining dynamics. On one side, both DBB and BDD amplify between-community replacement events, owing to the squaring of the communal fitness ratio in 17. At the same time, they suppress within-community selection, as it can be concluded from the additional coefficients multiplied by the fitness ratio in equations 15 and 16. The condition ρ C &gt; ρ D leads to</p><formula xml:id="formula_28">f C Q,0 f D 0,Q &gt; r D DBB/BDD r C DBB/BDD 1 2 (1+ 1 M -1 ) ,<label>(20)</label></formula><p>where the right-hand side is closer to 1 than that of equation 14, thus benefiting cooperation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Within-and between-community effects under weak selection</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.1">Fixation probabilities under weak selection</head><p>Further considering the weak selection limit w → 0, the fixation probabilities presented in section 3.1 can be expanded, leading to the following equations (see appendix B for more details):</p><formula xml:id="formula_29">ρ C ≈ 1 M Q + w 2 1 Q 1 - 1 M ∆ CD + 1 + 1 M δ C -1 - 1 M δ D ,<label>(21)</label></formula><p>where</p><formula xml:id="formula_30">∆ CD = R C Q,0 -R D 0,Q = -∆ DC ,<label>(22)</label></formula><formula xml:id="formula_31">δ C = ∂r C ∂w w→0 = 1 Q 2 Q-1 c=1 (Q -c) R C c,Q-c -R D c,Q-c ,<label>(23)</label></formula><formula xml:id="formula_32">δ D = ∂r D ∂w w→0 = 1 Q 2 Q-1 d=1 (Q -d) R D Q-d,d -R C Q-d,d .<label>(24)</label></formula><p>. Equation <ref type="formula" target="#formula_29">21</ref>comprises three terms which are defined in equations 22-24. The term ∆ CD embodies the contribution of between-community events and corresponds to the difference between payoffs of communal cooperators and communal defectors. The sign of this term is determined by which of the two strategies is Pareto optimal. The terms δ C and δ D represent the contributions originating from the within-community fixation process of cooperators and defectors, respectively. Considering ρ D leads to the swapping of superscripts C and D on these three terms.</p><p>The expansion assumes a different form under the DBB and BDD dynamics, both of which result in the following equation:</p><formula xml:id="formula_33">ρ C DBB/BDD ≈ 1 M Q + w 2 2 1 Q 1 - 1 M ∆ CD + + 1 - 1 Q -1 1 + 1 M δ C -1 - 1 Q -1 1 - 1 M δ D ,<label>(25)</label></formula><p>This reflects the aspects highlighted in the previous section about the impact of these dynamics. We observe the amplification of between-community selection by a factor of 2, and the suppression of within-community selection by a factor of 1 -1/(Q -1).</p><p>Each of the three contributing terms present in equations 21 and 25 shows a correction coefficient related to the finiteness of the network, which naturally vanishes under M → ∞. Increasing the network size magnifies the relative impact of between-community replacement events on the fixation probability. At the same time, it increases the impact of the within-community fixation of residents but makes the within-community fixation of mutants relatively less significant than it is in smaller networks. In the limiting case where there are only two communities (M = 2), this last term exhibits a finite network correction coefficient three times larger than that of the within-community fixation of residents. This is so because the fixation of the original mutant in its community takes an increased importance in the overall process.</p><p>Increasing the size of communities decreases the impact of between-community contributions under both dynamics. Simultaneously, it amplifies the impact of within-community contributions under DBB and BDD dynamics. From equation 25, we conclude that under the smallest communities (Q = 2), the expansion of fixation probabilities under DBB and BDD dynamics is reduced to a single term depending on ∆ CD , and withincommunity fixation terms vanish. This is associated with within-community fixation becoming a completely random process, which remains true under stronger selection, as it was noted in <ref type="bibr" target="#b33">[34]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.2">General social dilemmas under weak selection</head><p>Consider the general social dilemmas defined in table 1. We calculate the values of each of the three contributions ∆ CD , δ C and δ D under all of the dilemmas introduced there, and present them in table 4 of appendix B.</p><p>Under public goods dilemmas, the term ∆ CD is positive when cooperation is the Pareto optimal strategy. This happens when the reward for cooperating is sufficiently high, provided communities have a size capable of producing the reward. In the same dilemmas, the terms δ C and δ D exhibit negative and positive signs, respectively, due to defection being a dominant strategy.</p><p>Under the HD dilemma, the contribution ∆ CD remains positive regardless of reward value. The contributions δ C and δ D can be negative and positive for high V /K, positive and negative for low V /K, and both positive for intermediate V /K when Q &gt; 2. These patterns reflect that cooperation is always Pareto optimal in this dilemma, while within a fixed group it maintains anti-coordination properties.</p><p>We observe that cooperation can evolve under sufficiently large V /K in public goods games, irrespective of the number of communities M , their size Q (provided it allows them to produce a reward), and how they are connected. This holds even in the limiting case of two arbitrarily large communities. It is so because the contribution of between-community events can be made arbitrarily large by increasing V , while the remaining contributions remain constant. Although the CPD does not meet these criteria, we demonstrate this conclusion remains valid in the more detailed analysis in section 3.4. Similarly, under the HD dilemma, cooperation can evolve under sufficiently low V /K irrespective of the number and size of communities, and their connections.</p><p>Moreover, based on equations 21 and 25 and the particular values their terms hold under each public goods dilemma, we conclude in appendix C.1 that decreasing the size of the network has a detrimental effect to cooperation under all public goods dilemmas. Smaller networks systematically lead to stricter conditions for the evolution of cooperation in public goods dilemmas. Conversely, no consistent trend emerges in the HD dilemma.</p><p>Summing the expansions obtained for the fixation probabilities of cooperators and defectors, we arrive at the following equation:</p><formula xml:id="formula_34">ρ C + ρ D ≈ 2 M Q + w M (δ C + δ D ),<label>(26)</label></formula><p>where, under the DBB/BDD dynamics, an additional coefficient 1 -1/(Q -1) is included in the second term on the right-hand side. It is worth noting that when the difference between the payoffs of cooperators and defectors in the same group is constant, the contributions of the within-community fixation processes of cooperators and defectors to equations 21 and 25 are symmetric, i.e. δ C = -δ D . For such dilemmas, there is always one and only one stable strategy under weak selection. This holds for all social dilemmas discussed here, except for the S and the TS with Q &gt; L + 1, where bi-stability is possible (δ C + δ D &lt; 0), and the HD dilemma, which allows for mutual fixation (δ C + δ D &gt; 0). As established in section 3.1, under M → ∞ there is one and only one stable strategy, determined by the value of Γ. This is in agreement with the fact that, for the remaining dilemmas, the second term on the right-hand side of equation 26 vanishes under large networks. We conclude that both weak selection and a large number of communities often lead to simple dominance cases. Based on these findings, we emphasize that in all public goods dilemmas, if cooperation fixates above neutrality under weak selection or large networks, then defection fixates below it (and vice versa). In the next section, we will extend our analysis, systematically presenting the conditions under which cooperation evolves for all social dilemmas.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">The rules of cooperation under general multiplayer social dilemmas</head><p>In the present section, we further extend our analysis of general multiplayer social dilemmas. Cooperation evolves successfully, i.e. ρ C &gt; ρ neutral &gt; ρ D , for larger numbers of communities if</p><formula xml:id="formula_35">∆ CD &gt; Q(δ D -δ C ). (<label>27</label></formula><formula xml:id="formula_36">)</formula><p>This rule is obtained considering that the first-order term of the weak selection expansion in equation 21 has to be positive. The equation above is valid under the BDB/DBD/LB/LD dynamics, whereas for the DBB/BDD dynamics, a multiplying factor (1/2)(1 -1/(Q -1)) is added to the right-hand side of the equation.</p><p>We obtain the condition under which cooperation evolves for each of the social dilemmas studied here, for all community sizes Q and the six evolutionary dynamics, and present them in table <ref type="table">3</ref>. The contributions ∆ CD , δ C and δ D for each social dilemma are presented in table 4 of appendix B. Cooperation can evolve under all of the social dilemmas approached for at least some of the explored dynamics. We opted to show the rules obtained under a high number of communities to allow a systematic analysis of the dilemmas, as obtaining them for arbitrary values of M was attainable but often intricate. These limits were considered in a particular order: first h → ∞, then w → 0, and finally M → ∞. The order of these limits is relevant, given that different orders can lead to distinct fixation probability expansions and conditions for the evolution of cooperation <ref type="bibr" target="#b42">[43]</ref>, as well as generate or erase surprising finite population effects <ref type="bibr" target="#b39">[40]</ref>. In appendix C, we analyse the validity of the simple rules presented here when these limits are relaxed.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Multiplayer Game</head><p>Evolution of cooperation under BDB/DBD/LB/LD DBB/BDD</p><formula xml:id="formula_37">CPD ∅ V /K &gt; (Q -1) PD, VD V /K &gt; Q V /K &gt; Q 2 PDV V /K &gt; 1 -ω 1 -ω Q Q 2 V /K &gt; 1 -ω 1 -ω Q Q 2 2 S V /K &gt; H Q V /K &gt; H Q - 1 2 Q Q -1 H Q-1 TVD, SH V /K &gt; Q Q ≥ L ∅ Q &lt; L    V /K &gt; Q 2 Q ≥ L ∅ Q &lt; L FSH V /K &gt; Q 2 Q ≥ L ∅ Q &lt; L    V /K &gt; Q 2 2 Q ≥ L ∅ Q &lt; L TS V /K &gt; H Q -H L + 1 Q ≥ L ∅ Q &lt; L    V /K &gt; 1/2 1 + 1 - 1 Q -1 (H Q -H L ) Q ≥ L ∅ Q &lt; L HD V /K &lt; Q -1/Q -H Q-1 H Q-1 V /K &lt; Q -1 Q -2 (Q -2/Q) -H Q-1 H Q-1</formula><p>Table <ref type="table">3</ref>: Rules for the evolution of multiplayer cooperation under networks of communities. We assume a large number M of communities and that they are composed of at least two individuals (Q ≥ 2). These conditions guarantee that ρ C &gt; ρ neutral &gt; ρ D . We denote the harmonic series as</p><formula xml:id="formula_38">H Q = Q i=1 i -1 . Under Q = 1</formula><p>, the derived conditions are the following: cooperation never evolves under the CPD, TVD, SH, FSH, and TS (assuming that L ≥ 2), cooperation evolves for V /K &gt; 1 under the PD, PDV, VD and S, and both strategies are neutral under the HD. These results are valid under arbitrary values of w and M , and they are the same under all six dynamics.</p><p>The results presented in this table suggest that social dilemmas split into distinct groups. Non-threshold public goods dilemmas such as the PD, the VD, the S, and the PDV allow cooperators to evolve under any community size if the reward-to-cost ratio V /K surpasses a critical value dependent on Q. This value is the same under the PD and the VD, but lower under the S and the convex PDV (w &gt; 1), and higher under the concave PDV (w &lt; 1). The CPD presents a distinct landscape, where cooperation only evolves under the DBB and BDD dynamics. The critical value of the reward-to-cost ratio in this dilemma is the lowest of all non-threshold public goods games. We will analyze this dilemma in the following section.</p><p>Threshold dilemmas such as the TVD, the SH, the FSH, and the TS have a critical value of the reward-tocost ratio, above which cooperation evolves, only if the size of communities is at least of the same size as the public goods production threshold (Q ≥ L). Otherwise, cooperation can never evolve regardless of the value of V /K. The TVD and the SH lead to the same conditions, which coincide with the PD and the VD when Q ≥ L. The TS leads to lower critical values of the reward-to-cost ratio, and the FSH leads to higher values. We further note that the critical values obtained under the FSH when Q ≥ L are simply the ones obtained under the PDV with ω → 0. Critical values under threshold games generally don't depend on L, although their existence does. The exception to this is the TS dilemma, under which a larger production threshold decreases the critical value Figure <ref type="figure">3</ref>: Regions under which cooperation evolves for each public goods dilemma. Each coloured region covers the values of the reward-to-cost ratio, i.e. V /K, under which cooperation evolves for a given set of community size values which are stated in the legend. These regions are obtained from the rules for the evolution of cooperation presented in table 3. Under low enough values of V /K, all dilemmas have uncoloured regions, as no community size allows the evolution of cooperation. We opted for not showing the areas of the S and the TSD dilemmas with higher values of V /K (starting from the ellipsis), as coloured regions quickly decreased in size: at V /K = 3, cooperation evolves for any Q ≤ 231 under the S and Q ≤ 377 under the TS when L = 2.</p><p>of the reward-to-cost ratio when communities are large enough to produce rewards.</p><p>The HD dilemma, which unlike the others is a commons dilemma, behaves distinctively from all of the remaining dilemmas. The reward-to-cost ratio has to be lower than a critical value for cooperation to evolve. It is clear that in this case, high rewards are detrimental to the evolution of cooperation.</p><p>We note that the critical value of the reward-to-cost ratio under public goods dilemmas always increases with the size of communities and regardless of the used evolutionary dynamics. Additionally, as mentioned in section 3.2, considering lower values of M always leads to stricter conditions for the evolution of cooperation. This reinforces the conclusion that populations organized into large networks of small communities lead to a larger region of the parameter space under which cooperation evolves. This is so because cooperators hold an advantage in between-community reproduction events (intensified under large M ), but they are disadvantaged in within-community fixation processes (minimized under small Q).</p><p>In this context, the HD dilemma holds key differences against the public goods dilemmas. Under this game, cooperators hold an advantage in between-community reproduction events for any payoff parameters. Regarding within-community fixation processes, defectors hold an advantage in small communities, but cooperators are the ones doing so in larger communities. However, there is a second overlapping effect which is described in section 3.2: increasing the size of communities decreases the impact of between-community reproduction and increases the impact of within-community fixation. Under the BDB dynamics, the second effect is not strong enough and the first effect dominates: communities with larger size always lead to higher critical values below which cooperators fixate, therefore benefiting them. However, under the DBB/BDD dynamics, both effects interplay and each dominates at a different scale of community sizes. Cooperators always evolve when Q = 2 because fixation depends only on between-community reproduction. When increasing the community size to Q = 3, 4, the emerging critical values below which cooperation evolves decrease with community size because of the increased importance of within-community fixation beneficial to defectors in those community sizes. However, for larger values of Q ≥ 5, cooperation evolves for larger regions of V /K when increasing Q because within-community fixation starts benefiting cooperators.</p><p>Comparing the critical values obtained between the different evolutionary dynamics, we note that the DBB and BDD dynamics always extend the values of V /K for which cooperation successfully fixates when compared to the remaining dynamics. They therefore hold lower critical values in all public goods dilemmas and higher critical values in the HD dilemma. We note the extreme case of the CPD, under which cooperators never evolve under the BDB and equivalent dynamics, but find an evolutionary way under the DBB and BDD dynamics. These results can be explained by the fact that these dynamics when compared to the remaining, amplify the impact of between-community replacement terms (where cooperators succeed relative to defectors), and suppress within-community selection terms (where defectors succeed).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4">The Charitable Prisoner's Dilemma and pairwise cooperation</head><p>The CPD is a particular game of interest among public goods dilemmas. Under the CPD, cooperators do not benefit from their own contributions to public goods. This assures not only that individuals have equal gains from switching, but also that the gains are the same for all group sizes. In other words, the cost K is the effective cost that a cooperator pays for not defecting, regardless of group composition and size. This game is thus a social dilemma regardless of how large the reward is and the size of the interacting group <ref type="bibr" target="#b6">[7]</ref>. Other games have equal gains from switching, but the gains vary with group size. One such game is the PD, which was introduced in <ref type="bibr" target="#b17">[18]</ref>, under which the cost of cooperating is K -V /Q, and therefore may not even present a social dilemma under some payoff choices and group sizes <ref type="bibr" target="#b6">[7]</ref>.</p><p>Table <ref type="table">3</ref> shows that cooperation evolves in the CPD when V /K &gt; (Q -1). Given our particular interest in it, we present here the condition for the evolution of cooperation obtained under the CPD when a finite number of communities M is considered:</p><formula xml:id="formula_39">V /K &gt; (Q -1) • 1 -2 M Q 1 -2(Q-1) M Q . (<label>28</label></formula><formula xml:id="formula_40">)</formula><p>This rule quantifies the detrimental effect that considering a lower number of larger communities (lower M and higher Q) has on the evolution of cooperation. At the same time, it materializes a fundamental result: cooperation can evolve provided rewards are high enough, for any given community size and number, and regardless of the connections between them. This is a remarkably general result that works for the smallest networks of two communities under which cooperation evolves if</p><formula xml:id="formula_41">V /K &gt; (Q -1) 2 .</formula><p>A parallel result was attained in <ref type="bibr" target="#b1">[2]</ref> by considering the pairwise donation game in an evolutionary graph which is split into M cliques of Q individuals each. Individuals within the same clique are considered to have unit-weighted edges and there is an arbitrary set of infinitesimal edges between individuals of different cliques. The vanishing edges act to isolate the individuals within each clique, guaranteeing that cooperation can always evolve in the pairwise donation game if V /K is high enough.</p><p>The rules obtained under the CPD are parallel not only to the clique structures explored in <ref type="bibr" target="#b1">[2]</ref> but also to the results obtained in <ref type="bibr" target="#b31">[32]</ref> for large regular networks. They showed that cooperation can evolve under the DBB dynamics if the reward-to-cost ratio is larger than the average number of neighbours each individual has on an interaction network. We note that in our model and the particular limit of large home fidelity, each individual regularly interacts with Q -1 others and that this is exactly the critical value of the reward-to-cost ratio under the DBB dynamics. However, the results obtained here for networked communities allow cooperation to evolve under the smallest networks when the corrected rule presented in equation 28 is met, thus going beyond the large network assumption.</p><p>At the same time, when interacting via the CPD, cooperators can never evolve if the evolutionary dynamics considered are the BDB/DBD/LB/LD dynamics, as shown in appendix A.2 for arbitrary values of intensity of selection and number of communities. This had been already hypothesized in <ref type="bibr" target="#b33">[34]</ref> for the general formulation of the territorial raider movement model, similar to what was observed in previous evolutionary graph theory models <ref type="bibr" target="#b31">[32]</ref>. However, we note that this feature of the BDB dynamics is a singular case when stochastic combinations of different types of dynamics are considered, as it was shown in <ref type="bibr" target="#b58">[59]</ref>.</p><p>The CPD can be seen as a multiplayer extension of the pairwise donation game and as such, the two games may lead to analogous results. More generally, the exploration of higher-order interactions leads to different interacting structures and evolutionary outcomes <ref type="bibr" target="#b37">[38]</ref>, even in other cases where the multiplayer game considered is a natural extension of its pairwise version. However, in the particular limit studied here, individuals always interact within their own communities which are all of the same size. Therefore, the average payoffs obtained in a well-mixed community playing the pairwise donation game are the same as the payoffs obtained in a group of fixed size repeatedly playing the CPD. This is no longer the case when lower home fidelity values are considered, and new higher-order differences are expected to arise in that context.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">Discussion</head><p>In the present work, we use the territorial raider model previously approached in <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b33">34,</ref><ref type="bibr" target="#b45">46,</ref><ref type="bibr" target="#b46">47]</ref>, a fully independent movement model which is described by one single parameter, the home fidelity of individuals. The general framework originally proposed in <ref type="bibr" target="#b4">[5]</ref> can be thought of as a natural extension of evolutionary graph theory to multiplayer interactions, under which replacement events between individuals in the population occur proportionally to how often they interact. We focus on the limit of high home fidelity, under which individuals interact mostly within their community with the rare occurrence of cross-community group interactions. We derive the evolutionary dynamics in this limit, which revealed to be a nested Moran process resembling metapopulation models where migration is coupled with selection (these are classified in <ref type="bibr" target="#b57">[58]</ref>), but is asymptotically rare as it is considered in <ref type="bibr" target="#b19">[20]</ref>. Therefore, we show that metapopulation dynamics of multiplayer interactions can be derived from basic evolutionary graph theory assumptions. This derivation is achieved without considering between-community events to be of a different nature through the introduction of migration <ref type="bibr" target="#b19">[20,</ref><ref type="bibr" target="#b57">58]</ref>, group splitting and replacement <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b50">51,</ref><ref type="bibr" target="#b51">52]</ref>, or two or more levels of intensity of selection <ref type="bibr" target="#b19">[20,</ref><ref type="bibr" target="#b52">53]</ref>.</p><p>In this context, we show that whether a strategy evolves or not depends on the advantage it holds against other strategies in two contexts: when in homogeneous groups and when in within-community fixation processes. Multiplayer social dilemmas involve the existence of a conflict between cooperating as a socially best strategy, i.e. a Pareto optimal one, and defecting as an individually best strategy, i.e. a dominant one <ref type="bibr" target="#b6">[7,</ref><ref type="bibr" target="#b35">36]</ref>. Therefore, we obtain a general condition for the evolution of cooperation which translates into a simple balance between its advantages in homogeneous communities and its disadvantages over within-community fixation processes.</p><p>Applying this balance to the multiplayer social dilemmas explored in <ref type="bibr" target="#b6">[7]</ref>, we obtain simple rules for the evolution of multiplayer cooperation in community-structured populations. These depend on the reward-tocost ratio, and the number and size of communities. Cooperation evolves under all social dilemmas for any given number of communities, as long as there are at least two, that they are large enough to produce rewards (when applicable), and that the rewards are high enough in public goods dilemmas or low enough in the HD dilemma (a commons dilemma focused on the fair consumption of preexisting resources). In public goods dilemmas, cooperation evolves more easily when the costs of production are shared (the S and the TS dilemmas -see <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b44">45]</ref> for an account of this), when the reward production function is supralinear (the PDV), and when individuals benefit from their own production (all public goods dilemmas, except for the CPD). However, finding that cooperation can evolve under the CPD in any community-structured population was remarkable by itself, given that this dilemma does not hold any of the above characteristics and extends some of the strictest properties of the pairwise donation game to larger group sizes. Other characteristics of public goods dilemmas could be assessed in the future by considering asymmetric reward contributions and productivities (quantified as each individual's reward-to-cost ratio) <ref type="bibr" target="#b53">[54]</ref>, or even different mobility distributions and costs <ref type="bibr" target="#b3">[4]</ref>. The results obtained under the HD dilemma revealed an entirely different landscape when compared to its pairwise equivalent, the S dilemma. The differences between the two types of multiplayer dilemmas highlight that the considerations taken when extending pairwise games to higher-order interactions may reveal fundamental differences between them. These differences materialize here in the distinction between dilemmas focused on production (public goods dilemmas) and fair consumption of a preexisting resource (commons dilemmas).</p><p>Remarkably, the derived dynamics did not depend on how communities were connected, with the community effects overwriting other potentially overlapping structural effects. It was observed in <ref type="bibr" target="#b5">[6]</ref> that high home fidelity led to a simple fixed fitness Moran process independent of topology in the territorial raider model with Q = 1, which is simply a particular case of the more general nested Moran process we derived in this work. For general home fidelity values, it was shown in <ref type="bibr" target="#b45">[46,</ref><ref type="bibr" target="#b46">47]</ref> that temperature and average group size can be good predictors of fixation probabilities in the HD dilemma and the CPD, for a wide selection of topologies. Interpreted in that light, our results show that when strict subpopulation temperature as defined in <ref type="bibr" target="#b33">[34]</ref> is zero and the size of the network of places is fixed, the success of the fixation process is determined by the size of communities and independent of other topological features. This is in contrast with the models under which network topology plays a key role, such as evolutionary games on static pairwise graphs <ref type="bibr" target="#b1">[2,</ref><ref type="bibr" target="#b31">32,</ref><ref type="bibr" target="#b43">44]</ref> and satisfaction-dependent movement models <ref type="bibr" target="#b12">[13,</ref><ref type="bibr" target="#b40">41]</ref>.</p><p>Public goods dilemmas consistently lead to the evolution of cooperation down to lower values of the rewardto-cost ratio when a larger number of smaller communities is considered. This is in line with what is observed in alternative community and deme models <ref type="bibr" target="#b19">[20,</ref><ref type="bibr" target="#b20">21,</ref><ref type="bibr" target="#b33">34]</ref>, and multilevel selection models <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b50">51,</ref><ref type="bibr" target="#b51">52]</ref>. The only exception to this is presented by multilevel public goods games when punishment is introduced, in which case larger communities are beneficial for cooperation <ref type="bibr" target="#b52">[53]</ref>. It was shown in <ref type="bibr" target="#b1">[2]</ref> that networks of isolated clusters interacting via the pairwise donation game also favour cooperation more frequently under smaller clusters and larger networks. Furthermore, strong isolated pairs were shown to be a strong predictor of cooperation in any evolutionary graphs <ref type="bibr" target="#b1">[2]</ref>. Therefore, fragmentation into smaller social communities or groups might be one of several key mechanisms at the origin of cooperative behaviour observed around us. This is further supported by experimental studies which show that, in smaller groups, altruistic interventions occur more often <ref type="bibr" target="#b13">[14]</ref>, and free riding is less common <ref type="bibr" target="#b48">[49]</ref>. Perhaps this helps explain why interactions in smaller groups, particularly in groups of two individuals, are consistently observed to be more prevalent in a wide range of human social interactions <ref type="bibr" target="#b36">[37]</ref>.</p><p>The results presented in this paper were obtained within the limit of high home fidelity, under which communities become asymptotically bounded interacting groups. A relaxation of this limit is expected to lead to several key differences. Firstly, we would expect an increase in the rate at which between-community events happen, tied to the occurrence of group interactions between individuals of different communities, and therefore to the blurring of the interacting boundaries between them. In the pairwise donation game, considering less isolated clusters leads to stricter conditions for the evolution of cooperation <ref type="bibr" target="#b1">[2]</ref>. Even though a similar trend has been observed in the CPD in some small networks <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b33">34]</ref>, this should not be extrapolated to larger networks and all topologies as interacting groups have variable size and the dilemma no longer has an equivalent pairwise representation. In that case, the group structure underlying the multiplayer interactions depends not only on the size and number of communities but also on how the home nodes of each community are connected.</p><p>Accounting for interacting groups in a different way may therefore lead to fundamentally different results, even when the underlying social structure remains very similar or the same, as it was previously reported in <ref type="bibr" target="#b15">[16,</ref><ref type="bibr" target="#b16">17]</ref>. Parallel approaches to higher-order interactions show surprisingly high cooperative states under a class of multiplayer extensions of the prisoner's dilemma <ref type="bibr" target="#b9">[10]</ref>. Similar effects may emerge under communities with blurred boundaries, namely when considering dilemmas with non-rivalrous public goods and/or shared costs, such as the S dilemma, given their propensity to evolve cooperation under high group size variance <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b16">17,</ref><ref type="bibr" target="#b44">45]</ref>. The framework used in this work shows its flexibility once again, leading to evolutionary dynamics similar to metapopulation and deme models under large home fidelity, while offering the possibility to explore new complex group interaction dynamics outside of that limit.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Appendices A Fixation probabilities under high home fidelity</head><p>Consider a connected network with M places and an arbitrary set of edges between them. Within the extended territorial raider model, each node will be home to a community of size Q.</p><p>We denote F C k c,d as the fitness of cooperators C k in a community with c cooperators and d defectors with home in place P k . In the limit of high home fidelity, this can be represented as the following expansion:</p><formula xml:id="formula_42">F C k c,d = 1 -w + w   1 - d k h + d k Q • i∈X(k) 1 - 1 h + d i Q • R C c,d + O(h -1 )   = = 1 -w + wR C c,d + O(h -1 ), (<label>29</label></formula><formula xml:id="formula_43">)</formula><p>where X(k) denotes the set of places adjacent to P k on the network, and d k represents the size of that set, corresponding to the degree of the node. The zeroth-order term of the expansion is dependent only on the composition of the community present in place P k . Similarly, we have that the fitness of defectors is reduced to the following:</p><formula xml:id="formula_44">F D k c,d = 1 -w + wR D c,d + O(h -1 ). (<label>30</label></formula><formula xml:id="formula_45">)</formula><p>We denote f C c,d and f D c,d as the zeroth-order terms of the fitness expansion under high home fidelity, which are presented in equations 6 and 7 of the main text.</p><p>In the next sections, we will focus on the resulting fixation processes in the limit of high home fidelity.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.1 BDB, DBD, LB and LD dynamics</head><p>Starting from the state where all individuals in the population use strategy D, we consider the occurrence of a mutation leading one of them to adopt strategy C. At each step of the BDB process, one individual is chosen for reproduction proportional to their fitness, and another one is chosen for death with probability proportional to the time spent with the first. This means that while there are mixed communities, type-changing replacement events will occur mainly within those communities as we will see below. We denote r C h (r D h ) as the within-community fixation probability of a single cooperator (defector) in a community of defectors (cooperators). We define this as the probability that starting with one mutant in a community of residents, we will observe the fixation of that mutant in the community before we observe that type vanishing. This probability is equal to the sum of the probabilities of all the paths that alter the number of mutants in that community from 1 to Q without passing by 0. We note that this can be split into the sum of the probabilities of paths under which no type-altering between-community replacements occur before withincommunity fixation is attained, S 1 , S 2 , ..., and those under which at least one type-altering between-community replacement occurs before fixation is attained, S ′ 1 , S ′ 2 , ...:</p><formula xml:id="formula_46">r C h = p(S 1 ) + p(S 2 ) + ... + p(S ′ 1 ) + p(S ′ 2 ) + ...<label>(31)</label></formula><p>In the limit we are considering, the sum over the first set of paths introduced before tends to the fixation probability obtained in a well-mixed community <ref type="bibr" target="#b21">[22]</ref>, since individuals of the same community using the same strategy are indistinguishable. Under the BDB dynamics, the transition probabilities used in this expression can be replaced by the zeroth-order terms of the fitness expansion presented in equations 29 and 30, and higher-order terms are added outside the expression:</p><formula xml:id="formula_47">p(S 1 ) + p(S 2 ) + ... = 1 1 + Q-1 j=1 j c=1 f D c,Q-c f C c,Q-c + O(h -1 ). (<label>32</label></formula><formula xml:id="formula_48">)</formula><p>The paths in the second set introduced above involve at least one between-community replacement, therefore holding a probability of at least the first order in h -1 . This highlights the fact that they occur at a different time-scale from within-community fixation processes:</p><formula xml:id="formula_49">p(S ′ 1 ) + p(S ′ 2 ) + ... = O(h -1 ).<label>(33)</label></formula><p>Therefore, the cooperator within-community fixation probability in the limit h → ∞ can be represented as the following:</p><formula xml:id="formula_50">r C h = 1 1 + Q-1 j=1 j c=1 f D c,Q-c f C c,Q-c + O(h -1 ). (<label>34</label></formula><formula xml:id="formula_51">)</formula><p>Similar to this, we can obtain the same equation for the within-community fixation probability of a single defector by using the following expression:</p><formula xml:id="formula_52">r D h = 1 1 + Q-1 j=1 j d=1 f C Q-d,d f D Q-d,d + O(h -1 ).<label>(35)</label></formula><p>We denote r C and r D as the zeroth-order terms of the equations above, which are presented in equations 8 and 8 of the main text.</p><p>We call ρ C the probability that a single mutant cooperator will fixate in a population of defectors. Under h → ∞, populations reach the states where each community is homogeneous, i.e. c = Q or c = 0, before any between-community replacement occurs. When the population is in one of the homogeneous community states, it will be altered only when a cooperator replaces a defector from an adjacent community, or vice versa. After a new cooperator (defector) is born, the population will move to a different homogeneous community state with one more (less) cooperator community with probability r C (r D ), or it will return to the previous state with probability -r C (1 -r D ).</p><p>Let us call I the set of communities composed of only cooperators, M the entire set of communities, and M \I the set of communities of defectors. At a homogeneous community state denoted by I, the probability that the size of set I increases by one after a given evolutionary step is:</p><formula xml:id="formula_53">P |I| + (I) = f C Q,0 |I| • f C Q,0 + |M \I| • f D 0,Q + O(h -1 ) •   Q • i∈I,j∈M \I w ij   • r C + O(h -1 ) .<label>(36)</label></formula><p>The expression above is the product of probabilities of three successive necessary events: 1) choosing a cooperator from a particular community for birth, 2) choosing a defector from another community to be replaced by the first cooperator, and 3) the within-community fixation of the new cooperator before another between community type-altering event occurs. Note that in the probability of choosing a cooperator for birth, we have replaced the fitness of individuals considered in the homogeneous community state by their zeroth-order terms defined in equations 6 and 7, with higher-order terms being explicitly summed onto that probability. The replacement weights w ij between individuals with homes in different places P i and P j are independent of their two strategies, and they are multiplied by Q to account for all the defectors present in each of the communities in M \I. The within-community fixation probability is perturbed by higher-order terms in h -1 already analysed when its expression was obtained. The probability that the size of set I decreases by one is the following:</p><formula xml:id="formula_54">P |I| - (I) = f D 0,Q |I| • f C Q,0 + |M \I| • f D 0,Q + O(h -1 ) •   Q • i∈I,j∈M \I w ji   • r D + O(h -1 ) .<label>(37)</label></formula><p>The two equations 36 and 37 depend on the particular set I because the sum of weights w ij depends on it. These weights tend to zero as h → ∞, but they can be considered at their lowest order in h -1 . As long as there is no disconnected component of the network of communities (∀i∃j ̸ = i(w ij ̸ = 0)), this probability is low but positive, regardless of the particular set I considered. However, because replacement weights are symmetric, i.e. w ij = w ji , the terms in the two transition probabilities in the above equations are identical. Therefore, the ratio between the two probabilities, which we denote Γ, does not depend on the particular set I of communities which are composed of cooperators:</p><formula xml:id="formula_55">Γ = P |I| -(I) P |I| + (I) = f D 0,Q • r D f C Q,0 • r C .<label>(38)</label></formula><p>Furthermore, the transition probability ratio above is constant under all homogeneous community states. After the initial within-community fixation of a cooperator, the probability that the community will fixate on the whole population thus becomes a simple fixed fitness Moran probability <ref type="bibr" target="#b27">[28]</ref>, with equivalent relative fitness denoted by the ratio from equation 38.</p><p>The fixation probability of one single cooperator will therefore be equal to the following:</p><formula xml:id="formula_56">lim h→∞ ρ C = r C • P M oran Γ -1 = r C • 1 -Γ 1 -Γ M ,<label>(39)</label></formula><p>when Γ ̸ = 1. Otherwise, lim h→∞ ρ C = r C /M . Similarly, we have that:</p><formula xml:id="formula_57">lim h→∞ ρ D = r D • P M oran (Γ) = r D • 1 -Γ -1 1 -Γ -M ,<label>(40) when</label></formula><formula xml:id="formula_58">Γ ̸ = 1. Otherwise, lim h→∞ ρ D = r D /M .</formula><p>This result is surprisingly simple and shows that the topology of the underlying network plays no role in the limit of high home fidelity, as long as there is no disconnected component of the network. The dynamics in that limit depend only on within-community fixation probabilities and on the probability ratio Γ.</p><p>The equations presented in 34-40 are valid for dynamics BDB, DBD, LB, and LD. This equivalence holds for all territorial networks in the limit h → ∞. This is so because the transition probability ratios are the same under all these dynamics, both in each step of the within-community processes considered to build equations 34 and 35, and in the community fixation process as presented in equation 38.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.2 Cooperators fixate below neutrality under the CPD with BDB dynamics</head><p>Under the CPD with BDB, the effective fitness Γ of the between-community process can be obtained using equation 38. Replacing r D /r C with the simplified ratio between the two probabilities <ref type="bibr" target="#b30">[31,</ref><ref type="bibr" target="#b42">43]</ref>, we obtain the following explicit simplified expression for Γ:</p><formula xml:id="formula_59">Γ = f D 0,Q f C Q,0 • Q-1 c=1 f D c,Q-c f C c,Q-c . (<label>41</label></formula><formula xml:id="formula_60">)</formula><p>We split the denominator and numerator of the previous product into two products and apply the definition of rewards under the CPD (see table <ref type="table" target="#tab_0">1</ref>), thus obtaining the following:</p><formula xml:id="formula_61">Γ = 1 -w 1 -w + w(V -K) Q-1 c=1 1 -w + w c Q -1 V Q-1 c ′ =1 1 -w + w c ′ -1 Q -1 V -K . (<label>42</label></formula><formula xml:id="formula_62">)</formula><p>We note that an extension of the products in the numerator and denominator to c = 0 and c ′ = Q respectively, would include the extra terms multiplied by each of the products. Doing that, together with the change of variable c = c ′ -1, we obtain the following:</p><formula xml:id="formula_63">Γ = Q-1 c=0 1 -w + w c Q -1 V Q c ′ =1 1 -w + w c ′ -1 Q -1 V -K = Q-1 c=0 1 -w + w c Q -1 V Q-1 c=0 1 -w + w c Q -1 V -K = = Q-1 c=0 1 -w + w c Q -1 V 1 -w + w c Q -1 V -K . (<label>43</label></formula><formula xml:id="formula_64">)</formula><p>We have that Γ &gt; 1 for any choice of payoff parameters, intensity of selection, and community size. This means that the Moran probability will always be lower than 1/M . At the same time, we note that r C &lt; 1/Q because under the CPD, cooperators always do worse than defectors in the same group. Therefore, when we consider the BDB dynamics under the CPD with high home fidelity, cooperators never fixate above the neutral probability 1/(M Q) for any community number and size, network topology, and payoff parameter choices.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.3 DBB and BDD dynamics</head><p>A procedure analogous to the one conducted in section A.1 applies to the remaining two dynamics presented in this paper. However, these dynamics exhibit distinct transition probability ratios compared to the four aforementioned ones, resulting in quantitatively different outcomes.</p><p>We start by noting that the sum of paths that end in fixation with no type-altering between-community replacements is obtained using different transition probabilities. Let us start with the DBB dynamics, under which the transition probability from having c cooperators to having c + 1 or c -1 at a given evolutionary step are respectively as follows:</p><formula xml:id="formula_65">P + DBB (c, Q -c) = Q -c N • c • f C c,Q-c c • f C c,Q-c + (Q -c -1) • f D c,Q-c + O(h -1 ),<label>(44)</label></formula><formula xml:id="formula_66">P - DBB (c, Q -c) = c N (Q -c) • f D c,Q-c (c -1) • f C c,Q-c + (Q -c) • f D c,Q-c + O(h -1 ). (<label>45</label></formula><formula xml:id="formula_67">)</formula><p>Repeating this process considering the BDD dynamics, we obtain the following transition probabilities, which were simplified by multiplying the numerator and denominator by both cooperator and defector's fitness:</p><formula xml:id="formula_68">P + BDD (c, Q -c) = c N • (Q -c) • f D c,Q-c -1 (Q -c) • f D c,Q-c -1 + (c -1) • f C c,Q-c -1 + O(h -1 ) = = c N • (Q -c) • f C c,Q-c (Q -c) • f C c,Q-c + (c -1) • f D c,Q-c + O(h -1 ),<label>(46)</label></formula><formula xml:id="formula_69">P BDD (c, Q -c) = Q -c N • c • f C c,Q-c -1 (Q -c -1) • f D c,Q-c -1 + c • f C c,Q-c -1 + O(h -1 ) = = Q -c N • c • f D c,Q-c (Q -c -1) • f C c,Q-c + c • f D c,Q-c + O(h -1 ). (<label>47</label></formula><formula xml:id="formula_70">)</formula><p>The ratio U (c, d) = P -(c, d)/P + (c, d) between transition probabilities under both dynamics leads to the following expression:</p><formula xml:id="formula_71">U DBB/BDD (c, Q -c) = P - DBB/BDD (c, Q -c) P + DBB/BDD (c, Q -c) = = f D c,Q-c f C c,Q-c • T DBB/BDD (c, Q -c) -f D c,Q-c T DBB/BDD (c, Q -c) -f C c,Q-c = = f D c,Q-c f C c,Q-c 1 + f C c,Q-c -f D c,Q-c T DBB/BDD (c, Q -c) -f C c,Q-c ,<label>(48)</label></formula><p>where we have used the following definitions:</p><formula xml:id="formula_72">T DBB (c, d) = c • f C c,d + d • f D c,d ,<label>(49)</label></formula><formula xml:id="formula_73">T BDD (c, d) = d • f C c,d + c • f D c,d .<label>(50)</label></formula><p>Now, we use these transition probability ratios to compute the zeroth-order term of the within-community fixation probability expansion, similar to what was done in section A.1, getting the following result:</p><formula xml:id="formula_74">r C,h DBB/BDD = 1 1 + Q-1 j=1 j c=1 f D c,Q-c f C c,Q-c 1 + f C c,Q-c -f D c,Q-c T DBB/BDD (c,Q-c)-f C c,Q-c + O(h -1 ). (<label>51</label></formula><formula xml:id="formula_75">)</formula><p>Following the same procedure for the within-community fixation of defectors, we get the following result:</p><formula xml:id="formula_76">r D,h DBB/BDD = 1 1 + Q-1 j=1 j d=1 f C Q-d,d f D Q-d,d • 1 + f D Q-d,d -f C Q-d,d T DBB/BDD (Q-d,d)-f D Q-d,d + O(h -1 ). (<label>52</label></formula><formula xml:id="formula_77">)</formula><p>We denote r C DBB/BDD and r D DBB/BDD as the zeroth-order terms of the equations above, which are presented in equations 15 and 16 of the main text.</p><p>The difference in transition probabilities, when compared to the previous 4 dynamics, also affects the probability that the number of communities increases or decreases by one in the next evolutionary step. We start by looking at what happens under the DBB dynamics:</p><formula xml:id="formula_78">P |I| + DBB (I) = 1 M + O(h -1 ) •   Q •   i∈I,j∈M \I w ij   • f C Q,0 f D 0,Q + O(h -1 )   • r C DBB + O(h -1 ) .<label>(53)</label></formula><p>The preceding probability encompasses: 1) the uniform random selection of a specific community for the death of one of its individuals; 2) the subsequent selection, if the first individual was a defector, of a cooperator community for birth, involving any of its Q cooperators; and 3) the fixation of the invading cooperator in the newly mixed community. The sum of fractions above includes a simplification coming from the fact that the denominator is a sum over all products of weights and fitness according to the definition from table 2, which in the limit h → ∞ simply tends to the fitness of communal residents f D 0,Q plus higher-order terms in h -1 .</p><p>This will introduce another key difference in the results. We obtain the following transition probability in the opposing direction:</p><formula xml:id="formula_79">P |I| - DBB (I) = 1 M + O(h -1 ) •   Q •   i∈I,j∈M \I w ji   • f D 0,Q f C Q,0 + O(h -1 )   • r D DBB + O(h -1 ) .<label>(54)</label></formula><p>Now looking at what happens under BDD dynamics, we obtain the following expressions for transition probabilities between homogeneous community states:</p><formula xml:id="formula_80">P |I| + BDD (I) = 1 M + O(h -1 ) •   Q •   i∈I,j∈M \I w ij   •    f D 0,Q -1 f C Q,0 -1 + O(h -1 )       • r C BDD + O(h -1 ) ,<label>(55)</label></formula><formula xml:id="formula_81">P |I| - BDD (I) = 1 M + O(h -1 ) •   Q •   i∈I,j∈M \I w ij   •    f C Q,0 -1 f D 0,Q -1 + O(h -1 )       • r C BDD + O(h -1 ) . (<label>56</label></formula><formula xml:id="formula_82">)</formula><p>We note that, once again, the highest-order terms in these probabilities are indeed first-order in h -1 due to the effects of between-community replacements happening between different communities on the network. However, the particular set of edges between the nodes of the network, i.e. its topology, does not influence the ratio between probabilities, but only the time-scale at which these transitions occur. The probability ratio Γ DBB/BDD is independent of I and its size, as it was under the remaining dynamics:</p><formula xml:id="formula_83">Γ DBB/BDD = P |I| - DBB/BDD (I) P |I| + DBB/BDD (I) = f D 0,Q f C Q,0 2 • r D DBB/BDD r C DBB/BDD .<label>(57)</label></formula><p>Therefore the resulting process under high home fidelity in these two dynamics is parallel to the one occurring under the remaining four dynamics, with two quantitative differences: within-community fixation probabilities have correction coefficients as represented in equations 51 and 52, and the overall population process has an altered equivalent fitness characterized in equation 57.</p><p>The resulting fixation probabilities are therefore the following:</p><formula xml:id="formula_84">lim h→∞ ρ C DBB/BDD = r C DBB/BDD • P M oran Γ -1 DBB/BDD = r C DBB/BDD • 1 -Γ DBB/BDD 1 -Γ M DBB/BDD ,<label>(58)</label></formula><p>when Γ DBB/BDD ̸ = 1. Otherwise, lim h→∞ ρ C DBB/BDD = r C DBB/BDD /M . Similarly, we have that:</p><formula xml:id="formula_85">lim h→∞ ρ D DBB/BDD = r D DBB/BDD • P M oran Γ DBB/BDD = r D DBB/BDD • 1 -Γ -1 DBB/BDD 1 -Γ -M DBB/BDD .<label>(59)</label></formula><p>when Γ DBB/BDD ̸ = 1. Otherwise, lim h→∞ ρ D DBB/BDD = r D DBB/BDD /M .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B Fixation probabilities under high home fidelity and weak selection</head><p>Holding the assumption of high home fidelity, we now introduce the limit of weak selection. We highlight the fact that the limits are considered in the stated order: first, we consider home fidelity to be asymptotically high, and only then we consider selection to be asymptotically weak. It has been proved that the order in which the limits of weak selection and large population size are considered impacts the resulting asymptotic fixation probability expansions and the conditions for the evolution of a given strategy to be favoured in comparison to neutral fixation <ref type="bibr" target="#b42">[43]</ref>. Parallel to the definition of the limit order provided there, in our case, the results are valid for all sufficiently large h and all sufficiently low w, with w being fixed first and with h potentially being dependent on w.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B.1 BDB, DBD, LB, and LD dynamics</head><p>We start from equation 39 and expand it around w → 0. In that case, we obtain the following expression:</p><formula xml:id="formula_86">ρ C ≈ r C • 1 -Γ 1 -Γ M w→0 + w ∂ ∂w 1 -Γ 1 -Γ M • r C + ∂r C ∂w • 1 -Γ 1 -Γ M w→0<label>(60)</label></formula><p>We start to simplify this equation by noting that, under this limit, within-community fixation probabilities tend to 1/Q. In that limit, we define their derivatives in respect to w as the following:</p><formula xml:id="formula_87">δ C = ∂r C ∂w w→0 = 1 Q 2 Q-1 j=1 j c=1 [R C c,Q-c -R D c,Q-c ],<label>(61)</label></formula><formula xml:id="formula_88">δ D = ∂r D ∂w w→0 = 1 Q 2 Q-1 j=1 j d=1 R D Q-d,d -R C Q-d,d .<label>(62)</label></formula><p>. These equations can be simplified by taking into account that each term on the inner sum is repeated Q -c and Q -d times respectively in the outer sum, thus leading to the following expressions:</p><formula xml:id="formula_89">δ C = 1 Q 2 Q-1 c=1 (Q -c)[R C c,Q-c -R D c,Q-c ],<label>(63)</label></formula><formula xml:id="formula_90">δ D = 1 Q 2 Q-1 d=1 (Q -d) R D Q-d,d -R C Q-d,d .<label>(64)</label></formula><p>.</p><p>In the same limit, we observe that Γ → 1, leading the Moran probability with effective fitness Γ to simply tend to 1/M . We then evaluate the derivative of the Moran probability and obtain the following relation:</p><formula xml:id="formula_91">∂ ∂w 1 -Γ 1 -Γ M w→0 = 1 2 1 - 1 M - ∂Γ ∂w w→0 . (<label>65</label></formula><formula xml:id="formula_92">)</formula><p>The derivative of the effective fitness Γ can be obtained in the following way:</p><formula xml:id="formula_93">- ∂Γ ∂w w→0 = ∆ CD + Q δ C -δ D .<label>(66)</label></formula><p>where</p><formula xml:id="formula_94">∆ CD = R C Q,0 -R D 0,Q = -∆ DC .<label>(67)</label></formula><p>Replacing these redefined terms onto the original equation 60 of the expanded fixation probability, we obtained the following relation:</p><formula xml:id="formula_95">ρ C ≈ 1 M Q + w 2 1 Q 1 - 1 M ∆ CD + 1 + 1 M δ C -1 - 1 M δ D .<label>(68)</label></formula><p>Following the same procedure for the fixation probabilities of defectors, we obtain the previous equation with swapped indexes C and D:</p><formula xml:id="formula_96">ρ D ≈ 1 M Q + w 2 1 Q 1 - 1 M ∆ DC + 1 + 1 M δ D -1 - 1 M δ C .<label>(69)</label></formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B.2 DBB and BDD dynamics</head><p>The expansion is slightly different when we consider the DBB and BDD dynamics. The original expansion is parallel to the one presented in equation 60, the only difference being that all instances of r C , r D , and Γ are replaced by their respective equations under the DBB and BDD dynamics. Evaluated in the limit w → 0, the three quantities lead to the same values as in the previous dynamics. Therefore, all differences come from their derivatives. Based on the definitions presented in equations 51 and 52, and the previously defined derivatives δ C and δ D , we obtain the following relations for their derivatives evaluated in the limit w → 0:</p><formula xml:id="formula_97">∂r C DBB ∂w w→0 = ∂r C BDD ∂w w→0 = 1 Q 2 Q-1 j=1 j c=1 1 - 1 Q -1 [R C c,Q-c -R D c,Q-c ] = 1 - 1 Q -1 δ C ,<label>(70) ∂r D</label></formula><p>DBB</p><formula xml:id="formula_98">∂w w→0 = ∂r D BDD ∂w w→0 = 1 Q 2 Q-1 j=1 j d=1 1 - 1 Q -1 R D Q-d,d -R C Q-d,d = 1 - 1 Q -1 δ D .<label>(71)</label></formula><p>The derivative of the effective fitness Γ can be obtained in the following way:</p><formula xml:id="formula_99">∂Γ DBB/BDD ∂w w→0 = 2 R D 0,Q -R C Q,0 + Q ∂r D DBB/BDD ∂w w→0 - ∂r C DBB/BDD ∂w w→0 ,<label>(72)</label></formula><p>which, based on equations 67, 70 and 71, leads to the following equation:</p><formula xml:id="formula_100">- ∂Γ DBB/BDD ∂w w→0 = 2∆ CD + Q 1 - 1 Q -1 δ C -δ D .<label>(73)</label></formula><p>Replacing these terms in the fixation probability expansion parallel to the one from equation 60, we obtain the following resulting equations:</p><formula xml:id="formula_101">ρ C DBB/BDD ≈ 1 M Q + w 2 2 1 Q 1 - 1 M ∆ CD + + 1 - 1 Q -1 1 + 1 M δ C -1 - 1 Q -1 1 - 1 M δ D ,<label>(74)</label></formula><formula xml:id="formula_102">ρ D DBB/BDD ≈ 1 M Q + w 2 2 1 Q 1 - 1 M ∆ DC + + 1 - 1 Q -1 1 + 1 M δ D -1 - 1 Q -1 1 - 1 M δ C .<label>(75)</label></formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B.3 Obtaining the rules of cooperation for general social dilemmas</head><p>To achieve the resulting rules presented in section 3.2, we systematically compute the terms ∆ CD , δ C and δ D under each of the general social dilemmas approached. These are summarised in the following table:</p><formula xml:id="formula_103">Multiplayer Game ∆ CD δ C δ D CPD V -K - Q -1 2Q K + V Q -1 Q -1 2Q K + V Q -1 PD, VD V -K - Q -1 2Q K Q -1 2Q K PDV V Q 1 -ω Q 1 -ω -K - Q -1 2Q K Q -1 2Q K S V -K/Q - 1 Q (H Q -1) K Q -1 Q 2 K TVD, SH V -K Q ≥ L -K Q &lt; L - Q -1 2Q K Q -1 2Q K FSH    V Q -K Q ≥ L -K Q &lt; L - Q -1 2Q K Q -1 2Q K TS V -K/Q Q ≥ L -K/L Q &lt; L        - K Q 2 Q(H Q-1 -H L ) + L + 1 2 Q ≥ L - Q -1 2Q K L Q &lt; L        1 Q 2 K 2 (2Q -L -1) Q ≥ L Q -1 2Q K L Q &lt; L HD Q -1 Q K Q -1 Q 2 Q 2 -1 K -V 1 Q H Q -1 V - Q + 1 2 -H Q K</formula><p>Table <ref type="table">4</ref>: Value of fixation probability expansion terms under weak selection for each social dilemma. The terms denote the contributions of between-community events (∆ CD ), within-community fixation of cooperators (δ C ) and defectors (δ D ). Their definitions can be found in equations 63, 64, and 67.</p><p>The values of ∆ CD can be trivially obtained based on the calculation of the rewards among communal cooperators and communal defectors. The values of δ C and δ D are often simple to calculate because payoff differences between cooperators and defectors in mixed communities are constant under most social dilemmas. The only dilemmas under which this is not as trivial are the S, the TS and the HD dilemmas, under which we had to include the harmonic series defined as the following:</p><formula xml:id="formula_104">H Q = i=1 1 i . (<label>76</label></formula><formula xml:id="formula_105">)</formula><p>arises from the linear dependency of all ∆ CD on V , whereas δ C and δ D lack such dependence except under the CPD (a game already shown to support cooperation under any number of communities through equation 77). Consequently, there is always a critical value of V above which the first-order term of the weak selection expansion is positive. In the context of the HD dilemma, cooperation can consistently evolve under sufficiently small values of V /K when Q ≥ 2, regardless of the network size. This stems from the linear dependence of ∆ CD and δ C on K, and δ D on -K, ensuring that all contributions to the fixation probability expansion are positive when K reaches a high enough value.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>C.2 The effect of strong selection on the evolution of cooperation</head><p>In this section, we relax the weak selection limit. This limit was introduced in section 3.2 and it was used together with the limit of large number of communities in the succeeding sections to achieve simple rules of cooperation. We focus on understanding the effect of considering larger values of intensity of selection on the critical value of the reward-to-cost ratio, denoted as (V /K) c , above which cooperation fixates in public goods dilemmas and below which cooperation fixates in the HD dilemma. Figures <ref type="figure" target="#fig_0">4,</ref><ref type="figure" target="#fig_1">5</ref>, and 6 show the value of (V /K) c under networks with M = 10 communities of various sizes, such as Q = 2, 3, 4, 6, 8. We present results for values of w between 0 and 0.5, the interval under which all 10 social dilemmas can be considered for any possible value of V when K = 1, i.e. for which probabilities remain positive. More generally, this corresponds to w ∈ (0, 1/(K + 1)). The reward-to-cost ratio is affected in different ways by the increase in intensity of selection for each of the social dilemmas, and no particular strategy is consistently favoured. We start by focusing on the CPD. Under Q = 2, cooperation evolves for V /K &gt; 1 for all values of w and M , which is equivalent to the rule shown in table <ref type="table">3</ref>. However, under the remaining community sizes considered, increasing the intensity of selection consistently leads to higher critical values of the reward-to-cost ratio. In those cases, weak selection has a positive effect on the evolution of cooperation. Under strong enough selection, there is no critical reward-to-cost ratio and cooperation may never evolve. We explored other values of M and observed that increasing M under strong selection extended the values of w for which there existed a critical reward-to-cost ratio.</p><p>Under other dilemmas such as the PD, the PDV, and the TS, lower intensities of selection also led to lower critical values of the reward-to-cost ratio, but the differences obtained across values of w are substantially lower. In those dilemmas, the payoff parameters we explored always led to the existence of a critical value, contrary to what was observed under the CPD and other threshold games such as the TVD, SH and the FSH, which showed otherwise similar trends. Moreover, under the PDV, the TVD, and the FSH, the minimum value of (V /K) c occurred for intermediate intensities of selection. These correspond to an optimal w for which cooperation evolves under the largest regions of the payoff parameter space. Under the VD and the S, higher intensities of selection lead to lower critical values of the reward-to-cost ratio. Therefore, cooperation evolves for larger regions of the payoff parameter space under stronger selection. This trend was more pronounced under the VD.</p><p>As an overall trend under public goods dilemmas, we note that larger community sizes require higher rewardto-cost ratios for cooperators to successfully fixate. This is concluded from the rules of multiplayer cooperation (section 3.3), obtained under weak selection and a large number of communities. Here, we observe that this still holds when those limits are relaxed.</p><p>Furthermore, we can observe some of the effects of considering a finite number of communities. The critical values obtained under w → 0 and shown in figures 4 and 5 for public goods dilemmas are higher than the ones presented in table 3, which were obtained considering a large number of communities. Larger numbers of communities were proven C.1 to decrease the values of (V /K) c above which cooperation evolves under public goods games. Naturally, the observed difference is more prominent when Q is larger and of the same order as M .</p><p>Most public goods dilemmas lead to one and only one stable strategy when one of the limits of large number of communities or weak selection is considered, as it was noted in sections 3.1 and 3.2. Under the S and the TS, the only exceptions to that rule, there are some cases of bi-stability when the system is close to neutrality, under which none of the strategies fixates on the other. Overall, this means that in either of those limits, if cooperation fixates on defection above neutrality, it will also be a stable strategy. In settings with strong selection and a finite number of communities, such as the ones explored in this section, we have not observed any outcome where mutual fixation occurs, thus suggesting that the previous conclusion might hold for more general regions of the parameter space. Under the HD dilemma, the only commons dilemma studied here, cooperators fixate above neutrality when V /K &lt; (V /K) c . Therefore, from figure <ref type="figure" target="#fig_2">6</ref>, we observe that higher values of intensity of selection lead to larger regions in which cooperation fixates. As noted before, cooperation always fixates when Q = 2, and therefore we haven't represented in the figure the value of (V /K) c for that case. Increasing the community size to Q = 3, 4 lowers the critical values of V /K, thus leading to smaller regions of fixation of cooperators. However, increasing it to Q = 5 and above leads to a change in the opposite direction, thus increasing the regions where cooperation fixates. This effect has been described and analysed in section 3.3 in the context of weak selection and a large number of communities, and it is valid when those limits are relaxed, as it can be observed in figure <ref type="figure" target="#fig_2">6</ref>. </p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: Critical values of the reward-to-cost ratio for which V /K &gt; (V /K) c leads to the successful fixation and stability of cooperation. The results are obtained for different intensities of selection under M = 10, K = 1, and different values of Q.</figDesc><graphic coords="23,66.33,294.75,462.52,442.88" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: Critical values of the reward-to-cost ratio for which V /K &gt; (V /K) c leads to the successful fixation and stability of cooperation. The results are obtained for different intensities of selection under M = 10, K = 1, L = 2, and different values of Q.</figDesc><graphic coords="24,66.33,247.93,462.59,306.72" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 6 :</head><label>6</label><figDesc>Figure 6: Critical values of the reward-to-cost ratio for which V /K &lt; (V /K) c leads to the successful fixation of cooperation. Cooperators fixate for all values of V /K and w when Q = 2. The results are obtained for different intensities of selection under M = 10, K = 1, L = 2, and different values of Q.</figDesc><graphic coords="25,165.12,246.20,265.03,166.08" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="6,68.74,127.78,457.75,210.23" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="11,66.33,56.69,462.61,207.90" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc></figDesc><table /><note><p>Payoffs obtained by a focal cooperator R C c,d or a focal defector R D c,d in a group with c cooperators and d defectors playing a social dilemma. Social dilemmas are referred to in the text by the acronyms introduced in this table.</p></note></figure>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>Acknowledgments</head><p>This project has received funding from the <rs type="funder">European Union</rs>'s <rs type="programName">Horizon 2020 research and innovation programme</rs> under the <rs type="grantName">Marie Sk lodowska-Curie</rs> grant agreement No <rs type="grantNumber">955708</rs>.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_hnK9daN">
+					<idno type="grant-number">955708</idno>
+					<orgName type="grant-name">Marie Sk lodowska-Curie</orgName>
+					<orgName type="program" subtype="full">Horizon 2020 research and innovation programme</orgName>
+				</org>
+			</listOrg>
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>C Rules of cooperation under a finite number of communities and general intensity of selection</head><p>In this section, we propose to analyse the evolution and stability of cooperation when relaxing the limits of weak selection (considered in sections 3.2-3.4) and large number of communities (considered in sections 3.3 and 3.4). We start by considering a finite number of communities under weak selection and their impact on the simple rules previously presented. We derive an exact rule for the CPD and analyse the general impact of finiteness under the remaining social dilemmas. We then move outside the weak selection limit, analysing the impact of relaxing the two limits on the parameter regions under which cooperation evolves.</p><p>C.1 The effect of a finite number of communities on the evolution of cooperation</p><p>We start by analysing the particular case of the CPD under the DBB and BDD dynamics. The fixation probability of cooperators expanded under weak selection is larger than the neutral value if the following condition is true:</p><p>The second term of the product on the right-hand side of the equation can be considered the finiteness correction coefficient. This is equal to 1 under Q = 2, which means that in that case, the condition obtained is the same regardless of the number of communities. However, for larger numbers of communities (Q &gt; 2), the denominator is lower than the numerator in the correction coefficient above, and therefore the critical value of the reward-to-cost ratio will necessarily be larger than the one obtained under an infinite number of communities. The difference between the two should be the largest for the smallest possible network size M = 2, under which the rule becomes the following:</p><p>It was stated in section 3.2 that decreasing the number of communities increases the importance of withincommunity fixation against between-community replacement events in the course of a fixation process. Because of that, defectors should generally do better in smaller networks. This can be concluded based on the following rearrangement of the weak selection expansion:</p><p>We can identify three types of terms in the equation above. The first type corresponds to the zeroth order term of the fixation probability under weak selection; the second includes the set of first-order terms in w which are independent of M ; and the third (second line of the equation) represents the first-order terms in w which are dependent on M and vanish for large M , thus holding a finiteness correction of the expansion. The third type does not originate on the expansion of the fixation probability under a large number of communities but instead reflects its exact dependence on the number of communities under weak selection. Let us analyse the effect introduced by this finiteness correction term.</p><p>Focusing on public goods dilemmas, cooperation only has a chance of fixating above neutrality for a choice of the network parameters Q and M if we observe ∆ CD &gt; 0 because all other contributions in equations 68 and 74 (involving δ C and -δ D ) are always negative (see table <ref type="table">4</ref>). Therefore, for cooperation to fixate successfully, the first contribution to the finiteness correction in equation 79 has to be negative. The sum of the remaining correction contributions is zero in most public goods dilemmas, except for the S and the TS dilemmas, under which they are negative. This means that the M -dependent term of the weak selection expansion of the fixation probability is necessarily negative. If the fixation probability is higher than the neutral one for a given choice of network (Q and M ) and payoff (V and K) parameters, it will necessarily be so for any M larger than that, whereas it might not be for choices of M lower than that. This necessarily means that the critical reward-to-cost ratio under all public goods dilemmas (expressed in table 3 for a large number of communities) will increase when we decrease M . Finiteness narrows the regions of V /K for which cooperation evolves under public goods dilemmas.</p><p>Under the HD dilemma, the effect of M can be quite different because both ∆ CD and δ C + δ D are always positive, thus leading to different signs on the two contributions to the third term in the previous equation. This complex effect of M is parallel to the effects of Q explored in section 3.2.</p><p>Cooperation evolves under sufficiently large values of V /K when Q ≥ 2 in non-threshold public goods and when Q ≥ L in threshold public goods, irrespective of the number of communities M . This conclusion</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">The cancellation effect at the group level</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Akdeniz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Van Veelen</surname></persName>
+		</author>
+		<idno type="DOI">10.1111/evo.13995</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Evolution</title>
+		<imprint>
+			<biblScope unit="volume">74</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page" from="1246" to="1254" />
+			<date type="published" when="2020">7 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Evolutionary dynamics on any population structure</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Allen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Lippner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y.-T</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Fotouhi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Momeni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S.-T</forename><surname>Yau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Nowak</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/nature21723</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<idno type="ISSN">14764687</idno>
+		<imprint>
+			<biblScope unit="volume">544</biblScope>
+			<biblScope unit="page" from="227" to="230" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Review: Game theory of public goods in one-shot social dilemmas without assortment</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Archetti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Scheuring</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.jtbi.2011.06.018</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Theoretical Biology</title>
+		<imprint>
+			<biblScope unit="volume">299</biblScope>
+			<biblScope unit="page">2012</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<title level="m" type="main">The impact of mobility costs on cooperation and welfare in spatial social dilemmas</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Bara</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">P</forename><surname>Santos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Turrini</surname></persName>
+		</author>
+		<idno type="DOI">10.21203/rs.3.rs-3694286/v1</idno>
+		<ptr target="https://doi.org/10.21203/rs.3.rs-3694286/v1" />
+		<imprint>
+			<biblScope unit="page">2023</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">A general framework for analysing multiplayer games in networks using territorial interactions as a case study</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Broom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Rychtář</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.jtbi.2012.02.025</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Theoretical Biology</title>
+		<imprint>
+			<biblScope unit="volume">302</biblScope>
+			<biblScope unit="page" from="70" to="80" />
+			<date type="published" when="2012">6 2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">A study of the dynamics of multi-player games on small networks using territorial interactions</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Broom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Lafaye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Pattni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Rychtář</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s00285-015-0868-1</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Mathematical Biology</title>
+		<imprint>
+			<biblScope unit="volume">71</biblScope>
+			<biblScope unit="issue">6-7</biblScope>
+			<biblScope unit="page" from="1551" to="1574" />
+			<date type="published" when="2015">3 2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Generalized Social Dilemmas: The Evolution of Cooperation in Populations with Variable Group Size</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Broom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Pattni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Rychtář</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s11538-018-00545-1</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Bulletin of Mathematical Biology</title>
+		<imprint>
+			<biblScope unit="volume">81</biblScope>
+			<biblScope unit="issue">11</biblScope>
+			<biblScope unit="page">2019</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Modelling Evolution in Structured Populations Involving Multiplayer Interactions</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Broom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">V</forename><surname>Erovenko</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Rychtář</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s13235-020-00358-9</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Dynamic Games and Applications</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page">2021</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">The evolution of truly social cognition: The core configurations model</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">R</forename><surname>Caporael</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Personality and Social Psychology Review</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="276" to="298" />
+			<date type="published" when="1997">1997</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<monogr>
+		<title level="m" type="main">Explosive cooperation in social dilemmas on higher-order networks</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Civilini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Sadekar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Battiston</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gómez-Gardeñes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Latora</surname></persName>
+		</author>
+		<ptr target="http://arxiv.org/abs/2303.11475" />
+		<imprint>
+			<date type="published" when="2023">page 2303.11475, 3 2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Self-organization and collective behavior in vertebrates</title>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">D</forename><surname>Couzin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Krause</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in the Study of Behavior</title>
+		<imprint>
+			<date type="published" when="2003">2003</date>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="page" from="10" to="1016" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Volunteer&apos;s Dilemma</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Diekmann</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Conflict Resolution</title>
+		<imprint>
+			<biblScope unit="volume">29</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="605" to="610" />
+			<date type="published" when="1985">1985</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">The effect of network topology on optimal exploration strategies and the evolution of cooperation in a mobile population</title>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">V</forename><surname>Erovenko</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bauer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Broom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Pattni</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Rychtář</surname></persName>
+		</author>
+		<idno type="DOI">10.1098/rspa.2019.0399</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences</title>
+		<imprint>
+			<biblScope unit="volume">475</biblScope>
+			<date type="published" when="2019">2230. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">The Bystander-Effect: A Meta-Analytic Review on Bystander Intervention in Dangerous and Non-Dangerous Emergencies</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Fischer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">I</forename><surname>Krueger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Greitemeyer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Vogrincic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kastenmüller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Frey</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Heene</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wicher</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Kainbacher</surname></persName>
+		</author>
+		<idno type="DOI">10.1037/a0023304</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Psychological Bulletin</title>
+		<imprint>
+			<biblScope unit="volume">137</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="517" to="537" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Community structure in social and biological networks</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Girvan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">E J</forename><surname>Newman</surname></persName>
+		</author>
+		<ptr target="https://www.pnas.org" />
+	</analytic>
+	<monogr>
+		<title level="j">Proceedings of the National Academy of Sciences</title>
+		<imprint>
+			<biblScope unit="volume">99</biblScope>
+			<biblScope unit="issue">12</biblScope>
+			<biblScope unit="page" from="7821" to="7826" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Evolutionary games defined at the network mesoscale: The Public Goods game</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gómez-Gardeñes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Romance</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Criado</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Vilone</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sánchez</surname></persName>
+		</author>
+		<idno type="DOI">10.1063/1.3535579</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Chaos: An Interdisciplinary Journal of Nonlinear Science</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">16113</biblScope>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Disentangling social and group heterogeneities: Public Goods games on complex networks</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gómez-Gardeñes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Vilone</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sánchez</surname></persName>
+		</author>
+		<idno type="DOI">10.1209/0295-5075/95/68003</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Europhysics Letters</title>
+		<imprint>
+			<biblScope unit="volume">95</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page">68003</biblScope>
+			<date type="published" when="2011-09">9 2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">N-person Prisoner&apos;s Dilemma</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Hamburger</surname></persName>
+		</author>
+		<idno type="DOI">10.1080/0022250X.1973.9989822</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Mathematical Sociology</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">1973</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Metapopulation dynamics</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Hanski</surname></persName>
+		</author>
+		<ptr target="www.nature.com" />
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">396</biblScope>
+			<biblScope unit="page" from="41" to="49" />
+			<date type="published" when="1998">1998</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Evolutionary games in deme structured, finite populations</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Hauert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">A</forename><surname>Imhof</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.jtbi.2011.06.010</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Theoretical Biology</title>
+		<imprint>
+			<biblScope unit="volume">299</biblScope>
+			<biblScope unit="page" from="106" to="112" />
+			<date type="published" when="2012">4 2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Fixation Times in Deme Structured, Finite Populations with Rare Migration</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Hauert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y.-T</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">A</forename><surname>Imhof</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10955-014-1022-y</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Statistical Physics</title>
+		<imprint>
+			<biblScope unit="volume">156</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="739" to="759" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<monogr>
+		<title level="m" type="main">A First Course in Stochastic Processes</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Karlin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">M</forename><surname>Taylor</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1975">1975</date>
+			<publisher>Academic Press</publisher>
+			<pubPlace>New York, USA</pubPlace>
+		</imprint>
+	</monogr>
+	<note>second edition</note>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Site attachment and site fidelity in migratory birds: experimental evidence from the field and analogies from neurobiology</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Ketterson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Nolan</surname><genName>Jr</genName></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Bird migration: physiology and ecophysiology</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="1990">1990</date>
+			<biblScope unit="page" from="117" to="129" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<title level="m" type="main">Living in Groups</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Krause</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">D</forename><surname>Ruxton</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2002">2002</date>
+			<publisher>Oxford Univ. Press</publisher>
+			<pubPlace>Oxford, UK</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Some Demographic and Genetic Consequences of Environmental Heterogeneity for Biological Control</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Levins</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Bulletin of the Entomological Society of America</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="237" to="240" />
+			<date type="published" when="1969">1969</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Evolutionary dynamics on graphs</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Lieberman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Hauert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Nowak</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/nature03211</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">433</biblScope>
+			<biblScope unit="issue">7023</biblScope>
+			<biblScope unit="page" from="312" to="316" />
+			<date type="published" when="2005">1 2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Directionality of contact networks suppresses selection pressure in evolutionary dynamics</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Masuda</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.jtbi.2009.01.025</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Theoretical Biology</title>
+		<imprint>
+			<biblScope unit="volume">258</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="323" to="334" />
+			<date type="published" when="2009-05">5 2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Random processes in genetics</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">A P</forename><surname>Moran</surname></persName>
+		</author>
+		<idno type="DOI">10.1017/S0305004100033193</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Mathematical Proceedings of the Cambridge Philosophical Society</title>
+		<imprint>
+			<biblScope unit="volume">54</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="60" to="71" />
+			<date type="published" when="1958">1958</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Communities, modules and large-scale structure in networks</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">E</forename><surname>Newman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature physics</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="25" to="31" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Modularity and community structure in networks</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">E J</forename><surname>Newman</surname></persName>
+		</author>
+		<idno>pnas.orgcgidoi10.1073pnas.0601602103</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of National Academy of Sciences</title>
+		<meeting>National Academy of Sciences</meeting>
+		<imprint>
+			<date type="published" when="2006">2006</date>
+			<biblScope unit="volume">103</biblScope>
+			<biblScope unit="page" from="8577" to="8582" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Emergence of cooperation and evolutionary stability in finite populations</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Nowak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sasaki</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Taylor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Fudenberg</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">428</biblScope>
+			<biblScope unit="page" from="646" to="650" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">A simple rule for the evolution of cooperation on graphs and social networks</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ohtsuki</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Hauert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Lieberman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Nowak</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/nature04605</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<idno type="ISSN">14764687</idno>
+		<imprint>
+			<biblScope unit="volume">441</biblScope>
+			<biblScope unit="issue">7092</biblScope>
+			<biblScope unit="page" from="502" to="505" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Evolutionary dynamics of collective action in N-person stag hunt dilemmas</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Pacheco</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">C</forename><surname>Santos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">O</forename><surname>Souza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Skyrms</surname></persName>
+		</author>
+		<idno type="DOI">10.1098/rspb.2008.1126</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Proceedings of the Royal Society B: Biological Sciences</title>
+		<imprint>
+			<biblScope unit="volume">276</biblScope>
+			<biblScope unit="page" from="315" to="321" />
+			<date type="published" when="1655-01">1655. 1 2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Evolutionary dynamics and the evolution of multiplayer cooperation in a subdivided population</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Pattni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Broom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Rychtář</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.jtbi.2017.06.034</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Theoretical Biology</title>
+		<imprint>
+			<biblScope unit="volume">429</biblScope>
+			<biblScope unit="page" from="105" to="115" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Evolving multiplayer networks: Modelling the evolution of cooperation in a mobile population</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Pattni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Broom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Rychtář</surname></persName>
+		</author>
+		<idno type="DOI">10.3934/dcdsb.2018191</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Discrete and Continuous Dynamical Systems -Series B</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<date type="published" when="1975">1975-2004, 7 2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Ordering structured populations in multiplayer cooperation games</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Penã</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Traulsen</surname></persName>
+		</author>
+		<idno type="DOI">10.1098/rsif.2015.0881</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the Royal Society Interface</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<date type="published" when="2016">20150881, 1 2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">The prevalence of dyads in social life</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">S</forename><surname>Peperkoorn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">V</forename><surname>Becker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Balliet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Columbus</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Molho</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">A</forename><surname>Van Lange</surname></persName>
+		</author>
+		<idno type="DOI">10.1371/journal.pone.0244188</idno>
+	</analytic>
+	<monogr>
+		<title level="j">PLoS ONE</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page">2020</biblScope>
+			<date>12 December</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Evolutionary dynamics of group interactions on structured populations: A review</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Perc</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gómez-Gardeñes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Szolnoki</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">M</forename><surname>Floría</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Moreno</surname></persName>
+		</author>
+		<idno type="DOI">10.1098/rsif.2012.0997</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the Royal Society Interface</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="issue">80</biblScope>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Decision-making processes: the case of collective movements</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Petit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Bon</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Behavioural processes</title>
+		<imprint>
+			<biblScope unit="volume">84</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="635" to="647" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">More can be better: An analysis of single-mutant fixation probability functions under 2 × 2 games</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">L</forename><surname>Pires</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Broom</surname></persName>
+		</author>
+		<idno type="DOI">10.1098/rspa.2022.0577</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences</title>
+		<imprint>
+			<biblScope unit="volume">478</biblScope>
+			<date type="published" when="2022">20220577, 11 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Network topology and movement cost, not updating mechanism, determine the evolution of cooperation in mobile structured populations</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">L</forename><surname>Pires</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">V</forename><surname>Erovenko</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Broom</surname></persName>
+		</author>
+		<idno type="DOI">10.1371/journal.pone.0289366</idno>
+	</analytic>
+	<monogr>
+		<title level="j">PLoS ONE</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<date type="published" when="2023">0289366. 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Communities in networks</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Porter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J.-P</forename><surname>Onnela</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Mucha</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Notices of the American Mathematical Society</title>
+		<imprint>
+			<biblScope unit="volume">56</biblScope>
+			<biblScope unit="issue">9</biblScope>
+			<biblScope unit="page" from="1082" to="1097" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">The limits of weak selection and large population size in evolutionary game theory</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Sample</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Allen</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s00285-017-1119-4</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Mathematical Biology</title>
+		<imprint>
+			<biblScope unit="volume">75</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page">2017</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Scale-free networks provide a unifying framework for the emergence of cooperation</title>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">C</forename><surname>Santos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Pacheco</surname></persName>
+		</author>
+		<idno type="DOI">10.1103/PhysRevLett.95.098104</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Physical Review Letters</title>
+		<imprint>
+			<biblScope unit="volume">95</biblScope>
+			<biblScope unit="issue">9</biblScope>
+			<date type="published" when="2005">8 2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Social diversity promotes the emergence of cooperation in public goods games</title>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">C</forename><surname>Santos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">D</forename><surname>Santos</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Pacheco</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/nature06940</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<idno type="ISSN">14764687</idno>
+		<imprint>
+			<biblScope unit="volume">454</biblScope>
+			<biblScope unit="issue">7201</biblScope>
+			<biblScope unit="page" from="213" to="216" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Dynamics of multi-player games on complex networks using territorial interactions</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">H T</forename><surname>Schimit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Pattni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Broom</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Physical Review E</title>
+		<imprint>
+			<biblScope unit="volume">99</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Good predictors for the fixation probability on complex networks of multi-player games using territorial interactions</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">H T</forename><surname>Schimit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">H</forename><surname>Pereira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Broom</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.ecocom.2022.101017</idno>
+		<ptr target="https://linkinghub.elsevier.com/retrieve/pii/S1476945X2200037X" />
+	</analytic>
+	<monogr>
+		<title level="j">Ecological Complexity</title>
+		<imprint>
+			<biblScope unit="volume">51</biblScope>
+			<biblScope unit="page">101017</biblScope>
+			<date type="published" when="2022">10 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Evolution of cooperation under N-person snowdrift games</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">O</forename><surname>Souza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Pacheco</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">C</forename><surname>Santos</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.jtbi.2009.07.010</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Theoretical Biology</title>
+		<imprint>
+			<biblScope unit="volume">260</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="581" to="588" />
+			<date type="published" when="2009">10 2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Social Loafing: A Meta-Analytic Review and Theoretical Integration</title>
+		<author>
+			<persName><forename type="first">Steven</forename><forename type="middle">J</forename><surname>Karau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kipling</forename><forename type="middle">D</forename><surname>Williams</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Personality and Social Psychology</title>
+		<imprint>
+			<biblScope unit="volume">65</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="681" to="706" />
+			<date type="published" when="1993">1993</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Evolutionary game dynamics in finite populations</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Taylor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Fudenberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sasaki</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Nowak</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.bulm.2004.03.004</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Bulletin of Mathematical Biology</title>
+		<imprint>
+			<biblScope unit="volume">66</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="1621" to="1644" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Evolution of cooperation by multilevel selection</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Traulsen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Nowak</surname></persName>
+		</author>
+		<ptr target="https://www.pnas.org" />
+	</analytic>
+	<monogr>
+		<title level="j">Proceedings of the National Academy of Sciences</title>
+		<imprint>
+			<biblScope unit="volume">103</biblScope>
+			<biblScope unit="issue">29</biblScope>
+			<biblScope unit="page" from="10952" to="10955" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Analytical Results for Individual and Group Selection of Any Intensity</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Traulsen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Shoresh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Nowak</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s11538-008-9305-6</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Bulletin of Mathematical Biology</title>
+		<imprint>
+			<biblScope unit="volume">70</biblScope>
+			<biblScope unit="page" from="1410" to="1424" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Evolution of cooperation in multilevel public goods games with community structures</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">W C</forename><surname>Ho</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Wang</surname></persName>
+		</author>
+		<idno type="DOI">10.1209/0295-5075/93/58001</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Europhysics Letters</title>
+		<imprint>
+			<biblScope unit="volume">93</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page">58001</biblScope>
+			<date type="published" when="2011">3 2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Cooperation and coordination in heterogeneous populations</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">C</forename><surname>Couto</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>An</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Dong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Hilbe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Zhang</surname></persName>
+		</author>
+		<idno type="DOI">10.1098/rstb.2021.0504</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Philosophical Transactions of the Royal Society B: Biological Sciences</title>
+		<imprint>
+			<biblScope unit="volume">378</biblScope>
+			<date type="published" when="2023">20210504, 5 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">Conserving the african wild dog lycaon pictus. i. diagnosing and treating causes of decline</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Woodroffe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">R</forename><surname>Ginsberg</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Oryx</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="132" to="142" />
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<monogr>
+		<title level="m" type="main">The African wild dog: status survey and conservation action plan</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Woodroffe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">R</forename><surname>Ginsberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">W</forename><surname>Macdonald</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1997">1997</date>
+			<publisher>IUCN</publisher>
+			<pubPlace>Gland, Switzerland</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">Fixation probabilities in network structured meta-populations</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yagoobi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Traulsen</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41598-021-97187-6</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Scientific Reports</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">2021</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<analytic>
+		<title level="a" type="main">Categorizing update mechanisms for graph-structured metapopulations</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Yagoobi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Sharma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Traulsen</surname></persName>
+		</author>
+		<idno type="DOI">10.1098/rsif.2022.0769</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the Royal Society Interface</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="page">20220769</biblScope>
+			<date type="published" when="2023">20220769. 3 2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<analytic>
+		<title level="a" type="main">Consolidating Birth-Death and Death-Birth Processes in Structured Populations</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zukewich</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Kurella</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Doebeli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Hauert</surname></persName>
+		</author>
+		<idno type="DOI">10.1371/journal.pone.0054639</idno>
+	</analytic>
+	<monogr>
+		<title level="j">PLoS ONE</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

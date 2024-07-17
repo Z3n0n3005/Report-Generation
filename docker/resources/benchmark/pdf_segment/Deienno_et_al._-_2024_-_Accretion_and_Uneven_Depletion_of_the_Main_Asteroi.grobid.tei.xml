@@ -1,0 +1,2780 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Accretion and Uneven Depletion of the Main Asteroid Belt</title>
+				<funder ref="#_hMJ7xTP #_3mz49nr #_W4PuknB #_V7GxhRg #_rG9yF5j">
+					<orgName type="full">NASA</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2024-04-08">April 8, 2024</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author role="corresp">
+							<persName><forename type="first">Rogerio</forename><surname>Deienno</surname></persName>
+							<email>rogerio.deienno@swri.org</email>
+							<idno type="ORCID">0000-0001-6730-7857</idno>
+						</author>
+						<author>
+							<persName><forename type="first">David</forename><surname>Nesvorný</surname></persName>
+							<idno type="ORCID">0000-0002-4547-4301</idno>
+						</author>
+						<author>
+							<persName><forename type="first">William</forename><forename type="middle">F</forename><surname>Bottke</surname></persName>
+							<idno type="ORCID">0000-0002-1804-7814</idno>
+						</author>
+						<author>
+							<persName><forename type="first">André</forename><surname>Izidoro</surname></persName>
+							<idno type="ORCID">0000-0003-1878-0634</idno>
+						</author>
+						<author>
+							<affiliation>
+								<orgName>1 Solar System Science &amp; Exploration Division, Southwest Research Institute, </orgName>
+								<address><addrLine>1050 Walnut Street, Suite 300, Boulder, CO 80302, USA 11100 Johns Hopkins Road, Laurel, MD 20723, USA Houston, TX 77005, USA</addrLine></address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation>
+								<orgName> 2 Johns Hopkins APL, </orgName>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation>
+								<orgName> 3 Department of Earth, Environmental and Planetary Sciences, MS 126, Rice University,</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Accretion and Uneven Depletion of the Main Asteroid Belt</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2024-04-08">April 8, 2024</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">2AC93BBD204B48698DE6EFA4B0F5D3A3</idno>
+					<idno type="arXiv">arXiv:2404.03791v1[astro-ph.EP]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.0" ident="GROBID" when="2024-05-02T16:15+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Asteroid belt</term>
+					<term>Asteroids dynamics</term>
+					<term>Solar system formation</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>The main asteroid belt (MAB) is known to be primarily composed of objects from two distinct taxonomic classes, generically defined here as S-and C-complex. The former probably originated from the inner solar system (interior to Jupiter's orbit), while the latter probably from the outer solar system. Following this definition, (4) Vesta, a V-type residing in the inner MAB (a &lt; 2.5 au), is the sole D &gt; 500 km object akin to S-complex that potentially formed in-situ. This provides a useful constraint on the number of D &gt; 500 km bodies that could have formed, or grown, within the primordial MAB. In this work we numerically simulate the accretion of objects in the MAB region during the time when gas in the protoplanetary disk still existed, while assuming different MAB primordial masses. We then accounted for the depletion of that population happening after gas disk dispersal. In our analysis, we subdivided the MAB into five sub-regions and showed that the depletion factor varies throughout the MAB. This results in uneven radial-and size-dependent depletion of the MAB. We show that the MAB primordial mass has to be ≲ 2.14×10 -3 Earth masses. Larger primordial masses would lead to the accretion of tens-to-thousands of S-complex objects with D &gt; 500 km in the MAB. Such large objects would survive depletion even in the outer sub-regions (a &gt; 2.5 au), thus being inconsistent with observations. Our results also indicate that S-complex objects with D &gt; 200-300 km, including (4) Vesta, are likely to be terrestrial planetesimals implanted into the MAB rather than formed in-situ.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">INTRODUCTION</head><p>The main asteroid belt (MAB), situated between the orbits of Mars and Jupiter, contains over 1 million objects with diameter D larger than ≈1 km <ref type="bibr" target="#b9">(Bottke et al. 2020)</ref> . It also has a cumulative mass of only about 1/2,000 that of Earth (≈5×10 -4 M ⊕ ; DeMeo &amp; Carry 2013, 2014, where M ⊕ represents one Earth mass). The reason why the MAB has such a tiny total mass has been, for years, a subject of debate in the literature (e.g., <ref type="bibr" target="#b110">Wetherill 1980;</ref><ref type="bibr" target="#b17">Chambers 2001;</ref><ref type="bibr" target="#b94">Raymond et al. 2006;</ref><ref type="bibr" target="#b105">Walsh et al. 2011;</ref><ref type="bibr" target="#b51">Izidoro et al. 2015;</ref><ref type="bibr" target="#b97">Roig &amp; Nesvorný 2015;</ref><ref type="bibr" target="#b26">Deienno et al. 2016</ref><ref type="bibr" target="#b27">Deienno et al. , 2018;;</ref><ref type="bibr" target="#b85">Nesvorný et al. 2017;</ref><ref type="bibr" target="#b23">Clement et al. 2019;</ref><ref type="bibr" target="#b28">Deienno et al. 2022)</ref>.</p><p>The MAB can be characterized using two broad taxonomic groupings of asteroids, S-and C-complex <ref type="bibr" target="#b42">(Gradie &amp; Tedesco 1982;</ref><ref type="bibr" target="#b75">Mothé-Diniz et al. 2003;</ref><ref type="bibr">DeMeo &amp; Carry 2014)</ref>. Spectroscopic analysis <ref type="bibr" target="#b14">(Burbine et al. 2002)</ref> shows the S-complex to be relatively dry, with less than 0.1% water by mass, and many constituents are related to inner solar system ordinary chondrites <ref type="bibr" target="#b96">(Robert et al. 1977;</ref><ref type="bibr" target="#b19">Che &amp; Zega 2023)</ref>. Many C-complex bodies, on the other hand, potentially carry about 5-20% water by mass content and seem more akin to outer solar system carbonaceous chondrites <ref type="bibr" target="#b58">(Kerridge 1985;</ref><ref type="bibr" target="#b19">Che &amp; Zega 2023)</ref>. The radial distance from the star where the division between inner and outer solar system occurred early in solar system history is poorly defined. The mechanism responsible for diving the two primordial solar system reservoirs that sourced these distinct taxonomic classes is also a matter of debate (e.g. <ref type="bibr" target="#b61">Kruijer et al. 2017</ref><ref type="bibr" target="#b62">Kruijer et al. , 2020;;</ref><ref type="bibr" target="#b11">Brasser &amp; Mojzsis 2020;</ref><ref type="bibr" target="#b67">Lichtenberg et al. 2021;</ref><ref type="bibr" target="#b56">Johansen et al. 2021;</ref><ref type="bibr" target="#b50">Izidoro et al. 2022;</ref><ref type="bibr" target="#b72">Morbidelli et al. 2022)</ref>. However, there is a consensus in the literature that water/volatile-poor (S-complex) and water/volatile-rich (C-complex) formed in the respectively regions interior and exterior to the orbit of Jupiter (e.g.; <ref type="bibr" target="#b47">Hellmann et al. 2023)</ref> Several works in the literature (e.g., <ref type="bibr" target="#b105">Walsh et al. 2011</ref><ref type="bibr">Walsh et al. , 2012;;</ref><ref type="bibr" target="#b97">Roig &amp; Nesvorný 2015;</ref><ref type="bibr" target="#b52">Izidoro et al. 2016;</ref><ref type="bibr" target="#b26">Deienno et al. 2016</ref><ref type="bibr" target="#b27">Deienno et al. , 2018;;</ref><ref type="bibr" target="#b85">Nesvorný et al. 2017;</ref><ref type="bibr">Raymond &amp; Izidoro 2017a,b;</ref><ref type="bibr" target="#b23">Clement et al. 2019;</ref><ref type="bibr" target="#b69">Lykawka &amp; Ito 2023</ref>, to cite a few) have attempted to find dynamical models that can reproduce both the low mass and taxonomic mixing observed in the current MAB. In general, these models largely agree with the above interpretation that the MAB's taxonomic distribution can be reproduced if the S-and C-complex groups are assumed to have formed in regions interior and exterior to the orbit of Jupiter, respectively, and were transported into the MAB at later stages after their formation. The same models, however, disagree about the amount of primordial mass in solids that populated the MAB prior to the implantation of planetesimals <ref type="bibr">(Raymond &amp; Izidoro 2017a,b)</ref>.</p><p>There are currently two different views for explaining the MAB's low mass. On one side, it was proposed that solids in the protoplanetary disk followed a smooth radial distribution of mass <ref type="bibr" target="#b108">(Weidenschilling 1977;</ref><ref type="bibr" target="#b45">Hayashi 1981)</ref>, and as a result the primordial MAB was composed of several Earth masses. In this case, the MAB's primordial mass had to have been severely depleted at the earliest stages of the solar system history. Early depletion seems necessary to reproduce the abundance of highly siderophile elements measured on the crust and mantle of asteroid (4) Vesta <ref type="bibr" target="#b112">(Zhu et al. 2021)</ref>.</p><p>Early depletion of the MAB (while gas in the protoplanetary disk still existed) could happen in the following ways. Disk-planet tidal interactions (e.g. <ref type="bibr" target="#b78">Nelson 2018</ref>) could potentially lead for a putative early migration episode for Jupiter and Saturn <ref type="bibr" target="#b105">(Walsh et al. 2011)</ref>. Alternatively, convergent migration of growing protoplanets could result in large objects forming exterior to 1.5 au to migrate towards 1 au <ref type="bibr" target="#b12">(Brož et al. 2021;</ref><ref type="bibr" target="#b111">Woo et al. 2023)</ref>. In both cases, most of the pre-existing objects between 1.5 and 4 au would be removed during the gas disk's lifetime, thus, leading to an early depletion of the MAB region. How early is early in these models depends on many disk parameters, with the real answer poorly constrained.</p><p>After gas disk dispersal, early MAB depletion (i.e., during terrestrial planet formation; <ref type="bibr" target="#b21">Clement et al. 2018</ref>, see also <ref type="bibr" target="#b86">Nesvorný et al. (2021)</ref>) may occur in the following ways. A violent giant planet dynamical instability <ref type="bibr" target="#b23">(Clement et al. 2019)</ref> <ref type="foot" target="#foot_0">1</ref> would lead to about 99.9% depletion of the MAB primordial mass. Alternatively, Jupiter and Saturn, while locked in 2:1 mean motion resonance with eccentric orbits <ref type="bibr">(Clement et al. 2021b,a)</ref>, would induce chaotic evolution of secular resonances within the MAB region <ref type="bibr" target="#b52">(Izidoro et al. 2016)</ref>. Both models could lead to the depletion of the MAB in timescales of the order of 5-10 Myr after gas disk dispersal <ref type="bibr" target="#b21">(Clement et al. 2018;</ref><ref type="bibr" target="#b69">Lykawka &amp; Ito 2023)</ref>.</p><p>The story is much simpler if the primordial MAB was partially or fully devoid of material initially (e.g. <ref type="bibr" target="#b44">Hansen 2009;</ref><ref type="bibr" target="#b51">Izidoro et al. 2015)</ref>. This scenario is supported by cosmochemical evidence (e.g., <ref type="bibr" target="#b107">Warren 2011;</ref><ref type="bibr" target="#b5">Bollard et al. 2017;</ref><ref type="bibr" target="#b61">Kruijer et al. 2017</ref><ref type="bibr" target="#b62">Kruijer et al. , 2020;;</ref><ref type="bibr" target="#b77">Nanne et al. 2019;</ref><ref type="bibr" target="#b99">Spitzer et al. 2020;</ref><ref type="bibr" target="#b15">Burkhardt et al. 2021)</ref> suggesting that the solar system's building blocks formed in concentric rings at various radial distances around the Sun <ref type="bibr" target="#b50">(Izidoro et al. 2022;</ref><ref type="bibr" target="#b72">Morbidelli et al. 2022)</ref>, similar to ring-structured protoplanetary disks observed by the Atacama Large Millimeter Array (ALMA; e.g., <ref type="bibr" target="#b1">Andrews et al. 2018;</ref><ref type="bibr" target="#b48">Huang et al. 2018)</ref>. In this case, the observed total mass of the MAB would result from the implantation of asteroids of S-and C-complex taxonomic classes <ref type="bibr" target="#b92">(Raymond &amp; Izidoro 2017a</ref>,b, see also <ref type="bibr" target="#b83">Nesvorny et al. (2023)</ref>), combined with the mass of S-complex primordial asteroids that formed in the MAB region. The total implanted mass (combined with the MAB primordial mass), however, likely never exceeded ten times the current MAB's total mass, as giant planet dynamical instabilities that were well-tested against outer solar system constraints often provide only about 75-90% overall depletion rates <ref type="bibr" target="#b97">(Roig &amp; Nesvorný 2015;</ref><ref type="bibr" target="#b26">Deienno et al. 2016</ref><ref type="bibr" target="#b27">Deienno et al. , 2018</ref><ref type="bibr" target="#b28">Deienno et al. , 2022;;</ref><ref type="bibr" target="#b85">Nesvorný et al. 2017)</ref>. Alternatively, models of pebble accretion <ref type="bibr">(Levison et al. 2015a;</ref><ref type="bibr" target="#b55">Johansen et al. 2015)</ref> could also lead to the formation of a low mass MAB. In this scenario, the distinction between where S-and C-complex asteroids would form and their mixing into the MAB region, however, are less clear as all asteroids (planetesimals) would potentially form out of the same pebble flux.</p><p>It is clear from the discussion presented in the previous paragraphs that the primordial amount of mass that initially existed in the MAB is a key ingredient to dictate the formation and early evolution of the solar system. Ideally, we would like to account for both collisional and dynamical evolution (and depletion) in a self-consistent way using modern ideas about how the MAB was affected by early solar system processes. The majority of the work discussed so far assumed that (i) mass depletion was driven by dynamical effects, (ii) asteroids were assumed to be massless test particles, and (iii) collisional evolution was not included (i.e., growth and fragmentation). The few works that accounted for collisional evolution of the MAB (e.g.; <ref type="bibr" target="#b6">Bottke et al. 2005a;</ref><ref type="bibr" target="#b73">Morbidelli et al. 2009</ref>) mostly concentrated on understanding the evolution of the MAB size-frequency distribution (SFD), but with limited dynamical effects (i.e. assuming MAB collision probabilities and impact velocities were nearly constant through the age of the solar system) or with models that do not reflect present-day thinking on the problem (i.e., assuming that protoplanets formed in the asteroid belt; <ref type="bibr">Bottke et al. 2005b)</ref>. Given that many of these works did not directly account for dynamical depletion, the amount of primordial mass that may have existed in the MAB is difficult to constrain. Therefore, to advance in our understanding of not just where but how planetesimals formed and how planets evolved in the early history of the solar system, it is crucial that we understand how much mass existed in the MAB region after planetesimals formed.</p><p>To do that, it is important that we consider not only the MAB total mass, but also its SFD.</p><p>Only three objects in the current MAB have D &gt; 500 km. Those are the asteroids (1) Ceres, (2) Pallas, and (4) Vesta (e.g., <ref type="bibr" target="#b6">Bottke et al. 2005a</ref><ref type="bibr" target="#b9">Bottke et al. , 2020))</ref>. The first two (a B-type and a C-type, respectively; <ref type="bibr" target="#b36">DeMeo et al. 2009</ref>) are in the C-complex and probably originated from orbits beyond Jupiter (e.g.; <ref type="bibr" target="#b47">Hellmann et al. 2023)</ref>. In fact, the formation location of asteroid (2) Pallas is poorly understood, but (1) Ceres has recently been proposed to originate beyond Saturn's orbit <ref type="bibr" target="#b95">(Ribeiro de Sousa et al. 2022)</ref>. This would help explain the ammonia signatures found on its surface <ref type="bibr" target="#b25">(de Sanctis et al. 2015)</ref>. Asteroid (4) Vesta (a V-type; <ref type="bibr" target="#b36">DeMeo et al. 2009)</ref> is the sole D &gt; 500 km object that is a member of the S-complex<ref type="foot" target="#foot_2">2</ref> . It is therefore associated with objects originating from orbits interior to that of Jupiter. Its existence provides a useful constraint on the number of D &gt; 500 km bodies that could have formed, or grown, within the primordial MAB. In other words, the primordial mass of the MAB cannot be such that accretion would lead to the formation of too many S-complex objects with D &gt; 500 km. If this had been the case, it is possible that more than one could survive solar system evolution and would be observed at present days. This is clearly not the case.</p><p>In this work, we followed the accretion of planetesimals in the MAB region as a function of their initial total mass and accretion time. We also considered cases with and without Jupiter in the simulations. Our primordial MAB SFD is based on the findings of <ref type="bibr" target="#b73">Morbidelli et al. (2009)</ref> (see Section 2 for discussion). We compare our results with the current number of objects with D &gt; 500 km that, (i) would form during the lifetime of the gaseous solar nebula (3 or 5 Myr; based on the relative ages of ordinary and CB chondrites, respectively; <ref type="bibr" target="#b89">Pape et al. 2019;</ref><ref type="bibr" target="#b60">Krot et al. 2005</ref>, see also <ref type="bibr" target="#b109">Weiss et al. (2021)</ref> regarding paleo-magnetism constrains), and (ii) that would survive the aftermath of the giant planet instability <ref type="bibr" target="#b84">(Nesvorný &amp; Morbidelli 2012;</ref><ref type="bibr" target="#b85">Nesvorný et al. 2017;</ref><ref type="bibr" target="#b29">Deienno et al. 2017</ref><ref type="bibr" target="#b27">Deienno et al. , 2018;;</ref><ref type="bibr" target="#b23">Clement et al. 2019)</ref>, as well as (iii) chaotic diffusion during subsequent solar system evolution <ref type="bibr" target="#b71">(Minton &amp; Malhotra 2010</ref>, see also <ref type="bibr" target="#b26">Deienno et al. (2016</ref><ref type="bibr" target="#b27">Deienno et al. ( , 2018</ref><ref type="bibr" target="#b28">Deienno et al. ( , 2022))</ref>). We show that, unless the primordial mass of the MAB was indeed very low (≲ 2.14×10 -<ref type="foot" target="#foot_3">3</ref> M ⊕ ) 3 before accretion started, the number of S-complex objects with D &gt; 500 km that would form and survive solar system evolution largely exceed the number currently observed (i.e., N S-complex (D &gt; 500 km) = 1; (4) Vesta; <ref type="bibr" target="#b6">Bottke et al. 2005a</ref><ref type="bibr" target="#b9">Bottke et al. , 2020))</ref>.</p><p>We present our work in the following structure: Section 2 describes our modeling. In Section 3 we describe how we have chosen the data set for comparison between model results and the currently observed MAB. Our results are presented in Section 4, and conclusion in Section 5.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">MODEL</head><p>To model the evolution of the MAB SFD and the accretion of planetesimals with D &gt; 500 km in the MAB region we first assume that planetesimals were formed within the first 0.5 Myr after Calcium-Aluminum-Inclusions (CAIs) based on the methods by <ref type="bibr" target="#b50">Izidoro et al. (2022</ref><ref type="bibr">, see also Lichtenberg et al. (2021)</ref>; <ref type="bibr" target="#b72">Morbidelli et al. (2022)</ref>). Therefore, our simulations started at t = 500 kyr. As for the initial SFD of our planetesimal population we followed <ref type="bibr" target="#b73">Morbidelli et al. (2009</ref><ref type="bibr">, see also Bottke et al. (2005a)</ref>). Although we have some knowledge of the cumulative slope of the SFD for Kuiper belt objects (e.g., <ref type="bibr" target="#b41">Fraser et al. 2014)</ref>, not much is known about the SFD of planetesimals that formed in the MAB region (e.g., <ref type="bibr" target="#b98">Simon et al. 2016)</ref>. However, we know from <ref type="bibr" target="#b6">Bottke et al. (2005a)</ref> and <ref type="bibr" target="#b73">Morbidelli et al. (2009)</ref> that the current MAB SFD for objects with D &gt; 100 km can only be reproduced if the MAB SFD cumulative slope right after gas disk dispersal was the same as that observed in the current MAB for objects with sizes between 100 km &lt; D &lt; 500 km (Figure <ref type="figure" target="#fig_0">1</ref>). We acknowledge that the primordial MAB SFD may not necessarily be the same as that from the end of the gas disk phase (e.g., <ref type="bibr" target="#b55">Johansen et al. 2015;</ref><ref type="bibr" target="#b98">Simon et al. 2016)</ref>. Similarly, we acknowledge that different combinations of initial SFD and disruption laws could lead to the conditions reported in <ref type="bibr" target="#b73">Morbidelli et al. (2009</ref><ref type="bibr">, see Bottke et al. (2020)</ref>). Yet, for simplicity, and to avoid an extensive amount of work dedicated specifically to the combination of initial SFD and disruption laws that would lead to the finds by <ref type="bibr" target="#b73">Morbidelli et al. (2009)</ref>, we decided to assume that the current cumulative slope of the MAB SFD between 100 km &lt; D &lt; 500 km is primordial. We also considered, for consistency, the collision evolution parameters related basalt targets from <ref type="bibr">Benz &amp; Asphaug (1999, i.e</ref>., same disruption law considered by <ref type="bibr" target="#b73">Morbidelli et al. (2009)</ref>). Our results should than be taken with these caveats in mind. We also do not consider pebble accretion in our modeling due to the distinction in the forming regions of S-and C-complex planetesimals that we adopted. Nonetheless, in term of primordial MAB mass, pebble accretion models should likely lead to similar conclusions.</p><p>For the total primordial mass of the MAB we assumed that the initial distribution of planetesimals, uniformly distributed between 1.8 and 3.6 au <ref type="bibr" target="#b26">(Deienno et al. 2016</ref><ref type="bibr" target="#b27">(Deienno et al. , 2018))</ref>, follows a density profile Σ = Σ 0 r -γ , which is analogous to the minimum-mass solar nebula (MMSN; Hayashi 1981) radial density profile, and for simplicity we refer to it as such. We chose γ = 1 (following values derived from observations of protoplanetary disks, e.g., <ref type="bibr" target="#b0">Andrews et al. 2010)</ref>, and a stellar metallicity of 1% to determine the total mass in solids. We also assumed that only a fraction of the total solid mass was converted into planetesimals (fpl = 0.2, e.g., <ref type="bibr">Levison et al. 2015a,b;</ref><ref type="bibr" target="#b53">Johansen et al. 2019;</ref><ref type="bibr" target="#b28">Deienno et al. 2022)</ref>. Σ 0 in Σ = Σ 0 r -1 is defined as ζΣ 1au , where Σ 1au represents the MMSN surface density at 1 au, equal to 1700 gcm -2 <ref type="bibr" target="#b45">(Hayashi 1981)</ref>. We considered five different values for Σ 0 with ζ = 0.001, 0.002, 0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, and 2<ref type="foot" target="#foot_4">4</ref> . This range of parameters results in simulations of MAB primordial masses with initial M disk ≈ 0.001, 0.003, 0.007, 0.013, 0.027, 0.068, 0.13, 0.27, 0.68, 1.35, and 2.71 M ⊕<ref type="foot" target="#foot_5">5</ref> . Planetesimals were initially placed in nearly circular and planar orbits with randomized orbital angles <ref type="bibr" target="#b27">(Deienno et al. 2018;</ref><ref type="bibr" target="#b23">Clement et al. 2019)</ref>. Figure <ref type="figure" target="#fig_0">1</ref> shows the initial cumulative SFDs adopted for our different primordial MAB populations in terms of MMSN. For reference we show: (1) Gray line in the bottom representing the current MAB SFD from <ref type="bibr" target="#b6">Bottke et al. (2005a)</ref>, and (2) Gray triangles from Figure <ref type="figure">7a</ref> in <ref type="bibr" target="#b73">Morbidelli et al. (2009)</ref>. Other colored symbols/lines are for the different primordial MAB masses considered, in term of MMSN. From top to bottom: 2.000 MMSN (black), 1.000 MMSN (red), 0.500 MMSN (blue), 0.200 MMSN (yellow), 0.100 MMSN (green), 0.050 MMSN (magenta), 0.020 MMSN (black), 0.010 MMSN (red), 0.005 MMSN (blue), 0.002 MMSN (yellow), 0.001 MMSN (green). See main text for the actual mass in Earth masses for each specific case.</p><p>The exact time and radial distance of Jupiter's formation is unknown (e.g.; Chambers 2021; <ref type="bibr" target="#b28">Deienno et al. 2022)</ref>. We considered cases with and without the gravitational influence of Jupiter in our simulations while following planetesimal accretion during the gas disk phase. The reason for this choice is to test two end-member cases. When considering the effects of Jupiter's gravitational perturbations, we opted to keep Jupiter's semimajor axis fixed near 5.4 au (Jupiter's pre-giant planet instability position is often assumed to be anywhere between 5.4 and 6 au; e.g., <ref type="bibr" target="#b84">Nesvorný &amp; Morbidelli 2012;</ref><ref type="bibr" target="#b29">Deienno et al. 2017;</ref><ref type="bibr" target="#b21">Clement et al. 2018;</ref><ref type="bibr" target="#b69">Lykawka &amp; Ito 2023)</ref>. Not having Jupiter is the same as having it very far away for a long time, whereas having it fixed at 5.4 au is similar to having it form early and/or rapidly migrate to its pre-instability orbit (e.g., Chambers 2021, although still within reasonable distances <ref type="bibr" target="#b28">(Deienno et al. 2022)</ref>, i.e., with a ≲ 10-15 au). Lastly, for the simulations where we accounted for Jupiter's perturbations, it is important to acknowledge that, as we cannot self-consistently model hydrodynamical effects of the gas disk acting on Jupiter, for simplicity, we assumed an initially circular and planar orbit. Additionally, as Saturn is not included in the simulations, we cannot account for any induced effects in the MAB region like chaos arising from the interaction of eccentric Jupiter and Saturn while these worlds reside in their mutual 2:1 mean motion resonance (MMR; <ref type="bibr" target="#b52">Izidoro et al. 2016;</ref><ref type="bibr" target="#b69">Lykawka &amp; Ito 2023)</ref>. Still, this approximation may be reasonable, with chaotic effects only expected to become important 5-10 Myr after gas disk dispersal <ref type="bibr" target="#b52">(Izidoro et al. 2016</ref>). We also do not know how long it takes for Jupiter and Saturn to be captured in mutual MMRs and thereby develop significant eccentricities (e.g., <ref type="bibr" target="#b90">Pierens &amp; Raymond 2011;</ref><ref type="bibr" target="#b91">Pierens et al. 2014)</ref>. Adding additional complexity to this problem would not necessarily improve our results, but that is an issue that can be more thoroughly tested in future works.</p><p>We followed the accretion of objects within our MAB region for 5 Myr. This interval is presumably the time the gas in the solar nebula dispersed in the outer solar system based on the relative ages of the youngest CB-chondrites to CAIs <ref type="bibr" target="#b60">(Krot et al. 2005)</ref>. As chondrules may only form and get incorporated into planetesimals while gas still existed in the solar nebula <ref type="bibr" target="#b57">(Johnson et al. 2016)</ref>, the date of the youngest (latest formed) chondrules are possibly representative of when gas in the protoplanetary nebula may have dispersed for the zone where those chondrules formed. Those ages are also in good agreement with paleo-magnetism constrains, suggesting that the nebular gas dispersal time in the inner and outer solar system was approximately 1.22 Myr &lt; T gas inner &lt; 3.94 Myr and 2.51 Myr &lt; T gas outer &lt; 4.89 <ref type="bibr">Myr (Weiss et al. 2021)</ref>. We also consider that the gas in the solar nebula dispersed following an exponential timescale (i.e., gas decays as exp(-t/τ gas ); <ref type="bibr" target="#b43">Haisch et al. 2001)</ref>. We assumed τ gas = 2 Myr (the average timescale commonly assumed in planet formation and early solar system evolution theories, e.g., <ref type="bibr">Bitsch et al. 2015a,b;</ref><ref type="bibr">Levison et al. 2015a,b;</ref><ref type="bibr" target="#b54">Johansen &amp; Lambrechts 2017;</ref><ref type="bibr" target="#b53">Johansen et al. 2019</ref><ref type="bibr" target="#b56">Johansen et al. , 2021;;</ref><ref type="bibr">Walsh &amp; Levison 2016</ref><ref type="bibr">, 2019;</ref><ref type="bibr" target="#b12">Brož et al. 2021;</ref><ref type="bibr" target="#b31">Deienno et al. 2019</ref><ref type="bibr" target="#b28">Deienno et al. , 2022;;</ref><ref type="bibr" target="#b49">Izidoro et al. 2021</ref><ref type="bibr" target="#b50">Izidoro et al. , 2022))</ref>. Additional tests for τ gas = 0.5 and 1 Myr produced no substantial differences in our results. For this reason, in Section 4 we only report on simulations with τ gas = 2 Myr.</p><p>To follow the dynamics and accretion of the MAB under the considerations above, we used the code known as LIPAD (Lagrangian Integrator for Planetary Accretion and Dynamics; <ref type="bibr" target="#b64">Levison et al. 2012)</ref>. As previously described (e.g., <ref type="bibr" target="#b28">Deienno et al. 2022</ref>, and references therein), LIPAD is a particle-based (i.e., Lagrangian) code that can follow the collisional/accretional/dynamical evolution of a large number of subkilometer objects throughout the entire growth process to become planets. It uses the concept of tracer particles to represent a large number of small bodies with roughly the same orbit and size (see <ref type="bibr" target="#b64">Levison et al. 2012</ref>, for more specific details of the code). LIPAD has a prescription for the gaseous nebula from <ref type="bibr" target="#b46">Hayashi et al. (1985)</ref>. This gas disk provides aerodynamic drag, eccentricity and inclination damping on planetesimals and planets. The collisional routines from LIPAD use the <ref type="bibr" target="#b2">Benz &amp; Asphaug (1999)</ref> disruption laws (see discussion at the begining of this Section). LIPAD is a well-tested code that has been successfully employed in previous studies following the collisional evolution and accretion of centimeter-to kilometer-sized planetesimals on their way to become planets <ref type="bibr" target="#b59">(Kretke &amp; Levison 2014;</ref><ref type="bibr">Levison et al. 2015a,b;</ref><ref type="bibr">Walsh &amp; Levison 2016</ref><ref type="bibr">, 2019;</ref><ref type="bibr" target="#b31">Deienno et al. 2019</ref><ref type="bibr" target="#b32">Deienno et al. , 2020</ref><ref type="bibr" target="#b28">Deienno et al. , 2022;;</ref><ref type="bibr">Voelkel et al. 2021a,b;</ref><ref type="bibr" target="#b50">Izidoro et al. 2022)</ref>, making it ideal for our investigation of the evolution of the MAB SFD while accounting for dynamical effects.</p><p>All planetesimals within all tracer particles are allowed to have self-gravitational interactions and to collide with one-another throughout the simulation. We discarded objects that collisionally evolved to sizes below 1 mm, assuming those would rapidly grind down to dust and no longer contribute to the accretion process <ref type="bibr" target="#b32">(Deienno et al. 2020</ref><ref type="bibr" target="#b28">(Deienno et al. , 2022))</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">MAB, DATASET, AND COMPARISON WITH MPC</head><p>After we follow accretion in the MAB during the first 5 Myr of the solar system's history, it is necessary to account for the various processes that happened during subsequent 4.5 Gyr evolution after gas disk dispersal. Specifically, the giant planet instability has been found to heavily deplete the MAB <ref type="bibr" target="#b97">(Roig &amp; Nesvorný 2015;</ref><ref type="bibr" target="#b26">Deienno et al. 2016</ref><ref type="bibr" target="#b27">Deienno et al. , 2018;;</ref><ref type="bibr" target="#b23">Clement et al. 2019)</ref>. Chaotic diffusion leads to an additional 50 percent of depletion <ref type="bibr" target="#b71">(Minton &amp; Malhotra 2010</ref>). Below we gather and reduce numerous works that have simulated the depletion effects of the giant planet instability and map that depletion to different regions in the MAB. This provides an important tool for comparison between formation simulations from this work with observations of the current day MAB.</p><p>In this work, we consider the MAB region to be delimited as follows (e.g., <ref type="bibr" target="#b27">Deienno et al. 2018</ref>, see also <ref type="bibr" target="#b97">Roig &amp; Nesvorný (2015)</ref>; <ref type="bibr" target="#b85">Nesvorný et al. (2017)</ref>; <ref type="bibr" target="#b23">Clement et al. (2019)</ref> for similar but slightly different MAB definitions): i &lt; 20 • , q &gt; 1.9 au, a &lt; 3.6 au, and Q &lt; 4.1 au. We want to avoid objects with q &lt; 1.9 au, and Q &gt; 4.1 au; objects on these orbits are likely to have close encounters with Mars and Jupiter, respectively, and their orbits may wander in the a -e and a -i plane. We also do not want any overlap with the Hilda population (semimajor axis centered at ≈ 4.1 au; e.g. <ref type="bibr" target="#b97">Roig &amp; Nesvorný 2015)</ref>. We capped the inclination distribution at i &lt; 20 • as numerical simulations of the orbital evolution of the MAB during the giant planet instability often tend to overpopulate regions with i &gt; 20 • <ref type="bibr" target="#b26">(Deienno et al. 2016</ref><ref type="bibr" target="#b27">(Deienno et al. , 2018;;</ref><ref type="bibr" target="#b85">Nesvorný et al. 2017;</ref><ref type="bibr" target="#b23">Clement et al. 2019</ref><ref type="bibr" target="#b22">Clement et al. , 2020))</ref>. These orbital parameter cutoffs allow us to directly compare results with what we may define as the core of the MAB.</p><p>We then use this MAB definition to select objects from the Minor Planet Center (MPC) database<ref type="foot" target="#foot_6">6</ref> having H &lt; 9.6, which should correspond to objects with D ≳ 50 km (assuming an averaged geometric albedo ⟨p v ⟩ = 0.1). We use objects with D ≳ 50 km to avoid contamination from main belt fragments likely formed from catastrophic collisions <ref type="bibr" target="#b70">(Michel et al. 2001;</ref><ref type="bibr" target="#b40">Durda et al. 2007;</ref><ref type="bibr" target="#b82">Nesvorný et al. 2015</ref><ref type="bibr" target="#b85">Nesvorný et al. , 2017))</ref>. Figure <ref type="figure" target="#fig_1">2</ref> shows the comparison between real objects taken from MPC and results taken from <ref type="bibr" target="#b27">Deienno et al. (2018)</ref> within the previously defined limits of the MAB. Data from <ref type="bibr" target="#b27">Deienno et al. (2018</ref><ref type="bibr">, see also Roig &amp; Nesvorný (2015)</ref>; <ref type="bibr" target="#b85">Nesvorný et al. (2017)</ref>; <ref type="bibr" target="#b23">Clement et al. (2019</ref><ref type="bibr" target="#b22">Clement et al. ( , 2020) )</ref> for additional comparison) were obtained while modeling the excitation and depletion of the MAB through the giant planet instability <ref type="bibr" target="#b84">(Nesvorný &amp; Morbidelli 2012;</ref><ref type="bibr" target="#b29">Deienno et al. 2017)</ref> followed by a subsequent 4.5 Gyr of solar system evolution to account for loss due to chaotic diffusion of long-term unstable orbits <ref type="bibr" target="#b71">(Minton &amp; Malhotra 2010)</ref>.</p><p>Figure <ref type="figure" target="#fig_1">2</ref> shows very good agreement between results from <ref type="bibr" target="#b27">Deienno et al. (2018)</ref> and real data from MPC (compare also the numbers from rows labeled MPC N ast and D18 N f inal ast from Table <ref type="table" target="#tab_0">1</ref>) while accounting for the necessary effects happening during 4.5 Gyr after gas disk dispersal as listed in the beginning of this section. For those reasons, and because results presented in Figure <ref type="figure" target="#fig_1">2</ref> are derived from simulations that self-consistently satisfied several outer-solar system constraints <ref type="bibr" target="#b84">(Nesvorný &amp; Morbidelli 2012;</ref><ref type="bibr">Nesvorný 2015a,b;</ref><ref type="bibr" target="#b30">Deienno et al. 2014</ref><ref type="bibr" target="#b29">Deienno et al. , 2017))</ref>, we refer to data from  <ref type="formula">2018</ref>) as our fiducial case when estimating the depletion of the MAB due to the giant planet instability followed by 4.5 Gyr of subsequent evolution.</p><p>For our depletion analysis, we further divide the MAB definition above into 5 sub-regions: Extended inner Main Belt (EiMB; a &lt; 2.1 au), Inner Main Belt (IMB; 2.1 au &lt; a &lt; 2.5 au), Center Main Belt (CMB; 2.5 au &lt; a &lt; 2.82 au), Outer Main Belt (OMB; 2.82 au &lt; a &lt; 3.25 au), and Extended outer Main Belt (EoMB; a &gt; 3.25 au). The row labeled D18 D f ac in Table <ref type="table" target="#tab_0">1</ref> shows what the depletion factor is in each of those MAB sub-regions from <ref type="bibr" target="#b27">Deienno et al. (2018)</ref>. Table <ref type="table" target="#tab_0">1 also</ref>  As previously discussed, the MAB is heavily depleted by the giant planet instability. The level of depletion depends strongly on the number of planet-planet close encounters and the specific orbital evolution of the giant planets, mostly Jupiter, during the giant planet instability. In regards to the MAB evolution and depletion, the most important constraints to satisfy are Jupiter's orbital eccentricity and Jupiter and Saturn's period ratio (P S /P J ). Only some giant planet instability simulations, however, are able to satisfy such constraints (see <ref type="bibr" target="#b87">Nesvorný 2018</ref>, for a comprehensive review on giant planet instability constraints). Yet, the MAB depletion factor is also highly dependent on the definition of the MAB region. The works by <ref type="bibr" target="#b97">Roig &amp; Nesvorný (2015)</ref>, <ref type="bibr" target="#b26">Deienno et al. (2016</ref><ref type="bibr" target="#b27">Deienno et al. ( , 2018))</ref>, and <ref type="bibr" target="#b85">Nesvorný et al. (2017)</ref>, for example, while relying on a small number of simulations that satisfy constraints, report an overall mass depletion about 75%-90% for a MAB delimited only by q &gt; 1.9 au and a &lt; 3.2 au. Once further truncating and narrowing the MAB to its core, as shown in Figure <ref type="figure" target="#fig_1">2</ref> for direct comparison with the MPC catalog, those same giant planet instability simulations lead to an overall depletion of approximately 95.45% (Table <ref type="table" target="#tab_0">1</ref>, D18 D per MAB). Alternatively, the work by Clement et al. (2019) adopted a broader limit for the MAB region between 2 au ≤ a ≤ 4 au. That work also relied strongly on the accumulated statistical effects from multiple giant planet instability evolutions without focusing on specific constraints (as done in <ref type="bibr" target="#b97">Roig &amp; Nesvorný 2015;</ref><ref type="bibr" target="#b26">Deienno et al. 2016</ref><ref type="bibr" target="#b27">Deienno et al. , 2018;;</ref><ref type="bibr" target="#b85">Nesvorný et al. 2017</ref>). The resulting overall MAB depletion was reported to be 99.9%. Although the methodology applied by <ref type="bibr">Clement et al. (</ref> <ref type="formula">2019</ref>) is valid, it remains to be confirmed that giant planet instabilities leading up to 99.9% depletion of the MAB are consistent, not only with constraints related to Jupiter's eccentricity and P S /P J , but also with other solar system constraints obtained from observations of Jupiter Trojans, giant planets regular and irregular satellites, and Kuiper belt objects <ref type="bibr" target="#b84">(Nesvorný &amp; Morbidelli 2012;</ref><ref type="bibr">Nesvorný 2015a,b;</ref><ref type="bibr" target="#b30">Deienno et al. 2014</ref><ref type="bibr" target="#b29">Deienno et al. , 2017</ref>, which are satisfied in the instability simulation by <ref type="bibr" target="#b27">Deienno et al. (2018)</ref>). Yet, for completeness, in this work (see also <ref type="bibr" target="#b28">Deienno et al. 2022)</ref>  are for the number of asteroids initially placed in each MAB sub-region and for those whose survived depletion, respectively in each work. D f ac represents the depletion factor reported once accounting for the ratio</p><formula xml:id="formula_0">D f ac ≈ N f inal ast /N initial ast</formula><p>. D f ac effectively reports the survival fraction of objects from the simulation. Yet, we prefer to refer to them as a depletion factor as those are the numbers we directly multiply the evolved population in order to account for their depletion. Dper is for the percentage of depletion Dper ≈ 100 × (1 -D f ac ). Labels all and AM D JS P S /P J are for different cuts in the data by <ref type="bibr">Clement et al. (2019, see main text)</ref>.</p><p>• C19 all refers to results taken from <ref type="bibr" target="#b23">Clement et al. (2019)</ref> while excluding runs 4, 7, and 7a 7 , as well as those with Embryos (runs 1b and 2b) 8 .</p><p>• C19 AM DJS P S /P J is also for results from <ref type="bibr" target="#b23">Clement et al. (2019)</ref> but while only considering cases where AMD JS &lt; 0.1 9 and 2.3 ≲ P S /P J ≲ 2.5 10 at the end of the giant planet instability phase (runs 1, 2a, and 5a).</p><p>The work by <ref type="bibr" target="#b23">Clement et al. (2019)</ref> reported on MAB depletion within a few 100s Myr after the end of the giant planet instability, and they did not account for the 50% additional depletion during subsequent 4.5 Gyr of solar system evolution. For consistency, we divided the asteroid number count by two when calculating values for C19 all and C19 AM DJS P S /P J in each MAB sub-region. These are the final numbers presented in Table <ref type="table" target="#tab_0">1</ref>. We refer to the Clement et al. ( <ref type="formula">2019</ref>) depletion factor as C19 all D f ac and C19 AM DJS P S /P J D f ac . The new percentage of depletion from Clement et al. ( <ref type="formula">2019</ref>) after these cuts are in much closer agreement with data by <ref type="bibr">Deienno et al. (2018, and references therin)</ref>, with C19 all D per ≈ 98.44% and C19 AM DJS P S /P J D per ≈ 96.25% (not 99.9% as previously reported at the end of the giant planet instability 11 ). C19 cases also present a larger asteroid number difference per MAB sub-region once comparing C19 all N f inal ast and C19 AM DJS P S /P J N f inal ast with MPC N ast than D18 N f inal ast . For this reason, and given the larger values for C19 all D per and C19 AM DJS P S /P J D per compared to D18 D per , we consider C19 all D f ac and C19 AM DJS P S /P J D f ac values to be an upper 7 Cases 4, 7, and 7a (see Figure <ref type="figure" target="#fig_1">2</ref> and Table <ref type="table" target="#tab_2">2</ref> presented in the work by <ref type="bibr" target="#b23">(Clement et al. 2019</ref>)) can be ruled out as they result in final orbital excitation and separation of Jupiter and Saturn that are orders of magnitude above the observed values, which in turn lead to 100% depletion of the entire MAB. 8 As noted by <ref type="bibr" target="#b23">Clement et al. (2019</ref><ref type="bibr">, see also O'Brien et al. (2007)</ref>) their simulations struggled in depleting all planetary embryos inserted into the MAB, thus potentially adding unrealistic perturbations that would likely lead to an overestimation of Dper. 9 The current angular momentum deficit (AMD; Laskar 1997) of Jupiter and Saturn (AMD JS ) is about 0.0015. Here we consider AMD JS &lt; 0.1 a good proxy because this value is expected to lower during a 100-200 Myr period after the giant planet instability due to dynamical friction exerted by planetesimals interacting with those planets <ref type="bibr" target="#b84">(Nesvorný &amp; Morbidelli 2012;</ref><ref type="bibr" target="#b29">Deienno et al. 2017</ref>). 10 P S /P J ≈ 2.49 in the current solar system configuration <ref type="bibr" target="#b84">(Nesvorný &amp; Morbidelli 2012)</ref>. In this cut we also avoided the range 2. limit for depletion one could expect once accounting for the effects of the giant planet instability and subsequent solar system evolution.</p><p>Our analyses clearly demonstrate that MAB depletion during the giant planet instability is not uniform. The fact that different MAB sub-regions have different depletion factors was first pointed out by <ref type="bibr" target="#b85">Nesvorný et al. (2017)</ref>, but never quantified in detail. Table <ref type="table" target="#tab_0">1</ref> shows that, regardless of data used, both <ref type="bibr" target="#b27">Deienno et al. (2018)</ref> and <ref type="bibr" target="#b23">Clement et al. (2019)</ref> report much larger depletion for the EiMB and EoMB than for any other sub-region. In fact, the EiMB is likely to always be fully depleted (e.g., <ref type="bibr" target="#b8">Bottke et al. 2012;</ref><ref type="bibr" target="#b85">Nesvorný et al. 2017)</ref>. A very large depletion is also expected in the IMB, as the powerful ν 6 secular resonance (resulting from commensurable rates between Saturn's and asteroids' precession frequencies) must cross the IMB region in any formation scenario <ref type="bibr" target="#b74">(Morbidelli et al. 2010)</ref>. It is also noticeable that the CMB and OMB present a depletion factor that is about an order of magnitude lower than the IMB. This difference implies that objects that formed in those sub-regions have a much larger chance of surviving in place. This is noteworthy as it implies that these sub-regions are the ones most likely to host asteroids that are native to the MAB. The overall depletion factors listed in the last column of Table 1 (labeled MAB) can only be used to determine overall mass loss, provided that the initial distribution of solids was even in all MAB sub-regions. The MAB's overall depletion values should not be used in any circumstance to evaluate size dependent depletion, e.g., changes in the SFD. The reason is that objects of different sizes may populate specific MAB sub-regions, thus being more or less likely to be depleted.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">RESULTS</head><p>We are interested in evaluating both the evolution and depletion of the MAB SFD as well as the number of objects with D &gt; 500 km (4-Vesta-like) that would grow over time within the core of the MAB (see Section 3). Specifically, given the importance of knowing where an object of a certain size is in order to estimate depletion effects (Table <ref type="table" target="#tab_0">1</ref>), we are interested in following the growth of these large objects within all 5 MAB sub-regions, i.e., EiMB, IMB, CMB, OMB, and EoMB (see Section 3 for definition of such sub-regions). Still, for clarity and simplicity, results reported in Sections 4.1, 4.2 and 4.3 are only presented with respect to the entire MAB, and following our fiducial case (D18; Section 2, Table <ref type="table" target="#tab_0">1</ref>). A detailed breakdown of our results per MAB sub-region while also following C19 models can be found in the Appendix Section.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.">MAB developed SFD</head><p>The current cumulative MAB SFD presents a very characteristic power slope in the 100 km &lt; D &lt; 500 km range. As first pointed by <ref type="bibr" target="#b6">Bottke et al. (2005a)</ref>, and later confirmed by <ref type="bibr" target="#b73">Morbidelli et al. (2009)</ref>, this cumulative SFD slope is a fossil of the MAB population post-gas disk lifetime, and necessary to reproduce the current 'bump' observed near D = 100 km (see also Section 4 in <ref type="bibr" target="#b28">Deienno et al. 2022</ref>, for additional and similar discussion related to C-complex implanted planetesimals into the MAB). For that reason, an important sanity check is to confirm that the cumulative power slope of our evolved SFDs would, at the very least, reasonably resemble the current MAB SFD power slope in the same diameter range by the end of the gas disk lifetime.</p><p>In Figure <ref type="figure" target="#fig_3">3</ref> we present the evolved SFDs resulting from our simulations. The resultant SFDs for T = 3 Myr (left panels 'a' and 'c') and T = 5 Myr (right panels 'b' and 'd') are very similar. Therefore, having the gas dispersal time be 3 or 5 Myr produces only minor changes (also noted by Walsh &amp; Levison 2019), and should not affect the overall growth and evolution of the early MAB. Some small differences are observed between simulations where we did not consider Jupiter's influence (top panels 'a' and 'b') and those where we did (bottom panels 'c' and 'd'). The main differences are in respect to the number and slope of the distribution for objects with D &gt; 500 km. The gravitational perturbation of Jupiter induces larger eccentricities in the MAB. This causes collisions to become more erosive, which frustrates growth (e.g., <ref type="bibr" target="#b31">Walsh &amp; Levison 2019</ref>). Yet, of greater importance for this work's analysis is the fact that all evolved SFDs look very similar within the shaded blue region. This means that the influence of Jupiter is not sufficient to change the slope of the MAB SFD for objects with 100 km &lt; D &lt; 500 km.</p><p>The fact that our evolved SFDs preserve the primordial power law slope of the cumulative distribution for objects with 100 km &lt; D &lt; 500 km indicates our simulations are compatible with the finds by <ref type="bibr" target="#b73">Morbidelli et al. (2009)</ref> and basic characteristics of the current MAB SFD. Thus, we can safely use our evolved SFDs to apply our depletion rates from Table <ref type="table" target="#tab_0">1</ref> in order to determine what initial MAB mass (primordial mass that formed at 0.5 Myr after CAIs; Section 2) can reproduce the current SFD, number of objects with D &gt; 500 km, and total mass observed in S-complex asteroids (dashed gray line in Figure <ref type="figure" target="#fig_3">3</ref> -under the assumption that the S-complex component of the current MAB represents about 1/4 of the current MAB total mass, i.e., S-complex SFD = 0.25×MAB SFD; <ref type="bibr" target="#b75">Mothé-Diniz et al. 2003)</ref>. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2.">MAB SFD after uneven depletion</head><p>As observed in Figure <ref type="figure" target="#fig_3">3</ref>, all evolved SFDs are above the S-complex SFD line by a factor of few to many. The goal of this section is to determine how the SFDs from Figure <ref type="figure" target="#fig_3">3</ref> would compare with the current S-complex SFD after applying the depletion factors presented in Table <ref type="table" target="#tab_0">1</ref>. It is important to notice, however, that a very large fraction of the S-complex SFD as defined in the end of the last Section and presented in Figure <ref type="figure" target="#fig_3">3</ref> is composed by S-type asteroids (recall that we include all non-carbonaceous taxonomic classes, not just S-types, in our generic S-Complex definition, e.g., DeMeo &amp; Carry 2014). This is important information because S-type asteroids are believed to have formed from chondrules associated with the parent bodies of ordinary chondrites <ref type="bibr" target="#b18">(Chapman 1996;</ref><ref type="bibr" target="#b76">Nakamura et al. 2011)</ref>, which most likely formed within 2-3 Myr after CAIs (e.g., <ref type="bibr" target="#b89">Pape et al. 2019</ref>). It may be thus slightly imprecise to directly compare our depleted SFDs with what we generically call the S-complex SFD. As planetesimals in our simulations are assumed to have formed at 0.5 Myr after CAIs <ref type="bibr" target="#b72">(Morbidelli et al. 2022;</ref><ref type="bibr" target="#b50">Izidoro et al. 2022</ref>), by T = 3 or 5 Myr, they would most likely be differentiated objects (e.g. <ref type="bibr" target="#b67">Lichtenberg et al. 2021</ref>) like asteroid (4) Vesta. Therefore, for consistency, one may argue that our evolved and depleted SFDs can only be compared to the SFD of differentiated MAB objects. However, it is also important to notice that our SFDs do not significantly evolve from 3 to 5 Myr (Figure <ref type="figure" target="#fig_3">3</ref>). This leads to the conclusion that the late formed (2-3 Myr after CAIs) S-type component of the SFD would only be affected by depletion via giant planet instability, i.e. it would not contribute to accretion. Once again, one may argue that for consistency we should add a second population of asteroids (S-types) to that of our evolved SFDs. We cannot do that, however, because we have zero information of where (in which specific MAB sub-region) large S-type bodies would form. As we will see below, as different MAB sub-regions have different depletion factors (Table <ref type="table" target="#tab_0">1</ref>), this makes SFD depletion size-dependent. Thus, assuming that larger late formed S-types would populate one sub-region over the other could lead to very misleading conclusions. Given all that discussion, we argue that the comparison between our results and our generically defined S-complex SFD is valid and correct. Therefore, we can safely assume that the overall evolved SFDs from Figure <ref type="figure" target="#fig_3">3</ref> would not change provided that (i) the population of late formed S-type asteroids was not overwhelmingly large, and (ii) they formed with a cumulative SFD power slope in the range 100 km &lt; D &lt; 500 km similar to what we considered for our primordial population of planetesimals at 0.5 Myr. Both assumptions (i) and (ii) seem necessary to make our results compatible with the current day observed MAB. As we will also show later in this Section, these assumptions will, however, have larger implications for estimating the maximum amount of primordial MAB mass that formed in the MAB at 0.5 Myr after CAIs.</p><p>It is important to also say that, in this work, we assume that our SFDs from Figure <ref type="figure" target="#fig_3">3</ref> would not change between the gas disk dispersal time and the onset of the giant planet instability. This is reasonable approximation if we consider that the giant planet instability has to happen anytime within 100 Myr after gas disk dispersal <ref type="bibr" target="#b87">(Nesvorný et al. 2018;</ref><ref type="bibr" target="#b68">Liu et al. 2022)</ref>, and that collisional timescales can be of the order or larger than that (t coll ≈ O 8 yrs; <ref type="bibr" target="#b6">Bottke et al. 2005a)</ref>.</p><p>It is crucial to account for the semi-major axis dependency of depletion when attempting to glean insights into the nature of the primordial MAB from the current MAB SFD. Figure <ref type="figure" target="#fig_4">4</ref> shows results for the expected SFDs post depletion by our fiducial case, D18 D f ac (Table <ref type="table" target="#tab_0">1</ref>). As we presented in Section 3 and Table <ref type="table" target="#tab_0">1</ref>, depletion factors are uneven throughout all MAB sub-regions. Therefore, the estimated post depletion SFDs were calculated by applying D18 D f ac to the evolved SFDs from each one of the MAB sub-regions separately 12 , and combining them after. This is necessary to account for the likelihood of objects being depleted in one MAB sub-region over the other, which in the end, makes depletion size-and semimajor axis-dependent overall. For example, if 200 D &gt; 500 km objects formed in the EiMB and IMB (100 in each sub-region), accounting for D18 D f ac for the MAB as a whole (200×0.04553) would lead to about 9 survivors. On the other hand, if we apply the individual D18 D f ac values for EiMB and IMB, 100×(0.000+0.0126), the number of D &gt; 500 km survivors to be accounted for in the final MAB SFD would be 1. That would lead for a completely different final SFD and conclusion. This is also the reason for why we previously decided in not accounting for the contribution of late-formed S-types to our evolved SFDs while trying to guess, or assume, which MAB sub-region they would populate. As larger objects (D ≳ 100 km or so) are always less numerous than smaller km-sized objects, depending on where they formed, uneven depletion may result in a steepening of the depleted SFD when compared to its pre-depletion counterpart (e.g., see post-depletion slopes of yellow and blue SFDs in Figure <ref type="figure" target="#fig_4">4</ref> for D ≳ 200 km). The above example clearly demonstrates the importance of considering the depletion factors per MAB sub-region (especially when addressing size dependency) instead of the overall MAB depletion. The latter can only be used as a guide for the overall expected mass depletion.</p><p>With the post-depletion SFDs evaluated as in Figure <ref type="figure" target="#fig_4">4</ref>, we can now use those results to estimate the maximum amount of primordial mass that could have ever existed in the MAB region at T = 0.5 Myr. This maximum estimated primordial mass, however, will be sensitive to our generic definition of the S-complex taxonomy. This is because, as previously discussed in the beginning of this Section, all of the SFDs presented in Figure <ref type="figure" target="#fig_4">4</ref> will be a combination of late-formed S-type asteroids and early-formed differentiated bodies. The former, within our definition of the core of the MAB, currently represents a total amount of mass equal to M S-types ≈ 3.15×10 -5 M ⊕ 13 . Table <ref type="table" target="#tab_2">2</ref> presents how this total amount of S-type mass is currently distributed in the MAB by sub-regions (see Current/Post-Depletion row).</p><p>12 Following <ref type="bibr" target="#b28">Deienno et al. (2022)</ref> we assume depletion caused by the giant planet instability is overall size-independent within each independent MAB sub-region. However, as depletion factors vary in each of the MAB sub-regions, the overall depletion by the giant planet instability may become size-dependent as we illustrate in the main text. 13 To estimate the total amount of S-type mass we used information from https://mp3c.oca.eu via 'Old Best Values' under the 'Search' drop-down menu and following instructions included in 'Search by parameters' tab. We restricted our search to semimajor axes between 1.9 au &lt; a &lt; 3.6 au, 0 &lt; sin(i) &lt; 0.342 (≈ 20 • ), and 1.9 au &lt; q &lt; 3.6 au, while selecting 'Spectral classes' as S, Sq, Sk, Sr for S-types only and excluding Q, V, B, C, Cb, Ch, Cg, Cgh, X, Xk, Xc, Xe, E, M, P (which includes both C-complex and differentiated S-complex bodies; Delbo et al. 2019, see also <ref type="bibr" target="#b35">Delbo et al. (2017)</ref>; <ref type="bibr" target="#b33">Delbo (2017)</ref>). We also assumed 3 g/cm 3 density for all asteroids and only accounted for those with listed diameters larger than zero. However, we did not use these objects' diameters when comparing with our evolved/depleted SFDs due to the potential effect of data incompleteness. Red shaded area represent depleted SFDs that are not compatible with the current S-complex SFD (gray dashed line), and in most cases comparable or even higher than the total MAB SFD (gray solid line).</p><p>The following rows in Table <ref type="table" target="#tab_2">2</ref>, denoted by Pre-Depletion, show the expected amount of late-formed S-type mass in each MAB sub-region from different models at 2-3 Myr after CAIs. Values presented in row Pre-Depletion by D18, for instance, reflects to our estimate once dividing Current/Post-Depletion values by our fiducial D18 D f ac numbers from Table <ref type="table" target="#tab_0">1</ref> in each respective MAB sub-region. These values represent the late-formed S-type mass (of a potential second population) that would need to be added to our primordial mass at 2-3 Myr but that would not contribute to subsequent SFD evolution by 3 to 5 Myr. Such amount of mass would only be subject to depletion by the giant planet instability (D f ac values in Table <ref type="table" target="#tab_0">1</ref>). For each case (i.e., D18, C19 all , and C19 AM D JS P S /P J ), the total amount of late-formed (Pre-Depletion) S-type MAB mass (rightmost column in Table <ref type="table" target="#tab_2">2</ref>) was obtained by a simple sum of the numbers in each MAB sub-region. We consider these values to be lower limits in the total S-type mass because D f ac = 0 in EiMB (Table <ref type="table" target="#tab_0">1</ref>) prevents us from estimating how much S-types could have ever formed in this specific sub-region. Therefore, to avoid overestimating the total primordial MAB mass formed at T = 0.5 Myr, the values we considered (Section 2) in our simulations should be decreased by the amounts shown in the rightmost column of Table <ref type="table" target="#tab_2">2</ref>.</p><p>Our results, then indicate that, regardless of Jupiter's inclusion and the exact timing of the nebula gas dispersal, while following our fiducial case, the current overall S-complex SFD (dashed in Figure <ref type="figure" target="#fig_4">4</ref>) can only be reproduced if the primordial MAB mass that formed at 0.5 Myr after CAIs was of the order or smaller than about ≈ 2.14×10 -3 M ⊕ (i.e., 0.003 M ⊕ , yellow in Figure <ref type="figure" target="#fig_4">4</ref>, decreased by 8.57×10 -4 M ⊕ , Table <ref type="table" target="#tab_2">2</ref>). A total of 2.14×10 -3 M ⊕ represents about</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>S-type Mass (M⊕)</head><p>EiMB IMB CMB OMB EoMB MAB Current/Post-Depletion 0.00 7.37×10 -6 1.85×10 -5 5.50×10 -6 9.40×10 -8 ≈ 3.15×10 -5</p><p>Pre-Depletion by D18 -5.85×10 -4 2.03×10 -4 5.94×10 -5 9.62×10 -6 ≳ 8.57×10 -4</p><p>Pre-Depletion by C19 all 0.00 7.97×10 -4 1.34×10 -3 1.61×10 -4 1.35×10 -3 ≈ 3.65×10 -3</p><p>Pre-Depletion by C19 AM D JS P S /P J -3.08×10 -3 9.95×10 -4 5.15×10 -5 3.52×10 -4 ≳ 4.48×10 -3  <ref type="table" target="#tab_0">1</ref>. The total Pre-Depletion MAB S-type mass indicated in the last column of the three bottom lines is a simple sum of the respective columns in the left side. We do not report on Pre-Depletion mass in the EiMB when D f ac = 0.</p><p>0.0016 MMSN following our methods in Section 2, which can still be approximated by 0.002 MMSN (yellow in Figure <ref type="figure" target="#fig_4">4</ref>). Similarly, a potential upper limit (when considering values from C19 all from Tables <ref type="table" target="#tab_0">1</ref> and<ref type="table" target="#tab_2">2</ref>) on the primordial MAB mass should be somewhere between 3.35×10 -3 M ⊕ and 9.35×10 -3 M ⊕ (blue and red in Appendix Figure <ref type="figure">6</ref>, i.e., 0.005 and 0.01 MMSN respectively). Those upper limits in mass were obtained by subtracting 3.65×10 -3 M ⊕ (Table <ref type="table" target="#tab_2">2</ref>) from 0.007 and 0.013 M ⊕ (Section 2). Notably, a total of 3.35×10 -3 M ⊕ represents about 0.0025 MMSN, which is very close to our estimate based on our fiducial parameters, whereas 9.35×10 -3 M ⊕ represents about 0.0069 MMSN. However, we should reinforce that those depletion factors were derived by accounting for simulations in which Jupiter and Saturn's AMD ended larger than 0.1 and/or their period ratio P S /P J exceeded 2.5. When not considering those extreme cases (see Appendix Figure <ref type="figure">7</ref> for a comparison), and applying C19 AM D JS P S /P J , our results once again suggest the current S-complex SFD can only be reproduced if the MAB primordial mass at T = 0.5 Myr was of the order or smaller than that represented by 0.002 MMSN (yellow in Appendix Figure <ref type="figure">7</ref>). Interestingly enough, however, Table <ref type="table" target="#tab_2">2</ref> values associated with C19 AM D JS P S /P J suggest the late-formed S-type mass at 2-3 Myr should be ≳ 4.48×10 -3 M ⊕ . Subtracting 4.48×10 -3 M ⊕ of late-formed S-types from a potential primordial population of 0.003 M ⊕ (i.e. 0.002 MMSN) that formed at 0.5 Myr would lead to a negative value. This would then imply that according to C19 AM D JS P S /P J the MAB should have necessarily formed devoid of mass (e.g. <ref type="bibr">Raymond &amp; Izidoro 2017b</ref>). Yet, we caution for such conclusion because, although C19 AM D JS P S /P J case is not as extreme as C19 all , the final distribution of objects in each MAB sub-region (C19 AM D JS P S /P J N f inal ast ) compared to the MCP catalog (MPC N ast ; Table <ref type="table" target="#tab_0">1</ref>) are not good. In fact, the high estimate of late-formed S-type mass of ≳ 4.48×10 -3 M ⊕ is mainly a result of C19 AM D JS P S /P J D f ac = 0.239×10 -2 in the IMB (with only 4 asteroids surviving compared to 43 from MPC -a factor &gt;10), which leads to a potentially misleading IMB Pre-Depletion mass of ≈ 3.08×10 -3 M ⊕ . On the other hand, without knowing which sub-region of the MAB those late-formed S-types would populate overall, we cannot take C19 AM D JS P S /P J on the negative light. If, for example, most of the large estimated mass in the IMB is in few large bodies (i.e. represented solely by the 'unknown large diameter end' of the late-formed S-types SFD), even if some primordial mass existed in the IMB, all it is needed is that those few larger bodies are lost. This seems plausible when considering the differences in depletion rates for different MAB sub-regions (Table <ref type="table" target="#tab_0">1</ref>), and it further stresses the importance in considering size-and semimajor axis-dependency as we did in our analyses of Figure <ref type="figure" target="#fig_4">4</ref>. Based on all the discussion from this paragraph, we conclude that it is reasonable to be conservative and solely rely on our fiducial estimates based on D18 from <ref type="bibr" target="#b27">Deienno et al. (2018)</ref> for the lower limit of ≳ 8.57×10 -4 M ⊕ in late-formed S-type mass at around 2-3 Myr. This leads us to the conclusion that the primordial MAB S-complex mass at T = 0.5 Myr after CAIs needs to be ≲ 2.14×10 -3 M ⊕ .</p><p>We should once again stress that our estimate for the total MAB primordial mass (formed at 0.5 Myr after CAIs) above is an upper limit. The reason is mostly because, in addition to all that was discussed in the previous paragraph, we cannot evaluate how much extra mass would be added to the S-complex MAB population via implantation during terrestrial planet growth (e.g., <ref type="bibr">Raymond &amp; Izidoro 2017b)</ref>. Nonetheless, terrestrial planetesimals would probably be added to the MAB population after gas disk dispersal and would also not contribute to growth in the MAB. Their effective contribution to the shape of the S-complex SFD component is also unclear and we leave this topic for future study. Yet, the fall-off (steepening) of our depleted SFDs for D ≳ 200-300 km (Figure <ref type="figure" target="#fig_4">4</ref>; e.g. yellow curve) suggest that objects larger than those sizes, including the differentiated asteroid (4) Vesta, were likely terrestrial planetesimals implanted into the MAB (during terrestrial planet accretion; <ref type="bibr">Raymond &amp; Izidoro 2017b)</ref>, rather than asteroids formed in situ at 0.5 Myr (case of 4 Vesta), or at 2-3 Myr (case of undifferentiated large objects) after CAIs.</p><p>Primordial MAB masses larger than about ≈ 2.14×10 -3 M ⊕ formed at 0.5 Myr after CAIs would generate SFDs incompatible with our predicted S-complex SFD, unless depletion occurred much earlier than accretion could have taken place. However, although not shown, an analysis of the temporal evolution of our runs show that the shape of the SFD as presented in Figure <ref type="figure" target="#fig_3">3</ref> for D &gt; 500 km objects develops within the first 0.5 to 1 Myr of evolution (i.e., similar to how we show that the shape of the SFDs for T = 3 and 5 Myr do not change much, we could have shown it for any T ≳ 1-2 Myr). This indicates that accretion starts very early in cases where the MAB mass at 0.5 Myr is much larger than ≈ 2.14×10 -3 M ⊕ . Knowing accretion starts very early, we can conclude that our results should be valid regardless of terrestrial planet formation model and/or early evolution of the giant planets (e.g., <ref type="bibr" target="#b105">Walsh et al. 2011;</ref><ref type="bibr" target="#b21">Clement et al. 2018;</ref><ref type="bibr" target="#b12">Brož et al. 2021;</ref><ref type="bibr" target="#b69">Lykawka &amp; Ito 2023)</ref>. This is even less of a concern in the case of the works by <ref type="bibr" target="#b21">Clement et al. (2018)</ref> and <ref type="bibr" target="#b69">Lykawka &amp; Ito (2023)</ref> as MAB depletion in those scenarios mostly occurs after gas disk dispersal, as we presented in here (i.e., long after accretion happened). Still, our results have larger consequences for those two works as we discuss in the next paragraph.</p><p>Our low estimate for the primordial MAB mass points to the conclusion that there is no longer the need for an early giant planet instability to stunt Mars' growth <ref type="bibr" target="#b21">(Clement et al. 2018)</ref>, or for chaotic dynamics to heavily deplete massive disk regions beyond 1-1.5 au <ref type="bibr" target="#b69">(Lykawka &amp; Ito 2023)</ref> after gas disk dispersal. We can confirm the latter. Our results demonstrate that there is no longer the need to heavily deplete a potentially primordial massive disk extending beyond 1-1.5 au. As we showed previouly, such a disk likely never existed, or it would violate MAB constraints (i.e., SFD and number of 4-Vesta-like objects formed; Section 4.3). We find it difficult, however, from our results alone to explicitly rule out that an early giant planet instability occurring during terrestrial planet formation would not help in stunting Mars. We think that, depending on the initial profile of the planetesimal disk near 1-1.5 au <ref type="bibr">(Izidoro et al. 2015, 2022, and</ref><ref type="bibr">whether</ref> or not growing embryos in that region would migrate due to interactions with the gas disk component <ref type="bibr" target="#b12">(Brož et al. 2021;</ref><ref type="bibr" target="#b111">Woo et al. 2023</ref>)), having an early giant planet instability occurring coincident with the later stages of terrestrial planet formation might still be a useful mechanism for preventing Mars from growing too large at 1.5 au <ref type="bibr" target="#b86">(Nesvorný et al. 2021)</ref>. Nonetheless, our work does reveal the necessity of at the very least revisiting the propositions by <ref type="bibr" target="#b21">Clement et al. (2018)</ref> and <ref type="bibr" target="#b69">Lykawka &amp; Ito (2023)</ref>. This is especially true if considering that most of their simulations that resulted in reasonable terrestrial planets analogs also depleted the MAB to levels that could potentially be incompatible with our new constraints.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3.">Growth of D &gt; 500 km objects and their depletion</head><p>The number of objects with D &gt; 500 km in the MAB, and the particular sub-region of the MAB where they reside, are also important constrains. Knowing how many D &gt; 500 km formed, and more importantly, where did they form and survived depletion can be used as further diagnostic for the maximum amount of mass that could have existed in the primordial MAB. The only known S-complex asteroid with D &gt; 500 km is (4) Vesta, (a V-type; <ref type="bibr" target="#b36">DeMeo et al. 2009)</ref>, that resides in the IMB. This is important information because very massive primordial MABs could lead to the formation of D &gt; 500 km objects in sub-regions as distant as the OMB, or even EoMB. Depletion factors are uneven, i.e., different in each MAB sub-region, and with higher survival chances in the CMB. That results in high probabilities of D &gt; 500 km objects surviving in sub-regions different than the IMB. In this section we devote our attention to the specific problem of determining how many D &gt; 500 km objects formed in our simulations and in which sub-region of the MAB did they survive depletion.</p><p>Figure <ref type="figure" target="#fig_5">5</ref> shows the number of objects with D &gt; 500 km formed within the entire MAB region by T = 5 Myr (blue triangles) as a function of the primordial MAB total mass in terms of MMSN fraction (Section 2) for a simulation where Jupiter is not present. Figure <ref type="figure" target="#fig_5">5</ref> also reports on the expected number of objects after depletion due to effects of the giant planet instability <ref type="bibr" target="#b84">(Nesvorný &amp; Morbidelli 2012;</ref><ref type="bibr" target="#b29">Deienno et al. 2017)</ref> and chaotic diffusion over 4.5 Gyr of solar system evolution <ref type="bibr" target="#b71">(Minton &amp; Malhotra 2010;</ref><ref type="bibr" target="#b26">Deienno et al. 2016</ref><ref type="bibr" target="#b27">Deienno et al. , 2018</ref><ref type="bibr" target="#b32">Deienno et al. , 2020))</ref>, i.e., once applying our fiducial depletion factors from D18 D f ac (green triangles) from Table <ref type="table" target="#tab_0">1</ref>. For simplicity we do not show figures in this Section with results for the cases where we considered Jupiter or T = 3 Myr. A breakdown of those results, along with those for C19 D f ac cases, can be found in the Appendix Tables <ref type="table">3</ref> and<ref type="table">4</ref>.</p><p>The yellow shaded region in Figure <ref type="figure" target="#fig_5">5</ref> represents the acceptable number of D &gt; 500 km to survive in the MAB, or more specifically, the IMB after depletion (N ≤ 1). This number is considered assuming that the initial population of the MAB planetesimals would be of S-complex taxonomic classification (see discussion in Section 1). In this case, only Blue labels on top of blue triangles show the exact number of objects formed. These numbers are obtained by summing the number of all objects with D &gt; 500 km formed in all 5 MAB sub-regions defined in Section 3, i.e., EiMB, IMB, CMB, OMB, and EoMB. Green triagles refer to the expected number of D &gt; 500 km objects that would survive solar system evolution after gas nebula dispersal when applying our fiducial D18 D f ac depletion factors (Table <ref type="table" target="#tab_0">1</ref>). Green labels on top of green triangles show how many survived depletion and in which MAB sub-region (see Appendix Table <ref type="table">3</ref> at T = 5 Myr). Yellow shaded region represents acceptable number of D &gt; 500 km to survive in the IMB after depletion (see main text).</p><p>asteroid (4) Vesta should be considered as an object of possible formation and survival within the IMB in our study, i.e., N = 1. Still, we report on N ≤ 1, i.e. N = 0 is a valid result, to account for the possibility where either no objects with D &gt; 500 km formed, or formed but did not survive depletion. In this case, (4) Vesta would not be an object originated in the MAB (or IMB to be more specific; see Figure <ref type="figure" target="#fig_1">2</ref>) but rather an object that formed in the terrestrial planet region and was later implanted into the IMB during terrestrial planet accretion <ref type="bibr">(Raymond &amp; Izidoro 2017b</ref>). We do not consider N = 2 or 3 as an at least marginally successful outcome for two main reasons. First, although the existence of Vesta-like fragments (basaltic objects with V-type taxonomy) that do not show direct orbital link to (4) Vesta and its family suggest the existence of other V-type parent bodies (e.g., <ref type="bibr" target="#b10">Brasil et al. 2017;</ref><ref type="bibr" target="#b100">Troianskyi et al. 2023;</ref><ref type="bibr" target="#b13">Burbine et al. 2023</ref>), we have no information about their possible origin and size. Therefore, these hypothetical additional V-type parent bodies could likely be much smaller than our D = 500 km size limit. This claim is supported by the absence of a second large and well-defined V-type family in the MAB. Second, we recall that (4) Vesta orbits in the IMB, and as we can see from Figure <ref type="figure" target="#fig_5">5</ref>, the formation of a large number of D &gt; 500 km objects would likely lead to their survival in the CMB and OMB.</p><p>An analysis of Figure <ref type="figure" target="#fig_5">5</ref>, as well as Appendix Tables <ref type="table">3</ref> and<ref type="table">4</ref>, show that a massive primordial MAB, M disk ≳ 0.007-0.013 M ⊕ (0.005-0.01 MMSN), leads to the formation of too many D &gt; 500 km objects. As some of them are likely to survive solar system evolution, this would imply that the current MAB should have not only the asteroid (4) Vesta but other larger S-complex asteroids. Furthermore, a very large number of these large objects would reside in sub-regions other than the IMB if the primordial MAB mass was larger than about 0.003 M ⊕ (or more specifically ≈ 2.14×10 -3 M ⊕ -Section 4.2 -a direct consequence of uneven depletion). This result strengthens our conclusion from previous Sections in that the MAB primordial mass (at T = 0.5 Myr after CAIs) should be smaller than about ≈ 2.14×10 -3 M ⊕ , or somehow depleted to this level before accretion starts.</p><p>Comparing Appendix Tables <ref type="table">3</ref> and<ref type="table">4</ref> we find that the presence of Jupiter systematically leads to the formation of fewer such large objects, especially within the OMB and EoMB, but also within the CMB. As anticipated in Section 4.1, this is because Jupiter strongly perturbs the sub-regions from OMB to EoMB (and partially the CMB), causing the orbital eccentricity of objects in those sub-regions to increase. A direct consequence of this eccentricity excitation is that collision velocities among growing objects increase, leading to fragmentation and preventing further growth (e.g., <ref type="bibr" target="#b31">Walsh &amp; Levison 2019)</ref>. The same effect also explains why depletion seems more aggressive in cases with Jupiter (e.g., compare the number within parentheses in both Appendix Tables <ref type="table">3</ref> and<ref type="table">4</ref> for every case). This is because, when Jupiter is considered, D &gt; 500 km objects are more likely to form only within the EiMB, IMB, and CMB, with the large majority populating the first two sub-regions. Depletion factors associated with the EiMB and IMB are much larger than the ones for the CMB (Table <ref type="table" target="#tab_0">1</ref>). This further strengthens our claim that it is very important to account for depletion in each different MAB sub-region separately instead of using the overall depletion factor as a proxy for size-dependent depletion.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">CONCLUSIONS</head><p>The primary goal of our work was to determine the maximum possible total mass that could have existed in the primordial MAB region. The current MAB total mass is tiny (≈5×10 -4 M ⊕ ; DeMeo &amp; Carry 2014). There is a debate in the literature on whether such a small MAB mass was primordial (e.g.; <ref type="bibr" target="#b44">Hansen 2009;</ref><ref type="bibr">Levison et al. 2015a;</ref><ref type="bibr" target="#b51">Izidoro et al. 2015</ref><ref type="bibr" target="#b49">Izidoro et al. , 2021;;</ref><ref type="bibr" target="#b26">Deienno et al. 2016</ref><ref type="bibr" target="#b27">Deienno et al. , 2018) )</ref> or whether the primordial MAB total mass was much larger than currently observed (e.g.; <ref type="bibr" target="#b105">Walsh et al. 2011;</ref><ref type="bibr" target="#b23">Clement et al. 2019;</ref><ref type="bibr" target="#b69">Lykawka &amp; Ito 2023)</ref>.</p><p>In this work we followed accretion (growth and fragmentation) of planetesimals in the MAB during the period when gas still existed in the solar nebula. We assumed different values of total mass for our primordial MAB (see Section 2 for a detailed description of model parameters), and that all of our primordial MAB asteroids would be of inner solar system S-complex taxonomic type (DeMeo &amp; Carry 2014, see also discussion in Section 1). We also attributed a SFD for the MAB primordial population as proposed by previous works that succeeded in reproducing the shape of the current MAB SFD <ref type="bibr" target="#b6">(Bottke et al. 2005a;</ref><ref type="bibr" target="#b73">Morbidelli et al. 2009</ref>, but with limited dynamical effects). In our work, accretion was followed with the code LIPAD <ref type="bibr" target="#b64">(Levison et al. 2012)</ref>, meaning that we can in this work self-consistently follow dynamical and collisional evolution altogether. We studied cases where we consider the gravitational perturbation of Jupiter as well as cases where we did not. The total simulation time was 5 Myr, i.e., presumably the time when gas in the solar nebula dispersed around the MAB region (base on the ages of the yongest Cb-chondrites, as well as on paleo-magnetism constrains; <ref type="bibr" target="#b60">Krot et al. 2005;</ref><ref type="bibr" target="#b109">Weiss et al. 2021)</ref>. Our results confirm previous findings that the power slope of the MAB SFD does not change in the range 100 km &lt; D &lt; 500 km <ref type="bibr" target="#b6">(Bottke et al. 2005a;</ref><ref type="bibr" target="#b73">Morbidelli et al. 2009)</ref>, which imply such slope should be primordial. This conclusion is true regardless of considering or not the effects of gravitational perturbation of Jupiter (see Section 4.1).</p><p>After following how the MAB SFD evolves under the above circumstances, we considered how the MAB population would be depleted during subsequent solar system evolution. This is important as it is well known that the giant planet instability <ref type="bibr" target="#b84">(Nesvorný &amp; Morbidelli 2012;</ref><ref type="bibr" target="#b29">Deienno et al. 2017</ref>), predicted to have happened at some time after gas disk dispersal, inevitably depletes MAB objects <ref type="bibr" target="#b97">(Roig &amp; Nesvorný 2015;</ref><ref type="bibr" target="#b26">Deienno et al. 2016</ref><ref type="bibr" target="#b27">Deienno et al. , 2018;;</ref><ref type="bibr" target="#b85">Nesvorný et al. 2017;</ref><ref type="bibr" target="#b23">Clement et al. 2019)</ref>. It is also well known that an additional factor of 2 in depletion is expected due to chaotic diffusion of MAB objects leaking through mean motion resonances over Gyr timescales <ref type="bibr" target="#b71">(Minton &amp; Malhotra 2010)</ref>. We used results from the literature (e.g.; <ref type="bibr" target="#b27">Deienno et al. 2018;</ref><ref type="bibr" target="#b23">Clement et al. 2019)</ref> to estimate depletion factors that would account for both the giant planet instability and subsequent chaotic diffusion. To do that, we first reduced the data from these works to the same standards. Then, we subdivided the MAB into five sub-regions, i.e. EiMB, IMB, CMB, OMB, and EoMB (see Section 3 for a definition of those sub-regions and for a detailed description on MAB limits and data reduction). Finally, we compared our findings with data from real asteroids in the MPC catalog.</p><p>The first main result of the present work is that we found the MAB depletion is uneven, i.e., different radial subregions of the MAB are depleted at different rates (Table <ref type="table" target="#tab_0">1</ref>). This important result was first suggested by <ref type="bibr" target="#b85">Nesvorný et al. (2017)</ref>, but never quantified in detail. Here we demonstrate that the CMB and OMB have a much higher survival rate (lower depletion rates) than any other sub-region. This is noteworthy as it implies that these sub-regions are the ones most likely to host asteroids that are native to the MAB. Our results, as shown in Sections 4.2 and 4.3, clearly demonstrate how such uneven MAB depletion becomes size-and semimajor-axis-dependent. For that reason, we suggest that follow up works use the values for each MAB sub-region derived in Table <ref type="table" target="#tab_0">1</ref> separately when accessing depletion of the MAB in a similar way as performed in this work. The overall MAB depletion factor reported in the last column of Table <ref type="table" target="#tab_0">1</ref> should only be used as a guide for estimating overall mass depletion, but not size-dependent population depletion, as the latter is also semimajor-axis dependent.</p><p>The second main result of the present work is that we found the maximum total mass that could have formed in the primordial MAB at around 0.5 Myr after CAIs is likely to be smaller than ≈ 2.14×10 -3 M ⊕ . Primordial MAB masses larger than this limit would unavoidably lead to the development of SFDs inconsistent with the current inferred SFD for S-complex asteroids <ref type="bibr" target="#b75">(Mothé-Diniz et al. 2003)</ref>. Such larger primordial MAB masses would also likely lead to the formation of too many S-complex objects with D &gt; 500 km. Our depletion factors as presented in Table <ref type="table" target="#tab_0">1</ref> and following the methods and rational described in Sections 4.2 and 4.3 indicate most objects of this size would survive in the CMB and OMB. Given that the only S-complex object with D &gt; 500 km (4 Vesta) resides in the IMB, we consider such results to be incompatible with observations. Furthermore, we find that objects with D &gt; 200-300 km, including asteroid (4) Vesta, are more likely to be terrestrial planetesimals implanted into the MAB (or more specifically into the IMB) during terrestrial planet growth <ref type="bibr">(Raymond &amp; Izidoro 2017b</ref>) than asteroids that grew in-situ (see discussion in Sections 4.2 and 4.3 for a detailed rational).</p><p>Finally, we conclude by noting that our results are independent of terrestrial planet formation models and/or early evolution of the giant planets (e.g.; <ref type="bibr" target="#b105">Walsh et al. 2011;</ref><ref type="bibr" target="#b21">Clement et al. 2018;</ref><ref type="bibr" target="#b12">Brož et al. 2021;</ref><ref type="bibr" target="#b69">Lykawka &amp; Ito 2023)</ref>. This conclusion is supported by the fact that, for primordial MAB masses larger than ≈ 2.14×10 -3 M ⊕ , accretion into the MAB starts very early (i.e., within the first few 100s of kyr after planetesimal formation; here considered to be 0.5 Myr after CAIs <ref type="bibr" target="#b67">(Lichtenberg et al. 2021;</ref><ref type="bibr" target="#b50">Izidoro et al. 2022;</ref><ref type="bibr" target="#b72">Morbidelli et al. 2022)</ref>). However, most of the MAB depletion happens after gas disk dispersal via a giant planet instability (e.g.; <ref type="bibr" target="#b27">Deienno et al. 2018;</ref><ref type="bibr" target="#b23">Clement et al. 2019)</ref>, or chaotic excitation induced by secular resonance sweeping <ref type="bibr" target="#b52">(Izidoro et al. 2016;</ref><ref type="bibr" target="#b69">Lykawka &amp; Ito 2023)</ref>. Therefore, unless depletion took place within the first few 100s of kyr after CAIs, MAB primordial masses larger than ≈ 2.14×10 -3 M ⊕ would lead to unobserved features in the current MAB. Such early depletion seems unlikely even in models as those proposed by <ref type="bibr" target="#b105">Walsh et al. (2011) and</ref><ref type="bibr" target="#b12">Brož et al. (2021)</ref>.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 .</head><label>1</label><figDesc>Figure 1. Initial cumulative SFDs adopted for our different primordial MAB populations in terms of MMSN (see main text). For reference we show: (1) Gray line in the bottom representing the current MAB SFD from Bottke et al. (2005a), and (2) Gray triangles from Figure 7a in Morbidelli et al. (2009). Other colored symbols/lines are for the different primordial MAB masses considered, in term of MMSN. From top to bottom: 2.000 MMSN (black), 1.000 MMSN (red), 0.500 MMSN (blue), 0.200 MMSN (yellow), 0.100 MMSN (green), 0.050 MMSN (magenta), 0.020 MMSN (black), 0.010 MMSN (red), 0.005 MMSN (blue), 0.002 MMSN (yellow), 0.001 MMSN (green). See main text for the actual mass in Earth masses for each specific case.</figDesc><graphic coords="5,178.54,62.11,255.60,192.98" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 .</head><label>2</label><figDesc>Figure 2. Comparison between the current MAB (see main text for our definition of the MAB) from MPC with H &lt; 9.6 (red) and results from Deienno et al. (2018) (black). Left: Eccentricity vs Semimajor axis. Gray lines demarcate regions where q = 1.9 au and Q = 4.1 au. Right: Inclination vs Semimajor axis. The cyan dot represents the real orbit of asteroid (4) Vesta taken from the MPC data.</figDesc><graphic coords="7,50.74,62.10,511.19,151.28" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head></head><label></label><figDesc>reports on the number of asteroids per MAB sub-region in both data from MPC (MPC N ast ) and from the surviving asteroids from simulations by Deienno et al. (2018, D18 N f inal ast -values plotted in Figure 2). D18 N initial ast represent the number of initial asteroids in the data from Deienno et al. (2018) used for calculating the corresponding depletion factors. The percentage of depletion (D18 D per ) in each sub-region as well as in the entire MAB is also presented for reference.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 3 .</head><label>3</label><figDesc>Figure 3. Evolved SFDs. Top panels (a; T = 3 Myr) and (b; T = 5 Myr) are for simulations where we did not consider Jupiter's perturbation. Bottom panels (c; T = 3 Myr) and (d; T = 5 Myr) are for simulations where we considered Jupiter's perturbation. For reference we show: (1) Solid gray line in the bottom representing the current MAB SFD from Bottke et al. (2005a), and (2) Dashed gray line our inferred SFD for S-Complex asteroids (Mothé-Diniz et al. 2003, see main text.). Other colored symbols/lines are the same as in Figure 1 but only a few cases are highlighted to improve visualization. Those are (from top to bottom): 2.000 MMSN (black), 0.200 MMSN (yellow), 0.050 MMSN (magenta), 0.010 MMSN (red), 0.001 MMSN (green). The shaded blue area indicates the target diameter range where the evolved SFDs slope need to resemble that of the current MAB SFD.</figDesc><graphic coords="10,101.86,99.50,408.97,317.37" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 4 .</head><label>4</label><figDesc>Figure 4. Expected SFDs after depletion following our fiducial parameters (D18 D f ac ) on each individual MAB sub-region. As in Figure 3, top panels (a; T = 3 Myr) and (b; T = 5 Myr) are for simulations where we did not consider Jupiter's perturbation. Bottom panels (c; T = 3 Myr) and (d; T = 5 Myr) are for simulations where we considered Jupiter's perturbation. For reference we show: (1) Solid gray line in the bottom representing the current MAB SFD from Bottke et al. (2005a), and (2) Dashed gray line our inferred SFD for S-Complex asteroids (Mothé-Diniz et al. 2003, see main text in section 4.1.). Initial MMSN cases (primordial MAB masses at T = 0.5 Myr) are represented by color and symbols as in Figures 1 and 3 (labeled at top right corner of panel b -not all cases are shown for clarity purposes): 0.050 MMSN (magenta), 0.010 MMSN (red), 0.005 MMSN (blue), 0.002 MMSN (yellow), and 0.001MMSN (green). Red shaded area represent depleted SFDs that are not compatible with the current S-complex SFD (gray dashed line), and in most cases comparable or even higher than the total MAB SFD (gray solid line).</figDesc><graphic coords="12,101.86,62.11,408.95,317.00" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 5 .</head><label>5</label><figDesc>Figure 5. Number of objects with D &gt; 500 km formed within the entire MAB region by T = 5 Myr (blue triangles) as a function of the primordial MAB total mass in terms of MMSN fraction (Section 2) in a simulation where Jupiter was not present.Blue labels on top of blue triangles show the exact number of objects formed. These numbers are obtained by summing the number of all objects with D &gt; 500 km formed in all 5 MAB sub-regions defined in Section 3, i.e., EiMB, IMB, CMB, OMB, and EoMB. Green triagles refer to the expected number of D &gt; 500 km objects that would survive solar system evolution after gas nebula dispersal when applying our fiducial D18 D f ac depletion factors (Table1). Green labels on top of green triangles show how many survived depletion and in which MAB sub-region (see Appendix Table3at T = 5 Myr). Yellow shaded region represents acceptable number of D &gt; 500 km to survive in the IMB after depletion (see main text).</figDesc><graphic coords="15,50.74,62.11,511.19,206.44" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="21,152.98,119.47,306.72,238.24" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="21,152.98,423.29,306.73,237.68" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 .</head><label>1</label><figDesc>we will consider results from<ref type="bibr" target="#b23">Clement et al. (2019)</ref> using the following two restrictive definitions (for cases presented in Table1): Columns represent sub-regions of the MAB (see main text). MPC Nast refers to the current number of asteroids in each MAB sub-region from the MPC data. Simulation data from different works in the literature is provided in sets of four rows. D18 refers to the work by<ref type="bibr" target="#b27">Deienno et al. (2018)</ref> (our fiducial case, and similar to the findings from<ref type="bibr" target="#b97">Roig &amp; Nesvorný 2015;</ref><ref type="bibr" target="#b26">Deienno et al. 2016;</ref><ref type="bibr" target="#b85">Nesvorný et al. 2017</ref>) while C19 refers to the work byClement et al. (2019) (for a potential upper limit in depletion). Labels N initial</figDesc><table><row><cell></cell><cell>EiMB</cell><cell>IMB</cell><cell>CMB</cell><cell cols="3">OMB EoMB MAB</cell></row><row><cell>MPC Nast</cell><cell>0</cell><cell>43</cell><cell>170</cell><cell>194</cell><cell>24</cell><cell>431</cell></row><row><cell>D18 N f inal ast</cell><cell>0</cell><cell>28</cell><cell>162</cell><cell>221</cell><cell>19</cell><cell>430</cell></row><row><cell>D18 N initial ast</cell><cell>1111</cell><cell>2222</cell><cell>1777</cell><cell>2389</cell><cell>1944</cell><cell>9443</cell></row><row><cell>D18 D f ac (×10 -2 )</cell><cell>0.000</cell><cell>1.260</cell><cell>9.116</cell><cell>9.251</cell><cell>0.977</cell><cell>4.553</cell></row><row><cell>D18 Dper (%)</cell><cell cols="6">100.000 98.740 90.884 90.749 99.023 95.447</cell></row><row><cell>C19 all N f inal ast</cell><cell>6</cell><cell>67</cell><cell>90</cell><cell>263</cell><cell>51</cell><cell>477</cell></row><row><cell>C19 all N initial ast</cell><cell>1872</cell><cell>7241</cell><cell>6526</cell><cell>7696</cell><cell>7306</cell><cell>30641</cell></row><row><cell>C19 all D f ac (×10 -2 )</cell><cell>0.320</cell><cell>0.925</cell><cell>1.379</cell><cell>3.417</cell><cell>0.698</cell><cell>1.557</cell></row><row><cell>C19 all Dper (%)</cell><cell cols="6">99.680 99.075 98.621 96.583 99.302 98.443</cell></row><row><cell>C19 AM D JS P S /P J N f inal ast</cell><cell>0</cell><cell>4</cell><cell>28</cell><cell>188</cell><cell>45</cell><cell>265</cell></row><row><cell>C19 P S /P J N initial ast</cell><cell>432</cell><cell>1671</cell><cell>1506</cell><cell>1776</cell><cell>1686</cell><cell>7071</cell></row><row><cell>C19 AM D JS P S /P J D f ac (×10 -2 )</cell><cell>0.000</cell><cell>0.239</cell><cell cols="3">1.859 10.586 2.669</cell><cell>3.748</cell></row><row><cell>C19 AM D JS P S /P J Dper (%)</cell><cell cols="6">100.000 99.761 98.141 89.414 97.331 96.252</cell></row></table><note><p>ast and N f inal ast</p></note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 2 .</head><label>2</label><figDesc>Columns represent the estimated amount of mass in each different MAB sub-region (Section 3). Current/Post-Depletion values where obtained following Delbo et al. (2019, see also Delbo et al. (2017); Delbo (2017)). Pre-Depletion values in each MAB individual sub-region where evaluated by dividing Current/Post-Depletion values by D18, D19 all and D19 AM D JS P S /P J D f ac from Table</figDesc><table /></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1" xml:id="foot_0"><p>Often associated with evolution paths where Jupiter and Saturn acquire highly eccentric orbits, and do not necessarily satisfy outer solar system constraints(Nesvorný &amp; Morbidelli  </p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_1"><p>2012;<ref type="bibr" target="#b29">Deienno et al. 2017</ref>).</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2" xml:id="foot_2"><p>Note that in this work we loosely define S-complex asteroids as any non-carbonaceous objects, including (4) Vesta. We will return to this issue and thoroughly discuss the reasons behind our generically defined taxonomic classification and related implications in Section 4.2, where they will become more relevant.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="3" xml:id="foot_3"><p>Or eventually depleted to this level before accretion starts, i.e. during the first few 100s of kyr after planetesimals formed, while still in the gas-disk phase.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="4" xml:id="foot_4"><p>Considering more values of fpl or Σ 0 is not necessary because values of total disk mass would overlap, e.g., M disk is the same when comparing the pairs (0.1 MMSN; fpl = 0.2) with (0.2 MMSN; fpl = 0.1), or (0.5 MMSN; fpl = 0.1) with (0.1 MMSN; fpl = 0.5), and so on. Therefore, performing simulations with intermediate cases (more values of fpl and Σ 0 ) would not necessarily improve or change the results and conclusions.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="5" xml:id="foot_5"><p>Note that, (1) these latter values (≥ 1 MMSN) are similar to the surface density at ≈1 au presumably required to form Earth and Venus (e.g.,<ref type="bibr" target="#b17">Chambers 2001;</ref><ref type="bibr" target="#b31">Walsh &amp; Levison 2019;</ref><ref type="bibr" target="#b21">Clement et al. 2018)</ref>, whereas (2) the former values (&lt; 1 MMSN) are consistent with disk models that find planetesimal formation is inefficient in the MAB (e.g.,<ref type="bibr" target="#b39">Drażkowska &amp; Dullemond 2018;</ref><ref type="bibr" target="#b67">Lichtenberg et al. 2021;</ref><ref type="bibr" target="#b72">Morbidelli et al. 2022;</ref><ref type="bibr" target="#b50">Izidoro et al. 2022</ref>).</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="6" xml:id="foot_6"><p>Data obtained on March 2nd, 2023 at https://minorplanetcenter.net/iau/MPCORB.html</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>ACKNOWLEDGEMENTS</head><p>We thank the two anonymous reviewers for their positive and constructive comments that helped improving our work. The work of R.D. and K.J.W. was supported by the <rs type="funder">NASA</rs> <rs type="programName">Emerging Worlds program</rs>, grant <rs type="grantNumber">80NSSC21K0387</rs>. DN's work was supported by the <rs type="funder">NASA</rs> <rs type="programName">Emerging Worlds program</rs>. M.S.C. is supported by <rs type="funder">NASA</rs> <rs type="programName">Emerging Worlds</rs> grant <rs type="grantNumber">80NSSC23K0868</rs> and <rs type="funder">NASA</rs>'s CHAMPs team, supported by <rs type="funder">NASA</rs> under Grant No. <rs type="grantNumber">80NSSC21K0905</rs> issued through the <rs type="institution">Interdisciplinary Consortia for Astrobiology Research (ICAR) program</rs>. <rs type="person">W. F. Bottke</rs>'s work in this paper was supported by <rs type="funder">NASA</rs>'s Psyche mission through contract <rs type="grantNumber">NNM16AA09C</rs>.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_hMJ7xTP">
+					<idno type="grant-number">80NSSC21K0387</idno>
+					<orgName type="program" subtype="full">Emerging Worlds program</orgName>
+				</org>
+				<org type="funding" xml:id="_3mz49nr">
+					<orgName type="program" subtype="full">Emerging Worlds program</orgName>
+				</org>
+				<org type="funding" xml:id="_W4PuknB">
+					<idno type="grant-number">80NSSC23K0868</idno>
+					<orgName type="program" subtype="full">Emerging Worlds</orgName>
+				</org>
+				<org type="funding" xml:id="_V7GxhRg">
+					<idno type="grant-number">80NSSC21K0905</idno>
+				</org>
+				<org type="funding" xml:id="_rG9yF5j">
+					<idno type="grant-number">NNM16AA09C</idno>
+				</org>
+			</listOrg>
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>APPENDIX</head><p>Figure <ref type="figure">6</ref>. Same as Figure <ref type="figure">4</ref> but considering the potential upper limit depletion case from C19 all from Table 1, i.e., where we did not exclude cases in which Jupiter and Saturn's AMD ended larger than 0.1 and/or their period ratio PS/PJ exceed 2.5 (see Figure <ref type="figure">7</ref> below for a comparison).   <ref type="bibr" target="#b23">Clement et al. (2019)</ref> where Jupiter and Saturn's AMD remained lower than 0.1 and their period ratio did not exceed 2.5 (similar to cases from <ref type="bibr" target="#b97">Roig &amp; Nesvorný (2015)</ref>; <ref type="bibr" target="#b26">Deienno et al. (2016</ref><ref type="bibr" target="#b27">Deienno et al. ( , 2018))</ref> 0.001 0 (0/0/0) 0 (0/0/0) 0 (0/0/0) 0 (0/0/0) 0 (0/0/0) 0 (0/0/0) 0.002 0 (0/0/0) 2 (0/0/0) 1 (0/0/0) 1 (0/0/0) 0 (0/0/0) 4 (0/0/0) 0.005 4 (0/0/0) 3 (0/0/0) 2 (0/0/0) 8 (1/0/1) 8 (0/0/0) 25 (1/0/1) Number of D &gt; 500 km objects formed at T = 3 and 5 Myr followed by the expected number of survivors after applying (D18/C19 all /C19 AM D JS P S /P J D f ac ) when Jupiter IS considered in the simulation</p><p>0.001 0 (0/0/0) 0 (0/0/0) 0 (0/0/0) 0 (0/0/0) 0 (0/0/0) 0 (0/0/0) 0.002 0 (0/0/0) 0 (0/0/0) 0 (0/0/0) 1 (0/0/0) 1 (0/0/0) 2 (0/0/0) 0.005 0 (0/0/0) 1 (0/0/0) 1 (0/0/0) 0 (0/0/0) 1 (0/0/0) 3 (0/0/0) T = 5 Myr 0.001 0 (0/0/0) 0 (0/0/0) 0 (0/0/0) 0 (0/0/0) 0 (0/0/0) 0 (0/0/0) 0.002 0 (0/0/0) 0 (0/0/0) 0 (0/0/0) 1 (0/0/0) 1 (0/0/0) 2 (0/0/0) 0.005 0 (0/0/0) 1 (0/0/0) 1 (0/0/0) 0 (0/0/0) 1 (0/0/0) 3 (0/0/0)</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Andrews</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">J</forename><surname>Wilner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">M</forename><surname>Hughes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Qi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">P</forename><surname>Dullemond</surname></persName>
+		</author>
+		<idno type="DOI">10.1088/0004-637X/723/2/1241</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ApJ</title>
+		<imprint>
+			<biblScope unit="volume">723</biblScope>
+			<biblScope unit="page">1241</biblScope>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Andrews</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">M</forename><surname>Pérez</surname></persName>
+		</author>
+		<idno type="DOI">10.3847/2041-8213/aaf741</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ApJL</title>
+		<imprint>
+			<biblScope unit="volume">869</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+	<note>L41</note>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">W</forename><surname>Benz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Asphaug</surname></persName>
+		</author>
+		<idno type="DOI">10.1006/icar.1999.6204</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Icarus</title>
+		<imprint>
+			<biblScope unit="volume">142</biblScope>
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">B</forename><surname>Bitsch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Johansen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lambrechts</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<idno type="DOI">10.1051/0004-6361/201424964</idno>
+	</analytic>
+	<monogr>
+		<title level="j">A&amp;A</title>
+		<imprint>
+			<biblScope unit="volume">575</biblScope>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">B</forename><surname>Bitsch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lambrechts</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Johansen</surname></persName>
+		</author>
+		<idno type="DOI">10.1051/0004-6361/201526463</idno>
+	</analytic>
+	<monogr>
+		<title level="j">A&amp;A</title>
+		<imprint>
+			<biblScope unit="volume">582</biblScope>
+			<date type="published" when="2015">2015b</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">J</forename><surname>Bollard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">N</forename><surname>Connelly</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Whitehouse</surname></persName>
+		</author>
+		<idno type="DOI">10.1126/sciadv.1700407</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Science Advances</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page">1700407</biblScope>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">F</forename><surname>Bottke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">D</forename><surname>Durda</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Nesvorný</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.icarus.2004.10.026</idno>
+		<imprint>
+			<date type="published" when="2005">2005a, Icarus, 175</date>
+			<biblScope unit="page">111</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<monogr>
+		<title/>
+		<idno type="DOI">10.1016/j.icarus.2005.05.017</idno>
+		<imprint>
+			<date type="published" when="2005">2005b, Icarus, 179</date>
+			<biblScope unit="page">63</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">F</forename><surname>Bottke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Vokrouhlický</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Minton</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/nature10967</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">485</biblScope>
+			<biblScope unit="page">78</biblScope>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">F</forename><surname>Bottke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Vokrouhlický</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">L</forename><surname>Ballouz</surname></persName>
+		</author>
+		<idno type="DOI">10.3847/1538-3881/ab88d3</idno>
+	</analytic>
+	<monogr>
+		<title level="j">AJ</title>
+		<imprint>
+			<biblScope unit="volume">160</biblScope>
+			<biblScope unit="page">14</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">I O</forename><surname>Brasil</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Roig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Nesvorný</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Carruba</surname></persName>
+		</author>
+		<idno type="DOI">10.1093/mnras/stx529</idno>
+	</analytic>
+	<monogr>
+		<title level="j">MNRAS</title>
+		<imprint>
+			<biblScope unit="volume">468</biblScope>
+			<biblScope unit="page">1236</biblScope>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">R</forename><surname>Brasser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">J</forename><surname>Mojzsis</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41550-019-0978-6</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Astronomy</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="page">492</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">M</forename><surname>Brož</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Chrenko</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Nesvorný</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Dauphas</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41550-021-01383-3</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Astronomy</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="page">898</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">H</forename><surname>Burbine</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">C</forename><surname>Greenwood</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">C</forename><surname>Buchanan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">LPI Contributions</title>
+		<imprint>
+			<biblScope unit="volume">2806</biblScope>
+			<biblScope unit="page">2347</biblScope>
+			<date type="published" when="2023">2023</date>
+			<publisher>LPI Contributions</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<monogr>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">H</forename><surname>Burbine</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">J</forename><surname>Mccoy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Meibom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Gladman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Keil</surname></persName>
+		</author>
+		<title level="m">Asteroids III</title>
+		<imprint>
+			<date type="published" when="2002">2002</date>
+			<biblScope unit="page" from="653" to="667" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">C</forename><surname>Burkhardt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Spitzer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<idno type="DOI">10.1126/sciadv.abj7601</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Science Advances</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="page">7601</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">J</forename><surname>Chambers</surname></persName>
+		</author>
+		<idno type="DOI">10.3847/1538-4357/abfaa4</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ApJ</title>
+		<imprint>
+			<biblScope unit="volume">914</biblScope>
+			<biblScope unit="page">102</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">E</forename><surname>Chambers</surname></persName>
+		</author>
+		<idno type="DOI">10.1006/icar.2001.6639</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Icarus</title>
+		<imprint>
+			<biblScope unit="volume">152</biblScope>
+			<biblScope unit="page">205</biblScope>
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">R</forename><surname>Chapman</surname></persName>
+		</author>
+		<idno type="DOI">10.1111/j.1945-5100.1996.tb02107.x</idno>
+	</analytic>
+	<monogr>
+		<title level="j">M&amp;PS</title>
+		<imprint>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="page">699</biblScope>
+			<date type="published" when="1996">1996</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">S</forename><surname>Che</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">J</forename><surname>Zega</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41550-023-02012-x</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Astronomy</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="page">1063</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">S</forename><surname>Clement</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Deienno</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">A</forename><surname>Kaib</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.icarus.2021.114556</idno>
+		<imprint>
+			<date type="published" when="2021">2021a, Icarus, 367, 114556</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">S</forename><surname>Clement</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">A</forename><surname>Kaib</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">N</forename><surname>Raymond</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">J</forename><surname>Walsh</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.icarus.2018.04.008</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Icarus</title>
+		<imprint>
+			<biblScope unit="volume">311</biblScope>
+			<biblScope unit="page">340</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">S</forename><surname>Clement</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">N</forename><surname>Raymond</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">A</forename><surname>Kaib</surname></persName>
+		</author>
+		<idno type="DOI">10.1093/mnrasl/slz184</idno>
+	</analytic>
+	<monogr>
+		<title level="j">MNRAS</title>
+		<imprint>
+			<biblScope unit="volume">492</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+	<note>L</note>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">S</forename><surname>Clement</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">N</forename><surname>Raymond</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">A</forename><surname>Kaib</surname></persName>
+		</author>
+		<idno type="DOI">10.3847/1538-3881/aaf21e</idno>
+	</analytic>
+	<monogr>
+		<title level="j">AJ</title>
+		<imprint>
+			<biblScope unit="volume">157</biblScope>
+			<biblScope unit="page">38</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">S</forename><surname>Clement</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">N</forename><surname>Raymond</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">A</forename><surname>Kaib</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.icarus.2020.114122</idno>
+		<imprint>
+			<date type="published" when="2021">2021b, Icarus, 355, 114122</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">C</forename><surname>De Sanctis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Ammannito</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Raponi</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/nature16172</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">528</biblScope>
+			<biblScope unit="page">241</biblScope>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">R</forename><surname>Deienno</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">S</forename><surname>Gomes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">J</forename><surname>Walsh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Nesvorný</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.icarus.2016.02.043</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Icarus</title>
+		<imprint>
+			<biblScope unit="volume">272</biblScope>
+			<biblScope unit="page">114</biblScope>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">R</forename><surname>Deienno</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Izidoro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<idno type="DOI">10.3847/1538-4357/aad55d</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ApJ</title>
+		<imprint>
+			<biblScope unit="volume">864</biblScope>
+			<biblScope unit="page">50</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">R</forename><surname>Deienno</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Izidoro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Nesvorný</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">F</forename><surname>Bottke</surname></persName>
+		</author>
+		<idno type="DOI">10.3847/2041-8213/ac865c</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ApJL</title>
+		<imprint>
+			<biblScope unit="volume">936</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note>L24</note>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">R</forename><surname>Deienno</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">S</forename><surname>Gomes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Nesvorný</surname></persName>
+		</author>
+		<idno type="DOI">10.3847/1538-3881/aa5eaa</idno>
+	</analytic>
+	<monogr>
+		<title level="j">AJ</title>
+		<imprint>
+			<biblScope unit="volume">153</biblScope>
+			<biblScope unit="page">153</biblScope>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">R</forename><surname>Deienno</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Nesvorný</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Vokrouhlický</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Yokoyama</surname></persName>
+		</author>
+		<idno type="DOI">10.1088/0004-6256/148/2/25</idno>
+	</analytic>
+	<monogr>
+		<title level="j">AJ</title>
+		<imprint>
+			<biblScope unit="volume">148</biblScope>
+			<biblScope unit="page">25</biblScope>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">R</forename><surname>Deienno</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">J</forename><surname>Walsh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">A</forename><surname>Kretke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">F</forename><surname>Levison</surname></persName>
+		</author>
+		<idno type="DOI">10.3847/1538-4357/ab16e1</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ApJ</title>
+		<imprint>
+			<biblScope unit="volume">876</biblScope>
+			<biblScope unit="page">103</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">R</forename><surname>Deienno</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">J</forename><surname>Walsh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">F</forename><surname>Levison</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">A</forename><surname>Kretke</surname></persName>
+		</author>
+		<idno type="DOI">10.3847/1538-4357/ab6ef4</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ApJ</title>
+		<imprint>
+			<biblScope unit="volume">890</biblScope>
+			<biblScope unit="page">170</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<monogr>
+		<author>
+			<persName><forename type="first">M</forename><surname>Delbo</surname></persName>
+		</author>
+		<idno type="DOI">10.7910/DVN/MNA7QG</idno>
+		<title level="m">A 4 Gy-old asteroid family and the big void in the asteroid Main Belt</title>
+		<meeting><address><addrLine>Harvard Dataverse</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="volume">1</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">M</forename><surname>Delbo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Avdellidou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<idno type="DOI">10.1051/0004-6361/201834745</idno>
+	</analytic>
+	<monogr>
+		<title level="j">A&amp;A</title>
+		<imprint>
+			<biblScope unit="volume">624</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">M</forename><surname>Delbo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Walsh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Bolin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Avdellidou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<idno type="DOI">10.1126/science.aam6036</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">357</biblScope>
+			<biblScope unit="page">1026</biblScope>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">E</forename><surname>Demeo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">P</forename><surname>Binzel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Slivan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">J</forename><surname>Bus</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.icarus.2009.02.005</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Icarus</title>
+		<imprint>
+			<biblScope unit="volume">202</biblScope>
+			<biblScope unit="page">160</biblScope>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">E</forename><surname>Demeo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Carry</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.icarus.2013.06.027</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Icarus</title>
+		<imprint>
+			<biblScope unit="volume">226</biblScope>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title/>
+		<idno type="DOI">10.1038/nature12908</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">505</biblScope>
+			<biblScope unit="page">629</biblScope>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">J</forename><surname>Drażkowska</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">P</forename><surname>Dullemond</surname></persName>
+		</author>
+		<idno type="DOI">10.1051/0004-6361/201732221</idno>
+	</analytic>
+	<monogr>
+		<title level="j">A&amp;A</title>
+		<imprint>
+			<biblScope unit="volume">614</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">D</forename><surname>Durda</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">F</forename><surname>Bottke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Nesvorný</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.icarus.2006.09.013</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Icarus</title>
+		<imprint>
+			<biblScope unit="volume">186</biblScope>
+			<biblScope unit="page">498</biblScope>
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">C</forename><surname>Fraser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">E</forename><surname>Brown</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Parker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Batygin</surname></persName>
+		</author>
+		<idno type="DOI">10.1088/0004-637X/782/2/100</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ApJ</title>
+		<imprint>
+			<biblScope unit="volume">782</biblScope>
+			<biblScope unit="page">100</biblScope>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gradie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Tedesco</surname></persName>
+		</author>
+		<idno type="DOI">10.1126/science.216.4553.1405</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">216</biblScope>
+			<biblScope unit="page">1405</biblScope>
+			<date type="published" when="1982">1982</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">Karl</forename><forename type="middle">E</forename><surname>Haisch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Lada</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">A</forename><surname>Lada</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">J</forename></persName>
+		</author>
+		<idno type="DOI">10.1086/320685</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ApJL</title>
+		<imprint>
+			<biblScope unit="volume">553</biblScope>
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+	<note>L</note>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">M S</forename><surname>Hansen</surname></persName>
+		</author>
+		<idno type="DOI">10.1088/0004-637X/703/1/1131</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ApJ</title>
+		<imprint>
+			<biblScope unit="volume">703</biblScope>
+			<biblScope unit="page">1131</biblScope>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">C</forename><surname>Hayashi</surname></persName>
+		</author>
+		<idno type="DOI">10.1143/PTPS.70.35</idno>
+	</analytic>
+	<monogr>
+		<title level="s">Progress of Theoretical Physics Supplement</title>
+		<imprint>
+			<biblScope unit="volume">70</biblScope>
+			<biblScope unit="page">35</biblScope>
+			<date type="published" when="1981">1981</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<monogr>
+		<author>
+			<persName><forename type="first">C</forename><surname>Hayashi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Nakazawa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Nakagawa</surname></persName>
+		</author>
+		<title level="m">Protostars and Planets II</title>
+		<editor>
+			<persName><forename type="first">D</forename><forename type="middle">C</forename><surname>Black</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">M</forename><forename type="middle">S</forename><surname>Matthews</surname></persName>
+		</editor>
+		<imprint>
+			<date type="published" when="1985">1985</date>
+			<biblScope unit="page" from="1100" to="1153" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">L</forename><surname>Hellmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Schneider</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Wölfer</surname></persName>
+		</author>
+		<idno type="DOI">10.3847/2041-8213/acc102</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ApJL</title>
+		<imprint>
+			<biblScope unit="volume">946</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">J</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Andrews</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">M</forename><surname>Pérez</surname></persName>
+		</author>
+		<idno type="DOI">10.3847/2041-8213/aaf7a0</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ApJL</title>
+		<imprint>
+			<biblScope unit="volume">869</biblScope>
+			<biblScope unit="page">43</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">A</forename><surname>Izidoro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Bitsch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">N</forename><surname>Raymond</surname></persName>
+		</author>
+		<idno type="DOI">10.1051/0004-6361/201935336</idno>
+	</analytic>
+	<monogr>
+		<title level="j">A&amp;A</title>
+		<imprint>
+			<biblScope unit="volume">650</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">A</forename><surname>Izidoro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Dasgupta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">N</forename><surname>Raymond</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41550-021-01557-z</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Astronomy</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="page">357</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">A</forename><surname>Izidoro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">N</forename><surname>Raymond</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><forename type="middle">C</forename><surname>Winter</surname></persName>
+		</author>
+		<idno type="DOI">10.1093/mnras/stv1835</idno>
+	</analytic>
+	<monogr>
+		<title level="j">MNRAS</title>
+		<imprint>
+			<biblScope unit="volume">453</biblScope>
+			<biblScope unit="page">3619</biblScope>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">A</forename><surname>Izidoro</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">N</forename><surname>Raymond</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Pierens</surname></persName>
+		</author>
+		<idno type="DOI">10.3847/1538-4357/833/1/40</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ApJ</title>
+		<imprint>
+			<biblScope unit="volume">833</biblScope>
+			<biblScope unit="page">40</biblScope>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">A</forename><surname>Johansen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ida</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Brasser</surname></persName>
+		</author>
+		<idno type="DOI">10.1051/0004-6361/201834071</idno>
+	</analytic>
+	<monogr>
+		<title level="j">A&amp;A</title>
+		<imprint>
+			<biblScope unit="volume">622</biblScope>
+			<biblScope unit="page">202</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">A</forename><surname>Johansen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lambrechts</surname></persName>
+		</author>
+		<idno type="DOI">10.1146/annurev-earth-063016-020226</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Annual Review of Earth and Planetary Sciences</title>
+		<imprint>
+			<biblScope unit="volume">45</biblScope>
+			<biblScope unit="page">359</biblScope>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">A</forename><surname>Johansen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M.-M</forename><surname>Mac Low</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Lacerda</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bizzarro</surname></persName>
+		</author>
+		<idno type="DOI">10.1126/sciadv.1500109</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Science Advances</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page">1500109</biblScope>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">A</forename><surname>Johansen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Ronnet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bizzarro</surname></persName>
+		</author>
+		<idno type="DOI">10.1126/sciadv.abc0444</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Science Advances</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="page">444</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">C</forename><surname>Johnson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">J</forename><surname>Walsh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">A</forename><surname>Minton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">N</forename><surname>Krot</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">F</forename><surname>Levison</surname></persName>
+		</author>
+		<idno type="DOI">10.1126/sciadv.1601658</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Science Advances</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page">1601658</biblScope>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">F</forename><surname>Kerridge</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/0016-7037(85)90141-3</idno>
+	</analytic>
+	<monogr>
+		<title level="j">GeoCoA</title>
+		<imprint>
+			<biblScope unit="volume">49</biblScope>
+			<biblScope unit="page">1707</biblScope>
+			<date type="published" when="1985">1985</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">A</forename><surname>Kretke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">F</forename><surname>Levison</surname></persName>
+		</author>
+		<idno type="DOI">10.1088/0004-6256/148/6/109</idno>
+	</analytic>
+	<monogr>
+		<title level="j">AJ</title>
+		<imprint>
+			<biblScope unit="volume">148</biblScope>
+			<biblScope unit="page">109</biblScope>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">N</forename><surname>Krot</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Amelin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Cassen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Meibom</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/nature03830</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">436</biblScope>
+			<biblScope unit="page">989</biblScope>
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b61">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">S</forename><surname>Kruijer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Burkhardt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Budde</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Kleine</surname></persName>
+		</author>
+		<idno type="DOI">10.1073/pnas.1704461114</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Proceedings of the National Academy of Science</title>
+		<imprint>
+			<biblScope unit="volume">114</biblScope>
+			<biblScope unit="page">6712</biblScope>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b62">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">S</forename><surname>Kruijer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Kleine</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">E</forename><surname>Borg</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41550-019-0959-9</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Astronomy</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="page">32</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b63">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">J</forename><surname>Laskar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">A&amp;A</title>
+		<imprint>
+			<biblScope unit="page">75</biblScope>
+			<date type="published" when="1997">1997</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b64">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">F</forename><surname>Levison</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Duncan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Thommes</surname></persName>
+		</author>
+		<idno type="DOI">10.1088/0004-6256/144/4/119</idno>
+	</analytic>
+	<monogr>
+		<title level="j">AJ</title>
+		<imprint>
+			<biblScope unit="volume">144</biblScope>
+			<biblScope unit="page">119</biblScope>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b65">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">F</forename><surname>Levison</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">A</forename><surname>Kretke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Duncan</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/nature14675</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">524</biblScope>
+			<biblScope unit="page">322</biblScope>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b66">
+	<monogr>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">F</forename><surname>Levison</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">A</forename><surname>Kretke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">J</forename><surname>Walsh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">F</forename><surname>Bottke</surname></persName>
+		</author>
+		<idno type="DOI">10.1073/pnas.1513364112</idno>
+		<title level="m">Proceedings of the National Academy of Science</title>
+		<meeting>the National Academy of Science</meeting>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="volume">112</biblScope>
+			<biblScope unit="page">14180</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b67">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lichtenberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Drażkowska</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Schönbächler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">J</forename><surname>Golabek</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">O</forename><surname>Hands</surname></persName>
+		</author>
+		<idno type="DOI">10.1126/science.abb3091</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">371</biblScope>
+			<biblScope unit="page">365</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b68">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">B</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">N</forename><surname>Raymond</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A</forename><surname>Jacobson</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41586-022-04535-1</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">604</biblScope>
+			<biblScope unit="page">643</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b69">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">S</forename><surname>Lykawka</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Ito</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41598-023-30382-9</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Scientific Reports</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="page">4708</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b70">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">P</forename><surname>Michel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Benz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Tanga</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">C</forename><surname>Richardson</surname></persName>
+		</author>
+		<idno type="DOI">10.1126/science.1065189</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">294</biblScope>
+			<biblScope unit="page">1696</biblScope>
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b71">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">A</forename><surname>Minton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Malhotra</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.icarus.2009.12.008</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Icarus</title>
+		<imprint>
+			<biblScope unit="volume">207</biblScope>
+			<biblScope unit="page">744</biblScope>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b72">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Baillié</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Batygin</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41550-021-01517-7</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Astronomy</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="page">72</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b73">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">F</forename><surname>Bottke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Nesvorný</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">F</forename><surname>Levison</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.icarus.2009.07.011</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Icarus</title>
+		<imprint>
+			<biblScope unit="volume">204</biblScope>
+			<biblScope unit="page">558</biblScope>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b74">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Brasser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Gomes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">F</forename><surname>Levison</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Tsiganis</surname></persName>
+		</author>
+		<idno type="DOI">10.1088/0004-6256/140/5/1391</idno>
+	</analytic>
+	<monogr>
+		<title level="j">AJ</title>
+		<imprint>
+			<biblScope unit="volume">140</biblScope>
+			<biblScope unit="page">1391</biblScope>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b75">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">T</forename><surname>Mothé-Diniz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M Á</forename><surname>Carvano</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Lazzaro</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/S0019-1035(02)00066-0</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Icarus</title>
+		<imprint>
+			<biblScope unit="volume">162</biblScope>
+			<biblScope unit="page">10</biblScope>
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b76">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">T</forename><surname>Nakamura</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Noguchi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Tanaka</surname></persName>
+		</author>
+		<idno type="DOI">10.1126/science.1207758</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">333</biblScope>
+			<biblScope unit="page">1113</biblScope>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b77">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A M</forename><surname>Nanne</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Nimmo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">N</forename><surname>Cuzzi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Kleine</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.epsl.2019.01.027</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Earth and Planetary Science Letters</title>
+		<imprint>
+			<biblScope unit="volume">511</biblScope>
+			<biblScope unit="page">44</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b78">
+	<monogr>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">P</forename><surname>Nelson</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/978-3-319-55333-7_139</idno>
+		<title level="m">Handbook of Exoplanets</title>
+		<editor>
+			<persName><forename type="first">H</forename><forename type="middle">J</forename><surname>Deeg</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Belmonte</surname></persName>
+		</editor>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page">139</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b79">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">D</forename><surname>Nesvorný</surname></persName>
+		</author>
+		<idno type="DOI">10.1088/0004-6256/150/3/73</idno>
+	</analytic>
+	<monogr>
+		<title level="j">AJ</title>
+		<imprint>
+			<biblScope unit="volume">150</biblScope>
+			<biblScope unit="page">73</biblScope>
+			<date type="published" when="2015">2015a</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b80">
+	<monogr>
+		<title/>
+		<idno type="DOI">10.1088/0004-6256/150/3/68</idno>
+		<imprint>
+			<date type="published" when="2015">2015b, AJ, 150</date>
+			<biblScope unit="page">68</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b81">
+	<analytic>
+		<title/>
+		<idno type="DOI">10.1146/annurev-astro-081817-052028</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ARA&amp;A</title>
+		<imprint>
+			<biblScope unit="volume">56</biblScope>
+			<biblScope unit="page">137</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b82">
+	<monogr>
+		<author>
+			<persName><forename type="first">D</forename><surname>Nesvorný</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Brož</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Carruba</surname></persName>
+		</author>
+		<idno type="DOI">10.2458/azu_uapress_9780816532131-ch016</idno>
+		<title level="m">Asteroids IV</title>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="page" from="297" to="321" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b83">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">D</forename><surname>Nesvorny</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Dauphas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Vokrouhlicky</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Deienno</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Hopp</surname></persName>
+		</author>
+		<idno type="DOI">10.48550/arXiv.2311.16053</idno>
+		<idno type="arXiv">arXiv:2311.16053</idno>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv e-prints</note>
+</biblStruct>
+
+<biblStruct xml:id="b84">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">D</forename><surname>Nesvorný</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<idno type="DOI">10.1088/0004-6256/144/4/117</idno>
+	</analytic>
+	<monogr>
+		<title level="j">AJ</title>
+		<imprint>
+			<biblScope unit="volume">144</biblScope>
+			<biblScope unit="page">117</biblScope>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b85">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">D</forename><surname>Nesvorný</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Roig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">F</forename><surname>Bottke</surname></persName>
+		</author>
+		<idno type="DOI">10.3847/1538-3881/153/3/103</idno>
+	</analytic>
+	<monogr>
+		<title level="j">AJ</title>
+		<imprint>
+			<biblScope unit="volume">153</biblScope>
+			<biblScope unit="page">103</biblScope>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b86">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">D</forename><surname>Nesvorný</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">V</forename><surname>Roig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Deienno</surname></persName>
+		</author>
+		<idno type="DOI">10.3847/1538-3881/abc8ef</idno>
+	</analytic>
+	<monogr>
+		<title level="j">AJ</title>
+		<imprint>
+			<biblScope unit="volume">161</biblScope>
+			<biblScope unit="page">50</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b87">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">D</forename><surname>Nesvorný</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Vokrouhlický</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">F</forename><surname>Bottke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">F</forename><surname>Levison</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41550-018-0564-3</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Astronomy</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page">878</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b88">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">P</forename><surname>O'brien</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">F</forename><surname>Bottke</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.icarus.2007.05.005</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Icarus</title>
+		<imprint>
+			<biblScope unit="volume">191</biblScope>
+			<biblScope unit="page">434</biblScope>
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b89">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">J</forename><surname>Pape</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Mezger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">S</forename><surname>Bouvier</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">P</forename><surname>Baumgartner</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.gca.2018.10.017</idno>
+	</analytic>
+	<monogr>
+		<title level="j">GeoCoA</title>
+		<imprint>
+			<biblScope unit="volume">244</biblScope>
+			<biblScope unit="page">416</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b90">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">A</forename><surname>Pierens</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">N</forename><surname>Raymond</surname></persName>
+		</author>
+		<idno type="DOI">10.1051/0004-6361/201117451</idno>
+	</analytic>
+	<monogr>
+		<title level="j">A&amp;A</title>
+		<imprint>
+			<biblScope unit="volume">533</biblScope>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b91">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">A</forename><surname>Pierens</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">N</forename><surname>Raymond</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Nesvorny</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<idno type="DOI">10.1088/2041-8205/795/1/L11</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ApJL</title>
+		<imprint>
+			<biblScope unit="volume">795</biblScope>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+	<note>L11</note>
+</biblStruct>
+
+<biblStruct xml:id="b92">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">N</forename><surname>Raymond</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Izidoro</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.icarus.2017.06.030</idno>
+		<imprint>
+			<date type="published" when="2017">2017a, Icarus, 297</date>
+			<biblScope unit="page">134</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b93">
+	<monogr>
+		<title/>
+		<idno type="DOI">10.1126/sciadv.1701138</idno>
+		<imprint>
+			<date type="published" when="2017">2017b, Science Advances, 3, e1701138</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b94">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">N</forename><surname>Raymond</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Quinn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">I</forename><surname>Lunine</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.icarus.2006.03.011</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Icarus</title>
+		<imprint>
+			<biblScope unit="volume">183</biblScope>
+			<biblScope unit="page">265</biblScope>
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b95">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">R</forename><surname>Ribeiro De Sousa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Gomes</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.icarus.2022.114933</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Icarus</title>
+		<imprint>
+			<biblScope unit="volume">379</biblScope>
+			<biblScope unit="page">114933</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b96">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">F</forename><surname>Robert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Merlivat</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Javoy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Meteoritics</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="page">349</biblScope>
+			<date type="published" when="1977">1977</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b97">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">F</forename><surname>Roig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Nesvorný</surname></persName>
+		</author>
+		<idno type="DOI">10.1088/0004-6256/150/6/186</idno>
+	</analytic>
+	<monogr>
+		<title level="j">AJ</title>
+		<imprint>
+			<biblScope unit="volume">150</biblScope>
+			<biblScope unit="page">186</biblScope>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b98">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">B</forename><surname>Simon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Armitage</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">N</forename><surname>Youdin</surname></persName>
+		</author>
+		<idno type="DOI">10.3847/0004-637X/822/1/55</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ApJ</title>
+		<imprint>
+			<biblScope unit="volume">822</biblScope>
+			<biblScope unit="page">55</biblScope>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b99">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">F</forename><surname>Spitzer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Burkhardt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Budde</surname></persName>
+		</author>
+		<idno type="DOI">10.3847/2041-8213/ab9e6a</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ApJL</title>
+		<imprint>
+			<biblScope unit="volume">898</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b100">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">V</forename><surname>Troianskyi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Kankiewicz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Oszkiewicz</surname></persName>
+		</author>
+		<idno type="DOI">10.1051/0004-6361/202245678</idno>
+	</analytic>
+	<monogr>
+		<title level="j">A&amp;A</title>
+		<imprint>
+			<biblScope unit="volume">672</biblScope>
+			<biblScope unit="page">97</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b101">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">O</forename><surname>Voelkel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Deienno</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Kretke</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Klahr</surname></persName>
+		</author>
+		<idno type="DOI">10.1051/0004-6361/202039214</idno>
+	</analytic>
+	<monogr>
+		<title level="j">A&amp;A</title>
+		<imprint>
+			<biblScope unit="volume">645</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b102">
+	<analytic>
+		<title level="a" type="main">2021b</title>
+		<idno type="DOI">10.1051/0004-6361/202039245</idno>
+	</analytic>
+	<monogr>
+		<title level="j">A&amp;A</title>
+		<imprint>
+			<biblScope unit="volume">645</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b103">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">J</forename><surname>Walsh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">F</forename><surname>Levison</surname></persName>
+		</author>
+		<idno type="DOI">10.3847/0004-6256/152/3/68</idno>
+	</analytic>
+	<monogr>
+		<title level="j">AJ</title>
+		<imprint>
+			<biblScope unit="volume">152</biblScope>
+			<biblScope unit="page">68</biblScope>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b104">
+	<monogr>
+		<title/>
+		<idno type="DOI">10.1016/j.icarus.2019.03.031</idno>
+		<imprint>
+			<date type="published" when="2019">2019, Icarus, 329</date>
+			<biblScope unit="page">88</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b105">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">J</forename><surname>Walsh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">N</forename><surname>Raymond</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">P</forename><surname>O'brien</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">M</forename><surname>Mandell</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/nature10201</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">475</biblScope>
+			<biblScope unit="page">206</biblScope>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b106">
+	<monogr>
+		<title/>
+		<idno type="DOI">10.1111/j.1945-5100.2012.01418.x</idno>
+		<imprint>
+			<date type="published" when="1941">2012, M&amp;PS, 47, 1941</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b107">
+	<monogr>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">H</forename><surname>Warren</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.epsl.2011.08.047</idno>
+		<title level="m">Earth and Planetary Science Letters</title>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="volume">311</biblScope>
+			<biblScope unit="page">93</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b108">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">J</forename><surname>Weidenschilling</surname></persName>
+		</author>
+		<idno type="DOI">10.1093/mnras/180.2.57</idno>
+	</analytic>
+	<monogr>
+		<title level="j">MNRAS</title>
+		<imprint>
+			<biblScope unit="volume">180</biblScope>
+			<biblScope unit="page">57</biblScope>
+			<date type="published" when="1977">1977</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b109">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">P</forename><surname>Weiss</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X.-N</forename><surname>Bai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">R</forename><surname>Fu</surname></persName>
+		</author>
+		<idno type="DOI">10.1126/sciadv.aba5967</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Science Advances</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="page">5967</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b110">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">W</forename><surname>Wetherill</surname></persName>
+		</author>
+		<idno type="DOI">10.1146/annurev.aa.18.090180.000453</idno>
+	</analytic>
+	<monogr>
+		<title level="j">ARA&amp;A</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page">77</biblScope>
+			<date type="published" when="1980">1980</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b111">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M Y</forename><surname>Woo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">L</forename><surname>Grimm</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Stadel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Brasser</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.icarus.2023.115497</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Icarus</title>
+		<imprint>
+			<biblScope unit="volume">396</biblScope>
+			<biblScope unit="page">115497</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b112">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">M.-H</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Morbidelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Neumann</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41550-021-01475-0</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature Astronomy</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="page">1286</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b113">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">T = 5</forename><surname>Myr</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b114">
+	<analytic>
+		<title level="a" type="main">Table 3. Detailed information showing the exact number of objects with D &gt; 500 km that formed in each of the individual 5 MAB sub-regions (columns 3-7; number outside parentheses -see Sections 1 and 2 for definitions), as well as in the entire MAB (last column; which values were plotted in Figure 5 on top of blue triangles at T = 5 Myr)</title>
+		<author>
+			<persName><surname>Clement</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">T = 3 (top rows) and 5 Myr</title>
+		<imprint>
+			<date type="published" when="2018">2018. 2019</date>
+		</imprint>
+	</monogr>
+	<note>Boldface values from D18 D f ac at T = 5 Myr are those plotted in green in Figure 5. Results are shown for all MMSN (first column) and for the case where Jupiter was NOT present in the simulations. bottom rows; recal that our simulations start at T = 0.5 Myr once we considered planetesimals formed by this time after CAIs; Lichtenberg et al. 2021; Izidoro et al. 2022; Morbidelli et al. 2022</note>
+</biblStruct>
+
+<biblStruct xml:id="b115">
+	<monogr>
+		<title level="m" type="main">Detailed information showing the exact number of objects with D &gt; 500 km that formed in each of the individual 5 MAB sub-regions (columns 3-7; number outside parentheses -see Sections 1 and 2 for definitions</title>
+		<author>
+			<persName><surname>Clement</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2018">2018. 2019</date>
+		</imprint>
+	</monogr>
+	<note>We also present the expected survival of all D &gt; 500 km formed after applying the depletion factors from Deienno et al. using values from Table 1 in the format (D18/C19 all /C19 AM D JS</note>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

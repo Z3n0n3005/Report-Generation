@@ -1,0 +1,2589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Antony So of ReAct; and both policy colleagues (Claire Boville, Sally Wellsteed, Ross Leach) and analytical colleagues (</title>
+				<funder ref="#_nZVpntb">
+					<orgName type="full">Department of Health Policy Research Programme</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Peter</forename><surname>Bennett</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Health</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">John</forename><surname>Henderson</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Health</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Antony So of ReAct; and both policy colleagues (Claire Boville, Sally Wellsteed, Ross Leach) and analytical colleagues (</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">CF12D20EC266C45816D6DB9F835CAA4E</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.0" ident="GROBID" when="2024-05-02T16:15+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>The development of resistance by organisms to antimicrobials is a natural phenomenon. Although it is increased by the use of antimicrobials, reduction in use of them will not necessarily reduce resistance, and there is a possibility that eventually most, if not all, antimicrobials will become largely ineffective. However, current estimates of the economic burden are modest -at anything from less than £5 to more than £20,000 in reported additional costs per patient per episode for hospital costs, and anything up to around £10 billion per year in societal costs, they are far lower than estimates of economic burden from other health problems, such as cancers, heart disease and mental disorders.</p><p>there is a clear danger that waiting for the burden to become significant before taking action may mean waiting until it is too late to stop an apocalyptic scenario -the very drive behind the early environmental movement's advocacy of the 'precautionary principle'.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>The reason that current estimates of the cost of resistance are modest is that they are based loosely on the 'incremental' cost related to the extra treatment of resistant over susceptible primary infection. This masks the most critical economic burden, which is when resistance leads to the loss of many of the advantages in medical care that antimicrobials have enabled. For instance, advanced surgical procedures and cancer chemotherapy might become far more dangerous as rates of associated infection increase and cannot be treated. The effective 'removal' of antimicrobials could mean soaring rates of post-operative infection, mortality and morbidity from what are currently considered to be trivial infections, presenting an apocalyptic blow to health system development. The full economic burden of this is not only inestimable at present, but unimaginable. It is therefore urgent that a full system analysis of resistance is undertaken.</p><p>Rather than continuing the focus solely on the additional cost of treating an infectious disease in the presence of resistance, what is needed now is to look at how health services more broadly might be affected if resistance becomes endemic, and the wider implications of this to society. Incentive mechanisms also need to be developed at a number of levels, and could require radical change, such as moving to more restrictive prescription (for example, through a hospital setting only, removing the ability to prescribe from primary and community care). Clearly the necessity of, and ability to implement, such radical change will need to be informed by the system analysis, and also supported by it when it comes to engaging the wider political and popular support that would be required.</p><p>In needing to consider a system approach, resistance shares many of the characteristics of climate change. Both provide future significant threats to human well-being, both are subject to considerable uncertainty about their future extent and trajectory, both are global problems where the response differs across nations, and both have as an underlying cause the over-consumption of 'goods' that lead to short term benefit. Yet for both there is considerable inertia to major, radical, change because there is a focus on current burden and because the personal incentives seldom match those of society more generally.</p><p>However, there appears to be increasing scientific consensus about the impact of global warming in a way that is perhaps less clear -or at least less coherent -for antimicrobial resistance. For global warming this has led to clear, simple and consistent messages from the scientific community, underpinning increasing acceptance of the desirability of action by a broader policy-making community including politicians, economists and philanthropists. For antimicrobial resistance</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Introduction</head><p>The ability of organisms to develop resistance to the effects of antimicrobial therapies developed to kill them is potentially the greatest challenge to healthcare in the 21 st century. It increases the threat not only of primary infectious diseases such as tuberculosis, but also secondary infections associated both with other diseases and the provision of healthcare itself <ref type="bibr" target="#b0">(1)</ref>. Modern healthcare was built over the last century on the basis that infections can be prevented or treated using antimicrobials (exemplified by the U.S. Surgeon General famously proclaiming in 1968 that "the war against diseases has been won") <ref type="bibr" target="#b1">(2)</ref>. During this time healthcare has become increasingly technological and invasive, improving mortality and morbidity significantly. Yet, many of these advances, especially within surgery, radiotherapy and chemotherapy, are based on the ability to prevent or cure infection that may result as a consequence of such care. The emergence and transmission of resistance threatens to undermine many of these advances (3). This paper is focused upon examining the economic burden that results from antimicrobial resistance (AMR). In so doing, it highlights the 'temporal tension' between the burden observed in the present and that which may be predicted for the future. Although the paper presents evidence about the current economic burden of AMR, the main focus of the paper is on developing a hypothesis concerning the likely future trajectory in this area and the significant implications of that trajectory.</p><p>The paper highlights the critical problem with the current emphasis on using economic burden as evidence for directing future investment in health issues, as well as difficulties related to methodologies available for estimating such burden. The paper concludes by considering the policy implications as well as the key research/evidence gaps and the challenges associated with filling those gaps. Note also that we are concerned here with human use and human health -there are critical links with animal use and health (eg 8), but we do not have space to consider these in this report.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A brief history of AMR</head><p>Before looking at the current economic burden of AMR, however, it is worth reminding ourselves of the history of AMR. Resistance may be seen as essentially a reaction to the use of antimicrobial treatments. Although the process of natural selection encourages micro-organisms to adapt to environmental pressures, the use of antimicrobial therapies can accelerate this natural process, whereby sensitive micro-organisms are soon eliminated by resistant ones (4). Although there remain uncertainties over the development of resistance, the 'genetic cost' to the organism, and the extent to which resistance is temporary or permanent, there is concern that over time there is no reason to suspect that resistance will not occur to all antimicrobials; the only question is to what level <ref type="bibr" target="#b4">(5)</ref>.</p><p>Resistance means that an antimicrobial therapy is no longer (as) effective against the organism it is targeting. For any particular antimicrobial, the correlation between consumption and resistance is complicated by many factors, including the relative 'fitness' of sensitive and resistant strains, together with the existence of genetic elements simultaneously coding for resistance to several antimicrobials. This is important, as simply reducing the consumption of a specific antimicrobial cannot necessarily be relied upon to produce an equivalent reduction in resistance, and thus once the effectiveness of an antimicrobial is 'lost' it may be lost forever <ref type="bibr" target="#b5">(6)</ref>. This has been known since the 1940's, when the development of resistance to penicillin was documented just after it was discovered <ref type="bibr" target="#b6">(7)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>The current situation</head><p>So, given this history, why is the level of concern increasing now? It is because the increase in organisms resistant to multiple therapies is now coinciding with the reduction in new therapies coming to market to replace ineffective ones.</p><p>That resistance develops to an antimicrobial therapy is not itself a problem -and as indicated is merely a natural process, albeit accelerated by use of these therapiesas long as there are other therapies to take its place. During the latter half of the 20 th century this was the predominant situation. Over this period the various classes of therapeutics, and the specific therapeutics within these classes, were discovered and the antimicrobial 'armoury' was added to on a regular basis <ref type="bibr" target="#b8">(9,</ref><ref type="bibr" target="#b9">10)</ref>. However, the pipeline is almost dry. Between 1983 and 1992, 30 new antibiotics were approved in the USA, but only seven have been approved since 2003 <ref type="bibr" target="#b10">(11)</ref>. Between 1968 and 2000, no new classes of antimicrobial were discovered, and although two classes were discovered in 2000 and 2003 it is worth noting that these targeted only gram-positive bacteria; there remain no new class candidates for gram-negative bacteria (see figure <ref type="figure" target="#fig_1">1</ref>) <ref type="bibr" target="#b11">(12)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>FIGURE 1: DRUG DISCOVERY</head><p>In 2004, only 1.6% of drugs in development by the world's 15 largest drug companies were antimicrobials <ref type="bibr" target="#b8">(9,</ref><ref type="bibr" target="#b12">13)</ref>. A recent report from the European Centre for Disease Prevention and Control and European Medicines Agency identifies only two new drugs under development, both of which are in the early stages when failure rates are high <ref type="bibr" target="#b13">(14)</ref>. There have been many options proposed and discussed to try to encourage greater research and development in antimicrobials <ref type="bibr" target="#b14">(15)</ref>, but it has recently been voiced that "today's dearth in the antibacterial research and development pipeline will take decades to reverse" <ref type="bibr">(16, p1091)</ref> and that "the existing classes of antibiotics are probably the best we will ever have. We are wary of creating an expectation that economic incentives can generate a pipeline to compensate for our squandering of this non-renewable resource" <ref type="bibr">(17, p1)</ref>.</p><p>At the same time that the number of new therapeutics has been declining, organisms such as S. Aureus and E. faecium have been acquiring resistance to multiple therapies <ref type="bibr" target="#b17">(18)</ref>. Consider, for instance, Multi-Drug Resistant Tuberculosis (MDR-TB); defined as resistance to at least isoniazid and rifampicin. The incidence and spread of MDR-TB is of concern to both the developed and developing world <ref type="bibr" target="#b18">(19)</ref>. For example, in the USA, MDR-TB epidemics have been reported in New York and Florida <ref type="bibr" target="#b19">(20)</ref>, while in Africa the incidence of MDR-TB continues to spread dramatically and extensively <ref type="bibr" target="#b20">(21)</ref>. This imposes a significant resource burden as the associated treatment costs are substantial, with some patients in the USA costing approximately $US1 million each to treat <ref type="bibr" target="#b21">(22)</ref>. And this is where there is still some other therapy as an option. Where there are cases of totally drug resistant (TDR) infection there are no therapies that will provide an effective treatment; this is now the case for vancomycin-resistant Enterococcus faecium <ref type="bibr" target="#b17">(18,</ref><ref type="bibr" target="#b22">23)</ref>. The rapid spread of any such organism is a clear cause for concern; antibiotic resistant bacteria do not stop at national boundaries and antimicrobial resistance is a global issue <ref type="bibr" target="#b23">(24,</ref><ref type="bibr" target="#b24">25)</ref>.</p><p>To sum, organisms develop resistance to antimicrobials, and increasingly are developing resistance to multiple therapies, rendering these antimicrobials ineffective. At the same time, the once prolific pipeline bringing new antimicrobials into clinical practice is faltering. We are therefore at a pivotal stage in the history of infectious disease, where the window of opportunity afforded by antimicrobial therapies over recent decades is rapidly closing <ref type="bibr" target="#b2">(3)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Current activities</head><p>Clearly there has been progress, especially in recent years, in practice and policy concerning more conservative and appropriate use of antimicrobials in the attempt to halt or slow the progress of resistance. There are various policy, public and professional reports and strategies <ref type="bibr" target="#b11">(12,</ref><ref type="bibr" target="#b25">(26)</ref><ref type="bibr" target="#b26">(27)</ref><ref type="bibr" target="#b27">(28)</ref><ref type="bibr" target="#b28">(29)</ref> highlighting the problem, and suggesting a range of activities and strategies, many of which have been implemented. In the UK, the first Antimicrobial Resistance Strategy, published in 2000, had three inter-related key elements -surveillance, prudent antimicrobial prescribing and infection control, and these aspects are still relevant today.</p><p>Work, such as that in the UK, is enabling us to become better custodians of antibiotics, reshaping the debate on how to control AMR. This has involved encouraging better diagnosis, medicine management and use of therapeutics by promoting the prudent use of antimicrobials and educating healthcare workers to use antibiotics more appropriately (i.e. only when needed, ensuring correct dose and duration for treatment), as well as promoting good infection control (e.g. hand hygiene, screening, patient isolation) to prevent and control AMR. These interventions have been informed by surveillance activities. This work has helped to strengthen surveillance, infection prevention and control, and to promote the responsible use of antimicrobials in the UK. It can be expected to have an impact on the containment of antimicrobial resistance.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Why these are not sufficient</head><p>Although there have been positive changes, and many within the scientific community are now convinced of the need for action, the question is whether interventions such as these remain marginal in relation to the total size of the problem, with insufficient impact on reductions in antimicrobial use to change a future in which the loss of effective antimicrobial therapies is inevitable. This question of marginality is pertinent both to the within-country context (is there sufficient reduction in usage in one setting such as the UK?) and the cross-country context (is there sufficient reduction in usage globally?). The core problems, of widespread use, rapid transmission and lack of new product development, remain. In this respect, incentives continue to be the major concern at all levels.</p><p>As indicated above (figure <ref type="figure" target="#fig_1">1</ref>), there has been an almost total shutdown in new product development.</p><p>Notwithstanding whether the possible compounds for discovery have been exhausted, this is unsurprising; there are few incentives for pharmaceutical companies to develop a new drug for which health systems will aim to restrict use <ref type="bibr" target="#b10">(11)</ref> and thus potential profits. This is particularly true within the current system for incentivising R&amp;D into new therapies -the patent system targeted at private companies -where companies wish to sell as much as possible as quickly as possible to generate revenue and recoup development costs. In restricting the use of new antimicrobials until absolutely necessary, it would be likely that the major use of such 'saved' drugs would be after the end of the patent period.</p><p>Similarly, there are incentive problems with achieving conservative use of antimicrobials. For each individual who wants to take an antimicrobial to feel better, the impact on resistance of their specific antimicrobial use is virtually unidentifiable, making it very hard to enforce a substantive reduction in use, even in areas deemed 'inappropriate' <ref type="bibr" target="#b29">(30)</ref>; in this respect the antimicrobial problem is identical to that of global warming, where the contribution of each car journey, for example, is minimal but the sum of all such journeys is substantial.</p><p>There are also incentive problems for policy makers. There is growing emphasis on evidence-based policy making, which includes considering the economic burden of disease, and the demonstrated cost-effectiveness of therapies. Put simply, this way of informing policy requires burden to be high now in order to justify expenditure on new drugs, and especially to justify it on the basis of cost-effectiveness, and the cost of resistance needs to be high now to justify greater restriction on use of current drugs <ref type="bibr" target="#b30">(31)</ref>. Note the emphasis on now.</p><p>However, as outlined below, evidence to date is that AMR has only a comparatively minor cost impact. There are, of course, considerable parallels here with wider aspects of prevention versus treatment when health budgets and results are expected to focus upon the short term, and at the mercy of the political cycle, which encourages group myopia <ref type="bibr" target="#b31">(32)</ref>. Nonetheless, in the case of resistance this is more pronounced and arguably, since once resistance develops it may be irreversible, more important.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Evidence on current economic burden</head><p>Qualitatively we know that treatment failure caused by AMR contributes to increased costs of care associated with: additional investigations such as laboratory tests and X-ray examinations; additional or alternative treatments, often much more expensive than drugs used to treat infections caused by sensitive organisms; additional sideeffects from more toxic treatments, which have to be managed; longer hospital stay; longer time off work; reduced quality of life and productivity; greater likelihood of death due to inadequate or delayed treatment, hence reducing the workforce; increased burden on family of infected individual; increases in private insurance coverage; additional cost for hospital when hospital-acquired infection occurs and infection control procedures required; increased costs of disease surveillance; increased costs to firms of absenteeism, possibly leading to increased product prices; and so forth <ref type="bibr" target="#b0">(1,</ref><ref type="bibr" target="#b32">33,</ref><ref type="bibr" target="#b33">34)</ref>. And this is not including costs associated with surveillance and activities associated with trying to control resistance itself.</p><p>Yet, quantitatively, the problem is that, far from illuminating the burden of resistance, this translates into a vast range of figures depending upon what precisely is assessed. Cost estimates will depend on, for instance, whether assessment is at the level of the individual or (multiple) institutions, whether figures are based on comparison of a resistant versus susceptible patient/infection or they are total costs of care (resistant versus nothing), whether figures include hospital costs only, look at patient costs, or incorporate productivity costs (i.e. consider the health care or the 'societal' perspective), and the methods used to estimate these costs, whether they are focused on one or multiple disease areas, and whether preventative control measures are included <ref type="bibr" target="#b34">(35,</ref><ref type="bibr" target="#b35">36)</ref>. This lack of consistency or comparability of methods used to assess economic impact generates problems in assessing the true scale of the problem, as discussed further below.</p><p>An important, although now dated, review of these studies found that patients infected with resistant organisms generally had poorer health and economic outcomes than those patients with susceptible organisms <ref type="bibr" target="#b36">(37)</ref>. A more recent review has shown higher costs, in the order of $6-30,000 per patient per episode for resistant compared to susceptible S. aureus, enterococci and gram negative bacilli <ref type="bibr" target="#b37">(38)</ref>. This latter review noted that evidence suggests though that there are not big increases in cost, resource use or mortality from resistance; a finding backed up in other recent studies <ref type="bibr" target="#b38">(39,</ref><ref type="bibr" target="#b39">40)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Updated literature review</head><p>We also previously undertook a systematic literature review concerning the economics of AMR, summarizing studies focusing upon the costs of resistance published up to 2000 <ref type="bibr" target="#b34">(35)</ref>. This review focused both on costs of AMR and the costeffectiveness of control strategies. It found a total of 43 studies, although 22 were categorised at high risk of bias and excluded from analysis. Of the 21 remaining studies, most were from the USA and hospital based. In terms of costs of resistance, most indicated areas of resource impact rather than reporting monetary values, and those that did report monetary values produced wide variances, although all well below £100,000 per annum per institution.</p><p>For this current paper, we updated these searches to focus on papers published since 2000 which reported the cost impact of resistance in English-language, peerreviewed journals, where we could extract any or all of length of stay, mortality, patient cost and/or societal cost that may be attributable to AMR. The focus of this updating review, in line with the DH brief and the focus of this paper, was the economic burden of resistance; it excluded review of the literature on the costeffectiveness of alternative control strategies which is concerned with policy options for dealing with the issue, rather than the nature of the issue itself.</p><p>Initial searches were only conducted on combinations of resistant/ce, antimicrob/ial and cost/s; as it became clear that papers that did not refer to antimicrobial resistance more generally, but only to either particular drugs or particular microorganisms (an indicator of a much more fundamental problem, to which we return in the discussion), would not be captured in this search, a subsequent search focused particularly on MRSA and VRE, as two of the most studied and potentially more serious current resistant infections. These studies are summarized in table <ref type="table" target="#tab_0">1</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>TABLE 1 SUMMARY OF COST DATA</head><p>The studies listed in table 1 are consistent with previous reviews, indicating three key findings that appear robust to change over time.</p><p>First, there are a vast range of figures, from less than £5 to more than £20,000 in reported additional costs per patient per episode for hospital costs, and anything up to around £10 billion per year for full societal costs. These figures are largely determined by whether and how productivity losses are incorporated <ref type="bibr" target="#b11">(12,</ref><ref type="bibr" target="#b40">(41)</ref><ref type="bibr" target="#b41">(42)</ref><ref type="bibr" target="#b42">(43)</ref>.</p><p>Second, most studies originate in the USA. This may be a reflection of the Englishlanguage journals included in the search, but such a degree of national dominance is still unusual. Given the very unique nature of the US health system, and its financial structure, these costs are unlikely to be indicative of other systems, such as the UK.</p><p>Third, there is a heavy predominance of hospital-based studies, and indeed the costs are almost exclusively related to costs of additional hospitalization/treatment and do not include costs associated with early mortality; from an economic perspective this almost certainly underestimates the cost. There is only one UK empirical study, which also happens to be one of only two community studies, and one UK study that is the only one to apply a macro-economic modelling technique <ref type="bibr" target="#b42">(43)</ref>. Whilst hospital costs are inevitably higher on a per patient basis, there may, however, be significant unassessed costs among patients infected with resistant strains who remain in a community setting, where even a small increase in costs at the individual level may, because of higher prevalence, result in a relatively high burden on the community overall <ref type="bibr" target="#b43">(44)</ref><ref type="bibr" target="#b44">(45)</ref><ref type="bibr" target="#b45">(46)</ref>.</p><p>Overall, in sum, although there has been a substantial increase in studies over the last decade compared with prior to 2000, there remains a low, selective and widely divergent evidence base concerning 'the economic burden of AMR'.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>The case of MRSA</head><p>An interesting case study here is clearly that of MRSA versus MSSA. This is summarized in Box 1 and two conclusions are apparent. First, there is a very wide range of costs. Second, even at the high-end, the costs remain quite modest. It is worth noting, however, that unlike some of the resistant gram-negatives currently emerging, there remains a choice of therapy available to treat MRSA.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>BOX 1: A CASE STUDY OF MRSA</head><p>The relatively low cost for MRSA is reflective of AMR more generally, as illustrated in table <ref type="table">2</ref>. This table provides estimates for various disease areas, standardized to 2004 US$bn, compared with the current highest estimate found for the societal cost of AMR to the USA in 2011 by CDC. At approximately $55bn ($20bn health service) per year, AMR still rates quite low in the league table of disease burden for the US.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>TABLE 2: COMPARATIVE ECONOMIC BURDEN</head><p>The paradox of the relatively low level of economic impact Current evidence therefore suggests that the economic burden from AMR is actually quite modest, even though AMR is acknowledged to be a significant threat to health and healthcare. This apparent inconsistency might arise because current estimates of the cost of AMR are based loosely on the 'incremental' cost related to the extra treatment of resistant over (actual or assumed) susceptible infection. These costs, broadly speaking, increase as we see multi-drug resistance (MDR) emerge (such as in the case of MDR-TB <ref type="bibr" target="#b46">(47)</ref>), but at present organisms that are MDR remain relatively rare and often occur in isolated outbreaks. The highest costs -if we exclude productivity losses, discussed in the next section -are those where organisms are totally resistant, where no therapy is effective creating high service use and the eventual death of the patient. In these very rare cases the cost is of a magnitude higher as we are looking at intensive (and often terminal) care, rather than merely a little extra length of stay or another slightly more expensive therapy. These latter cases are an indication of the potential future cost associated with increasing types of resistant infection and increasing transmission of those infections, as once there are no therapies that are effective, mortality, morbidity and the associated economic burden may take a quantum leap; not just in the treatment of primary infection, but critically as routine procedures are severely compromised by untreatable secondary infection. (An example of such a situation is extensively drugresistant tuberculosis (XDTRB). Whilst a recent study in the UK found that the numbers infected with XDRTB were still small, it also identified extremely high mortality rates in the order of more than 60% <ref type="bibr" target="#b46">(47)</ref>.)</p><p>The economic consequences of AMR outlined in the papers reviewed relate only to the direct impacts of resistance itself on the ability to treat primary infections; which, as indicated, tend to be incremental. Of potentially greater importance is the more indirect future impact that resistance may have on the ability of the health service to deliver other forms of healthcare in the presence of increasing rates of secondary infection. Here there is no evidence that we are aware of. Before moving on to consider this issue further, however, it is worth reflecting upon the limitations of attempting to assess the current burden of AMR.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Limits of assessing 'costs of resistance'</head><p>A standard 'cost-of-illness' approach will not capture the true nature of the costs of AMR for three reasons. First, AMR is a negative externality associated with consumption of antimicrobials <ref type="bibr" target="#b31">(32)</ref>. That is, it has an undesirable effect which is distant from the current consumption decision. This distance arises in two ways. First, consumption of an antimicrobial will contribute to organisms generating resistance to its effects, and thus other people will suffer from reduced effectiveness. Second, that lower effectiveness will impact on the original consumer, but in the future not the present <ref type="foot" target="#foot_0">1</ref> .</p><p>The problem is that the externality effect from each antimicrobial consumed is miniscule, especially once the future effects are discounted <ref type="bibr" target="#b29">(30)</ref>. Thus, even if it were possible to increase the cost of consumption (e.g. price of antimicrobial, or cost of prescription) to incorporate some value of externality (the standard economic approach), it would only be extremely minor for each individual decision and highly unlikely to induce any reduction in consumption <ref type="bibr" target="#b47">(48)</ref>. So, the externality effect means that the cost of resistance is not reflected in current prices, but even if it were it would be so minor for each individual consumer that it would not cause an impact on consumption <ref type="bibr" target="#b32">(33)</ref>.</p><p>Second, the specific sigmoidal pattern of the development of resistance, illustrated in figure <ref type="figure">2</ref>, means that the cost will be low when there is scope to prevent resistance emerging (as quickly) but once it is observably high there may be little that can be done to prevent the transmission of a heavily resistant organism. That is, in general, the development of resistance over time appears to follow a sigmoid (or epidemic) distribution, with a lag phase before resistance appears (time x), then a relatively rapid increase in the proportion of resistant organisms, followed by a third phase (time x+n) in which this proportion reaches an equilibrium <ref type="bibr" target="#b48">(49)</ref>. This equilibrium level is determined by the relative 'fitness' of resistant and sensitive strains, the genetic basis and stability of resistance and the magnitude of the selection pressure <ref type="bibr" target="#b49">(50)</ref>. Thus, the cost during the lag phase when resistance is low -approximated by most studies to date -is correspondingly low, and vice versa once resistance is high, but the critical point is the phase of rapid advancement, where the 'epidemic' of resistance may be such as to be unstoppable. Where we act determines whether we are looking at prevention of excessive resistance or mitigation of high levels.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>FIGURE 2: SIGMOIDAL DEVELOPMENT OF AMR</head><p>The critical implication is that this uncertainty regarding current and future burden combined with discounting of future benefits means that strategies to reduce transmission are far more likely to appear cost-effective than strategies to control emergence, hence reinforcing the status-quo <ref type="bibr" target="#b29">(30,</ref><ref type="bibr" target="#b31">32,</ref><ref type="bibr" target="#b32">33)</ref>.</p><p>Third, estimates of cost-of-illness tend not to focus on less direct costs associated with the impact of resistance on patient safety or public confidence in health care institutions. Public and media concerns frequently focus on the plight of individuals who suffer what is seen to be 'avoidable' infection within a context where the institution is empowered and the patient is both vulnerable and dependent. There is therefore a cost to maintaining public confidence in healthcare providers and institutions.</p><p>The future? Antimicrobials are the cornerstone of modern medicine that revolutionized healthcare during the last half-century. From cradle to grave, the role of antimicrobials in safeguarding the overall health of human societies has become pivotal. So the 'real' costs of AMR are those that relate to the loss of these benefits; the treatment possibilities at every stage of human life that have been enabled and enhanced because of antimicrobials. We know, for example, that MDR bacteria have increased mortality rates amongst newborn babies <ref type="bibr" target="#b50">(51)</ref><ref type="bibr" target="#b51">(52)</ref><ref type="bibr" target="#b52">(53)</ref><ref type="bibr" target="#b53">(54)</ref><ref type="bibr" target="#b54">(55)</ref>, transplantation recipients (56-58) and cancer patients (59, 60), but we do not know very much beyond these few isolated case studies, and know nothing about their economic implications. Thus, in order to calculate the full potential economic burden of AMR we have to consider the burden associated with not having antimicrobial therapies at all. To our knowledge, this has not been attempted. We have therefore provided an illustration in Box 2. Although this is a greatly simplified illustrative example of one specific area, relating to hip replacements, it indicates the complexity involved in attempting to assess the true level of the likely economic burden of AMR. However, despite this complexity, we would suggest that this form of analysis -for the health system overall, not just specific diseases -is the single most important step in understanding the likely future burden of AMR in order to assist with planning, resource allocation and policy making with respect to the development and use of antimicrobials today.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>BOX 2: CASE STUDY HIPS</head><p>The 'true' cost of AMR It has been said that AMR presents a risk that we will fall back into the pre-antibiotic era (3). However, this is perhaps a more rosy picture than the reality. The health system has changed fundamentally over the last 60 years, with antimicrobials integrated in almost all aspects of care. The system is designed to treat more chronic conditions, provide treatments on a short-term -often day-case -basis, and encourage prevention. As Box 2 illustrates, in many cases antimicrobials are given as a matter of standard prophylactic care. As witnessed when there are outbreaks of hospital-acquired infection, the system can very quickly come to a standstill <ref type="bibr" target="#b60">(61)</ref>. The removal of antimicrobials could mean soaring rates of post-operative infection, mortality and morbidity from what are currently considered to be trivial infections -in the case of hip replacement illustrated in Box 2, this would be an increase in deaths from approximately 0% to 30% <ref type="foot" target="#foot_3">2</ref> .</p><p>Multiplied across all the hundreds of clinical areas where antimicrobials are currently used, it can easily be envisaged that this will not only be a significant health burden, and present increased healthcare cost (inpatient stay) itself, but would present a catastrophic blow to health system development -for instance, requiring redesign of many facilities, the reintroduction of sanatoria and so forth. The full economic burden of this is not only inestimable at present, but unimaginable. Increasing rates of infection to the level this would also have enormous wider economic impacts (significant workforce impacts <ref type="bibr" target="#b61">(62)</ref>). However, at present, this is speculation, and there is an urgent need to more rigorously investigate the potential future consequences for health systems more generally from the impacts of resistance.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Conclusion</head><p>We are entering a pivotal period where, if current trends continue, there could be highly significant costs to healthcare, and society more generally, as antimicrobials that form the basis of modern healthcare become increasingly ineffective. As AMR is a natural process, we are not looking at something that can be 'eradicated'; rather, it is something we have to manage if we are to continue to benefit from antimicrobial therapies <ref type="bibr" target="#b62">(63,</ref><ref type="bibr" target="#b63">64)</ref>.</p><p>Effective antimicrobials therefore need rediscovering as a scarce -and largely nonrenewable -resource (3). This requires an assessment of the balance between the positive effects of using antimicrobial therapies now, and the negative impact of this use on their temporal effectiveness, and hence assessment of the optimal use of antimicrobials over time. As with other areas of prevention, and issues such as global warming, we need to pursue a path that does not place undue emphasis on current burdens and costs, but reflects the importance of stewardship for the future. The presents us with three challenges.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Reducing uncertainty and increasing knowledge of full health system impacts</head><p>We know the current economic burden is relatively low compared with other problems. Yet we do not know to what extent the future burden will grow, or how quickly. We also do not know whether an increasing burden will give impetus to new technological change outside the drug arena that might mitigate effects. (For instance, dealing with climate change involves reduction in car use, but also making cars more efficient, and we 'solved' the issue of Chlorofluorocarbons (CFCs) and ozone depletion by simply replacing all CFCs with non-damaging gases in airconditioning and refrigerator units.)</p><p>Here, alternatives to antimicrobials include vaccination, but could also include structuring of care such that infection is less likely, for example changes to ventilation systems, bed spacing and so on. We are therefore faced with considerable uncertainty, but uncertainty that suggests we need to incur some (perhaps considerable) cost now associated with current reduced use of antimicrobials, in the expectation of some future, indeterminate but likely far greater, cost being averted. To judge the scale of 'acceptable' cost now, however, we need much better information about both likely future trajectory and the cost implications under different trajectories.</p><p>A key research need is thus to estimate the impact of widespread resistance to the health system overall, and to wider society. The current focus, on the additional cost of treating an infectious disease in the presence of resistance, needs to be complemented by looking at how services such as those relating to cancer care, heart disease and diabetes might be affected. Such research will be a challenge not just in funding terms but in terms of bringing together those with the relevant expertise, ensuring that they can 'talk to each other' and developing methods that can both identify crucial gaps in the information base and, ultimately, provide robust estimates.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Developing better, more radical, incentive mechanisms</head><p>There needs to be an improvement in the incentive mechanisms at a number of levels. In terms of the development of new antimicrobials, if new therapies are discovered then they need to be protected, and hence the use of them discouraged. New options are needed that can discourage high levels of use whilst avoiding disincentives for private sector R&amp;D into new therapies, such as greater publicprivate partnering, pre-purchase agreement, or direct public funding, which seems to be occurring at present but, compared with current estimates of costs of discovery to market, remain small <ref type="bibr" target="#b12">(13,</ref><ref type="bibr" target="#b14">15)</ref>.</p><p>In terms of individuals and their choice about whether to take antimicrobials, more needs to be done to balance the personal cost (minimal in the UK, and largely related to accessing a consultation, collecting a prescription and possible side effects) with the true societal cost. Some thought has previously been given to such mechanisms <ref type="bibr" target="#b47">(48,</ref><ref type="bibr" target="#b61">62)</ref> but none has been sufficiently developed to be of practical use, and all have potential difficulties. More work is required here, and it may be that radical strategies should be considered, such as moving to more restrictive prescription (for example, through a hospital setting only, removing the ability to prescribe from primary and community care) for some or all antimicrobials currently widely prescribed.</p><p>The acceptability of such restrictions may, of course, be related to whether the research discussed above is sufficiently robust to sustain such developments. Implementation of any radical -rather than currently marginal -strategies would require considerable public support to be politically acceptable, and in this respect much may be learnt perhaps from the environmental movement, as discussed further below.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Enhancing international activity</head><p>As is apparent from the review of costs, the issue of antimicrobial resistance is not confined to the UK.</p><p>International activity may be key to encouraging the development of new drugs and diagnostics to help control multi resistant bacteria. It may also be vital to research to increase understanding of resistance mechanisms, cost trajectories, and means of controlling resistance in the absence of new drug developments. There is appreciation of this issue in the UK, where a multi-pronged integrated UK strategy is under development (building on previous work and taking account of developments at EU and international level) and where championing the issue at EU and international levels is also an important focus.</p><p>It is also important, however, to consider the extent to which a UK strategy needs to account for the likely success or otherwise of such championing, given that countries may have some incentive to free-ride on the actions of others, and given that outside influences may well affect the likely trajectories anticipated in the research described above <ref type="bibr" target="#b23">(24,</ref><ref type="bibr" target="#b24">25)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Lessons from climate change</head><p>As alluded to earlier, AMR, as a policy target, shares many of the characteristics of climate change. Both provide future significant threats to human well-being, both are subject to considerable uncertainty about their future extent and trajectory, both are global problems where the response differs across nations, and both have as an underlying cause the over-consumption of 'goods' that lead to short term benefit. Yet for both antimicrobial resistance and climate change there is considerable inertia to the major, radical, change required to move from mitigation to prevention, because there is a focus on current burden and because the personal incentives seldom match those of society more generally.</p><p>There do appear to be some differences, however. In particular, there appears to be increasing scientific consensus about the impact of global warming in a way that is perhaps less clear -or at least coherent -for antimicrobial resistance. Clear, simple and consistent messages from the scientific community have been vital in developing the increased acceptance of the desirability of action on global warming to a broader policy making community including politicians, economists and philanthropists. This consensus, along with sustained and high profile campaigns and the impact of positive media attention (including Hollywood movies), has increased public support. Combined with simple messages on what individuals can do (e.g. 'reduce, reuse, recycle'), this has moved climate change into the mainstream of activities -to the extent that many aspects of individual action are now routine (e.g. recycling, house insulation etc.). The issue of resistance does not seem to have captured the public imagination, attention or support for change to the degree that global warming and the environment has.</p><p>For antimicrobial resistance there is a clear danger that waiting for the burden to become significant before taking action may mean waiting until it is too late to stop an apocalyptic scenario -the very drive behind the early environmental movement's advocacy of the 'precautionary principle'.  <ref type="table" target="#tab_0">1</ref>). It provides a compelling case study of the genetic adaptation of an organism into a first-class multidrug-resistant pathogen. Following the introduction of penicillin, and later methicillin, S. aureus quickly developed resistance and by 2003 more than 50% of S. aureus isolates recovered in U.S. hospitals were resistant to methicillin. This was soon followed by low-level resistance to vancomycin (designated VISA) -vancomycin intermediately resistant S. aureus). Next, strains of MRSA with high-level resistance to vancomycin (VRSA -vancomycin-resistant S. aureus) emerged. More critically, VRSA is often a multi-drug resistant organismresistant to multiple drugs, including clindamycin, aminoglycosides, trimethoprimsulfamethoxazole, rifampin and fluoroquinolones.</p><p>MRSA has also recently emerged as an important cause of community-associated infections. Although several compounds have been developed, or resurrected, to treat gram-positive infections such as S. Aureus, none have been shown to work better than vancomycin, all have important toxic effects, and resistance to each has already been observed (including linezolid-resistant VRE in patients who have never received the drug) <ref type="bibr" target="#b17">(18)</ref>.</p><p>In economic terms, illustrated by table 1, MRSA adds around $20,000 per patient per episode to the cost of hospital treatment in the USA <ref type="bibr" target="#b64">(65,</ref><ref type="bibr" target="#b65">66)</ref>. In Europe, MRSA is the most common, single, multidrug-resistant bacterium, with an estimated 25,000 patient deaths per year, approximately 2.5 million extra hospital days and extra inhospital costs of more than EUR 900 million <ref type="bibr" target="#b11">(12)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>BOX 2: CASE STUDY HIPS</head><p>The problem facing any attempt to estimate the impact of removal of antimicrobial therapies is data from such a situation; such therapies are, and have been, part of routine care ever since hip replacements became available, both as prophylaxis and as treatment for HAI. In an attempt to think laterally, we therefore looked at information relating to amputation -another major surgery involving limbs -as a proxy for what rates may have been pre-and post-antimicrobial discovery. We used this information, together with current studies looking at the infection pathway for hip replacement, to construct and suggest possible values for the flow of patients requiring hip replacement, illustrated below.</p><p>Here we have patients undergoing total hip replacement (THA) having prophylaxis or not, and from this having infections or not, being treated or not, and rates of effectiveness translating to final outcomes. Currently, prophylaxis is standard practice so approximately 100% of patients follow route 4 rather than 5. Infection rates, at 6, are approximately 0.5-2%, so most patients go down route 7. Most of those following 6, go to 10 and have further treatment which is successful. Most patients therefore exit at 15 or 18 (&gt;99%).</p><p>If we estimate this flow with no antimicrobials, we are therefore restricting possibilities to route 5, and for those at 8, route 13 -and hence end states of 21, 22 or 23. Here, at point 8 rates of post-operative infection are around 40-50%; of these, 30% go on to die -state 21 <ref type="bibr" target="#b66">(67)</ref><ref type="bibr" target="#b67">(68)</ref><ref type="bibr" target="#b68">(69)</ref><ref type="bibr" target="#b69">(70)</ref>. Thus, removal of antibiotics can be estimated to lead to an increased in post-operative infection from approximately 1% to 50%, and deaths from approximately 0% to 30%. Of course, at such rates the expectation is simply that the rates of hip replacement would dramatically fall, and thus increase the burden of morbidity from higher levels of hip pain.</p><p>Clearly this represents a very crude estimate, for just one clinical area using antibiotics, but indicates the form of analysis required if we are to move towards beginning to estimate the full, true, economic burden of future AMR, with the removal of the option of antimicrobial therapies from a number of treatment pathways, both urgent and elective.  In line with the DH brief, the purpose of the literature review was to conduct a short review describing the economic burden (cost impact) of antimicrobial resistance. An earlier systematic literature review concerning the economics of resistance, and published in 2002, had considered this as one among a number of questions relating to the economics of antimicrobial resistance. At the time little evidence relating to this issue was found. There appeared to have been, however, a growth in this literature over recent years, hence the focus on this particular question.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Search Process</head><p>Stage 1: Electronic bibliographic database searching on generic terminology Initial searching of electronic databases utilised key terms taken from the earlier review, searching on combinations of terms related to antimicrobial, resistance and costs. Given the limited resources, both financially and in terms of time, the searching of databases was limited to Web of Science and Medline and to searches on titles. Specific terms included were: </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Stage 2/4: Citation searching</head><p>Reference lists of papers selected for the review were scanned to identify any further papers. Review papers identified through the review were also used in citation searching, both at this stage and following stage 3 searching.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Stage 3: Further electronic bibliographic database searching relating to specific terminology</head><p>Searches of citation lists of both empirical papers identified in Search 1 and key review papers, indicated that there were clearly papers relating to evidence about the costs of resistance in relation to particular micro-organisms that were being missed because of the lack of inclusion of specific terminology related to the relevant micro-organisms and/or the relevant antimicrobials. Again, given limited resources, it was not feasible to search on all possible micro-organism names and all potential drugs. Instead, a second search aimed to focus on two of the most studied and potentially more serious current resistant infections: Methicillin-resistant Staphylococcus aureus (MRSA) and Vancomycin-resistant Enterococcus (VRE),and these terms were added to the search and combined with the economic terms.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Inclusion criteria</head><p>There were six inclusion criteria for the review.</p><p>1. Papers providing EITHER (i) empirical evidence on the economic impact of antimicrobial resistance obtained through primary data collection OR (ii) empirical evidence on the economic impact of antimicrobial resistance obtained through secondary modelling 2. Containing information on any of length of stay, mortality, patient cost and/or societal cost that may be attributable to AMR 3. For primary studies, inclusion of a control group of those with a susceptible infection.</p><p>4. Publication since 2000 (the cut-off date for the earlier review) 5. Publication in the English-language 6. Publication in peer-reviewed journals With regard to the third inclusion criterion, the choice of the control group of those with a susceptible infection was made as the aim was to focus on the costs of resistance rather than the costs of infection per se.</p><p>Other economic aspects of the antimicrobial resistance problem, such as the costeffectiveness of alternative control strategies, were not included.</p><p>Review papers were not selected for inclusion in the review, but where these were identified they were accessed for the purpose of citation tracking.</p><p>As part of the aim was to determine the extent of evidence available, studies were not accepted or rejected on the basis of any quality criteria.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Identification of papers</head><p>Papers in the stage 1 search were initially identified from abstracts obtained in the literature search and screened by three individuals, one of whom (JC) was expert in the subject area. Papers that were obtained were then read and a final decision made on whether they should be included in the review. Following the citation searches and subsequent database searching, a number of additional papers were selected.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Data extraction</head><p>Standardised data extraction forms, based on the earlier systematic review, were utilised. The following data were extracted for each study: </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Findings</head><p>In total, the review identified 24 relevant papers. The findings from the review are summarised in the report and table 1 provides details from the individual studies included.</p><p>It should be emphasised that, because of the lack of resources for a full systematic review, including searching for all combinations of micro-organisms and drugs, the totality of this literature is almost certainly under-estimated. In terms, however, of general estimates of the overall burden of resistance, relevant studies should have been captured during the stage 1 search, and the studies on MRSA and VRE give a flavour of the relevant literature.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 BOX 1 :</head><label>11</label><figDesc>Figure 1: DRUG DISCOVERY</figDesc><graphic coords="24,72.00,99.60,451.32,234.90" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>APPENDIX 1 :</head><label>1</label><figDesc>Difference as indicated by the authors of the paper NSD = No Significant Difference as indicated by the authors of the paper Further details of methods for the literature review</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>!</head><label></label><figDesc>resistan* IN COMBINATION WITH ! *biotic* OR *microb* OR *virus IN COMBINATION WITH ! cost* OR econ* OR resourc* Searches were conducted in June 2012.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>!!</head><label></label><figDesc>Title of paper ! Authors ! Year of publication ! Country of origin ! Type of Study (primary data/modelling of secondary data) ! If empirical, sample size and sample selection criteria ! If modelling, type of modelling ! Type of micro-organism ! Type of drug Costs Perspective for costs ! Year of cost data ! Currency used ! Time period over which costs collected ! Discounting (rate or N/A) Resource Use collection ! Items collected in relation to: o Health Service o Social Services o Patient/family o Other (including lost productivity) ! Methodological issues in relation to each of these areas Valuation of resource use ! Classification of methods of valuation for each resource use item according to method of valuation o National publications (e.g. BNF for drug use in the UK) o Local costs (e.g. hospital finance department) o Detailed costing (e.g. bottom up, item by item costs) ! Methodological issues in relation to methods of valuation Summary of results ! Given in narrative form, and focusing on length of stay, mortality, patient cost and/or societal cost.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><head></head><label></label><figDesc></figDesc><graphic coords="27,72.00,225.30,450.78,299.16" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 : increased resource use and cost associated with infection with resistant rather than susceptible micro- organisms: recent studies (published since 2000) providing data about length of hospital stay, mortality and/or additional cost.</head><label>1</label><figDesc></figDesc><table><row><cell>McKinnon PS,</cell></row><row><cell>2005 (80)</cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1" xml:id="foot_0"><p>There is also a third externality across country. We do not cover this in this paper, but the interested reader is referred to references</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="24" xml:id="foot_1"><p>and</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="25" xml:id="foot_2"><p></p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2" xml:id="foot_3"><p>Of course, in practice, at such rates the expectation is simply that the rates of hip replacement would dramatically fall, and thus increase the burden of morbidity from higher levels of hip pain.</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>Acknowledgements</head><p>The authors would like to thank: <rs type="person">Callum Hodge</rs>, <rs type="person">Joseph Griffin</rs> and <rs type="person">Daniel Haynes</rs> at the <rs type="affiliation">University of Birmingham</rs> for assistance with literature searching; Professor</p></div>
+			</div>
+			<div type="funding">
+<div><p>This report is independent research commissioned and funded by the <rs type="funder">Department of Health Policy Research Programme</rs> (Economic burden of antimicrobial resistance: a rapid paper, <rs type="grantNumber">0410035</rs>). The views expressed are not necessarily those of the Department of Health.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_nZVpntb">
+					<idno type="grant-number">0410035</idno>
+				</org>
+			</listOrg>
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0" />			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Antimicrobial resistance: cost and containment</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Coast</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">D</forename><surname>Smith</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Expert Review of Anti-infective Therapy</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="89" to="99" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<title level="m" type="main">Bird flu: a virus of our own hatching</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Greger</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2006">2006</date>
+			<publisher>Lantern Books</publisher>
+			<biblScope unit="page">85</biblScope>
+			<pubPlace>New York</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Meeting the challenge of antibiotic resistance</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Cars</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">D</forename><surname>Högberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Murray</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Jasper</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Nordberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Sivaraman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Stålsby</forename><surname>Lundborg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>So</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">D</forename><surname>Tomson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">British Medical Journal</title>
+		<imprint>
+			<biblScope unit="volume">337</biblScope>
+			<biblScope unit="page" from="726" to="728" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Predictable and unpredictable evolution of antibiotic resistance</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Courvalin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J Intern Med</title>
+		<imprint>
+			<biblScope unit="volume">264</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="4" to="16" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">The ways in which bacteria resist antibiotics</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">I</forename><surname>Andersson</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Risk &amp; Safety in Medicine</title>
+		<imprint>
+			<biblScope unit="volume">17</biblScope>
+			<biblScope unit="page" from="111" to="116" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">The Path of Least Resistance. The Publications Unit, PHLS Headquarters Office, 61 Colindale Avenue</title>
+		<ptr target="http://www.doh.gov.uk/smac/htm" />
+	</analytic>
+	<monogr>
+		<title level="j">Standing Medical advisory Committee Sub-Group on Antimicrobial Resistance</title>
+		<imprint>
+			<date type="published" when="1998">1998</date>
+			<pubPlace>London NW9 5DF</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Penicillin resistance in staphylococci isolated in a casualty department</title>
+		<author>
+			<persName><forename type="first">Djb</forename><surname>Ashley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Brindle</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Clinical Pathology</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="page" from="336" to="338" />
+			<date type="published" when="1960">1960</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">From Pigs to People: The Emergence of a New Superbug</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Ferber</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">329</biblScope>
+			<biblScope unit="page" from="1010" to="1011" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Trends in Antimicrobial Drug Development: Implications for the Future</title>
+		<author>
+			<persName><forename type="first">Brad</forename><surname>Spellberg</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Clinical Infectious Disease</title>
+		<imprint>
+			<biblScope unit="volume">38</biblScope>
+			<biblScope unit="page" from="1279" to="1286" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">The Antibiotic Pipeline-Challenges, Costs, and Values</title>
+		<author>
+			<persName><forename type="first">Richard</forename><surname>Wenzel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">New England Journal of Medicine</title>
+		<imprint>
+			<biblScope unit="volume">351</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="523" to="526" />
+			<date type="published" when="2004-08-05">August 5, 2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">The Economist. The path of least resistance</title>
+	</analytic>
+	<monogr>
+		<title level="j">The Economist</title>
+		<imprint>
+			<date type="published" when="2012-05-12">2012. May 12</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">The bacterial challenge: time to react</title>
+		<author>
+			<persName><forename type="first">Emea</forename><surname>Ecdc</surname></persName>
+		</author>
+		<idno type="DOI">ref.EMEA/576176/2009;ISBN978-92-9193-193-4:doi10.2900/2518</idno>
+	</analytic>
+	<monogr>
+		<title level="m">ECDC/EMEA JOINT TECHNICAL REPORT</title>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+		<respStmt>
+			<orgName>European Centre for Disease Prevention and Control</orgName>
+		</respStmt>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">3Rs for innovating novel antibiotics: sharing resources, risks, and rewards</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">D</forename><surname>So</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Ruiz-Esparza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Gupta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Cars</surname></persName>
+		</author>
+		<idno type="DOI">10.1136/bmj.e1782</idno>
+	</analytic>
+	<monogr>
+		<title level="j">British Medical Journal</title>
+		<imprint>
+			<biblScope unit="volume">344</biblScope>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<monogr>
+		<title level="m" type="main">European Centre for Disease Prevention and Control. Joint technical report: the bacterial challenge-time to react</title>
+		<author>
+			<persName><forename type="first">European</forename><surname>Medicines</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Agency</forename></persName>
+		</author>
+		<ptr target="http://ecdc.europa.eu/en/publications/Publications/0909_TER_The_Bacterial_Challenge_Time_to_React.pdf" />
+		<imprint>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Stoking the antibiotic pipeline</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Morel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Mossialos</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">British Medical Journal</title>
+		<imprint>
+			<biblScope unit="volume">340</biblScope>
+			<biblScope unit="page" from="1115" to="1118" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Tackling antibiotic resistance: concerted action is needed to provide new technologies and conserve existing drugs</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">D</forename><surname>So</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Gupta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Cars</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">British Medical Journal</title>
+		<imprint>
+			<biblScope unit="volume">340</biblScope>
+			<biblScope unit="page" from="1091" to="1092" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Existing classes of antibiotics are probably the best we will ever have</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Cormican</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Vellinga</surname></persName>
+		</author>
+		<idno type="DOI">10.1136/bmj.e3369</idno>
+	</analytic>
+	<monogr>
+		<title level="j">British Medical Journal</title>
+		<imprint>
+			<biblScope unit="volume">344</biblScope>
+			<biblScope unit="page">e3369</biblScope>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<monogr>
+		<title level="m" type="main">Antibiotic-Resistant Bugs in the 21st Century: A Clinical Super-Challenge</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">A</forename><surname>Arias</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">E</forename><surname>Murray</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+			<publisher>New England Journal of Medicine</publisher>
+			<biblScope unit="volume">360</biblScope>
+			<biblScope unit="page" from="439" to="443" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Drug resistance in the World: prevalence and trends Report no. 2 The WHO/IUATLD Global Project in Anti-tuberculosis Drug Resistance Surveillance Geneva</title>
+		<author>
+			<persName><surname>Who</surname></persName>
+		</author>
+		<idno>WHO/CDS/TB/2000</idno>
+	</analytic>
+	<monogr>
+		<title level="s">World Health Organisation). Anti-tuberculosis</title>
+		<imprint>
+			<biblScope unit="volume">278</biblScope>
+			<biblScope unit="page" from="1" to="253" />
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Outcome of MDR-TB patients, 1983-1993. Prolonged survival with appropriate therapy</title>
+		<author>
+			<persName><forename type="first">M M</forename><surname>Park</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A L</forename><surname>Davis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Schuger</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">American Journal of Respiratory Critical Care Medicine</title>
+		<imprint>
+			<biblScope unit="volume">153</biblScope>
+			<biblScope unit="page" from="317" to="324" />
+			<date type="published" when="1996">1996</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Emergence of multidrug-resistant tuberculosis in a community-based directly observed treatment programme in rural</title>
+		<author>
+			<persName><surname>Davies G R</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Pillay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">W</forename><surname>Sturm</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">South Africa International Journal of Tuberculosis and Lung Disease</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page" from="799" to="804" />
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Directly observed therapy for treatment completion of pulmonary tuberculosis</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">P</forename><surname>Chaulk</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">A</forename><surname>Kazandjian</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J American Medical Association</title>
+		<imprint>
+			<biblScope unit="volume">279</biblScope>
+			<biblScope unit="page" from="943" to="948" />
+			<date type="published" when="1998">1998</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Daptomycin treatment failure for vancomycin resistant Enterococcus faecium infective endocarditis: impact of protein binding?</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">S</forename><surname>Schwartz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">D</forename><surname>Ngo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">J</forename><surname>Guglielmo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Annals of Pharmacotherapy</title>
+		<imprint>
+			<biblScope unit="volume">42</biblScope>
+			<biblScope unit="page" from="289" to="290" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Antimicrobial resistance: a global response</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">D</forename><surname>Smith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Coast</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Bulletin of the World Health Organisation</title>
+		<imprint>
+			<biblScope unit="volume">80</biblScope>
+			<biblScope unit="page" from="126" to="133" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Resisting resistance: thinking strategically about antimicrobial resistance</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">D</forename><surname>Smith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Coast</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Georgetown Journal of International Affairs</title>
+		<imprint>
+			<biblScope unit="volume">IV</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="135" to="141" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<monogr>
+		<title level="m" type="main">Standing Medical Advisory Committee Sub-Group on Antimicrobial Resistance. The path of least resistance</title>
+		<imprint>
+			<date type="published" when="1998">1998</date>
+			<publisher>Department of Health</publisher>
+			<pubPlace>London</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<monogr>
+		<title level="m" type="main">WHO Global Strategy for Containment of Antimicrobial Resistance</title>
+		<author>
+			<persName><surname>Who</surname></persName>
+		</author>
+		<idno>WHO/CDS/CSR/DRS/2001.2</idno>
+		<imprint>
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">World Health Organization. The evolving threat of antimicrobial resistance: options for action</title>
+	</analytic>
+	<monogr>
+		<title level="j">World Health Organization</title>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+			<pubPlace>Geneva</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">World Health organization. The evolving threat of antimicrobial resistance: options for action. World Health Organization</title>
+	</analytic>
+	<monogr>
+		<title level="j">ISBN</title>
+		<imprint>
+			<biblScope unit="volume">978</biblScope>
+			<biblScope unit="page" from="92" to="94" />
+			<date type="published" when="2012">2012</date>
+			<pubPlace>Geneva</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Super-Bugs: should antimicrobial resistance be included as a cost in economic evaluation?</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Coast</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">D</forename><surname>Smith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">R</forename><surname>Millar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Health Economics</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="217" to="226" />
+			<date type="published" when="1996">1996</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Disentangling value: assessing the benefits of containing antimicrobial resistance</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Coast</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">D</forename><surname>Smith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">R</forename><surname>Millar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The Economics of Infectious Disease</title>
+		<editor>
+			<persName><forename type="first">J</forename><surname>Roberts</surname></persName>
+		</editor>
+		<meeting><address><addrLine>New York</addrLine></address></meeting>
+		<imprint>
+			<publisher>Oxford University Press</publisher>
+			<date type="published" when="2006">2006</date>
+			<biblScope unit="page" from="201" to="214" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">An economic perspective on policy to reduce antimicrobial resistance</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Coast</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">D</forename><surname>Smith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">R</forename><surname>Millar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Social Science and Medicine</title>
+		<imprint>
+			<biblScope unit="volume">46</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="29" to="38" />
+			<date type="published" when="1998">1998</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Superbugs II: How should economic evaluation be conducted for interventions which aim to reduce antimicrobial resistance?</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Coast</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">D</forename><surname>Smith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">M</forename><surname>Karcher</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Wilton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Millar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Health Economics</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="issue">7</biblScope>
+			<biblScope unit="page" from="637" to="647" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Economics of antimicrobial resistance: a brief review</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Coast</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">D</forename><surname>Smith</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Drug Assessment</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="page" from="3" to="10" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Strategies to contain the emergence of antimicrobial resistance: a systematic review of effectiveness and costeffectiveness</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Wilton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">D</forename><surname>Smith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Coast</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Millar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Health Services Research and Policy</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="111" to="117" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Antimicrobial resistance: cost and containment</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Coast</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">D</forename><surname>Smith</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Expert Review of Anti-infective Therapy</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="241" to="251" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Health and economic impacts of antimicrobial resistance</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">D</forename><surname>Holmberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">L</forename><surname>Solomon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">A</forename><surname>Blake</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Review of Infectious Diseases</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="1065" to="1078" />
+			<date type="published" when="1987">1987</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">The relationship between antimicrobial resistance and patient outcomes: mortality, length of hospital stay, and health care costs</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Cosgrove</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Clinical Infectious Diseases</title>
+		<imprint>
+			<biblScope unit="volume">42</biblScope>
+			<biblScope unit="issue">Supplement 2</biblScope>
+			<biblScope unit="page" from="82" to="S89" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Resource utilization of adults admitted to a large urban hospital with community-acquired pneumonia caused by Streptococcus pneumoniae</title>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">K</forename><surname>Sun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">P</forename><surname>Nicolau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">L</forename><surname>Kuti</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Chest</title>
+		<imprint>
+			<biblScope unit="volume">130</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="807" to="814" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Treatment costs associated with community-acquired pneumonia by community level of antimicrobial resistance</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Asche</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Mcadams-Marx</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Seal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Crookson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">D</forename><surname>Mullins</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Antimicrobial Chemotherapy</title>
+		<imprint>
+			<biblScope unit="volume">61</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="1162" to="1168" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<monogr>
+		<title level="m" type="main">The economic burden of antibiotic resistance -evidence from three recent studies. 2010 annual conference on antimicrobial resistance</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">D</forename><surname>Foster</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2010-02-03">1-3 February, 2010</date>
+			<pubPlace>Bethesda</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<monogr>
+		<title level="m" type="main">Extending the cure: policy responses to the growing threat of antibiotic resistance. Resources for the Future</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Ramanan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Malani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Howard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Smith</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2007">2007</date>
+			<biblScope unit="page">6</biblScope>
+		</imprint>
+	</monogr>
+	<note>Executive summary</note>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Assessing the macroeconomic impact of a healthcare problem: the application of computable general equilibrium analysis to antimicrobial resistance</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">D</forename><surname>Smith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Yago</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Millar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Coast</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Health Economics</title>
+		<imprint>
+			<biblScope unit="volume">24</biblScope>
+			<biblScope unit="page" from="1055" to="1075" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Antibiotic therapy of community acquired lower respiratory tract infections: strategies for optimal outcomes and minimized resistance emergence</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Ball</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Baquero</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Cars</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>File</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Garau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Klugman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Antimicrobial Chemotherapy</title>
+		<imprint>
+			<biblScope unit="issue">49</biblScope>
+			<biblScope unit="page" from="1" to="31" />
+			<date type="published" when="2002">2002. 2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Treatment of community acquired lower respiratory tract infections in adults</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Ortqvist</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">European Respiratory Journal</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="issue">Supplement 36</biblScope>
+			<biblScope unit="page" from="40" to="53" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Resource use and costs of treating lower respiratory tract infections in thirteen European countries: results and challenges</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Oppong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Coast</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Hood</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Nuttall</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">D</forename><surname>Smith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Butler</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">European Journal of Health Economics</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="319" to="329" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Extensively drug-resistant tuberculosis in the UK: 1995 to</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Abubakar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Moore</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Drobniewski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Kruijshaar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Brown</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Yates</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Anderson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">G</forename><surname>Smith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Magee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lipman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Mcmenamin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ruddy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Watson</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Thorax</title>
+		<imprint>
+			<biblScope unit="volume">64</biblScope>
+			<biblScope unit="page" from="512" to="515" />
+			<date type="published" when="2007">2007. 2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Controlling antimicrobial resistance: a proposed transferable permit market</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">D</forename><surname>Smith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Coast</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Health Policy</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="219" to="232" />
+			<date type="published" when="1998">1998</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Transmission dynamics of epidemic methicillin-resistant Staphylococcus aureus and vancomycin-resistant enterococci in England and Wales</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">J</forename><surname>Austin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">M</forename><surname>Anderson</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J Infect Dis</title>
+		<imprint>
+			<biblScope unit="volume">179</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="883" to="891" />
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">The pandemic of antibiotic resistance [news]</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">M</forename><surname>Anderson</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nat Med</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="147" to="149" />
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Extending spectrum beta-lactamase-producing Gramnegative bacteria causing neonatal sepsis in India in rural and urban settings</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Chandel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Johnson</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J Medical Microbiol</title>
+		<imprint>
+			<biblScope unit="volume">60</biblScope>
+			<biblScope unit="page" from="500" to="507" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Pan-resistant Acinetobacter infection in neonates in Karachi</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Saleem</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Ahmed</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Pakistan. J Infect Dev Ctries</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="page" from="30" to="037" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Transmission of imipenem resistance determinants during the course of an outbreak of NDM-1 in a sick newborn care unit</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Roy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Singh</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J Antimicrob Chemother</title>
+		<imprint>
+			<biblScope unit="volume">66</biblScope>
+			<biblScope unit="page" from="2773" to="2780" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Poor hospital hygiene is blamed for deaths of three babies in Bremen</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tuffs</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">BMJ</title>
+		<imprint>
+			<biblScope unit="volume">343</biblScope>
+			<biblScope unit="page">7396</biblScope>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">Antimicrobial resistance predicts death in Tanzanian children with bloodstream infections: a prospective cohort study</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Blomberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Manji</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">BMC Inf. Dis</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="page">43</biblScope>
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title level="a" type="main">Epidemiology and Outcomes of Multiple Antibiotic-Resistant Bacterial Infection in Renal Transplantation</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Linares</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Cervera</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Transplantaion Proceedings</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="page" from="2222" to="2224" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">Fatal cross infection by carbapenem-resistant Klebsiella in two liver transplant recipients</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Mathers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">L</forename><surname>Cox</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Transpl Infect Dis</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="page" from="257" to="265" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<analytic>
+		<title level="a" type="main">Outcomes of Carbapenem-Resistant Infection and the Impact of Antimicrobial and Adjunctive Therapies</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Patel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Huprikar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Infection control and hospital epidemiology</title>
+		<imprint>
+			<biblScope unit="volume">29</biblScope>
+			<biblScope unit="issue">12</biblScope>
+			<date type="published" when="2008-12">Dec 2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<analytic>
+		<title level="a" type="main">Outbreak due to a strain harbouring KPC-2 and VIM-1 in a German university hospital</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Steinmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Kaase</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Euro Surveill</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="issue">33</biblScope>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<analytic>
+		<title level="a" type="main">Antibiotic Resistance Is Associated With Longer Bacteremic Episodes and Worse Outcome in Febrile Neutropenic Children With Cancer</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>L-Mahallawy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>El-Wakil</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Pediatr Blood Cancer</title>
+		<imprint>
+			<biblScope unit="volume">57</biblScope>
+			<biblScope unit="page" from="283" to="288" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">P</forename><surname>Plowman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Graves</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Griffin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Roberts</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">V</forename><surname>Swan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">C</forename><surname>Cookson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Taylor</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1999">1999</date>
+			<publisher>The Socioecomic Burden of Hospital Acquired Infection, Public Health Laboratory Service</publisher>
+			<pubPlace>London</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b61">
+	<analytic>
+		<title level="a" type="main">A macro-economic approach to evaluating policies to contain antimicrobial resistance: a case study of methicillin-resistant staphylococcus aureus (MRSA)</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">D</forename><surname>Smith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Yago</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Millar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Coast</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Applied Health Economics and Health Policy</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="page" from="55" to="65" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b62">
+	<analytic>
+		<title level="a" type="main">Antimicrobial resistance: the importance of developing long term policy</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">D</forename><surname>Smith</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Bulletin of the World Health Organisation</title>
+		<imprint>
+			<biblScope unit="volume">77</biblScope>
+			<biblScope unit="issue">10</biblScope>
+			<biblScope unit="page">862</biblScope>
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b63">
+	<analytic>
+		<title level="a" type="main">Solving the problem of antimicrobial resistance: is a global approach necessary?</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Coast</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">D</forename><surname>Smith</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Drug Discovery Today</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1" to="2" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b64">
+	<analytic>
+		<title level="a" type="main">Excess Costs and Utilization Associated with Methicillin Resistance for Patients with Infection</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Filice</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Nyman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Infect Control Hosp Epid</title>
+		<imprint>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="page" from="365" to="373" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b65">
+	<analytic>
+		<title level="a" type="main">Clinical and Financial Outcomes Due to Methicillin Resistant Surgical Site Infection: A Multi-Center Matched Outcomes Study</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Anderson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Kaye</surname></persName>
+		</author>
+		<ptr target="www.plosone.org" />
+	</analytic>
+	<monogr>
+		<title level="j">PLoS ONE</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<date type="published" when="2009-12-01">1 December 2009</date>
+		</imprint>
+	</monogr>
+	<note>Issue 12</note>
+</biblStruct>
+
+<biblStruct xml:id="b66">
+	<analytic>
+		<title level="a" type="main">Hospital infection after major amputation</title>
+		<author>
+			<persName><surname>De Godoy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Annals of Clinical Microbiology and Antimicrobials</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page">15</biblScope>
+			<date type="published" when="2010">2010. 2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b67">
+	<analytic>
+		<title level="a" type="main">Short term cefotaxime prophylaxis reduces the failure rate in lower limb amputation</title>
+		<author>
+			<persName><surname>Norlin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Acta Orthopaedica Scandinavia</title>
+		<imprint>
+			<biblScope unit="volume">61</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="460" to="462" />
+			<date type="published" when="1990">1990</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b68">
+	<analytic>
+		<title level="a" type="main">Antibiotic prophylaxis in lower limb amputation</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Møller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Krebs</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Acta Orthopaedica Scandinavia</title>
+		<imprint>
+			<biblScope unit="volume">56</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="327" to="329" />
+			<date type="published" when="1985">1985</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b69">
+	<analytic>
+		<title level="a" type="main">Five day antibiotic prophylaxis for major lower limb amputation reduces wound infection rates and the length of in-hospital stay</title>
+		<author>
+			<persName><forename type="first">U</forename><surname>Sadat</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Eur J Vasc Endovasc Surg</title>
+		<imprint>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="page" from="75" to="78" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b70">
+	<monogr>
+		<title level="m" type="main">National Nosocomial Resistance Surveillance Group. A nationwide, multicenter, case-control study comparing risk factors, treatment and outcome for vancomycin-resistant and -susceptible enterococcal bacteremia</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Bhavnani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Drake</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Forrest</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Deinhart</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">N</forename><surname>Jones</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">J</forename><surname>Beidenbach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">H</forename><surname>Ballow</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2000">2000</date>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="page" from="145" to="158" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b71">
+	<analytic>
+		<title level="a" type="main">Cost of hospitalization for and risk factors associated with vancomycin-resistant Enterococcus faecium infection and colonization</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">L</forename><surname>Webb</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Riley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">B</forename><surname>Roberts</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Clin. Infect. Dis</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="445" to="452" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b72">
+	<analytic>
+		<title level="a" type="main">The Brooklyn Antibiotic Resistance Task Force. The cost of antibiotic resistance: effect of resistance among Staphylococcus aureus, Klebsiella pneumoniae, Acinetobacter baumannii, and Pseudomonas aeruginosa on length of hospital stay</title>
+	</analytic>
+	<monogr>
+		<title level="j">Infect Control Hosp Epidemiol</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="106" to="108" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b73">
+	<analytic>
+		<title level="a" type="main">Health and economic outcomes of the emergence of third-generation cephalosporin resistance in Enterobacter species</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">E</forename><surname>Cosgrove</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">S</forename><surname>Kaye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">M</forename><surname>Eliopoulous</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Carmeli</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Arch Intern Med</title>
+		<imprint>
+			<biblScope unit="volume">162</biblScope>
+			<biblScope unit="page" from="185" to="190" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b74">
+	<analytic>
+		<title level="a" type="main">Vancomycin-sensitive and vancomycin-resistant enterococcal infections in the ICU: attributable costs and outcomes</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">K</forename><surname>Pelz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">A</forename><surname>Lipsett</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Swoboda</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Intensive Care Med</title>
+		<imprint>
+			<biblScope unit="volume">28</biblScope>
+			<biblScope unit="page" from="692" to="697" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b75">
+	<analytic>
+		<title level="a" type="main">Adverse clinical and economic outcomes attributable to methicillin resistance among patients with Staphylococcus aureus surgical site infection</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Engemann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Carmeli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">E</forename><surname>Cosgrove</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">G</forename><surname>Fowler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">Z</forename><surname>Bronstein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">L</forename><surname>Trivette</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">P</forename><surname>Briggs</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">J</forename><surname>Sexton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">S</forename><surname>Kaye</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Clin Infect Dis</title>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="page" from="592" to="598" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b76">
+	<analytic>
+		<title level="a" type="main">Risk factors and costs associated with methicillinresistant Staphylococcus aureus bloodstream infections</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">G</forename><surname>Mchugh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">W</forename><surname>Riley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Infect Control Hosp Epidemiol</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="page" from="425" to="430" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b77">
+	<analytic>
+		<title level="a" type="main">Direct costs of multidrug-resistant Acinetobacter baumannii in the burn unit of a public teaching hospital</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">J</forename><surname>Wilson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">J</forename><surname>Knipe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Zieger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">M</forename><surname>Gabehart</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">E</forename><surname>Goodman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">M</forename><surname>Volk</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Sood</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Am J Infect Control</title>
+		<imprint>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="page" from="342" to="344" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b78">
+	<analytic>
+		<title level="a" type="main">The impact of methicillin resistance in Staphylococcus aureus bacteremia on patient outcomes: mortality, length of stay, and hospital charges</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">E</forename><surname>Cosgrove</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Qi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">S</forename><surname>Kaye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Harbarth</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">W</forename><surname>Karchmer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Carmeli</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Infect Control Hosp Epidemiol</title>
+		<imprint>
+			<biblScope unit="volume">26</biblScope>
+			<biblScope unit="page" from="166" to="174" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b79">
+	<analytic>
+		<title level="a" type="main">Clinical and economic impact of methicillin resistance in patients with Staphylococcus aureus bacteremia</title>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">P</forename><surname>Lodise</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">S</forename><surname>Mckinnon</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Diagn. Microbiol. Infect. Dis</title>
+		<imprint>
+			<biblScope unit="volume">52</biblScope>
+			<biblScope unit="page" from="113" to="122" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b80">
+	<analytic>
+		<title level="a" type="main">Costs and outcomes among hemodialysis-dependent patients with methicillinresistant or methicillin-susceptible Staphylococcus aureus bacteremia</title>
+		<author>
+			<persName><forename type="first">Sd;</forename><surname>Reed</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">Y</forename><surname>Friedman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jj;</forename><surname>Engemann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">I</forename><surname>Griffiths</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Kj;</forename><surname>Anstrom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ks;</forename><surname>Kaye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">E</forename><surname>Stryjewski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">La;</forename><surname>Szczech</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Lb;</forename><surname>Reller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Gr;</forename><surname>Corey</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ka;</forename><surname>Schulman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">G</forename><surname>Fowler</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Infect Control Hosp Epidemiol</title>
+		<imprint>
+			<biblScope unit="volume">26</biblScope>
+			<biblScope unit="page" from="175" to="183" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b81">
+	<analytic>
+		<title level="a" type="main">Clinical and economic impact of bacteremia with extended-spectrum-betalactamase-producing Enterobacteriaceae</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Schwaber</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Navon-Venezia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">S</forename><surname>Kaye</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Ben-Ami</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Schwartz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Carmeli</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Antimicrob Agents Chemother</title>
+		<imprint>
+			<biblScope unit="volume">50</biblScope>
+			<biblScope unit="page" from="1257" to="1262" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b82">
+	<analytic>
+		<title level="a" type="main">Treatment costs associated with community-acquired pneumonia by community level of antimicrobial resistance</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Asche</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Mcadam-Marx</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Seal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Crookston</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">D</forename><surname>Mullins</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Antimicrobial Chemotherapy</title>
+		<imprint>
+			<biblScope unit="volume">61</biblScope>
+			<biblScope unit="page" from="1162" to="1168" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b83">
+	<analytic>
+		<title level="a" type="main">The additional costs of antibiotics and re-consultations for antibiotic-resistant Escherichia coli urinary tract infections managed in general practice</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Alam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Cohen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Butler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Dunstan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Roberts</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Hillier</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Palmer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Int J Antimicrob Agents</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="255" to="257" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b84">
+	<analytic>
+		<title level="a" type="main">Clinical and Financial Outcomes Due to Methicillin Resistant Surgical Site Infection: A Multi-Center Matched Outcomes Study</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Anderson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Kaye</surname></persName>
+		</author>
+		<ptr target="www.plosone.org" />
+	</analytic>
+	<monogr>
+		<title level="j">PLoS ONE</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<date type="published" when="2009-12-01">1 December 2009</date>
+		</imprint>
+	</monogr>
+	<note>Issue 12</note>
+</biblStruct>
+
+<biblStruct xml:id="b85">
+	<analytic>
+		<title level="a" type="main">Are there differences in hospital cost between patients with nosocomial methicillin-resistant Staphylococcus aureus bloodstream infection and those with methicillin-susceptible S. aureus bloodstream infection?</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Ben-David</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Novikov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">A</forename><surname>Mermel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Infect Control Hosp Epidemiol</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="page" from="453" to="460" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b86">
+	<analytic>
+		<title level="a" type="main">Hospital and societal costs of antimicrobial-resistant infections in a Chicago teaching hospital: implications for antibiotic stewardship</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">R</forename><surname>Roberts</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Hota</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Ahmad</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Scott Rd 2nd</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">D</forename><surname>Foster</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Abbasi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Schabowski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">M</forename><surname>Kampe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">G</forename><surname>Ciavarella</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Supino</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Naples</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Cordell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">B</forename><surname>Levy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">A</forename><surname>Weinstein</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Clin Infect Dis</title>
+		<imprint>
+			<biblScope unit="volume">49</biblScope>
+			<biblScope unit="page" from="1175" to="1184" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b87">
+	<analytic>
+		<title level="a" type="main">Cost of bacteraemia caused by methicillin-resistant vs. methicillinsusceptible Staphylococcus aureus in Spain: a retrospective cohort study</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Rubio-Terrés</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Garau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Grau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Martinez-Martinez</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Clin Microbiol Infect</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page" from="722" to="728" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+	<note>Cast of Resistance Study group</note>
+</biblStruct>
+
+<biblStruct xml:id="b88">
+	<analytic>
+		<title level="a" type="main">Excess costs and utilization associated with methicillin resistance for patients with Staphylococcus aureus infection</title>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">A</forename><surname>Filice</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Nyman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Lexau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">H</forename><surname>Lees</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">A</forename><surname>Bockstedt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Como-Sabetti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">J</forename><surname>Lesher</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Lynfield</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Infect Control Hosp Epidemiol</title>
+		<imprint>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="page" from="365" to="373" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b89">
+	<monogr>
+		<title level="m" type="main">Attributable Hospital Cost and Length of Stay Associated with Health Care-Associated Infections Caused by Antibiotic-Resistant Gram-Negative Bacteria Antimicr. Agents Chemother</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Mauldin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Salgado</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="volume">54</biblScope>
+			<biblScope unit="page" from="109" to="1115" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b90">
+	<analytic>
+		<title level="a" type="main">Periprosthetic joint infection: the economic impact of methicillin-resistant infections</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Parvizi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">M</forename><surname>Pawasarat</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">A</forename><surname>Azzam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Joshi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">N</forename><surname>Hansen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">J</forename><surname>Bozic</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J Arthroplasty</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="page" from="103" to="107" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b91">
+	<analytic>
+		<title level="a" type="main">Cost of antimicrobial treatment in patients infected with multidrug-resistant organisms in the intensive care unit</title>
+		<author>
+			<persName><forename type="first">Fxc</forename><surname>Salgado</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">C</forename><surname>Gonçalves</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">De</forename><surname>Souza</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">M</forename><surname>Silva</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">B</forename><surname>Sanchez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Teg</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">De</forename><surname>Oliveira Karnikowski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">G</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Medicina (Buenos Aires)</title>
+		<imprint>
+			<biblScope unit="volume">71</biblScope>
+			<biblScope unit="page" from="531" to="535" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b92">
+	<analytic>
+		<title level="a" type="main">Epidemiology, antibiotic resistance trends and the cost of enteric fever in East London</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Reddy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Rangaiah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Addiman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Wareham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Wilson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sefton</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Travel Medicine and Infectious Disease</title>
+		<editor>
+			<persName><forename type="first">J</forename><surname>Leon</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">C</forename><forename type="middle">K</forename><surname>Cheng</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Neumann</surname></persName>
+		</editor>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="206" to="216" />
+			<date type="published" when="1998">2005-2010. 2011. 1998</date>
+		</imprint>
+	</monogr>
+	<note>Health Affairs</note>
+</biblStruct>
+
+<biblStruct xml:id="b93">
+	<analytic>
+		<title level="a" type="main">Alzheimer&apos;s Disease Care: Cost and Potential Savings</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Leon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">K</forename><surname>Cheng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Neumann</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Health Affairs</title>
+		<imprint>
+			<biblScope unit="volume">17</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="206" to="216" />
+			<date type="published" when="1998">1998</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b94">
+	<analytic>
+		<title level="a" type="main">The health economic of asthma and rhinitis. I. Assessing the economic impact</title>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">B</forename><surname>Weiss</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">D</forename><surname>Sullivan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Allergy and Clinical Immunology</title>
+		<imprint>
+			<biblScope unit="volume">107</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="3" to="8" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b95">
+	<monogr>
+		<title level="m" type="main">Cancer Facts and Figures</title>
+		<ptr target="http://www.cancer.org/downloads/STT/CAFF2005f4PWSecured.pdf" />
+		<imprint>
+			<date type="published" when="2005-07-27">2005. 2005. July 27, 2005</date>
+			<publisher>American Cancer Society</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b96">
+	<monogr>
+		<title level="m" type="main">Heart Disease and Stroke Statistics-2005 Update</title>
+		<ptr target="http://www.americanheart.org/downloadable/heart/1105390918119HDSStats2005Update.pdf" />
+		<imprint>
+			<date type="published" when="2004-12-15">2004. December 15. 2005</date>
+			<publisher>American Heart Association</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b97">
+	<analytic>
+		<title level="a" type="main">Economic Costs of Diabetes in the US in 2002</title>
+	</analytic>
+	<monogr>
+		<title level="j">Diabetes Care</title>
+		<imprint>
+			<biblScope unit="volume">26</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="917" to="932" />
+			<date type="published" when="2003">2003</date>
+			<publisher>American Diabetes Association</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b98">
+	<analytic>
+		<title level="a" type="main">Health Economics and Cost Implications of Anxiety and Other Mental Disorders in the United States</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">P</forename><surname>Rice</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">S</forename><surname>Miller</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">British Journal of Psychiatry</title>
+		<imprint>
+			<biblScope unit="volume">173</biblScope>
+			<biblScope unit="page" from="4" to="9" />
+			<date type="published" when="1998">1998</date>
+		</imprint>
+	</monogr>
+	<note>suppl. 34</note>
+</biblStruct>
+
+<biblStruct xml:id="b99">
+	<monogr>
+		<title level="m" type="main">The Economic Impact of Motor Vehicle Crashes</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">J</forename><surname>Blincoe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">G</forename><surname>Seay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Zaloshnja</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">R</forename><surname>Miller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">O</forename><surname>Romano</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Luchter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">S</forename><surname>Spicer</surname></persName>
+		</author>
+		<idno>No. DOT HS 809 446</idno>
+		<ptr target="http://lhsc.lsu.edu/OutsideLinks/EconomicImpact-1.pdf" />
+		<imprint>
+			<date type="published" when="2000-05">2000. May 2002. January 11. 2006</date>
+			<pubPlace>Washington, DC</pubPlace>
+		</imprint>
+		<respStmt>
+			<orgName>US Department of Transportation, National Highway Traffic Safety Administration</orgName>
+		</respStmt>
+	</monogr>
+	<note type="report_type">NHTSA Technical Report</note>
+</biblStruct>
+
+<biblStruct xml:id="b100">
+	<analytic>
+		<title level="a" type="main">A National Study of Medical Care Expenditures for Musculoskeletal Conditions</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Yelin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Herndorf</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Trupin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Sonneborn</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Arthritis and Rheumatism</title>
+		<imprint>
+			<biblScope unit="volume">44</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="1160" to="1169" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b101">
+	<analytic>
+		<title level="a" type="main">Costs of Occupational Injury and Illness Across States</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Waehrer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">P</forename><surname>Leigh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Cassady</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Miller Tr</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Occupational and Environmental Medicine</title>
+		<imprint>
+			<biblScope unit="volume">46</biblScope>
+			<biblScope unit="issue">10</biblScope>
+			<biblScope unit="page" from="1084" to="1095" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b102">
+	<analytic>
+		<title level="a" type="main">The Economic Burden of Skin Disease in the United States</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">D</forename><surname>Dehkharghani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Bible</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">G</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">R</forename><surname>Feldman</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Fleischer Ab</surname><genName>Jr</genName></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the American Academy of Dermatology</title>
+		<imprint>
+			<biblScope unit="volume">48</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="592" to="599" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b103">
+	<monogr>
+		<title level="m" type="main">The Economic Costs of Drug Abuse in the United States</title>
+		<ptr target="http://www.whitehousedrugpolicy.gov/publications/economic_costs/" />
+		<imprint>
+			<date type="published" when="1992">2004. 1992-2002. 207303. July 27, 2005</date>
+			<publisher>Executive Office of the President (Publication No</publisher>
+			<pubPlace>Washington, DC</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b104">
+	<analytic>
+		<title level="a" type="main">Costs of Urinary Incontinence and Overactive Bladder in the United States: A Comparative Study</title>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">W</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">H</forename><surname>Wagner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">D</forename><surname>Bentkover</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Leblanc</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">Z</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Hunt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Urology</title>
+		<imprint>
+			<biblScope unit="volume">63</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="461" to="465" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

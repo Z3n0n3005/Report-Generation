@@ -1,0 +1,2774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Sequential Monte Carlo Bandits</title>
+				<funder ref="#_JdV8GVd">
+					<orgName type="full">National Science Foundation</orgName>
+					<orgName type="abbreviated">NSF</orgName>
+				</funder>
+				<funder ref="#_BqYBDbX">
+					<orgName type="full">Basque Government</orgName>
+				</funder>
+				<funder ref="#_6U64tyy">
+					<orgName type="full">&quot;la Caixa</orgName>
+				</funder>
+				<funder ref="#_CNRqaY9">
+					<orgName type="full">Ministry of Science and Innovation: BCAM Severo Ochoa accreditation</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2024-04-08">April 8, 2024</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Iñigo</forename><surname>Urteaga</surname></persName>
+							<email>iurteaga@bcamath.org</email>
+							<affiliation key="aff0">
+								<orgName type="department">BCAM -Basque Center for Applied Mathematics</orgName>
+								<address>
+									<settlement>Bilbao</settlement>
+									<country key="ES">Spain</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="laboratory">IKERBASQUE</orgName>
+								<orgName type="institution">Basque Foundation for Science</orgName>
+								<address>
+									<settlement>Bilbao</settlement>
+									<country key="ES">Spain</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Chris</forename><forename type="middle">H</forename><surname>Wiggins</surname></persName>
+							<email>chris.wiggins@columbia.edu</email>
+							<affiliation key="aff2">
+								<orgName type="department">Department of Applied Physics and Applied Mathematics</orgName>
+								<orgName type="institution">Columbia University</orgName>
+								<address>
+									<settlement>New York City</settlement>
+									<region>NY</region>
+									<country key="US">USA</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Sequential Monte Carlo Bandits</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2024-04-08">April 8, 2024</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">988D7C9ED784601D962737FAABD27595</idno>
+					<idno type="arXiv">arXiv:1808.02933v4[stat.ML]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.0" ident="GROBID" when="2024-05-02T16:15+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>We extend Bayesian multi-armed bandit (MAB) algorithms beyond their original setting by making use of sequential Monte Carlo (SMC) methods. A MAB is a sequential decision making problem where the goal is to learn a policy that maximizes long term payoff, where only the reward of the executed action is observed. In the stochastic MAB, the reward for each action is generated from an unknown distribution, often assumed to be stationary. To decide which action to take next, a MAB agent must learn the characteristics of the unknown reward distribution, e.g., compute its sufficient statistics. However, closed-form expressions for these statistics are analytically intractable except for simple, stationary cases. We here utilize SMC for estimation of the statistics Bayesian MAB agents compute, and devise flexible policies that can address a rich class of bandit problems: i.e., MABs with nonlinear, stateless-and context-dependent reward distributions that evolve over time. We showcase how non-stationary bandits, where time dynamics are modeled via linear dynamical systems, can be successfully addressed by SMC-based Bayesian bandit agents. We empirically demonstrate good regret performance of the proposed SMC-based bandit policies in several MAB scenarios that have remained elusive, i.e., in non-stationary bandits with nonlinear rewards.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>The multi-armed bandit (MAB) problem considers the sequential strategy one must devise when playing a row of slot machines: i.e., which arm to play next to maximize cumulative returns. This analogy extends to a wide range of real-world challenges that require online learning, while simultaneously maximizing some notion of reward.</p><p>The arm may be a medicine a doctor must prescribe to a patient, the reward being the outcome of such treatment on the patient; or the set of resources a manager needs to allocate for competing projects, with the reward being the revenue attained at the end of the month; or the ad/product/content an online recommendation algorithm must display to maximize click-through rate in e-commerce.</p><p>The contextual MAB, where at each interaction with the world side information (known as 'context') is available, is a natural extension of this abstraction. The 'context' is the physiology of the patient, the type of resources available for each project, or the features of the website user.</p><p>Sequential decision processes have been studied for many decades, and interest has resurged incited by reinforcement learning (RL) advancements developed within the machine learning community <ref type="bibr" target="#b73">[Mnih et al., 2015;</ref><ref type="bibr" target="#b89">Silver et al., 2017]</ref>. RL <ref type="bibr" target="#b91">[Sutton and Barto, 1998</ref>] has been successfully applied to a variety of domains, from Monte Carlo tree search <ref type="bibr" target="#b9">[Bai et al., 2013]</ref> and hyperparameter tuning for complex optimization in science, engineering and machine learning problems <ref type="bibr" target="#b53">[Kandasamy et al., 2018;</ref><ref type="bibr" target="#b98">Urteaga et al., 2023]</ref>, to revenue maximization <ref type="bibr" target="#b40">[Ferreira et al., 2018]</ref> and marketing solutions <ref type="bibr" target="#b86">[Schwartz et al., 2017]</ref> in business and operations research. RL is also popular in e-commerce and digital services, improving online advertising at LinkedIn <ref type="bibr" target="#b1">[Agarwal, 2013]</ref>, engagement with website services at Amazon <ref type="bibr" target="#b48">[Hill et al., 2017]</ref>, recommending targeted news at Yahoo <ref type="bibr" target="#b64">[Li et al., 2010]</ref>, and enabling full personalization of content and art at <ref type="bibr" target="#b74">Netflix [2017]</ref>.</p><p>The techniques used in these success stories are grounded on statistical advances on sequential decision processes and multi-armed bandits. The MAB crystallizes the fundamental trade-off between exploration and exploitation in sequential decision making. It has been studied throughout the 20th century, with important contributions by <ref type="bibr" target="#b92">Thompson [1935]</ref> and later <ref type="bibr" target="#b82">Robbins [1952]</ref>. Over the years, several algorithms have been proposed -we provide an overview of state-of-the-art solutions in Section 2.1. However, applied use cases raise challenges that these MAB algorithms often fail to address.</p><p>For instance, classic MAB algorithms do not typically generalize to problems with nonlinear reward dependencies or non-Gaussian reward distributions, as exact computation of their statistics of interest is intractable for distributions not in the exponential family <ref type="bibr" target="#b58">[Korda et al., 2013;</ref><ref type="bibr" target="#b85">Russo et al., 2018]</ref>. More importantly, these algorithms are commonly designed under the assumption of stationary reward distributions, i.e., the reward function does not change over-time, a premise often violated in practice.</p><p>We hereby relax these constraints, and consider time-varying models and nonlinear reward functions. We propose to use sequential Monte Carlo (SMC) for non-stationary bandits with nonlinear rewards, where the world -the reward function-is time-varying, and rewards are sequentially observed for the played arms.</p><p>SMC methods <ref type="bibr" target="#b6">[Arulampalam et al., 2002;</ref><ref type="bibr" target="#b34">Doucet et al., 2001;</ref><ref type="bibr" target="#b29">Djurić et al., 2003</ref>] have been widely used to estimate posterior densities and expectations in sequential problems with probabilistic models that are too complex to treat analytically, with many successful applications in science and engineering <ref type="bibr" target="#b81">[Ristic et al., 2004;</ref><ref type="bibr" target="#b99">van Leeuwen, 2009;</ref><ref type="bibr" target="#b49">Ionides et al., 2006;</ref><ref type="bibr" target="#b25">Creal, 2012]</ref>.</p><p>In Bayesian MAB algorithms, the agent must compute sufficient statistics of each arm's rewards over time, for which sequential updates to the posterior of the parameters of interest must be computed. We here show that SMC-based, sequentially updated random measures of per-arm parameter posteriors, enable computation of any statistic a Bayesian MAB policy might require.</p><p>We generalize existing MAB policies beyond their original stationary setting, and accommodate complex reward models: those for which sampling may be performed even if analytic computation of summary statistics is infeasible. We study latent dynamical systems with non-Gaussian and nonlinear reward functions, for which SMC computes accurate posterior approximations. Consequently, we devise a flexible SMC-based framework for solving non-stationary and nonlinear MABs.</p><p>Our contribution is a SMC-based MAB framework that:</p><p>(i) computes SMC-based random measure posterior MAB densities utilized by Bayesian MAB policies;</p><p>(ii) requires knowledge of the reward function only up to a proportionality constant, i.e., it accommodates nonlinear and non-Gaussian bandit rewards; and, (iii) is applicable to time-varying reward models, i.e., to restless or non-stationary multiarmed bandits.</p><p>The proposed SMC-based MAB framework (i) leverages SMC for both posterior sampling and estimation of sufficient statistics utilized by Bayesian MAB policies, i.e., <ref type="bibr">Thompson sampling and Upper Confidence Bounds; (ii)</ref> addresses restless bandits via the general linear dynamical system, and accommodates unknown parameters via Rao-Blackwellization; and (iii) targets nonlinear and non-Gaussian reward models, accommodating stateless and context-dependent, discrete and continuous reward distributions.</p><p>We introduce in Section 2 the preliminaries for our work, which combines sequential Monte Carlo techniques described in Section 2.2, with multi-armed bandit algorithms detailed in Section 2.1. We present the SMC-based MAB framework in Section 3, and evaluate its performance for Thompson sampling and Bayes-Upper Confidence Bound policies in Section 4. We summarize and conclude with promising research directions in Section 5.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Background and preliminaries</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Multi-armed bandits</head><p>The MAB crystallizes the fundamental trade-off between exploration and exploitation in sequential decision making. It formulates the problem of maximizing rewards observed from sequentially chosen actions a ∈ A -named arms in the bandit literature-when interacting with an uncertain environment. The reward generating process is stochastic, often parameterized with θ ∈ Θ to capture the intrinsic properties of each arm. It can potentially depend on context x ∈ X ; e.g., a common choice is X = R d X . We use p a <ref type="bibr">(•|x, θ)</ref> to indicate per-arm reward distributions -one for each of the |A| possible arms-where subscript a indicates the conditional reward distribution for each arm a.</p><p>At each bandit interaction t, reward y t is observed for the played arm a t ∈ A only, which is independently and identically drawn from its context-conditional distribution</p><formula xml:id="formula_0">Y t ∼ p a (Y |x t , θ * t,a ) ,<label>(1)</label></formula><p>parameterized by true θ * t,a ∈ Θ. We use Y t for the stochastic reward variable with density p a (Y |x t , θ * t,a ), and denote with y t its realization at time t. Recall that we accommodate time-varying context and parameters via the subscript t in both.</p><p>We denote with θ * t the union of all, per-arm, parameters at time t, θ * t ≡ θ * t,0 , • • • , θ * t,|A|-1 , and with θ * 1:T ≡ (θ * 1 , • • • , θ * T ), the union of parameters over bandit interactions or time t = 1, • • • , T . The above stochastic MAB formulation covers stationary bandits (if parameters are constant over time, i.e., θ * t,a = θ * a , ∀t) and non-contextual bandits, by fixing the context to a constant value x t = x, ∀t.</p><p>With knowledge of the true bandit model, i.e., the θ * t ∈ Θ that parameterizes the reward distribution of the environment, the optimal action to take is</p><formula xml:id="formula_1">a * t = argmax a ′ ∈A µ t,a ′ (x t , θ * t ) ,<label>(2)</label></formula><p>where µ t,a (x t , θ * t ) = E {Y |a, x t , θ * t } is each arm's conditional reward expectation, given context x t and true parameters θ * t , at time t. The challenge in MABs is the lack of knowledge about the reward-generating distribution, i.e., uncertainty about θ * t induces uncertainty about the true optimal action a * t . Namely, the agent needs to simultaneously learn properties of the reward distribution, and sequentially decide which action to take next. MAB policies choose the next arm to play, with the goal of maximizing attained rewards, based upon the history observed so far.</p><p>We use π(A) to denote a multi-armed bandit policy, which is in general stochastic -A is a random variable-on its choices of arms, and is dependent on previous history: π(A) = P (A = a|H 1:t ) , ∀a ∈ A. Previous history H 1:t contains the set of contexts, played arms, and observed rewards up to time t, denoted as</p><formula xml:id="formula_2">H 1:t = {x 1:t , a 1:t , y 1:t }, with x 1:t ≡ (x 1 , • • • , x t ), a 1:t ≡ (a 1 , • • • , a t ) and y 1:t ≡ (y 1,a1 , • • • , y t,at ).</formula><p>Given history H 1:t , a MAB policy π(A|H 1:t ) aims at maximizing its cumulative rewards, or equivalently, minimizing its cumulative regret (the loss incurred due to not knowing the best arm a * t at each time t), i.e., R T = T t=1 y t,a * t -y t,at , where a t denotes the realization of the policy π(A|H 1:t ) -the arm picked by the policy-at time t. Due to the stochastic nature of the problem, we study the expected cumulative regret at time horizon T (not necessarily known a priori)</p><formula xml:id="formula_3">R T = E T t=1 Y t,a * t -Y t,At ,<label>(3)</label></formula><p>where the expectation is taken over the randomness in the outcomes Y , and the arm selection policy A t ∼ π(A) for the frequentist regret. In the Bayesian setting, the uncertainty over the true model parameters θ * is also marginalized.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1.1">MAB algorithms</head><p>Over the years, many MAB policies have been proposed to overcome the explorationexploitation tradeoff <ref type="bibr" target="#b61">[Lattimore and Szepesvári, 2020]</ref>. ϵ-greedy is a popular applied framework due to its simplicity (i.e., to be greedy with probability 1 -ϵ, and to play the arm with best averaged rewards so far, otherwise to randomly pick any arm), while retaining often good performance <ref type="bibr">[Auer et al., 2002a]</ref>. A more formal treatment was provided by <ref type="bibr" target="#b45">Gittins [1979]</ref>, who devised the optimal strategy for certain bandit cases, by considering geometrically discounted future rewards. Since the exact computation of the Gittins index is complicated, approximations have also been developed <ref type="bibr" target="#b14">[Brezzi and Lai, 2002]</ref>. <ref type="bibr" target="#b60">Lai and Robbins [1985]</ref> introduced a new class of algorithms, based on the upper confidence bound (UCB) of the expected reward of each arm, for which strong theoretical guarantees have been proven <ref type="bibr" target="#b59">[Lai, 1987]</ref>, and many extensions proposed <ref type="bibr" target="#b42">[Garivier and Moulines, 2011;</ref><ref type="bibr" target="#b41">Garivier and Cappé, 2011]</ref>.</p><p>Bayes-UCB <ref type="bibr" target="#b55">[Kaufmann et al., 2012]</ref> is a Bayesian approach to UCB algorithms, where quantiles are used as proxies for upper confidence bounds. <ref type="bibr" target="#b55">Kaufmann et al. [2012]</ref> have proven the asymptotic optimality of Bayes-UCB's finite-time regret for the Bernoulli case, and argued that it provides an unifying framework for several variants of the UCB algorithm. However, its application is limited to reward models where the quantile functions are analytically tractable.</p><p>Thompson sampling (TS) <ref type="bibr" target="#b92">[Thompson, 1935]</ref> is an alternative MAB policy that has been popularized in practice, and studied theoretically by many. TS is a probability matching algorithm that randomly selects an action to play according to the probability of it being optimal <ref type="bibr" target="#b85">[Russo et al., 2018]</ref>. It has been empirically proven to perform satisfactorily, and to enjoy provable optimality properties, both for problems with and without context <ref type="bibr">[Agrawal and</ref><ref type="bibr">Goyal, 2012, 2013a;</ref><ref type="bibr" target="#b58">Korda et al., 2013;</ref><ref type="bibr">Russo and</ref><ref type="bibr">Roy, 2014, 2016]</ref>.</p><p>Bayes-UCB and TS can be viewed as different approaches to a Bayesian formulation of the MAB problem. Namely, the agent views the unknown parameter of the reward function θ t as a random variable, and as data from bandit interactions with the environment are collected, a Bayesian policy updates its parameter posterior. Because a bandit agent must take into account the uncertainty on the unknown parameters, prior knowledge on the reward model and its parameters can be incorporated into Bayesian policies, capturing the full state of knowledge via the parameter posterior</p><formula xml:id="formula_4">p(θ t |H 1:t ) ∝ p at (y t |x t , θ t )p(θ t |H 1:t-1 ) ,<label>(4)</label></formula><p>where p at (y t |x t , θ t ) is the likelihood of the observed reward y t after playing arm a t at time t.</p><p>Computation of this posterior is critical for Bayesian MAB algorithms.</p><p>In Thompson sampling, one uses p(θ t |H 1:t ) to compute the probability of an arm being optimal, i.e., π(A|x t+1 , H 1:t ) = P A = a * t+1 |x t+1 , θ t , H 1:t , where the uncertainty over the parameters must be accounted for <ref type="bibr" target="#b85">[Russo et al., 2018]</ref>.</p><p>Namely, one marginalizes the posterior parameter uncertainty after observing history H 1:t up to time instant t, i.e.,</p><formula xml:id="formula_5">π(A|x t+1 , H 1:t ) = P A = a * t+1 |x t+1 , H 1:t = P A = a * t+1 |x t+1 , θ t , H 1:t p(θ t |H 1:t )dθ = 1 A = argmax a ′ ∈A µ t+1,a ′ (x t+1 , θ t ) p(θ t |H 1:t )dθ t .</formula><p>(5)</p><p>In Bayes-UCB, p(θ t |H 1:t ) is critical to determine the distribution of the expected rewards, i.e.,</p><formula xml:id="formula_6">p(µ t+1,a (x t+1 )) = p(µ t+1,a |x t+1 , θ t )p(θ t |H 1:t )dθ t ,<label>(6)</label></formula><p>which is required for computation of the expected reward quantile q t+1,a (α t ), formally defined as</p><formula xml:id="formula_7">P (µ t+1,a (x t+1 ) &gt; q t+1,a (α t )) = α t ,<label>(7)</label></formula><p>where the quantile value α t may depend on time, as proposed by <ref type="bibr" target="#b55">Kaufmann et al. [2012]</ref>. Analytical expressions for the parameter posterior of interest p(θ t |H 1:t ) are available only for few reward functions (e.g., Bernoulli and linear contextual Gaussian models), but not for many other useful cases, such as logistic or categorical rewards. In addition, computation of Equations ( <ref type="formula">5</ref>) and ( <ref type="formula" target="#formula_7">7</ref>) can be challenging for many distributions outside the exponential family <ref type="bibr" target="#b58">[Korda et al., 2013]</ref>. These issues become even more imperative when dealing with dynamic parameters, i.e., in environments that evolve over time, and with nonlinear reward distributions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1.2">Beyond linear MABs.</head><p>To extend MAB algorithms to more realistic scenarios, many have considered flexible reward functions and Bayesian inference. For example, the use of Laplace approximations <ref type="bibr">[Chapelle and Li, 2011]</ref> or Polya-Gamma augmentations <ref type="bibr" target="#b35">[Dumitrascu et al., 2018]</ref> for Thompson sampling. These techniques however, are targeted to binary rewards only, modeled via the logistic function.</p><p>To accommodate complex, continuous reward functions, the combination of Bayesian neural networks with approximate inference has also been investigated. Variational methods, stochastic mini-batches, and Monte Carlo techniques have been studied for uncertainty estimation of reward posteriors of these models <ref type="bibr" target="#b11">[Blundell et al., 2015;</ref><ref type="bibr" target="#b57">Kingma et al., 2015;</ref><ref type="bibr" target="#b78">Osband et al., 2016;</ref><ref type="bibr" target="#b62">Li et al., 2016]</ref>. <ref type="bibr" target="#b80">Riquelme et al. [2018]</ref> benchmarked some of these techniques, and reported that neural networks with approximate inference, even if successful for supervised learning, under-perform in the MAB setting. In particular, <ref type="bibr" target="#b80">Riquelme et al. [2018]</ref> emphasize the need for adapting the slow convergence uncertainty estimates of neural net based methods for a successful identification of the exploration-exploitation tradeoff.</p><p>In parallel, others have investigated how to extend Bayesian policies, such as Thompson sampling, to complex online problems <ref type="bibr" target="#b46">[Gopalan et al., 2014]</ref> by leveraging ensemble methods <ref type="bibr" target="#b68">[Lu and Roy, 2017]</ref>, generalized sampling techniques <ref type="bibr" target="#b63">[Li, 2013]</ref>, or via bootstrapped sampling <ref type="bibr" target="#b38">[Eckles and Kaptein, 2019;</ref><ref type="bibr" target="#b77">Osband and Roy, 2015]</ref>. Solutions that approximate the unknown bandit reward function with finite <ref type="bibr">[Urteaga and Wiggins, 2018a]</ref> or countably infinite Gaussian mixture models <ref type="bibr">[Urteaga and Wiggins, 2018b]</ref> have also been proposed.</p><p>However, all these algorithms for MABs with complex rewards assume stationary distributions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1.3">Non-stationary MABs.</head><p>The study of bandits in a changing world go back to the work by Whittle <ref type="bibr" target="#b101">[Whittle, 1988]</ref>, with subsequent theoretical efforts by many on characterizing restless, or non-stationary, bandits <ref type="bibr">[Auer et al., 2002b;</ref><ref type="bibr" target="#b16">Bubeck and Cesa-Bianchi, 2012]</ref>. The special case of piecewisestationary, or abruptly changing environments, has attracted a lot of interest in general <ref type="bibr" target="#b102">[Yu and Mannor, 2009;</ref><ref type="bibr" target="#b69">Luo et al., 2018]</ref>, and for UCB <ref type="bibr" target="#b42">[Garivier and Moulines, 2011]</ref> and Thompson sampling <ref type="bibr" target="#b71">[Mellor and Shapiro, 2013]</ref> algorithms, in particular. Often, these impose a reward 'variation' constraint on the evolution of the arms <ref type="bibr" target="#b79">[Raj and Kalyani, 2017]</ref>, or target specific reward functions, such as Bernoulli rewards in <ref type="bibr" target="#b10">[Besbes et al., 2014]</ref>, where discounting parameters for the prior Beta distributions can be incorporated.</p><p>More flexible restless bandit models, based on the Brownian motion or discrete random walks <ref type="bibr" target="#b90">[Slivkins and Upfal, 2008]</ref>, and simple Markov models <ref type="bibr" target="#b12">[Bogunovic et al., 2016]</ref> have been proposed, showcasing the trade-off between the time horizon and the rate at which the reward function varies. Besides, theoretical performance guarantees have been recently established for Thompson sampling in restless environments where the bandit is assumed to evolve via a binary state Markov chain, both in the episodic <ref type="bibr">[Jung and Tewari, 2019]</ref> and non-episodic <ref type="bibr">[Jung et al., 2019]</ref> setting.</p><p>Here, we overcome constraints on both the bandit's assumed reward function and its time-evolving model, by leveraging sequential Monte Carlo (SMC). The use of SMC in the context of bandit problems was previously considered for probit <ref type="bibr" target="#b20">[Cherkassky and Bornn, 2013]</ref> and softmax <ref type="bibr" target="#b96">[Urteaga and Wiggins, 2018c]</ref> reward models, and to update latent feature posteriors in a probabilistic matrix factorization model <ref type="bibr" target="#b56">[Kawale et al., 2015]</ref>. <ref type="bibr" target="#b46">Gopalan et al. [2014]</ref> showed that utilizing SMC to compute posterior distributions that lack an explicit closed-form is a theoretically grounded approach for certain online learning problems, such as bandit subset arm selection or job scheduling tasks.</p><p>These efforts provide evidence that SMC can be successfully combined with Thompson sampling, yet are different in scope from our work. The SMC-based MAB framework we present generalizes existing Bayesian MAB policies beyond their original setting. Contrary to existing MAB solutions, the SMC-based bandit policies we propose (i) are not restricted to specific reward functions, but accommodate nonlinear and non-Gaussian rewards, (ii) address non-stationary bandit environments, and (iii) are readily applicable to state-ofthe-art Bayesian MAB algorithms -Thompson sampling and Bayes-UCB policies-in a modular fashion.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Sequential Monte Carlo</head><p>Monte Carlo (MC) methods are a family of numerical techniques based on repeated random sampling, which have been shown to be flexible enough for both numerical integration and drawing samples from complex probability distributions of interest <ref type="bibr" target="#b67">[Liu, 2001]</ref>.</p><p>With importance sampling (IS), one estimates properties of a distribution when obtaining samples from such distribution is difficult. The basic idea of IS is to draw, from an alternative distribution, samples that are subsequently weighted to guarantee estimation accuracy (and often reduced variance). These methods are used both to approximate posterior densities, and to compute expectations in probabilistic models, i.e.,</p><formula xml:id="formula_8">f = f (φ)p(φ)dφ ,<label>(8)</label></formula><p>when these are too complex to treat analytically. IS relies on a proposal distribution q(•), from which one draws M samples φ (m) ∼ q(φ), m = 1, • • • , M , weighted according to</p><formula xml:id="formula_9">w (m) = p(φ (m) ) q(φ (m) )</formula><p>, with w (m) = w (m) M m=1 w (m) .</p><p>(9)</p><p>If the support of q(•) includes the support of the distribution of interest p(•), one computes the IS estimator of a test function based on the normalized weights w (m) ,</p><formula xml:id="formula_10">fM = M m=1 w (m) f φ (m) ,<label>(10)</label></formula><p>with convergence guarantees under weak assumptions <ref type="bibr" target="#b67">[Liu, 2001]</ref>. IS can also be interpreted as a sampling method where the true posterior distribution is approximated by a random measure, i.e.,</p><formula xml:id="formula_11">p(φ) ≈ p M (φ) = M m=1 w (m) δ φ (m) -φ ,<label>(11)</label></formula><p>leading to estimates that integrate the test function with respect to such measure,</p><formula xml:id="formula_12">fM = f (φ)p M (φ)dφ = M m=1 f φ (m) w (m) . (<label>12</label></formula><formula xml:id="formula_13">)</formula><p>The sequential counterpart of IS, also known as sequential Monte Carlo (SMC) <ref type="bibr" target="#b34">[Doucet et al., 2001]</ref> or particle filtering (PF) <ref type="bibr" target="#b28">[Djurić and Bugallo, 2010]</ref>, provides a convenient solution to computing approximations to posterior distributions with sequential or recursive formulations. In SMC, one considers a proposal distribution that factorizes -often, but not necessarily-over time, i.e., q(φ 0:t ) = q(φ t |φ 1:t-1 )q(φ 1:t-1 ) = t τ =1 q(φ τ |φ 1:τ -1 )q(φ 0 ) ,</p><p>which helps in matching the sequential form of the probabilistic model of interest p(φ t |φ 1:t-1 ), to enable a recursive evaluation of the importance sampling weights</p><formula xml:id="formula_15">w (m) t ∝ p(φt|φ 1:t-1 ) q(φt|φ 1:t-1 ) w (m) t-1 . (<label>14</label></formula><formula xml:id="formula_16">)</formula><p>One problem with following the above weight update scheme is that, as time evolves, the distribution of the importance weights becomes more and more skewed, resulting in few (or just one) non-zero weights.</p><p>To overcome this degeneracy, an additional selection step, known as resampling <ref type="bibr" target="#b65">[Li et al., 2015]</ref>, is added. In its most basic setting, one replaces the weighted empirical distribution with an equally weighted random measure at every time instant, where the number of offspring for each sample is proportional to its weight. This is known as Sequential Importance Resampling (SIR) <ref type="bibr" target="#b47">[Gordon et al., 1993]</ref>.</p><p>SIR and its many variants <ref type="bibr" target="#b34">[Doucet et al., 2001;</ref><ref type="bibr" target="#b6">Arulampalam et al., 2002]</ref> have been shown to be of great flexibility and value in many science and engineering problems <ref type="bibr" target="#b81">[Ristic et al., 2004;</ref><ref type="bibr" target="#b99">van Leeuwen, 2009;</ref><ref type="bibr" target="#b49">Ionides et al., 2006;</ref><ref type="bibr" target="#b25">Creal, 2012]</ref>, where data are acquired sequentially in time. In these circumstances, one needs to infer all the unknown quantities in an online fashion, where often, the underlying parameters evolve over time.</p><p>SMC provides a flexible and useful framework for these problems with probabilistic models and lax assumptions: i.e., when nonlinear observation functions, non-Gaussian noise processes and uncertainty over model parameters must be accommodated. Here, we leverage SMC for flexible approximations to posterior of interest in non-stationary and nonlinear MAB problems.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">SMC for multi-armed bandits</head><p>We use sequential Monte Carlo to compute posteriors and sufficient statistics of interest for a rich-class of MABs: non-stationary bandits (modeled via linear dynamical systems) with complex (stateless and context-dependent) nonlinear reward functions, subject to non-Gaussian stochastic innovations.</p><p>We model non-stationary, stochastic MABs in a state-space framework, where for a given reward distribution p a (Y |x, θ), and parameters that evolve in-time via a transition distribution p(θ t |θ t-1 ), we write</p><formula xml:id="formula_17">θ * t ∼ p(θ * t |θ * t-1 ) , Y t ∼ p at (Y |x t , θ * t ) , t = 1, • • • , T,<label>(15)</label></formula><p>where we explicitly indicate with θ * t the true yet unknown parameters of the non-stationary multi-armed bandit.</p><p>Within this bandit framework, a Bayesian policy must characterize the posterior of the unknown parameters p(θ t |H 1:t ) as in Equation (4), in which the time-varying dynamics of the underlying transition distribution are incorporated.</p><p>The posterior of interest given observed reward y t can be written as</p><formula xml:id="formula_18">p(θ t |H 1:t ) ∝ p at (y t |x t , θ t )p(θ t |H 1:t-1 ) ,<label>(16)</label></formula><p>where</p><formula xml:id="formula_19">p(θ t |H 1:t-1 ) = θt-1 p(θ t |θ t-1 )p(θ t-1 |H 1:t-1 )dθ t-1 .</formula><p>Recall that the parameter predictive distribution p(θ t |H 1:t-1 ) and parameter posterior p(θ t |H 1:t ) in Equation ( <ref type="formula" target="#formula_18">16</ref>) have analytical, closed-form recursive solutions only for limited cases.</p><p>We adhere to the standard MAB formulation, in that each arm of the bandit is described by its own idiosyncratic parameters (no information is shared across arms)</p><formula xml:id="formula_20">; i.e., p a (Y |x t , θ * t ) = p a (Y |x t , θ * t,a</formula><p>), yet we allow for such parameters to evolve independently per-arm in time:</p><formula xml:id="formula_21">p(θ * t |θ * t-1 ) = |A| a=1 p(θ * t,a |θ * t-1,a )</formula><p>. Therefore, the posterior of interest factorizes across arms</p><formula xml:id="formula_22">p(θ t |H 1:t ) = |A| a=1 p(θ t,a |H 1:t ) . (<label>17</label></formula><formula xml:id="formula_23">)</formula><p>This standard MAB formulation with independent, per-arm parameter dynamics enables Bayesian MAB policies to approximate each per-arm parameter posterior separately. Given observed reward y t for played MAB arm a t at time instant t, only the parameter posterior of the played arm is updated with this new observation, i.e.,</p><formula xml:id="formula_24">p(θ t,at |H 1:t ) ∝ p at (y t |x t , θ t,at )p(θ t,at |θ t-1,at )p(θ t-1,at |H 1:t-1 ) ;<label>(18)</label></formula><p>while parameter posteriors of the non-played arms are only updated according to the latent parameter dynamics, i.e.,</p><formula xml:id="formula_25">p(θ t,a |H 1:t ) ∝ p(θ t,a |θ t-1,a )p(θ t-1,a |H 1:t-1 ) , ∀a ′ ̸ = a t .<label>(19)</label></formula><p>We here combine SMC with Bayesian bandit policies -Thompson sampling and Bayes-UCB, specifically-for non-stationary bandits as modeled in Equation ( <ref type="formula" target="#formula_17">15</ref>). The challenge is on computing the posteriors in Equations ( <ref type="formula" target="#formula_18">16</ref>), ( <ref type="formula" target="#formula_24">18</ref>) and ( <ref type="formula" target="#formula_25">19</ref>) for a variety of MAB models, for which SMC enables us to accommodate (i) any likelihood function that is computable up to a proportionality constant, and (ii) any time-varying model described by a transition density from which we can draw samples.</p><p>We use SMC to compute per-arm parameter posteriors at each bandit round, i.e., we approximate per-arm filtering densities p(θ t,a |H 1:t ) with SMC-based random measures p M (θ t,a |H 1:t ), ∀a, for which there are strong theoretical convergence guarantees <ref type="bibr" target="#b26">[Crisan and Doucet, 2002;</ref><ref type="bibr" target="#b21">Chopin, 2004]</ref>.</p><p>The dimensionality of this estimation problem depends on the size of per-arm parameters, and not on the number of bandit arms |A|. Consequently, there will be no particle degeneracy due to increased number of arms.</p><p>We present in Section 3.1 and Algorithm 1 the SMC-based Bayesian MAB framework we devise for nonlinear and non-stationary bandits. We describe in Section 3.2 how to draw samples from the transition densities, when modeling bandit non-stationarity via the general linear model; and in Section 3.3, we present examples of non-Gaussian and nonlinear (continuous and discrete) reward functions of interest in practice. Throughout, we avoid assumptions on model parameter knowledge and resort to their Bayesian marginalization.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">SMC-based Bayesian MAB policies</head><p>We combine SMC with both Thompson sampling and Bayes-UCB policies, by sequentially updating, at each bandit interaction t, a SMC-based random measure to approximate the time-varying posterior of interest,</p><formula xml:id="formula_26">p(θ t,a |H 1:t ) ≈ p M (θ t,a |H 1:t ) = M m=1 w (m) t,a δ θ (m) t,a -θ t,a .<label>(20)</label></formula><p>Knowledge of p M (θ t,a |H 1:t ) enables computation of any per-arm reward statistic Bayesian MAB policies require.</p><p>We present Algorithm 1 with the sequential Importance Resampling (SIR) method<ref type="foot" target="#foot_0">1</ref> as introduced by <ref type="bibr" target="#b47">Gordon et al. [1993]</ref>, where:</p><p>• The SMC proposal distribution q(•) at each bandit interaction t obeys the assumed parameter dynamics: θ</p><formula xml:id="formula_27">(m) t,a ∼ p(θ t,a |θ t-1,a ), ∀m -Step (9.b) in Algorithm 1;</formula><p>• SMC weights are updated based on the likelihood of the observed rewards: w</p><formula xml:id="formula_28">(m) t,a ∝ p a (y t |x t , θ (m)</formula><p>t,a ) -Step (9.c) in Algorithm 1; and • The SMC random measure is resampled at every time instant -Step (9.a).</p><p>Independently of which SMC technique is used to compute the posterior random measure p M (θ t,a |H 1:t ), the fundamental operation in the proposed SMC-based MAB Algorithm 1 is to sequentially update the random measure p M (θ t,a |H 1:t ) to approximate the true per-arm posterior p(θ t,a |H 1:t ) over bandit interactions.</p><p>This SMC-based random measure is key, along with transition density p(θ t,a |θ t-1,a ), to sequentially propagate parameter posteriors per-arm, and to estimate their sufficient statistics for any Bayesian bandit policy. More precisely:</p><p>• In Step 5 of Algorithm 1, we estimate the predictive posterior of per-arm parameters, as a mixture of the transition densities conditioned on previous samples from p M (θ t,a |H 1:t ),</p><formula xml:id="formula_29">p M (θ t+1,a |H 1:t ) = M mt,a=1 w (mt,a) t,a p(θ t+1,a |θ (mt,a) t,a ) , m t,a = 1, • • • , M, ∀a ∈ A .<label>(21)</label></formula><p>• In Step 9 of Algorithm 1, we propagate forward the sequential random measure p M (θ t,a |H 1:t ) by drawing new samples from the transition density, conditioned on resampled particles, i.e.,</p><formula xml:id="formula_30">θ (mt+1,a) t+1,a ∼ p(θ t+1,a |θ (mt+1,a) t,a ) , m t+1,a = 1, • • • , M, ∀a ∈ A .<label>(22)</label></formula><p>In both cases, one draws with replacement according to the importance weights in p M (θ t,a |H 1:t ),</p><p>i.e., from a categorical distribution with per-sample probabilities w</p><formula xml:id="formula_31">(m) t,a : m ′ t,a ∼ Cat w (m)</formula><p>t,a . We now describe in detail how to use the SMC-based posterior random measure p M (θ t+1,a |H 1:t ) for both Thompson sampling and Bayes-UCB policies: i.e., which are the specific instructions to execute in steps 5 and 7 of Algorithm 1.</p><p>• SMC-based Thompson Sampling: TS operates by drawing a sample parameter θ (s)</p><p>t+1 from its updated posterior p(θ t+1 |H 1:t ), and picking the optimal arm for such sample, i.e.,</p><formula xml:id="formula_32">a t+1 = argmax a ′ ∈A µ t+1,a ′ x t+1 , θ (s) t+1,a ′ . (<label>23</label></formula><formula xml:id="formula_33">)</formula><p>We use the SMC random measure p M (θ t |H 1:t ), and propagate it using the transition density p(θ t+1,a |θ t,a ), to draw samples from the parameter posterior predictive distribution: i.e., θ</p><p>t+1 ∼ p M (θ t+1 |H 1:t ) in Equation ( <ref type="formula" target="#formula_29">21</ref>). This SMC-based random measure provides an accurate approximation to the true posterior density with high probability.</p><p>• SMC-based Bayes-UCB: We extend Bayes-UCB to reward models where the quantile functions are not analytically tractable, by leveraging the SMC-based parameter predictive posterior random measure p M (θ t+1 |H 1:t ).</p><p>We compute the quantile function of interest by first evaluating the expected reward at each round t based on the available posterior samples, i.e., µ</p><formula xml:id="formula_35">(m) t+1,a x t+1 , θ (m) t+1,a , m = 1, • • • , M ; and compute P (µ t+1,a &gt; q t+1,a (α t+1 )) = α t+1 via q t+1,a (α t+1 ) := max    µ m|µ m t+1,a &gt;µ w m t,a ≥ α t+1    .<label>(24)</label></formula><p>The convergence of quantile estimators generated by SMC methods has been explicitly proved in <ref type="bibr" target="#b70">[Maiz et al., 2012]</ref>.</p><p>Random measure p M (θ t+1,a |H 1:t ) in Equation ( <ref type="formula" target="#formula_29">21</ref>) enables computation of the statistics Bayesian MAB policies require, extending their applicability from stationary to time-evolving bandits. The exposition that follows addresses dynamic bandits, and we illustrate how to process classic, stationary bandits within the proposed framework in Appendix A.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Non-stationary MABs</head><p>The dynamic linear model is a flexible and widely used framework to characterize timeevolving systems <ref type="bibr" target="#b100">[Whittle, 1951;</ref><ref type="bibr" target="#b13">Box and Jenkins, 1976;</ref><ref type="bibr" target="#b15">Brockwell and Davis, 1991;</ref><ref type="bibr" target="#b36">Durbin and Koopman, 2001;</ref><ref type="bibr">Shumway and Stoffer, 2010;</ref><ref type="bibr" target="#b37">Durbin and Koopman, 2012]</ref>. Here, we model the latent parameters of the bandit θ ∈ R dΘ to evolve over time according to</p><formula xml:id="formula_36">θ t,a = L a θ t-1,a + ϵ a , ϵ a ∼ N (ϵ a |0, Σ a ) ,<label>(28)</label></formula><p>with parameters L a ∈ R dΘ a ×dΘ a and Σ a ∈ R dΘ a ×dΘ a -recall that we specify distinct transition densities per-arm.</p><p>With known parameters L a and Σ a , the transition distribution p(θ t,a |θ t-1,a ) is Gaussian with closed-form updates, i.e., θ t,a ∼ N (θ t,a |L a θ t-1,a , Σ a ).</p><p>For the more interesting case of unknown parameters, we marginalize parameters L a and Σ a of the transition distributions utilized by the proposed SMC-based Bayesian policies, i.e., we Rao-Blackwellize<ref type="foot" target="#foot_2">2</ref> them.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Algorithm 1 SMC-based Bayesian MAB policies</head><p>Require: A, p(θ a ), p(θ t,a |θ t-1,a ), p a (Y |x, θ), ∀a ∈ A. Require: Number of SMC samples M (for UCB we also require α t )</p><p>1: Draw initial samples from the parameter prior θ (m0,a) 0,a ∼ p(θ a ), and w</p><formula xml:id="formula_37">(m 0,a ) 0,a = 1 M , m 0,a = 1, • • • , M, ∀a ∈ A . 2: for t = 0, • • • , T -1 do 3: Receive context x t+1 4:</formula><p>for a ∈ A do </p><formula xml:id="formula_38">t+1,a ∼ p θ t+1,a |θ (s) t,a , Set µ t+1,a x t+1 , θ (s) t+1,a = E Y |a, x t+1 , θ (s) t+1,a . ForBayes-UCB: Draw M candidate samples m ′ a ∼ Cat w (mt,a) t,a , Propagate sample parameters θ (m ′ a ) t+1,a ∼ p θ t+1,a |θ (m ′ a ) t,a , Set µ t+1,a x t+1 , θ (m ′ a ) t+1,a = E Y |a, x t+1 , θ (m ′ a )</formula><p>t+1,a , Estimate quantile q t+1,a (α t+1 ) as in Equation ( <ref type="formula" target="#formula_35">24</ref>). Decide next action a t+1 to play For Thompson sampling:</p><formula xml:id="formula_39">a t+1 = argmax a ′ ∈A µ t+1,a ′ x t+1 , θ (s) t+1,a ′</formula><p>ForBayes-UCB:</p><formula xml:id="formula_40">a t+1 = argmax a ′ ∈A q t+1,a ′ (α t+1 ) 8:</formula><p>Observe reward y t+1 for played arm 9:</p><p>Update the posterior SMC random measure p M (θ t,a |H 1:t ) for all arms</p><formula xml:id="formula_41">(a) Resample m t+1,a = 1, • • • , M parameters θ (mt+1,a) t,a = θ (m ′ t,a ) t,a</formula><p>per arm a ∈ A, where m ′ t,a is drawn with replacement according to the importance weights w </p><formula xml:id="formula_42">∼ p θ t+1,a θ (mt+1,a) t,a , m t+1,a = 1, • • • , M, ∀a ∈ A .<label>(25)</label></formula><p>(c) Weight samples of the played arm a t+1 based on the likelihood of observed y t+1 w (mt+1,a t+1 )</p><formula xml:id="formula_43">t+1,at+1 ∝ p at+1 y t+1 x t+1 , θ (mt+1,a t+1 ) t+1,at+1 ,<label>(26)</label></formula><p>and normalize the weights</p><formula xml:id="formula_44">w (mt+1,a t+1 ) t+1,at+1 = w m t+1,a t+1 t+1,a t+1 M m t+1,a t+1 =1 w m t+1,a t+1 t+1,a t+1 , m t+1,a = 1, • • • , M. (<label>27</label></formula><formula xml:id="formula_45">)</formula><p>10: end for</p><p>The marginalized transition density is a multivariate t-distribution <ref type="bibr" target="#b44">[Geisser and Cornfield, 1963;</ref><ref type="bibr" target="#b93">Tiao and Zellner, 1964;</ref><ref type="bibr" target="#b43">Geisser, 1965;</ref><ref type="bibr">Urteaga and Djurić, 2016a,b]</ref>:</p><formula xml:id="formula_46">θ t,a ∼ t (θ t,a |ν t,a , m t,a , R t,a ) , with          ν t,a = ν 0,a + t -d , m t,a = L t-1,a θ t-1,a , R t,a = V t-1,a νt,a 1 -θ ⊤ t-1,a (Ut,aU ⊤ t,a ) -1 θ t-1,a ,<label>(29)</label></formula><p>where</p><formula xml:id="formula_47">                   Θ t0:t1,a = [θ t0,a θ t0+1,a • • • θ t1-1,a θ t1,a ] ∈ R d×(t1-t0) , B t-1,a = Θ 0:t-2,a Θ ⊤ 0:t-2,a + B -1 0,a -1 , L t-1,a = Θ 1:t-1,a Θ ⊤ 0:t-2,a + L 0,a B -1 0,a B t-1,a , V t-1,a = (Θ 1:t-1,a -L t-1,a Θ 0:t-2,a ) (Θ 1:t-1,a -L t-1,a Θ 0:t-2,a ) ⊤ + (L t-1,a -L 0,a ) B -1 0,a (L t-1,a -L 0,a ) ⊤ + V 0,a , U t,a U ⊤ t,a = θ t-1,a θ ⊤ t-1,a + B -1 t-1,a .<label>(30)</label></formula><p>Each distribution above holds separately for each arm a, and subscript a,0 indicates assumed prior parameters for arm a.</p><p>These transition distributions are used when propagating per-arm parameter densities in Steps 5 and 9 of Algorithm 1. They are fundamental for the accuracy of the sequential, random measure-based approximation to the posterior, and the downstream performance of the proposed SMC-based MAB policies.</p><p>Caution must be exercised when using SMC to approximate the dynamic bandit model's posteriors. Notably, the impact of non-Markovian transition distributions in SMC performance must be taken into consideration: the sufficient statistics in Equations ( <ref type="formula" target="#formula_46">29</ref>)-( <ref type="formula" target="#formula_47">30</ref>) depend on the full history of the model dynamics. Here, we use general linear models, for which it can be shown that, if stationarity conditions are met, the autocovariance function decays quickly, i.e., the dependence of general linear models on past samples decays exponentially <ref type="bibr">[Urteaga and Djurić, 2016a,b]</ref>.</p><p>When exponential forgetting holds in the latent space -i.e., the dependence on past samples decays exponentially, and is negligible after a certain lag-one can establish uniform-in-time convergence of SMC methods for functions that depend only on recent states, see <ref type="bibr" target="#b54">[Kantas et al., 2015]</ref> and references therein.</p><p>More broadly, one can establish uniform-in-time convergence for path functionals that depend only on recent states, as the Monte Carlo error of p M (θ t-τ :t |H 1:t ) with respect to p(θ t-τ :t |H 1:t ) is uniformly bounded over time. This quick forgetting property is fundamental for the successful performance of SMC methods for inference of linear dynamical states in practice <ref type="bibr" target="#b97">[Urteaga et al., 2017;</ref><ref type="bibr">Urteaga and Djurić, 2016a,b]</ref>.</p><p>Nevertheless, we acknowledge that any improved SMC solution that mitigates pathdegeneracy issues can only be beneficial for the performance of the proposed SMC-based policies.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">MAB reward models</head><p>Algorithm 1 is described in terms of a generic reward likelihood function p a (Y |x t , θ t,a ) that must be computable up to a proportionality constant. We now introduce reward functions that are applicable in many MAB use-cases, where the time subscript t has been suppressed for clarity of presentation, and subscript 0 indicates assumed prior parameters.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3.1">Contextual, categorical rewards</head><p>For MAB problems where observed rewards are discrete, i.e., Y = c for c ∈ {1, • • • , C}, and contextual information is available, the softmax function is a natural reward density model. In general, categorical variables assign probabilities to an unordered set of outcomes -not necessarily numeric. In this work, we refer to categorical rewards where, for each categorical outcome c ∈ N, there is a numeric reward y = c associated with it.</p><p>Given a d-dimensional context vector x ∈ R d , and per-arm parameters</p><formula xml:id="formula_48">θ a,c ∈ R d for each category c ∈ {1, • • • , C}, the contextual softmax reward model is p a (Y = c|x, θ a ) = e (x ⊤ θa,c) C c ′ =1 e (x ⊤ θ a,c ′ ) ,<label>(31)</label></formula><p>where we denote with θ a = {θ a,1 , • • • , θ a,C } the set of per-category parameters θ a,c for arm a. For this reward distribution, the posterior of the parameters can not be computed in closed form, and neither, the quantile function of the expected rewards µ t,a = y t • (x ⊤ t θ t,a ). When returns are binary, i.e., Y = {0, 1} (success or failure of an action), but dependent on a d-dimensional context vector x ∈ R d , the softmax function reduces to the logistic reward model</p><formula xml:id="formula_49">p a (Y |x, θ) = e Y •(x ⊤ θa) 1 + e (x ⊤ θa) ,<label>(32)</label></formula><p>with per-arm parameters θ a ∈ R d of same dimensionality d as the context x.</p><p>The theoretical study of UCB and TS-based algorithms for logistic rewards is an active research area <ref type="bibr">[Dong et al., 2019;</ref><ref type="bibr" target="#b39">Faury et al., 2020]</ref>, which we here extend to the discretecategorical setting. We accommodate discrete-categorical MAB problems by implementing Algorithm 1 with likelihoods as in Equations ( <ref type="formula" target="#formula_48">31</ref>) or (32). Namely, we compute p M (θ t,a |H 1:t ) for both stationary and non-stationary discrete-categorical bandits, by updating the weights of the posterior SMC random measure in Step 9-c. To the best of our knowledge, no existing work addresses non-stationary, discrete-categorical bandits.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3.2">Contextual, linear Gaussian rewards</head><p>For bandits with continuous rewards, Gaussian distributions are typically used, where contextual dependencies can easily be included. The contextual linear Gaussian reward model is well studied in the bandit literature <ref type="bibr" target="#b0">[Abbasi-Yadkori et al., 2011;</ref><ref type="bibr" target="#b24">Chu et al., 2011;</ref><ref type="bibr">Agrawal and Goyal, 2013b]</ref>, where the expected reward of each arm is modeled as a linear combination of a d-dimensional context vector x ∈ R d , and the idiosyncratic parameters of the arm w a ∈ R d ; i.e.,</p><formula xml:id="formula_50">p a (Y |x, θ) = N Y x ⊤ w a , σ 2 a = 1 2πσ 2 a e - (Y -x ⊤ wa ) 2 2σ 2 a . (<label>33</label></formula><formula xml:id="formula_51">)</formula><p>We denote with θ ≡ {w, σ} the set of all parameters of the reward distribution, and consider the normal inverse-gamma conjugate prior distribution for these,</p><formula xml:id="formula_52">p(w a , σ 2 a |u 0,a , V 0,a , α 0,a , β 0,a ) = N w a |u 0,a , σ 2 a V 0,a • Γ -1 σ 2 a |α 0,a , β 0,a .<label>(34)</label></formula><p>After observing actions a 1:t and rewards y 1:t , the parameter posterior for each arm p(w a , σ 2 a |a 1:t , y 1:t , u 0,a , V 0,a , α 0,a , β 0,a ) = p w a , σ 2 a |u t,a , V t,a , α t,a , β t,a</p><p>follows an updated normal inverse-gamma distribution with sequentially updated hyperparameters</p><formula xml:id="formula_54">             V -1 t,a = V -1 t-1,a + x t x ⊤ t • 1[a t = a] , u t,a = V t,a V -1 t-1,a u t-1,a + x t y t • 1[a t = a] , α t,a = α t-1,a + 1[at = a] 2 , β t,a = β t-1,a + 1[at = a](yt a -x ⊤ t u t-1,a ) 2 2 1 + x ⊤ t V t-1,a xt ,<label>(36)</label></formula><p>or, alternatively, batch updates of the form</p><formula xml:id="formula_55">             V -1 t,a = V -1 0,a + x 1:t|ta x ⊤ 1:t|ta , u t,a = V t,a V -1 0,a u 0,a + x 1:t|ta y 1:t|ta , α t,a = α 0,a + |ta| 2 , β t,a = β 0,a + y ⊤ 1:t|ta y 1:t|ta + u ⊤ 0,a V -1 0,a u 0,a -u ⊤ t,a V -1 t,a ut,a 2 , (<label>37</label></formula><formula xml:id="formula_56">)</formula><p>where t a = {t|a t = a} indicates the set of time instances when arm a is played.</p><p>With these, we can compute the Bayesian expected reward of each arm,</p><formula xml:id="formula_57">p(µ a |x, σ 2 a , u t,a , V t,a ) = N µ a x ⊤ u t,a , σ 2 a • x ⊤ V t,a x ,<label>(38)</label></formula><p>and the quantile function for such distribution</p><formula xml:id="formula_58">q t+1,a (α t+1 ) = Q 1 -α t+1 , N µ a x ⊤ u t,a , σ 2 a • x ⊤ V t,a x .<label>(39)</label></formula><p>The reward variance σ 2 a is unknown in practice, so we marginalize it and obtain p(µ a |x, u t,a , V t,a ) = t µ a 2α t,a , x ⊤ u t,a , βt,a αt,a</p><formula xml:id="formula_59">• x ⊤ V t,a x ,<label>(40)</label></formula><p>which leads to quantile function computations based on a Student's t-distribution</p><formula xml:id="formula_60">q t+1,a (α t+1 ) = Q 1 -α t+1 , t µ a 2α t,a , x ⊤ u t,a , βt,a αt,a • x ⊤ V t,a x .<label>(41)</label></formula><p>Equations ( <ref type="formula" target="#formula_57">38</ref>) and ( <ref type="formula" target="#formula_58">39</ref>) are needed in Step 5 when implementing TS or Bayes-UCB policies for the known σ 2 a case; while Equations ( <ref type="formula" target="#formula_59">40</ref>) and ( <ref type="formula" target="#formula_60">41</ref>) are used for the unknown σ 2 a case. Note that one can use the above results for Gaussian bandits with no context, by replacing x = I and obtaining µ a = u t,a .</p><p>When these equations are combined with the Rao-Blackwellized transition densities derived for the dynamic model in Section 3.2, the proposed SMC-based MAB policies can be applied to non-stationary, linear Gaussian bandit problems with minimal assumptions: i.e., only the functional form of the transition and reward functions is known.</p><p>There are no competing MAB algorithms for non-stationary bandit problems where no parameter knowledge is assumed.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">Evaluation</head><p>We empirically evaluate the proposed SMC-based Bayesian MAB framework in non-stationary bandit scenarios with continuous, binary and discrete-categorical reward distributions.</p><p>Results in Appendix A.2 validate the performance of SMC-based policies in stationary bandits. We compare their performance to solutions based on analytically attainable posteriors with Bernoulli and contextual linear Gaussian reward functions <ref type="bibr" target="#b55">[Kaufmann et al., 2012;</ref><ref type="bibr" target="#b41">Garivier and Cappé, 2011;</ref><ref type="bibr" target="#b58">Korda et al., 2013;</ref><ref type="bibr">Agrawal and Goyal, 2013b]</ref>, as well as for context-dependent binary rewards modeled with the logistic reward function <ref type="bibr">Chapelle and Li [2011]</ref>; <ref type="bibr" target="#b87">Scott [2015]</ref> -Appendix A.3. Results showcase satisfactory performance across a wide range of stationary bandit parameterizations and sizes, as SMC-based policies achieve the right exploration-exploitation tradeoff.</p><p>For results we present below, we simulate different parameterizations of dynamic linear models described in Section 3.2, and present results for a variety of MAB environments with reward functions detailed in Sections 4.1, 4.2 and 4.3. Section 4.4 illustrates the ability of SMC-based bandit policies to capture non-stationary trends in personalized news article recommendations.</p><p>The main evaluation metric is the cumulative regret of the bandit agent, as defined in Equation ( <ref type="formula" target="#formula_3">3</ref>), with results averaged over 500 realizations. We present results for SMCbased policies with M = 2000 samples, and provide an evaluation of the impact of M in Appendix B.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Non-stationary, linear Gaussian rewards</head><p>We simulate the following two-armed, contextual (x t ∈ R 2 , ∀t), linear Gaussian bandit:</p><formula xml:id="formula_61">Scenario A                                            p(θ t,a=0 |θ t-1,a=0 ) :</formula><p>θ t,a=0,0 θ t,a=0,1 = 0.9 -0.1 -0.1 0.9</p><formula xml:id="formula_62">θ t-1,a=0,0 θ t-1,a=0,1 + ϵ a=0 ,</formula><p>where ϵ a=0 ∼ N (ϵ|0, 0.01 • I) , p(θ t,a=1 |θ t-1,a=1 ) :</p><p>θ t,a=1,0 θ t,a=1,1 = 0.9 0.1 0.1 0.9</p><formula xml:id="formula_63">θ t-1,a=1,0 θ t-1,a=1,1 + ϵ a=1 ,</formula><p>where ϵ a=1 ∼ N (ϵ|0, 0.01</p><formula xml:id="formula_64">• I) , p a (Y |x, θ t,a ) = N Y |x ⊤ θ t,a , σ 2 a . (<label>42</label></formula><formula xml:id="formula_65">) Scenario B                                            p(θ t,a=0 |θ t-1,a=0 ) :</formula><p>θ t,a=0,0 θ t,a=0,1 = 0.5 0.0 0.0 0.5</p><formula xml:id="formula_66">θ t-1,a=0,0 θ t-1,a=0,1 + ϵ a=0 ,</formula><p>where ϵ a=0 ∼ N (ϵ|0, 0.01 • I) , p(θ t,a=1 |θ t-1,a=1 ) :</p><p>θ t,a=1,0 θ t,a=1,1 = 0.9 0.1 0.1 0.9</p><formula xml:id="formula_67">θ t-1,a=1,0 θ t-1,a=1,1 + ϵ a=1 ,</formula><p>where ϵ a=1 ∼ N (ϵ|0, 0.01</p><formula xml:id="formula_68">• I) , p a (Y |x, θ t,a ) = N Y |x ⊤ θ t,a , σ 2 a .</formula><p>(43) The expected rewards driven by the dynamics of Equations ( <ref type="formula" target="#formula_64">42</ref>) and ( <ref type="formula">43</ref>) change over time, inducing switches on the identity of the optimal arm. For instance, for a given realization of Scenario A shown in Figure <ref type="figure" target="#fig_3">1a</ref>, there is an optimal arm swap between time-instants t = (300, 550), with arm 1 becoming the optimal for all t ≥ 600; for a realization of Scenario B illustrated in Figure <ref type="figure" target="#fig_3">1b</ref>, there is an optimal arm change around t = 100, a swap around t = 600, with arm 1 becoming optimal again after t ≥ 1600.</p><p>Empirical results for SMC-based Bayesian policies in scenarios described by Equations ( <ref type="formula" target="#formula_64">42</ref>) and ( <ref type="formula">43</ref>) are shown in Figures <ref type="figure" target="#fig_3">1</ref> and<ref type="figure" target="#fig_5">2</ref>.</p><p>We study linear dynamics with Gaussian reward distributions with known parameters in Figure <ref type="figure" target="#fig_3">1</ref>, of interest as it allows us to validate the SMC-based random measure in comparison to the optimal, closed-form posterior -the Kalman filter <ref type="bibr" target="#b52">Kalman [1960]</ref>-under the assumption of known dynamic parameters.</p><p>We observe satisfactory cumulative regret performance in Figure <ref type="figure" target="#fig_3">1</ref>: i.e., SMC-based Bayesian agents' cumulative regret is sublinear. Policies that compute and use SMC random measure posteriors incur in minimal regret loss in comparison to the optimal Kalman filterbased agent. Namely, the shape of the regret curves of TS and SMC-based TS (Bayes-UCB and SMC based Bayes-UCB, respectively) in Figure <ref type="figure" target="#fig_3">1</ref> is equivalent, with minimal differences in average cumulative regret when compared to the volatility across realizations. Importantly, all policies are able to adapt to the changes over time of the identify of the optimal arm. We illustrate in Figure <ref type="figure" target="#fig_5">2</ref> a more realistic scenario, where the dynamic parameterization is unknown to the bandit agent.</p><p>We observe in Figures <ref type="figure" target="#fig_5">2c-2d</ref> that, in the case of unknown reward variances (σ 2 a , ∀a), SMC-based policies perform comparably well. In these cases, the agents' reward model is not Gaussian, but Student-t distributed, as per the marginalized posterior in Equation ( <ref type="formula" target="#formula_59">40</ref>). The regret loss associated with the uncertainty about σ 2 a is minimal for SMC-based Bayesian agents, and does not hinder the ability of the proposed SMC-based policies to find the right exploration-exploitation balance: i.e., regret is sublinear, and the agents adapt to switches in the identity of the optimal arm.</p><p>We illustrate in Figures 2e-2f the most realistic, yet challenging, non-stationary contextual Gaussian bandit case: one where none of the parameters of the model are known. In this case, the agent must sequentially learn both the underlying dynamics (L a , Σ a ; ∀a) and the conditional reward function's variance (σ 2 a , ∀a), in order to infer the posterior distribution over the latent, time-varying sufficient statistics of interest, to enable informed sequential decision making.   <ref type="formula" target="#formula_64">42</ref>)-( <ref type="formula">43</ref>), when the bandit agent knows the latent dynamic parameterization. Notice how in Figures <ref type="figure" target="#fig_3">1c-1d</ref> regret increases when the optimal arms swap (as shown in Figures <ref type="figure" target="#fig_3">1a-1b</ref>). SMC-based policies successfully find the right exploration-exploitation tradeoff, with minimal additional regret incurred in comparison to their analytical alternatives.</p><p>Cumulative regret results in Figures <ref type="figure" target="#fig_5">2e-2f</ref> showcase a regret performance loss due to the need to learn all these unknown parameters. We observe noticeable (almost linear) regret increases when the dynamics of the parameters swap the identity of the optimal arm. However, SMC-based Thompson sampling and Bayes-UCB agents are able to learn the evolution of the dynamic latent parameters, and the corresponding time-varying expected rewards, with enough accuracy to attain good exploration-exploitation balance: i.e., sublinear regret curves indicate the agent identified and played the optimal arm repeatedly. Figure <ref type="figure" target="#fig_5">2e</ref> is clear evidence of the SMC-based agents' ability to recover from linear to no-regret regimes.   </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Non-stationary, logistic rewards</head><p>We here evaluate non-stationary, contextual, binary reward bandits. We resort to the logistic reward function described in Equation ( <ref type="formula" target="#formula_49">32</ref>), with time-varying, latent parameter dynamics as described in the following scenarios:</p><formula xml:id="formula_69">Scenario C                                              p(θ t,a=0 |θ t-1,a=0 ) :</formula><p>θ t,a=0,0 θ t,a=0,1 = 0.9 -0.1 -0.1 0.9</p><formula xml:id="formula_70">θ t-1,a=0,0 θ t-1,a=0,1 + ϵ a=0 ,</formula><p>where ϵ a=0 ∼ N (ϵ|0, 0.01 • I) , p(θ t,a=1 |θ t-1,a=1 ) :</p><p>θ t,a=1,0 θ t,a=1,1 = 0.9 0.1 0.1 0.9</p><formula xml:id="formula_71">θ t-1,a=1,0 θ t-1,a=1,1 + ϵ a=1 ,</formula><p>where ϵ a=1 ∼ N (ϵ|0, 0.01</p><formula xml:id="formula_72">• I) , p a (Y |x, θ t,a ) = e y•(x ⊤ θ t,a ) 1 + e (x ⊤ θ t,a ) . (<label>44</label></formula><formula xml:id="formula_73">) Scenario D                                              p(θ t,a=0 |θ t-1,a=0 ) :</formula><p>θ t,a=0,0 θ t,a=0,1 = 0.5 0.0 0.0 0.5</p><formula xml:id="formula_74">θ t-1,a=0,0 θ t-1,a=0,1 + ϵ a=0 ,</formula><p>where ϵ a=0 ∼ N (ϵ|0, 0.01 • I) , p(θ t,a=1 |θ t-1,a=1 ) :</p><p>θ t,a=1,0 θ t,a=1,1 = 0.9 0.1 0.1 0.9</p><formula xml:id="formula_75">θ t-1,a=1,0 θ t-1,a=1,1 + ϵ a=1 ,</formula><p>where ϵ a=1 ∼ N (ϵ|0, 0.01</p><formula xml:id="formula_76">• I) , p a (Y |x, θ t,a ) = e y•(x ⊤ θ t,a )</formula><p>1 + e (x ⊤ θ t,a ) . (45) For bandits with logistic rewards, there are no closed form posteriors; hence, one needs to resort to approximations, e.g., a Laplace approximation as in <ref type="bibr">[Chapelle and Li, 2011]</ref> for the stationary case. However, there are no bandit algorithms for the non-stationary logistic scenarios described above. On the contrary, SMC-based Bayesian policies can easily accommodate this setting, by updating posterior random measures p M (θ t |H 1:t ) as in Algorithm 1, for both stationary (evaluated in Appendix A.3) and non-stationary bandits we report here.</p><p>Figure <ref type="figure" target="#fig_7">3</ref> illustrates how SMC-based Bayesian policies adapt to non-stationary optimal arm switches under contextual, binary reward observations, achieving sublinear regret. Results in Figures 3b-3d also showcase how a bandit agent's regret suffers when learning unknown parameters of the latent dynamics. Even though this is a particularly challenging problem, presented evidence suggests that SMC-based policies do learn the underlying latent dynamics from contextual binary rewards.</p><p>Notably, proposed policies are able to successfully identify which arm to play: i.e., both SMC-based TS and SMC-based UCB -with no dynamic parameter knowledge-are able to flatten their regret for t ≥ 650 in Figure <ref type="figure" target="#fig_7">3c</ref> and<ref type="figure">t</ref>     <ref type="formula" target="#formula_72">44</ref>)-( <ref type="formula">45</ref>). Notice the difference in early (t ≈ 600 in Scenario C) and late (t ≈ 1650 in Scenario D) optimal arm changes, as illustrated in Figures <ref type="figure" target="#fig_7">3a-3b</ref>, and their impact in regret, as showcased in Figures <ref type="figure" target="#fig_7">3c-3d</ref>. SMC-based Bayesian policies adapt and find the right exploration-exploitation tradeoff.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Non-stationary, categorical rewards</head><p>We evaluate SMC-based Bayesian policies in a bandit setting that remains elusive to stateof-the-art bandit algorithms: non-stationary bandits with discrete-categorical, contextual rewards. We simulate the following two-and three-armed categorical bandit scenarios, where numerical rewards Y = c, for c ∈ {0, 1, 2}, depend on a two-dimensional context x t ∈ R 2 , with time-varying parameters θ a,c,t obeying the following dynamics:</p><formula xml:id="formula_77">Scenario E                                                p(θ t,a=0,c |θ t-1,a=0,c ) , ∀c ∈ {0, 1, 2} :</formula><p>θ t,a=0,c,0 θ t,a=0,c,1 = 0.9 -0.1 -0.1 0.9</p><formula xml:id="formula_78">θ t-1,a=0,c,0 θ t-1,a=0,c,1 + ϵ a=0,c ,</formula><p>where ϵ a=0,c ∼ N (ϵ|0, 0.01 • I) , p(θ t,a=1,c |θ t-1,a=1,c ) , ∀c ∈ {0, 1, 2} :</p><p>θ t,a=1,c,0 θ t,a=1,c,1 = 0.9 0.1 0.1 0.9</p><formula xml:id="formula_79">θ t-1,a=1,c,0 θ t-1,a=1,c,1 + ϵ a=1,c ,</formula><p>where ϵ a=1,c ∼ N (ϵ|0, 0.01</p><formula xml:id="formula_80">• I) , p a (Y = c|x, θ t,a ) = e (x ⊤ θ t,a,c ) C c ′ =1 e (x ⊤ θ t,a,c ′ ) . (<label>46</label></formula><formula xml:id="formula_81">) Scenario F                                                                        p(θ t,a=0,c |θ t-1,a=0,c ) , ∀c ∈ {0, 1, 2} :</formula><p>θ t,a=0,c,0 θ t,a=0,c,1 = 0.9 -0.1 -0.1 0.9</p><formula xml:id="formula_82">θ t-1,a=0,c,0 θ t-1,a=0,c,1 + ϵ a=0,c ,</formula><p>where ϵ a=0,c ∼ N (ϵ|0, 0.01 • I) , p(θ t,a=1,c |θ t-1,a=1,c ) , ∀c ∈ {0, 1, 2} :</p><p>θ t,a=1,c,0 θ t,a=1,c,1 = 0.9 0.1 0.1 0.9</p><formula xml:id="formula_83">θ t-1,a=1,c,0 θ t-1,a=1,c,1 + ϵ a=1,c ,</formula><p>where ϵ a=1,c ∼ N (ϵ|0, 0.01 • I) , p(θ t,a=2,c |θ t-1,a=2,c ) , ∀c ∈ {0, 1, 2} : θ t,a=2,c,0 θ t,a=2,c,1 = 0.9 0.1 0.1 0.9</p><formula xml:id="formula_84">θ t-1,a=2,c,0 θ t-1,a=2,c,1 + ϵ a=2,c , where ϵ a=2,c ∼ N (ϵ|0, 0.01 • I) , p a (Y = c|x, θ t,a ) = e (x ⊤ θ t,a,c ) C c ′ =1 e (x ⊤ θ t,a,c ′ ) .<label>(47)</label></formula><p>These bandit scenarios accommodate a diverse set of expected reward dynamics, for each realization of the noise processes ϵ a,c , ∀a, c, and depending on the initialization of parameters θ 0,a . We illustrate per-arm, expected reward time-evolution for a realization of the two-armed bandit Scenario E in Figure <ref type="figure" target="#fig_9">4a</ref>, and for the three-armed bandit Scenario F in Figure <ref type="figure" target="#fig_9">4b</ref>.</p><p>In all cases, expected rewards of each arm vary over time, resulting in transient and recurrent swaps of the optimal arm's identity. We show the corresponding cumulative regret of SMC-based Bayesian policies in Figure <ref type="figure" target="#fig_9">4c</ref> for Scenario E, and in Figure <ref type="figure" target="#fig_9">4d</ref> for Scenario F.    <ref type="formula" target="#formula_80">46</ref>)-( <ref type="formula" target="#formula_84">47</ref>). Notice how changes in per-arm expected rewards (t ≈ 1750 in Scenario E and t &gt; 1250 in Scenario F) as illustrated in Figures <ref type="figure" target="#fig_9">4a-4b</ref> impact regret as showcased in Figures <ref type="figure" target="#fig_9">4c-4d</ref>. SMC-based Bayesian policies adapt to these changes and balance the exploration-exploitation tradeoff.</p><p>We observe that SMC-based Thompson sampling and Bayes-UCB are able to reach satisfactory exploitation-exploration balance, i.e., the algorithms dynamically adapt their choice of which arm to play, and attain sublinear cumulative regret.</p><p>Recall the linear increase in cumulative regret (i.e., exploration) when latent parameter dynamics result in changes in the optimal arm's identity: around t ∈ (800, 1000) in Figure <ref type="figure" target="#fig_9">4c</ref>, and around t ∈ (1250, 1500) in Figure <ref type="figure" target="#fig_9">4d</ref>. After updating the random measure posterior over the unknown latent parameters, and recomputing the expected rewards per-arm, SMC-based policies are able to slowly adapt to the optimal arm changes, reaching a new exploitationexploration balance, i.e., flattening the cumulative regret curves.</p><p>For the most interesting and challenging setting where the dynamic model's parameters are unknown, we observe an increase in cumulative regret for both SMC-based policies. This is a direct consequence of the agent sequentially learning all the unknown model parameters, per-arm a, and discrete value c: L a,c , Σ a,c , ∀a, c. Only when posteriors over these -used by the SMC-based agents to propagate uncertainty to each bandit arms' expected reward estimates-are improved, can SMC-based policies make informed decisions and attain sublinear regret.</p><p>We observe that the impact of expected reward changes, when occurring later in time (e.g., t ≈ 1250 in Figure <ref type="figure" target="#fig_9">4b</ref>) is more pronounced for SMC-based Bayes-UCB policies. Namely, the average cumulative regret of SMC-based Bayes-UCB increases drastically, as well as its volatility, after t = 1250 in Figure <ref type="figure" target="#fig_9">4d</ref>. We hypothesize that this deterioration over time is due to the shrinking quantile value α t ∝ 1/t proposed by <ref type="bibr" target="#b55">Kaufmann et al. [2012]</ref>, originally designed for stationary bandits. Confidence bounds for static reward models tend to shrink proportional to the number of observations per bandit arm. However, in non-stationary regimes, such assumption does not hold: shrinking α t over time does not capture the time-evolving parameter posteriors' uncertainty in the long run.</p><p>More generally, the need to determine appropriate quantile values α t for each reward and non-stationary bandit model is a drawback of Bayes-UCB, as its optimal value will depend on the specific combination of underlying dynamics and reward function. On the contrary, Thompson sampling relies on samples from the posterior, which we here show SMC is able to approximate accurately enough for SMC-based Thompson sampling to operate successfully in all studied cases, without any hyperparameter selection.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4">Bandits for personalized news article recommendation</head><p>We evaluate the application of SMC-based policies in a real-life application of bandits: the recommendation of personalized news articles, as previously done by <ref type="bibr">Chapelle and Li [2011]</ref>.</p><p>We use a dataset<ref type="foot" target="#foot_3">3</ref> that contains a fraction of user click logs for news articles displayed in the Featured Tab of the Today Module on the Yahoo! Front Page during the first ten days in May 2009. The articles to be displayed were originally chosen uniformly at random from a hand-picked pool of high-quality articles. From these pool of original candidates, we pick a subset of 20 articles shown at different times within May 6th, and collect all user interactions logged with these articles, for a total of 500,354 events. In the dataset, each user is associated with six features: a bias term and 5 features that correspond to the membership features constructed via the conjoint analysis with a bilinear model described in <ref type="bibr" target="#b23">[Chu et al., 2009]</ref>.</p><p>The goal is to identify the most interesting article for each user, or in bandit terms, to maximize the total number of clicks on the recommended articles over all user interactions, i.e., the average click-through rate (CTR).</p><p>We treat each article as a bandit arm (|A| = 20), and define whether the article is clicked or not by the user as a binary reward: y t = {1, 0}. Hence, we pose the problem as a MAB with logistic rewards, where we incorporate the user features as context, x t ∈ R 6 .</p><p>We implement SMC-based Thompson sampling only, due to the flexibility shown in simulated scenarios, and its lack of hyperparameter tuning.</p><p>We argue that a news recommendation system should evolve over time, as the relevance of news might change during the course of the day. We evaluate both stationary and non-stationary bandits with logistic rewards.</p><p>As shown in Figure <ref type="figure" target="#fig_11">5</ref>, we observe the flexibility of a non-stationary logistic bandit model, where we notice how the SMC-based TS agent is able to pick up the dynamic popularity of certain articles over time -averaged CTR results are provided in Table <ref type="table">1</ref>.  </p><formula xml:id="formula_85">p(a t = a * | 1 : t ) A=0 A=1 A=2 A=3 A=4 A=5 A=6 A=7 A=8 A=9 A=10 A=11 A=12 A=13 A=14 A=15 A=16 A=17 A=18 A=19</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Model</head><p>CTR Normalized CTR Logistic rewards, static arms 0.0670 +/-0.0088 1.6095 +/-0.2115 Logistic rewards, time-evolving arms 0.0655 +/-0.0082 1.5745 +/-0.2064 Table <ref type="table">1</ref>: CTR results for SMC-based policies on the news article recommendation dataset. The normalized CTR is with respect to a random recommendation baseline.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">Conclusion and discussion</head><p>We presented a sequential Monte Carlo (SMC)-based framework for multi-armed bandits (MABs), where we combine SMC inference with state-of-the-art Bayesian bandit policies. We extend the applicability of Bayesian MAB policies -Thompson sampling and Bayes-UCBto previously elusive bandit environments, by accommodating nonlinear and time-varying models of the world, via SMC-based inference of the sufficient statistics of interest.</p><p>The proposed SMC-based Bayesian MAB framework allows for interpretable modeling of nonlinear and time-evolving reward functions, as it sequentially learns the sufficient statistics and dynamics of the bandit from online data, to find the right exploration-exploitation balance. Empirical results show good cumulative regret performance of the proposed policies in simulated MAB environments that previous algorithms can not address, and in practical scenarios (personalized news article recommendation) where time-varying models of data are required.</p><p>We show that SMC-based posterior random measures are accurate enough for Bayesian bandit policies to find satisfactory exploration-exploitation tradeoffs. The proposed SMCbased Bayesian agents do not only estimate the evolving latent parameters, but also quantify how their uncertainty maps to the uncertainty over the optimality of each arm, adjusting to non-stationary environments. Careful computation of SMC random measures is fundamental for the accuracy of the sequential approximation to the posteriors of interest, and the downstream performance of the proposed SMC-based MAB policies. The time-varying uncertainty of the sequentially updated parameter posterior encourages exploration of arms that have not been played recently, but may have reached new exploitable rewards. Namely, as the posteriors of unobserved arms result in broader SMC posteriors, SMC-based Bayesian MAB policies are more likely to explore such arm, reduce their posterior's uncertainty, and in turn, update the exploration-exploitation balance.</p><p>Important future work remains on the theoretical understanding of Thompson sampling and Bayes-UCB within the proposed SMC-based MAB framework. Given that SMC posteriors converge to the true posterior under suitable conditions <ref type="bibr" target="#b67">[Liu, 2001;</ref><ref type="bibr" target="#b26">Crisan and Doucet, 2002;</ref><ref type="bibr" target="#b21">Chopin, 2004]</ref>, we hypothesize that the proposed SMC-based bandit policies can achieve sub-linear regret, under appropriate assumptions on the latent dynamics.</p><p>On the one hand, <ref type="bibr" target="#b46">Gopalan et al. [2014]</ref> have shown that a logarithmic regret bound holds for Thompson sampling in complex problems, for bandits with discretely-supported priors over the parameter space without additional structural properties, such as conjugate prior structure or independence across arms. On the other, regret of a non-stationary bandit agent is linear if optimal arm changes occur continuously or adversarially. However, as long as the bandit's latent dynamics incur in a controlled number of optimal arm changes, SMC can provide accurate enough posteriors to find the right exploration-exploitation tradeoff, as we show empirically here.</p><p>A theoretical analysis of the dependency between the dynamic bandit model's characteristics, the resulting rate of optimal arm changes, and SMC posterior convergence guarantees, leading to formal regret bounds for the proposed SMC-based Bayesian policies, is an open research direction.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A SMC-based policies for stationary bandits</head><p>We here apply the proposed SMC-based Bayesian policies as in Algorithm 1 to the original settings where Thompson sampling and Bayes-UCB were derived, i.e., for stationary bandits with Bernoulli and contextual, linear Gaussian reward functions <ref type="bibr" target="#b55">Kaufmann et al. [2012]</ref>; <ref type="bibr" target="#b41">Garivier and Cappé [2011]</ref>; <ref type="bibr" target="#b58">Korda et al. [2013]</ref>; <ref type="bibr">Agrawal and Goyal [2013b]</ref>.</p><p>Empirical results for these bandits is provided in Section A.2, while the stationary logistic bandit case is evaluated in Section A.3, where we also evaluate the impact of sample size M in the SMC-based bandit algorithms.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.1 SMC-based policies for stationary bandits</head><p>In stationary bandits, there are no time-varying parameters, i.e., θ t = θ, ∀t. For these cases, SIR-based parameter propagation becomes troublesome <ref type="bibr" target="#b67">Liu [2001]</ref>. To mitigate such issues, several alternatives have been proposed in the SMC community: e.g., artificial parameter evolution <ref type="bibr" target="#b47">Gordon et al. [1993]</ref>, kernel smoothing <ref type="bibr" target="#b67">Liu [2001]</ref>, and density assisted techniques <ref type="bibr">Djurić et al. [2004]</ref>.</p><p>We implement density assisted SMC, rather than kernel based particle filters as in <ref type="bibr" target="#b20">Cherkassky and Bornn [2013]</ref>, where one approximates the posterior of the unknown parameters with a density of choice. Density assisted importance sampling is a well studied SMC approach that extends random-walking and kernel-based alternatives <ref type="bibr" target="#b47">Gordon et al. [1993]</ref>; <ref type="bibr" target="#b66">Liu and West [2001]</ref>; <ref type="bibr">Djurić et al. [2004]</ref>, with its asymptotic correctness guaranteed for the static parameter case. We acknowledge that any of the SMC techniques that further mitigate the challenges of estimating constant parameters (e.g., parameter smoothing <ref type="bibr" target="#b17">Carvalho et al. [2010]</ref>; <ref type="bibr" target="#b76">Olsson et al. [2006]</ref>; <ref type="bibr" target="#b75">Olsson and Westerborn [2014]</ref> or nested SMC methods <ref type="bibr" target="#b22">Chopin et al. [2011]</ref>; <ref type="bibr" target="#b27">Crisan and Míguez [2013]</ref>) can only improve the accuracy of the implemented SMC-based policies.</p><p>More precisely, we approximate the posterior of the unknown parameters, given the current state of knowledge, with a Gaussian distribution </p><formula xml:id="formula_86">p(θ a |H 1:t ) ≈ N θ a | θt,a , Σθt,a ,<label>(48)</label></formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.2.2 Bernoulli bandits, A=5</head><p>We present below cumulative regret results for different parameterizations of 5-armed Bernoulli bandits.    </p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head></head><label></label><figDesc>Propagate resampled parameters by drawing from the transition density θ (mt+1,a) t+1,a</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head></head><label></label><figDesc>TS (known 2 ) Bayes-UCB (known 2 ) SMC-based Bayes-UCB (known 2 ) (d) Cumulative regret for SMC-based Bayesian policies in scenario B: known dynamic parameters.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: Mean regret (standard deviation shown as shaded region) in contextual, linear Gaussian bandit Scenarios A and B described in Equations (42)-(43), when the bandit agent knows the latent dynamic parameterization. Notice how in Figures1c-1dregret increases when the optimal arms swap (as shown in Figures1a-1b). SMC-based policies successfully find the right exploration-exploitation tradeoff, with minimal additional regret incurred in comparison to their analytical alternatives.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head></head><label></label><figDesc>TS (known dynamics) SMC-based TS (unknown dynamics) SMC-based Bayes-UCB (known dynamics) SMC-based Bayes-UCB (unknown dynamics) (f) Cumulative regret for SMC-based Bayesian policies in scenario B: unknown dynamic parameters La, Σa, σ 2 a , ∀a.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: Mean regret (standard deviation shown as shaded region) in contextual, linear Gaussian bandit Scenarios A and B described in Equations (42)-(43), in the realistic setting of unknown dynamic parameters. Notice how in Figures2c-2fthe regret increases when the optimal arms swap (as shown in Figures2a-2b). SMC-based policies find the right exploration-exploitation tradeoff even when the latent dynamic parameters are unknown.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head></head><label></label><figDesc>TS (known dynamics) SMC-based TS (unknown dynamics) SMC-based Bayes-UCB (known dynamics) SMC-based Bayes-UCB (unknown dynamics) (c) Cumulative regret for SMC-based Bayesian policies in scenario C: known and unknown dynamic parameters. TS (known dynamics) SMC-based TS (unknown dynamics) SMC-based Bayes-UCB (known dynamics) SMC-based Bayes-UCB (unknown dynamics) (d) Cumulative regret for SMC-based Bayesian policies in scenario D: known and unknown dynamic parameters.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: Mean regret (standard deviation shown as shaded region) in contextual linear logistic dynamic bandit Scenarios C and D described in Equations (44)-(45). Notice the difference in early (t ≈ 600 in Scenario C) and late (t ≈ 1650 in Scenario D) optimal arm changes, as illustrated in Figures3a-3b, and their impact in regret, as showcased in Figures3c-3d. SMC-based Bayesian policies adapt and find the right exploration-exploitation tradeoff.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head></head><label></label><figDesc>TS (known dynamics) SMC-based TS (unknown dynamics) SMC-based Bayes-UCB (known dynamics) SMC-based Bayes-UCB (unknown dynamics) (c) Cumulative regret for SMC-based Bayesian policies in scenario E: known and unknown dynamic parameters. TS (known dynamics) SMC-based TS (unknown dynamics) SMC-based Bayes-UCB (known dynamics) SMC-based Bayes-UCB (unknown dynamics) (d) Cumulative regret for SMC-based Bayesian policies in scenario F: known and unknown dynamic parameters.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: Mean regret (standard deviation shown as shaded region) in contextual, nonstationary categorical bandit Scenarios E and F described in Equations (46)-(47). Notice how changes in per-arm expected rewards (t ≈ 1750 in Scenario E and t &gt; 1250 in Scenario F) as illustrated in Figures4a-4bimpact regret as showcased in Figures4c-4d. SMC-based Bayesian policies adapt to these changes and balance the exploration-exploitation tradeoff.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_11"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: Empirical probability of playing each bandit arm over time, for SMC-based dynamic logistic Thompson sampling. The proposed dynamic bandit policy captures the changing popularity of articles over time.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_12"><head>Figure 6 :Figure 7 :Figure 8 :Figure 9 :Figure 10 :Figure 11 :</head><label>67891011</label><figDesc>Figure 6: Mean cumulative regret (standard deviation shown as the shaded region) of Bayesian policies in a stationary two-armed Bernoulli bandit, with θ 0 = 0.1, θ 1 = 0.2.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_13"><head>Figure 12 :Figure 13 :Figure 14 :Figure 15 :Figure 16 :Figure 17 :</head><label>121314151617</label><figDesc>Figure 12: Mean cumulative regret (standard deviation shown as the shaded region) of Bayesian policies in a stationary five-armed Bernoulli bandit: θ 0 = 0.1, θ 1 = 0.2, θ 3 = 0.3, θ 4 = 0.4, θ 5 = 0.5.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_14"><head>Figure 18 :Figure 20 :Figure 21 :Figure 22 :Figure 24 :Figure 25 :</head><label>182021222425</label><figDesc>Figure 18: Mean cumulative regret (standard deviation shown as the shaded region) of Bayesian policies in a stationary, two-armed contextual Gaussian bandit: θ 0 = (-0.1, -0.1), θ 1 = (0.1, 0.1), σ 2 = 0.5.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_15"><head>Figure 26 :</head><label>26</label><figDesc>Figure 26: Mean regret (standard deviation shown as the shaded region) in contextual, linear Gaussian bandit Scenario A described in Equation (42). SMC-based policies' averaged cumulative regret is robust to different Monte Carlo sample sizes M , which impacts mostly the performance variability for M = 500.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_16"><head>Figure 27 :</head><label>27</label><figDesc>Figure 27: Mean regret (standard deviation shown as the shaded region) in contextual, linear Gaussian bandit Scenario B described in Equation (43). SMC-based policies' averaged cumulative regret is robust to different Monte Carlo sample sizes M , which impacts mostly the performance variability for M = 500 -specially so when optimal arm swaps occur later in time.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head></head><label></label><figDesc>≥ 1750 in Figure3d.</figDesc><table><row><cell></cell><cell>Arm 0 Arm 1</cell><cell></cell><cell></cell><cell></cell><cell>Arm 0 Arm 1</cell><cell></cell><cell></cell></row><row><cell>0.8</cell><cell></cell><cell></cell><cell></cell><cell>0.8</cell><cell></cell><cell></cell><cell></cell></row><row><cell>0.6</cell><cell></cell><cell></cell><cell></cell><cell>0.6</cell><cell></cell><cell></cell><cell></cell></row><row><cell>a, t</cell><cell></cell><cell></cell><cell></cell><cell>a, t</cell><cell></cell><cell></cell><cell></cell></row><row><cell>0.4</cell><cell></cell><cell></cell><cell></cell><cell>0.4</cell><cell></cell><cell></cell><cell></cell></row><row><cell>0.2</cell><cell></cell><cell></cell><cell></cell><cell>0.2</cell><cell></cell><cell></cell><cell></cell></row><row><cell>0</cell><cell>250</cell><cell>500</cell><cell>750 1000 1250 1500 1750 t</cell><cell>0</cell><cell>250</cell><cell>500</cell><cell>750 1000 1250 1500 1750 t</cell></row><row><cell cols="4">(a) Expected per-arm rewards over time for</cell><cell cols="4">(b) Expected per-arm rewards over time for</cell></row><row><cell cols="4">Scenario C in Equation (44). Notice the early</cell><cell cols="4">Scenario D in Equation (45). Notice the late</cell></row><row><cell cols="4">optimal arm change at t ≈ 600.</cell><cell cols="4">optimal arm change at t ≈ 1650.</cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1" xml:id="foot_0"><p>We acknowledge that any of the methodological SMC advancements that improve and extend SIR, e.g., advanced SMC algorithms[Merwe et al.,  </p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_1"><p>2001;<ref type="bibr" target="#b5">Andrieu et al., 2010]</ref> or alternative resampling mechanisms<ref type="bibr" target="#b65">[Li et al., 2015]</ref>, are readily applicable to the proposed SMC-based bandit framework, and are likely to have a positive impact on the corresponding SMC-based MAB policies' performance.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2" xml:id="foot_2"><p>Rao-Blackwellization is known to help reduce the degeneracy and variance of SMC estimates<ref type="bibr" target="#b33">[Doucet et al., 2000;</ref><ref type="bibr" target="#b28">Djurić and Bugallo, 2010]</ref>.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="3" xml:id="foot_3"><p>Available at R6A -Yahoo! Front Page Today Module User Click Log Dataset.</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>Acknowledgments</head><p>We thank <rs type="person">Luke Bornn</rs> for bringing [Cherkassky and Bornn, 2013] to our attention, and the reviewers of previous versions of the work, for their valuable insights and suggestions. This research was supported in part by <rs type="funder">NSF</rs> grant <rs type="grantNumber">SCH-1344668</rs>. <rs type="person">Iñigo Urteaga</rs> acknowledges this research is supported by <rs type="funder">"la Caixa</rs>" foundation fellowship <rs type="grantNumber">LCF/BQ/PI22/11910028</rs>, and also by the <rs type="funder">Basque Government</rs> through the <rs type="programName">BERC 2022-2025 program</rs> and by the <rs type="funder">Ministry of Science and Innovation: BCAM Severo Ochoa accreditation</rs> <rs type="grantNumber">CEX2021-001142-S / MICIN / AEI / 10.13039/501100011033</rs>.</p></div>
+<div><head>A.2.3 Contextual Linear Gaussian bandits, A=2</head><p>We present below cumulative regret results for different parameterizations of 2-armed, contextual linear Gaussian bandits.</p></div>
+<div><head>A.2.4 Contextual Linear Gaussian bandits, A=5</head><p>We present below cumulative regret results for different parameterizations of 5-armed, contextual linear Gaussian bandits.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_JdV8GVd">
+					<idno type="grant-number">SCH-1344668</idno>
+				</org>
+				<org type="funding" xml:id="_6U64tyy">
+					<idno type="grant-number">LCF/BQ/PI22/11910028</idno>
+				</org>
+				<org type="funding" xml:id="_BqYBDbX">
+					<orgName type="program" subtype="full">BERC 2022-2025 program</orgName>
+				</org>
+				<org type="funding" xml:id="_CNRqaY9">
+					<idno type="grant-number">CEX2021-001142-S / MICIN / AEI / 10.13039/501100011033</idno>
+				</org>
+			</listOrg>
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.2 Experiments with SMC-based Bayesian policies for Bernoulli and Gaussian stationary bandits</head><p>We provide results for stationary bandits with 2 and 5 arms, for Bernoulli rewards in Sections A.2.1 &amp; A.2.2, and contextual-Gaussian rewards in Sections A.2.3 &amp; A.2.4, respectively. Provided empirical evidence showcases how the proposed SMC-based Bayesian policies perform satisfactorily in both stationary bandit settings. The more realistic assumption of unknown reward variance σ 2 for the contextual, linear Gaussian case is also evaluated, where SMC-based policies are shown to be equally competitive.</p><p>We observe that, as the posterior random measure p M (θ t,a ) becomes more accurate, e.g., for M ≥ 500, SMC-based TS and UCB perform similarly to their counterpart benchmark policies that make use of analytical posteriors.</p><p>We note a increased performance uncertainty due to the SMC posterior random measure, which is empirically reduced by increasing the number M of Monte Carlo samples: we illustrate the impact of sample size M in the provided figures.</p><p>In general, M = 1000 samples suffice in our static bandit experiments for accurate estimation of parameter posteriors. Advanced and dynamic determination of SMC sample size is an active research area, out of the scope of this paper.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.2.1 Bernoulli bandits, A=2</head><p>We present below cumulative regret results for different parameterizations of 2-armed Bernoulli bandits.  of Bayesian policies in a stationary, five-armed contextual Gaussian bandit: θ 0 = (-0.2, -0.2), θ 1 = (-0.1, -0.1), θ 2 = (0, 0), θ 3 = (0.1, 0.1), θ 4 = (0.2, 0.2), σ 2 = 0.5.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.3 Experiments with SMC-based Bayesian policies for logistic stationary bandits</head><p>Results in Sections A.3.1 and A.3.2 demonstrate how SMC-based Thompson sampling and Bayes-UCB achieve successful exploration-exploitation tradeoff, for different parameterizations of stationary logistic bandits. This evidence indicates that the impact of observing context-dependent binary rewards of the played arms is minimal for the proposed SMC-based policies.</p><p>The parameter posterior uncertainty associated with SMC-based estimation is automatically accounted for by both algorithms, as they explore rarely-played arms if the uncertainty is high. However, we observe a slight performance deterioration for SMC-based Bayes-UCB, which we hypothesize is related to the quantile value used (α t ∝ 1/t). This decay rate was justified by <ref type="bibr" target="#b55">Kaufmann Kaufmann et al. [2012]</ref> for Bernoulli rewards, but might not be optimal for other reward functions and, more importantly, for the SMC-based parameter posterior random measures.</p><p>On the contrary, Thompson sampling automatically adjusts to the uncertainty of the posterior random measure without extra hyperparameter search or tuning, and attains reduced regret.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.3.1 Contextual logistic bandits, A=2</head><p>We present below cumulative regret results for different parameterizations of 2-armed, contextual logistic bandits.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A.3.2 Contextual logistic bandits, A=5</head><p>We present below cumulative regret results for different parameterizations of 5-armed, contextual logistic bandits. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B SMC-based policies in non-stationary bandits</head><p>We provide additional results below to assess the impact of different Monte Carlo sample size M in SMC-based bandit policies, across the studied non-stationary environments.</p><p>B.1 Non-stationary, linear Gaussian rewards</p><p>We assess the impact of Monte Carlo sample size M in the performance of the proposed SMC-based Bayesian MAB policies: In Figure <ref type="figure">26</ref>, we present results for Scenario A defined by Equation ( <ref type="formula">42</ref>), for a realization of expected rewards as depicted in Figure <ref type="figure">1a</ref>; In Figure <ref type="figure">27</ref>, we present results for Scenario B defined by Equation ( <ref type="formula">43</ref>), with a realization of expected rewards as depicted in Figure <ref type="figure">1b</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B.2 Non-stationary, logistic rewards</head><p>We assess in Figure <ref type="figure">28</ref> the impact of Monte Carlo sample size M in the performance of the proposed SMC-based Bayesian MAB policies in Scenario C defined by Equation ( <ref type="formula">44</ref>), for a realization of expected rewards as depicted in Figure <ref type="figure">3a</ref>.  We assess in Figure <ref type="figure">29</ref> the impact of Monte Carlo sample size M in the performance of the proposed SMC-based Bayesian MAB policies in Scenario D defined by Equation ( <ref type="formula">44</ref>), for a realization of expected rewards as depicted in Figure <ref type="figure">3b</ref>.   <ref type="formula">45</ref>). SMC-based policies' averaged cumulative regret is robust to different Monte Carlo sample sizes M , which impacts mostly the performance variability for M = 500 -specially so when optimal arm swaps occur later in time.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B.3 Non-stationary, categorical rewards</head><p>We assess below the impact of Monte Carlo sample size M in the performance of the proposed SMC-based Bayesian MAB policies in Scenario E defined by Equation ( <ref type="formula">46</ref>), for a realization of expected rewards as depicted in Figure <ref type="figure">4a</ref>.  We assess below the impact of Monte Carlo sample size M in the performance of the proposed SMC-based Bayesian MAB policies in Scenario F defined by Equation ( <ref type="formula">47</ref>), for a realization of expected rewards as depicted in Figure <ref type="figure">4b</ref>.  </p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Improved Algorithms for Linear Stochastic Bandits</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Abbasi-Yadkori</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Pál</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Szepesvári</surname></persName>
+		</author>
+		<ptr target="https://papers.nips.cc/paper/4417-improved-algorithms-for-linear-stochastic-bandits" />
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Neural Information Processing Systems</title>
+		<editor>
+			<persName><forename type="first">J</forename><surname>Shawe-Taylor</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">R</forename><forename type="middle">S</forename><surname>Zemel</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">P</forename><forename type="middle">L</forename><surname>Bartlett</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">F</forename><surname>Pereira</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">K</forename><forename type="middle">Q</forename><surname>Weinberger</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>Curran Associates, Inc</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="volume">24</biblScope>
+			<biblScope unit="page" from="2312" to="2320" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Computational Advertising: The Linkedin Way</title>
+		<author>
+			<persName><forename type="first">D</forename></persName>
+		</author>
+		<idno type="DOI">10.1145/2505515.2514690</idno>
+		<ptr target="http://doi.acm.org/10.1145/2505515.2514690" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 22Nd ACM International Conference on Information &amp; Knowledge Management, CIKM &apos;13</title>
+		<meeting>the 22Nd ACM International Conference on Information &amp; Knowledge Management, CIKM &apos;13<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="1585" to="1586" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Analysis of Thompson Sampling for the multi-armed bandit problem</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Agrawal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Goyal</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Conference on Learning Theory</title>
+		<imprint>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="page" from="39" to="40" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Further Optimal Regret Bounds for Thompson Sampling</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Agrawal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Goyal</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Artificial Intelligence and Statistics</title>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="99" to="107" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Thompson Sampling for Contextual Bandits with Linear Payoffs</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Agrawal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Goyal</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Machine Learning</title>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="page" from="127" to="135" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Particle markov chain monte carlo methods</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Andrieu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Doucet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Holenstein</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the Royal Statistical Society: Series B (Statistical Methodology)</title>
+		<imprint>
+			<biblScope unit="volume">72</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="269" to="342" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">A tutorial on particle filters for online nonlinear/non-Gaussian Bayesian tracking. Signal Processing</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">S</forename><surname>Arulampalam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Maskell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Gordon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Clapp</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on</title>
+		<idno type="ISSN">1053-587X</idno>
+		<imprint>
+			<biblScope unit="volume">50</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="174" to="188" />
+			<date type="published" when="2002-02">2 2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Finite-time Analysis of the Multiarmed Bandit Problem</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Auer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Cesa-Bianchi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Fischer</surname></persName>
+		</author>
+		<idno type="DOI">10.1023/A:1013689704352</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Machine Learning</title>
+		<imprint>
+			<date type="published" when="2002-05">May 2002</date>
+			<biblScope unit="volume">47</biblScope>
+			<biblScope unit="page" from="235" to="256" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">The Nonstochastic Multiarmed Bandit Problem</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Auer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Cesa-Bianchi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Freund</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">E</forename><surname>Schapire</surname></persName>
+		</author>
+		<idno type="DOI">10.1137/S0097539701398375</idno>
+		<ptr target="https://doi.org/10.1137/S0097539701398375" />
+	</analytic>
+	<monogr>
+		<title level="j">SIAM Journal on Computing</title>
+		<imprint>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="48" to="77" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Bayesian Mixture Modelling and Inference based Thompson Sampling in Monte-Carlo Tree Search</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Bai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chen</surname></persName>
+		</author>
+		<ptr target="https://proceedings.neurips.cc/paper_files/paper/2013/hash/846" />
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Neural Information Processing Systems</title>
+		<editor>
+			<persName><forename type="first">C</forename><forename type="middle">J C</forename><surname>Burges</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">L</forename><surname>Bottou</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Welling</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Z</forename><surname>Ghahramani</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">K</forename><forename type="middle">Q</forename><surname>Weinberger</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>Curran Associates, Inc</publisher>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="volume">26</biblScope>
+			<biblScope unit="page" from="1646" to="1654" />
+		</imprint>
+	</monogr>
+	<note>c260d715e5b854ffad5f70a516c88-Abstract.html</note>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Stochastic multi-armed-bandit problem with nonstationary rewards</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Besbes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Gur</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Zeevi</surname></persName>
+		</author>
+		<ptr target="http://papers.nips.cc/paper/5378-stochastic-multi-armed-bandit-problem-with-non-stationary-rewards" />
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Neural Information Processing Systems</title>
+		<editor>
+			<persName><forename type="first">Z</forename><surname>Ghahramani</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Welling</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">C</forename><surname>Cortes</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">N</forename><forename type="middle">D</forename><surname>Lawrence</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">K</forename><forename type="middle">Q</forename><surname>Weinberger</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>Curran Associates, Inc</publisher>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="volume">27</biblScope>
+			<biblScope unit="page" from="199" to="207" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Weight Uncertainty in Neural Networks</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Blundell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Cornebise</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Kavukcuoglu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Wierstra</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 32Nd International Conference on International Conference on Machine Learning</title>
+		<meeting>the 32Nd International Conference on International Conference on Machine Learning</meeting>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="volume">37</biblScope>
+			<biblScope unit="page" from="1613" to="1622" />
+		</imprint>
+	</monogr>
+	<note>ICML&apos;15</note>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Time-Varying Gaussian Process Bandit Optimization</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Bogunovic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Scarlett</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Cevher</surname></persName>
+		</author>
+		<ptr target="https://proceedings.mlr.press/v51/bogunovic16.html" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 19th International Conference on Artificial Intelligence and Statistics</title>
+		<editor>
+			<persName><forename type="first">A</forename><surname>Gretton</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">C</forename><forename type="middle">C</forename><surname>Robert</surname></persName>
+		</editor>
+		<meeting>the 19th International Conference on Artificial Intelligence and Statistics<address><addrLine>Cadiz, Spain</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2016-05">May 2016</date>
+			<biblScope unit="volume">51</biblScope>
+			<biblScope unit="page" from="9" to="11" />
+		</imprint>
+	</monogr>
+	<note>Proceedings of Machine Learning Research</note>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<monogr>
+		<title level="m" type="main">Time Series Analysis: Forecasting and Control. Holden-Day series in time series analysis and digital processing</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Box</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Jenkins</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1976">1976</date>
+			<pubPlace>Holden-Day</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Optimal learning and experimentation in bandit problems</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Brezzi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">L</forename><surname>Lai</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/S0165-1889(01)00028-8</idno>
+		<ptr target="https://doi.org/10.1016/S0165-1889(01)00028-8" />
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Economic Dynamics and Control</title>
+		<idno type="ISSN">0165-1889</idno>
+		<imprint>
+			<biblScope unit="volume">27</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="87" to="108" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<monogr>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Brockwell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">A</forename><surname>Davis</surname></persName>
+		</author>
+		<title level="m">Time Series: Theory and Methods. Springer Series in Statistics</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="1991">1991</date>
+			<biblScope unit="page">9781441903198</biblScope>
+		</imprint>
+	</monogr>
+	<note>2nd edition</note>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Regret analysis of stochastic and nonstochastic multi-armed bandit problems</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Bubeck</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Cesa-Bianchi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Foundations and Trends® in Machine Learning</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1" to="122" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">M</forename><surname>Carvalho</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">S</forename><surname>Johannes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">F</forename><surname>Lopes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">G</forename><surname>Polson</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Particle Learning and Smoothing. Statist. Sci</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="88" to="106" />
+			<date type="published" when="2010-02">02 2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<monogr>
+		<title level="m" type="main">An Empirical Evaluation of Thompson Sampling</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Chapelle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Li</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<monogr>
+		<author>
+			<persName><forename type="first">In</forename><forename type="middle">J</forename><surname>Shawe-Taylor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">S</forename><surname>Zemel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">L</forename><surname>Bartlett</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Pereira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">Q</forename><surname>Weinberger</surname></persName>
+		</author>
+		<ptr target="https://papers.nips.cc/paper/4321-an-empirical-evaluation-of-thompson-sampling" />
+		<title level="m">Advances in Neural Information Processing Systems</title>
+		<imprint>
+			<publisher>Curran Associates, Inc</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="volume">24</biblScope>
+			<biblScope unit="page" from="2249" to="2257" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<monogr>
+		<title level="m" type="main">Sequential Monte Carlo Bandits</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Cherkassky</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Bornn</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2013-10">Oct. 2013</date>
+		</imprint>
+	</monogr>
+	<note>ArXiv e-prints</note>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Central Limit Theorem for Sequential Monte Carlo Methods and Its Application to Bayesian Inference</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Chopin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Annals of Statistics</title>
+		<idno type="ISSN">00905364</idno>
+		<imprint>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="2385" to="2411" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<monogr>
+		<title level="m" type="main">SMC 2 : an efficient algorithm for sequential analysis of state-space models</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Chopin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">E</forename><surname>Jacob</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Papaspiliopoulos</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1101.1528</idno>
+		<ptr target="https://arxiv.org/abs/1101.1528" />
+		<imprint>
+			<date type="published" when="2011-01">Jan. 2011</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">A Case Study of Behavior-driven Conjoint Analysis on Yahoo!: Front Page Today Module</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Chu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S.-T</forename><surname>Park</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Beaupre</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Motgi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Phadke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Chakraborty</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zachariah</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/1557019.1557138</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 15th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, KDD &apos;09</title>
+		<meeting>the 15th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, KDD &apos;09<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="1097" to="1104" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Contextual Bandits with Linear Payoff Functions</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Chu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Reyzin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Schapire</surname></persName>
+		</author>
+		<ptr target="http://proceedings.mlr.press/v15/chu11a.html" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Fourteenth International Conference on Artificial Intelligence and Statistics</title>
+		<editor>
+			<persName><forename type="first">G</forename><surname>Gordon</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">D</forename><surname>Dunson</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Dudík</surname></persName>
+		</editor>
+		<meeting>the Fourteenth International Conference on Artificial Intelligence and Statistics<address><addrLine>Fort Lauderdale, FL, USA</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2011-04">Apr 2011</date>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page" from="11" to="13" />
+		</imprint>
+	</monogr>
+	<note>Proceedings of Machine Learning Research</note>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">A Survey of Sequential Monte Carlo Methods for</title>
+		<author>
+			<persName><forename type="first">D</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Economics and Finance. Econometric Reviews</title>
+		<imprint>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="245" to="296" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">A survey of convergence results on particle filtering methods for practitioners</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Crisan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Doucet</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/78.984773</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Signal Processing</title>
+		<imprint>
+			<biblScope unit="volume">50</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="736" to="746" />
+			<date type="published" when="2002-03">Mar 2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<monogr>
+		<title level="m" type="main">Nested particle filters for online parameter estimation in discretetime state-space Markov models</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Crisan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Míguez</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1308.1883</idno>
+		<ptr target="https://arxiv.org/abs/1308.1883" />
+		<imprint>
+			<date type="published" when="2013-08">Aug 2013</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<monogr>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">M</forename><surname>Djurić</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Bugallo</surname></persName>
+		</author>
+		<idno type="DOI">10.1002/9780470575758.ch5</idno>
+		<title level="m">Particle Filtering, chapter 5</title>
+		<imprint>
+			<publisher>Wiley-Blackwell</publisher>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="271" to="331" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Particle Filtering</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">M</forename><surname>Djurić</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">H</forename><surname>Kotecha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Ghirmai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Bugallo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Míguez</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Signal Processing Magazine</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="19" to="38" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Density assisted particle filters for state and parameter estimation</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">M</forename><surname>Djurić</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Bugallo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Míguez</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/ICASSP.2004.1326354</idno>
+	</analytic>
+	<monogr>
+		<title level="m">2004 IEEE International Conference on Acoustics, Speech, and Signal Processing</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page">2004</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<monogr>
+		<title level="m" type="main">On the Performance of Thompson Sampling on Logistic Bandits</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Dong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">V</forename><surname>Roy</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<monogr>
+		<idno>PMLR</idno>
+		<ptr target="https://proceedings.mlr.press/v99/dong19a.html" />
+		<title level="m">Proceedings of the Thirty-Second Conference on Learning Theory</title>
+		<editor>
+			<persName><forename type="first">A</forename><surname>Beygelzimer</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">D</forename><surname>Hsu</surname></persName>
+		</editor>
+		<meeting>the Thirty-Second Conference on Learning Theory</meeting>
+		<imprint>
+			<date type="published" when="2019-06-28">25-28 Jun 2019</date>
+			<biblScope unit="volume">99</biblScope>
+			<biblScope unit="page" from="1158" to="1160" />
+		</imprint>
+	</monogr>
+	<note>Proceedings of Machine Learning Research</note>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Rao-Blackwellised Particle Filtering for Dynamic Bayesian Networks</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Doucet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Freitas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">P</forename><surname>Murphy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">J</forename><surname>Russell</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 16th Conference on Uncertainty in Artificial Intelligence, UAI &apos;00</title>
+		<meeting>the 16th Conference on Uncertainty in Artificial Intelligence, UAI &apos;00<address><addrLine>San Francisco, CA, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Morgan Kaufmann Publishers Inc</publisher>
+			<date type="published" when="2000">2000</date>
+			<biblScope unit="page" from="176" to="183" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<monogr>
+		<author>
+			<persName><forename type="first">A</forename><surname>Doucet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">D</forename><surname>Freitas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Gordon</surname></persName>
+		</author>
+		<title level="m">Sequential Monte Carlo Methods in Practice</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">PG-TS: Improved Thompson Sampling for Logistic Contextual Bandits</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Dumitrascu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Engelhardt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">;</forename><forename type="middle">S</forename><surname>Bengio</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Wallach</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Larochelle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Grauman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Cesa-Bianchi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Garnett</surname></persName>
+		</author>
+		<ptr target="https://proceedings.neurips.cc/paper_files/paper/2018/hash" />
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Neural Information Processing Systems 31</title>
+		<imprint>
+			<publisher>Curran Associates, Inc</publisher>
+			<date type="published" when="2018">2018</date>
+			<biblScope unit="page" from="4629" to="4638" />
+		</imprint>
+	</monogr>
+	<note>d297e263c7180f03d402-Abstract.html</note>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<monogr>
+		<author>
+			<persName><forename type="first">J</forename><surname>Durbin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">J</forename><surname>Koopman</surname></persName>
+		</author>
+		<title level="m">Time Series Analysis by State-Space Methods. Oxford Statistical Science Series</title>
+		<imprint>
+			<publisher>Oxford University Press</publisher>
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<monogr>
+		<author>
+			<persName><forename type="first">J</forename><surname>Durbin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">J</forename><surname>Koopman</surname></persName>
+		</author>
+		<title level="m">Time Series Analysis by State-Space Methods: Second Edition. Oxford Statistical Science Series</title>
+		<imprint>
+			<publisher>Oxford University Press</publisher>
+			<date type="published" when="2012">2012. ISBN 9780199641178</date>
+		</imprint>
+	</monogr>
+	<note>2 edition</note>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Bootstrap Thompson Sampling and Sequential Decision Problems in the Behavioral Sciences</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Eckles</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Kaptein</surname></persName>
+		</author>
+		<idno type="DOI">10.1177/2158244019851675</idno>
+		<ptr target="https://doi.org/10.1177/2158244019851675" />
+	</analytic>
+	<monogr>
+		<title level="j">SAGE Open</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page">2158244019851675</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Improved optimistic algorithms for logistic bandits</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Faury</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Abeille</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Calauzènes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Fercoq</surname></persName>
+		</author>
+		<idno>PMLR</idno>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Machine Learning</title>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="3052" to="3060" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Online Network Revenue Management Using Thompson Sampling</title>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">J</forename><surname>Ferreira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Simchi-Levi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Wang</surname></persName>
+		</author>
+		<idno type="DOI">10.1287/opre.2018.1755</idno>
+		<ptr target="https://doi.org/10.1287/opre.2018.1755" />
+	</analytic>
+	<monogr>
+		<title level="j">Operations Research</title>
+		<imprint>
+			<biblScope unit="volume">66</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="1586" to="1602" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">The KL-UCB Algorithm for Bounded Stochastic Bandits and Beyond</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Garivier</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Cappé</surname></persName>
+		</author>
+		<ptr target="http://proceedings.mlr.press/v19/garivier11a.html" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 24th Annual Conference on Learning Theory</title>
+		<editor>
+			<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Kakade</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">U</forename><surname>Luxburg</surname></persName>
+		</editor>
+		<meeting>the 24th Annual Conference on Learning Theory<address><addrLine>Budapest, Hungary</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2011-06">Jun 2011</date>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="page" from="9" to="11" />
+		</imprint>
+	</monogr>
+	<note>Proceedings of Machine Learning Research</note>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">On upper-confidence bound policies for switching bandit problems</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Garivier</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Moulines</surname></persName>
+		</author>
+		<ptr target="http://dl.acm.org/citation.cfm?id=2050345.2050365" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 22Nd International Conference on Algorithmic Learning Theory, ALT&apos;11</title>
+		<meeting>the 22Nd International Conference on Algorithmic Learning Theory, ALT&apos;11<address><addrLine>Berlin, Heidelberg</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer-Verlag</publisher>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="page" from="174" to="188" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Bayesian-Estimation in multivariate analysis</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Geisser</surname></persName>
+		</author>
+		<idno type="DOI">10.1214/aoms/1177700279</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Annals of American Statistics</title>
+		<idno type="ISSN">0003-4851</idno>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="150" to="159" />
+			<date type="published" when="1965">1965</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Posterior Distributions for Multivariate Normal Parameters</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Geisser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Cornfield</surname></persName>
+		</author>
+		<ptr target="http://www.jstor.org/stable/2984304" />
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the Royal Statistical Society. Series B (Methodological)</title>
+		<idno type="ISSN">00359246</idno>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="368" to="376" />
+			<date type="published" when="1963">1963</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Bandit Processes and Dynamic Allocation Indices</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">C</forename><surname>Gittins</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the Royal Statistical Society. Series B (Methodological)</title>
+		<idno type="ISSN">00359246</idno>
+		<imprint>
+			<biblScope unit="volume">41</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="148" to="177" />
+			<date type="published" when="1979">1979</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Thompson Sampling for Complex Online Problems</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Gopalan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Mannor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Mansour</surname></persName>
+		</author>
+		<ptr target="http://proceedings.mlr.press/v32/gopalan14.html" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 31st International Conference on Machine Learning</title>
+		<editor>
+			<persName><forename type="first">E</forename><forename type="middle">P</forename><surname>Xing</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">T</forename><surname>Jebara</surname></persName>
+		</editor>
+		<meeting>the 31st International Conference on Machine Learning<address><addrLine>Bejing, China</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2014-06">Jun 2014</date>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="page" from="22" to="24" />
+		</imprint>
+	</monogr>
+	<note>Proceedings of Machine Learning Research</note>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Novel approach to nonlinear/non-Gaussian Bayesian state estimation. Radar and Signal Processing</title>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">J</forename><surname>Gordon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Salmond</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Smith</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Proceedings</title>
+		<idno type="ISSN">0956-375X</idno>
+		<imprint>
+			<biblScope unit="volume">140</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="107" to="113" />
+			<date type="published" when="1993">1993</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">An efficient bandit algorithm for realtime multivariate optimization</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">N</forename><surname>Hill</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Nassif</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Iyer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Vishwanathan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</title>
+		<meeting>the 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="1813" to="1821" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Inference for nonlinear dynamical systems</title>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">L</forename><surname>Ionides</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Bretó</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">A</forename><surname>King</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Proceedings of the National Academy of Sciences</title>
+		<imprint>
+			<biblScope unit="volume">103</biblScope>
+			<biblScope unit="issue">49</biblScope>
+			<biblScope unit="page" from="18438" to="18443" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Regret Bounds for Thompson Sampling in Episodic Restless Bandit Problems</title>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">H</forename><surname>Jung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tewari</surname></persName>
+		</author>
+		<ptr target="https://proceedings.neurips.cc/paper_files/paper/2019/hash/" />
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Neural Information Processing Systems</title>
+		<editor>
+			<persName><forename type="first">H</forename><surname>Wallach</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">H</forename><surname>Larochelle</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">A</forename><surname>Beygelzimer</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">F</forename><surname>Alché-Buc</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">E</forename><surname>Fox</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">R</forename><surname>Garnett</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>Curran Associates, Inc</publisher>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="volume">32</biblScope>
+		</imprint>
+	</monogr>
+	<note>2edfeadfe636973b42d7b6ac315b896c-Abstract.html</note>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<monogr>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">H</forename><surname>Jung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Abeille</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tewari</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1910.05654</idno>
+		<ptr target="https://arxiv.org/abs/1910.05654" />
+		<title level="m">Thompson sampling in non-episodic restless bandits</title>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">A New Approach to Linear Filtering and Prediction Problems</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">E</forename><surname>Kalman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Transactions of the ASME-Journal of Basic Engineering</title>
+		<imprint>
+			<biblScope unit="volume">82</biblScope>
+			<biblScope unit="page" from="35" to="45" />
+			<date type="published" when="1960">1960</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Parallelised Bayesian Optimisation via Thompson Sampling</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Kandasamy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Krishnamurthy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Schneider</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Poczos</surname></persName>
+		</author>
+		<ptr target="http://proceedings.mlr.press/v84/kandasamy18a.html" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Twenty-First International Conference on Artificial Intelligence and Statistics</title>
+		<editor>
+			<persName><forename type="first">A</forename><surname>Storkey</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">F</forename><surname>Perez-Cruz</surname></persName>
+		</editor>
+		<meeting>the Twenty-First International Conference on Artificial Intelligence and Statistics<address><addrLine>Playa Blanca, Lanzarote, Canary Islands</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2018-04">Apr 2018</date>
+			<biblScope unit="volume">84</biblScope>
+			<biblScope unit="page" from="9" to="11" />
+		</imprint>
+	</monogr>
+	<note>Proceedings of Machine Learning Research</note>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">On particle methods for parameter estimation in state-space models</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Kantas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Doucet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">S</forename><surname>Singh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Maciejowski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Chopin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Statistical science</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="328" to="351" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title level="a" type="main">On Bayesian Upper Confidence Bounds for Bandit Problems</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Kaufmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Cappe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Garivier</surname></persName>
+		</author>
+		<idno>PMLR</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Fifteenth International Conference on Artificial Intelligence and Statistics</title>
+		<editor>
+			<persName><forename type="first">N</forename><forename type="middle">D</forename><surname>Lawrence</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Girolami</surname></persName>
+		</editor>
+		<meeting>the Fifteenth International Conference on Artificial Intelligence and Statistics<address><addrLine>La Palma, Canary Islands</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2012-04">Apr 2012</date>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page" from="21" to="23" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">Efficient Thompson Sampling for Online Matrix-Factorization Recommendation</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kawale</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">H</forename><surname>Bui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Kveton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Tran-Thanh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Chawla</surname></persName>
+		</author>
+		<ptr target="https://proceedings.neurips.cc/paper_files/paper/2015/hash/846" />
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Neural Information Processing Systems</title>
+		<editor>
+			<persName><forename type="first">C</forename><surname>Cortes</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">N</forename><forename type="middle">D</forename><surname>Lawrence</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">D</forename><forename type="middle">D</forename><surname>Lee</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Sugiyama</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">R</forename><surname>Garnett</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>Curran Associates, Inc</publisher>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="volume">28</biblScope>
+			<biblScope unit="page" from="1297" to="1305" />
+		</imprint>
+	</monogr>
+	<note>c260d715e5b854ffad5f70a516c88-Abstract.html</note>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<analytic>
+		<title level="a" type="main">Variational Dropout and the Local Reparameterization Trick</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">P</forename><surname>Kingma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Salimans</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Welling</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Neural Information Processing Systems</title>
+		<editor>
+			<persName><forename type="first">C</forename><surname>Cortes</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">N</forename><forename type="middle">D</forename><surname>Lawrence</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">D</forename><forename type="middle">D</forename><surname>Lee</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Sugiyama</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">R</forename><surname>Garnett</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>Curran Associates, Inc</publisher>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="volume">28</biblScope>
+			<biblScope unit="page" from="2575" to="2583" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<analytic>
+		<title level="a" type="main">Thompson Sampling for 1-Dimensional Exponential Family Bandits</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Korda</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Kaufmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Munos</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Neural Information Processing Systems</title>
+		<editor>
+			<persName><forename type="first">C</forename><forename type="middle">J C</forename><surname>Burges</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">L</forename><surname>Bottou</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Welling</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">Z</forename><surname>Ghahramani</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">K</forename><forename type="middle">Q</forename><surname>Weinberger</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>Curran Associates, Inc</publisher>
+			<date type="published" when="2013">2013</date>
+			<biblScope unit="volume">26</biblScope>
+			<biblScope unit="page" from="1448" to="1456" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<analytic>
+		<title level="a" type="main">Adaptive Treatment Allocation and the Multi-Armed Bandit Problem</title>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">L</forename><surname>Lai</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Annals of Statistics</title>
+		<idno type="ISSN">00905364</idno>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="1091" to="1114" />
+			<date type="published" when="1987">1987</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<analytic>
+		<title level="a" type="main">Asymptotically Efficient Adaptive Allocation Rules</title>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">L</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Robbins</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/0196-8858(85)90002-8</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Advances in Applied Mathematics</title>
+		<idno type="ISSN">0196-8858</idno>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="4" to="22" />
+			<date type="published" when="1985-03">mar 1985</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b61">
+	<monogr>
+		<title level="m" type="main">Bandit algorithms</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lattimore</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Szepesvári</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+			<publisher>Cambridge University Press</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b62">
+	<analytic>
+		<title level="a" type="main">Preconditioned Stochastic Gradient Langevin Dynamics for Deep Neural Networks</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Carlson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Carin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Thirtieth AAAI Conference on Artificial Intelligence, AAAI&apos;16</title>
+		<meeting>the Thirtieth AAAI Conference on Artificial Intelligence, AAAI&apos;16</meeting>
+		<imprint>
+			<publisher>AAAI Press</publisher>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="page" from="1788" to="1794" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b63">
+	<monogr>
+		<author>
+			<persName><forename type="first">L</forename><surname>Li</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1310.7163</idno>
+		<ptr target="https://arxiv.org/abs/1310.7163" />
+		<title level="m">Generalized Thompson Sampling for Contextual Bandits</title>
+		<imprint>
+			<date type="published" when="2013-10">Oct. 2013</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b64">
+	<analytic>
+		<title level="a" type="main">A Contextual-Bandit Approach to Personalized News Article Recommendation</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Chu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Langford</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">E</forename><surname>Schapire</surname></persName>
+		</author>
+		<idno>abs/1003.0146</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 19th international conference on World wide web</title>
+		<meeting>the 19th international conference on World wide web</meeting>
+		<imprint>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="661" to="670" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b65">
+	<analytic>
+		<author>
+			<persName><forename type="first">T</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bolić</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">M</forename><surname>Djurić</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Resampling Methods for Particle Filtering: Classification, implementation, and strategies. Signal Processing Magazine</title>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="page" from="70" to="86" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b66">
+	<monogr>
+		<title level="m" type="main">Combined Parameter and State Estimation in Simulation-Based Filtering</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>West</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/978-1-4757-3437-9_10</idno>
+		<imprint>
+			<date type="published" when="2001">2001</date>
+			<publisher>Springer</publisher>
+			<biblScope unit="page" from="197" to="223" />
+			<pubPlace>New York, New York, NY</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b67">
+	<analytic>
+		<title level="a" type="main">Monte Carlo Strategies in Scientific Computing</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">S</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Springer Series in Statistics</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b68">
+	<analytic>
+		<title level="a" type="main">Ensemble sampling</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">V</forename><surname>Roy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Neural Information Processing Systems</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="3258" to="3266" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b69">
+	<analytic>
+		<title level="a" type="main">Efficient Contextual Bandits in Nonstationary Worlds</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C.-Y</forename><surname>Wei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Agarwal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Langford</surname></persName>
+		</author>
+		<idno>PMLR</idno>
+		<ptr target="https://proceedings.mlr.press/v75/luo18a.html" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 31st Conference On Learning Theory</title>
+		<editor>
+			<persName><forename type="first">S</forename><surname>Bubeck</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">V</forename><surname>Perchet</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">P</forename><surname>Rigollet</surname></persName>
+		</editor>
+		<meeting>the 31st Conference On Learning Theory</meeting>
+		<imprint>
+			<date type="published" when="2018-07">Jul 2018</date>
+			<biblScope unit="volume">75</biblScope>
+			<biblScope unit="page" from="6" to="09" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b70">
+	<analytic>
+		<title level="a" type="main">A Particle Filtering Scheme for Processing Time Series Corrupted by Outliers</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">S</forename><surname>Maiz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">M</forename><surname>Molanes-Lopez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Miguez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">M</forename><surname>Djuric</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/TSP.2012.2200480</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Transactions on Signal Processing</title>
+		<imprint>
+			<biblScope unit="volume">60</biblScope>
+			<biblScope unit="issue">9</biblScope>
+			<biblScope unit="page" from="4611" to="4627" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b71">
+	<analytic>
+		<title level="a" type="main">Thompson Sampling in Switching Environments with Bayesian Online Change Detection</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Mellor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Shapiro</surname></persName>
+		</author>
+		<ptr target="http://proceedings.mlr.press/v31/mellor13a.html" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Sixteenth International Conference on Artificial Intelligence and Statistics</title>
+		<editor>
+			<persName><forename type="first">C</forename><forename type="middle">M</forename><surname>Carvalho</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">P</forename><surname>Ravikumar</surname></persName>
+		</editor>
+		<meeting>the Sixteenth International Conference on Artificial Intelligence and Statistics<address><addrLine>Scottsdale, Arizona, USA</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2013-05-01">29 Apr-01 May 2013</date>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="page" from="442" to="450" />
+		</imprint>
+	</monogr>
+	<note>of Proceedings of Machine Learning Research</note>
+</biblStruct>
+
+<biblStruct xml:id="b72">
+	<analytic>
+		<title level="a" type="main">The unscented particle filter</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">V D</forename><surname>Merwe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Doucet</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">D</forename><surname>Freitas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">A</forename><surname>Wan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in neural information processing systems</title>
+		<imprint>
+			<date type="published" when="2001">2001</date>
+			<biblScope unit="page" from="584" to="590" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b73">
+	<analytic>
+		<title level="a" type="main">Human-level control through deep reinforcement learning</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Mnih</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Kavukcuoglu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Silver</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">A</forename><surname>Rusu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Veness</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">G</forename><surname>Bellemare</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Graves</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Riedmiller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">K</forename><surname>Fidjeland</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Ostrovski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Petersen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Beattie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sadik</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Antonoglou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>King</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Kumaran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Wierstra</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Legg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Hassabis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">nature</title>
+		<imprint>
+			<biblScope unit="volume">518</biblScope>
+			<biblScope unit="issue">7540</biblScope>
+			<biblScope unit="page" from="529" to="533" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b74">
+	<monogr>
+		<title level="m" type="main">Artwork Personalization at Netflix. medium.com</title>
+		<author>
+			<persName><surname>Netflix</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2017-12">December 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b75">
+	<monogr>
+		<title level="m" type="main">Efficient particle-based online smoothing in general hidden Markov models: the PaRIS algorithm</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Olsson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Westerborn</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1412.7550</idno>
+		<ptr target="https://arxiv.org/abs/1412.7550" />
+		<imprint>
+			<date type="published" when="2014-12">Dec 2014</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b76">
+	<monogr>
+		<title level="m" type="main">Sequential Monte Carlo smoothing with application to parameter estimation in non-linear state space models</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Olsson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Cappé</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Douc</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Moulines</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:math/0609514</idno>
+		<ptr target="https://arxiv.org/abs/math/0609514" />
+		<imprint>
+			<date type="published" when="2006-09">Sep 2006</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b77">
+	<monogr>
+		<title level="m" type="main">Bootstrapped Thompson sampling and deep exploration</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Osband</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">V</forename><surname>Roy</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1507.00300</idno>
+		<ptr target="https://arxiv.org/abs/1507.00300" />
+		<imprint>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b78">
+	<analytic>
+		<title level="a" type="main">Deep Exploration via Bootstrapped DQN</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Osband</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Blundell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Pritzel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">V</forename><surname>Roy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Neural Information Processing Systems</title>
+		<editor>
+			<persName><forename type="first">D</forename><forename type="middle">D</forename><surname>Lee</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Sugiyama</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">U</forename><forename type="middle">V</forename><surname>Luxburg</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">I</forename><surname>Guyon</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">R</forename><surname>Garnett</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>Curran Associates, Inc</publisher>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="volume">29</biblScope>
+			<biblScope unit="page" from="4026" to="4034" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b79">
+	<monogr>
+		<author>
+			<persName><forename type="first">V</forename><surname>Raj</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Kalyani</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1707.09727</idno>
+		<ptr target="https://arxiv.org/abs/1707.09727" />
+		<title level="m">Taming non-stationary bandits: A bayesian approach</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b80">
+	<analytic>
+		<title level="a" type="main">Deep Bayesian Bandits Showdown: An Empirical Comparison of Bayesian Deep Networks for Thompson Sampling</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Riquelme</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Tucker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Snoek</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">International Conference on Learning Representations</title>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b81">
+	<monogr>
+		<title level="m" type="main">Beyond the Kalman Filter: Particle Filters for Tracking Applications</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Ristic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Arulampalam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Gordon</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2004">2004</date>
+			<publisher>Artech House</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b82">
+	<analytic>
+		<title level="a" type="main">Some aspects of the sequential design of experiments</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Robbins</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Bulletin of the American Mathematical Society</title>
+		<imprint>
+			<biblScope unit="issue">58</biblScope>
+			<biblScope unit="page" from="527" to="535" />
+			<date type="published" when="1952">1952</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b83">
+	<analytic>
+		<title level="a" type="main">Learning to optimize via posterior sampling</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Russo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">V</forename><surname>Roy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Mathematics of Operations Research</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="1221" to="1243" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b84">
+	<analytic>
+		<title level="a" type="main">An information-theoretic analysis of Thompson sampling</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Russo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">V</forename><surname>Roy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Journal of Machine Learning Research</title>
+		<imprint>
+			<biblScope unit="volume">17</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="2442" to="2471" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b85">
+	<analytic>
+		<title level="a" type="main">A Tutorial on Thompson Sampling</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">J</forename><surname>Russo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">V</forename><surname>Roy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kazerouni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Osband</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wen</surname></persName>
+		</author>
+		<idno type="DOI">10.1561/2200000070</idno>
+		<ptr target="http://dx.doi.org/10.1561/2200000070" />
+	</analytic>
+	<monogr>
+		<title level="j">Foundations and Trends ® in Machine Learning</title>
+		<idno type="ISSN">1935-8237</idno>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="1" to="96" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b86">
+	<analytic>
+		<title level="a" type="main">Customer Acquisition via Display Advertising Using Multi-Armed Bandit Experiments</title>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">M</forename><surname>Schwartz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">T</forename><surname>Bradlow</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">S</forename><surname>Fader</surname></persName>
+		</author>
+		<idno type="DOI">10.1287/mksc.2016.1023</idno>
+		<ptr target="https://doi.org/10.1287/mksc.2016.1023" />
+	</analytic>
+	<monogr>
+		<title level="j">Marketing Science</title>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="500" to="522" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b87">
+	<analytic>
+		<title level="a" type="main">Multi-armed bandit experiments in the online service economy</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">L</forename><surname>Scott</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Special issue on actual impact and future perspectives on stochastic modelling in business and industry</title>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="page" from="37" to="49" />
+		</imprint>
+	</monogr>
+	<note>Applied Stochastic Models in Business and Industry</note>
+</biblStruct>
+
+<biblStruct xml:id="b88">
+	<analytic>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">H</forename><surname>Shumway</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">S</forename><surname>Stoffer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Time Series Analysis and Its Applications: With R Examples</title>
+		<title level="s">Springer Texts in Statistics</title>
+		<imprint>
+			<publisher>Springer</publisher>
+			<biblScope unit="page">9781441978646</biblScope>
+		</imprint>
+	</monogr>
+	<note>3rd edition, 2010. ISBN 144197864X</note>
+</biblStruct>
+
+<biblStruct xml:id="b89">
+	<analytic>
+		<title level="a" type="main">Mastering the game of go without human knowledge</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Silver</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Schrittwieser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Simonyan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Antonoglou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Huang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Guez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Hubert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Baker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Bolton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lillicrap</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Hui</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Sifre</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Van Den Driessche</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Graepel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Hassabis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">nature</title>
+		<imprint>
+			<biblScope unit="volume">550</biblScope>
+			<biblScope unit="issue">7676</biblScope>
+			<biblScope unit="page" from="354" to="359" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b90">
+	<analytic>
+		<title level="a" type="main">Adapting to a Changing Environment: the Brownian Restless Bandits</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Slivkins</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">COLT</title>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="page" from="343" to="354" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b91">
+	<monogr>
+		<title level="m" type="main">Reinforcement Learning: An Introduction</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">S</forename><surname>Sutton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">G</forename><surname>Barto</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1998">1998</date>
+			<publisher>MIT Press</publisher>
+			<pubPlace>Cambridge, MA</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b92">
+	<analytic>
+		<title level="a" type="main">On the Theory of Apportionment</title>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">R</forename><surname>Thompson</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">American Journal of Mathematics</title>
+		<idno type="ISSN">00029327</idno>
+		<imprint>
+			<biblScope unit="volume">57</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page">10806377</biblScope>
+			<date type="published" when="1935">1935</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b93">
+	<analytic>
+		<title level="a" type="main">On the Bayesian Estimation of Multivariate Regression</title>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">C</forename><surname>Tiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Zellner</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/TSP.2016.2598324</idno>
+		<ptr target="http://www.jstor.org/stable/2984424.1053-587X" />
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the Royal Statistical Society. Series B (Methodological)</title>
+		<idno type="ISSN">00359246</idno>
+		<imprint>
+			<biblScope unit="volume">26</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="277" to="285" />
+			<date type="published" when="1964">1964</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b94">
+	<analytic>
+		<title level="a" type="main">Variational inference for the multi-armed contextual bandit</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Urteaga</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wiggins</surname></persName>
+		</author>
+		<idno>PMLR</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the Twenty-First International Conference on Artificial Intelligence and Statistics</title>
+		<editor>
+			<persName><forename type="first">A</forename><surname>Storkey</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">F</forename><surname>Perez-Cruz</surname></persName>
+		</editor>
+		<meeting>the Twenty-First International Conference on Artificial Intelligence and Statistics<address><addrLine>Playa Blanca, Lanzarote, Canary Islands</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2018-04">Apr 2018</date>
+			<biblScope unit="volume">84</biblScope>
+			<biblScope unit="page" from="9" to="11" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b95">
+	<analytic>
+		<title level="a" type="main">Nonparametric Gaussian mixture models for the multi-armed contextual bandit</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Urteaga</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wiggins</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1808.02932</idno>
+		<ptr target="https://arxiv.org/abs/1808.02932" />
+	</analytic>
+	<monogr>
+		<title level="m">Sept. 2018b</title>
+		<imprint/>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b96">
+	<analytic>
+		<title level="a" type="main">Sequential Monte Carlo for dynamic softmax bandits</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Urteaga</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">H</forename><surname>Wiggins</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">1st Symposium on Advances in Approximate Bayesian Inference (AABI)</title>
+		<imprint>
+			<date type="published" when="2018">2018c</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b97">
+	<analytic>
+		<title level="a" type="main">Sequential Monte Carlo for inference of latent ARMA time-series with innovations correlated in time</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Urteaga</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Bugallo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">M</forename><surname>Djurić</surname></persName>
+		</author>
+		<idno type="DOI">10.1186/s13634-017-0518-4</idno>
+		<ptr target="https://doi.org/10.1186/s13634-017-0518-4" />
+	</analytic>
+	<monogr>
+		<title level="j">EURASIP Journal on Advances in Signal Processing</title>
+		<imprint>
+			<biblScope unit="volume">2017</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<date type="published" when="2017-12">Dec 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b98">
+	<analytic>
+		<title level="a" type="main">Multi-armed bandits for resource efficient, online optimization of language model pre-training: the use case of dynamic masking</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Urteaga</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">Z</forename><surname>Draidia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lancewicki</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Khadivi</surname></persName>
+		</author>
+		<idno type="DOI">10.18653/v1/2023.findings-acl.675</idno>
+		<ptr target="https://aclanthology.org/2023.findings-acl.675" />
+	</analytic>
+	<monogr>
+		<title level="m">Findings of the Association for Computational Linguistics: ACL 2023</title>
+		<editor>
+			<persName><forename type="first">A</forename><surname>Rogers</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">J</forename><surname>Boyd-Graber</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">N</forename><surname>Okazaki</surname></persName>
+		</editor>
+		<meeting><address><addrLine>Toronto, Canada</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computational Linguistics</publisher>
+			<date type="published" when="2023-07">July 2023</date>
+			<biblScope unit="page" from="10609" to="10627" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b99">
+	<analytic>
+		<title level="a" type="main">Particle Filtering in Geophysical Systems</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Van Leeuwen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Monthly Weather Review</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="issue">137</biblScope>
+			<biblScope unit="page" from="4089" to="4114" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b100">
+	<monogr>
+		<author>
+			<persName><forename type="first">P</forename><surname>Whittle</surname></persName>
+		</author>
+		<title level="m">Hypothesis Testing in Time Series Analysis. Almquist and Wicksell</title>
+		<imprint>
+			<date type="published" when="1951">1951</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b101">
+	<analytic>
+		<title level="a" type="main">Restless bandits: activity allocation in a changing world</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Whittle</surname></persName>
+		</author>
+		<idno type="DOI">10.2307/3214163</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Applied Probability</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="page" from="287" to="298" />
+			<date type="published" when="1988">1988</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b102">
+	<analytic>
+		<title level="a" type="main">Piecewise-Stationary Bandit Problems with Side Observations</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">Y</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Mannor</surname></persName>
+		</author>
+		<idno type="DOI">10.1145/1553374.1553524</idno>
+		<ptr target="https://doi.org/10.1145/1553374.1553524" />
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 26th Annual International Conference on Machine Learning, ICML &apos;09</title>
+		<meeting>the 26th Annual International Conference on Machine Learning, ICML &apos;09<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="page" from="1177" to="1184" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

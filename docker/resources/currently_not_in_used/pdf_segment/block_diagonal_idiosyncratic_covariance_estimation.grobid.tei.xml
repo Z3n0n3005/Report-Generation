@@ -1,0 +1,962 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Block-diagonal idiosyncratic covariance estimation in high-dimensional factor models for financial time series</title>
+				<funder ref="#_4Hv7hkM">
+					<orgName type="full">Croatian Science Foundation</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2024-07-04">4 Jul 2024</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">Lucija</forename><surname>Žignić</surname></persName>
+							<email>lucija.zignic@fer.unizg.hr*</email>
+							<affiliation key="aff0">
+								<orgName type="department">Forvis Mazars</orgName>
+								<orgName type="institution">Management Consulting</orgName>
+								<address>
+									<addrLine>Strojarska 20</addrLine>
+									<postCode>10000</postCode>
+									<settlement>Zagreb</settlement>
+									<country key="HR">Croatia</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Stjepan</forename><surname>Begušić</surname></persName>
+							<email>stjepan.begusic@fer.unizg.hr</email>
+							<affiliation key="aff1">
+								<orgName type="department">Faculty of Electrical Engineering and Computing</orgName>
+								<orgName type="institution">University of Zagreb</orgName>
+								<address>
+									<addrLine>Unska 3</addrLine>
+									<postCode>10000</postCode>
+									<settlement>Zagreb</settlement>
+									<country key="HR">Croatia</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Zvonko</forename><surname>Kostanjčar</surname></persName>
+							<email>zvonko.kostanjcar@fer.unizg.hr</email>
+							<affiliation key="aff1">
+								<orgName type="department">Faculty of Electrical Engineering and Computing</orgName>
+								<orgName type="institution">University of Zagreb</orgName>
+								<address>
+									<addrLine>Unska 3</addrLine>
+									<postCode>10000</postCode>
+									<settlement>Zagreb</settlement>
+									<country key="HR">Croatia</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Block-diagonal idiosyncratic covariance estimation in high-dimensional factor models for financial time series</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2024-07-04">4 Jul 2024</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">68168857540D4F57B8B0C54FC936BFBD</idno>
+					<idno type="arXiv">arXiv:2407.03781v1[q-fin.ST]</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.0" ident="GROBID" when="2024-07-12T14:49+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>High-dimensional factor model</term>
+					<term>financial time series</term>
+					<term>block-diagonal idiosyncratic covariance</term>
+					<term>clustering</term>
+					<term>shrinkage</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Estimation of high-dimensional covariance matrices in latent factor models is an important topic in many fields and especially in finance. Since the number of financial assets grows while the estimation window length remains of limited size, the often used sample estimator yields noisy estimates which are not even positive definite. Under the assumption of latent factor models, the covariance matrix is decomposed into a common low-rank component and a full-rank idiosyncratic component. In this paper we focus on the estimation of the idiosyncratic component, under the assumption of a grouped structure of the time series, which may arise due to specific factors such as industries, asset classes or countries. We propose a generalized methodology for estimation of the block-diagonal idiosyncratic component by clustering the residual series and applying shrinkage to the obtained blocks in order to ensure positive definiteness. We derive two different estimators based on different clustering methods and test their performance using simulation and historical data. The proposed methods are shown to provide reliable estimates and outperform other state-of-the-art estimators based on thresholding methods.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">Introduction</head><p>Covariance matrix estimation is a heavily researched topic in many fields, and is a crucial component for risk modeling in finance, where risk models rely on the estimation of the asset return covariance <ref type="bibr" target="#b0">[1]</ref><ref type="bibr" target="#b1">[2]</ref><ref type="bibr" target="#b2">[3]</ref>. With the growth of the number of financial assets, high dimensionality of these estimates becomes an issue -the sample estimates may be noise driven and no more reliable <ref type="bibr" target="#b3">[4,</ref><ref type="bibr" target="#b4">5]</ref>. Moreover, due to the dynamic nature of financial markets, estimates from long historical data may be obsolete and relatively short time windows are used instead -this setting of high dimension and low sample size (where the number of variables p exceeds the sample size n) is very common in finance today <ref type="bibr" target="#b5">[6]</ref>. Fortunately, financial markets also display a certain level of structure which can be used to obtain reliable estimates in such adverse environments. Mainly, asset pricing literature finds that a sizeable amount of variance in large panels of asset return data is driven by a smaller number of factors <ref type="bibr" target="#b6">[7]</ref><ref type="bibr" target="#b7">[8]</ref><ref type="bibr" target="#b8">[9]</ref>. Asset return dynamics and their correlations are thus often explained using factor models, with a common component (from exposure to these common factors), and an idiosyncratic component (specific for each asset) <ref type="bibr" target="#b9">[10,</ref><ref type="bibr" target="#b10">11]</ref>. Under some reasonable assumptions, the asset return covariance under such a model is the sum of a common covariance component (which is low-rank, since the number of factors is much lower than the number of assets) and an idiosyncratic covariance component. This leads to a number of structured and well-conditioned estimators of the covariance matrix which mostly amount to estimating the factor model parameters <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b11">12]</ref>. However, these estimators focus mostly on the identification of pervasive factors, their interpretation, and performance in asset pricing <ref type="bibr" target="#b6">[7,</ref><ref type="bibr" target="#b9">10,</ref><ref type="bibr" target="#b12">13]</ref>. The correlation structures within the idiosyncratic components have received comparatively little attention. Since these correlations are likely due to exposure to non-pervasive factors such as sectors, countries, or asset classes, ignoring these factors considerably reduces the performance of the estimators <ref type="bibr" target="#b13">[14]</ref>.</p><p>In this paper we focus on the problem of structured estimation of the idiosyncratic covariance component in high-dimensional factor models, based on the assumption that the idiosyncratic correlations arise between assets exposed to some common but non-pervasive factors <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b14">15]</ref>. An important requirement is to ensure positive-definite estimates of covariance matrix estimates even in the high-dimension-low-sample-size setting of p &gt; n. Some of the early approaches based on high-dimensional factor models ensured positive definiteness by assuming a diagonal idiosyncratic covariance <ref type="bibr" target="#b15">[16]</ref>, which completely ignores the elements of risk arising from the correlations between the idiosyncratic components. More appropriately, assuming sparsity of the off-diagonal correlations in the idiosyncratic components allows for the approximate factor model structure <ref type="bibr" target="#b16">[17]</ref>. A number of thresholding procedures have been devised earlier with the goal of estimating sparse covariance matrices (assuming sparsity of the entire covariance) <ref type="bibr" target="#b17">[18]</ref><ref type="bibr" target="#b18">[19]</ref><ref type="bibr" target="#b19">[20]</ref>. Combining the high-dimensional factor structure and the assumption of sparsity of the idiosyncratic covariance (i.e. conditional sparsity) led to estimators such as the POET <ref type="bibr" target="#b11">[12]</ref> and S-POET <ref type="bibr" target="#b20">[21]</ref>, which were shown to produce estimates which perform well for some portfolio optimization use cases. However, the thresholding methods used in these estimators do not exploit any common structures in the idiosyncratic components, which are known to occur due to sector, asset class or other non-pervasive factor exposure <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b21">22,</ref><ref type="bibr" target="#b22">23]</ref>. In this paper we use these structures to our advantage: by assuming that the idiosyncratic components exhibit correlations due to some group-specific factors such as asset class or sector classification, their covariance structure becomes block-diagonal. This leads to a potentially wider set of positive definite estimates, and allows for a richer description <ref type="bibr" target="#b23">[24]</ref>. As the main information is extracted in the common component, the factors that may exist within the clusters will generally be weak and hard to identify. Moreover, the unknown cluster membership together with the unknown number of factors within each cluster additionally complicates estimation procedures <ref type="bibr" target="#b22">[23,</ref><ref type="bibr" target="#b24">25]</ref>. Finally, the groupings themselves may not be easily incorporated into linear factor models if the effects of the cluster-specific sources of variation are not linear. To allow for the latter and avoid any formerly mentioned obstacles, we focus on treating the cluster-specific dependencies as the idiosyncratic component of the covariance in the factor model.</p><p>We develop a set of estimators which firstly calculate the low-rank common covariance component using principal components, and then use the residuals to estimate the unknown group memberships and the resulting block-diagonal idiosyncratic covariance. We use several clustering approaches to estimate these groups, and propose a cross-validation procedure for selecting the optimal grouping (and consequently the idiosyncratic covariance). Since the cluster sizes are allowed to grow beyond the sample size, we also apply covariance shrinkage to each of the blocks to ensure positive definiteness of the estimates even in high-dimension-low-sample-size settings. This allows us to conduct a comprehensive study of the performance of different covariance estimators for high-dimensional factor models with a block-diagonal idiosyncratic covariance structure. We develop a simulation framework to test various settings and configurations of these blocks, and also apply the developed estimators to historical market data. To measure the performance of the estimates we consider both the measures of how well the idiosyncratic covariance patterns are identified, and the out-of-sample performance of portfolios constructed using the covariance estimates. Simulations show that the estimation method using a hierarchical clustering approach is able to perform very good in both sparse performance measures and overall, and is able to successfully estimate structures with very small clusters. Results on historical data show excellent out of sample performance of all the clustering approaches and concludes with the observed differences of the final idiosyncratic covariance estimates obtained by the different clustering approaches.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Model</head><p>Let Y denote the p-dimensional random vector of asset returns<ref type="foot" target="#foot_0">1</ref> for p assets. We consider the latent factor model</p><formula xml:id="formula_0">Y = BF + ε,<label>(1)</label></formula><p>where B is a p × K matrix of factor loadings, F is a K-dimensional random vector of K common factors and ε is a p-dimensional random vector of the specific factors, also known as the idiosyncratic component. The factor loadings B, the factor realizations F and the idiosyncratic component ε are considered to be unobservable, so the factor model parameters need to be estimated from the observable asset returns. The idiosyncratic and common factors are assumed to be uncorrelated <ref type="bibr" target="#b4">[5]</ref>, which is a common assumption helping with their identifiability. Under the model, the asset return covariance Cov(Y ) = Σ has the following decomposition <ref type="bibr" target="#b10">[11]</ref>:</p><formula xml:id="formula_1">Σ = BCov(F )B ′ + Ψ,<label>(2)</label></formula><p>where Ψ = Cov(ε) is the covariance of the specific factors, also known as the idiosyncratic covariance.</p><p>The common covariance component BCov(F )B ′ is low-rank (since K &lt; p), and explains the majority of the correlations between different assets as the result of their exposure to a smaller number of common factors. The idiosyncratic covariance Ψ is often considered to be diagonal, however in this paper we consider models from the category of approximate factor models <ref type="bibr" target="#b16">[17]</ref>, where some sparse correlations between idiosyncratic components are allowed -thus the idiosyncratic covariance is full rank and sparse. Moreover, motivated by the documented grouping of financial assets (within industries or asset classes) <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b14">15,</ref><ref type="bibr" target="#b22">23]</ref>, we allow the idiosyncratic components of asset returns to be associated with one of a total of M clusters. The idiosyncratic components between assets within the same group may be correlated, and the idiosyncratic components of asset pairs from different groups are uncorrelated. This means that (if the assets were sorted according to group membership) the idiosyncratic covariance has a block-diagonal structure. Note this setting does not exclude singleton clusters with only one asset whose idiosyncratic component is uncorrelated to all the others. Let c m denote the subset of assets within cluster m (where m ∈ 1, ..., M ). If the assets are sorted according to their cluster membership then the idiosyncratic covariance matrix has the following block-diagonal structure:</p><formula xml:id="formula_2">Ψ =      Ψ (c1) 0 . . . 0 0 Ψ (c2) . . . 0 . . . . . . . . . . . . 0 0 . . . Ψ (c M )      ,<label>(3)</label></formula><p>where Ψ (cm) is the idiosyncratic covariance of all assets within cluster m. We allow for the setting where the number of clusters M is large, even as large as or close to p (meaning that all assets belong to their own cluster, and that the resulting covariance matrix is diagonal). The cluster memberships, the number of clusters and their sizes are all considered unknown and need to be estimated from the data. Ultimately, once these are known, the covariance elements themselves need to be estimated as well.</p><p>To ensure the identifiability of the factors and factor loadings in the latent factor model, a usual restriction is that B ′ B is diagonal and Cov(F ) = I p <ref type="bibr" target="#b11">[12]</ref>. In order to be able to estimate and distinguish the factors from the idiosyncratic components, several assumptions are imposed on the spectrum of the asset return covariance. Firstly, the eigenvalues associated with the common factors (the largest K eigenvalues of Σ) are unbounded and assumed to grow with growing dimensionality p. Secondly, the eigenvalues of the idiosyncratic covariance are bounded as p grows, so that they do not "leak" into the spectrum of the common component. This enables a two-step estimation approach such as in the POET and S-POET estimators <ref type="bibr" target="#b11">[12,</ref><ref type="bibr" target="#b20">21]</ref>, which we also follow in this paper.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Estimation</head><p>All of the model parameters -the factor loadings and idiosyncratic covariance -need to be estimated from the data sample Y ∈ R p×T . In this section and the rest of the paper, we refer to the estimates of the asset return covariance as Σ, with the index noting the type of estimator. The primary important estimator is the sample covariance:</p><formula xml:id="formula_3">Σ s = 1 T -1 T t=1 (Y t -Y )(Y t -Y ) ′ ,<label>(4)</label></formula><p>where Y t is the p-dimensional vector of asset returns at time t and Y is the p-dimensional sample mean return. Following the assumptions stated in the previous section, the p × K matrix of factor loadings</p><formula xml:id="formula_4">B can be estimated as B = [ λ 1 Γ 1 , ..., λ K Γ K ],</formula><p>where λ 1 ≥ λ 2 ≥ ... ≥ λ p are the eigenvalues and Γ i , i = 1, ...p the corresponding eigenvectors of the sample covariance matrix Σ s <ref type="bibr" target="#b26">[27]</ref>. Thus, the estimators considered and proposed in this paper are of the following form:</p><formula xml:id="formula_5">Σ = K i=1 λ i Γ i Γ ′ i + Ψ, (<label>5</label></formula><formula xml:id="formula_6">)</formula><p>where Ψ is the estimate of the idiosyncratic covariance matrix. Recent results on the asymptotics of the eigenstructure of high-dimensional covariance matrices suggest that the eigenvalue estimates are biased <ref type="bibr" target="#b20">[21]</ref>. To mitigate this estimation bias, we replace the sample estimates λ i in the estimator <ref type="bibr" target="#b4">(5)</ref> with the shrunk eigenvalues:</p><formula xml:id="formula_7">λ S i = max{ λ i -cp/T, 0},<label>(6)</label></formula><p>where c is calculated as:</p><formula xml:id="formula_8">c = tr( Σ s ) - K i=1 λ i (p -K -pK/T ) .<label>(7)</label></formula><p>Note that the bias correction term cp/T in (6) diminishes as the number of samples T grows with respect to the dimensionality p. Since we deal with high-dimensional cases when p &gt; T , this term will not be negligible.</p><p>The estimators generally follow a two-step procedure:</p><p>1. Estimate the common component</p><formula xml:id="formula_9">K i=1 λ S i Γ i Γ ′</formula><p>i , using the first K principal components: λ S i are the shrunk eigenvalues from (6) and Γ ′ i are the corresponding sample eigenvectors.</p><p>2. Apply a sparse estimation procedure to the residual covariance matrix, also known as the orthogonal complement:</p><formula xml:id="formula_10">S = Σ s - K i=1 λ S i Γ i Γ ′ i</formula><p>, in order to obtain a sparse estimate of Ψ.</p><p>It is important to note that the orthogonal complement S is a full matrix of rank min(n, T ) -K which does not serve as an idiosyncratic covariance estimate Ψ (since it is not a sparse matrix, nor a full-rank matrix). Different estimates Ψ are obtained from S by applying some sparsityinducing procedures (such as thresholding or the proposed clustering based estimation). The first step described above is based on the sample principal components, and is common to all of the estimators considered in this paper. What this paper focuses on is the second step -the idiosyncratic covariance estimation, in the presence of clustered specific components, with an unknown clustering.</p><p>The following sections lay out the elements of the estimation procedures for different important quantities.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Estimating the number of factors</head><p>An important issue to deal with before we delve deeply into the specific of the estimators is the estimation of the number of factors K. In this paper we follow the Bai-Ng approach and use an information criterion (labeled IC1 in the original paper <ref type="bibr" target="#b27">[28]</ref>). The Bai-Ng information criterion (IC) defines the procedure to estimate K as</p><formula xml:id="formula_11">K = argmin 0≤ K≤N log 1 pT ∥Y -Y B∆ -1 B ′ ∥ 2 F + K p + T pT log p + T pT ,<label>(8)</label></formula><p>where N is an upper bound for the possible number of latent factors (often set to min(T, p)), B is the p × K loadings matrix estimate for K factors, and ∆ is a K × K diagonal matrix with the K largest eigenvalue estimates on the diagonal. The first term in Equation 8 describes the log mean square error of reconstructing the original data sample Y using the estimated factor model, which is reduced by increasing the number of factors. The second term is a penalization term which grows with the number of considered factors K. Ultimately, the information criterion balances the reduced reconstruction error with the added complexity of the model and will result with an estimate of the number of factors K which yields the best reduction in error for the smallest number of factors.</p><p>This procedure yields in choosing first K eigenvalues which have significantly higher value than the rest, thus making it worth to be established as factors. The rest of the eigenvalues, with much lower amount of carrying information are thus left in the orthogonal complement matrix and subject to sparsity inducing methods.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Estimating the idiosyncratic covariance via thresholding</head><p>The state-of-the-art estimators most commonly use generalized thresholding procedures <ref type="bibr" target="#b11">[12,</ref><ref type="bibr" target="#b18">19,</ref><ref type="bibr" target="#b22">23,</ref><ref type="bibr" target="#b24">25]</ref>, the resulting sparse estimates of Ψ have no underlying structure, and are limited to a very narrow range of possible estimates which are positive-definite. The most sophisticated thresholding methods include adaptive thresholding, applied to the orthogonal complement matrix S = ( S ij ). The idea is to apply generalized thresholding operator function f τij to the full covariance S in order to obtain the sparse estimate Ψ τ :</p><formula xml:id="formula_12">Ψ τij = S ii i = j f τij ( S ij ) i ̸ = j.<label>(9)</label></formula><p>For any τ ij ≥ 0, the generalized thresholding operator is a function f τij : R → R which, for all z ∈ R satisfies the following conditions: <ref type="bibr" target="#b18">[19]</ref>:</p><formula xml:id="formula_13">1. |f τij (z)| ≤ |z|, 2. f τij (z) = 0 for |z| ≤ τ ij , 3. |f τij (z) -z| ≤ τ ij .</formula><p>These conditions are satisfied by several popular thresholding functions, out of which we consider the following:</p><p>• hard thresholding :</p><formula xml:id="formula_14">s HT τ (z) = z1 (|sij |≥τij ) ,<label>(10)</label></formula><p>• soft thresholding <ref type="bibr" target="#b18">[19]</ref>:</p><formula xml:id="formula_15">f ST τ (z) = sign(z)(|z| -τ ij ) + ,<label>(11)</label></formula><p>• adaptive lasso <ref type="bibr" target="#b28">[29]</ref>:</p><formula xml:id="formula_16">f AL τ (z) = sign(z)(|z| -τ a+1 ij |z| -a ) + ,<label>(12)</label></formula><p>• SCAD (smoothly clipped absolute deviation) <ref type="bibr" target="#b29">[30]</ref>:</p><formula xml:id="formula_17">f SCAD τ (z) =        sign(z)(|z| -τ ij ) + , |z| ≤ 2τ ij [(a -1)z -sign(z)aτ ij ] (a -2) , 2τ ij &lt; |z| ≤ aτ ij z, |z| &gt; aτ ij .<label>(13)</label></formula><p>The adaptive thresholding parameter <ref type="bibr" target="#b19">[20]</ref> is of the form</p><formula xml:id="formula_18">τ ij = τ θ ij log p T , (<label>14</label></formula><formula xml:id="formula_19">)</formula><p>where τ is a tuning parameter and θ ij are estimates of</p><formula xml:id="formula_20">θ ij = Var[(Y i -µ i )(Y j -µ j )].</formula><p>The parameter τ can be set as fixed or obtained through a data-driven cross-validation procedure <ref type="bibr" target="#b19">[20]</ref>. In the latter case, the procedure iterates over the space of possible values of τ for which the estimates Ψ are positive-definite. On the one side, for large values of τ the estimates become diagonal. Unfortunately, for lower values of τ (which allow more non-zero entries) the matrices quickly stop being positivedefinite (due to the non-zero entries not following any specific patterns), thus narrowing the space of acceptable values of τ and limiting the estimators <ref type="bibr" target="#b11">[12]</ref>. Through the paper, thresholding based estimators are denoted with Ψ SOF T (SOFT) for the soft thresholding function, Ψ AL (AL) for the adaptive lasso thresholding function, and Ψ SCAD (SCAD) for the SCAD thresholding function.</p><p>As mentioned, these estimators provide sparse estimates with no inherent structure, thus potentially missing out on certain narrow factors such as sectors, asset classes or countries. Recent literature has documented that financial assets exhibit clustering patterns, even when the common factors are filtered out <ref type="bibr" target="#b21">[22,</ref><ref type="bibr" target="#b22">23,</ref><ref type="bibr" target="#b30">31]</ref>. This motivates the approach proposed in this paper -under the hypothesis that the idiosyncratic covariance reflect this grouping in the residual time series, we formulate a number of clustering based estimators.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Block-diagonal idiosyncratic covariance estimation</head><p>We denote the group membership information as a zero-one p × p indicator matrix C (also known as a mask ), where the element C ij = 1 if i and j are in the same cluster group c m , for i, j ∈ 1, ..., p. If the rows and columns of C (and consequently, the p assets in the factor model ( <ref type="formula" target="#formula_0">1</ref>)) are sorted according to their cluster membership, then C is a block-diagonal matrix. Without loss of generality, in the following notation we assume that the assets are sorted according to their cluster membership (this can also be done once the clustering is known) and that C is block-diagonal.</p><p>Let matrix C contain C 1 , C 2 ,...,C M cluster blocks for each of the M clusters. The imposed block-diagonal idiosyncratic covariance Ψ C which is obtained from the orthogonal complement S (the initial full idiosyncratic covariance estimate) is:</p><formula xml:id="formula_21">Ψ C = ( S ij 1 (ij)∈C ) = S • C = = S •      C 1 0 . . . 0 0 C 2 . . . 0 . . . . . . . . . . . . 0 0 . . . C M      =      S C1 0 . . . 0 0 S C2 . . . 0 . . . . . . . . . . . . 0 0 . . . S C M      , (<label>15</label></formula><formula xml:id="formula_22">)</formula><p>where each block is defined as ( S Cm = S ij 1 (ij)∈Cm ), m ∈ 1, ...M , and • denotes the Hadamard element-wise product. The approach proposed above is used for all the different estimators of the block-diagonal idiosyncratic covariance. However, it still does not guarantee positive-definiteness of the covariance estimates. For instance, when the dimension of a block C m (the number of time series in cluster m) is larger than the length of the time series estimation window T , some eigenvalues of the blockdiagonal idiosyncratic matrix estimate (and thus some of the eigenvalues of the entire covariance matrix estimate) are very close to zero (or exactly zero), resulting in the covariance matrix estimate which is not positive definite. The positive definiteness of the idiosyncratic covariance is important in applications where the inverse of the estimated covariance matrix is needed (for example, if we want to perform portfolio optimization using the covariance estimate). As our intention is to produce the method with no constraints on sample size as well as no constraints on the number of clusters (and thus cluster sizes), we incorporate a shrinkage method within the blocks which always results with a positive definite matrix. Although there are many different forms of shrinkage and possible shrinkage targets, to avoid additionally complicating the procedure we use linear shrinkage <ref type="bibr" target="#b31">[32,</ref><ref type="bibr" target="#b32">33]</ref>, applied to each block S Cm separately.</p><p>Linear shrinkage can be viewed as a weighted average of the variance part and bias part of the covariance estimates, where weights should optimize the bias-variance trade-off <ref type="bibr" target="#b4">[5]</ref>. We treat each block S Cm , m ∈ 1, ...M as a separate covariance matrix and perform the shrinkage procedure on it <ref type="bibr" target="#b23">[24]</ref>. A common form of the estimator is a linear combination of the covariance matrix S Cm = ( S m ij ) and the shrinkage target matrix SCm , with sample variances S m ii = [ S m 11 , . . . , S m pp ] ′ on the diagonal and covariances r S m ii S m jj off diagonal, where r is the average of all sample pairwise correlations. The shrinkage estimator is defined as:</p><formula xml:id="formula_23">S Cm s = α m S Cm + (1 -α m ) SCm ,<label>(16)</label></formula><p>where α m is a scalar parameter between 0 and 1 which we search for each block component C m , m ∈ 1, ..., M . To estimate α m from sample data, we follow the well-established Ledoit and Wolf <ref type="bibr" target="#b32">[33]</ref> procedure which can be found in the B. The resulting positive definite idiosyncratic covariance estimate is</p><formula xml:id="formula_24">Ψ C s =      S C1 s 0 . . . 0 0 S C2 s . . . 0 . . . . . . . . . . . . 0 0 . . . S C M s      .<label>(17)</label></formula><p>Now, the estimation of the idiosyncratic component as a block-diagonal matrix rests solely on the method employed to determine the blocks themselves -the structure of C.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3.1">Estimating the blocks using predefined asset groups</head><p>The simplest approach, which we lay out here as a benchmark, is to use pre-determined classifications or groupings of assets to formulate the clusters in the idiosyncratic component <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b21">22]</ref>. In this approach, the sparse component is obtained by setting to zero all the pairs which are not in the same group and leaving the sample values of the orthogonal complement for the entries corresponding to the pairs in the same group. We formulate the clustering-shrinkage estimator based on industry classifications Ψ CSI (CSI) which relies on stock industry classification data to estimate the idiosyncratic component:</p><formula xml:id="formula_25">C ij =</formula><p>1 i and j are in the same asset group, 0 otherwise. <ref type="bibr" target="#b17">(18)</ref> However, this approach suffers from several drawbacks. Firstly, the classification data (such as industries, asset classes or countries) are not always available for different datasets and asset universes. Secondly, the classification itself may not be optimal, since the grouping does not guarantee the highest asset return correlations within the groups. To alleviate these issues, we propose two clustering based methods to estimate the block-diagonal idiosyncratic covariance.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4">Clustering based estimation of the idiosyncratic covariance</head><p>A natural extension of the previous approaches based on industry classifications of stock data is to estimate the optimal groupings from the data. In this section we develop a procedure based on different clustering approaches to the orthogonal complement S, resulting in block-diagonal estimates Ψ of the idiosyncratic covariance. The clustering procedures are applied to the residual series E ∈ R p×T :</p><formula xml:id="formula_26">E = Y -Y K i=1 Γ i Γ ′ i ,<label>(19)</label></formula><p>which represent the estimates of the specific factor (ε) realizations E = (e it ). Thus e i (or e j ), i, j = 1, ..., p is a 1 × T vector of one time series, while e t , t = 1, ..., T is a p × 1 vector of all time series at the one moment.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4.1">Estimating blocks using k-means clustering</head><p>Due to the heteroscedasticity of the idiosyncratic components, in the clustering procedure a correlationbased distance measure is used instead of the usual Euclidean distance:</p><formula xml:id="formula_27">d( e i , e j ) = 1 -r ij ,<label>(20)</label></formula><p>where r ij is the Pearson correlation coefficient between pairs of residual components e i and e j , i, j = 1, ..., p. The algorithm <ref type="bibr" target="#b33">[34]</ref> minimizes the loss function argmin b1,...,bp;µ1,...,µ</p><formula xml:id="formula_28">M M m=1 p i=1 b (m) i d( e i , µ m ),<label>(21) where b</label></formula><p>(m) i</p><p>is the binary indicator variable that assigns each data point to a cluster b</p><formula xml:id="formula_29">(m) i = 1, m = argmin i d( e i , µ m ) 0, otherwise,<label>(22)</label></formula><p>and the centroid of a cluster is the average of the cluster members' residuals</p><formula xml:id="formula_30">µ m = p i=1 b (m) i e i p i=1 b (m) i . (<label>23</label></formula><formula xml:id="formula_31">)</formula><p>The algorithm is iterative and does not have a closed form solution. It converges to the local minimum, and depends on the initialization -thus a repeated procedure with different initializations is used.</p><p>To determine the number of clusters from the data, we develop an iterative cross-validation procedure over the number of clusters M , where M = 1, ..., p, as described in 3.4.3. Finally, the blocks of the block-diagonal idiosyncratic covariance are given by the clusters estimated using this procedure.</p><p>We label this clustering-shrinkage estimator based on k-means CSK, the corresponding idiosyncratic estimates Ψ CSK , and the entire covariance estimate Σ CSK .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4.2">Estimating blocks using hierarchical clustering</head><p>As a more flexible framework, we also develop an estimator based on hierarchical clustering. Firstly, we propose a distance matrix based on the adaptive thresholding introduced by Cai and Liu <ref type="bibr" target="#b19">[20]</ref>, and specifically on the expression for the adaptive parameter from the formula <ref type="bibr" target="#b13">(14)</ref>, and its implications for the hard thresholding rule. We can observe that the estimation of the final idiosyncratic covariance Ψ τij depends on the relation of the full orthogonal complement entries S ij and the associated thresholding parameter τ ij , for i, j = 1, ..., p. This means that if | S ij | &lt; τ ij the final idiosyncratic component value is set to zero, otherwise if | S ij | ≥ τ ij the value S ij remains unchanged. The relation in fact determines whether the two time series i and j are in the same cluster or not. Therefore, we use it as a custom similarity measure within the hierarchical clustering framework. Specifically, based on the relation, we define a distance matrix D = (D ij ) which specify the dissimilarity of the two time series i and j as:</p><formula xml:id="formula_32">D ij =        | S ij | θ ij T -1 log p -1 , i ̸ = j 0, i = j,<label>(24)</label></formula><p>where θ ij = T -1 T t=1 (e it e jt -S ij ) 2 . In order to evaluate different possible clusterings within a hierarchical framework, a linkage function d(•) is used, of which there are plenty: average linkage and weighted average linkage <ref type="bibr" target="#b34">[35]</ref>, median and centroid linkage <ref type="bibr" target="#b35">[36]</ref>, Ward linkage <ref type="bibr" target="#b36">[37]</ref>, single and complete linkage <ref type="bibr" target="#b33">[34]</ref>. However, our focus is mainly on the methods less susceptible to noise, aligned with non-metric distance and forming the globular shape like average and weighted average. The considered linkage functions are given in detail in the Appendix A, and their detailed descriptions can be found in respective papers <ref type="bibr" target="#b33">[34]</ref><ref type="bibr" target="#b34">[35]</ref><ref type="bibr" target="#b35">[36]</ref><ref type="bibr" target="#b36">[37]</ref> -the proposed hierarchical clustering estimator may rely on any of these.</p><p>Finally, we use an agglomerative clustering algorithm to build the clusters, based on the proposed distance matrix D and considered linkage functions d(•). We build the clustering tree and save each calculated distance (between points -time series, and/or objects -formed clusters) in the vector of distances [L 1 , L 2 , ..., Lp] each of which is related to a certain number of clusters M . To determine the optimal cutoff distance L, the estimator uses the iterative cross-validation procedure as described in 3.4.3. Finally, the blocks of the block-diagonal idiosyncratic covariance are given by the clusters estimated using this procedure.</p><p>We label this clustering-shrinkage estimator based on the hierarchical clustering approach CSH, the corresponding idiosyncratic estimates Ψ CSH , and the entire covariance estimate Σ CSH .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4.3">Iterative procedure for selecting the number of blocks</head><p>The hyperparameters of the two clustering approaches also need to be estimated -for k-means clustering this is directly the number of clusters, and for the hierarchical clustering algorithm this is the threshold at which the agglomerative tree is cut off. To obtain the values of these parameters we propose an H-fold cross-validation procedure, based on the residuals {e t } t≤T . The residual series are split into a train subset {e t } t∈Ttrain and a test subset {e t } t∈Ttest , where T train + T test = T . The procedure is repeated H times. In each fold h ∈ H the following is performed:</p><p>• Build the full orthogonal complement covariance matrix: S train-h on train data and S test-h on test data.</p><p>• Apply the proposed clustering algorithms to the residual series to obtain groups. When using hierarchical clustering, search through the grid of distances L ∈ [L 1 , L 2 , ..., Lp] (where each distance is connected to specific number of clusters M), and when using k-means clustering, search through the grid of number of clusters M ∈ [1, 2, ..., p].</p><p>• The indicator matrix C is obtained simply as:</p><formula xml:id="formula_33">C ij = 1 i and j are in the same cluster, 0 otherwise. (<label>25</label></formula><formula xml:id="formula_34">)</formula><p>• Calculate the validation error Err h φ , h = 1, ...H as the Frobenius norm of the difference between the cluster based idiosyncratic covariance estimate from the train set Ψ C train-h and the full orthogonal complement from the test set S test-h :</p><formula xml:id="formula_35">Err h φ = ∥ Ψ C train-h -S test-h ∥ 2 F .<label>(26)</label></formula><p>We consider the mean of H validation errors assigned to each hyperparameter (L in case of hierarchical and M in the case of k-means clustering):</p><formula xml:id="formula_36">Err * φ = 1 H H h=1 Err h φ .<label>(27)</label></formula><p>and iterate over a grid of possible values of the considered hyperparameters (in the case of hierarchical clustering we iterate over a grid φ = [L 1 , L 2 , ..., L p ] and in case of k-means clustering we iterate over a grid φ = [1, 2, ..., p]). The chosen distance criteria minimizes the error:</p><formula xml:id="formula_37">φ = argmin φ Err * φ .<label>(28)</label></formula><p>For the hierarchical clustering the chosen hyperparameter is φ CSH = L * and for the k-means clustering the chosen hyperparameter is φ CSK = M * . The final block-diagonal idiosyncratic covariance estimates ( Ψ CSK and Ψ CSH ) are calculated on the entire estimation window using the selected hyperparameter. Furthermore, we use the stability of the validation loss function to improve the algorithm and its speed. We use a stopping (convergence) criterion which stops the iteration loop when the change in the loss function is below a predefined threshold. Specifically, we monitor the average loss over 3 iterations and stop when this average stagnates. For the general shape of the cross-validation errors for the two approaches, see Figure <ref type="figure" target="#fig_1">1</ref> which shows the cross-validation errors (blue line) through the iterations (over a grid of hyperparameter values) for the two considered estimators. It is evident that the validation errors exhibit an optimum which can be reached relatively quickly, without the need for traversing the entire hyperparameter space.  4 Data and performance measures</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Simulation data</head><p>To test the ability of the estimator to identify true patterns of a block-diagonal structure, we construct a simulation scenario which allows us to analyze the performance of the estimators with respect to a known population covariance matrix. In the simulations we construct the common covariance BCov(F )B ′ and the idiosyncratic covariance Ψ separately. The resulting covariance matrix is Σ = BCov(F )B ′ + Ψ.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.1">Generating the common component</head><p>Without loss of generality, we assume that the factors have identity covariance, leaving all the variability to the factor loadings matrix B. To simulate a random loadings matrix B we use the following procedure:</p><p>1. Generate random orthogonal loadings of unit length.</p><p>2. Scale loadings so the first factor has average loading equal to 1 (this is in line with factor models in finance where the market factor is often the strongest and the loadings of assets towards this factor are centered around 1).</p><p>3. Scale loadings by factor variances.</p><p>4. Calculate the common covariance as BB ′ .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1.2">Generating the idiosyncratic component</head><p>We define data generating processes based on two different shapes of the idiosyncratic covariance. Firstly, a full block-diagonal structure has a predetermined number of blocks of equal size and all series belong to one of the blocks. Secondly, a more difficult partial block-diagonal structure does not use a predefined number of blocks and has a variable block size, thus allowing a large number of "blocks" with only a single series. In both cases, each cluster group is tapered and the correlations within are diminishing further from the diagonal. To construct the idiosyncratic covariance we first build the correlation matrix, which is then transformed into the covariance matrix.</p><p>The full block-diagonal idiosyncratic covariance is constructed in the following way:</p><p>1. Start from the identity correlation matrix R = I.</p><p>2. For a predefined number of clusters M generate uniform random cluster sizes.</p><p>3. For each cluster add off-diagonal correlations following the tapering structure:</p><formula xml:id="formula_38">R jk = const • base (exponent•|j-k|)<label>(29)</label></formula><p>4. Calculate the covariance matrix from the obtained correlation matrix and the idiosyncratic variances.</p><p>The partial block-diagonal covariance is constructed using graphs:</p><p>1. Define a probability that a node (asset) is connected.</p><p>2. Iterate over all assets -for each asset, determine whether it will be connected (given the probability above) -if yes, connect it to any one randomly selected asset (selected uniformly across the remaining p -1 assets).</p><p>3. This procedure will build a graph with a number of connected components -each component will correspond to a cluster, and ultimately, a block in the idiosyncratic covariance. Note that assets which are not connected remain as single-asset clusters.</p><p>4. For each cluster larger than 1 (i.e. other than single-asset clusters) add off-diagonal correlations following the tapering structure as described in (29).</p><p>5. Calculate the covariance matrix from the obtained correlation matrix and the idiosyncratic variances.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Historical data</head><p>We consider a collection of daily US stock returns from January 1995 to January 2017. The database consists of a large number of stocks, and at each time step we select the top p stocks by market capitalization at the time defined by current date and considering only stocks which satisfy the following conditions:</p><p>1. All marketcap and return data is available for the full training and test periods.</p><p>2. There is at least 1 day of non-zero returns in test period and in train period.</p><p>3. All the stocks have SIC sector identification.</p><p>To determine the group membership in the CSI estimator, we collect the Standard Industrial Classification Codes (SIC) sector codes for the selected stocks.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Performance measures</head><p>A most commonly used performance measure for determining the quality of matrix estimation is the Frobenius norm of the error:</p><formula xml:id="formula_39">∥ Σ -Σ∥ F = p i=1 T j=1 |σ ij -σ ij | 2 . (<label>30</label></formula><formula xml:id="formula_40">)</formula><p>However, it is generally a rough way to measure the covariance estimation quality. Since we focus on identifying the sparse correlation patterns in the idiosyncratic part, we can also focus on measuring how well these are identified by different estimators. In the simulation scenario, the population idiosyncratic covariance is known and thus we are able to measure the accuracy of identifying the true non-zero and zero elements in the population idiosyncratic covariance <ref type="bibr" target="#b23">[24]</ref>. We denote the classes of each element of the population idiosyncratic covariance with 0 if the element is zero and 1 if the element is non-zero. We use several, most common classification performance measures to evaluate the ability of the proposed estimators to identify the true sparsity patterns <ref type="bibr" target="#b37">[38]</ref>: positive rate (TP), true negative rate (TN), accuracy (Acc) and F1 score.</p><p>• Accuracy is simply the ratio of correctly identified elements to the total number of off-diagonal elements in the idiosyncratic covariance.</p><p>• TP (recall) and TN are the ratios of the correctly classified positive (negative) elements to the total number of positive (negative) elements in the population matrix.</p><p>• F1 is defined as the harmonic mean of recall and precision, where recall equals TP and precision is the ratio of classified true positives to the number of all predicted positives.</p><p>Moreover, we also consider clustering performance measures, since the population idiosyncratic covariance is considered to be block-diagonal. Rand's index measures the extent to which the obtained grouping corresponds to the reference grouping (for instance that of the population covariance). It is calculated as the accuracy of classification at the level of pairs of series, and is defined as follows:</p><formula xml:id="formula_41">RI = T P + T N n 2 , (<label>31</label></formula><formula xml:id="formula_42">)</formula><p>where n 2 represents the total number of possible pairs <ref type="bibr" target="#b38">[39,</ref><ref type="bibr" target="#b39">40]</ref>. We use the RI both in simulation data (with respect to the population idiosyncratic covariance) and historical data, where we use it to measure the similarity of different methods to the industry classification.</p><p>In addition to the results reported for the mentioned performance measures, which are averaged over a large number of simulations, for the simulation data we also consider the number of simulations in which the proposed CSH and CSK estimators outperform the benchmarks. Let n + denote the number of outcomes in which the considered estimator outperforms a benchmark for a given performance measure, in a total number of n simulations. For the proportion n + /n we apply a non-parametric one sided paired sign test with following hypotheses: H 0 : The probability of the estimator outperforming the given benchmark is 0.5.</p><p>H 1 : The probability is greater than 0.5.</p><p>Under the null hypothesis, n + follows a binomial distribution B(n, 0.5), which is directly used to calculate the corresponding p-value. We apply the test to each reported performance measure, in order to confirm whether the proposed approach achieves statistically significant improvements over the benchmark methods <ref type="bibr" target="#b22">[23,</ref><ref type="bibr" target="#b23">24]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4">Potfolio optimization</head><p>In addition to the performance measures defined above, we also consider a portfolio optimization scenario. We use minimum variance portfolios (in this context variance quantifies risk), since they highly depend on the quality of the estimated covariance -the noise in the estimator indirectly transmits to the portfolio weights (variance minimizers are estimation-error maximizers <ref type="bibr" target="#b40">[41]</ref>). The vector of portfolio weights w = [w 1 , ..., w p ] ′ contains the percentage of the total capital allocated to each of the p assets. When asset returns Y are arithmetic returns, the portfolio return is simply stated as r p = w ′ Y . Then the portfolio variance is the variance of the linear combination σ 2 p = w ′ Σw, which forms the basis for portfolio optimization in the mean-variance sense. The optimal portfolio weights for the minimum variance portfolio are then calculated by solving the following optimization problem:</p><formula xml:id="formula_43">min w w ′ Σw s.t. 1 ′ w = 1, (<label>32</label></formula><formula xml:id="formula_44">)</formula><p>where Σ is the covariance estimate of the asset returns and the term w ′ Σw is the portfolio variance.</p><p>To evaluate different estimators we first obtain the optimal portfolio w on a given estimation window using a covariance estimate Σ, then we calculate the out-of-sample portfolio risk, which we quantify as volatility (standard deviation of the returns) <ref type="bibr" target="#b2">[3]</ref>:</p><formula xml:id="formula_45">σ p := √ w ′ Σ w.<label>(33)</label></formula><p>When using simulation data, the population covariance Σ is known. Portfolios are optimized using the estimates obtained from the generated time series, and "out-of-sample" portfolio risk is calculated by using the known population covariance Σ in the expression <ref type="bibr" target="#b32">(33)</ref>. For historical data, the population covariance is unknown thus the sample estimates Σ s from a future holding period are used in expression <ref type="bibr" target="#b32">(33)</ref> -this corresponds to a backtesting approach where the optimized portfolios are held on a given future time period, and the realized risk of these portfolios is calculated. The daily portfolio volatility is annualized by multiplying with √ 252.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">Results</head><p>For the simulation, we fix the number of factors to K = 5, and simulate time series of length T = 250 using the Student's t-distribution with 5 degrees of freedom and zero mean, in order to replicate the heavy tailed property of asset returns. The simulations are repeated a total of 250 times. For the full block-diagonal idiosyncratic structure we use M = 10 clusters, and in the partial block-diagonal procedure the number of clusters is random and is a consequence of the random connections. For the correlation tapering within the clusters, we use const = 0.3, base = 0.9, exponent = 0.1 which result in similar correlation distributions as observed in historical data. Factor variances are set to (0.25/([1, 2, ..., K] 0.5 ) 2 . Firstly, in order to justify the choice of the linkage function in the hierarchical clustering method we evaluate five linkage functions (average, weighted average, Ward, centroid, medoid) on the partial block-diagonal simulation case with p = 1000 series. The results are shown in Table <ref type="table" target="#tab_0">1</ref> -the F1, RI, Frobenius norm of the error and the portfolio risk are shown with respect to the known population covariance. The results show that the method based on the average linkage function outperforms in all of the considered aspects, thus in the rest of the paper we focus on the CSH estimator based on average linkage. We simulate the data with higher-dimensional p = 1000 series and lower-dimensional p = 300 series, using the same simulation parameters, in order to test the behavior of the estimators for different dimensionalities. Table <ref type="table">2</ref> report the results for both considered dimensionalities and the two idiosyncratic covariance cases: partial block-diagonal and full block-diagonal. For all the measures, we report the p-values results of the one sided pair sign tests, based on the number of experiments in which the CSH (for the partial block-diagonal case) and the CSK (for the full block-diagonal case) estimators outperformed all the other methods.</p><p>For the partial block-diagonal case, the CSH estimator is expected to outperform, which is confirmed in the results, and statistically significant (for higher-dimensional series in all cases and for lower-dimensional in most of the cases) -this is evidently due to the fact that the hierarchical clustering approach can better accommodate single assets as clusters and generally the different cluster sizes, while the k-means approach is well-suited for compact, uniform-sized clusters. The true positive rate (TP) may be higher in some cases for the CSK estimator as it tends to merge multiple small and single-asset clusters to one of a few larger clusters. Furthermore, as the CSH estimator captures small and even single-asset clusters, missing some clusters has a higher impact on the true positive rate. In the full block-diagonal idiosyncratic covariance case, the CSK estimator outperforms all the benchmark methods in all aspects, for both considered dimensionalities. The classification measures are close or equal to 100% of accuracy. Moreover, even though the CSK estimator is expected to outperform the CSH estimator on the full block-diagonal case, the performance of the hierarchical approach remains comparatively high and the differences are not as large. The first reason for this is that the full block-diagonal case is much easier for both clustering based estimators. And the second reason lies in the fact that CSH is more flexible and able to deal with both simulation cases very well, while the CSK struggles in the partial block-diagonal case.</p><p>It is important to note that for both the partial and full block-diagonal shapes, the lowerdimensional simulations for p = 300 represent a drastically easier task for the k-means approach (CSK estimator). This is due to the fact that the clusters in that case are naturally smaller, and the tapering effect of the off-diagonal correlations in the simulated population matrices is much weaker for smaller clusters (the correlations within those clusters are higher on average). In both considered dimensionalities, we observe that the clustering based estimators consistently outperform the thresholding based estimators -however, in lower-dimensional case, the improvement is not as drastic and not as pervasive as in the higher-dimensional case. Evidently, the hierarchical approach benefits from the high dimensionality.</p><p>Table <ref type="table">2</ref>: Table shows all the performance measures (rand index, classification measures, Frobenius norm) and out-of-sample portfolio volatility for the proposed estimators (CSH, CSK ) and considered benchmark estimators. We reported two simulation cases partial block-diagonal case and full blockdiagonal case for higher (p = 1000) and lower (p = 300) dimension. The p-values of the paired sign test comparing the CSH (for partial block-diagonal case) and CSK (for full block-diagonal case) estimator with all other methods are given in parentheses (below each method compared to the CSH or CSK estimator). </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Case</head><formula xml:id="formula_46">(0) (0) (0) (0) (0) (0) (0.4)</formula><p>Although we did not observe drastic structural differences, or differences in order of the estimators' performances, there are some differences in the behavior of the estimators when increasing the dimension. In figure <ref type="figure" target="#fig_4">2</ref> we show the average out-of-sample portfolio risks over all simulations for the partial block-diagonal case and the full block-diagonal case over different dimensions p, starting from p = 250 to p = 1000 with a step of 50. Evidently, the clustering based estimators benefit widely from increased dimensionality in both simulation scenarios, and consistently outperform the thresholding based estimators over all dimensions. Moreover, the clustering based estimators also show a great level of stability as clustering procedures are much more robust in capturing the idiosyncratic groupings, while the thresholding based estimators only focus on high pairwise covariances, and might miss out on the other members of the groups -these properties of the estimators are also the reason behind the F1 and RI being much higher for clustering based methods in Table <ref type="table">2</ref> for both shown dimensions.   To demonstrate visually how different estimators work, we show how each estimator forms the idiosyncratic covariances for both simulation cases in Figure <ref type="figure">3</ref>. In addition to the two clustering based estimators we also show the SCAD estimator, since it performs the best out of the thresholding based approaches. The full block-diagonal case seems to be captured almost perfectly by both clustering based methods, while the SCAD methods evidently misses out on some elements with smaller correlations (due to tapering further away from the diagonal). For the partial block-diagonal case larger clusters tends to be broken into smaller ones by the CSK approach, and some small and single-asset clusters are combined into larger ones. The SCAD approach identifies the smaller ones but mostly misses out on the larger ones. The CSH estimator is shown to capture the clusters relatively well.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">Historical data results</head><p>We test the estimators on the historical data using a portfolio optimization approach -at each time step, the portfolios are constructed using the covariance estimated during the past 1 year of daily returns (a total of 252 data points) using the considered estimators. The portfolio is held for the next month (22 days) and the portfolio volatility is calculated on this out-of-sample future holding period. This approach assumes that the covariances estimated in the past 1-year window continue to hold on the future 1-month period, and the future returns are considered as realizations of this process. The total number of iterations is 264. In historical data we are letting the algorithm to find the number of common factors K. To estimate the number of factors within each time window we use the Bai-Ng IC1 method. Figure <ref type="figure">4</ref> shows the evolution of the estimated number of common factors through time -the number of factors ranges from 2 to 10 with the average of 4.33 and the median and mode being the same and equal to 4. The results show that the clustering based methods generally outperform the thresholding based estimators, with the exception of the SOFT thresholding estimator for the lower dimensional case. The clustering based estimators manage to find clusters which are not so similar to the industry classifications, as suggested by the RI results -yet these alternative groupings seem to perform similarly or even better than the industry classifications. This result affirms the hypothesis that the industry groupings may not be optimal, depending on the application. While still performing better than thresholding based estimators in lower-dimensional cases, we see that clustering based estimators benefit drastically from the increased dimensionality. Nevertheless, the results also suggest that the industry classification is in fact a valuable contributor to the performance -CSI shows excellent performance. However, the industry classification data may not always be available, depending on the asset universe or different markets one might consider. On the other hand, the proposed clustering based approach only requires historical return data. Finally, we also inspect the shapes of the identified idiosyncratic covariances for a specific time window in the historical data. Figure <ref type="figure" target="#fig_5">5</ref> shows the idiosyncratic covariance given different methods: CSI, CSK and CSH. It is important to note that for each method, the assets were sorted according to the corresponding clustering results (so that the assets in the same clusters are placed next to each other). The differences are quite visible -the CSI features relatively big blocks of varying sizes, and different values of off-diagonal elements, while the CSK finds more smaller and compact groups. The estimated idiosyncratic covariance using the CSH estimator differs mostly from the other methods. It allows small one-member clusters but does not omit the relevant information (bigger clusters are also observed). Due to this flexibility, the average number of clusters is much larger than the number given by the CSK estimator, and the matrix is generally more sparse.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">Conclusion</head><p>We consider the problem of estimating the covariance matrix of high-dimensional financial return time series, given an underlying latent factor model. The latent factor model allows for a specific structure of the covariance matrix -a low-rank component due to common factors and a fullrank sparse idiosyncratic component. In this paper we specifically focus on the estimation of the idiosyncratic component under the assumption that the considered financial assets form groups, even after accounting for common factors, which has recently been documented in the literature. This leads to a block-diagonal structure of the idiosyncratic covariance. We follow a two step estimation procedure where the first step consists of estimating the common component, and in the second step the residual component is used to obtain a sparse estimate of the idiosyncratic covariance. We formulate a unified approach to estimating the block-diagonal idiosyncratic covariance and consider several methods to obtain the unknown block structure (clusters). We also propose an iterative crossvalidation procedure in the context of the squared error given the assumed latent factor model, and test the proposed approach on simulation data and historical return data.</p><p>The simulation results show that the proposed clustering based estimators successfully recognize the true sparse idiosyncratic covariance patterns, while decreasing the optimized portfolio volatility. Moreover, they show other desirable properties: both clustering approaches benefit from increased dimensionality and demonstrate stable results for different numbers of simulated series. The hierarchical approach implemented in the CSH estimator shows great versatility, since it is able to capture the difficult patterns given by the partial block-diagonal idiosyncratic case, while retaining performance for the full-block diagonal case. Tests on historical data confirmed the superiority of the clustering based estimators with respect to the thresholding based estimators. A striking finding is that the groups identified by the proposed estimators seem to differ to a great extent from the industry classification, however the portfolio performance of the proposed estimators is on par with or even better than the industry based estimator CSI.</p><p>The results evidently affirm the basic research hypothesis of the paper -that estimating the sparse idiosyncratic covariance as a block-diagonal matrix improves upon the thresholding based approach. Allowing the assets to form entire clusters dramatically enriches the space of idiosyncratic covariance estimates, and ultimately results in a more realistic model of the asset return dependence. The proposed approach will hopefully make its way to applications in risk modeling of high-dimensional return time series in broad asset universes, and especially those where an industry or similar classification is not known a priori. We also hope to inspire new research, especially in the area of modeling the hierarchical group structures and their effect on the idiosyncratic covariance in approximate factor models.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A Linkage functions</head><p>Denote with G the cluster group set in the hierarchy which contains the observations. We describe five main types in detail:</p><p>• Average linkage <ref type="bibr" target="#b34">[35]</ref> is average inter-cluster distance calculated as distance between each pair of the observations in each cluster.</p><formula xml:id="formula_47">D G1G2 = d avg (G 1 , G 2 ) = 1 T 1 T 2 ei∈G1 ej ∈G2</formula><p>d( e i , e j ) (34)</p><p>• Centroid linkage <ref type="bibr" target="#b35">[36]</ref> is the distance between the centroids of the two clusters.</p><formula xml:id="formula_48">D G1G2 = d cen (G 1 , G 2 ) = 1 T 1 ei∈G1 e i - 1 T 2 ej ∈G2 e j 2<label>(35)</label></formula><p>• Median linkage <ref type="bibr" target="#b35">[36]</ref> is Euclidean distance between weighted centroids of the two clusters.</p><formula xml:id="formula_49">D G1G2 = d med (G 1 , G 2 ) = ẽ1 -ẽ2 2<label>(36)</label></formula><p>where ẽ1 and ẽ2 are weighted centroids of clusters G 1 and G 2 . If the cluster G 1 is created by combining two clusters G 1a and G 1b , then ẽ1 = 1 2 (ẽ 1a + ẽ1b ).</p><p>• Ward distance <ref type="bibr" target="#b36">[37]</ref> is defined as the within-cluster sum of the squares of the distances between all objects in the cluster and the centroid of the cluster.</p><formula xml:id="formula_50">D G1G2 = d ward (G 1 , G 2 ) = 2 • T 1 T 2 (T 1 + T 2 ) 1 T 1 e∈G1 e - 1 T 2 e∈G2 e 2<label>(37)</label></formula><p>• Weighted average linkage <ref type="bibr" target="#b34">[35]</ref> is defined recursively. If cluster G 1 is created by combining clusters G 1a and G 1b than the distance between the cluster G 1 and G 2 is defined as average of the distance between G 1a and G 2 and the distance between G 1b and G 2 .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>B Shrinkage intensity</head><p>We outline established Ledoit and Wolf procedure for the optimal shrinkage intensity <ref type="bibr" target="#b32">[33]</ref>. The optimal shrinkage intensity α m , should minimize the expected value of the quadratic loss function</p><formula xml:id="formula_51">P (α m ) = ∥α m S Cm + (1 -α m ) SCm -S Cm ∥ 2 , (<label>38</label></formula><formula xml:id="formula_52">)</formula><p>where S Cm is the unknown population covariance. The optimal α m estimate from the Ledoit and Wolf procedure <ref type="bibr" target="#b31">[32]</ref> for shrinkage estimator, is given as</p><formula xml:id="formula_53">α * m = max 0, min κ m T m , 1 ,<label>(39)</label></formula><p>where</p><formula xml:id="formula_54">κ m = π m -ρ m γ m . (<label>40</label></formula><formula xml:id="formula_55">)</formula><p>and T m is the block size.</p><p>For the simplicity we will drop prefix m, but all the following parts are calculated per each block. The constant term π is consistent estimator of asymptotic variances of the sample block matrix entries S C scaled by √ T (size of the block) defined as <ref type="bibr" target="#b31">[32]</ref> :</p><formula xml:id="formula_56">π = 1 T N i=1</formula><p>N i=j e it -ēi )(e jt -ēj ) -S ij 2 <ref type="bibr" target="#b40">(41)</ref> where ēi is the sample average of the returns of stock i from the cluster block c. Term ρ is consistent estimator of sum of asymptotic covariances of the shrinkage target entries with the block sample covariance entries scaled by √ T (size of the block) defined as:</p><formula xml:id="formula_57">ρ = N i=1 π ii + N i=1 N j=1,j̸ =i r 2 S jj S ii η ii,ij + S ii S m jj η jj,ij<label>(42)</label></formula><p>where</p><formula xml:id="formula_58">η ii,ij = 1 T m (e it -ēi ) 2 -S ii × (e it -ēi )(e jt -ēj ) -S ij ,<label>(43)</label></formula><p>η jj,ij = 1 T m (e jt -ēj ) 2 -S jj × (e it -ēi )(e jt -ēj ) -S ij (44</p><formula xml:id="formula_59">)</formula><p>And γ is a consistent estimator of misspecification of the (population) shrinkage target defined as:</p><formula xml:id="formula_60">γ = N i=1 N i=j (r S ii S jj ) 2<label>(45)</label></formula></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 1 :</head><label>1</label><figDesc>Figure1: Validation errors through iterations over the hyperparameter space for both estimators performed on an example estimation window using historical market data. The red lines show the minimum value and the iteration it was reached in.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head></head><label></label><figDesc>Partial block-diagonal case.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head></head><label></label><figDesc>Full block-diagonal case.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: Out-of-sample portfolio risk σ p for different dimensionalities of the data. The sample window length is T = 250 and the dimension varies from p = 250 to p = 1000 with a step size of 50.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: Block-diagonal idiosyncratic covariances obtained by using respective CSI, CSK and CSH estimators. The blue areas represent the zero-valued entries.</figDesc><graphic coords="18,121.82,411.16,99.00,97.95" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 :</head><label>1</label><figDesc>The table shows main performance measures for partial block-diagonal simulation case. Comparison is made to assess impact of different linkage measures in hierarchical clustering (CSH estimator).</figDesc><table><row><cell>Estimator</cell><cell cols="4">F1 (%) RI (%) ∥ Σ -Σ∥ F σ p (%)</cell></row><row><cell>Average linkage</cell><cell cols="2">87.289 97.908</cell><cell>16.409</cell><cell>3.482</cell></row><row><cell cols="2">Weighted linkage 83.865</cell><cell>97.466</cell><cell>16.414</cell><cell>3.486</cell></row><row><cell cols="2">WWard's linkage 74.236</cell><cell>96.091</cell><cell>16.421</cell><cell>3.499</cell></row><row><cell>Centroid linkage</cell><cell>76.023</cell><cell>96.259</cell><cell>16.420</cell><cell>3.496</cell></row><row><cell>Medoid linkage</cell><cell>73.968</cell><cell>96.087</cell><cell>16.426</cell><cell>3.503</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 3 :</head><label>3</label><figDesc>Portfolio volatility σ p and the average RI (similarity to industries defined in SIC) over the historical testing period for the different estimators on historical data, shown for p = 300 and p = 1000.</figDesc><table><row><cell></cell><cell cols="2">p = 1000</cell><cell cols="2">p = 300</cell></row><row><cell cols="5">Estimator σ p (%) RI (%) σ p (%) RI (%)</cell></row><row><cell>CSH</cell><cell>6.553</cell><cell>72.467</cell><cell>8.666</cell><cell>70.165</cell></row><row><cell>CSK</cell><cell>6.324</cell><cell>65.953</cell><cell>8.599</cell><cell>60.855</cell></row><row><cell>CSI</cell><cell>6.382</cell><cell>100.00</cell><cell>8.548</cell><cell>100.00</cell></row><row><cell>SCAD</cell><cell>8.958</cell><cell cols="3">72.405 10.488 62.131</cell></row><row><cell cols="5">AL 10.669 73.584 10.060 68.441</cell></row><row><cell>SOFT</cell><cell>8.670</cell><cell>69.718</cell><cell>8.575</cell><cell>59.751</cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="1" xml:id="foot_0"><p>We consider arithmetic returns Yt = Rt/R t-1 -1, where Rt is the financial asset price at time step t. Arithmetic returns allow for efficient matrix operations to be used in portfolio return calculations, which leads to simple calculations for the portfolio variance which is simply the variance of a linear combination of asset returns. For more details see<ref type="bibr" target="#b25">[26]</ref>.</p></note>
+		</body>
+		<back>
+
+			<div type="funding">
+<div><head>Funding</head><p>This work was supported in part by the <rs type="funder">Croatian Science Foundation</rs> under Project <rs type="grantNumber">5241</rs>.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_4Hv7hkM">
+					<idno type="grant-number">5241</idno>
+				</org>
+			</listOrg>
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>As in historical data we have no access to the ground truth, we can only observe the performance in terms of the portfolios optimized using the different estimators. We also calculate the Rand index to observe the similarity of the methods to the industry grouping. This similarity is not something we wish to maximize, but rather an information about how different estimators behave in relation to the groups given by the industry grouping. We perform the analysis for two different numbers of assets: p = 1000 and p = 300, by choosing the p stocks with the highest market capitalization at each time step. The results are shown in Table <ref type="table">3</ref>.</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">The Power of (Non-)Linear Shrinking: A Review and Guide to Covariance Matrix Estimation</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Ledoit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wolf</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Financial Econometrics</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="page" from="187" to="218" />
+			<date type="published" when="2022-01">jan 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">High-dimensional covariance matrix estimation</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Lam</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Wiley Interdisciplinary Reviews: Computational Statistics</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="page" from="1" to="21" />
+			<date type="published" when="2020-10">oct 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">High-dimensional Markowitz portfolio optimization problem: empirical comparison of covariance matrix estimators</title>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">G</forename><surname>Choi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Lim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Choi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Statistical Computation and Simulation</title>
+		<imprint>
+			<biblScope unit="volume">89</biblScope>
+			<biblScope unit="page" from="1278" to="1300" />
+			<date type="published" when="2019-05">may 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Cleaning large correlation matrices: Tools from Random Matrix Theory</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Bun</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">P</forename><surname>Bouchaud</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Potters</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Physics Reports</title>
+		<imprint>
+			<biblScope unit="volume">666</biblScope>
+			<biblScope unit="page" from="1" to="109" />
+			<date type="published" when="2017-01">jan 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">High-Dimensional Covariance Estimation</title>
+		<author>
+			<persName><forename type="first">Mohsen</forename><surname>Pourahmadi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Wiley Series in Probability and Statistics</title>
+		<meeting><address><addrLine>Hoboken, NJ, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>John Wiley &amp; Sons, Inc</publisher>
+			<date type="published" when="2013-06">jun 2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">James-Stein for the leading eigenvector</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">R</forename><surname>Goldberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">N</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Proceedings of the National Academy of Sciences of the United States of America</title>
+		<imprint>
+			<biblScope unit="volume">120</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">The arbitrage theory of capital asset pricing</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A</forename><surname>Ross</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Economic Theory</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="page" from="341" to="360" />
+			<date type="published" when="1976-12">dec 1976</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Common risk factors in the returns on stocks and bonds</title>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">F</forename><surname>Fama</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">R</forename><surname>French</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Financial Economics</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="3" to="56" />
+			<date type="published" when="1993-02">feb 1993</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">A five-factor asset pricing model</title>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">F</forename><surname>Fama</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">R</forename><surname>French</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Financial Economics</title>
+		<imprint>
+			<biblScope unit="volume">116</biblScope>
+			<biblScope unit="page" from="1" to="22" />
+			<date type="published" when="2015-08">aug 2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">The Three Types of Factor Models: A Comparison of Their Explanatory Power</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Connor</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Financial Analysts Journal</title>
+		<imprint>
+			<biblScope unit="volume">51</biblScope>
+			<biblScope unit="page" from="42" to="46" />
+			<date type="published" when="1995-05">may 1995</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">High-dimensional covariance matrix estimation in approximate factor models</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Fan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mincheva</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Annals of Statistics</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="page" from="3320" to="3356" />
+			<date type="published" when="2011-11">nov 2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Large covariance estimation by thresholding principal orthogonal complements</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Fan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mincheva</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the Royal Statistical Society. Series B: Statistical Methodology</title>
+		<imprint>
+			<biblScope unit="volume">75</biblScope>
+			<biblScope unit="page" from="603" to="680" />
+			<date type="published" when="2013-08">aug 2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Estimating latent asset-pricing factors</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lettau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Pelger</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Econometrics</title>
+		<imprint>
+			<biblScope unit="volume">218</biblScope>
+			<biblScope unit="page" from="1" to="31" />
+			<date type="published" when="2020-09">sep 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">An overview of the estimation of large covariance and precision matrices</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Fan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Econometrics Journal</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<date type="published" when="2016-02">feb 2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Cluster-Based Shrinkage of Correlation Matrices for Portfolio Optimization</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Begušić</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Kostanjčar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">11th International Symposium on Image and Signal Processing and Analysis (ISPA 2019)</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2019-09">sep 2019</date>
+			<biblScope unit="page" from="301" to="305" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">High dimensional covariance matrix estimation using a factor model</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Fan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Fan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Lv</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Econometrics</title>
+		<imprint>
+			<biblScope unit="volume">147</biblScope>
+			<biblScope unit="page" from="186" to="197" />
+			<date type="published" when="2008-11">nov 2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Arbitrage, Factor Structure, and Mean-Variance Analysis on Large Asset Markets</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Chamberlain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Rothschild</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Econometrica</title>
+		<imprint>
+			<biblScope unit="volume">51</biblScope>
+			<biblScope unit="page">1281</biblScope>
+			<date type="published" when="1983-09">sep 1983</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Covariance regularization by thresholding</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Bickel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Levina</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The Annals of Statistics</title>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<biblScope unit="page" from="2577" to="2604" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Generalized thresholding of large covariance matrices</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Rothman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Levina</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zhu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the American Statistical Association</title>
+		<imprint>
+			<biblScope unit="volume">104</biblScope>
+			<biblScope unit="page" from="177" to="186" />
+			<date type="published" when="2009-03">mar 2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Adaptive thresholding for sparse covariance matrix estimation</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the American Statistical Association</title>
+		<imprint>
+			<biblScope unit="volume">106</biblScope>
+			<biblScope unit="page" from="672" to="684" />
+			<date type="published" when="2011-06">jun 2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Asymptotics of empirical eigenstructure for high dimensional spiked covariance</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Fan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Annals of Statistics</title>
+		<imprint>
+			<biblScope unit="volume">45</biblScope>
+			<biblScope unit="page" from="1342" to="1374" />
+			<date type="published" when="2017-06">jun 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Using principal component analysis to estimate a high dimensional factor model with high-frequency data</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Aït-Sahalia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Xiu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Econometrics</title>
+		<imprint>
+			<biblScope unit="volume">201</biblScope>
+			<biblScope unit="page" from="384" to="399" />
+			<date type="published" when="2017-12">dec 2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Cluster-Specific Latent Factor Estimation in High-Dimensional Financial Time Series</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Begušić</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Kostanjčar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Access</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page" from="164365" to="164379" />
+			<date type="published" when="2020-09">sep 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Estimating the Block-Diagonal Idiosyncratic Covariance in High-Dimensional Factor Models</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zignic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Begusic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Kostanjcar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2022 International Conference on Software, Telecommunications and Computer Networks (SoftCOM)</title>
+		<imprint>
+			<date type="published" when="2022-10">oct 2022</date>
+			<biblScope unit="page" from="1" to="6" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Clustering Huge Number of Financial Time Series: A Panel Data Approach With High-Dimensional Predictors and Factor Structures</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Ando</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Bai</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the American Statistical Association</title>
+		<imprint>
+			<biblScope unit="volume">112</biblScope>
+			<biblScope unit="issue">519</biblScope>
+			<biblScope unit="page" from="1182" to="1198" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Why the return notion matters</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Dorfleitner</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International Journal of Theoretical and Applied Finance</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="page" from="73" to="86" />
+			<date type="published" when="2003-11">nov 2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Rank regularized estimation of approximate factor models</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Bai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Econometrics</title>
+		<imprint>
+			<biblScope unit="volume">212</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="78" to="96" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Determining the number of factors in approximate factor models</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Bai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Ng</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Econometrica</title>
+		<imprint>
+			<biblScope unit="volume">70</biblScope>
+			<biblScope unit="page" from="191" to="221" />
+			<date type="published" when="2002-01">jan 2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">The adaptive lasso and its oracle properties</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Zou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the American Statistical Association</title>
+		<imprint>
+			<biblScope unit="volume">101</biblScope>
+			<biblScope unit="page" from="1418" to="1429" />
+			<date type="published" when="2006-12">dec 2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Variable selection via nonconcave penalized likelihood and its oracle properties</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Fan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the American Statistical Association</title>
+		<imprint>
+			<biblScope unit="volume">96</biblScope>
+			<biblScope unit="page" from="1348" to="1360" />
+			<date type="published" when="2001-12">dec 2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Incorporating Global Industrial Classification Standard Into Portfolio Allocation: A Simple Factor-Based Large Covariance Matrix Estimator With High-Frequency Data</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Fan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Furger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Xiu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Business and Economic Statistics</title>
+		<imprint>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="489" to="503" />
+			<date type="published" when="2016-10">oct 2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">A well-conditioned estimator for large-dimensional covariance matrices</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Ledoit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wolf</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Multivariate Analysis</title>
+		<imprint>
+			<biblScope unit="volume">88</biblScope>
+			<biblScope unit="page" from="365" to="411" />
+			<date type="published" when="2004-02">feb 2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Honey, I shrunk the sample covariance matrix</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Ledoit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Wolf</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Journal of Portfolio Management</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="page" from="110" to="119" />
+			<date type="published" when="2004-07">jul 2004</date>
+		</imprint>
+	</monogr>
+	<note>The Journal of Portfolio Management</note>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<monogr>
+		<author>
+			<persName><forename type="first">E</forename><surname>Alpaydin</surname></persName>
+		</author>
+		<title level="m">Introduction to Machine Learning</title>
+		<meeting><address><addrLine>Cambridge, MA</addrLine></address></meeting>
+		<imprint>
+			<publisher>MIT Press</publisher>
+			<date type="published" when="2020-03">mar 2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<monogr>
+		<title level="m" type="main">A Statistical Method for Evaluating Systematic Relationships</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">D M</forename><surname>Robert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Reuven</forename><surname>Sokal</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1958-03">mar 1958</date>
+			<biblScope unit="volume">62</biblScope>
+			<biblScope unit="page" from="1902" to="1996" />
+		</imprint>
+		<respStmt>
+			<orgName>University of Kansas Science Bulletin</orgName>
+		</respStmt>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<monogr>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">H A</forename><surname>Sneath</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">R</forename><surname>Sokal</surname></persName>
+		</author>
+		<title level="m">Numerical Taxonomy: The Principles and Practice of Numerical Classification. W. H. Freeman</title>
+		<imprint>
+			<date type="published" when="1973-01">jan 1973</date>
+		</imprint>
+	</monogr>
+	<note>second ed.</note>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Hierarchical Grouping to Optimize an Objective Function</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">H</forename><surname>Ward</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the American Statistical Association</title>
+		<imprint>
+			<biblScope unit="volume">58</biblScope>
+			<biblScope unit="page" from="236" to="244" />
+			<date type="published" when="1963-06">jun 1963</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">A systematic analysis of performance measures for classification tasks</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Sokolova</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Lapalme</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Information Processing &amp; Management</title>
+		<imprint>
+			<biblScope unit="volume">45</biblScope>
+			<biblScope unit="page" from="427" to="437" />
+			<date type="published" when="2009-07">jul 2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Objective Criteria for the Evaluation of Clustering Methods</title>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">M</forename><surname>Rand</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of the American Statistical Association</title>
+		<imprint>
+			<biblScope unit="volume">66</biblScope>
+			<biblScope unit="page">846</biblScope>
+			<date type="published" when="1971-12">dec 1971</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Understanding the Adjusted Rand Index and Other Partition Comparison Indices Based on Counting Object Pairs</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Warrens</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Van Der Hoef</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Classification</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="page" from="487" to="509" />
+			<date type="published" when="2022-11">nov 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">The Markowitz Optimization Enigma: Is &apos;Optimized&apos; Optimal?</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">O</forename><surname>Michaud</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Financial Analysts Journal</title>
+		<imprint>
+			<biblScope unit="volume">45</biblScope>
+			<biblScope unit="page" from="31" to="42" />
+			<date type="published" when="1989-01">jan 1989</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

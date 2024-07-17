@@ -1,0 +1,2255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">AI and the Problem of Knowledge Collapse</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author role="corresp">
+							<persName><forename type="first">Andrew</forename><forename type="middle">J</forename><surname>Peterson</surname></persName>
+							<email>andrew.peterson@univ-poitiers.fr</email>
+							<affiliation key="aff0">
+								<orgName type="institution">University of Poitiers</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">AI and the Problem of Knowledge Collapse</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+					<idno type="MD5">0033C5A157B927FE4C70016F4066C52E</idno>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.0" ident="GROBID" when="2024-05-02T16:15+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>While artificial intelligence has the potential to process vast amounts of data, generate new insights, and unlock greater productivity, its widespread adoption may entail unforeseen consequences. We identify conditions under which AI, by reducing the cost of access to certain modes of knowledge, can paradoxically harm public understanding. While large language models are trained on vast amounts of diverse data, they naturally generate output towards the 'center' of the distribution. This is generally useful, but widespread reliance on recursive AI systems could lead to a process we define as "knowledge collapse", and argue this could harm innovation and the richness of human understanding and culture. However, unlike AI models that cannot choose what data they are trained on, humans may strategically seek out diverse forms of knowledge if they perceive them to be worthwhile. To investigate this, we provide a simple model in which a community of learners or innovators choose to use traditional methods or to rely on a discounted AI-assisted process and identify conditions under which knowledge collapse occurs. In our default model, a 20% discount on AI-generated content generates public beliefs 2.3 times further from the truth than when there is no discount. Finally, based on the results, we consider further research directions to counteract such outcomes.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Introduction</head><p>Before the advent of generative AI, all text and artwork was produced by humans, in some cases aided by tools or computer systems. The capability of large language models (LLMs) to generate text with near-zero human effort, however, along with models to generate images, audio, and video, suggest that the data to which humans are exposed may come to be dominated by AI-generated or AI-aided processes.</p><p>Researchers have noted that the recursive training of AI models on synthetic text may lead to degeneration, known as "model collapse" <ref type="bibr" target="#b83">(Shumailov et al., 2023)</ref>. Our interest is in the inverse of this concern, focusing instead on the equilibrium effects on the distribution of knowledge within human society. We ask under what conditions the rise of AI-generated content and AI-mediated access to information might harm the future of human thought, information-seeking, and knowledge.</p><p>The initial effect of AI-generated information is presumably limited, and existing work on the harms of AI rightly focuses on the immediate effects of false information spread by "deepfakes" <ref type="bibr" target="#b46">(Heidari et al., 2023)</ref>, bias in AI algorithms <ref type="bibr" target="#b72">(Nazer et al., 2023)</ref>, and political misinformation <ref type="bibr" target="#b18">(Chen and Shu, 2023)</ref>. Our focus has a somewhat longer time horizon, and probes the impact of widespread, rather than marginal adoption.</p><p>Researchers and engineers are currently building a variety of systems whereby AI would mediate our experience with other humans and with information sources. These range from learning from LLMs <ref type="bibr" target="#b19">(Chen, Chen, and Lin, 2020)</ref>, ranking or summarizing search results with LLMs <ref type="bibr" target="#b82">(Sharma, Liao, and Xiao, 2024)</ref>, suggesting search terms or words to write as with traditional autocomplete <ref type="bibr" target="#b39">(Graham, 2023;</ref><ref type="bibr" target="#b22">Chonka, Diepeveen, and Haile, 2023)</ref>, designing systems to pair collaborators <ref type="bibr" target="#b4">(Ball and Lewis, 2018)</ref>, LLM-based completion of knowledge bases sourced from Wikipedia <ref type="bibr" target="#b20">(Chen, Razniewski, and Weikum, 2023)</ref>, interpreting government data <ref type="bibr" target="#b33">(Fisher, 2024)</ref> and aiding journalists <ref type="bibr" target="#b76">(Opdahl et al., 2023)</ref>, to cite only a few from an ever-growing list.</p><p>Over time, dependence on these systems, and the existence of multifaceted interactions among them, may create a "curse of recursion" <ref type="bibr" target="#b83">(Shumailov et al., 2023)</ref>, in which our access to the original diversity of human knowledge is increasingly mediated by a partial and increasingly narrow subset of views. With increasing integration of LLM-based systems, certain popular sources or beliefs which were common in the training data may come to be reinforced in the public mindset (and within the training data), while other "long-tail" ideas are neglected and eventually forgotten.</p><p>Such a process might be reinforced by an 'echo chamber' or information cascade effect, in which repeated exposure to this restricted set of information leads individuals to believe that the neglected, unobserved tails of knowledge are of little value. To the extent AI can radically discount the cost of access to certain kinds of information, it may further generate harm through the "streetlight effect", in which a disproportionate amount of search is done under the lighted area not because it is more likely to contain one's keys but because it's easier to look there. We argue that the resulting curtailment of the tails of human knowledge would have significant effects on a range of concerns, including fairness, inclusion of diversity, lost-gains in innovation, and the preservation of the heritage of human culture.</p><p>In our simulation model, however, we also consider the possibility that humans are strategic in actively curating their information sources. If, as we argue, there is significant value in the tai' areas of knowledge that come to be neglected by AI-generated content, some individuals may put in additional effort to realize the gains, assuming they are sufficiently informed about the potential value.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Summary of Main Contributions</head><p>We identify a dynamic whereby AI, despite only reducing the cost of access to certain kinds of information, may lead to "knowledge collapse," neglecting the long-tails of knowledge and creating an degenerately narrow perspective over generations. We provide a positive knowledge spillovers model with in which individuals decide whether to rely on cheaper AI technology or invest in samples from the full distribution of true knowledge. We examine through simulations the conditions under which individuals are sufficiently informed to prevent knowledge collapse within society. Finally, we conclude with an overview of possible solutions to prevent knowledge collapse in the AI-era.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Related Work</head><p>Technology has long affected how we access knowledge, raising concerns about its impact on the transmission and creation of knowledge. Yeh Meng-te, for example, argued in the twelfth century that the rise of books led to a decline in the practice of memorizing and collating texts that contributed to a decline of scholarship and the repetition of errors <ref type="bibr">(Cherniack, 1994, p.48-49)</ref>. Even earlier, a discussion in Plato's Phaedrus considers whether the transition from oral tradition to reading texts was harmful to memory, reflection and wisdom <ref type="bibr" target="#b43">(Hackforth, 1972)</ref>.</p><p>We focus on recent work on the role of digital platforms and social interactions, and mention only in passing the literature on historical innovations and knowledge (e.g. <ref type="bibr" target="#b75">Ong, 2013;</ref><ref type="bibr" target="#b70">Mokyr, 2011;</ref><ref type="bibr" target="#b44">Havelock, 2019)</ref>, and the vast literature on the printing press (e.g. <ref type="bibr" target="#b28">Dittmar, 2011;</ref><ref type="bibr" target="#b31">Eisenstein, 1980)</ref>. Like other media transitions before it <ref type="bibr" target="#b91">(Wu, 2011)</ref>, the rise of internet search algorithms and of social media raised concerns about the nature and distribution of information people are exposed to, and the downstream effects on attitudes and political polarization <ref type="bibr" target="#b24">(Cinelli et al., 2021;</ref><ref type="bibr" target="#b6">Barberá, 2020)</ref>.</p><p>The following section considers research on the impact of recommendation algorithms and self-selection on social media, and how this might generate distorted and polarizing opinions, as an analogy for understanding the transformation brought about by reliance on AI. We consider game theoretic models of information cascades as an alternative model for failure in social learning, in which the public to fails to update rationally on individuals' private signals. Next, we review the main findings of network analysis on the flow of information in social media, which also identify mechanisms which distort knowledge formation. We then examine the specific nature of generative AI algorithms, focusing on the problem of model collapse and known biases in AI outputs.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>The media, filter bubbles and echo chambers</head><p>A common critique of social media is that they allow users to select in to "echo chambers" (specific communities or communication practices) in which they are exposed to only a narrow range of topics or perspectives. For example, instead of consulting the "mainstream" news where a centrist and relatively balanced perspective is provided, users are exposed to selective content that echoes pre-existing beliefs. In the ideological version of the echo-chamber hypothesis, individuals within a latent ideological space (for example a one-dimensional left-right spectrum), are exposed to peers and content with ideologically-similar views. If so, their beliefs are reinforced socially and by a generalization from their bounded observations, leading to political polarization <ref type="bibr" target="#b25">(Cinus et al., 2022;</ref><ref type="bibr" target="#b51">Jamieson and Cappella, 2008;</ref><ref type="bibr" target="#b78">Pariser, 2011)</ref>.</p><p>A simple model for this assumes homophily within in a network growth model, in which similar individuals chose to interact. Implicitly the approach presumes that this is common on social media but not common within traditional media, which for technological reasons were constrained to provide the same content across a broad population with possibly heterogeneous preferences. 1 This general dynamic may hold even if traditional media and newspapers were themselves dynamic systems interacting with their consumers, markets and advertisers, and themselves adapting their message to specific communities and preferences (e.g. <ref type="bibr">Angelucci, Cagé, and Sinkinson, forthcoming;</ref><ref type="bibr" target="#b15">Cagé, 2020;</ref><ref type="bibr" target="#b11">Boone, Carroll, and van Witteloostuijn, 2002)</ref>.</p><p>The second main line of analysis focuses on "filter bubbles," whereby the content to which users are exposed is selected based on a recommendation system. <ref type="bibr" target="#b52">Jiang et al. (2019)</ref> model this as a dynamic process between a user's evolving interests and behavior (such as clicking a link, video, or text) and a recommender system which aims to maximize expected utility for the user. In their reinforcement learning-inspired framework, the aim is for the user to explore the space of items or topics without the algorithm assigning degenerate (extremely high or zero) probabilities to these items. As above, a key concern is the political or ideological content of rec-1 The reality is as usual more complex. For example, in the post-war era, the concern was almost the inverse-the fear that the few channels that were possible with television led to 'homogenization.' There are also other dynamics at play than technological constraints. For example, in contrast to TV, the 1950s and 1960s saw a proliferation of more diverse and local radio stations, some catering to ethnic minorities and musical tastes outside the mainstream. The 'payola' scandals, however, led to regulations that shifted content decisions from diverse DJs to centralized music directors <ref type="bibr" target="#b30">(Douglas, 2002)</ref>.</p><p>ommendations their relation to polarization <ref type="bibr" target="#b57">(Keijzer and Mäs, 2022)</ref>. In a more recent twist, <ref type="bibr" target="#b82">Sharma, Liao, and Xiao (2024)</ref> find that LLM-powered search may generate more selective exposure bias and polarization by reinforcing pre-existing opinions based on finer-grained clues in the user's queries.</p><p>Particularly relevant for our context is the issue of "popularity bias" in recommender systems, in which a small subset of content receives wide exposure while users (distributed based on some long-tailed distribution, like the topics) from smaller groups or with rare preferences are marginalized. On the one hand, users may desire to be exposed to popular content, for example to understand trending ideas or fashions. But overly favoring popular items can lead to user disengagement because it neglects their unique interests, lacks variety, etc. (e.g. <ref type="bibr" target="#b60">Klug et al., 2021)</ref>. Recommendation systems are often biased in the sense that even when a subset of users wants to get access to non-popular items, they receive few or no such recommendations <ref type="bibr" target="#b0">(Abdollahpouri et al., 2021)</ref>. A number of approaches have been suggested to counteract this tendency (e.g. <ref type="bibr" target="#b66">Lin et al., 2022;</ref><ref type="bibr" target="#b34">Gao et al., 2023)</ref>.</p><p>The problem of popularity bias is ironic given that one of the unique contributions of the internet was its ability to provide access to long-tailed products and services that were previously ignored or inaccessible <ref type="bibr" target="#b12">(Brynjolfsson et al., 2006;</ref><ref type="bibr" target="#b13">Brynjolfsson, Hu, and Smith, 2003)</ref>. By extension, we would expect social media and the internet to make possible a more diverse and rich informational environment. The role of self-selection into communities and recommendation algorithms provides a explanation for why this might not be the case. In the next section we consider a more general set of models that examine information flow within networks and the idea of information cascades.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Network effects and Information Cascades</head><p>Information cascade models provide one approach to explaining a kind of herd behavior (where diverse and free individuals nonetheless make similar decisions). They explore the conditions under which private information is not efficiently aggregated by the public. This can occur where individuals sequentially make decisions from a discrete set after observing the behaviors but not the private signals of others. This can generate a "herd externality" <ref type="bibr" target="#b5">(Banerjee, 1992)</ref> in which an individual ignores her private signal in deciding, and as a result the public is in turn unable to update on her private information. In the extreme, this can mean that all private informa-tion, aside from that of the first few individuals, is completely ignored <ref type="bibr" target="#b9">(Bikhchandani, Hirshleifer, and Welch, 1998;</ref><ref type="bibr" target="#b84">Smith and Sørensen, 2000)</ref>. In some variants of the model, individuals must pay to receive a signal, which encourages the tendency to want to free-ride on the information received by others, and thus the greater the cost, the more likely it is that a cascade develops.</p><p>A related literature on the spread of information on social networks analyzes information cascades in terms of network structure, as a kind of contagion. Here, the focus is not on private information but how information flows within the network. For example, independent cascade models consider how an individual may change their beliefs based on some diffusion probability as a result of contact with a neighbor with that belief <ref type="bibr" target="#b37">(Goldenberg, Libai, and Muller, 2001;</ref><ref type="bibr" target="#b41">Gruhl et al., 2004)</ref>.</p><p>More generally, such models determine the probability of diffusion within a network as some function of the connected nodes, and may also incorporate additional characteristics such as each nodes' social influence, ideological or other preferences, or topics <ref type="bibr" target="#b7">(Barbieri, Bonchi, and Manco, 2013)</ref>. Alternatively, epidemic models allow that individuals may be in one of three states -susceptible, infected (capable of transmitting the information), and recovered (in which case they have the information but do not consider it worth sharing with others) (e.g. <ref type="bibr" target="#b58">Kermack and McKendrick, 1927)</ref> and <ref type="bibr">(Barrat, Barthélemy, and Vespignani, 2008, ch.10)</ref> Social (and even physical) proximity can lead individuals to share similar attitudes, such as when individuals randomly assigned housing together come to have attitudes similar to their apartment block and differing from nearby blocks <ref type="bibr" target="#b32">(Festinger, Schachter, and Back, 1950)</ref>, as modeled by <ref type="bibr" target="#b74">Nowak, Szamrej, and Latané (1990)</ref>. Empirically, <ref type="bibr" target="#b3">Bakshy et al. (2012)</ref> show that weak-ties may be more important for information diffusion that strong-ties, while <ref type="bibr" target="#b17">Centola (2010)</ref> demonstrates that the reinforcement of a message within a clustered network makes information spread more effective than in a random network. More sophisticated models allow for the evolution not only of opinion process but the edges between nodes of the network <ref type="bibr">(Castellano, Fortunato, and Loreto, 2009, pp.47-48.)</ref>.</p><p>These models suggest specific opinion-formation dynamics based on what other humans, texts, images, etc. an individual interacts with. By extension, we could consider the generalization of these networks to the case where LLMs play a key role as (possibly influential) nodes, or as determining how an individual navigates a knowledge graph. One of the key ideas of Web 2.0 was that users, not just authors or programmers, structure the knowledge <ref type="bibr" target="#b77">(O'Reilly, 2005)</ref>. By extension, in the AI era, LLMs interact with users, authors, programmers and technology to structure that knowledge, and understanding the flow of information requires understanding the emergent behavior of these elements.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Model collapse</head><p>The idea of model collapse is rooted in the earlier phenomenon of "mode collapse" in generative adversarial networks (GANs). GANs are based on a generator neural network that proposes, e.g. an image, and a discriminator attempts to predict whether a given image is created by the generator or is a real image from the dataset. While ideally the generator attempts to produce images across the full range of input data, in practice they may settle into producing a narrow range of images for which it is good at fooling the discriminator, known as mode collapse <ref type="bibr" target="#b38">(Goodfellow, 2016;</ref><ref type="bibr" target="#b2">Arora et al., 2017)</ref>. The case of "posterior collapse" was also identified in modeling language data with variational autoencoders <ref type="bibr" target="#b68">(Melis, György, and Blunsom, 2022)</ref>. <ref type="bibr" target="#b83">Shumailov et al. (2023)</ref> introduced the term "model collapse" to describe a related process when models such as variational autoencoders, Gaussian mixture models, and LLMs are trained on data produced by an earlier version of the model. Incorporating AI-generated content in the training data causes loss of information which they categorize into two types. First, in "early model collapse," the tails of the distribution are lost due to statistical error (finite sampling bias) or functional approximation error, which leads to reversion to the mean. Second, "late model collapse" may occur when a model converges with narrow variance on a distribution unlike the original data. They provide evidence of such model collapse in LLMs and other models, see for example Figure <ref type="figure" target="#fig_0">1</ref>. <ref type="bibr" target="#b29">Dohmatob et al. (2024)</ref> demonstrate conditions under which the injection of true (non AI-generated) data can preserve representation of the true distribution, though <ref type="bibr" target="#b10">Bohacek and Farid (2023)</ref> show that even small amounts of synthetic data can poison an image model, and once distorted, it is difficult for such models to recover even after being trained on true data. <ref type="bibr" target="#b42">Guo et al. (2023)</ref> demonstrate that training LLMs on synthetic data can lead to diminishing lexical, semantic and syntactic diversity.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Known biases in LLMs</head><p>Newer AI models such as LLMs are not immune to the problems of bias identified and measured in machine learning algorithms <ref type="bibr" target="#b72">(Nazer et al., 2023)</ref> and which have plagued predictive algorithms in real-world uses cases Gen 9: architecture. In addition to being home to some of the world's largest populations of black @-@ tailed jackrabbits, white @-@ tailed jackrabbits, blue @-@ tailed jackrabbits, red @-@ tailed jackrabbits, yellow @- going back to at least the 1930s <ref type="bibr">(Christian, 2021, Ch.2)</ref>. Unsurprisingly, LLMs are better at recalling facts that occur frequently within the training data and struggle with long-tail knowledge <ref type="bibr" target="#b53">(Kandpal et al., 2023)</ref>. <ref type="bibr" target="#b26">Das et al. (2024)</ref> identify a range of shortcomings of LLMs in attempting to generate human-like texts, such as underrepresenting minority viewpoints and reducing the broad concept of "positive" text to that simply of expressing "joy".</p><p>Recent work attempts to address these issues through a variety of methods, for example by upsampling underrepresented features on which prediction is otherwise sub-optimal <ref type="bibr" target="#b36">(Gesi et al., 2023)</ref>, or evaluating the importance of input data using shapely values <ref type="bibr" target="#b56">(Karlaš et al., 2022)</ref>. However, the mechanistic interpretability work on LLMs to date suggest that our understanding, while improving, is still very limited (e.g. <ref type="bibr" target="#b61">Kramár et al., 2024;</ref><ref type="bibr" target="#b90">Wu et al., 2023)</ref>. As such, direct methods for overcoming such biases are, at a minimum, not close at hand. Finally, while much of the focus is naturally on overt racial and gender biases, there may also be pervasive but less observable biases in the content and form of the output. <ref type="bibr" target="#b89">Wendler et al. (2024)</ref>, for example, provide evidence that that current LLMs trained on large amounts of English text 'rely on' English in their latent representations, as if a kind of reference language.</p><p>One particular area in which the diversity of LLM outputs has been analyzed is on a token-by-token level in the context of decoding strategies. In some situations, using beam search to choose the most likely next token can create degenerate repetitive phrases <ref type="bibr" target="#b85">(Su et al., 2022)</ref>. Furthermore, a bit like Thelonious Monk's melodic lines, humans do not string together sequences of the most likely words but occasionally try to surprise the listener by sampling from low-probability words, defying conventions, etc. <ref type="bibr" target="#b50">Holtzman et al. (2020)</ref> (referring to <ref type="bibr" target="#b40">Grice, 1975)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>A Model of Knowledge Collapse Defining Knowledge Collapse</head><p>A commonly held, optimistic view is that knowledge has improved monotonically over time, and will continue to do so. This indeed appears to be the case for certain scientific fields like physics, chemistry, or molecular biology, where we can measure the quality of predictions made over time. For example, accuracy in the computation of digits of π has increased from 1 digit in 200 BCE to 16 in 1424 (Jamashid al-Kashi) to 10 14 digits recently.</p><p>In other domains, however, it is less clear, especially within regions. Historically, knowledge has not progressed monotonically, as evidenced by the fall of the Western Roman empire, the destruction of the House of Wisdom in Baghdad and subsequent decline of the Abbasid Empire after 1258, or the collapse of the Mayan civilization in the 8th or 9th century. Or, to cite specific examples, the ancient Romans had a recipe for concrete that was subsequently lost, and despite progress we have not yet re-discovered the secrets of its durability <ref type="bibr" target="#b81">(Seymour et al., 2023)</ref>, and similarly for Damascus steel <ref type="bibr" target="#b63">(Kürnsteiner et al., 2020)</ref>. Culturally, there are many languages, cultural and artistic practices, and religious beliefs that were once held by communities of humans which are now lost in that they do not exist among any known sources <ref type="bibr" target="#b73">(Nettle and Romaine, 2000)</ref>.</p><p>The distribution of knowledge across individuals also varies over time. For example, traditional huntergatherers could identify thousands of different plants and knew their medicinal usages, whereas most humans today only know a few dozen plants and whether they can be purchased in a grocery store. This could be seen as a more efficient form of specialization of information across individuals, but it might also impact our beliefs about the value of those species or of a walk through a forest, or influence scientific or policy-relevant judgements.</p><p>Informally,<ref type="foot" target="#foot_0">2</ref> we define knowledge collapse as the progressive narrowing over time (or over technological representations) of the set of information available to humans, along with a concomitant narrowing in the perceived availability and utility of different sets of information. The latter is important because for many purposes it is not sufficient for their to exist a capability to, for example, go to an archive to look up some information. If all members deem it too costly or not worthwhile to seek out some information, that theoretically available information is neglected and useless.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Model Overview</head><p>The main focus of the model is whether individuals decide to invest in innovation or learning (we treat these as interchangeable) in the 'traditional' way, through a possibly cheaper AI-enabled process, or not at all. The idea is to capture, for example, the difference between someone who does extensive research in an archive rather than just relying on readily-available materials, or someone who takes the time to read a full book rather than reading a two-paragraph LLM-generated summary.</p><p>Humans, unlike LLMs trained by researchers, have agency in deciding among possible inputs. Thus, a key dynamic of the model is to allow for the possibility that rational agents may be able to prevent or to correct for distortion from over-dependence on 'centrist' information. If past samples neglect the 'tail' regions, the returns from such knowledge should be relatively higher. To the extent that they observe this, individuals would be willing to pay more (put in more labor) to profit from these additional gains. We thus investigate under what conditions such updating among individuals is sufficient to preserve an accurate vision of the truth for the community as a whole.</p><p>The cost-benefit decision to invest in new information depends on the expected value of that information. Anyone who experiments with AI for, e.g. text sum-marization, develops an intuitive sense of when the AI provides the main idea sufficiently well for a given purpose and when it is worth going straight to the source. We assume that individuals cannot foresee the future, but they do observe in common the realized rewards from previous rounds. The decision also depends on each individual's type. Specifically, n individuals have types Θ n drawn from a lognormal distribution with µ = 1, σ = 0.5. Depending on how their utility is calculated (not a substantive focus here), these could be interpreted as different expected returns from innovation (e.g.technooptimists versus pessimists), or their relative ability or desire to engage in innovation.</p><p>We model knowledge as a process of approximating a (Students t) probability distribution.<ref type="foot" target="#foot_1">3</ref> This is simply a metaphor, although it has parallels for example in the work of <ref type="bibr" target="#b83">Shumailov et al. (2023)</ref>, but we make no claim that "truth" is in some deep way distributed 1-D Gaussian. This is a modeling assumption in order to work with a process with well-known properties, where there is both a large central mass and long-tails, which we take to be in some general way reflective of the nature of knowledge (and of the distribution of training data for LLMs.)</p><p>The set of individuals who decide to invest in information receive a sample from the true distribution, while those that invest in the AI-generated sample receive a sample from a version of the true distribution which is truncated at σ tr standard deviations above and below the mean. To vary the extent of mass in the tails, we model the true distribution as a Student's t-distribution with e.g. 10 degrees of freedom. The results are similar for a standard normal distribution, and as expected the problem of knowledge collapse is more pronounced for wider tails (c.f. Appendix Figure <ref type="figure" target="#fig_5">7</ref>).</p><p>While individuals choose whether or not to invest in innovation according to their personal payoff, when they do so invest they also contribute their knowledge to the public. That is, a public knowledge probability distribution function ('public pdf') is generated by gathering the nsamp = 100 most recent samples 4 and generating an estimate of the truth using kernel density estimation. The distance between the public pdf and the truth provides a shorthand for the general welfare of a society. We define knowledge collapse as occurring where there is a large and increasing distance between the public and true pdfs as a result of the collapse of tail regions and increasing mass near the mean. The individual's payoff is calculated according to the distance they move the public pdf towards the true pdf. That is, the innovation (individual payoff) I generated by an individuals additional (n + 1)th sample is calculated with respect to the true pdf p true (x) and the current public pdf p public (x), based on the Hellinger distance H(p(x), q(x)) 5 , as follows:</p><formula xml:id="formula_0">innovation = previous distance -new distance I = H p n public (x) -p true (x) -H p n+1 public (x), p true (x)</formula><p>In Figure <ref type="figure" target="#fig_1">2</ref>, we illustrate the innovation calculation for a hypothetical example where the distance between the existing public pdf and the true pdf is 0.5, while the n + 1th sample reduces the distance to 0.4, thereby generating an innovation of 0.1. This can be thought of as akin to a patent process, in which an individual receives rents for her patent (to the extent that it is truly innovative) in exchange for contributing to public knowledge that benefits others.</p><p>As noted above, individuals cannot foresee the true future value of their innovation options (they do not know what sample they will receive or how much value it will add. Instead, they can only estimate the relative values of innovation based on the previous rounds. Specifically, they update their belief about the options based on the previous full and truncated (AI) samples from the previous round (and a minimum of three), according 5 We use the Hellinger distance because it is a true distance metric that is symmetric and satisfies the triangle inequality, which is important for the innovation calculation. The Hellinger distance is bounded by 0 and 1 (if the two pdfs have no common support) and given by:</p><formula xml:id="formula_1">H(p, q) = 1 √ 2 p(x) -q(x) 2 dx</formula><p>to a learning rate (η) as follows. For the previous estimate vt-1 , the new estimate vt for each of the full-and truncated-samples is calculated from the observed value in the previous round (I t-1 ) as:</p><formula xml:id="formula_2">vt = vt-1 + η • vt-1 -I t-1</formula><p>By varying the learning rate, we can evaluate the impact of having more or less up-to-date information on the value of different information sources, where we expect that if individuals are sufficiently informed, they will avoid knowledge collapse by seeing and acting on the potential to exploit knowledge from the tail regions, even if relatively more expensive.</p><p>While the individual payoff is based on the true movement of the public pdf towards the true pdf, the public pdf is updated based on all samples. This reflects that public consciousness is overwhelmed with knowledge claims and cannot evaluate each, so that a consensus is formed around the sum of all voices. Unlike the individual innovator who has a narrow focus and observes whether her patent ultimately generates value, the public sphere has limited attention and is forced to accept the aggregate contributions of the marketplace of ideas.</p><p>As a result, individuals' investments in innovation have positive spillovers to the extent they can move public knowledge towards the truth. However, if too many people invest in 'popular' or 'central' knowledge by sampling from the truncated distribution, this can have a negative externality, by distorting public knowledge towards the center and thinning the tails. <ref type="foot" target="#foot_3">6</ref>We also introduce the possibility of generational turnover in some models to explore the impact on knowledge collapse. This could either be taken to be literal generations of humans, as in economic 'overlapping generation' models (e.g. <ref type="bibr" target="#b88">Weil, 2008)</ref>, or alternatively as reflecting the recursive nature of reliance on interleaved AI-systems, which could generate the same result within a rapid timeframe.</p><p>In the version of the model with generational change, the new generation takes the existing public pdf to be representative and thus begins sampling from a distribution with the same (possibly smaller) variance (and correspondingly the truncation limits are updated). Interpreted in terms of human generations, this could be understood as the new generation fixing its 'epistemic horizon' based on the previous generation. That is, the new generation may underestimate the breadth of possible knowledge and then rely on these perceived limits to restrict their search. 7 An information cascade model could justify such a situation if individuals assume that previous actors would have invested in tail knowledge if was valuable, and thus take the absence of such information as implying that it must be of little value. 8  A second interpretation views these 'generations' not in terms of human populations but as a result of recursive dynamics among AI systems, such as when a user reads an AI-generated summary of an AI-written research article which was itself constructed from Wikipedia articles edited with AI, etc., a fancy version of the telephone game.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Results</head><p>Our main concern is with the view that AI, by reducing the costs of access to certain kinds of information, could only make us better off. In contrast to the literature on model collapse, we consider the conditions under which strategic humans may seek out the input data that will maintain the full distribution of knowledge. Thus, we begin with a consideration of different discount rates. First, we present the a kernel density estimate of public knowledge at the end of 100 rounds (Figure <ref type="figure" target="#fig_3">3</ref>). As a baseline, when there is no discount from using AI (discount rate is 1), then as expected public knowledge converges to the true distribution, 9 As AI reduces the cost of truncated knowledge, however, the distribution of public knowledge collapses towards the center, with tail knowledge being under-represented. Under these conditions, excessive reliance on AI-generated content over time leads 7 Zamora-Bonilla (2010, p.328) suggests a scientific process of 'verisimiltude', where we judge evidence not with reference to objective truth by by "perceived closeness to what we empirically know about the truth, weighted by the perceived amount of information this empirical knowledge contains". For a more recent review of models and experiments on human cultural transmission see <ref type="bibr" target="#b69">(Mesoudi and Whiten, 2008)</ref> and in particular the model of <ref type="bibr" target="#b47">Henrich (2004)</ref> which attempts to explain how the Tasmanians lost a number of useful technologies over time.</p><p>8 For example, Christian communities at times actively promoted and preserved 'canonical' texts while neglecting or banning others, with the result that those excluded from reproduction by scribes were taken to have little value. Perhaps the heliocentric view espoused by Aristarchus of Samos in the 3rd century BCE would have been more readily (re)considered if his works had not been neglected <ref type="bibr">(Russo and others, 2003, ch.3)</ref>. A number of authors, such as Basilides, are known to us today only through texts denouncing (and sometimes misrepresenting) their views <ref type="bibr" target="#b64">(Layton, 1989)</ref>. 9 Even with no discount, there are occasional samples from the truncated distribution, but only enough to realize that they are of relatively less worth than full-distribution samples to a curtailing of the eccentric and rare viewpoints that maintain a comprehensive vision of the world.  Fixing specific parameters, we can get a sense of the size of the the impact of relying on AI. For example, for our default model,<ref type="foot" target="#foot_4">10</ref> after nine generations, when there is no AI discount the public distribution has a Hellinger distance of just 0.09 from the true distribution<ref type="foot" target="#foot_5">11</ref> . When AI-generated content is 20% cheaper (discount rate is 0.8), the distance increases to 0.22, while a 50% discount increases the distance to 0.40. Thus, while the availability of cheap AI-approximations might be thought to only increase public knowledge, under these conditions public knowledge is 2.3 or 3.2 times further away from the truth due to reliance on AI.</p><p>For subsequent results illustrating the tradeoff of different parameters, we plot the Hellinger distance between public knowledge at the end of the 100 rounds and the true distribution. First, we examine the importance of updating on the value of relative samples and the relationship to the discount factor in Figure <ref type="figure">4</ref>. That is, we compare the situation in which individuals do not update on the value of innovation in previous rounds (learning rate near zero, e.g. lr = 0.001) to the case where they update rapidly (here lr = 0.1). As above, the more AI-generated content is cheaper (discount rate indicated by colors), the more public knowledge collapses towards the center. At the same time, when individuals  ), the more public knowledge collapses. We also observe a tradeoff, that is, faster updating on the relative value of AI-generated content can compensate for more extreme price disparities. And conversely, if the discount rate is not too extreme, even slower updating on the relative values is not too harmful.</p><p>In Figure <ref type="figure">5</ref>, we consider the impact of variations in how extreme the truncation of AI-generated content is on the collapse of knowledge. Intuitively, extreme truncation (small values of σ tr ) correspond to a situation in which AI, for example, summaries an idea with only the most obvious or common perspective. Less extreme truncation corresponds to the idea that AI manages to represent a variety of perspectives, and excludes only extremely rare or arcane perspectives. Naturally, in the latter case, (e.g. if AI truncates the distribution two standard deviations from the mean), the effect is minimal. If AI truncates knowledge outside of 0.25 standard deviations from the mean, the impact is large, though once again this is at least someone moderated when the discount is smaller (especially if there is no generational effect).</p><p>We compare the effect of the generational compounding of errors in Figure <ref type="figure" target="#fig_4">6</ref>. If there is no generational change, there is at worst only a reduction in the tails of public knowledge outside the truncation limits. In this case the distribution is stable and does not "collapse", We see a jump from this baseline to the case where there is generational change, though the effect of how often generational change occurs (every 3, 5, 10, or 20 rounds) does not have a significant impact.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Discussion</head><p>We provide a theoretical framework for defining "knowledge collapse", whereby dependence on generative AI such as large language models may lead to a reduction in the long-tails of knowledge. Our simulation study suggests that such harm can be mitigated to the extent that (a) we are aware of the of the possible value of niche, specialized and eccentric perspectives that may be neglected by AI-generated data and continue to seek them out, (b) AI-systems are not recursively interdependent, as occurs if they use other AI-generated content as inputs or suffer from other generational effects, and (c) AI-generated content is as representative as possible of the full distribution of knowledge. Each of these suggest practical implications for how to manage AI adoption. First, while our work does not justify an outright ban, measures should be put in place to ensure safeguards against widespread or complete reliance on AI models. For every hundred people who read a one-paragraph summary of a book, there should be a human somewhere who takes the time to sit down and read it, in hopes that she can then provide feedback One extension to the model would be to allow for generational change but endogenize the choice of public subsidies to protect 'tail' knowledge. This is arguably what is done by governments that support academic and artistic endeavors that would otherwise have been underprovided by the private market. Protecting the diversity of information means also paying attention to the effect of AI adoption on the revenue streams of journalists that produce and not merely transmit information (e.g. <ref type="bibr" target="#b14">Cagé, 2016)</ref>. Secondly, there is an obvious need to avoid building recursively dependent AI systems (e.g. where one LLM or agent provides answers based on another AI-generated summary, etc.) and thereby playing an LLM-mediated game of 'telephone'. At a minimum, this requires a concerted effort to distinguish human-AI-generated data. Preserving access to 'unmediated' texts, such as through a well-conceived retrieval augmented generation approach, can preserve the long-tails of knowledge <ref type="bibr" target="#b27">(Delile et al., 2024)</ref>, as may generating multiple results and re-ranking <ref type="bibr" target="#b65">(Li et al., 2023)</ref>.</p><p>Finally, while much recent attention has been on the problem of LLMs misleadingly presenting fiction as fact (hallucination), this may be less of an issue than the problem of representativeness across a distribution of possible responses. Hallucination of verifiable, concrete facts is often easy to correct for. Yet many real world questions do not have well-defined, verifiably true and false answers. If a user asks, for example, "What causes inflation?" and a LLM answers "monetary policy", the problem isn't one of hallucination, but of the failure to reflect the full-distribution of possible answers to the question, or at least provide an overview of the main schools of economic thought.</p><p>This could be considered in the setup of frameworks for reinforcement learning from human feedback and related approaches to shaping model outputs, since humans may by default prefer simple, monolithic answers over those that represent the diversity of perspectives. Particular care should also be given in the context of the use of AI in education, to ensure students consider not only the veracity of AI-generated answers but also their variance, representativeness, and biases, that is, to what extent they represent the full distribution of possible answers to a question.</p><p>The scaling laws <ref type="bibr" target="#b55">(Kaplan et al., 2020;</ref><ref type="bibr" target="#b49">Hoffmann et al., 2022)</ref> demonstrate the advantage of training LLMs on the maximum amount of (quality) data. A valuable empirical question is therefore whether this leads to increasing or decreasing diversity within the training data (and the raises the related problem of the lack of transparency in the data used to train models). There are many diverse texts that could be included to expand the corpus, but practically, the approach of market-focused participants may be to focus on seeking texts with the lowest marginal cost (conditional on quality). This might exacerbate a reliance on texts that are not representative of the general public, such as if social media texts are easy to collect but not representative of the perspective of people who don't have access to social media or selfselect out of them. Or, optimistically, companies with a global audience might be incentivized to seek out "low and very-low resource languages" (e.g. Gemini <ref type="bibr" target="#b35">Team et al., 2023)</ref> and perhaps even the viewpoints and cultural perspectives of diverse users. Consideration should be given to ensuring and encouraging such diverse inputs as well as to monitoring of the diversity of outputs.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Appendix Comparing width of the tails</head><p>As mentioned above, the reported results used a tdistribution with 10 degrees of freedom, which has slightly wider tails than a standard normal distribution. We can compare the results with a standard normal distribution (i.e.a t-distribution as the degrees of freedom becomes large) or with wider tails. In Figure <ref type="figure" target="#fig_5">7</ref>, we plot a comparison of the results from the main section (with 10 degrees of freedom with wider or narrower tails (3 and 9999 degrees of freedom respectively). The main difference is for more extreme discounts provided by AI (&lt; 0.7), for which the wider tails contribute to knowledge collapse (i.e.generate a public knowledge distribution further from the true distribution). Narrower tails, such as from a standard normal distribution, generate results broadly similar to the main model. Thus, as expected more information in the tails makes the effect of knowledge collapse more pronounced, but is plays less of a role than the other parameters discussed above in determining the dynamic of collapse. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Defining knowledge collapse</head><p>To define knowledge collapse we need to distinguish between a few conceptual sets of 'knowledge', whether or not these are empirically observable. 12 First, we con- 12 The broadest definition of 'human knowledge' might encompass all the beliefs, information, values, and representations of the world ever held by humans anywhere on earth, whether recorded or not. We are unable to access almost all of this, and we tend to assume that the sider the broad set of historical human knowledge that was at one point held in common within communities of humans, shared and reproduced in a regular way, which we might call 'broad historical knowledge'.</p><p>Second, we consider the set of knowledge that is held or accessible to us, (humans who are living in a given epoch), which we call 'available current knowledge.' In the example cited in the main section, the ancient Roman recipe for concrete is part of broad historical knowledge but not part of available current knowledge.</p><p>Technological innovations from the printing press to the internet to AI mediate human interactions and human's exposure to historical and current sources of knowledge. The net effect might be to restrict or expand access to diverse knowledge and the long-tails of human knowledge. For example, the digitization of archives might make obscure sources available to a wider audience and thus increase the amount of 'broad historical knowledge' that is part of the 'available current knowledge.'</p><p>We also distinguish a third, narrower set of knowledge, which reflects not what is theoretically accessible to humans but which is readily part of human patterns of thinking or habits of thought. This we call 'human memory knowledge' or 'human working knowledge' by reference to human working memory.</p><p>For example, consider the problem of listing all the animals that have ever existed on earth. There might be some that humans previously knew about, but which subsequently went extinct and which do not exist anywhere among the scientific literature or individuals currently living on earth. More narrowly, the set of "available current knowledge" corresponds to the set of all animals that a team of all biologists could compile with access to the internet and other records. Finally, however, if we were able to conduct a survey of all humans on earth and ask them to name as many animals as possible in, say, one day, we would come up with a more limited list (that would include many repetitions).</p><p>In many practical applications, 'human working knowledge' is the most relevant because it is the knowledge that shapes human action and reflection. A doctor considering possible sources of a crossover pathogen might rely on their knowledge of common species in useful parts of this have been passed on to others, but theoretically we might want to allow for the fact that, for example some human somewhere once had an important, original, and useful belief just before they, say, got hit by a car and could not tell anyone. Secondly, in using the term 'knowledge', we do not restrict our focus based on the truth of the beliefs held, such that in referring to 'human knowledge' we refer to a variety of beliefs and statements, some of which contract others.</p><p>asking a patient if they had recently been in the presence of certain animals (even if a researcher who specializes in this area might consult know more and sources to find a longer possible list). A linguist trying to evaluate or create possible linguistic theories implicitly bases their judgement on the known language families and their structures, and so on. Edison and his team famously tried thousands of different filament materials, but if it bamboo had not been among the materials that came to mind as they searched alternatives, a practical electric bulb may have been invented only later.</p><p>Finally, it is useful to define the 'epistemic horizon' as the set of knowledge that a community of humans considers practically possible to know and worth knowing. 13 A common controversy in the public imagination is whether traditional medicines are worth consideration when searching for medical cures. Such traditional medicines might be outside of the epistemic horizon because they are not written down in the scientific literature, are only known by individuals speaking lesser known languages, or because the scientists in question consider them too costly to acquire or unlikely to be beneficial. One way to think about this relationship is as a generalization of 'availability bias', in which we take the set of readily recalled information to be more likely, important, or relevant <ref type="bibr" target="#b87">(Tversky and Kahneman, 1973)</ref>.</p><p>In these terms, we define 'knowledge collapse' as the progressive narrowing over time (or over technological representations) of the set of human working knowledge and the current human epistemic horizon relative to the set of broad historical knowledge.</p><p>On a theoretical level, the idea of epistemic horizon has an intellectual heritage in Immanuel Kant's argument about the forms and categories of understanding that underly the possibility of knowledge <ref type="bibr" target="#b54">(Kant, 1933)</ref>. Subsequent authors expanded on the implications if these categories are in some way fashioned by one's upbringing and community (e.g. <ref type="bibr" target="#b48">Herder, 2024;</ref><ref type="bibr" target="#b45">Hegel, 2018;</ref><ref type="bibr" target="#b67">Mannheim, 1952)</ref>. 14 A related concern is the way that 13 In economic terms, it is the set of information that for which the individual believes the expected returns are greater than the expected costs. This might be considered for a specific task or set of tasks, but could be generalized to the set of knowledge for which she expects positive gains over a period of time, her lifetime, or for society over a finite or infinite horizon with discounting.</p><p>14 e.g."If man received every thing from himself and developed it independently of extrinsic objects, then a history of a man might be possible, but not of men in general. But as our specific character resides precisely in this, that, born almost without instinct, we are raised to manhood only by lifelong practice, on which both the perfectibility as well as the corruptibility of our species rests, so it is precisely thereby that the history of mankind is made a whole: that is, a chain of sociability and formative tradition from the first link to the last. <ref type="bibr">(Herder, 2024, p.226)</ref> the scientific community can be, at least during certain epochs, bounded by its inherited understanding of the world <ref type="bibr" target="#b62">(Kuhn, 1997;</ref><ref type="bibr" target="#b92">Zamora Bonilla, 2006)</ref>. As noted above, specific technological forms may generate a flood of information that inhibit the communication of information <ref type="bibr" target="#b79">(Pfister, 2011)</ref>.</p><p>Finally, one of the challenges presented by the 'epistemic horizon' (as of that of an 'event horizon' <ref type="foot" target="#foot_6">15</ref> ) is that we cannot observe directly its limits. For example, the presence of an event our current model takes to be very rare (e.g.a "20-sigma" event) can suggest our current model is incorrect, but in the absence of such a rare event, we cannot know if the current tails of knowledge are correct or too thin <ref type="bibr" target="#b86">(Taleb, 2007)</ref>. These considerations suggest the concern of generational knowledge collapse is plausible and an unbounded optimism in the ability of rational actors to update on the value of tail knowledge may be shortsighted.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Figure 1: Model collapse example from Shumailov 2023.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: A hypothetical innovation calculation where the new (n+1)th sample moves the public pdf 0.1 towards the true distribution.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: Knowledge collapse: The cheaper it is to rely on AI-generated content, the more extreme the degeneration of public knowledge towards the center.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 6 :</head><label>6</label><figDesc>Figure 6: Learning rate and generational change</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 7 :</head><label>7</label><figDesc>Figure 7: Discount rate and varying thickness of the tails</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>(</head><label></label><figDesc>Reproduced from<ref type="bibr" target="#b83">Shumailov et al. 2023)</ref> Example of text outputs of an OPT-125m model affected by Model Collapse -models degrade over generations, where each new generation is trained on data produced by the previous generation.</figDesc><table><row><cell>Input: some started before 1360 -was typically accom-</cell></row><row><cell>plished by a master mason and a small team of itinerant</cell></row><row><cell>masons, supplemented by local parish labourers, accord-</cell></row><row><cell>ing to Poyntz Wright. But other authors reject this model,</cell></row><row><cell>suggesting instead that leading architects designed the</cell></row><row><cell>parish church towers based on early examples of Perpen-</cell></row><row><cell>dicular</cell></row><row><cell>Outputs:</cell></row><row><cell>Gen 0: Revival architecture such as St. John's Cathedral in</cell></row><row><cell>London. The earliest surviving example of Perpendicular</cell></row><row><cell>Revival architecture is found in the 18th @-@ century</cell></row><row><cell>Church of Our Lady of Guernsey, which dates from the</cell></row><row><cell>late 19th century. There are two types of perpendicular</cell></row><row><cell>churches : those</cell></row></table><note><p>Gen 1: architecture such as St. Peter's Basilica in Rome or St. Peter's Basilica in Buenos Aires. There is no evidence that any of these buildings were built during the reign of Pope Innocent III, but it is possible that they may have been built during the reign of his successor, Pope Innocent Gen 7: architecture in England. In an interview with The New York Times, Wright said : " I don 't think there is anything wrong with me being able to do what I want to do. It just doesn 't work for me. " He added : " I don 't know if you can call it funny,</p></note></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head></head><label></label><figDesc>Figure 4: Discount rate and learning rate update more slowly on the relative value of learning from AI (the further to the left in the figure</figDesc><table><row><cell>Hellinger Distance</cell><cell>0.30 0.35 0.40 0.45 0.50 0.55</cell><cell></cell><cell></cell><cell cols="2">Discount Factor 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</cell></row><row><cell></cell><cell>0.25</cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell>0.20</cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell>0.15</cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell>0.00</cell><cell>0.02</cell><cell>0.04 Learning Rate (lr) 0.06</cell><cell>0.08</cell><cell>0.10</cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="2" xml:id="foot_0"><p>For further discussion and a more precise definition, see the Appendix.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="3" xml:id="foot_1"><p>Full replication code available at: https://github.com/aristotle-tek/knowledge-collapse</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="4" xml:id="foot_2"><p>Varying this has trivial effect on the model, though higher values can distort public knowledge.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="6" xml:id="foot_3"><p>If individuals knew they were sampling from a truncated distribution, they could use the Expectation-Maximization algorithm to recover the full distribution, but again this process is meant to be metaphorical, and there is no known real-life method for recovering the source knowledge from AI-generated content.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="10" xml:id="foot_4"><p>Truncation at σtr = 0.75 standard deviations from the mean, generations every 10 rounds, learning rate of 0.05.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="11" xml:id="foot_5"><p>Even here there are occasional samples from the truncated distribution -just enough to realize that they have less value than the full-distribution samples.</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" n="15" xml:id="foot_6"><p>Technically, we can observe the 'shadow' of an event horizon<ref type="bibr" target="#b59">(Khodadi et al., 2020)</ref> </p></note>
+		</body>
+		<back>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">User-centered Evaluation of Popularity Bias in Recommender Systems</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Abdollahpouri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mansoury</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Burke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Mobasher</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Malthouse</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 29th ACM Conference on User Modeling, Adaptation and Personalization, UMAP &apos;21</title>
+		<meeting>the 29th ACM Conference on User Modeling, Adaptation and Personalization, UMAP &apos;21<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="119" to="129" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">C</forename><surname>Angelucci</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Cagé</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Sinkinson</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Forthcom-Ing</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Media Competition and News Diets. American Economic Journal: Microeconomics</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Generalization and Equilibrium in Generative Adversarial Nets (GANs)</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Arora</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Ge</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Liang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 34th International Conference on Machine Learning</title>
+		<meeting>the 34th International Conference on Machine Learning</meeting>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+			<biblScope unit="page" from="224" to="232" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">The role of social networks in information diffusion</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Bakshy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Rosenn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Marlow</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Adamic</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 21st international conference on World Wide Web, WWW &apos;12</title>
+		<meeting>the 21st international conference on World Wide Web, WWW &apos;12<address><addrLine>New York, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>Association for Computing Machinery</publisher>
+			<date type="published" when="2012">2012</date>
+			<biblScope unit="page" from="519" to="528" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Mass Collaboration Project Recommendation Within Open-Innovation Design Networks</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Ball</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Lewis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Mechanical Design</title>
+		<imprint>
+			<biblScope unit="volume">141</biblScope>
+			<date type="published" when="2018">2018. 021105</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">A Simple Model of Herd Behavior</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">V</forename><surname>Banerjee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Quarterly Journal of Economics</title>
+		<imprint>
+			<biblScope unit="volume">107</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="797" to="817" />
+			<date type="published" when="1992">1992</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Social media, echo chambers, and political polarization</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Barberá</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Social Media and Democracy: The State of the Field, Prospects for Reform</title>
+		<imprint>
+			<publisher>Cambridge University Press</publisher>
+			<date type="published" when="2020">2020</date>
+			<biblScope unit="page" from="34" to="55" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Topicaware social influence propagation models</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Barbieri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Bonchi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Manco</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Knowledge and Information Systems</title>
+		<imprint>
+			<biblScope unit="volume">37</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="555" to="584" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<monogr>
+		<title level="m" type="main">Dynamical Processes on Complex Networks</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Barrat</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Barthélemy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Vespignani</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2008">2008</date>
+			<publisher>Cambridge University Press</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Learning from the Behavior of Others: Conformity, Fads, and Informational Cascades</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Bikhchandani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Hirshleifer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Welch</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Journal of Economic Perspectives</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="151" to="170" />
+			<date type="published" when="1998">1998</date>
+			<publisher>American Economic Association</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<monogr>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bohacek</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Farid</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2311.12202</idno>
+		<title level="m">Nepotistically Trained Generative-AI Models Collapse</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note>cs</note>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Resource Distributions and Market Partitioning: Dutch Daily Newspapers, 1968 TO 1994</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Boone</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">R</forename><surname>Carroll</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Van Witteloostuijn</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">American Sociological Review</title>
+		<imprint>
+			<biblScope unit="volume">67</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="408" to="431" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<monogr>
+		<title level="m" type="main">From Niches to Riches: Anatomy of the Long Tail</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Brynjolfsson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">;</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">;</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">D</forename><surname>Smith</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2006">2006</date>
+			<publisher>MIT Sloan Management Review</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Consumer Surplus in the Digital Economy: Estimating the Value of Increased Product Variety at Online Booksellers</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Brynjolfsson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">J</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">D</forename><surname>Smith</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Management Science</title>
+		<imprint>
+			<biblScope unit="volume">49</biblScope>
+			<biblScope unit="issue">11</biblScope>
+			<biblScope unit="page" from="1580" to="1596" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<monogr>
+		<title level="m" type="main">Saving the media: Capitalism, crowdfunding, and democracy</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Cagé</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<publisher>Harvard University Press</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Media competition, information provision and political participation: Evidence from French local newspapers and elections, 1944-2014</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Cagé</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Public Economics</title>
+		<imprint>
+			<biblScope unit="volume">185</biblScope>
+			<biblScope unit="page">104077</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<author>
+			<persName><forename type="first">C</forename><surname>Castellano</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Fortunato</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Loreto</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Statistical physics of social dynamics</title>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="volume">81</biblScope>
+			<biblScope unit="page">591</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">The Spread of Behavior in an Online Social Network Experiment</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Centola</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">329</biblScope>
+			<biblScope unit="issue">5996</biblScope>
+			<biblScope unit="page" from="1194" to="1197" />
+			<date type="published" when="2010">2010</date>
+			<publisher>American Association for the Advancement of Science</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<monogr>
+		<author>
+			<persName><forename type="first">C</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Shu</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2311.05656</idno>
+		<title level="m">Combating Misinformation in the Age of LLMs: Opportunities and Challenges</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note>cs</note>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Artificial Intelligence in Education: A Review</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Lin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Access</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page" from="75264" to="75278" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<monogr>
+		<title level="m" type="main">Knowledge Base Completion for Long-Tail Entities</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Razniewski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Weikum</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2306.17472</idno>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note>cs</note>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Book Culture and Textual Transmission in Sung China</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Cherniack</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Harvard Journal of Asiatic Studies</title>
+		<imprint>
+			<biblScope unit="volume">54</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="5" to="125" />
+			<date type="published" when="1994">1994</date>
+			<publisher>Publisher: Harvard-Yenching Institute</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Algorithmic power and African indigenous languages: search engine autocomplete and the global multilingual Internet</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Chonka</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Diepeveen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Haile</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Media, Culture &amp; Society</title>
+		<imprint>
+			<biblScope unit="volume">45</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="246" to="265" />
+			<date type="published" when="2023">2023</date>
+			<publisher>SAGE Publications Ltd</publisher>
+		</imprint>
+	</monogr>
+	<note>Publisher</note>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<monogr>
+		<title level="m" type="main">The alignment problem: How can machines learn human values</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Christian</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<publisher>Atlantic Books</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">The echo chamber effect on social media</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Cinelli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>De Francisci Morales</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Galeazzi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Quattrociocchi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Starnini</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Proceedings of the National Academy of Sciences</title>
+		<imprint>
+			<biblScope unit="volume">118</biblScope>
+			<biblScope unit="issue">9</biblScope>
+			<date type="published" when="2021">2021. 2023301118</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">The Effect of People Recommenders on Echo Chambers and Polarization</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Cinus</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Minici</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Monti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Bonchi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the International AAAI Conference on Web and Social Media</title>
+		<meeting>the International AAAI Conference on Web and Social Media</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page" from="90" to="101" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<monogr>
+		<author>
+			<persName><forename type="first">D</forename><surname>Das</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>De Langis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Martin-Boyle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><forename type="middle">M</forename><surname>Kim</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A</forename><surname>Hayati</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Owan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Parkar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Koo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Park</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tyagi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Ferland</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Roy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Kang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2401.14698</idno>
+		<title level="m">Under the Surface: Tracking the Artifactuality of LLM-Generated Data</title>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note>cs</note>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<monogr>
+		<title level="m" type="main">Graph-Based Retriever Captures the Long Tail of Biomedical Knowledge</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Delile</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Mukherjee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Van Pamel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Zhukov</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2402.12352</idno>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note>cs</note>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Information Technology and Economic Change: The Impact of The Printing Press *</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">E</forename><surname>Dittmar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Quarterly Journal of Economics</title>
+		<imprint>
+			<biblScope unit="volume">126</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="1133" to="1172" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<monogr>
+		<author>
+			<persName><forename type="first">E</forename><surname>Dohmatob</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Feng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Charton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kempe</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2402.07043</idno>
+		<title level="m">A Tale of Tails: Model Collapse as a Change of Scaling Laws</title>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note>cs</note>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<monogr>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">J</forename><surname>Douglas</surname></persName>
+		</author>
+		<title level="m">Mass media: From 1945 to the present. A Companion to Post-1945 America</title>
+		<imprint>
+			<date type="published" when="2002">2002</date>
+			<biblScope unit="page" from="78" to="95" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<monogr>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">L</forename><surname>Eisenstein</surname></persName>
+		</author>
+		<title level="m">The Printing Press as an Agent of Change</title>
+		<imprint>
+			<publisher>Cambridge University Press</publisher>
+			<date type="published" when="1980">1980</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<monogr>
+		<title level="m" type="main">Social pressures in informal groups; a study of human factors in housing. Social pressures in informal groups; a study of human factors in housing</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Festinger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Schachter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Back</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1950">1950</date>
+			<publisher>Harper</publisher>
+			<biblScope unit="page">240</biblScope>
+			<pubPlace>Oxford, England</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<monogr>
+		<title level="m" type="main">UK government to trial &apos;red box&apos; AI tools to improve ministerial efficiency</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Fisher</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">CIRS: Bursting Filter Bubbles by Counterfactual Interactive Recommender System</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Gao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>He</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Lei</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Jiang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Information Systems</title>
+		<imprint>
+			<biblScope unit="volume">42</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">27</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<monogr>
+		<author>
+			<persName><forename type="first">G</forename><surname>Gemini Team</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Anil</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Borgeaud</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J.-B</forename><surname>Alayrac</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Soricut</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Schalkwyk</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">M</forename><surname>Dai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Hauth</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2312.11805</idno>
+		<title level="m">Gemini: a family of highly capable multimodal models</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Leveraging Feature Bias for Scalable Misprediction Explanation of Machine Learning Models</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gesi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Shen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Geng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Ahmed</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2023 IEEE/ACM 45th International Conference on Software Engineering (ICSE)</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="1559" to="1570" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Talk of the Network: A Complex Systems Look at the Underlying Process of Word-of-Mouth</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Goldenberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Libai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Muller</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Marketing Letters</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="211" to="223" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<monogr>
+		<author>
+			<persName><forename type="first">I</forename><surname>Goodfellow</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1701.00160</idno>
+		<title level="m">Nips 2016 tutorial: Generative adversarial networks</title>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">The ethical dimensions of Google autocomplete</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Graham</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Big Data &amp; Society</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">20539517231156518</biblScope>
+			<date type="published" when="2023">2023</date>
+			<publisher>Publisher: SAGE Publications Ltd</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Logic and conversation</title>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">P</forename><surname>Grice</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Speech acts</title>
+		<imprint>
+			<publisher>Brill</publisher>
+			<date type="published" when="1975">1975</date>
+			<biblScope unit="page" from="41" to="58" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Information diffusion through blogspace</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Gruhl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Guha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Liben-Nowell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tomkins</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 13th international conference on World Wide Web 491-501. Conference Name: WWW04: The 2004 World Wide Web Conference</title>
+		<meeting>the 13th international conference on World Wide Web 491-501. Conference Name: WWW04: The 2004 World Wide Web Conference</meeting>
+		<imprint>
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+	<note>in conjunction with ACM Conference on Electronic Commerce [EC&apos;04</note>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<monogr>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Guo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Shang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Vazirgiannis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Clavel</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2311.09807</idno>
+		<title level="m">The Curious Decline of Linguistic Diversity: Training Language Models on Synthetic Text</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note>cs</note>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<monogr>
+		<author>
+			<persName><forename type="first">R</forename><surname>Hackforth</surname></persName>
+		</author>
+		<title level="m">Plato: Phaedrus</title>
+		<imprint>
+			<publisher>Cambridge University Press</publisher>
+			<date type="published" when="1972">1972</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<monogr>
+		<title level="m" type="main">The Literate Revolution in Greece and Its Cultural Consequences</title>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">A</forename><surname>Havelock</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<publisher>Princeton University Press</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<monogr>
+		<title level="m" type="main">Hegel: The phenomenology of spirit</title>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">W</forename><surname>Hegel</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+			<publisher>Oxford University Press</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<monogr>
+		<title level="m" type="main">Deepfake detection using deep learning methods: A systematic and comprehensive review</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Heidari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Jafari Navimipour</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Dag</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Unal</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<publisher>Wiley Interdisciplinary Reviews</publisher>
+		</imprint>
+	</monogr>
+	<note>Data Mining and Knowledge Discovery e1520</note>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Demography and cultural evolution: How adaptive cultural processes can produce maladaptive losses-the tasmanian case</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Henrich</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">American Antiquity</title>
+		<imprint>
+			<biblScope unit="volume">69</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="197" to="214" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<monogr>
+		<title level="m" type="main">Ideas for the Philosophy of the History of Mankind</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">G</forename><surname>Herder</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+			<publisher>Princeton University Press</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<monogr>
+		<author>
+			<persName><forename type="first">J</forename><surname>Hoffmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Borgeaud</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Mensch</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Buchatskaya</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Cai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Rutherford</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">D L</forename><surname>Casas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">A</forename><surname>Hendricks</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Welbl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Clark</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2203.15556</idno>
+		<title level="m">Training compute-optimal large language models</title>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<monogr>
+		<author>
+			<persName><forename type="first">A</forename><surname>Holtzman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Buys</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Du</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Forbes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Choi</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:1904.09751</idno>
+		<title level="m">The Curious Case of Neural Text Degeneration</title>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+	<note>cs</note>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<monogr>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">H</forename><surname>Jamieson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">N</forename><surname>Cappella</surname></persName>
+		</author>
+		<title level="m">Echo Chamber: Rush Limbaugh and the Conservative Media Establishment</title>
+		<imprint>
+			<publisher>Oxford University Press</publisher>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Degenerate Feedback Loops in Recommender Systems</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Jiang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Chiappa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lattimore</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>György</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Kohli</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 2019 AAAI/ACM Conference on AI, Ethics, and Society</title>
+		<meeting>the 2019 AAAI/ACM Conference on AI, Ethics, and Society</meeting>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+			<biblScope unit="page" from="383" to="390" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Large Language Models Struggle to Learn Long-Tail Knowledge</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Kandpal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Deng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Roberts</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Wallace</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Raffel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 40th International Conference on Machine Learning</title>
+		<meeting>the 40th International Conference on Machine Learning</meeting>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="page" from="15696" to="15707" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<monogr>
+		<title level="m" type="main">Critique of pure reason (norman kemp smith, translator)</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Kant</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1933">1933</date>
+			<publisher>The Modem Library</publisher>
+			<pubPlace>New York</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<monogr>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kaplan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Mccandlish</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Henighan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">B</forename><surname>Brown</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Chess</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Child</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Gray</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Radford</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Amodei</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2001.08361</idno>
+		<title level="m">Scaling laws for neural language models</title>
+		<imprint>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">arXiv preprint</note>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<monogr>
+		<author>
+			<persName><forename type="first">B</forename><surname>Karlaš</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Dao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Interlandi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Schelter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zhang</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2204.11131</idno>
+		<title level="m">Data Debugging with Shapley Importance over End-to-End Machine Learning Pipelines</title>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+	<note>cs</note>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<analytic>
+		<title level="a" type="main">The complex link between filter bubbles and opinion polarization</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">A</forename><surname>Keijzer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Mäs</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Data Science</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="139" to="166" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<analytic>
+		<title level="a" type="main">A contribution to the mathematical theory of epidemics</title>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">O</forename><surname>Kermack</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">G</forename><surname>Mckendrick</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Proceedings of the royal society of london. Series A</title>
+		<imprint>
+			<biblScope unit="volume">115</biblScope>
+			<biblScope unit="issue">772</biblScope>
+			<biblScope unit="page" from="700" to="721" />
+			<date type="published" when="1927">1927</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<analytic>
+		<title level="a" type="main">Black holes with scalar hair in light of the event horizon telescope</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Khodadi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Allahyari</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Vagnozzi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">F</forename><surname>Mota</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Cosmology and Astroparticle Physics</title>
+		<imprint>
+			<biblScope unit="volume">2020</biblScope>
+			<biblScope unit="issue">09</biblScope>
+			<biblScope unit="page">26</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<analytic>
+		<title level="a" type="main">Trick and please. a mixed-method study on user assumptions about the tiktok algorithm</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Klug</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Qin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Evans</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Kaufman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 13th ACM Web Science Conference 2021</title>
+		<meeting>the 13th ACM Web Science Conference 2021</meeting>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<biblScope unit="page" from="84" to="92" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b61">
+	<monogr>
+		<author>
+			<persName><forename type="first">J</forename><surname>Kramár</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lieberum</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Shah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Nanda</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2403.00745</idno>
+		<title level="m">AtP*: An efficient and scalable method for localizing LLM behaviour to components</title>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note>cs</note>
+</biblStruct>
+
+<biblStruct xml:id="b62">
+	<monogr>
+		<title level="m" type="main">The structure of scientific revolutions</title>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">S</forename><surname>Kuhn</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1997">1997</date>
+			<publisher>University of Chicago press Chicago</publisher>
+			<biblScope unit="volume">962</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b63">
+	<analytic>
+		<title level="a" type="main">High-strength Damascus steel by additive manufacturing</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Kürnsteiner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">B</forename><surname>Wilms</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Weisheit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Gault</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">A</forename><surname>Jägle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Raabe</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">582</biblScope>
+			<biblScope unit="issue">7813</biblScope>
+			<biblScope unit="page" from="515" to="519" />
+			<date type="published" when="2020">2020</date>
+			<publisher>Publisher: Nature Publishing Group</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b64">
+	<analytic>
+		<title level="a" type="main">The significance of basilides in ancient christian thought</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Layton</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Representations</title>
+		<imprint>
+			<biblScope unit="volume">28</biblScope>
+			<biblScope unit="page" from="135" to="151" />
+			<date type="published" when="1989">1989</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b65">
+	<monogr>
+		<author>
+			<persName><forename type="first">H</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Ning</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><forename type="middle">L</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Lu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Brahman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Choi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Ren</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2311.07237</idno>
+		<title level="m">Search of the Long-Tail: Systematic Generation of Long-Tail Knowledge via Logical Rule Guided Search</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+	<note>cs</note>
+</biblStruct>
+
+<biblStruct xml:id="b66">
+	<analytic>
+		<title level="a" type="main">Quantifying and Mitigating Popularity Bias in Conversational Recommender Systems</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Lin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Caverlee</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 31st ACM International Conference on Information &amp; Knowledge Management, CIKM &apos;22</title>
+		<meeting>the 31st ACM International Conference on Information &amp; Knowledge Management, CIKM &apos;22</meeting>
+		<imprint>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="page" from="1238" to="1247" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b67">
+	<analytic>
+		<title level="a" type="main">The sociological problem of generations</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Mannheim</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Essays on the Sociology of Knowledge</title>
+		<imprint>
+			<biblScope unit="volume">306</biblScope>
+			<biblScope unit="page" from="163" to="195" />
+			<date type="published" when="1952">1952</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b68">
+	<analytic>
+		<title level="a" type="main">Mutual information constraints for Monte-Carlo objectives to prevent posterior collapse especially in language modelling</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Melis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>György</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Blunsom</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">The Journal of Machine Learning Research</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">3301</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b69">
+	<analytic>
+		<title level="a" type="main">The multiple roles of cultural transmission experiments in understanding human cultural evolution</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Mesoudi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Whiten</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Philosophical Transactions of the Royal Society B: Biological Sciences</title>
+		<imprint>
+			<biblScope unit="volume">363</biblScope>
+			<biblScope unit="page">3489</biblScope>
+			<date type="published" when="1509">2008. 1509</date>
+			<publisher>Publisher: The Royal Society</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b70">
+	<analytic>
+		<title level="a" type="main">The Gifts of Athena: Historical Origins of the Knowledge Economy</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Mokyr</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The Gifts of Athena</title>
+		<imprint>
+			<publisher>Princeton University Press</publisher>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b71">
+	<analytic>
+		<title level="a" type="main">Concepts of Existence: Greek Origins of Generational Thought</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">L</forename><surname>Nash</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Daedalus</title>
+		<imprint>
+			<biblScope unit="volume">107</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="1" to="21" />
+			<date type="published" when="1978">1978</date>
+			<publisher>The MIT Press</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b72">
+	<analytic>
+		<title level="a" type="main">Bias in artificial intelligence algorithms and recommendations for mitigation</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">H</forename><surname>Nazer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Zatarah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Waldrip</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">X C</forename><surname>Ke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Moukheiber</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">K</forename><surname>Khanna</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">S</forename><surname>Hicklen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Moukheiber</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Moukheiber</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Ma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Mathur</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">PLOS Digital Health</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page">278</biblScope>
+			<date type="published" when="2023">2023</date>
+			<publisher>Public Library of Science</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b73">
+	<monogr>
+		<title level="m" type="main">Vanishing Voices: The Extinction of the World&apos;s Languages</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Nettle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Romaine</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2000">2000</date>
+			<publisher>Oxford University Press</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b74">
+	<analytic>
+		<title level="a" type="main">From private attitude to public opinion: A dynamic theory of social impact</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Nowak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Szamrej</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Latané</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Psychological Review</title>
+		<imprint>
+			<biblScope unit="volume">97</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="362" to="376" />
+			<date type="published" when="1990">1990</date>
+			<publisher>American Psychological Association</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b75">
+	<monogr>
+		<title level="m" type="main">Orality and Literacy: 30th Anniversary Edition</title>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">J</forename><surname>Ong</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+			<publisher>Routledge</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b76">
+	<analytic>
+		<title level="a" type="main">Trustworthy journalism through ai</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">L</forename><surname>Opdahl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Tessem</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D.-T</forename><surname>Dang-Nguyen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Motta</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Setty</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Throndsen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tverberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Trattner</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Data &amp; Knowledge Engineering</title>
+		<imprint>
+			<biblScope unit="volume">146</biblScope>
+			<biblScope unit="page">102182</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b77">
+	<monogr>
+		<title level="m" type="main">What Is Web</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>O'reilly</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b78">
+	<monogr>
+		<title level="m" type="main">The filter bubble: What the Internet is hiding from you</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Pariser</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b79">
+	<analytic>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">S</forename><surname>Pfister</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The Logos of the Blogosphere: Flooding the Zone, Invention, and Attention in the Lott Imbroglio</title>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<biblScope unit="volume">47</biblScope>
+			<biblScope unit="page" from="141" to="162" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b80">
+	<monogr>
+		<title level="m" type="main">The forgotten revolution: how science was born in 300 BC and why it had to be reborn</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Russo</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2003">2003</date>
+			<publisher>Springer Science &amp; Business Media</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b81">
+	<analytic>
+		<title level="a" type="main">Hot mixing: Mechanistic insights into the durability of ancient Roman concrete</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">M</forename><surname>Seymour</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Maragh</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Sabatini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Di Tommaso</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">C</forename><surname>Weaver</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Masic</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science Advances</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<date type="published" when="1602">2023. 1602</date>
+			<publisher>American Association for the Advancement of Science</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b82">
+	<monogr>
+		<author>
+			<persName><forename type="first">N</forename><surname>Sharma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><forename type="middle">V</forename><surname>Liao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Xiao</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2402.05880</idno>
+		<title level="m">Generative Echo Chamber? Effects of LLM-Powered Search Systems on Diverse Information Seeking</title>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note>cs</note>
+</biblStruct>
+
+<biblStruct xml:id="b83">
+	<monogr>
+		<title level="m" type="main">The curse of recursion: Training on generated data makes models forget</title>
+		<author>
+			<persName><forename type="first">I</forename><surname>Shumailov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Shumaylov</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Gal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Papernot</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Anderson</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b84">
+	<analytic>
+		<title level="a" type="main">Pathological Outcomes of Observational Learning</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Smith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Sørensen</surname></persName>
+		</author>
+		<idno type="DOI">10.1111/1468-0262.00113</idno>
+		<ptr target="https://onlinelibrary.wiley.com/doi/pdf/10.1111/1468-0262.00113" />
+	</analytic>
+	<monogr>
+		<title level="j">Econometrica</title>
+		<imprint>
+			<biblScope unit="volume">68</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="371" to="398" />
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b85">
+	<analytic>
+		<title level="a" type="main">A Contrastive Framework for Neural Text Generation</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Su</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Yogatama</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Kong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Collier</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Neural Information Processing Systems</title>
+		<editor>
+			<persName><forename type="first">S</forename><surname>Koyejo</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">S</forename><surname>Mohamed</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">A</forename><surname>Agarwal</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">D</forename><surname>Belgrave</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">K</forename><surname>Cho</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">A</forename><surname>Oh</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>Curran Associates, Inc</publisher>
+			<date type="published" when="2022">2022</date>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="page" from="21548" to="21561" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b86">
+	<analytic>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">N</forename><surname>Taleb</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Black Swans and the Domains of Statistics</title>
+		<imprint>
+			<publisher>Taylor &amp; Francis</publisher>
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b87">
+	<analytic>
+		<title level="a" type="main">Availability: A heuristic for judging frequency and probability</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Tversky</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Kahneman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cognitive Psychology</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="207" to="232" />
+			<date type="published" when="1973">1973</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b88">
+	<analytic>
+		<title level="a" type="main">Overlapping Generations: The First Jubilee</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Weil</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Economic Perspectives</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="115" to="134" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b89">
+	<monogr>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wendler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Veselovsky</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Monea</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>West</surname></persName>
+		</author>
+		<idno type="arXiv">arXiv:2402.10588</idno>
+		<title level="m">Do Llamas Work in English? On the Latent Language of Multilingual Transformers</title>
+		<imprint>
+			<date type="published" when="2024">2024</date>
+		</imprint>
+	</monogr>
+	<note>cs</note>
+</biblStruct>
+
+<biblStruct xml:id="b90">
+	<analytic>
+		<title level="a" type="main">Interpretability at Scale: Identifying Causal Mechanisms in Alpaca</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Wu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Geiger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Icard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Potts</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Goodman</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Advances in Neural Information Processing Systems</title>
+		<imprint>
+			<date type="published" when="2023">2023</date>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="page" from="78205" to="78226" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b91">
+	<monogr>
+		<title level="m" type="main">The master switch: The rise and fall of information empires</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Wu</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2011">2011</date>
+			<pubPlace>Vintage</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b92">
+	<analytic>
+		<title level="a" type="main">Science Studies and the Theory of Games</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">P</forename><surname>Zamora Bonilla</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Perspectives on Science</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="525" to="557" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b93">
+	<analytic>
+		<title level="a" type="main">What Games Do Scientists Play? Rationality and Objectivity in a Game-Theoretic Approach to the Social Construction of Scientific Knowledge</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Zamora-Bonilla</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">EPSA Epistemology and Methodology of Science: Launch of the European Philosophy of Science Association</title>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Suárez</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Dorato</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">M</forename><surname>Rédei</surname></persName>
+		</editor>
+		<meeting><address><addrLine>Dordrecht; Netherlands</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer</publisher>
+			<date type="published" when="2010">2010</date>
+			<biblScope unit="page" from="323" to="332" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>
