@@ -10,3 +10,24 @@
 6. Upload a PDF file.
 7. Obtain the result
 
+## Machine Environment for Benchmarking
+|Component|Detail                                        |
+|---------|----------------------------------------------|
+|CPU      |Ryzen 5 5500                                  |  
+|RAM      |16GB                                          |
+|GPU      |None was used to emulate a laptop environment.|
+
+## List of libraries used  
+- grobid-client-python  
+- requests  
+- flask[async]  
+- redis  
+- werkzeug  
+- summa  
+- pyzotero  
+- asyncio  
+- accelerate  
+- nltk  
+- numpy  
+- transformers  
+- torch  
