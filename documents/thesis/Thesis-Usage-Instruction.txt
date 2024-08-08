@@ -1,0 +1,7 @@
+1. Set the current directory to be ```./Report-Generation/docker```
+2. Open the terminal in the current directory.
+3. Run ```docker compose up```.
+4. Access your localhost on port 5000.
+5. Choose a pre-processing method, and a summarization method.
+6. Upload a PDF file.
+7. Obtain the result
